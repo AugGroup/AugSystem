@@ -1,11 +1,10 @@
 AugRmSystem
-========
+===========
 
-Populate MySql Data
----
-    mvn process-resources sql:execute
+How to run generate schema for Development
 
-
-How to run generate schema
-
-    mvn hibernate3:hbm2ddl sql:execute
+    mvn hibernate3:hbm2ddl sql:execute -P dev
+    
+How to run generate schema for Production
+    
+    mvn hibernate3:hbm2ddl sql:execute -P prod

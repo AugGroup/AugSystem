@@ -26,8 +26,7 @@
 
     <!-- Declare the Interceptor -->
     <mvc:interceptors>
-        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
-              p:paramName="locale" />
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="locale" />
     </mvc:interceptors>
 
     <!-- Declare the Resolver -->
