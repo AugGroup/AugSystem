@@ -57,10 +57,10 @@
         <skip.integration.tests>true</skip.integration.tests>
         <skip.unit.tests>false</skip.unit.tests>
 
-        <database.driver>com.mysql.jdbc.Driver</database.driver>
+        <!--<database.driver>com.mysql.jdbc.Driver</database.driver>
         <database.url>jdbc:mysql://localhost:3306/AugRmSystem</database.url>
         <database.username>root</database.username>
-        <database.password>root</database.password>
+        <database.password>root</database.password>-->
 
     </properties>
 
@@ -324,20 +324,32 @@
 
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <!-- we'll add more stuff here... -->
+            <properties>
+                <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
+                <db.url>jdbc:mysql://localhost:3306/AugRmSystem</db.url>
+                <db.username>root</db.username>
+                <db.password>root</db.password>
+            </properties>
+
+        </profile>
+        <profile>
+            <id>prod</id>
+            <!-- ...and here -->
+            <properties>
+                <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
+                <db.url>jdbc:mysql://localhost:3306/AugRmSystem</db.url>
+                <db.username>root</db.username>
+                <db.password>root</db.password>
+            </properties>
+        </profile>
+    </profiles>
+
+
     <build>
-
-        <!--<filters>
-            <filter>src/main/resources/database.properties</filter>
-        </filters>
-
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>-->
-
-
 
         <plugins>
 
@@ -397,10 +409,10 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <driver>${database.driver}</driver>
-                    <url>${database.url}</url>
-                    <username>${database.username}</username>
-                    <password>${database.password}</password>
+                    <driver>${db.driverClass}</driver>
+                    <url>${db.url}</url>
+                    <username>${db.username}</username>
+                    <password>${db.password}</password>
                     <autocommit>true</autocommit>
                     <sqlCommand>
 
@@ -414,6 +426,13 @@
 
 
         </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
 
     </build>
 </project>
