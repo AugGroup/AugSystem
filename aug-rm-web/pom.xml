@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.aug</groupId>
-    <artifactId>AugRmSystem-Web</artifactId>
+    <artifactId>aug-rm</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>AugRmSystem</name>
@@ -46,7 +46,7 @@
 
         <dependency>
             <groupId>com.aug</groupId>
-            <artifactId>Augmentis-DB</artifactId>
+            <artifactId>aug-db</artifactId>
             <version>1.0</version>
         </dependency>
 
