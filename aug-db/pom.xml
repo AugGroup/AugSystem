@@ -57,10 +57,11 @@
         <skip.integration.tests>true</skip.integration.tests>
         <skip.unit.tests>false</skip.unit.tests>
 
-        <!--<database.driver>com.mysql.jdbc.Driver</database.driver>
-        <database.url>jdbc:mysql://localhost:3306/AugRmSystem</database.url>
-        <database.username>root</database.username>
-        <database.password>root</database.password>-->
+
+        <db.driverClassName>com.mysql.jdbc.Driver</db.driverClassName>
+        <db.url>jdbc:mysql://localhost:3306/AUG_RM_SYSTEM</db.url>
+        <db.username>root</db.username>
+        <db.password>root</db.password>
 
     </properties>
 
@@ -327,12 +328,14 @@
     <profiles>
         <profile>
             <id>dev</id>
-            <!-- we'll add more stuff here... -->
+            <!-- we'll add more stuff here...
+             refer variable at top
+             -->
             <properties>
-                <db.driverClassName>com.mysql.jdbc.Driver</db.driverClassName>
-                <db.url>jdbc:mysql://localhost:3306/AugRmSystem</db.url>
-                <db.username>root</db.username>
-                <db.password>root</db.password>
+                <database.driverClassName>${db.driverClassName}</database.driverClassName>
+                <database.url>${db.url}</database.url>
+                <database.username>${db.username}</database.username>
+                <database.password>${db.password}</database.password>
             </properties>
 
         </profile>
@@ -340,10 +343,10 @@
             <id>prod</id>
             <!-- ...and here -->
             <properties>
-                <db.driverClass>com.mysql.jdbc.Driver</db.driverClass>
-                <db.url>jdbc:mysql://localhost:3306/AugRmSystem</db.url>
-                <db.username>prod</db.username>
-                <db.password>prod</db.password>
+                <database.driverClass>com.mysql.jdbc.Driver</database.driverClass>
+                <database.url>jdbc:mysql://localhost:3306/AUG_RM_SYSTEM</database.url>
+                <database.username>prod</database.username>
+                <database.password>prod</database.password>
             </properties>
         </profile>
     </profiles>
@@ -409,10 +412,10 @@
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <driver>${db.driverClassName}</driver>
-                    <url>${db.url}</url>
-                    <username>${db.username}</username>
-                    <password>${db.password}</password>
+                    <driver>${database.driverClassName}</driver>
+                    <url>${database.url}</url>
+                    <username>${database.username}</username>
+                    <password>${database.password}</password>
                     <autocommit>true</autocommit>
                     <sqlCommand>
 
