@@ -33,6 +33,9 @@ public class Request {
     @Column(name = "REQUESTER_NAME")
     private String requesterName;
     
+    @Column(name = "STATUS")
+    private String status;
+    
     @Column(name = "APPROVAL_NAME")
     private String approvalName;
     
@@ -83,6 +86,14 @@ public class Request {
         this.approvalDate = approvalDate;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
     public List<RequestPosition> getRequestPosition() {
         return requestPosition;
     }
