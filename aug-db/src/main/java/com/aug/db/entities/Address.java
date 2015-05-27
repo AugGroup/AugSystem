@@ -38,17 +38,18 @@ public class Address {
 	@Column(name = "ADDRESS_TYPE")// present address or permanent address
 	private String addressType;
 	
-	/*@ManyToOne()
-	@JoinColumn(name="applicantId")
+	@ManyToOne
+	@JoinColumn(name="APPLICANT_ID")
 	private Applicant applicant;
-	
-	public String getApplicantId() {
-		return applicantId;
+
+
+	public Applicant getApplicant() {
+		return applicant;
 	}
 
-	public void setApplicantId(String applicantId) {
-		this.applicantId = applicantId;
-	}*/
+	public void setApplicant(Applicant applicant) {
+		this.applicant = applicant;
+	}
 
 	public Integer getId() {
 		return id;

@@ -19,18 +19,18 @@ public class Experience {
 	@Column(name = "ID")
 	private Integer id;
 	
-	/*@ManyToOne()
-	@JoinColumn(name="applicantId")
+	@ManyToOne()
+	@JoinColumn(name="APPLICANT_ID")
 	private Applicant applicant;
 	
-	public Applicant getApplicantId() {
-		return applicantId;
+	public Applicant getApplicant() {
+		return applicant;
 	}
 
-	public void setApplicantId(Applicant applicantId) {
-		this.applicantId = applicantId;
+	public void setApplicant(Applicant applicant) {
+		this.applicant = applicant;
 	}
-*/
+
 	@Column(name = "POSITION") // position of applicant
 	private String position;
 

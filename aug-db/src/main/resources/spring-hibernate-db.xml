@@ -44,9 +44,4 @@
         <property name="packagesToScan" value="com.aug.db"/>
     </bean>
 
-
-    <!-- <tx:annotation-driven/> -->
-
-
-
 </beans>

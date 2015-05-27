@@ -35,17 +35,18 @@ public class Education {
 	@Column(name = "YEAR_OF_GRADUATE")
 	private String yearsOfGraduate;
 	
-	/*@ManyToOne()
-	@JoinColumn(name="applicantId")
+	@ManyToOne()
+	@JoinColumn(name="APPLICANT_ID")
 	private Applicant applicant;
 
-	public Applicant getApplicantId() {
-		return applicantId;
+
+	public Applicant getApplicant() {
+		return applicant;
 	}
 
-	public void setApplicantId(Applicant applicantId) {
-		this.applicantId = applicantId;
-	}*/
+	public void setApplicant(Applicant applicant) {
+		this.applicant = applicant;
+	}
 
 	public Integer getId() {
 		return id;

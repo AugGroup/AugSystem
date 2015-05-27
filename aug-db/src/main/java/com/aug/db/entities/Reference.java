@@ -9,22 +9,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "SKILL")
-public class Skill {
-
+@Table(name = "REFERENCE")
+public class Reference {
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")
 	private Integer id;
-
-	@Column(name = "SKILL_DETAIL")
-	private String skillDetail;
-	
-	@ManyToOne()
-	@JoinColumn(name="id")
+	@Column(name = "FULLNAME")
+	private String fullName;
+	@Column(name = "TEL")
+	private String tel;
+	@Column(name = "OCCUPATION")
+	private String occupation;
+	@ManyToOne
+	@JoinColumn(name = "APPLICANT_ID")
 	private Applicant applicant;
-
-
 
 	public Applicant getApplicant() {
 		return applicant;
@@ -42,12 +41,27 @@ public class Skill {
 		this.id = id;
 	}
 
-	public String getSkillDetail() {
-		return skillDetail;
+	public String getTel() {
+		return tel;
 	}
 
-	public void setSkillDetail(String skillDetail) {
-		this.skillDetail = skillDetail;
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public String getOccupation() {
+		return occupation;
+	}
+
+	public void setOccupation(String occupation) {
+		this.occupation = occupation;
+	}
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 }
