@@ -16,7 +16,13 @@
 
         <mapping class="com.aug.db.entities.Person"/>
         <mapping class="com.aug.db.entities.Applicant"/>
-
+        <mapping class="com.aug.db.entities.AttachFile"/>
+        <mapping class="com.aug.db.entities.AugEmployee"/>
+		<mapping class="com.aug.db.entities.Department"/>
+		<mapping class="com.aug.db.entities.Family"/>
+		<mapping class="com.aug.db.entities.Languages"/>
+		<mapping class="com.aug.db.entities.Position"/>
+		<mapping class="com.aug.db.entities.Reference"/>
         <!--<mapping package="com.aug.db.entities"/>-->
 
     </session-factory>

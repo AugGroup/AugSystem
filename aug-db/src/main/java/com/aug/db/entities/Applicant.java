@@ -160,25 +160,25 @@ public class Applicant {
 	@Column(name = "OCCUPATION_MARRIAGE")
 	private String occupationMarriage;
 	
-//	@OneToMany(mappedBy = "applicantId")
-//	private List<Reference> referances;
-//	
-//	@ManyToMany
-//	@JoinTable(name = "APPLICANT_POSITION", joinColumns = {@JoinColumn(name = "APPLICANT_ID")}, inverseJoinColumns = {@JoinColumn(name = "POSITION_ID")})
-//	private List<Position> positions;
-//	
-//	@OneToMany(mappedBy = "applicantId")
-//	private List<Family> families;
-//	
-//	@OneToMany(mappedBy = "applicantId")
-//	private List<AttachFile> attachFiles;
-//	
-//	@OneToMany(mappedBy = "applicantId")
-//	private List<AugEmployee> augEmployees;
-//	
-//	@OneToMany(mappedBy = "applicantId")
-//	private List<Languages> languages;
-//	
+	@OneToMany(mappedBy = "applicant")
+	private List<Reference> referances;
+	
+	@ManyToMany
+	@JoinTable(name = "APPLICANT_POSITION", joinColumns = {@JoinColumn(name = "APPLICANT_ID")}, inverseJoinColumns = {@JoinColumn(name = "POSITION_ID")})
+	private List<Position> positions;
+	
+	@OneToMany(mappedBy = "applicant")
+	private List<Family> families;
+	
+	@OneToMany(mappedBy = "applicant")
+	private List<AttachFile> attachFiles;
+	
+	@OneToMany(mappedBy = "applicant")
+	private List<AugEmployee> augEmployees;
+	
+	@OneToMany(mappedBy = "applicant")
+	private List<Languages> languages;
+	
 //	@OneToMany(mappedBy = "applicantId")
 //	private List<Address> adrress;
 //	
