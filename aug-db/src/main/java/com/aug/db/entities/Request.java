@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -22,8 +23,9 @@ import javax.persistence.Table;
 public class Request {
     
     @Id
-    @Column(name = "ID")
-    private Integer id;
+    @GeneratedValue
+    @Column(name = "REQUESTID")
+    private Integer requestId;
     
     @Column(name = "REQUEST_DATE")
     private Date requestDate;
@@ -37,16 +39,17 @@ public class Request {
     @Column(name = "APPROVAL_DATE")
     private Date approvalDate;
     
-    @OneToMany (mappedBy = "REQUEST")
+    @OneToMany (mappedBy = "request")
     private List<RequestPosition> requestPosition;
-    
-    public Integer getId() {
-        return id;
+
+    public Integer getRequestId() {
+        return requestId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setRequestId(Integer requestId) {
+        this.requestId = requestId;
     }
+    
 
     public Date getRequestDate() {
         return requestDate;

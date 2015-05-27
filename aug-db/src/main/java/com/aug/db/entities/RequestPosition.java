@@ -7,6 +7,7 @@ package com.aug.db.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,8 +22,9 @@ import javax.persistence.Table;
 public class RequestPosition {
 
     @Id
-    @Column(name = "ID")
-    private Integer id;
+    @GeneratedValue
+    @Column(name = "REQPOSITION_ID")
+    private Integer ReqPositionId;
     
     @Column(name = "POSITION_NAME")
     private String positionName;
@@ -32,21 +34,21 @@ public class RequestPosition {
     
     @Column(name = "YEAR_EXPERIENCE")
     private Integer yearExperience;
+    
+    
 
     @ManyToOne
-    @JoinColumn(name="ID")
+    @JoinColumn(name="requestId")
     private Request request;
 
-    
-    
-    public Integer getId() {
-        return id;
+    public Integer getReqPositionId() {
+        return ReqPositionId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setReqPositionId(Integer ReqPositionId) {
+        this.ReqPositionId = ReqPositionId;
     }
-
+    
     public String getPositionName() {
         return positionName;
     }
@@ -69,6 +71,14 @@ public class RequestPosition {
 
     public void setYearExperience(Integer yearExperience) {
         this.yearExperience = yearExperience;
+    }
+
+    public Request getRequest() {
+        return request;
+    }
+
+    public void setRequest(Request request) {
+        this.request = request;
     }
     
     
