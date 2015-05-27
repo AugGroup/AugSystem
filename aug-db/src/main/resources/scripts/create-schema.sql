@@ -2,7 +2,7 @@
     drop table if exists PERSON;
 
     create table PERSON (
-        ID integer not null,
+        id integer not null auto_increment,
         NAME varchar(255),
-        primary key (ID)
+        primary key (id)
     );
