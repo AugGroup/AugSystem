@@ -37,8 +37,7 @@ public class Education {
 	
 	/*@ManyToOne()
 	@JoinColumn(name="applicantId")
-	@Column(name = "APPLICANT_ID")
-	private Applicant applicantId;
+	private Applicant applicant;
 
 	public Applicant getApplicantId() {
 		return applicantId;

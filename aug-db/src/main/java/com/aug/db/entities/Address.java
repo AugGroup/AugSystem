@@ -38,10 +38,9 @@ public class Address {
 	@Column(name = "ADDRESS_TYPE")// present address or permanent address
 	private String addressType;
 	
-/*	@ManyToOne()
+	/*@ManyToOne()
 	@JoinColumn(name="applicantId")
-	@Column(name = "APPLICANT_ID")
-	private Applicant applicantId;
+	private Applicant applicant;
 	
 	public String getApplicantId() {
 		return applicantId;
