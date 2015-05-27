@@ -15,6 +15,7 @@
         <!--<property name="hbm2ddl.auto">update</property>-->
 
         <mapping class="com.aug.db.entities.Person"/>
+        <mapping class="com.aug.db.entities.Applicant"/>
 
         <!--<mapping package="com.aug.db.entities"/>-->
 

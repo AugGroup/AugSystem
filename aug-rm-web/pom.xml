@@ -240,7 +240,7 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.1</version>
                 <executions>
-                    <execution>
+                    <execution> 
                         <phase>validate</phase>
                         <goals>
                             <goal>copy</goal>
