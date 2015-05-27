@@ -29,13 +29,14 @@ public class RequestPosition {
     @Column(name = "POSITION_NAME")
     private String positionName;
     
+    @Column(name = "NUMBER_APPLICANT")
+    private Integer numberApplicant;
+    
     @Column(name = "SPECIFIC_SKILL")
     private String specificSkill;
     
     @Column(name = "YEAR_EXPERIENCE")
     private Integer yearExperience;
-    
-    
 
     @ManyToOne
     @JoinColumn(name="requestId")
@@ -79,6 +80,14 @@ public class RequestPosition {
 
     public void setRequest(Request request) {
         this.request = request;
+    }
+
+    public Integer getNumberApplicant() {
+        return numberApplicant;
+    }
+
+    public void setNumberApplicant(Integer numberApplicant) {
+        this.numberApplicant = numberApplicant;
     }
     
     
