@@ -24,6 +24,7 @@ public class AugRequest {
     
     @Id
     @GeneratedValue
+
     @Column(name = "REQUEST_ID")
     private Long id;
     
