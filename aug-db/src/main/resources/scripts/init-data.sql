@@ -63,5 +63,5 @@ VALUES ('1', 'Junior Java Consultance',STR_TO_DATE('01/04/2012','%d/%m/%Y'),STR_
 
 
 INSERT INTO Skill(APPLICANT_ID, SKILL_DETAIL)
-VALUES ('1','JAVA JS'),('2','JAVA PHP'),('3','-');
+VALUES ('1','JAVAJS'),('2','JAVAPHP'),('3','-');
 
