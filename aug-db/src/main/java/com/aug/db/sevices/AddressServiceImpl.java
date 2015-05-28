@@ -9,14 +9,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aug.db.entities.Address;
 import com.aug.db.repositories.AddressRepository;
 
-
 @Service(value = "addressService")
 @Transactional
-public class AddressServiceImpl implements AddressService{
-	
+public class AddressServiceImpl implements AddressService {
+
 	@Autowired
 	private AddressRepository addressRepository;
-	
+
 	@Override
 	public Address findById(Integer id) {
 		return addressRepository.findById(id);
@@ -25,19 +24,24 @@ public class AddressServiceImpl implements AddressService{
 	@Override
 	public void create(Address address) {
 		addressRepository.insert(address);
-		
+
 	}
 
 	@Override
 	public void update(Address address) {
 		addressRepository.update(address);
-		
+
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void deleteById(Integer id) {
 		addressRepository.deleteById(id);
-		
+	}
+
+	@Override
+	public void delete(Address address) {
+		addressRepository.delete(address);
+
 	}
 
 	@Override
@@ -45,6 +49,5 @@ public class AddressServiceImpl implements AddressService{
 		List<Address> addressList = addressRepository.findAll();
 		return addressList;
 	}
-	
 
 }

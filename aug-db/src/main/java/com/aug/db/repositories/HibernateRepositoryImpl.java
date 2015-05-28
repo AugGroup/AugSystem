@@ -29,11 +29,11 @@ public abstract class HibernateRepositoryImpl<Entity, ID extends Serializable> i
     }
 
     public ID insert(Entity entity) {
-        return (ID) getCurrentSession().save(entity);
+        return (ID)getCurrentSession().save(entity);
     }
 
     public Entity findById(ID id) {
-        return (Entity) getCurrentSession().get(clazz, id);
+        return (Entity)getCurrentSession().get(clazz, id);
     }
 
     public void update(Entity entity) {

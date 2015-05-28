@@ -12,7 +12,9 @@ public interface EducationService {
 
 	public void update(Education education);
 
-	public void delete(Integer id);
+	public void delete(Education Education);
+	
+	public void deleteById(Integer id);
 
 	public List<Education> findAll();
 

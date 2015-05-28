@@ -11,11 +11,11 @@ import com.aug.db.repositories.SkillRepository;
 
 @Service(value = "skillService")
 @Transactional
-public class SkillServiceImpl implements SkillService{
-	
+public class SkillServiceImpl implements SkillService {
+
 	@Autowired
 	private SkillRepository skillRepository;
-	
+
 	@Override
 	public Skill findById(Integer id) {
 		return skillRepository.findById(id);
@@ -24,26 +24,31 @@ public class SkillServiceImpl implements SkillService{
 	@Override
 	public void create(Skill skill) {
 		skillRepository.insert(skill);
-		
+
 	}
 
 	@Override
 	public void update(Skill skill) {
 		skillRepository.update(skill);
-		
+
 	}
 
 	@Override
-	public void delete(Integer id) {
-		skillRepository.deleteById(id);
-		
+	public void delete(Skill skill) {
+
+		skillRepository.delete(skill);
+
 	}
 
+	@Override
+	public void deleteById(Integer id) {
+		skillRepository.deleteById(id);
+	}
+	
 	@Override
 	public List<Skill> findAll() {
 		List<Skill> skillList = skillRepository.findAll();
 		return skillList;
 	}
-	
 
 }

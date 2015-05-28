@@ -2,10 +2,13 @@ package com.aug.db.sevices;
 
 import java.util.List;
 
+import com.aug.db.repositories.ApplicantRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.db.entities.Address;
 import com.aug.db.entities.Applicant;
 import com.aug.db.repositories.ApplicantRepository;
 
@@ -34,9 +37,14 @@ public class ApplicantServiceImpl implements ApplicantService {
 	}
 
 	@Override
-	public void delete(Integer id) {
-		applicantRepository.deleteById(id);
-		
+	public void deleteById(Integer id) {
+		applicantRepository.deleteById(id);	
+	}
+	
+	@Override
+	public void delete(Applicant applicant) {
+		applicantRepository.delete(applicant);
+
 	}
 
 	@Override

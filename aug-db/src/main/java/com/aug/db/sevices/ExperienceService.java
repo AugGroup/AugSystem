@@ -12,7 +12,9 @@ public void create(Experience experience);
 	
 	public void update(Experience experience);
 	
-	public void delete(Integer id);
+	public void delete(Experience experience);
+	
+	public void deleteById(Integer id);
 	
 	public List<Experience> findAll();
 

@@ -42,12 +42,12 @@ public class ApplicantTest {
 	@Test
 	public void testDeleteApplicant() {
 		Applicant applicant = new Applicant();
-		applicantService.delete(1);
+		applicantService.deleteById(1);
 		assertNull(applicant);
 	}
 	
 	@Test
-	public void testFIndAll() {
+	public void testFindAll() {
 		Applicant applicant = new Applicant();
 		System.out.println("FindAll : " + applicantService.findAll());
 	}

@@ -13,7 +13,9 @@ public void create(Skill skill);
 	
 	public void update(Skill skill);
 	
-	public void delete(Integer id);
+	public void delete(Skill skill);
+	
+	public void deleteById(Integer id);
 	
 	public List<Skill> findAll();
 

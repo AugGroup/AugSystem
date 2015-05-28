@@ -2,6 +2,7 @@ package com.aug.db.sevices;
 
 import java.util.List;
 
+import com.aug.db.repositories.ExperienceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,11 +35,16 @@ public class ExperienceServiceImpl implements ExperienceService{
 	}
 
 	@Override
-	public void delete(Integer id) {
-		experienceRepository.deleteById(id);
-		
+	public void delete(Experience experience) {
+		experienceRepository.delete(experience);
 	}
 
+	@Override
+	public void deleteById(Integer id) {
+		experienceRepository.deleteById(id);
+	}
+	
+	
 	@Override
 	public List<Experience> findAll() {
 		List<Experience> experienceList = experienceRepository.findAll();

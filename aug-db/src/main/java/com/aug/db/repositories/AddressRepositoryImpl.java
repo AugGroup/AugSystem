@@ -8,7 +8,6 @@ import com.aug.db.entities.Address;
 
 
 @Repository(value = "addressRepository")
-public class AddressRepositoryImpl extends HibernateRepositoryImpl<Address, Serializable> implements
-AddressRepository {
+public class AddressRepositoryImpl extends HibernateRepositoryImpl<Address, Serializable> implements AddressRepository {
 
 }
