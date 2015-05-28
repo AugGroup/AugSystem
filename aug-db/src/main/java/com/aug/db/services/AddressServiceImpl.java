@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Address;
+import com.aug.db.repositories.AddressRepository;
 
 
 @Service(value = "addressService")
@@ -36,8 +37,7 @@ public class AddressServiceImpl implements AddressService{
 
 	@Override
 	public void delete(Integer id) {
-//		addressRepository.delete(id);
-		
+		addressRepository.deleteById(id);
 	}
 
 	@Override

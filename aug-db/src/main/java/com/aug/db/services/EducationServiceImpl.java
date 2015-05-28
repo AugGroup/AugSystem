@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Education;
+import com.aug.db.repositories.EducationRepository;
 @Service(value = "educationService")
 @Transactional
 public class EducationServiceImpl implements EducationService{
@@ -34,8 +35,8 @@ public class EducationServiceImpl implements EducationService{
 
 	@Override
 	public void delete(Integer id) {
-//		educationRepository.delete(id);
-		
+		educationRepository.deleteById(id);
+
 	}
 
 	@Override

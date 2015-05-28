@@ -52,7 +52,7 @@ public class ApplicantTest {
 	@Test
 	public void testDeleteApplicant() {
 		Applicant applicant = new Applicant();
-		applicantService.deleteById(4);
+//		applicantService.deleteById(4);
 		assertNull(applicant);
 	}
 	

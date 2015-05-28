@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Skill;
+import com.aug.db.repositories.SkillRepository;
 
 @Service(value = "skillService")
 @Transactional
@@ -23,8 +24,8 @@ public class SkillServiceImpl implements SkillService{
 
 	@Override
 	public void create(Skill skill) {
-        skillRepository.insert(skill);
-		
+		skillRepository.insert(skill);
+
 	}
 
 	@Override
@@ -35,8 +36,8 @@ public class SkillServiceImpl implements SkillService{
 
 	@Override
 	public void delete(Integer id) {
-//		skillRepository.delete(id);
-		
+		skillRepository.deleteById(id);
+
 	}
 
 	@Override
