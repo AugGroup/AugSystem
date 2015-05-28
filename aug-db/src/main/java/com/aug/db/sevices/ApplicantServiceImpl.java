@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Applicant;
+import com.aug.db.repositories.ApplicantRepository;
 
 @Service(value = "applicantService")
-@Transactional
 public class ApplicantServiceImpl implements ApplicantService {
 	
 	@Autowired
@@ -35,7 +35,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 
 	@Override
 	public void delete(Integer id) {
-//		applicantRepository.delete(id);
+		applicantRepository.deleteById(id);
 		
 	}
 

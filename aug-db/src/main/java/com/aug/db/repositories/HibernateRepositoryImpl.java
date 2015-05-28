@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.AttachFile;
 
+@Transactional
 public abstract class HibernateRepositoryImpl<Entity, ID extends Serializable> implements GenericRepository<Entity, ID> {
 	protected Class clazz;
 
@@ -46,11 +47,10 @@ public abstract class HibernateRepositoryImpl<Entity, ID extends Serializable> i
         getCurrentSession().delete(entity);
     }
     
-	public void delete(Integer id) {
-		
-		Entity entity= (Entity) getCurrentSession().get(clazz, id);
-		getCurrentSession().delete(entity);
-	}
+    
+    public void deleteById(ID id) {
+        delete(findById(id));
+    }
     
     public List findAll() {
         return getCurrentSession().createQuery("from " + clazz.getName()).list();

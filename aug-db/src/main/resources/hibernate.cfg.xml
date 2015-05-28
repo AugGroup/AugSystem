@@ -14,6 +14,7 @@
 		<!--<property name="hbm2ddl.auto">create-drop</property> -->
 		<!--<property name="hbm2ddl.auto">update</property> -->
 
+
 		<mapping class="com.aug.db.entities.Address" />
 		<mapping class="com.aug.db.entities.Education" />
 		<mapping class="com.aug.db.entities.Experience" />

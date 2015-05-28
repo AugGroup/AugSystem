@@ -35,7 +35,7 @@ public class AttachFileServiceImpl implements AttachFileService {
 
 	@Rollback(value = false)
 	public void delete(Integer id) {
-		attachFileRepository.delete(id);
+		attachFileRepository.deleteById(id);
 		
 	}
 

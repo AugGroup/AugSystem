@@ -31,7 +31,7 @@ public class FamilyServiceImpl implements FamilyService {
 
 	@Rollback(value = false)
 	public void delete(Integer id) {
-		familyRepository.delete(id);		
+		familyRepository.deleteById(id);		
 	}
 
 	public List<Family> findAll() {

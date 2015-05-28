@@ -32,7 +32,7 @@ public class PositionServiceImpl implements PositionService {
 
 	@Rollback(value = false)
 	public void delete(Integer id) {
-		positionRepository.delete(id);
+		positionRepository.deleteById(id);
 	}
 
 	public List<Position> findAll() {

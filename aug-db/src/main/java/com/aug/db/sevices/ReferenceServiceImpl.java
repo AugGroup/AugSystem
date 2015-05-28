@@ -33,7 +33,7 @@ public class ReferenceServiceImpl implements ReferenceService{
 	
 	@Rollback(value = false)
 	public void delete(Integer id) {
-		referenceRepository.delete(id);		
+		referenceRepository.deleteById(id);		
 	}
 
 	public List<Reference> findAll() {

@@ -34,7 +34,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Rollback(value = false)
 	public void delete(Integer id) {
-		departmentRepository.delete(id);		
+		departmentRepository.deleteById(id);		
 	}
 
 	public List<Department> findAll() {

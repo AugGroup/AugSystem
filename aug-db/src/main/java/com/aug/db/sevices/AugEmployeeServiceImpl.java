@@ -33,7 +33,7 @@ public class AugEmployeeServiceImpl implements AugEmployeeService {
 
 	@Rollback(value = false)
 	public void delete(Integer id) {
-		augEmployeeRepository.delete(id);
+		augEmployeeRepository.deleteById(id);
 	}
 
 	public List<AugEmployee> findAll() {

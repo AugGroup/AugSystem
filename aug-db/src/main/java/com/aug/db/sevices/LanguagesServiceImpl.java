@@ -34,7 +34,7 @@ public class LanguagesServiceImpl implements LanguagesService {
 
 	@Rollback(value = false)
 	public void delete(Integer id) {
-		languagesRepository.delete(id);		
+		languagesRepository.deleteById(id);		
 	}
 
 	public List<Languages> findAll() {
