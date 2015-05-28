@@ -3,20 +3,33 @@
         "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/aug_rm_system</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">root</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="show_sql">true</property>
-        <!--<property name="hbm2ddl.auto">create-drop</property>-->
-        <!--<property name="hbm2ddl.auto">update</property>-->
+	<session-factory>
+		<property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/aug_rm_system</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="show_sql">true</property>
+		<!--<property name="hbm2ddl.auto">create-drop</property> -->
+		<!--<property name="hbm2ddl.auto">update</property> -->
 
+
+
+		<mapping class="com.aug.db.entities.Address" />
+		<mapping class="com.aug.db.entities.Education" />
+		<mapping class="com.aug.db.entities.Experience" />
+		<mapping class="com.aug.db.entities.Skill" />
         <mapping class="com.aug.db.entities.Applicant"/>
-
+        <mapping class="com.aug.db.entities.AttachFile"/>
+        <mapping class="com.aug.db.entities.AugEmployee"/>
+		<mapping class="com.aug.db.entities.Department"/>
+		<mapping class="com.aug.db.entities.Family"/>
+		<mapping class="com.aug.db.entities.Languages"/>
+		<mapping class="com.aug.db.entities.Position"/>
+		<mapping class="com.aug.db.entities.Reference"/>
         <!--<mapping package="com.aug.db.entities"/>-->
 
-    </session-factory>
+
+	</session-factory>
 </hibernate-configuration>
