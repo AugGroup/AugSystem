@@ -14,7 +14,6 @@
         <!--<property name="hbm2ddl.auto">create-drop</property>-->
         <!--<property name="hbm2ddl.auto">update</property>-->
 
-        <mapping class="com.aug.db.entities.Person"/>
         <mapping class="com.aug.db.entities.Applicant"/>
         <mapping class="com.aug.db.entities.AttachFile"/>
         <mapping class="com.aug.db.entities.AugEmployee"/>

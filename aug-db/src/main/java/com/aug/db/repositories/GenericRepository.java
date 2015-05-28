@@ -14,5 +14,7 @@ public interface GenericRepository<Entity, ID extends Serializable> {
 
     void delete(Entity entity);
     
-    List findAll();
+    public void delete(Integer id) ;
+    
+    List<Entity> findAll();
 }
