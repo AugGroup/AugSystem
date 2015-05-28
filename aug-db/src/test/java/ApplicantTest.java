@@ -21,21 +21,15 @@ import com.aug.db.sevices.ApplicantService;
 public class ApplicantTest {
 	
 	@Autowired
-	private SessionFactory sessionFactory;
-	
-	@Autowired
 	private ApplicantService applicantService;
 
 	@Test
-	@Transactional
 	@Rollback(value = false)
 	public void testCreateNewApplicant() {
 		Applicant applicant = new Applicant();
-		applicant.setFirstNameEN("Payom");
-		applicant.setAge(33);
+		applicant.setFirstNameEN("Payong");
+		applicant.setAge(23);
 		applicantService.create(applicant);
-//		assertNotNull(applicant.getFirstNameEN());
-//		assertNotNull(applicant.getAge());
 	}
 	
 	@Test
