@@ -179,17 +179,17 @@ public class Applicant {
 	@OneToMany(mappedBy = "applicant")
 	private List<Languages> languages;
 	
-//	@OneToMany(mappedBy = "applicantId")
-//	private List<Address> adrress;
-//	
-//	@OneToMany(mappedBy = "applicantId")
-//	private List<Education> educations;
-//	
-//	@OneToMany(mappedBy = "applicantId")
-//	private List<Skill> skills;
-//	
-//	@OneToMany(mappedBy = "applicantId")
-//	private List<Experience> experiences;
+	@OneToMany(mappedBy = "applicant")
+	private List<Address> address;
+	
+	@OneToMany(mappedBy = "applicant")
+	private List<Education> educations;
+	
+	@OneToMany(mappedBy = "applicant")
+	private List<Skill> skills;
+	
+	@OneToMany(mappedBy = "applicant")
+	private List<Experience> experiences;
 
 	public Integer getId() {
 		return id;
@@ -567,84 +567,84 @@ public class Applicant {
 		this.occupationMarriage = occupationMarriage;
 	}
 
-//	public List<Reference> getReferances() {
-//		return referances;
-//	}
-//
-//	public void setReferances(List<Reference> referances) {
-//		this.referances = referances;
-//	}
-//
-//	public List<Position> getPositions() {
-//		return positions;
-//	}
-//
-//	public void setPositions(List<Position> positions) {
-//		this.positions = positions;
-//	}
-//
-//	public List<Family> getFamilies() {
-//		return families;
-//	}
-//
-//	public void setFamilies(List<Family> families) {
-//		this.families = families;
-//	}
-//
-//	public List<AttachFile> getAttachFiles() {
-//		return attachFiles;
-//	}
-//
-//	public void setAttachFiles(List<AttachFile> attachFiles) {
-//		this.attachFiles = attachFiles;
-//	}
-//
-//	public List<AugEmployee> getAugEmployees() {
-//		return augEmployees;
-//	}
-//
-//	public void setAugEmployees(List<AugEmployee> augEmployees) {
-//		this.augEmployees = augEmployees;
-//	}
-//
-//	public List<Languages> getLanguages() {
-//		return languages;
-//	}
-//
-//	public void setLanguages(List<Languages> languages) {
-//		this.languages = languages;
-//	}
-//	
-//	public List<Address> getAdrress() {
-//		return adrress;
-//	}
-//
-//	public void setAdrress(List<Address> adrress) {
-//		this.adrress = adrress;
-//	}
-//
-//	public List<Education> getEducations() {
-//		return educations;
-//	}
-//
-//	public void setEducations(List<Education> educations) {
-//		this.educations = educations;
-//	}
-//
-//	public List<Skill> getSkills() {
-//		return skills;
-//	}
-//
-//	public void setSkills(List<Skill> skills) {
-//		this.skills = skills;
-//	}
-//
-//	public List<Experience> getExperiences() {
-//		return experiences;
-//	}
-//
-//	public void setExperiences(List<Experience> experiences) {
-//		this.experiences = experiences;
-//	}
+	public List<Reference> getReferances() {
+		return referances;
+	}
+
+	public void setReferances(List<Reference> referances) {
+		this.referances = referances;
+	}
+
+	public List<Position> getPositions() {
+		return positions;
+	}
+
+	public void setPositions(List<Position> positions) {
+		this.positions = positions;
+	}
+
+	public List<Family> getFamilies() {
+		return families;
+	}
+
+	public void setFamilies(List<Family> families) {
+		this.families = families;
+	}
+
+	public List<AttachFile> getAttachFiles() {
+		return attachFiles;
+	}
+
+	public void setAttachFiles(List<AttachFile> attachFiles) {
+		this.attachFiles = attachFiles;
+	}
+
+	public List<AugEmployee> getAugEmployees() {
+		return augEmployees;
+	}
+
+	public void setAugEmployees(List<AugEmployee> augEmployees) {
+		this.augEmployees = augEmployees;
+	}
+
+	public List<Languages> getLanguages() {
+		return languages;
+	}
+
+	public void setLanguages(List<Languages> languages) {
+		this.languages = languages;
+	}
+	
+	public List<Address> getAdrress() {
+		return address;
+	}
+
+	public void setAdrress(List<Address> adrress) {
+		this.address = adrress;
+	}
+
+	public List<Education> getEducations() {
+		return educations;
+	}
+
+	public void setEducations(List<Education> educations) {
+		this.educations = educations;
+	}
+
+	public List<Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
+	}
+
+	public List<Experience> getExperiences() {
+		return experiences;
+	}
+
+	public void setExperiences(List<Experience> experiences) {
+		this.experiences = experiences;
+	}
 
 }
