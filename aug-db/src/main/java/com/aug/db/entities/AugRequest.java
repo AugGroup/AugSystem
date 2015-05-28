@@ -19,8 +19,8 @@ import javax.persistence.Table;
  * @author Supannika Pattanodom
  */
 @Entity
-@Table(name = "REQUEST")
-public class Request {
+@Table(name = "AUG_REQUEST")
+public class AugRequest {
     
     @Id
     @GeneratedValue
@@ -42,7 +42,7 @@ public class Request {
     @Column(name = "APPROVAL_DATE")
     private Date approvalDate;
     
-    @OneToMany (mappedBy = "request")
+    @OneToMany (mappedBy = "augRequest")
     private List<RequestPosition> requestPosition;
 
     public Integer getRequestId() {

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-dev</actionName>
+            <displayName>dev</displayName>
+            <goals>
+                <goal>hibernate3:hbm2ddl</goal>
+                <goal>sql:execute</goal>
+                <goal>-P</goal>
+                <goal>dev</goal>
+            </goals>
+            <activatedProfiles>
+                <activatedProfile>dev</activatedProfile>
+            </activatedProfiles>
+        </action>
+    </actions>

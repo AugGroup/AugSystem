@@ -40,7 +40,7 @@ public class RequestPosition {
 
     @ManyToOne
     @JoinColumn(name="requestId")
-    private Request request;
+    private AugRequest augRequest;
 
     public Integer getReqPositionId() {
         return ReqPositionId;
@@ -74,12 +74,12 @@ public class RequestPosition {
         this.yearExperience = yearExperience;
     }
 
-    public Request getRequest() {
-        return request;
+    public AugRequest getaugRequest() {
+        return augRequest;
     }
 
-    public void setRequest(Request request) {
-        this.request = request;
+    public void setaugRequest(AugRequest augRequest) {
+        this.augRequest = augRequest;
     }
 
     public Integer getNumberApplicant() {
