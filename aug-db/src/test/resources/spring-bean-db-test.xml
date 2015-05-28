@@ -20,22 +20,22 @@
 
     <context:annotation-config/>
     <context:component-scan base-package="com.aug.db.repositories"/>
-    <context:component-scan base-package="com.aug.db.sevices"/>
+    <context:component-scan base-package="com.aug.db.services"/>
     <tx:annotation-driven/>
 
-    <!--<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-        <property name="username" value="sa"/>
-        <property name="password" value="sa"/>
-        <property name="url" value="jdbc:h2:mem:test"/>
-        <property name="driverClassName" value="org.h2.Driver"/>
-    </bean>-->
-
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="username" value="sa"/>
         <property name="password" value="sa"/>
         <property name="url" value="jdbc:h2:mem:test"/>
         <property name="driverClassName" value="org.h2.Driver"/>
     </bean>
+
+<!--    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="username" value="sa"/>
+        <property name="password" value="sa"/>
+        <property name="url" value="jdbc:h2:mem:test"/>
+        <property name="driverClassName" value="org.h2.Driver"/>
+    </bean>-->
 
 
 
@@ -43,9 +43,9 @@
     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
           p:dataSource-ref="dataSource"
           p:configLocation="classpath:hibernate.cfg.xml"
-          p:packagesToScan="com.aug.hr.entity"/>
+          p:packagesToScan="com.aug.db.entities"/>
 
-    <!--
+    
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter">
@@ -60,8 +60,8 @@
         <property name="packagesToScan" value="com.aug.db.entities"/>
     </bean>
 
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
-    -->
+    <!--<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>-->
+   
 
     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />

@@ -5,7 +5,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Applicant;
-import com.aug.db.sevices.ApplicantService;
+import com.aug.db.services.ApplicantService;
 
 public class ApplicantTest {
 	

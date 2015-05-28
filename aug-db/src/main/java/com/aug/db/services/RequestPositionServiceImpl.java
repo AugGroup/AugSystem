@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aug.db.sevices;
+package com.aug.db.services;
 
 
 import com.aug.db.entities.RequestPosition;
+import com.aug.db.repositories.RequestPositionRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,31 +22,31 @@ import org.springframework.transaction.annotation.Transactional;
 public class RequestPositionServiceImpl implements RequestPositionService{
     
     @Autowired
-    RequestPositionService requestPositionService;
+    RequestPositionRepository requestPositionRepository;
     
     @Override
     public RequestPosition findById (Integer requestPositionId){
-        return requestPositionService.findById(requestPositionId);
+        return requestPositionRepository.findById(requestPositionId);
     }
     
     @Override
     public void create(RequestPosition requestPosition){
-        requestPositionService.create(requestPosition);
+        requestPositionRepository.insert(requestPosition);
     }
     
     @Override
     public void delete (Integer requestPositionId){
-         requestPositionService.delete(requestPositionId);
+         //requestPositionRepository.delete(requestPositionId);
     }
     
     @Override
     public void update (RequestPosition requestPosition){
-        requestPositionService.update(requestPosition);
+        requestPositionRepository.update(requestPosition);
     }
     
     @Override
     public List<RequestPosition> findAll(){
-        List<RequestPosition> requestPositions = requestPositionService.findAll();
+        List<RequestPosition> requestPositions = requestPositionRepository.findAll();
         return requestPositions;
     }
 }

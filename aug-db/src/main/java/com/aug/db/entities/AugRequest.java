@@ -25,7 +25,7 @@ public class AugRequest {
     @Id
     @GeneratedValue
     @Column(name = "REQUESTID")
-    private Integer requestId;
+    private Long requestId;
     
     @Column(name = "REQUEST_DATE")
     private Date requestDate;
@@ -45,11 +45,11 @@ public class AugRequest {
     @OneToMany (mappedBy = "augRequest")
     private List<RequestPosition> requestPosition;
 
-    public Integer getRequestId() {
+    public Long getRequestId() {
         return requestId;
     }
 
-    public void setRequestId(Integer requestId) {
+    public void setRequestId(Long requestId) {
         this.requestId = requestId;
     }
     

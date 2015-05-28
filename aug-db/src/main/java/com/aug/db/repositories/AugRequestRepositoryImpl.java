@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  *
  * @author Supannika Pattanodom
  */
-@Repository(value = "requestRepository")
+@Repository(value = "augRequestRepository")
 public class AugRequestRepositoryImpl extends HibernateRepositoryImpl<AugRequest, Serializable> implements AugRequestRepository {
     
 }

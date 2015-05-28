@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aug.db.sevices;
+package com.aug.db.services;
 
 import com.aug.db.entities.AugRequest;
 import java.util.List;
@@ -16,11 +16,11 @@ public interface AugRequestService {
  
     public void create (AugRequest augRequest);
     
-    public AugRequest findById (Integer augRequestId);
+    public AugRequest findById (Long augRequestId);
     
     public void update (AugRequest augRequest);
     
-    public void delete (Integer augRequestId);
+    public void delete (Long augRequestId);
     
     public List<AugRequest> findAll();
 }

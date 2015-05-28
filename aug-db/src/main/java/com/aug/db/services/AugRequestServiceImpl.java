@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aug.db.sevices;
+package com.aug.db.services;
 
 import com.aug.db.entities.AugRequest;
+import com.aug.db.repositories.AugRequestRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,36 +16,36 @@ import org.springframework.transaction.annotation.Transactional;
  *
  * @author Supannika Pattanodom
  */
-@Service(value = "RequestService")
+@Service(value = "AugRequestService")
 @Transactional
 public class AugRequestServiceImpl implements AugRequestService{
     
     @Autowired
-    AugRequestService augRequestService;
+    AugRequestRepository augRequestRepository;
     
     @Override
-    public AugRequest findById (Integer augRequestId){
-        return augRequestService.findById(augRequestId);
+    public AugRequest findById (Long augRequestId){
+        return augRequestRepository.findById(augRequestId);
     }
     
     @Override
     public void create(AugRequest augRequest){
-        augRequestService.create(augRequest);
+        augRequestRepository.insert(augRequest);
     }
     
     @Override
-    public void delete (Integer augRequestId){
-         augRequestService.delete(augRequestId);
+    public void delete (Long augRequestId){
+         //augRequestRepository.delete(augRequestId);
     }
     
     @Override
     public void update (AugRequest augRequest){
-        augRequestService.update(augRequest);
+        augRequestRepository.update(augRequest);
     }
     
     @Override
     public List<AugRequest> findAll(){
-        List<AugRequest> augRequests = augRequestService.findAll();
+        List<AugRequest> augRequests = augRequestRepository.findAll();
         return augRequests;
     }
 }

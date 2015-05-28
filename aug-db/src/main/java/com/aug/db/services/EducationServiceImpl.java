@@ -1,4 +1,4 @@
-package com.aug.db.sevices;
+package com.aug.db.services;
 
 import java.util.List;
 

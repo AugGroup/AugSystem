@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.aug.db.sevices;
+package com.aug.db.services;
 
 import com.aug.db.entities.RequestPosition;
 import java.util.List;

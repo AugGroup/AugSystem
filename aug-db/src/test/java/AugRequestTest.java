@@ -1,13 +1,17 @@
 
 import com.aug.db.entities.AugRequest;
 import com.aug.db.entities.RequestPosition;
-import com.aug.db.sevices.RequestPositionService;
-import com.aug.db.sevices.AugRequestService;
+import com.aug.db.services.RequestPositionService;
+import com.aug.db.services.AugRequestService;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
@@ -24,38 +28,29 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Supannika Pattanodom
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/spring-bean-db-test.xml" })
-@TransactionConfiguration(defaultRollback = true)
+@ContextConfiguration(locations = { "classpath:spring-bean-db-test.xml" })
 @Transactional
 public class AugRequestTest {
     
     @Autowired
     private AugRequestService augRequestService;
-//    @Autowired
-//    private RequestPositionService requestPositionService;
+    
+
     
     @Test
+    @Transactional
+    @Rollback(value = false)
     public void testCreateNewRequest(){
         
         AugRequest augRequest = new AugRequest();     
-        //List<RequestPosition> requestPositionList = new ArrayList<RequestPosition>();
-
+        
         augRequest.setRequesterName("Sale Name");
         augRequest.setApprovalName("Approval Name");
         augRequest.setStatus("NEW");
-        augRequest.setApprovalDate(new Date());
-//      request.setRequestPosition(requestPositionList);
- 
-//        RequestPosition requestPosition = new RequestPosition();
-//        requestPosition.setReqPositionId(1);
-//        requestPosition.setPositionName(".Net");
-//        requestPosition.setYearExperience(3);
-//        requestPosition.setNumberApplicant(2);
-//        requestPosition.setSpecificSkill("Java Script , Bootstrap");
-//        requestPositionList.add(requestPosition);
+        //augRequest.setApprovalDate(new Date());
+
         
         augRequestService.create(augRequest);
-        //requestPositionService.create(requestPosition);
      
     }
     
