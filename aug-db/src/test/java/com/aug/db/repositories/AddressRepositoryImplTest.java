@@ -18,11 +18,12 @@ public class AddressRepositoryImplTest {
     @Autowired
     private AddressRepository addressRepository;
 
-
     @Test
     public void testLoadAddress() throws Exception {
 
         assertNotNull(addressRepository);
 
     }
+
+
 }

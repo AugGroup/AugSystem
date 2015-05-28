@@ -29,6 +29,5 @@
 		<mapping class="com.aug.db.entities.Reference"/>
         <!--<mapping package="com.aug.db.entities"/>-->
 
-
-	</session-factory>
+    </session-factory>
 </hibernate-configuration>

@@ -13,7 +13,6 @@ import com.aug.db.entities.Applicant;
 import com.aug.db.repositories.ApplicantRepository;
 
 @Service(value = "applicantService")
-@Transactional
 public class ApplicantServiceImpl implements ApplicantService {
 	
 	@Autowired
@@ -44,7 +43,6 @@ public class ApplicantServiceImpl implements ApplicantService {
 	@Override
 	public void delete(Applicant applicant) {
 		applicantRepository.delete(applicant);
-
 	}
 
 	@Override

@@ -1,0 +1,19 @@
+package com.aug.db.sevices;
+
+import java.util.List;
+
+import com.aug.db.entities.AttachFile;
+
+public interface AttachFileService {
+	
+	public void create(AttachFile attachFile);
+	
+	public AttachFile findById(Integer id);
+	
+	public void update(AttachFile attachFile);
+	
+	public void delete(Integer id);
+	
+	public List<AttachFile> findAll();
+
+}
