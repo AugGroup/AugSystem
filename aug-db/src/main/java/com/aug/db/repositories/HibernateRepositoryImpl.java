@@ -11,6 +11,7 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public abstract class HibernateRepositoryImpl<Entity, ID extends Serializable> implements GenericRepository<Entity, ID> {
 	protected Class clazz;
 
@@ -42,6 +43,10 @@ public abstract class HibernateRepositoryImpl<Entity, ID extends Serializable> i
 
     public void delete(Entity entity) {
         getCurrentSession().delete(entity);
+    }
+    
+    public void deleteById(ID id) {
+        delete(findById(id));
     }
     
     public List findAll() {
