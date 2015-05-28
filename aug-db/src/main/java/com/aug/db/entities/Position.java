@@ -23,7 +23,7 @@ import org.hibernate.annotations.ManyToAny;
 public class Position {
 	@Id
 	@GeneratedValue
-	@Column(name = "POSITION_ID")
+	@Column(name = "ID")
 	private Integer id;
 	@Column(name = "POSITION_NAME")
 	private String positionName;

@@ -17,7 +17,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Autowired
 	private DepartmentRepository departmentRepository;
 	
-	@Rollback(value = false)
+	
 	public void create(Department department) {
 		departmentRepository.insert(department);
 		
@@ -27,12 +27,10 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return departmentRepository.findById(id);
 	}
 
-	@Rollback(value = false)
 	public void update(Department Department) {
 		departmentRepository.update(Department);		
 	}
 
-	@Rollback(value = false)
 	public void delete(Integer id) {
 		departmentRepository.deleteById(id);		
 	}

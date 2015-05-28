@@ -17,7 +17,7 @@ public class ReferenceServiceImpl implements ReferenceService{
 	@Autowired
 	private ReferenceRepository referenceRepository;
 	
-	@Rollback(value = false)
+
 	public void create(Reference reference) {
 		referenceRepository.insert(reference);		
 	}
@@ -26,12 +26,12 @@ public class ReferenceServiceImpl implements ReferenceService{
 		return referenceRepository.findById(id);
 	}
 	
-	@Rollback(value = false)
+	
 	public void update(Reference reference) {
 		referenceRepository.update(reference);		
 	}
 	
-	@Rollback(value = false)
+	
 	public void delete(Integer id) {
 		referenceRepository.deleteById(id);		
 	}
