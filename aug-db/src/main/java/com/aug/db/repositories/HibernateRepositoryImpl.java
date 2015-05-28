@@ -44,6 +44,9 @@ public abstract class HibernateRepositoryImpl<Entity, ID extends Serializable> i
         getCurrentSession().delete(entity);
     }
     
+    public void deleteById(ID id){
+    	delete(findById(id));
+    }
     public List findAll() {
         return getCurrentSession().createQuery("from " + clazz.getName()).list();
     }

@@ -7,40 +7,41 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Skill;
+import com.aug.db.repositories.SkillRepository;
 
 @Service(value = "skillService")
 @Transactional
 public class SkillServiceImpl implements SkillService{
 	
 	@Autowired
-	private SkillService skillService;
+	private SkillRepository skillRepository;
 	
 	@Override
 	public Skill findById(Integer id) {
-		return skillService.findById(id);
+		return skillRepository.findById(id);
 	}
 
 	@Override
 	public void create(Skill skill) {
-		skillService.create(skill);
+		skillRepository.insert(skill);
 		
 	}
 
 	@Override
 	public void update(Skill skill) {
-		skillService.update(skill);
+		skillRepository.update(skill);
 		
 	}
 
 	@Override
 	public void delete(Integer id) {
-		skillService.delete(id);
+		skillRepository.deleteById(id);
 		
 	}
 
 	@Override
 	public List<Skill> findAll() {
-		List<Skill> skillList = skillService.findAll();
+		List<Skill> skillList = skillRepository.findAll();
 		return skillList;
 	}
 	
