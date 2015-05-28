@@ -20,8 +20,8 @@ public class Skill {
 	@Column(name = "SKILL_DETAIL")
 	private String skillDetail;
 	
-	@ManyToOne()
-	@JoinColumn(name="id")
+	@ManyToOne
+	@JoinColumn(name="APPLICANT_ID")
 	private Applicant applicant;
 
 

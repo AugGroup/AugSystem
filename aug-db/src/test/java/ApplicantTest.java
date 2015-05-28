@@ -14,10 +14,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Applicant;
-import com.aug.db.sevices.ApplicantService;
+import com.aug.db.services.ApplicantService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-bean-db-test.xml"})
+@ContextConfiguration(locations = "classpath:spring-bean-db-test.xml")
 public class ApplicantTest {
 	
 	@Autowired
