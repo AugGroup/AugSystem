@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Position;
@@ -17,7 +16,7 @@ public class PositionServiceImpl implements PositionService {
 	@Autowired
 	private PositionRepository positionRepository;
 
-	@Rollback(value = false)
+
 	public void create(Position position) {
 		positionRepository.insert(position);
 	}
@@ -26,7 +25,7 @@ public class PositionServiceImpl implements PositionService {
 		return positionRepository.findById(id);
 	}
 
-	@Rollback(value = false)
+	
 	public void update(Position position) {
 		positionRepository.update(position);
 	}

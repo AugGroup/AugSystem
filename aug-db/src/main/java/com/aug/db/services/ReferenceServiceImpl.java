@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Reference;
@@ -17,7 +16,7 @@ public class ReferenceServiceImpl implements ReferenceService {
 	@Autowired
 	private ReferenceRepository referenceRepository;
 
-	@Rollback(value = false)
+
 	public void create(Reference reference) {
 		referenceRepository.insert(reference);
 	}
@@ -26,7 +25,7 @@ public class ReferenceServiceImpl implements ReferenceService {
 		return referenceRepository.findById(id);
 	}
 
-	@Rollback(value = false)
+
 	public void update(Reference reference) {
 		referenceRepository.update(reference);
 	}

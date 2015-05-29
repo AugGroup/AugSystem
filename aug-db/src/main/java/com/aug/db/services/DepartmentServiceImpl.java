@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Department;
@@ -17,7 +16,6 @@ public class DepartmentServiceImpl implements DepartmentService {
 	@Autowired
 	private DepartmentRepository departmentRepository;
 
-	@Rollback(value = false)
 	public void create(Department department) {
 		departmentRepository.insert(department);
 
@@ -27,20 +25,17 @@ public class DepartmentServiceImpl implements DepartmentService {
 		return departmentRepository.findById(id);
 	}
 
-	@Rollback(value = false)
 	public void update(Department Department) {
 		departmentRepository.update(Department);
 	}
 
 	@Override
-	@Rollback(value = false)
 	public void delete(Department Department) {
 		departmentRepository.delete(Department);
 
 	}
 
 	@Override
-	@Rollback(value = false)
 	public void deleteById(Integer id) {
 		departmentRepository.deleteById(id);
 

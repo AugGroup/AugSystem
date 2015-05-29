@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.AttachFile;
@@ -17,7 +16,6 @@ public class AttachFileServiceImpl implements AttachFileService {
 	@Autowired
 	private AttachFileRepository attachFileRepository;
 
-	@Rollback(value = false)
 	public void create(AttachFile attachFile) {
 		attachFileRepository.insert(attachFile);
 
@@ -28,19 +26,16 @@ public class AttachFileServiceImpl implements AttachFileService {
 
 	}
 
-	@Rollback(value = false)
 	public void update(AttachFile attachFile) {
 		attachFileRepository.update(attachFile);
 
 	}
 
-	@Rollback(value = false)
 	public void delete(AttachFile attachFile) {
 		attachFileRepository.delete(attachFile);
 
 	}
 
-	@Rollback(value = false)
 	public void deleteById(Integer id) {
 		attachFileRepository.deleteById(id);
 
