@@ -1,4 +1,4 @@
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 import java.io.Serializable;
 
@@ -44,7 +44,7 @@ public class AddressServiceTest {
 	}
 	
 	@Test 
-	//@Ignore
+	@Ignore
 	@Rollback(value = false)
 	public void testCreateAddress(){
 		Address address = new Address();
@@ -57,7 +57,7 @@ public class AddressServiceTest {
 	
 	@Test
 	public void testFindById() {
-		Address address = addressService.findById(aId);
+		Address address = addressService.findById(2);
 		assertNotNull(address);
 		System.out.println("chhhh"+address.getHouseNo());
 		
@@ -67,17 +67,16 @@ public class AddressServiceTest {
 	@Ignore
 	public void testUpdateAddress() {
 		Address address = new Address();
-		address = addressService.findById(aId);
+		address = addressService.findById(8);
 		address.setHouseNo("11/11");
 		addressService.update(address);
-		assertNotNull(address.getHouseNo());
-		System.out.println("HouseNo : " + address.getHouseNo());	
+		assertEquals("11/11", address.getHouseNo());
 	}
 
-/*	@Test
+	@Test
 	public void testDeleteApplicant() {
-		addressService.deleteById(aId);
-		assertNull(addressService.findById(aId));
-	}*/
+		addressService.deleteById(8);
+		assertNull(addressService.findById(8));
+	}
 
 }
