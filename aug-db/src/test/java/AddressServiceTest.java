@@ -1,5 +1,4 @@
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import java.io.Serializable;
 
@@ -10,6 +9,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,10 +33,10 @@ public class AddressServiceTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		Address address = new Address();
+		/*Address address = new Address();
 		address.setHouseNo("1123");
 		addressService.create(address);
-		aId = address.getId();
+		aId = address.getId();*/
 	}
 
 	@After
@@ -45,6 +45,7 @@ public class AddressServiceTest {
 	
 	@Test 
 	//@Ignore
+	@Rollback(value = false)
 	public void testCreateAddress(){
 		Address address = new Address();
 		address.setHouseNo("1122");
@@ -63,6 +64,7 @@ public class AddressServiceTest {
 	}
 	
 	@Test
+	@Ignore
 	public void testUpdateAddress() {
 		Address address = new Address();
 		address = addressService.findById(aId);
