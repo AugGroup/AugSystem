@@ -1,8 +1,17 @@
-<<<<<<< HEAD
-=======
-import static org.junit.Assert.assertNotNull;
+import com.aug.db.entities.Address;
+import com.aug.db.services.AddressService;
+import org.hibernate.SessionFactory;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
->>>>>>> Edit AddressServiceTest(Add @RollBack)
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 import java.io.Serializable;
 
 import com.aug.db.services.AddressService;
@@ -34,35 +43,31 @@ public class AddressServiceTest {
 	
 	@Before
 	public void setUp() throws Exception {
-<<<<<<< HEAD
-=======
 		/*Address address = new Address();
 		address.setHouseNo("1123");
 		addressService.create(address);
 		aId = address.getId();*/
->>>>>>> Edit AddressServiceTest(Add @RollBack)
+
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
 	
-	@Test 
-	//@Ignore
+	@Test
+	@Ignore
 	@Rollback(value = false)
 	public void testCreateAddress(){
 		Address address = new Address();
 		address.setHouseNo("1122");
 		addressService.create(address);
 	}
-	
-<<<<<<< HEAD
-=======
+
 	
 	
 	@Test
 	public void testFindById() {
-		Address address = addressService.findById(aId);
+		Address address = addressService.findById(2);
 		assertNotNull(address);
 		System.out.println("chhhh"+address.getHouseNo());
 		
@@ -72,13 +77,17 @@ public class AddressServiceTest {
 	@Ignore
 	public void testUpdateAddress() {
 		Address address = new Address();
-		address = addressService.findById(aId);
+		address = addressService.findById(8);
 		address.setHouseNo("11/11");
 		addressService.update(address);
-		assertNotNull(address.getHouseNo());
-		System.out.println("HouseNo : " + address.getHouseNo());	
+		assertEquals("11/11", address.getHouseNo());
 	}
->>>>>>> Edit AddressServiceTest(Add @RollBack)
+
+	@Test
+	public void testDeleteApplicant() {
+//		addressService.deleteById(8);
+		assertNull(addressService.findById(8));
+	}
 
 
 }
