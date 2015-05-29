@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.ManyToAny;
 
 
@@ -23,7 +24,7 @@ import org.hibernate.annotations.ManyToAny;
 public class Position {
 	@Id
 	@GeneratedValue
-	@Column(name = "POSITION_ID")
+	@Column(name = "ID")
 	private Integer id;
 	@Column(name = "POSITION_NAME")
 	private String positionName;

@@ -8,7 +8,9 @@
 rebel.xml
 target/
 
+**/*create-schema.sql
 **/*nb-configuration.xml
+**/*nb-actions.xml
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 

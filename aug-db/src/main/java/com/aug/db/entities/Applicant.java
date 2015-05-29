@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name = "APPLICANT")
 public class Applicant {
@@ -164,7 +166,8 @@ public class Applicant {
 	private List<Reference> referances;
 	
 	@ManyToMany
-	@JoinTable(name = "APPLICANT_POSITION", joinColumns = {@JoinColumn(name = "APPLICANT_ID")}, inverseJoinColumns = {@JoinColumn(name = "POSITION_ID")})
+	@JoinTable(name = "APPLICANT_POSITION", joinColumns = {@JoinColumn(name = "APPLICANT_ID")}, 
+	inverseJoinColumns = {@JoinColumn(name = "POSITION_ID")})
 	private List<Position> positions;
 	
 	@OneToMany(mappedBy = "applicant")

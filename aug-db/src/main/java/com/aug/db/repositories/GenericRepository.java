@@ -6,13 +6,15 @@ import java.util.Map;
 
 public interface GenericRepository<Entity, ID extends Serializable> {
 	
-	ID insert(Entity entity);
+	public ID insert(Entity entity);
 	
-    Entity findById(ID id);
+	public Entity findById(ID id);
     
-    void update(Entity entity);
+    public void update(Entity entity);
 
-    void delete(Entity entity);
+    public void delete(Entity entity);
     
-    List findAll();
+    public void deleteById(ID id);
+    
+    public List<Entity> findAll();
 }
