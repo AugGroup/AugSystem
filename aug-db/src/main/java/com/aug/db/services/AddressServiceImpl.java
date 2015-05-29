@@ -3,12 +3,13 @@ package com.aug.db.services;
 import java.util.List;
 
 import com.aug.db.repositories.AddressRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Address;
-import com.aug.db.repositories.AddressRepository;
+import com.aug.db.entities.Applicant;
 
 
 @Service(value = "addressService")
@@ -36,9 +37,19 @@ public class AddressServiceImpl implements AddressService{
 	}
 
 	@Override
-	public void delete(Integer id) {
-		addressRepository.deleteById(id);
+
+	public void delete(Address address) {
+		addressRepository.delete(address);
+		
 	}
+	
+	@Override
+	public void deleteById(Integer id) {
+		addressRepository.deleteById(id);
+		
+
+	}
+
 
 	@Override
 	public List<Address> findAll() {
