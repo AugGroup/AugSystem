@@ -12,7 +12,9 @@ public interface AddressService {
 
 	public void update(Address address);
 
-	public void delete(Integer id);
+	public void deleteById(Integer id);
+	
+	public void delete(Address address);
 
 	public List<Address> findAll();
 }
