@@ -12,7 +12,11 @@ public interface ApplicantService {
 	
 	public void update(Applicant applicant);
 	
-	public void delete(Integer id);
+
+	public void delete(Applicant applicant);
+	
+	public void deleteById(Integer id);
+
 	
 	public List<Applicant> findAll();
 
