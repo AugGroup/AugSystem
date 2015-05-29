@@ -1,6 +1,9 @@
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.junit.After;
@@ -63,6 +66,15 @@ public class AddressServiceTest {
 		
 	}
 	
+
+	@Test
+	public void testFindAll() {
+		List<Address> addressList = addressService.findAll();
+		assertNotNull(addressList);
+		System.out.println("All HouseNo "+addressList);
+		
+	}
+	
 	@Test
 	@Ignore
 	public void testUpdateAddress() {
@@ -74,6 +86,7 @@ public class AddressServiceTest {
 	}
 
 	@Test
+	@Rollback(value = false)
 	public void testDeleteApplicant() {
 		addressService.deleteById(8);
 		assertNull(addressService.findById(8));
