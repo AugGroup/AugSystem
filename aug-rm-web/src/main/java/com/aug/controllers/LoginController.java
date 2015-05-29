@@ -1,10 +1,5 @@
 package com.aug.controllers;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +11,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/applicant", method= {RequestMethod.GET})
 	public String loginSpring(){
-		return "login";
+		return "applicant";
 	}
 	
 	@RequestMapping(value = "/applicant", method= {RequestMethod.POST})

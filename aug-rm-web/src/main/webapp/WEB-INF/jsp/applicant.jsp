@@ -16,13 +16,13 @@
 
 	<h2>Spring MVC Hello World</h2>
 	Hello!!
-<!-- 	<div class="bs-example"> -->
-<!-- 		<ul class="nav nav-tabs"> -->
-<!--         	<li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>  Home</a></li> -->
-<!--         	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li> -->
-<!--         	<li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Messages</a></li> -->
-<!--     	</ul> -->
-<!-- 	</div> -->
+ 	<div class="bs-example"> 
+ 		<ul class="nav nav-tabs"> 
+        	<li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span>  Home</a></li>
+         	<li><a href="#"><span class="glyphicon glyphicon-user"></span> Profile</a></li> 
+         	<li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Messages</a></li>
+        </ul> 
+ 	</div> 
 
 </body>
 </html>
