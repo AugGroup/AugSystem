@@ -13,8 +13,8 @@ import javax.persistence.Table;
 public class AttachFile {
 	@Id
 	@GeneratedValue
-	@Column(name = "ATTACH_ID")
-	private Integer attachId;
+	@Column(name = "ID")
+	private Integer id;
 	@ManyToOne
 	@JoinColumn(name = "APPLICANT_ID")
 	private Applicant applicant;
@@ -24,7 +24,7 @@ public class AttachFile {
 	private String type;
 	@Column(name = "PATH")
 	private String path;
-	@Column(name = "ATTACH_TYPE_File")
+	@Column(name = "ATTACH_TYPE_FILE")
 	private String attachTypeFile;
 	
 	public Applicant getApplicant() {
@@ -34,15 +34,13 @@ public class AttachFile {
 	public void setApplicant(Applicant applicant) {
 		this.applicant = applicant;
 	}
-
-	public Integer getAttachId() {
-		return attachId;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setAttachId(Integer attachId) {
-		this.attachId = attachId;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-
 	
 	public String getAttachName() {
 		return attachName;

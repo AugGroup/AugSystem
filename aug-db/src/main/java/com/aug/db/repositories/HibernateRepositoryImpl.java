@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.AttachFile;
 
-@Transactional
 public abstract class HibernateRepositoryImpl<Entity, ID extends Serializable> implements GenericRepository<Entity, ID> {
 	protected Class clazz;
 

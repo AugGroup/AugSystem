@@ -15,8 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Address;
-import com.aug.db.entities.Applicant;
-import com.aug.db.sevices.AddressService;
+import com.aug.db.services.AddressService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-bean-db-test.xml" })
@@ -45,7 +44,7 @@ public class AddressServiceTest {
 	}
 	
 	@Test 
-	@Ignore
+	//@Ignore
 	public void testCreateAddress(){
 		Address address = new Address();
 		address.setHouseNo("1122");
@@ -73,10 +72,10 @@ public class AddressServiceTest {
 		System.out.println("HouseNo : " + address.getHouseNo());	
 	}
 
-	@Test
+/*	@Test
 	public void testDeleteApplicant() {
 		addressService.deleteById(aId);
 		assertNull(addressService.findById(aId));
-	}
+	}*/
 
 }

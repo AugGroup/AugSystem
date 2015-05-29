@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Department {
 	@Id
 	@GeneratedValue
-	@Column(name="DEPARTMENT_ID")
+	@Column(name="ID")
 	private Integer id;
 	@Column(name="DEPARTMENT_NAME")
 	private String departmentName;
