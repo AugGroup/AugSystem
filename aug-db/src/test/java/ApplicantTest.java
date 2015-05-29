@@ -22,8 +22,8 @@ public class ApplicantTest {
 	@Rollback(value = false)
 	public void testCreateNewApplicant() {
 		Applicant applicant = new Applicant();
-		applicant.setFirstNameEN("Payong");
-		applicant.setAge(23);
+		applicant.setFirstNameEN("Monkey");
+		applicant.setAge(12);
 		applicantService.create(applicant);
 	}
 	
@@ -31,25 +31,22 @@ public class ApplicantTest {
 	public void testFindById() {
 		Applicant applicant = new Applicant();
 		applicant = applicantService.findById(1);
-		System.out.println("FirstName : " + applicant.getFirstNameEN());
-		assertNotNull(applicant);
-		
+		System.out.println("FirstName : " + applicant.getFirstNameEN());		
 	}
 	
 	@Test
 	public void testUpdateApplicant() {
 		Applicant applicant = new Applicant();
-		applicant = applicantService.findById(1);
-		applicant.setLastNameEN("Mankigg");
+		applicant = applicantService.findById(4);
+		applicant.setFirstNameEN("Mankigg");
 		applicantService.update(applicant);
-		assertNotNull(applicant.getLastNameEN());
 		System.out.println("Last : " + applicant.getLastNameEN());	
 	}
 	
 	@Test
 	public void testDeleteApplicant() {
 		Applicant applicant = new Applicant();
-		applicantService.deleteById(1);
+		applicantService.deleteById(4);
 		assertNull(applicant);
 	}
 	

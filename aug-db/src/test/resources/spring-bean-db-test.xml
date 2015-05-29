@@ -19,9 +19,9 @@
 
 
     <context:annotation-config/>
-
     <context:component-scan base-package="com.aug.db.repositories"/>
-    <context:component-scan base-package="com.aug.db.sevices"/>
+    <context:component-scan base-package="com.aug.db.services"/>
+    <tx:annotation-driven/>
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <property name="username" value="root"/>
@@ -29,8 +29,9 @@
         <property name="url" value="jdbc:mysql://localhost:3306/aug_rm_system"/>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     </bean>
-	
-	<!-- 
+<!-- 
+
+
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="username" value="sa"/>
         <property name="password" value="sa"/>
@@ -46,24 +47,11 @@
           p:configLocation="classpath:hibernate.cfg.xml"
           p:packagesToScan="com.aug.db.entities"/>
 
-    <!-- <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-        <property name="dataSource" ref="dataSource"/>
-        <property name="jpaVendorAdapter">
-            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
-        </property>
-        <property name="jpaProperties">
-            <map>
-                <entry key="hibernate.hbm2ddl.auto" value="create-drop"/>
-                <entry key="hibernate.show_sql" value="true"/>
-            </map>
-        </property>
-        <property name="packagesToScan" value="com.aug.db.entities"/>
-    </bean>
 
-    <tx:annotation-driven/>
+<!--     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/> -->
 
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/> -->
     <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+
 </beans>
