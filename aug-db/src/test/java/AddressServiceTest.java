@@ -24,57 +24,52 @@ import com.aug.db.services.AddressService;
 @ContextConfiguration(locations = { "classpath:spring-bean-db-test.xml" })
 @Transactional
 public class AddressServiceTest {
-	
-	Serializable id;
+
 	Integer aId;
-	
-	@Autowired
-	private SessionFactory sessionFactory;
-	
+
 	@Autowired
 	private AddressService addressService;
-	
+
 	@Before
 	public void setUp() throws Exception {
-		/*Address address = new Address();
-		address.setHouseNo("1123");
-		addressService.create(address);
-		aId = address.getId();*/
+		/*
+		 * Address address = new Address();
+		 * address.setHouseNo("1123");
+		 * addressService.create(address); 
+		 * aId = address.getId();
+		 */
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
-	
-	@Test 
+
+	@Test
 	@Ignore
 	@Rollback(value = false)
-	public void testCreateAddress(){
+	public void testCreateAddress() {
 		Address address = new Address();
 		address.setHouseNo("1122");
 		addressService.create(address);
 		assertNotNull(address.getHouseNo());
 	}
-	
-	
-	
+
 	@Test
 	public void testFindById() {
 		Address address = addressService.findById(2);
 		assertNotNull(address);
-		System.out.println("chhhh"+address.getHouseNo());
-		
+		System.out.println("chhhh" + address.getHouseNo());
+
 	}
-	
 
 	@Test
 	public void testFindAll() {
 		List<Address> addressList = addressService.findAll();
 		assertNotNull(addressList);
-		System.out.println("All HouseNo "+addressList);
-		
+		System.out.println("All HouseNo " + addressList);
+
 	}
-	
+
 	@Test
 	@Ignore
 	public void testUpdateAddress() {

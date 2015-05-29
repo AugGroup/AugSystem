@@ -2,12 +2,12 @@ package com.aug.db.services;
 
 import java.util.List;
 
-import com.aug.db.repositories.ExperienceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Experience;
+import com.aug.db.repositories.ExperienceRepository;
 
 @Service(value = "experienceService")
 @Transactional
@@ -34,8 +34,14 @@ public class ExperienceServiceImpl implements ExperienceService{
 	}
 
 	@Override
-	public void delete(Integer id) {
-//		experienceRepository.delete(id);
+	public void delete(Experience experience) {
+		experienceRepository.delete(experience);
+		
+	}
+	
+	@Override
+	public void deleteById(Integer id) {
+		experienceRepository.deleteById(id);
 		
 	}
 
