@@ -24,7 +24,7 @@ public class RequestPosition {
     @Id
     @GeneratedValue
     @Column(name = "REQPOSITION_ID")
-    private Integer ReqPositionId;
+    private Integer id;
     
     @Column(name = "POSITION_NAME")
     private String positionName;
@@ -39,17 +39,17 @@ public class RequestPosition {
     private Integer yearExperience;
 
     @ManyToOne
-    @JoinColumn(name="requestId")
+    @JoinColumn(name="REQUEST_ID")
     private AugRequest augRequest;
 
-    public Integer getReqPositionId() {
-        return ReqPositionId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setReqPositionId(Integer ReqPositionId) {
-        this.ReqPositionId = ReqPositionId;
+    public void setId(Integer id) {
+        this.id = id;
     }
-    
+  
     public String getPositionName() {
         return positionName;
     }
