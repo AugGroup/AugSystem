@@ -11,6 +11,8 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.db.entities.AttachFile;
+
 public abstract class HibernateRepositoryImpl<Entity, ID extends Serializable> implements GenericRepository<Entity, ID> {
 	protected Class clazz;
 
@@ -44,9 +46,16 @@ public abstract class HibernateRepositoryImpl<Entity, ID extends Serializable> i
         getCurrentSession().delete(entity);
     }
     
+    
+    public void deleteById(ID id) {
+        delete(findById(id));
+    }
+    
     public List findAll() {
         return getCurrentSession().createQuery("from " + clazz.getName()).list();
     }
+    
+    
 
     protected DetachedCriteria createDetachedCriteria() {
         return DetachedCriteria.forClass(clazz);

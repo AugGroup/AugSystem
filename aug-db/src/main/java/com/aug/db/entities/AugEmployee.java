@@ -13,7 +13,7 @@ import javax.persistence.Table;
 public class AugEmployee {
 	@Id
 	@GeneratedValue
-	@Column(name = "AUGEMPLOYEE_ID")
+	@Column(name = "ID")
 	private Integer id;
 	@Column(name = "EMPLOYED_NAME")
 	private String employedName;
