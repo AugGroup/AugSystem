@@ -1,3 +1,5 @@
+import org.springframework.test.context.ContextConfiguration;
+
 import com.aug.db.entities.Address;
 import com.aug.db.services.AddressService;
 import org.hibernate.SessionFactory;
@@ -9,10 +11,14 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.*;
 import java.io.Serializable;
+import java.util.List;
 
 import com.aug.db.services.AddressService;
 import org.hibernate.SessionFactory;
@@ -73,6 +79,15 @@ public class AddressServiceTest {
 		
 	}
 	
+
+	@Test
+	public void testFindAll() {
+		List<Address> addressList = addressService.findAll();
+		assertNotNull(addressList);
+		System.out.println("All HouseNo "+addressList);
+		
+	}
+	
 	@Test
 	@Ignore
 	public void testUpdateAddress() {
@@ -84,6 +99,7 @@ public class AddressServiceTest {
 	}
 
 	@Test
+	@Rollback(value = false)
 	public void testDeleteApplicant() {
 //		addressService.deleteById(8);
 		assertNull(addressService.findById(8));
