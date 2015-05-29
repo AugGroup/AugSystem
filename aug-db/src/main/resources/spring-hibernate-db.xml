@@ -20,7 +20,7 @@
     <jpa:repositories base-package="com.aug.db"/>
     <context:annotation-config/>
     <context:component-scan base-package="com.aug.db.repositories"/>
-    <context:component-scan base-package="com.aug.db.sevices"/>
+    <context:component-scan base-package="com.aug.db.services"/>
     <tx:annotation-driven/>
 
 
