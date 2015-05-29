@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+import static org.junit.Assert.assertNotNull;
+
+>>>>>>> Edit AddressServiceTest(Add @RollBack)
 import java.io.Serializable;
 
 import com.aug.db.services.AddressService;
@@ -7,6 +12,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +34,13 @@ public class AddressServiceTest {
 	
 	@Before
 	public void setUp() throws Exception {
+<<<<<<< HEAD
+=======
+		/*Address address = new Address();
+		address.setHouseNo("1123");
+		addressService.create(address);
+		aId = address.getId();*/
+>>>>>>> Edit AddressServiceTest(Add @RollBack)
 	}
 
 	@After
@@ -36,12 +49,36 @@ public class AddressServiceTest {
 	
 	@Test 
 	//@Ignore
+	@Rollback(value = false)
 	public void testCreateAddress(){
 		Address address = new Address();
 		address.setHouseNo("1122");
 		addressService.create(address);
 	}
 	
+<<<<<<< HEAD
+=======
+	
+	
+	@Test
+	public void testFindById() {
+		Address address = addressService.findById(aId);
+		assertNotNull(address);
+		System.out.println("chhhh"+address.getHouseNo());
+		
+	}
+	
+	@Test
+	@Ignore
+	public void testUpdateAddress() {
+		Address address = new Address();
+		address = addressService.findById(aId);
+		address.setHouseNo("11/11");
+		addressService.update(address);
+		assertNotNull(address.getHouseNo());
+		System.out.println("HouseNo : " + address.getHouseNo());	
+	}
+>>>>>>> Edit AddressServiceTest(Add @RollBack)
 
 
 }
