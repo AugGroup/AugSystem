@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Supannika Pattanodom
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:spring-bean-db-test.xml" })
-@Transactional
+@ContextConfiguration(locations = "classpath:spring-bean-db-test.xml")
 public class AugRequestTest {
     
     @Autowired
@@ -38,7 +38,7 @@ public class AugRequestTest {
 
     
     @Test
-    @Transactional
+//  @Transactional
     @Rollback(value = false)
     public void testCreateNewRequest(){
         
@@ -47,11 +47,44 @@ public class AugRequestTest {
         augRequest.setRequesterName("Sale Name");
         augRequest.setApprovalName("Approval Name");
         augRequest.setStatus("NEW");
-        //augRequest.setApprovalDate(new Date());
-
-        
+        augRequest.setApprovalDate(new Date());
+        augRequest.setRequestDate(new Date());
         augRequestService.create(augRequest);
      
     }
     
+    @Test
+    public void testFindById(){ 
+       AugRequest augRequest = augRequestService.findById(1);
+       System.out.println("Request Name "+augRequest.getRequesterName());
+       
+    }
+    
+    @Test
+    public void testUpdate(){
+        AugRequest augRequest = augRequestService.findById(1);
+        augRequest.setRequesterName("Chuck Bass");
+        augRequestService.update(augRequest);
+        System.out.println("Update Requester Name : "+augRequest.getRequesterName());
+    }
+    
+    @Test
+    public void findAll(){
+        AugRequest augRequest = new AugRequest();
+        System.out.println("All Requester " +augRequestService.findAll().toString());
+    }
+    
+    @Test
+    @Ignore
+    public void testDelete(){
+        AugRequest augRequest = new AugRequest();
+        augRequest.setId(5);
+         augRequestService.delete(augRequest);
+    }
+    
+    @Test
+    public void testDeleteById(){
+        AugRequest augRequest = new AugRequest();
+        augRequestService.deleteById(8);
+    }
 }

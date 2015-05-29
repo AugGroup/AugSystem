@@ -24,7 +24,7 @@ public class AugRequestServiceImpl implements AugRequestService{
     AugRequestRepository augRequestRepository;
     
     @Override
-    public AugRequest findById (Long augRequestId){
+    public AugRequest findById (Integer augRequestId){
         return augRequestRepository.findById(augRequestId);
     }
     
@@ -34,9 +34,15 @@ public class AugRequestServiceImpl implements AugRequestService{
     }
     
     @Override
-    public void delete (Long augRequestId){
-         //augRequestRepository.delete(augRequestId);
+    public void delete (AugRequest augRequest){
+         augRequestRepository.delete(augRequest);
     }
+    
+    @Override
+	public void deleteById(Integer id) {
+		augRequestRepository.deleteById(id);
+		
+	}
     
     @Override
     public void update (AugRequest augRequest){

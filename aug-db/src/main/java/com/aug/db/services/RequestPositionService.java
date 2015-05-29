@@ -5,6 +5,7 @@
  */
 package com.aug.db.services;
 
+import com.aug.db.entities.Applicant;
 import com.aug.db.entities.RequestPosition;
 import java.util.List;
 
@@ -20,7 +21,9 @@ public interface RequestPositionService {
     
     public void update (RequestPosition requestPosition);
     
-    public void delete (Integer requestPositionId);
+    public void delete(RequestPosition requestPosition);
+	
+    public void deleteById(Integer id);
     
     public List<RequestPosition> findAll();
     

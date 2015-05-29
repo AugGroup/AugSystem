@@ -16,11 +16,13 @@ public interface AugRequestService {
  
     public void create (AugRequest augRequest);
     
-    public AugRequest findById (Long augRequestId);
+    public AugRequest findById (Integer id);
     
     public void update (AugRequest augRequest);
     
-    public void delete (Long augRequestId);
+    public void delete (AugRequest augRequest);
+    
+    public void deleteById(Integer id);
     
     public List<AugRequest> findAll();
 }

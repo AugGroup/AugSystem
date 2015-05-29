@@ -35,9 +35,15 @@ public class RequestPositionServiceImpl implements RequestPositionService{
     }
     
     @Override
-    public void delete (Integer requestPositionId){
-         //requestPositionRepository.delete(requestPositionId);
+    public void delete (RequestPosition requestPosition){
+         requestPositionRepository.delete(requestPosition);
     }
+    
+     @Override
+	public void deleteById(Integer id) {
+        requestPositionRepository.deleteById(id);
+		
+	}
     
     @Override
     public void update (RequestPosition requestPosition){
