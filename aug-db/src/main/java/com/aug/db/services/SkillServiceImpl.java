@@ -2,7 +2,6 @@ package com.aug.db.services;
 
 import java.util.List;
 
-import com.aug.db.repositories.SkillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,11 +34,18 @@ public class SkillServiceImpl implements SkillService{
 	}
 
 	@Override
-	public void delete(Integer id) {
-		skillRepository.deleteById(id);
 
+	public void delete(Skill skill) {
+		skillRepository.delete(skill);
+		
 	}
-
+	
+	@Override
+	public void deleteById(Integer id) {
+		skillRepository.deleteById(id);
+		
+	}
+	
 	@Override
 	public List<Skill> findAll() {
 		List<Skill> skillList = skillRepository.findAll();

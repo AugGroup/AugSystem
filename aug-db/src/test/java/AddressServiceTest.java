@@ -38,56 +38,77 @@ import com.aug.db.entities.Address;
 @ContextConfiguration(locations = { "classpath:spring-bean-db-test.xml" })
 @Transactional
 public class AddressServiceTest {
+<<<<<<< HEAD
 	
 	Serializable id;
 	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+=======
+
+	Integer aId;
+
+>>>>>>> Edit Education, applicant, Education, Experience, SkillService(Add Delete(Entity))
 	@Autowired
 	private AddressService addressService;
-	
+
 	@Before
 	public void setUp() throws Exception {
+<<<<<<< HEAD
 		/*Address address = new Address();
 		address.setHouseNo("1123");
 		addressService.create(address);
 		aId = address.getId();*/
 
+=======
+		/*
+		 * Address address = new Address();
+		 * address.setHouseNo("1123");
+		 * addressService.create(address); 
+		 * aId = address.getId();
+		 */
+>>>>>>> Edit Education, applicant, Education, Experience, SkillService(Add Delete(Entity))
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> Edit Education, applicant, Education, Experience, SkillService(Add Delete(Entity))
 	@Test
 	@Ignore
 	@Rollback(value = false)
-	public void testCreateAddress(){
+	public void testCreateAddress() {
 		Address address = new Address();
 		address.setHouseNo("1122");
 		addressService.create(address);
 	}
 
+<<<<<<< HEAD
 	
 	
+=======
+>>>>>>> Edit Education, applicant, Education, Experience, SkillService(Add Delete(Entity))
 	@Test
 	public void testFindById() {
 		Address address = addressService.findById(2);
 		assertNotNull(address);
-		System.out.println("chhhh"+address.getHouseNo());
-		
+		System.out.println("chhhh" + address.getHouseNo());
+
 	}
-	
 
 	@Test
 	public void testFindAll() {
 		List<Address> addressList = addressService.findAll();
 		assertNotNull(addressList);
-		System.out.println("All HouseNo "+addressList);
-		
+		System.out.println("All HouseNo " + addressList);
+
 	}
-	
+
 	@Test
 	@Ignore
 	public void testUpdateAddress() {
