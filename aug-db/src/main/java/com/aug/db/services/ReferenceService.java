@@ -12,7 +12,9 @@ public interface ReferenceService {
 	
 	public void update(Reference reference);
 	
-	public void delete(Integer id);
+	public void deleteById(Integer id);
+	
+	public void delete(Reference reference);
 	
 	public List<Reference> findAll();
 

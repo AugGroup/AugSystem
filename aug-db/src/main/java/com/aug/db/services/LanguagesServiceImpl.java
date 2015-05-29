@@ -16,10 +16,10 @@ public class LanguagesServiceImpl implements LanguagesService {
 
 	@Autowired
 	private LanguagesRepository languagesRepository;
-	
+
 	@Rollback(value = false)
 	public void create(Languages languages) {
-		languagesRepository.insert(languages);	
+		languagesRepository.insert(languages);
 	}
 
 	public Languages findById(Integer id) {
@@ -32,13 +32,22 @@ public class LanguagesServiceImpl implements LanguagesService {
 		languagesRepository.update(languages);
 	}
 
+	@Override
 	@Rollback(value = false)
-	public void delete(Integer id) {
-		languagesRepository.deleteById(id);		
+	public void delete(Languages languages) {
+		languagesRepository.delete(languages);
+
+	}
+
+	@Override
+	@Rollback(value = false)
+	public void deleteById(Integer id) {
+		languagesRepository.deleteById(id);
+
 	}
 
 	public List<Languages> findAll() {
-		List<Languages> languageList = languagesRepository.findAll(); 
+		List<Languages> languageList = languagesRepository.findAll();
 		return languageList;
 	}
 

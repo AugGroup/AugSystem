@@ -12,7 +12,9 @@ public interface PositionService {
 	
 	public void update(Position position);
 	
-	public void delete(Integer id);
+	public void deleteById(Integer id);
+	
+	public void delete(Position position);
 	
 	public List<Position> findAll();
 

@@ -9,17 +9,18 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.AugEmployee;
 import com.aug.db.repositories.AugEmployeeRepository;
+
 @Service(value = "augEmployeeService")
 @Transactional
 public class AugEmployeeServiceImpl implements AugEmployeeService {
 
 	@Autowired
 	private AugEmployeeRepository augEmployeeRepository;
-	
+
 	@Rollback(value = false)
 	public void create(AugEmployee augEmployee) {
 		augEmployeeRepository.insert(augEmployee);
-		
+
 	}
 
 	public AugEmployee findById(Integer id) {
@@ -28,12 +29,21 @@ public class AugEmployeeServiceImpl implements AugEmployeeService {
 
 	@Rollback(value = false)
 	public void update(AugEmployee augEmployee) {
-		augEmployeeRepository.update(augEmployee);	
+		augEmployeeRepository.update(augEmployee);
 	}
 
+	@Override
 	@Rollback(value = false)
-	public void delete(Integer id) {
+	public void delete(AugEmployee augEmployee) {
+		augEmployeeRepository.delete(augEmployee);
+
+	}
+
+	@Override
+	@Rollback(value = false)
+	public void deleteById(Integer id) {
 		augEmployeeRepository.deleteById(id);
+
 	}
 
 	public List<AugEmployee> findAll() {

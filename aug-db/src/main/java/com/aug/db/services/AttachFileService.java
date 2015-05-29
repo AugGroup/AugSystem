@@ -12,7 +12,9 @@ public interface AttachFileService {
 	
 	public void update(AttachFile attachFile);
 	
-	public void delete(Integer id);
+	public void delete(AttachFile attachFile);
+	
+	public void deleteById(Integer id);
 	
 	public List<AttachFile> findAll();
 

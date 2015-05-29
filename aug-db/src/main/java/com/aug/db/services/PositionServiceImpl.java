@@ -9,13 +9,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Position;
 import com.aug.db.repositories.PositionRepository;
+
 @Service(value = "positionService")
 @Transactional
 public class PositionServiceImpl implements PositionService {
 
 	@Autowired
 	private PositionRepository positionRepository;
-	
+
 	@Rollback(value = false)
 	public void create(Position position) {
 		positionRepository.insert(position);
@@ -27,12 +28,19 @@ public class PositionServiceImpl implements PositionService {
 
 	@Rollback(value = false)
 	public void update(Position position) {
-		positionRepository.update(position);		
+		positionRepository.update(position);
 	}
 
-	@Rollback(value = false)
-	public void delete(Integer id) {
+	@Override
+	public void delete(Position position) {
+		positionRepository.delete(position);
+
+	}
+
+	@Override
+	public void deleteById(Integer id) {
 		positionRepository.deleteById(id);
+
 	}
 
 	public List<Position> findAll() {
