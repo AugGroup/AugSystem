@@ -1,8 +1,7 @@
-import org.springframework.test.context.ContextConfiguration;
-
 import com.aug.db.entities.Address;
 import com.aug.db.services.AddressService;
-import org.hibernate.SessionFactory;
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,74 +10,39 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.*;
-import java.io.Serializable;
 import java.util.List;
 
-import com.aug.db.services.AddressService;
-import org.hibernate.SessionFactory;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.transaction.annotation.Transactional;
-
-import com.aug.db.entities.Address;
+import static org.junit.Assert.*;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring-bean-db-test.xml" })
 @Transactional
 public class AddressServiceTest {
-<<<<<<< HEAD
-	
-	Serializable id;
-	
-	@Autowired
-	private SessionFactory sessionFactory;
-	
-=======
+
 
 	Integer aId;
 
->>>>>>> Edit Education, applicant, Education, Experience, SkillService(Add Delete(Entity))
+
 	@Autowired
 	private AddressService addressService;
 
 	@Before
 	public void setUp() throws Exception {
-<<<<<<< HEAD
-		/*Address address = new Address();
-		address.setHouseNo("1123");
-		addressService.create(address);
-		aId = address.getId();*/
 
-=======
 		/*
 		 * Address address = new Address();
 		 * address.setHouseNo("1123");
 		 * addressService.create(address); 
 		 * aId = address.getId();
 		 */
->>>>>>> Edit Education, applicant, Education, Experience, SkillService(Add Delete(Entity))
+
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> Edit Education, applicant, Education, Experience, SkillService(Add Delete(Entity))
 	@Test
 	@Ignore
 	@Rollback(value = false)
@@ -88,11 +52,6 @@ public class AddressServiceTest {
 		addressService.create(address);
 	}
 
-<<<<<<< HEAD
-	
-	
-=======
->>>>>>> Edit Education, applicant, Education, Experience, SkillService(Add Delete(Entity))
 	@Test
 	public void testFindById() {
 		Address address = addressService.findById(2);
@@ -122,7 +81,7 @@ public class AddressServiceTest {
 	@Test
 	@Rollback(value = false)
 	public void testDeleteApplicant() {
-//		addressService.deleteById(8);
+		addressService.deleteById(8);
 		assertNull(addressService.findById(8));
 	}
 
