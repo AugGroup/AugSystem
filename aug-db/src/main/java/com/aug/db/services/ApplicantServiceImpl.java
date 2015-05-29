@@ -34,7 +34,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void deleteById(Integer id) {
 		applicantRepository.deleteById(id);
 		
 	}
