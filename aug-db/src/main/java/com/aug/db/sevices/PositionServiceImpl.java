@@ -16,7 +16,7 @@ public class PositionServiceImpl implements PositionService {
 	@Autowired
 	private PositionRepository positionRepository;
 	
-	@Rollback(value = false)
+	
 	public void create(Position position) {
 		positionRepository.insert(position);
 	}
@@ -25,12 +25,12 @@ public class PositionServiceImpl implements PositionService {
 		return positionRepository.findById(id);
 	}
 
-	@Rollback(value = false)
+
 	public void update(Position position) {
 		positionRepository.update(position);		
 	}
 
-	@Rollback(value = false)
+	
 	public void delete(Integer id) {
 		positionRepository.deleteById(id);
 	}

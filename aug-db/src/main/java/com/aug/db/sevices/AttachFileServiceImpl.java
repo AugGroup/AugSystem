@@ -15,8 +15,7 @@ public class AttachFileServiceImpl implements AttachFileService {
 
 	@Autowired
 	private AttachFileRepository attachFileRepository;
-	
-	@Rollback(value = false)
+
 	public void create(AttachFile attachFile) {
 		attachFileRepository.insert(attachFile);
 		
@@ -27,13 +26,13 @@ public class AttachFileServiceImpl implements AttachFileService {
 
 	}
 
-	@Rollback(value = false)
+	
 	public void update(AttachFile attachFile) {
 		attachFileRepository.update(attachFile);
 		
 	}
 
-	@Rollback(value = false)
+	
 	public void delete(Integer id) {
 		attachFileRepository.deleteById(id);
 		

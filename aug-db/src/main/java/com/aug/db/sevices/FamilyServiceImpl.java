@@ -15,7 +15,7 @@ public class FamilyServiceImpl implements FamilyService {
 	@Autowired
 	private FamilyRepository familyRepository;
 
-	@Rollback(value = false)
+
 	public void create(Family family) {
 		familyRepository.insert(family);		
 	}
@@ -24,12 +24,12 @@ public class FamilyServiceImpl implements FamilyService {
 		return familyRepository.findById(id);
 	}
 
-	@Rollback(value = false)
+
 	public void update(Family family) {
 		familyRepository.update(family);		
 	}
 
-	@Rollback(value = false)
+
 	public void delete(Integer id) {
 		familyRepository.deleteById(id);		
 	}

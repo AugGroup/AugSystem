@@ -16,8 +16,7 @@ public class LanguagesServiceImpl implements LanguagesService {
 
 	@Autowired
 	private LanguagesRepository languagesRepository;
-	
-	@Rollback(value = false)
+
 	public void create(Languages languages) {
 		languagesRepository.insert(languages);	
 	}
@@ -27,12 +26,12 @@ public class LanguagesServiceImpl implements LanguagesService {
 
 	}
 
-	@Rollback(value = false)
+
 	public void update(Languages languages) {
 		languagesRepository.update(languages);
 	}
 
-	@Rollback(value = false)
+
 	public void delete(Integer id) {
 		languagesRepository.deleteById(id);		
 	}
