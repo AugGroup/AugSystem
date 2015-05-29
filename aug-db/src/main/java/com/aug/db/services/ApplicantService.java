@@ -12,6 +12,8 @@ public interface ApplicantService {
 	
 	public void update(Applicant applicant);
 	
+	public void delete(Applicant applicant);
+	
 	public void deleteById(Integer id);
 	
 	public List<Applicant> findAll();
