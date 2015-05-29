@@ -12,7 +12,9 @@ public interface FamilyService {
 	
 	public void update(Family family);
 	
-	public void delete(Integer id);
+	public void deleteById(Integer id);
+	
+	public void delete(Family family);
 	
 	public List<Family> findAll();
 

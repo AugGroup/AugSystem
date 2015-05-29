@@ -12,7 +12,9 @@ public interface LanguagesService {
 	
 	public void update(Languages languages);
 	
-	public void delete(Integer id);
+	public void deleteById(Integer id);
+	
+	public void delete(Languages languages);
 	
 	public List<Languages> findAll();
 

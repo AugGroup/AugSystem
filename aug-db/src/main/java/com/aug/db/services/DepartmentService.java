@@ -12,7 +12,9 @@ public interface DepartmentService {
 	
 	public void update(Department Department);
 	
-	public void delete(Integer id);
+	public void deleteById(Integer id);
+	
+	public void delete(Department Department);
 	
 	public List<Department> findAll();
 

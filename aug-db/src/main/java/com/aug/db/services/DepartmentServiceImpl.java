@@ -16,11 +16,11 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Autowired
 	private DepartmentRepository departmentRepository;
-	
+
 	@Rollback(value = false)
 	public void create(Department department) {
 		departmentRepository.insert(department);
-		
+
 	}
 
 	public Department findById(Integer id) {
@@ -29,12 +29,21 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Rollback(value = false)
 	public void update(Department Department) {
-		departmentRepository.update(Department);		
+		departmentRepository.update(Department);
 	}
 
+	@Override
 	@Rollback(value = false)
-	public void delete(Integer id) {
-		departmentRepository.deleteById(id);		
+	public void delete(Department Department) {
+		departmentRepository.delete(Department);
+
+	}
+
+	@Override
+	@Rollback(value = false)
+	public void deleteById(Integer id) {
+		departmentRepository.deleteById(id);
+
 	}
 
 	public List<Department> findAll() {
