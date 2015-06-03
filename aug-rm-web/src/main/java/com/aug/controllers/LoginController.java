@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @SessionAttributes("login")
 public class LoginController implements Serializable{
 
-	@RequestMapping(value="/applicant", method= {RequestMethod.GET})
+	@RequestMapping(value="/login", method= {RequestMethod.GET})
 	public String loginSpring(){
 		return "login";
 
 	}
 
-	@RequestMapping(value = "/applicant", method= {RequestMethod.POST})
+	@RequestMapping(value = "/login", method= {RequestMethod.POST})
 	public String loginSpringPost(@RequestParam String userName, Model model) {
 		model.addAttribute("userName", userName);
 		return "applicant";

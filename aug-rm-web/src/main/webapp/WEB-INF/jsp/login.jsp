@@ -2,26 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
-<html>
-<head>
-<script src="<c:url value="/static/resources/js/jquery-1.11.3.min.js"/>"></script>
-<script src="<c:url value="/static/resources/js/jquery.validate.min.js"/>"></script>
-<script src="<c:url value="/static/resources/js/additional-methods.min.js"/>"></script>
 
-<script src="<c:url value="/static/resources/js/bootstrap.min.js"/>"></script>
-<link rel="stylesheet" type="text/css" href="<c:url value="/static/resources/css/bootstrap.min.css"/>">
-<link rel="stylesheet" type="text/css" href="<c:url value="/static/resources/css/bootstrap-theme.min.css"/>">
-
-<script src="<c:url value="/static/resources/js/bootstrap-datepicker.min.js"/>"></script>
-<link rel="stylesheet" type="text/css" href="<c:url value="/static/resources/css/bootstrap-datepicker.min.css"/>">
-<link rel="stylesheet" type="text/css" href="<c:url value="/static/resources/css/bootstrap-datepicker3.min.css"/>">
-
-<script src="<c:url value="/static/resources/js/pnotify.custom.min.js"/>"></script>
-<link rel="stylesheet" type="text/css" href="<c:url value="/static/resources/css/pnotify.custom.min.css"/>">
-
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
-<title>Insert title here</title>
 <style type="text/css">
 .error{
 color:red;
@@ -62,10 +43,6 @@ $(document).ready(function() {
 	};
 });
 </script>
-
-</head>
-
-<body>
 	<h1>Log-In</h1>
 
 	<div class="container">
@@ -103,5 +80,3 @@ $(document).ready(function() {
 			</div>
 		</div>
 	</div>
-</body>
-</html>

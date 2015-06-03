@@ -3,22 +3,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%><html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Main Applicant</title>
-<!-- jquery -->
-<script src="<c:url value="/static/resources/js/jquery-1.11.3.min.js"/>"></script>
-<!-- Bootstrap -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/static/resources/css/bootstrap.min.css"/>">
-<link rel="stylesheet" type="text/css" href="<c:url value="/static/resources/css/bootstrap-theme.min.css"/>">
-<script src="<c:url value="/static/resources/js/bootstrap.min.js"/>"></script>
-<!-- Date table -->
-<link rel="stylesheet" type="text/css" href="<c:url value="/static/resources/css/jquery.dataTables.min.css"/>">
-<script type='text/javascript' src="<c:url value="/static/resources/js/jquery.dataTables.min.js"/>"></script>
-
-
-</head>
-<body>
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var dtApplicant
