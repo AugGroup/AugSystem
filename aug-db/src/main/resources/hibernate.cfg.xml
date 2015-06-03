@@ -11,14 +11,15 @@
 		<property name="hibernate.connection.password">root</property>
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="show_sql">true</property>
-<!--                <property name="hibernate.hbm2ddl.auto">create-drop</property>-->
+
+		<!-- <property name="hibernate.hbm2ddl.auto">create-drop</property> -->
 		<!--<property name="hbm2ddl.auto">create-drop</property> -->
 		<!--<property name="hbm2ddl.auto">update</property> -->
 
-       
-                <mapping class="com.aug.db.entities.Applicant"/>
-                <mapping class="com.aug.db.entities.AugRequest"/>
-                <mapping class="com.aug.db.entities.RequestPosition"/>
+
+		<mapping class="com.aug.db.entities.Applicant" />
+		<mapping class="com.aug.db.entities.AugRequest" />
+		<mapping class="com.aug.db.entities.RequestPosition" />
 		<mapping class="com.aug.db.entities.Address" />
 		<mapping class="com.aug.db.entities.Education" />
 		<mapping class="com.aug.db.entities.Experience" />

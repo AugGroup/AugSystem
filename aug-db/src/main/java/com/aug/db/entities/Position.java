@@ -1,27 +1,20 @@
 package com.aug.db.entities;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.CascadeType;
-import org.hibernate.annotations.ManyToAny;
-
-
 
 @Entity
 @Table(name = "POSITION")
 public class Position {
+
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")
@@ -30,28 +23,50 @@ public class Position {
 	private String positionName;
 	@Column(name = "POSITON_CODE")
 	private String positionCode;
-	
+
 	@ManyToOne
-	@JoinColumn(name="DEPARTMENT_ID")
+	@JoinColumn(name = "DEPARTMENT_ID")
 	private Department department;
-	
-	@ManyToMany(mappedBy="positions")
-	private List<Applicant> applicantList;
-	
+
+	@OneToMany(mappedBy = "position1")
+	private List<Applicant> applicantList1;
+
+	@OneToMany(mappedBy = "position2")
+	private List<Applicant> applicantList2;
+
+	@OneToMany(mappedBy = "position3")
+	private List<Applicant> applicantList3;
+
+	public List<Applicant> getApplicantList1() {
+		return applicantList1;
+	}
+
+	public void setApplicantList1(List<Applicant> applicantList1) {
+		this.applicantList1 = applicantList1;
+	}
+
+	public List<Applicant> getApplicantList2() {
+		return applicantList2;
+	}
+
+	public void setApplicantList2(List<Applicant> applicantList2) {
+		this.applicantList2 = applicantList2;
+	}
+
+	public List<Applicant> getApplicantList3() {
+		return applicantList3;
+	}
+
+	public void setApplicantList3(List<Applicant> applicantList3) {
+		this.applicantList3 = applicantList3;
+	}
+
 	public Department getDepartment() {
 		return department;
 	}
 
 	public void setDepartment(Department department) {
 		this.department = department;
-	} 
-	
-	public List<Applicant> getApplicantList() {
-		return applicantList;
-	}
-
-	public void setApplicantList(List<Applicant> applicantList) {
-		this.applicantList = applicantList;
 	}
 
 	public String getPositionCode() {
@@ -77,7 +92,5 @@ public class Position {
 	public void setPositionName(String positionName) {
 		this.positionName = positionName;
 	}
-
-	
 
 }

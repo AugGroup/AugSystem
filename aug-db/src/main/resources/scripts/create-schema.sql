@@ -3,13 +3,17 @@
         drop 
         foreign key FKE66327D46DBA8CB5;
 
-    alter table APPLICANT_POSITION 
+    alter table APPLICANT 
         drop 
-        foreign key FKF7E229E674782F7F;
+        foreign key FK29852EE27EA1D0DE;
 
-    alter table APPLICANT_POSITION 
+    alter table APPLICANT 
         drop 
-        foreign key FKF7E229E66DBA8CB5;
+        foreign key FK29852EE27EA15C7F;
+
+    alter table APPLICANT 
+        drop 
+        foreign key FK29852EE27EA0E820;
 
     alter table ATTACHFILE 
         drop 
@@ -45,17 +49,15 @@
 
     alter table REQUEST_POSITION 
         drop 
-        foreign key FK34908F991E97D6B;
+        foreign key FK34908F96AC3264C;
 
     alter table SKILL 
         drop 
-        foreign key FK4B4D231362DBE58;
+        foreign key FK4B4D2316DBA8CB5;
 
     drop table if exists ADDRESS;
 
     drop table if exists APPLICANT;
-
-    drop table if exists APPLICANT_POSITION;
 
     drop table if exists ATTACHFILE;
 
@@ -134,54 +136,49 @@
         NOTICE_WEBSITE varchar(255),
         NUMBER_OF_CHILDREN integer,
         OCCUPATION_MARRIAGE varchar(255),
-        POSITION1 varchar(255),
-        POSITION2 varchar(255),
-        POSITION3 varchar(255),
         RELIGION varchar(255),
         SPOUSE_NAME varchar(255),
         TEL varchar(255),
         TRACKING_STATUS varchar(255),
         WEIGHT integer,
+        POSITION1_ID integer,
+        POSITION2_ID integer,
+        POSITION3_ID integer,
         primary key (APPLICANT_ID)
     );
 
-    create table APPLICANT_POSITION (
-        APPLICANT_ID integer not null,
-        POSITION_ID integer not null
-    );
-
     create table ATTACHFILE (
-        ATTACH_ID integer not null auto_increment,
+        ID integer not null auto_increment,
         ATTACH_NAME varchar(255),
-        ATTACH_TYPE_File varchar(255),
+        ATTACH_TYPE_FILE varchar(255),
         PATH varchar(255),
         TYPE varchar(255),
         APPLICANT_ID integer,
-        primary key (ATTACH_ID)
+        primary key (ID)
     );
 
     create table AUGEMPLOYEE (
-        AUGEMPLOYEE_ID integer not null auto_increment,
+        ID integer not null auto_increment,
         EMPLOYED_NAME varchar(255),
         APPLICANT_ID integer,
-        primary key (AUGEMPLOYEE_ID)
+        primary key (ID)
     );
 
     create table AUG_REQUEST (
-        REQUESTID bigint not null auto_increment,
+        REQUEST_ID integer not null auto_increment,
         APPROVAL_DATE datetime,
         APPROVAL_NAME varchar(255),
         REQUEST_DATE datetime,
         REQUESTER_NAME varchar(255),
         STATUS varchar(255),
-        primary key (REQUESTID)
+        primary key (REQUEST_ID)
     );
 
     create table DEPARTMENT (
-        DEPARTMENT_ID integer not null auto_increment,
+        ID integer not null auto_increment,
         DEPARTMENT_CODE varchar(255),
         DEPARTMENT_NAME varchar(255),
-        primary key (DEPARTMENT_ID)
+        primary key (ID)
     );
 
     create table EDUCATION (
@@ -214,32 +211,32 @@
     );
 
     create table FAMILY (
-        FAMILY_ID integer not null auto_increment,
+        ID integer not null auto_increment,
         ADDRESS varchar(255),
         NAME varchar(255),
         OCCUPATION varchar(255),
         RELATION varchar(255),
         APPLICANT_ID integer,
-        primary key (FAMILY_ID)
+        primary key (ID)
     );
 
     create table LANGUAGES (
-        LANGUAGES_ID integer not null auto_increment,
+        ID integer not null auto_increment,
         LANGUAGES_NAME varchar(255),
         READING varchar(255),
         SPEAKING varchar(255),
         UNDERSTANDING varchar(255),
         WRITING varchar(255),
         APPLICANT_ID integer,
-        primary key (LANGUAGES_ID)
+        primary key (ID)
     );
 
     create table POSITION (
-        POSITION_ID integer not null auto_increment,
+        ID integer not null auto_increment,
         POSITON_CODE varchar(255),
         POSITION_NAME varchar(255),
         DEPARTMENT_ID integer,
-        primary key (POSITION_ID)
+        primary key (ID)
     );
 
     create table REFERENCE (
@@ -257,13 +254,14 @@
         POSITION_NAME varchar(255),
         SPECIFIC_SKILL varchar(255),
         YEAR_EXPERIENCE integer,
-        requestId bigint,
+        REQUEST_ID integer,
         primary key (REQPOSITION_ID)
     );
 
     create table SKILL (
         ID integer not null auto_increment,
         SKILL_DETAIL varchar(255),
+        APPLICANT_ID integer,
         primary key (ID)
     );
 
@@ -273,17 +271,23 @@
         foreign key (APPLICANT_ID) 
         references APPLICANT (APPLICANT_ID);
 
-    alter table APPLICANT_POSITION 
-        add index FKF7E229E674782F7F (POSITION_ID), 
-        add constraint FKF7E229E674782F7F 
-        foreign key (POSITION_ID) 
-        references POSITION (POSITION_ID);
+    alter table APPLICANT 
+        add index FK29852EE27EA1D0DE (POSITION3_ID), 
+        add constraint FK29852EE27EA1D0DE 
+        foreign key (POSITION3_ID) 
+        references POSITION (ID);
 
-    alter table APPLICANT_POSITION 
-        add index FKF7E229E66DBA8CB5 (APPLICANT_ID), 
-        add constraint FKF7E229E66DBA8CB5 
-        foreign key (APPLICANT_ID) 
-        references APPLICANT (APPLICANT_ID);
+    alter table APPLICANT 
+        add index FK29852EE27EA15C7F (POSITION2_ID), 
+        add constraint FK29852EE27EA15C7F 
+        foreign key (POSITION2_ID) 
+        references POSITION (ID);
+
+    alter table APPLICANT 
+        add index FK29852EE27EA0E820 (POSITION1_ID), 
+        add constraint FK29852EE27EA0E820 
+        foreign key (POSITION1_ID) 
+        references POSITION (ID);
 
     alter table ATTACHFILE 
         add index FKA7DE25416DBA8CB5 (APPLICANT_ID), 
@@ -325,7 +329,7 @@
         add index FK5B388929112D8D9F (DEPARTMENT_ID), 
         add constraint FK5B388929112D8D9F 
         foreign key (DEPARTMENT_ID) 
-        references DEPARTMENT (DEPARTMENT_ID);
+        references DEPARTMENT (ID);
 
     alter table REFERENCE 
         add index FK6EF34F2B6DBA8CB5 (APPLICANT_ID), 
@@ -334,13 +338,13 @@
         references APPLICANT (APPLICANT_ID);
 
     alter table REQUEST_POSITION 
-        add index FK34908F991E97D6B (requestId), 
-        add constraint FK34908F991E97D6B 
-        foreign key (requestId) 
-        references AUG_REQUEST (REQUESTID);
+        add index FK34908F96AC3264C (REQUEST_ID), 
+        add constraint FK34908F96AC3264C 
+        foreign key (REQUEST_ID) 
+        references AUG_REQUEST (REQUEST_ID);
 
     alter table SKILL 
-        add index FK4B4D231362DBE58 (id), 
-        add constraint FK4B4D231362DBE58 
-        foreign key (id) 
+        add index FK4B4D2316DBA8CB5 (APPLICANT_ID), 
+        add constraint FK4B4D2316DBA8CB5 
+        foreign key (APPLICANT_ID) 
         references APPLICANT (APPLICANT_ID);

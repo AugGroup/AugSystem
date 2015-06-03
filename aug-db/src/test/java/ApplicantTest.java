@@ -18,6 +18,7 @@ import com.aug.db.services.ApplicantService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-bean-db-test.xml")
+@Transactional
 public class ApplicantTest {
 	
 	@Autowired
@@ -51,9 +52,9 @@ public class ApplicantTest {
 	
 	@Test
 	public void testDeleteApplicant() {
-		Applicant applicant = new Applicant();
-//		applicantService.deleteById(4);
-		assertNull(applicant);
+//		Applicant applicant = new Applicant();
+		applicantService.deleteById(4);
+		assertNull(applicantService.findById(4));
 	}
 	
 	@Test
