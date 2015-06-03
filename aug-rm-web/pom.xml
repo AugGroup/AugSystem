@@ -75,7 +75,9 @@
 			<artifactId>spring-webmvc</artifactId>
 		</dependency>
 
+		
 
+		<!-- JSTL -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
