@@ -13,7 +13,7 @@ public class LoginController implements Serializable{
 	
 	@RequestMapping(value="/applicant", method= {RequestMethod.GET})
 	public String loginSpring(){
-		return "applicant";
+		return "application";
 	}
 	/*
 	@RequestMapping(value = "/applicant", method= {RequestMethod.POST})
