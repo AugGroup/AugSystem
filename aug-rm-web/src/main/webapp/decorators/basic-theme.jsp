@@ -17,14 +17,13 @@
 
 <script src='<c:url value ="/static/resources/js/bootstrap-datepicker.min.js"/>'></script>
 <link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/bootstrap-datepicker3.min.css"/>" />
-<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/bootstrap-datepicker3.standalone.min.css"/>" />
 
 <script src='<c:url value ="/static/resources/js/jquery.dataTables.min.js"/>'></script>
 <link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/jquery.dataTables.min.css"/>" />
 
 
 <script src='<c:url value ="/static/resources/js/pnotify.custom.min.js"/>'></script>
-<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/js/pnotify.custom.min.css"/>" />
+<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/pnotify.custom.min.css"/>" />
 
 <script src='<c:url value ="/static/resources/js/jquery.validate.min.js"/>'></script>
 <script src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
