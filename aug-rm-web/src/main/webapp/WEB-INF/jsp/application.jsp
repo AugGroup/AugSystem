@@ -3,17 +3,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
 <script>
 
@@ -37,17 +26,6 @@ $(document).ready(function() {
 </script>
 
 
-
-
-
-
-
-
-
-
-
-</head>
-<body>
 	<div class="container">
 		<div class="row">
 			<!-- <div class="col-md-6"> -->
@@ -280,5 +258,3 @@ $(document).ready(function() {
 
 		</div>
 	</div>
-</body>
-</html>
