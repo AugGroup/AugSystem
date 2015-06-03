@@ -2,6 +2,7 @@ package com.aug.db.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -21,6 +22,7 @@ public class Reference {
 	private String tel;
 	@Column(name = "OCCUPATION")
 	private String occupation;
+	
 	@ManyToOne
 	@JoinColumn(name = "APPLICANT_ID")
 	private Applicant applicant;
