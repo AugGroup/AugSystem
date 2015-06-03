@@ -3,6 +3,7 @@ package com.aug.db.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,10 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "APPLICANT")
@@ -99,14 +99,17 @@ public class Applicant {
 	@Column(name = "NOTICE_OTHER")
 	private String noticeOther;
 	
-	@Column(name = "POSITION1")
-	private String position1;
+	@ManyToOne
+	@JoinColumn(name = "POSITION1_ID", referencedColumnName="id")
+	private Position position1;
 	
-	@Column(name = "POSITION2")
-	private String position2;
+	@ManyToOne
+	@JoinColumn(name = "POSITION2_ID", referencedColumnName="id")
+	private Position position2;
 	
-	@Column(name = "POSITION3")
-	private String position3;
+	@ManyToOne
+	@JoinColumn(name = "POSITION3_ID", referencedColumnName="id")
+	private Position position3;
 	
 	@Column(name = "TRACKING_STATUS")
 	private String trackingStatus;
@@ -164,11 +167,6 @@ public class Applicant {
 	
 	@OneToMany(mappedBy = "applicant")
 	private List<Reference> referances;
-	
-	@ManyToMany
-	@JoinTable(name = "APPLICANT_POSITION", joinColumns = {@JoinColumn(name = "APPLICANT_ID")}, 
-	inverseJoinColumns = {@JoinColumn(name = "POSITION_ID")})
-	private List<Position> positions;
 	
 	@OneToMany(mappedBy = "applicant")
 	private List<Family> families;
@@ -402,29 +400,29 @@ public class Applicant {
 		this.noticeOther = noticeOther;
 	}
 
-	public String getPosition1() {
+	public Position getPosition1() {
 		return position1;
 	}
 
-	public void setPosition1(String position1) {
+	public void setPosition1(Position position1) {
 		this.position1 = position1;
 	}
 
-	public String getPosition2() {
+	public Position getPosition2() {
 		return position2;
 	}
 
-	public void setPosition2(String position2) {
+	public void setPosition2(Position position2) {
 		this.position2 = position2;
 	}
 
-	public String getPosition3() {
-		return position3;
-	}
-
-	public void setPosition3(String position3) {
-		this.position3 = position3;
-	}
+//	public Position getPosition3() {
+//		return position3;
+//	}
+//
+//	public void setPosition3(Position position3) {
+//		this.position3 = position3;
+//	}
 
 	public String getTrackingStatus() {
 		return trackingStatus;
@@ -576,14 +574,6 @@ public class Applicant {
 
 	public void setReferances(List<Reference> referances) {
 		this.referances = referances;
-	}
-
-	public List<Position> getPositions() {
-		return positions;
-	}
-
-	public void setPositions(List<Position> positions) {
-		this.positions = positions;
 	}
 
 	public List<Family> getFamilies() {
