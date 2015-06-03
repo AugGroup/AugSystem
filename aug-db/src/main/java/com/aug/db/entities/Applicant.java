@@ -416,13 +416,13 @@ public class Applicant {
 		this.position2 = position2;
 	}
 
-//	public Position getPosition3() {
-//		return position3;
-//	}
-//
-//	public void setPosition3(Position position3) {
-//		this.position3 = position3;
-//	}
+	public Position getPosition3() {
+		return position3;
+	}
+
+	public void setPosition3(Position position3) {
+		this.position3 = position3;
+	}
 
 	public String getTrackingStatus() {
 		return trackingStatus;

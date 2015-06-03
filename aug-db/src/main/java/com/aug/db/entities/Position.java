@@ -53,13 +53,13 @@ public class Position {
 		this.applicantList2 = applicantList2;
 	}
 
-//	public List<Applicant> getApplicantList3() {
-//		return applicantList3;
-//	}
-//
-//	public void setApplicantList3(List<Applicant> applicantList3) {
-//		this.applicantList3 = applicantList3;
-//	}
+	public List<Applicant> getApplicantList3() {
+		return applicantList3;
+	}
+
+	public void setApplicantList3(List<Applicant> applicantList3) {
+		this.applicantList3 = applicantList3;
+	}
 
 	public Department getDepartment() {
 		return department;
