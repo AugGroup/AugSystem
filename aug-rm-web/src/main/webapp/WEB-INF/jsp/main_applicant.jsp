@@ -34,7 +34,11 @@
 						         { data : function(data){
 						        	 return '<a href="#EditStatusModal" id="btn_table_edit"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
 						        	 //data-id="'+data.id+'"
-						        	}}
+						        	}},
+						        	{ data : function(data){
+							        	 return '<a href="#" id="btn_table_edit"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
+							        	 //data-id="'+data.id+'"
+							        	}}
 						        ]
 					});
 				}
@@ -73,6 +77,7 @@
 							<th>Position3</th>
 							<th>Status</th>
 							<th>Edit </th>
+							<th>Edit Info</th>
 						</tr>
 					</thead>
 				</table>
