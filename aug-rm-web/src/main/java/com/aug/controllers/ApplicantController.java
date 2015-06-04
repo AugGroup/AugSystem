@@ -1,6 +1,7 @@
 package com.aug.controllers;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +12,7 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,6 +52,15 @@ public class ApplicantController implements Serializable {
 			public List<Applicant> data = applicantService.findByPosition(position);
 		};
 	}
+	
+//	//Save Score
+//	@RequestMapping(value = "/saveScore", method= {RequestMethod.POST})
+//	public @ResponseBody Applicant userPost(@RequestBody Applicant applicant) throws ParseException{
+//		applicantService.create(applicant);
+//		Applicant app = applicantService.findById(applicant.getId());
+//		return app;
+//	}
+	
 	/*
 	 * @RequestMapping(value = "/applicant", method= {RequestMethod.POST})
 	 * public String login(@RequestParam String userName,@RequestParam String
