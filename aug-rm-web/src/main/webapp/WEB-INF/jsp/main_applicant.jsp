@@ -92,8 +92,29 @@
 						<h4 class="modal-title">Edit Applicant Status</h4>
 					</div>
 					<div class="modal-body">
-						<h5>Show importance information...</h5>
+						<h5>Score Details</h5>
 						<form role="form" id="EditStatusForm">
+							<div class="form-group">
+								<label for="inputScore">Score</label> 
+								<input type="text" class="form-control" id="inputScore" name="inputScore" placeholder="Enter score">
+    						</div>
+							<div class="form-group">
+								<label for="nameTechScore">Technical Score :  </label>
+								<label class="radio-inline">
+								    <input type="radio" name="inputTechScore">Pass
+								</label>
+								<label class="radio-inline">
+								    <input type="radio" name="inputTechScore">Not Pass
+								</label>
+    						</div>
+							<div class="form-group">
+								<label for="inputScore">Attitude Score</label>
+    							<select name="inputScore" id="inputScore" class="form-control">
+    								<c:forEach items="${departments}" var="items">
+    									<option value="${items.deptId}">${items.dName }</option>
+    								</c:forEach>
+    							</select>
+    						</div>
 							<div class="form-group">
 								<label for="inputStatus">Applicant Status</label>
     							<select name="inputStatus" id="inputStatus" class="form-control">
@@ -102,10 +123,10 @@
     								</c:forEach>
     							</select>
     						</div>
-							<button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="alert">Submit</button>
 						</form>
 					</div>
 					<div class="modal-footer">
+						<button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="alert">Save</button>
     					<button type="button"  class="btn btn-default" data-dismiss="modal">Cancel</button>
     				</div>
 				</div>
