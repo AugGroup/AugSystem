@@ -51,7 +51,7 @@ $(document).ready(function() {
 		<form class="form-inline" name="form" id="form" action="${pageContext.request.contextPath}/applicant" method="post">
 		
 			<div class="form-group">
-				<label for="userName" class="control-label">Username:</label>
+				<label for="userName">Username:</label>
 				<input type="text" class="form-control" name="userName" id="userName">
 			</div><br><br>
 			

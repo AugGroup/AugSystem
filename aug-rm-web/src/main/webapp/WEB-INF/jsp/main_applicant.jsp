@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%><html>
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var dtApplicant
@@ -134,7 +135,3 @@
 		</div> 
 		
 	</div>
-
-
-</body>
-</html>
