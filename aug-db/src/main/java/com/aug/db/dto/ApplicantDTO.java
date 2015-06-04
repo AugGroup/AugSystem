@@ -9,13 +9,13 @@ import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 
 @Entity
-@NamedNativeQueries({ @NamedNativeQuery(name = "SEARCH_APPLICANT", query = " SELECT null as FIRST_NAME_TH, null as LAST_NAME_TH, null as NICK_NAME_TH, null as NICK_NAME_EN, "
+@NamedNativeQueries({ @NamedNativeQuery(name = "SEARCH_APPLICANT", query = " SELECT null as FIRSTNAME_TH, null as LASTNAME_TH, null as NICKNAME_TH, null as NICKNAME_EN, "
 		+ "null as BIRTHDATE, null as AGE, null as HEIGHT, null as WEIGHT, null as RELIGION, null as NATIONALITY, null as APPLICANT_STATUS, null as EMERGENCY_NAME, null as EMERGENCY_TEL,"
 		+ "null as EMERGENCY_ADDRESS, null as NOTICE_NEWSPAPER, null as NOTICE_MAGAZINE, null as NOTICE_FRIEND, null as NOTICE_WEBSITE, null as NOTICE_OTHER, null as CERTIFICATE,"
-		+ "null as EXPACTED_SALARY, null as CARD_ID, null as CARD_ISSUED_OFFICE, null as CARD_EXPIRY_DATE, null as MILITARY_FROM_YEAR, null as MILITARY_TO_YEAR, null as MILITARY_PLACE,"
+		+ "null as EXPECTED_SALARY, null as CARD_ID, null as CARD_ISSUED_OFFICE, null as CARD_EXPIRY_DATE, null as MILITARY_FROM_YEAR, null as MILITARY_TO_YEAR, null as MILITARY_PLACE,"
 		+ "null as MILITARY_SERVICE_NO, null as MILITARY_REASON, null as MILITARY_STATUS, null as MARRITAL_STATUS_NAME, null as NUMBER_OF_CHILDREN, null as SPOUSE_NAME,"
-		+ "null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, "
-		+ " a.APPLICANT_ID, a.APPLICANT_CODE, a.FIRST_NAME_EN, a.LAST_NAME_EN, a.TEL, a.EMAIL, a.APPLY_DATE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.TRACKING_STATUS, p.POSITION_NAME, p.ID "
+		+ "null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as TECH_SCORE, null as ATTITUDE,"
+		+ " a.APPLICANT_ID, a.APPLICANT_CODE, a.FIRSTNAME_EN, a.LASTNAME_EN, a.TEL, a.EMAIL, a.APPLY_DATE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.TRACKING_STATUS, p.POSITION_NAME, p.ID "
 		+ " FROM APPLICANT a JOIN POSITION p ON a.POSITION1_ID = p.ID OR a.POSITION2_ID = p.ID OR a.POSITION3_ID = p.ID WHERE p.POSITION_NAME = :POSITION ", resultClass = ApplicantDTO.class) })
 public class ApplicantDTO {
 
@@ -29,22 +29,22 @@ public class ApplicantDTO {
 	@Column(name = "APPLICANT_CODE")
 	private String code;
 
-	@Column(name = "FIRST_NAME_TH")
+	@Column(name = "FIRSTNAME_TH")
 	private String firstNameTH;
 
-	@Column(name = "FIRST_NAME_EN")
+	@Column(name = "FIRSTNAME_EN")
 	private String firstNameEN;
 
-	@Column(name = "LAST_NAME_TH")
+	@Column(name = "LASTNAME_TH")
 	private String lastNameTH;
 
-	@Column(name = "LAST_NAME_EN")
+	@Column(name = "LASTNAME_EN")
 	private String lastNameEN;
 
-	@Column(name = "NICK_NAME_TH")
+	@Column(name = "NICKNAME_TH")
 	private String nickNameTH;
 
-	@Column(name = "NICK_NAME_EN")
+	@Column(name = "NICKNAME_EN")
 	private String nickNameEN;
 
 	@Column(name = "BIRTHDATE")
@@ -69,7 +69,7 @@ public class ApplicantDTO {
 	private String tel;
 
 	@Column(name = "EMAIL")
-	private String eMail;
+	private String email;
 
 	@Column(name = "APPLICANT_STATUS")
 	private String ApplicantStatus;
@@ -77,7 +77,7 @@ public class ApplicantDTO {
 	@Column(name = "APPLY_DATE")
 	private Date applyDate;
 
-	@Column(name = "EMERGENCY_NAME") 
+	@Column(name = "EMERGENCY_NAME")
 	private String emergencyName;
 
 	@Column(name = "EMERGENCY_TEL")
@@ -89,7 +89,7 @@ public class ApplicantDTO {
 	@Column(name = "NOTICE_NEWSPAPER")
 	private String noticeNewspaper;
 
-	@Column(name = "NOTICE_MAGAZINE") 
+	@Column(name = "NOTICE_MAGAZINE")
 	private String noticeMagazine;
 
 	@Column(name = "NOTICE_FRIEND")
@@ -107,8 +107,8 @@ public class ApplicantDTO {
 	@Column(name = "CERTIFICATE")
 	private String certificate;
 
-	@Column(name = "EXPACTED_SALARY")
-	private String expactedSalary;
+	@Column(name = "EXPECTED_SALARY")
+	private String expectedSalary;
 
 	@Column(name = "CARD_ID")
 	private String cardId;
@@ -119,7 +119,7 @@ public class ApplicantDTO {
 	@Column(name = "CARD_EXPIRY_DATE")
 	private Date cardExpiryDate;
 
-	@Column(name = "MILITARY_FROM_YEAR") 
+	@Column(name = "MILITARY_FROM_YEAR")
 	private String militaryFromYear;
 
 	@Column(name = "MILITARY_TO_YEAR")
@@ -146,7 +146,7 @@ public class ApplicantDTO {
 	@Column(name = "SPOUSE_NAME")
 	private String spouseName;
 
-	@Column(name = "MARRIAGE_CERTIFICATE_NO") 
+	@Column(name = "MARRIAGE_CERTIFICATE_NO")
 	private String marriageCertificateNo;
 
 	@Column(name = "ISSUE_OFFICE_MARRIAGE")
@@ -154,6 +154,44 @@ public class ApplicantDTO {
 
 	@Column(name = "OCCUPATION_MARRIAGE")
 	private String occupationMarriage;
+
+	@Column(name = "TECH_SCORE")
+	private String techScore;
+
+	@Column(name = "ATTITUDE")
+	private String attitude;
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getExpectedSalary() {
+		return expectedSalary;
+	}
+
+	public void setExpectedSalary(String expectedSalary) {
+		this.expectedSalary = expectedSalary;
+	}
+
+	public String getTechScore() {
+		return techScore;
+	}
+
+	public void setTechScore(String techScore) {
+		this.techScore = techScore;
+	}
+
+	public String getAttitude() {
+		return attitude;
+	}
+
+	public void setAttitude(String attitude) {
+		this.attitude = attitude;
+	}
 
 	public String getPositionName() {
 		return positionName;
@@ -283,14 +321,6 @@ public class ApplicantDTO {
 		this.tel = tel;
 	}
 
-	public String geteMail() {
-		return eMail;
-	}
-
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
-	}
-
 	public String getApplicantStatus() {
 		return ApplicantStatus;
 	}
@@ -385,14 +415,6 @@ public class ApplicantDTO {
 
 	public void setCertificate(String certificate) {
 		this.certificate = certificate;
-	}
-
-	public String getExpactedSalary() {
-		return expactedSalary;
-	}
-
-	public void setExpactedSalary(String expactedSalary) {
-		this.expactedSalary = expactedSalary;
 	}
 
 	public String getCardId() {
