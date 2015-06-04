@@ -7,12 +7,113 @@
 <script>
 	$(document).ready(function() {
 
-		/* $('.input-group.date').datepicker({
+		$('.input-group.date').datepicker({
 		    startView: 2,
 		    todayBtn: "linked",
 		    format:"dd/mm/yyyy"
 		    
-		}); */
+		}); 
+		
+		$('#buttonSave').on("click",function(){
+			
+			var insertData = {
+					firstNameTH : $('#firstNameThId').val(),
+					firstNameEN : $('#firstNameEngId').val(),
+					lastNameTH : $('#lastnameThId').val(),
+					lastNameEN : $('#lastnameEngId').val(),
+					nickNameTH : $('#nickNameThId').val(),
+					nickNameEN : $('#nickNameEngId').val(),
+					birthDate : $('#birthdayId').val(),
+					age : $('#ageId').val(),
+					height : $('#heightId').val(),
+					weight : $('#weightId').val(),
+					religion : $('#religionId').val(),
+					nationality : $('#nationalityId').val(),
+					tel : $('#telId').val(),
+					eMail : $('#eMailId').val(),
+					applyDate : $('#applyDateId').val(),
+					emergencyName :$('#emergencyNameId').val(),
+					emergencyTel : $('#emergencyTelId').val(),
+					emergencyAddress : $('#emergencyAddressId').val(),
+					noticeNewspaper :  $('#newspaperId').val(),
+					noticeMagazine :  $('#magazineId').val(),
+					noticeFriend :  $('#friendId').val(),
+					noticeWebSite :  $('#websiteId').val(),
+					noticeOther :  $('#otherId').val(),
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+			}
+			
+			
+			
+			
+			
+			
+			
+	
+		})
+		
+		
 
 	});
 </script>
@@ -59,7 +160,7 @@
 							<div id="informations" class="tab-pane fade in active">
 								<div class="form-group">
 
-									<label for="birthday"><span
+									<label for="applyDate"><span
 										class="glyphicon glyphicon-calendar"></span>Apply date</label>
 									<div class="input-group date">
 										<input type="text" id="applyDateId" name="applyDateName"
@@ -77,7 +178,23 @@
 									</select>
 								</div>
 								<div class="form-group">
-									<label for="position">Position </label> <select id="positionId"
+									<label for="positionFirst">Position 1 </label> <select id="positionFirstId" name="positionFirstName"
+										class="form-control">
+										<c:forEach var="positionList" items="${positions}">
+											<option value="${positionList.id}">${positionList.positionName}</option>
+										</c:forEach>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="positionSecond">Position 2 </label> <select id="positionSecondId" name="positionSecondName"
+										class="form-control">
+										<c:forEach var="positionList" items="${positions}">
+											<option value="${positionList.id}">${positionList.positionName}</option>
+										</c:forEach>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="positionThird">Position 3 </label> <select id="positionThirdId" name="positionThirdName"
 										class="form-control">
 										<c:forEach var="positionList" items="${positions}">
 											<option value="${positionList.id}">${positionList.positionName}</option>
@@ -380,7 +497,7 @@
 									
 									<div class="form-group">
 										<label for="addressFamilyFirst">Address
-										</label> <input type="text" class="form-control" rows="5" id="addressFamilyFirstId"
+										</label> <input type="textarea" class="form-control" id="addressFamilyFirstId"
 											name="addressFamilyFirstName"
 											placeholder="Enter address ">
 									</div>
@@ -420,7 +537,7 @@
 									
 									<div class="form-group">
 										<label for="addressFamilySecond">Address
-										</label> <input type="text" class="form-control" rows="5" id="addressFamilySecondId"
+										</label> <input type="textarea" class="form-control" id="addressFamilySecondId"
 											name="addressFamilySecondName"
 											placeholder="Enter address ">
 									</div>
@@ -509,7 +626,7 @@
 								</div>
 								<div class="form-group">
 									<label for="emergencyAddress">Emergency Address </label> <input
-										type="text" class="form-control" id="emergencyAddressId"
+										type="textarea" class="form-control" id="emergencyAddressId"
 										name="emergencyAddressName"
 										placeholder="Enter emergency address">
 								</div>
@@ -688,7 +805,7 @@
 									
 									<div class="form-group">
 										<label for="addressBackground">Address
-										</label> <input type="text" class="form-control" rows="5" id="addressBackgroundId"
+										</label> <input type="textarea" class="form-control" id="addressBackgroundId"
 											name="addressBackgroundName"
 											placeholder="Enter address ">
 									</div>
@@ -723,14 +840,14 @@
 									
 									<div class="form-group">
 										<label for="descriptionBackground">Description of duties and responsibilities 
-										</label> <input type="text" class="form-control" rows="5" id="descriptionBackgroundId"
+										</label> <input type="textarea" class="form-control" id="descriptionBackgroundId"
 											name="descriptionBackgroundName"
 											placeholder="Enter description of duties and responsibilities">
 									</div>
 									
 									<div class="form-group">
 										<label for="reasonLeaving">Reason for leaving 
-										</label> <input type="text" class="form-control" rows="3" id="reasonLeavingId"
+										</label> <input type="textarea" class="form-control" id="reasonLeavingId"
 											name="reasonLeavingName"
 											placeholder="Enter reason for leaving">
 									</div>
