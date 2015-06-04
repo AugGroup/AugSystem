@@ -104,10 +104,10 @@
 							<div class="form-group">
 								<label for="nameTechScore">Technical Score :  </label>
 								<label class="radio-inline">
-								    <input type="radio" name="inputTechScore">Pass
+								    <input type="radio" value="pass" name="inputTechScore">Pass
 								</label>
 								<label class="radio-inline">
-								    <input type="radio" name="inputTechScore">Not Pass
+								    <input type="radio" value="Not pass" name="inputTechScore">Not Pass
 								</label>
     						</div>
 							<div class="form-group">

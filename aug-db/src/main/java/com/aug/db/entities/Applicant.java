@@ -24,27 +24,30 @@ public class Applicant {
 	@Column(name = "APPLICANT_CODE")
 	private String code;
 	
-	@Column(name = "FIRST_NAME_TH")
+	@Column(name = "FIRSTNAME_TH")
 	private String firstNameTH;
 	
-	@Column(name = "FIRST_NAME_EN")
+	@Column(name = "FIRSTNAME_EN")
 	private String firstNameEN;
 	
-	@Column(name = "LAST_NAME_TH")
+	@Column(name = "LASTNAME_TH")
 	private String lastNameTH;
 	
-	@Column(name = "LAST_NAME_EN")
+	@Column(name = "LASTNAME_EN")
 	private String lastNameEN;
 	
-	@Column(name = "NICK_NAME_TH")
+	@Column(name = "NICKNAME_TH")
 	private String nickNameTH;
 	
-	@Column(name = "NICK_NAME_EN")
+	@Column(name = "NICKNAME_EN")
 	private String nickNameEN;
 	
 	@Column(name = "BIRTHDATE")
 	private Date birthDate;
 	
+	@Column(name = "PLACE_BIRTH")
+	private String placeBirth;
+
 	@Column(name = "AGE")
 	private Integer age;
 	
@@ -64,10 +67,10 @@ public class Applicant {
 	private String tel;
 	
 	@Column(name = "EMAIL")
-	private String eMail;
+	private String email;
 	
 	@Column(name = "APPLICANT_STATUS")
-	private String ApplicantStatus;
+	private String applicantStatus;
 	
 	@Column(name = "APPLY_DATE")
 	private Date applyDate;
@@ -114,8 +117,8 @@ public class Applicant {
 	@Column(name = "CERTIFICATE")
 	private String certificate;
 	
-	@Column(name = "EXPACTED_SALARY")
-	private String expactedSalary;
+	@Column(name = "EXPECTED_SALARY")
+	private String expectedSalary;
 	
 	@Column(name = "CARD_ID")
 	private String cardId;
@@ -162,8 +165,14 @@ public class Applicant {
 	@Column(name = "OCCUPATION_MARRIAGE")
 	private String occupationMarriage;
 	
+	@Column(name = "TECH_SCORE")
+	private String techScore;
+	
+	@Column(name = "ATTITUDE")
+	private String attitude;
+
 	@OneToMany(mappedBy = "applicant")
-	private List<Reference> referances;
+	private List<Reference> references;
 	
 	@OneToMany(mappedBy = "applicant")
 	private List<Family> families;
@@ -309,20 +318,20 @@ public class Applicant {
 		this.tel = tel;
 	}
 
-	public String geteMail() {
-		return eMail;
+	public String getEmail() {
+		return email;
 	}
-
-	public void seteMail(String eMail) {
-		this.eMail = eMail;
+	
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getApplicantStatus() {
-		return ApplicantStatus;
+		return applicantStatus;
 	}
 
 	public void setApplicantStatus(String applicantStatus) {
-		ApplicantStatus = applicantStatus;
+		this.applicantStatus = applicantStatus;
 	}
 
 	public Date getApplyDate() {
@@ -436,13 +445,13 @@ public class Applicant {
 	public void setCertificate(String certificate) {
 		this.certificate = certificate;
 	}
-
-	public String getExpactedSalary() {
-		return expactedSalary;
+	
+	public String getExpectedSalary() {
+		return expectedSalary;
 	}
 
-	public void setExpactedSalary(String expactedSalary) {
-		this.expactedSalary = expactedSalary;
+	public void setExpectedSalary(String expectedSalary) {
+		this.expectedSalary = expectedSalary;
 	}
 
 	public String getCardId() {
@@ -565,12 +574,12 @@ public class Applicant {
 		this.occupationMarriage = occupationMarriage;
 	}
 
-	public List<Reference> getReferances() {
-		return referances;
+	public List<Reference> getReferences() {
+		return references;
 	}
 
-	public void setReferances(List<Reference> referances) {
-		this.referances = referances;
+	public void setReferences(List<Reference> references) {
+		this.references = references;
 	}
 
 	public List<Family> getFamilies() {
@@ -605,12 +614,12 @@ public class Applicant {
 		this.languages = languages;
 	}
 	
-	public List<Address> getAdrress() {
+	public List<Address> getAddress() {
 		return address;
 	}
-
-	public void setAdrress(List<Address> adrress) {
-		this.address = adrress;
+	
+	public void setAddress(List<Address> address) {
+		this.address = address;
 	}
 
 	public List<Education> getEducations() {
@@ -636,5 +645,28 @@ public class Applicant {
 	public void setExperiences(List<Experience> experiences) {
 		this.experiences = experiences;
 	}
+	
+	public String getTechScore() {
+		return techScore;
+	}
 
+	public void setTechScore(String techScore) {
+		this.techScore = techScore;
+	}
+
+	public String getAttitude() {
+		return attitude;
+	}
+	
+	public void setAttitude(String attitude) {
+		this.attitude = attitude;
+	}
+	
+	public String getPlaceBirth() {
+		return placeBirth;
+	}
+
+	public void setPlaceBirth(String placeBirth) {
+		this.placeBirth = placeBirth;
+	}
 }
