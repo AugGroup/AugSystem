@@ -7,12 +7,12 @@
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-2.1.xsd
-        http://www.springframework.org/schema/integration/stream http://www.springframework.org/schema/integration/stream/spring-integration-stream-2.1.xsd
+  http://www.springframework.org/schema/integration/stream http://www.springframework.org/schema/integration/stream/spring-integration-stream-2.1.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
 
     <context:component-scan base-package="com.aug.db"/>
     <context:component-scan base-package="com.aug.db.services"/>
@@ -21,6 +21,7 @@
     
     <mvc:annotation-driven enable-matrix-variables="true"/>
     <mvc:resources mapping="/static/**" location="/"/>
+
 
 	<!-- Declare the Interceptor -->
 	<mvc:interceptors>
@@ -62,7 +63,7 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean"
 		p:dataSource-ref="dataSource" p:configLocation="classpath:hibernate.cfg.xml"
-		p:packagesToScan="com.aug.db.entities" />
+		p:packagesToScan="com.aug.db" />
 
 
 
@@ -86,4 +87,5 @@
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+
 </beans>
