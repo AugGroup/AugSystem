@@ -46,11 +46,16 @@ public class ApplicantController implements Serializable {
 	}
 
 	// Search by position
-	@RequestMapping(value = "/search", method = { RequestMethod.POST })
+	@RequestMapping(value = "/search", method = { RequestMethod.GET })
 	public @ResponseBody Object searchByPosition(@RequestParam final String position){
-		return new Object(){
-			public List<ApplicantDTO> data = applicantService.findByPosition(position);
+		final List<ApplicantDTO> data = applicantService.findByPosition(position);
+		
+		return new Object() {
+			public List<ApplicantDTO> getData() {
+				return data;
+			}
 		};
+		//return data;
 	}
 	
 //	//Save Score

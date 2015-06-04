@@ -17,18 +17,20 @@
 						searching : false,
 						ajax : {
 							url : '${pageContext.request.contextPath}/search',
-							type : 'POST',
+							type : 'GET',
 							data : function(d){
 								d.position = $('#inputSearch').val();
+								
+								
 							}
 						},
-						columns:[{'data': "idCode"},
+						columns:[{'data': "code"},
 						         {'data': "applyDate"},
-						         {'data' : "firstNameTH"},
+						         {'data' : "firstNameEN"},
 						         {'data' : "position1"},
 						         {'data' : "position2"},
 						         {'data' : "position3"},
-						         {'data' : "applicantStatus"},
+						         {'data' : "trackingStatus"},
 						         { data : function(data){
 						        	 return '<a href="#EditStatusModal" id="btn_table_edit"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
 						        	 //data-id="'+data.id+'"
