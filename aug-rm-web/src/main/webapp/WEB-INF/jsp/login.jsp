@@ -46,7 +46,7 @@ $(document).ready(function() {
 	<h1>Log-In</h1>
 
 	<div class="container">
-		<!-- 	<img alt="Image Error" src="/resources/images/p_logo.png"> -->
+		<img src="${pageContext.servletContext.contextPath}/static/resources/images/p_logo.png" alt="Image Error">
 		
 		<form class="form-inline" name="form" id="form" action="${pageContext.request.contextPath}/applicant" method="post">
 		
