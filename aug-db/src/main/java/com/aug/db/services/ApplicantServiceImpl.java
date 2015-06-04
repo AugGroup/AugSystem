@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.entities.Applicant;
 import com.aug.db.repositories.ApplicantRepository;
 
@@ -53,8 +54,8 @@ public class ApplicantServiceImpl implements ApplicantService {
 	
 	
 	@Override
-	public List<Applicant> findByPosition(String position) {
-		List<Applicant> applicants = applicantRepository.findByPosition(position);
+	public List<ApplicantDTO> findByPosition(String position) {
+		List<ApplicantDTO> applicants = applicantRepository.findByPosition(position);
 		return applicants;
 	}
 }

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.aug.db.entities.Applicant;
+import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.services.ApplicantService;
 
 @Controller
@@ -49,7 +49,7 @@ public class ApplicantController implements Serializable {
 	@RequestMapping(value = "/search", method = { RequestMethod.POST })
 	public @ResponseBody Object searchByPosition(@RequestParam final String position){
 		return new Object(){
-			public List<Applicant> data = applicantService.findByPosition(position);
+			public List<ApplicantDTO> data = applicantService.findByPosition(position);
 		};
 	}
 	

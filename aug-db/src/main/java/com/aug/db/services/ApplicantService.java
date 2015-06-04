@@ -2,6 +2,7 @@ package com.aug.db.services;
 
 import java.util.List;
 
+import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.entities.Applicant;
 
 public interface ApplicantService {
@@ -12,7 +13,7 @@ public interface ApplicantService {
 
 	public List<Applicant> findAll();
 	
-	public List<Applicant> findByPosition(String position);
+	public List<ApplicantDTO> findByPosition(String position);
 
 	public void update(Applicant applicant);
 
