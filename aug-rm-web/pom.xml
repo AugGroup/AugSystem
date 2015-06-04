@@ -241,9 +241,16 @@
 			<version>${servlet.api.version}</version>
 			<scope>provided</scope>
 		</dependency>
+<!--
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>springloaded</artifactId>
+            <version>1.2.0.RELEASE</version>
+        </dependency>-->
 
 
-		<!-- TESTING DEPENDENCIES -->
+
+        <!-- TESTING DEPENDENCIES -->
 		<dependency>
 			<groupId>org.assertj</groupId>
 			<artifactId>assertj-core</artifactId>
@@ -322,6 +329,15 @@
 		</dependency>
 	</dependencies>
 
+    <profiles>
+        <profile>
+            <id>debug</id>
+            <properties>
+                <jdwp>-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005</jdwp>
+            </properties>
+        </profile>
+    </profiles>
+
 	<build>
 		<finalName>${pom.name}</finalName>
 		<plugins>
@@ -389,17 +405,17 @@
                 <version>8.1.14.v20131031</version>
                 <configuration>
                     <webAppConfig>
-                        <contextPath>/${pom.name}</contextPath>
+                        <contextPath>/${project.artifactId}</contextPath>
                     </webAppConfig>
                     <reload>manual</reload>
                     <stopKey>foo</stopKey>
                     <stopPort>8082</stopPort>
                     <!-- run-forked mode that starts the spring loaded java agent -->
                     <waitForChild>true</waitForChild>
-                    <jvmArgs>-javaagent:${basedir}/tools/springloaded-1.1.4.jar -noverify ${jdwp}</jvmArgs>
+                    <jvmArgs>-javaagent:${basedir}/tools/springloaded-1.2.3.RELEASE.jar -noverify ${jdwp}</jvmArgs>
+
                 </configuration>
             </plugin>
-
 
 		</plugins>
 	</build>
