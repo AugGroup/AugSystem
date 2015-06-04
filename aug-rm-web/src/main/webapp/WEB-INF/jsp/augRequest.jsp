@@ -8,17 +8,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
-        <!--Data Table-->
-        <link rel="stylesheet" type="text/css" href="<c:url value="/static/resources/css/jquery.dataTables.min.css"/>">
-        <script type='text/javascript' src="<c:url value="/static/resources/js/jquery.dataTables.min.js"/>"></script>
+
         
         <title>Request for Application</title>
         
@@ -66,8 +56,7 @@
           
             
           </script>  
-    </head>
-    <body>
+
         <h1>Request Candidate!</h1>
          <table id="requestTable" class="cell-border" cellspacing="0" width="100%">
             <thead>
@@ -82,7 +71,5 @@
                 </tr>
             </thead>
         </table>
-        
-        
-    </body>
-</html>
+
+

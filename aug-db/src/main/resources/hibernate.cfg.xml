@@ -19,7 +19,6 @@
 
 		<mapping class="com.aug.db.entities.Applicant" />
 		<mapping class="com.aug.db.entities.AugRequest" />
-		<mapping class="com.aug.db.entities.RequestPosition" />
 		<mapping class="com.aug.db.entities.Address" />
 		<mapping class="com.aug.db.entities.Education" />
 		<mapping class="com.aug.db.entities.Experience" />
