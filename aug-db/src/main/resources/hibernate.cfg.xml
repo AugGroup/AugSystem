@@ -24,8 +24,8 @@
 		<mapping class="com.aug.db.entities.Education" />
 		<mapping class="com.aug.db.entities.Experience" />
 		<mapping class="com.aug.db.entities.Skill" />
-                <mapping class="com.aug.db.entities.AttachFile"/>
-                <mapping class="com.aug.db.entities.AugEmployee"/>
+        <mapping class="com.aug.db.entities.AttachFile"/>
+        <mapping class="com.aug.db.entities.AugEmployee"/>
 		<mapping class="com.aug.db.entities.Department"/>
 		<mapping class="com.aug.db.entities.Family"/>
 		<mapping class="com.aug.db.entities.Languages"/>
