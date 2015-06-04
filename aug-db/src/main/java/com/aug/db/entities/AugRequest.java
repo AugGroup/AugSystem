@@ -24,7 +24,6 @@ public class AugRequest {
     
     @Id
     @GeneratedValue
-
     @Column(name = "REQUEST_ID")
     private Integer id;
     
@@ -43,8 +42,17 @@ public class AugRequest {
     @Column(name = "APPROVAL_DATE")
     private Date approvalDate;
     
-    @OneToMany (mappedBy = "augRequest")
-    private List<RequestPosition> requestPosition;
+    @Column(name = "POSITION_NAME")
+    private String positionName;
+    
+    @Column(name = "NUMBER_APPLICANT")
+    private Integer numberApplicant;
+    
+    @Column(name = "SPECIFIC_SKILL")
+    private String specificSkill;
+    
+    @Column(name = "YEAR_EXPERIENCE")
+    private Integer yearExperience;
 
     public Integer getId() {
         return id;
@@ -93,16 +101,38 @@ public class AugRequest {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    public List<RequestPosition> getRequestPosition() {
-        return requestPosition;
+
+    public String getPositionName() {
+        return positionName;
     }
 
-    public void setRequestPosition(List<RequestPosition> requestPosition) {
-        this.requestPosition = requestPosition;
+    public void setPositionName(String positionName) {
+        this.positionName = positionName;
     }
-    
-    
+
+    public Integer getNumberApplicant() {
+        return numberApplicant;
+    }
+
+    public void setNumberApplicant(Integer numberApplicant) {
+        this.numberApplicant = numberApplicant;
+    }
+
+    public String getSpecificSkill() {
+        return specificSkill;
+    }
+
+    public void setSpecificSkill(String specificSkill) {
+        this.specificSkill = specificSkill;
+    }
+
+    public Integer getYearExperience() {
+        return yearExperience;
+    }
+
+    public void setYearExperience(Integer yearExperience) {
+        this.yearExperience = yearExperience;
+    }
     
     
 }

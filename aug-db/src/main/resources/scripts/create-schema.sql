@@ -47,10 +47,6 @@
         drop 
         foreign key FK6EF34F2B6DBA8CB5;
 
-    alter table REQUEST_POSITION 
-        drop 
-        foreign key FK34908F96AC3264C;
-
     alter table SKILL 
         drop 
         foreign key FK4B4D2316DBA8CB5;
@@ -78,8 +74,6 @@
     drop table if exists POSITION;
 
     drop table if exists REFERENCE;
-
-    drop table if exists REQUEST_POSITION;
 
     drop table if exists SKILL;
 
@@ -168,9 +162,13 @@
         REQUEST_ID integer not null auto_increment,
         APPROVAL_DATE datetime,
         APPROVAL_NAME varchar(255),
+        NUMBER_APPLICANT integer,
+        POSITION_NAME varchar(255),
         REQUEST_DATE datetime,
         REQUESTER_NAME varchar(255),
+        SPECIFIC_SKILL varchar(255),
         STATUS varchar(255),
+        YEAR_EXPERIENCE integer,
         primary key (REQUEST_ID)
     );
 
@@ -246,16 +244,6 @@
         TEL varchar(255),
         APPLICANT_ID integer,
         primary key (ID)
-    );
-
-    create table REQUEST_POSITION (
-        REQPOSITION_ID integer not null auto_increment,
-        NUMBER_APPLICANT integer,
-        POSITION_NAME varchar(255),
-        SPECIFIC_SKILL varchar(255),
-        YEAR_EXPERIENCE integer,
-        REQUEST_ID integer,
-        primary key (REQPOSITION_ID)
     );
 
     create table SKILL (
@@ -336,12 +324,6 @@
         add constraint FK6EF34F2B6DBA8CB5 
         foreign key (APPLICANT_ID) 
         references APPLICANT (APPLICANT_ID);
-
-    alter table REQUEST_POSITION 
-        add index FK34908F96AC3264C (REQUEST_ID), 
-        add constraint FK34908F96AC3264C 
-        foreign key (REQUEST_ID) 
-        references AUG_REQUEST (REQUEST_ID);
 
     alter table SKILL 
         add index FK4B4D2316DBA8CB5 (APPLICANT_ID), 

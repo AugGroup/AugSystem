@@ -18,7 +18,6 @@ insert INTO POSITION (DEPARTMENT_ID,POSITION_NAME,POSITON_CODE) VALUES ('2','Acc
 insert INTO APPLICANT (APPLICANT_CODE,FIRST_NAME_TH,FIRST_NAME_EN,LAST_NAME_TH,LAST_NAME_EN,NICK_NAME_TH,NICK_NAME_EN,BIRTHDATE,AGE,HEIGHT,WEIGHT,RELIGION,NATIONALITY,TEL,EMAIL,APPLICANT_STATUS,APPLY_DATE,EMERGENCY_NAME,EMERGENCY_TEL,EMERGENCY_ADDRESS,NOTICE_NEWSPAPER,NOTICE_MAGAZINE,NOTICE_FRIEND,NOTICE_WEBSITE,NOTICE_OTHER,POSITION1_ID,POSITION2_ID,POSITION3_ID,TRACKING_STATUS,CERTIFICATE,EXPACTED_SALARY,CARD_ID,CARD_ISSUED_OFFICE,CARD_EXPIRY_DATE,MILITARY_FROM_YEAR,MILITARY_TO_YEAR,MILITARY_PLACE,MILITARY_SERVICE_NO,MILITARY_REASON,MILITARY_STATUS,MARRITAL_STATUS_NAME,NUMBER_OF_CHILDREN,SPOUSE_NAME,MARRIAGE_CERTIFICATE_NO,ISSUE_OFFICE_MARRIAGE,OCCUPATION_MARRIAGE)
 VALUES ('C201501','แย้ม','Yam','หมั่นกิจ','Mankit','แย้ม','Yam',STR_TO_DATE('26/01/1940','%d/%m/%Y'),75,165,45,'Buddha','Thai','021234567','yam@gmail.com','Marriage',STR_TO_DATE('26/05/2015','%d/%m/%Y'),'ประเทือง หมั่นกิจ','0912345678','บ้านหนองนมวัว','no','no','no','yes','no','1','2','3','Waiting for consider','TOEIC 750','25000','1111122223344','บ้านหนองนมวัว',STR_TO_DATE('27/05/2017','%d/%m/%Y'),'no','no','no','no','no','no','no',3,'ประเทือง หมั่นกิจ','1234','บ้านหนองนมวัว','ชาวนา'),
 ('C201502','แย้ม','Yam','หมั่นกิจ','Mankit','แย้ม','Yam',STR_TO_DATE('26/01/1940','%d/%m/%Y'),75,165,45,'Buddha','Thai','021234567','yam@gmail.com','Marriage',STR_TO_DATE('26/05/2015','%d/%m/%Y'),'ประเทือง หมั่นกิจ','0912345678','บ้านหนองนมวัว','no','no','no','yes','no','1','2','3','Waiting for consider','TOEIC 750','25000','1111122223344','บ้านหนองนมวัว',STR_TO_DATE('27/05/2017','%d/%m/%Y'),'no','no','no','no','no','no','no',3,'ประเทือง หมั่นกิจ','1234','บ้านหนองนมวัว','ชาวนา'),
-
 ('C201503','แย้ม','Yam','หมั่นกิจ','Mankit','แย้ม','Yam',STR_TO_DATE('26/01/1940','%d/%m/%Y'),75,165,45,'Buddha','Thai','021234567','yam@gmail.com','Marriage',STR_TO_DATE('26/05/2015','%d/%m/%Y'),'ประเทือง หมั่นกิจ','0912345678','บ้านหนองนมวัว','no','no','no','yes','no','1','2','3','Waiting for consider','TOEIC 750','25000','1111122223344','บ้านหนองนมวัว',STR_TO_DATE('27/05/2017','%d/%m/%Y'),'no','no','no','no','no','no','no',3,'ประเทือง หมั่นกิจ','1234','บ้านหนองนมวัว','ชาวนา'),
 ('C201504','แย้ม','Yam','หมั่นกิจ','Mankit','แย้ม','Yam',STR_TO_DATE('26/01/1940','%d/%m/%Y'),75,165,45,'Buddha','Thai','021234567','yam@gmail.com','Marriage',STR_TO_DATE('26/05/2015','%d/%m/%Y'),'ประเทือง หมั่นกิจ','0912345678','บ้านหนองนมวัว','no','no','no','yes','no','1','2','3','Waiting for consider','TOEIC 750','25000','1111122223344','บ้านหนองนมวัว',STR_TO_DATE('27/05/2017','%d/%m/%Y'),'no','no','no','no','no','no','no',3,'ประเทือง หมั่นกิจ','1234','บ้านหนองนมวัว','ชาวนา');
 
@@ -58,12 +57,9 @@ VALUES ('1', 'Junior Java Consultance',STR_TO_DATE('01/04/2012','%d/%m/%Y'),STR_
 
 
 INSERT INTO Skill(APPLICANT_ID, SKILL_DETAIL)
-
 VALUES ('1','JAVAJS'),('2','JAVAPHP'),('3','-');
 
 
-insert INTO AUG_REQUEST (REQUEST_DATE,REQUESTER_NAME,STATUS,APPROVAL_NAME,APPROVAL_DATE)
-VALUES (STR_TO_DATE('26/05/2015','%d/%m/%Y'),'SamSmith','NEW','ChrisBrown',STR_TO_DATE('27/05/2015','%d/%m/%Y'));
+insert INTO AUG_REQUEST (REQUEST_DATE,REQUESTER_NAME,STATUS,APPROVAL_NAME,APPROVAL_DATE,POSITION_NAME,NUMBER_APPLICANT,SPECIFIC_SKILL,YEAR_EXPERIENCE)
+VALUES (STR_TO_DATE('26/05/2015','%d/%m/%Y'),'SamSmith','NEW','ChrisBrown',STR_TO_DATE('27/05/2015','%d/%m/%Y'),'JAVA',2,'HibernateSping',3);
 
-insert INTO REQUEST_POSITION (POSITION_NAME,NUMBER_APPLICANT,SPECIFIC_SKILL,YEAR_EXPERIENCE,REQUEST_ID)
-VALUES ('JAVA',2,'HibernateSping',3,1);

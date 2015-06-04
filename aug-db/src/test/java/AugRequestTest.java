@@ -1,7 +1,5 @@
 
 import com.aug.db.entities.AugRequest;
-import com.aug.db.entities.RequestPosition;
-import com.aug.db.services.RequestPositionService;
 import com.aug.db.services.AugRequestService;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -49,6 +47,10 @@ public class AugRequestTest {
         augRequest.setStatus("NEW");
         augRequest.setApprovalDate(new Date());
         augRequest.setRequestDate(new Date());
+        augRequest.setPositionName("JAVA");
+        augRequest.setNumberApplicant(2);
+        augRequest.setSpecificSkill("SpringHibernate");
+        augRequest.setYearExperience(2);
         augRequestService.create(augRequest);
      
     }
