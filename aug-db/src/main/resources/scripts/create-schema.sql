@@ -5,15 +5,15 @@
 
     alter table APPLICANT 
         drop 
+        foreign key FK29852EE27EA0E820;
+
+    alter table APPLICANT 
+        drop 
         foreign key FK29852EE27EA1D0DE;
 
     alter table APPLICANT 
         drop 
         foreign key FK29852EE27EA15C7F;
-
-    alter table APPLICANT 
-        drop 
-        foreign key FK29852EE27EA0E820;
 
     alter table ATTACHFILE 
         drop 
@@ -260,6 +260,12 @@
         references APPLICANT (APPLICANT_ID);
 
     alter table APPLICANT 
+        add index FK29852EE27EA0E820 (POSITION1_ID), 
+        add constraint FK29852EE27EA0E820 
+        foreign key (POSITION1_ID) 
+        references POSITION (ID);
+
+    alter table APPLICANT 
         add index FK29852EE27EA1D0DE (POSITION3_ID), 
         add constraint FK29852EE27EA1D0DE 
         foreign key (POSITION3_ID) 
@@ -269,12 +275,6 @@
         add index FK29852EE27EA15C7F (POSITION2_ID), 
         add constraint FK29852EE27EA15C7F 
         foreign key (POSITION2_ID) 
-        references POSITION (ID);
-
-    alter table APPLICANT 
-        add index FK29852EE27EA0E820 (POSITION1_ID), 
-        add constraint FK29852EE27EA0E820 
-        foreign key (POSITION1_ID) 
         references POSITION (ID);
 
     alter table ATTACHFILE 
