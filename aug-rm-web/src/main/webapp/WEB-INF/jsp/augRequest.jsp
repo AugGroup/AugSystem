@@ -41,11 +41,15 @@
                     columns : [
                           {"data" : "id"},
                           {"data" : "requestDate"},
+                          {"data" : "requesterName"},
                           {"data" : "positionName"},
                           {"data" : "numberApplicant"},
                           {"data" : "status"},
                           {data: function (data) {
-                            return '<button id="sendBtn" class="btn btn-danger btn-small" "><i class="icon-white icon-remove-circle"></i> Send</button>';
+                            return '<button id="sendBtn" class="btn btn-primary btn-success">Send <span class="glyphicon glyphicon-send"></span></button>';
+                           }},
+                          {data: function (data){ 
+                           return '<button id="previewBtn" class="btn btn-primary btn-primary">Preview <span class="glyphicon glyphicon-search"></span></button>';   
                            }}
                       ]  
             
@@ -57,19 +61,52 @@
             
           </script>  
 
-        <h1>Request Candidate!</h1>
+          <center><h1>Request Candidate</h1></center>>
          <table id="requestTable" class="cell-border" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Request Doc. ID</th>
                     <th>Date Request</th>
+                    <th>Requester</th>
                     <th>Positon</th>
                     <th>Number of Applicant</th>
                     <th>Status</th>
                     <th>Send</th>
-
+                    <th>Preview</th>
+            
                 </tr>
             </thead>
         </table>
+        <button type="button" class="btn btn-primary btn-small" data-toggle="modal" data-target="#addModal">
+            Request
+        </button>
+        <!--add Modal--> 
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Request Applicant</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form id="form" name="form" >   
+                            <div class="form-group">
+                            <label for="requesterName">Requester</label>
+                            <input type="text" class="form-control" name="requesterName" id="requesterName" />
+                            </div>
+                            Position :  <input name="position" id="position"/><br>
+                            Number of Applicant :   <input name="numberApplicant" id="numberApplicant" placeholder="Number of Applicant" /><br>
+                            Specific Skill : <input name="specificSkill" id="specificSkill" /><br>
+                            Year Experience : <input name="yearExperience" id="yearExperience" /><br>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <input id="buttonSaveReq" type="button" value="Save" class="btn btn-primary"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> 
 
 
