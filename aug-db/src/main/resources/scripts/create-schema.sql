@@ -71,6 +71,8 @@
 
     drop table if exists LANGUAGES;
 
+    drop table if exists LOGIN;
+
     drop table if exists POSITION;
 
     drop table if exists REFERENCE;
@@ -229,6 +231,13 @@
         UNDERSTANDING varchar(255),
         WRITING varchar(255),
         APPLICANT_ID integer,
+        primary key (ID)
+    );
+
+    create table LOGIN (
+        ID integer not null auto_increment,
+        PASSWORD varchar(255),
+        USERNAME varchar(255),
         primary key (ID)
     );
 
