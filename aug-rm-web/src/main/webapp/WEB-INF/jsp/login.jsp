@@ -45,12 +45,10 @@ $(document).ready(function() {
 			var json = {"userName" : userName,
 						"password" : password};
 			$.ajax({
-				url : "${pageContext.request.contextPath}/applicant/login",
-				type : "GET",
+				url : "${pageContext.request.contextPath}/applicant",
+				type : "POST",
 				contentType:"application/json; charset=utf-8",
 				data: JSON.stringify(json),
-				success : function(){
-				}
 			});
 		
 		};
@@ -60,7 +58,7 @@ $(document).ready(function() {
 	<h1>Log-In</h1>
 
 	<div class="container">
-		<form class="form-inline" name="form" id="form" action="${pageContext.request.contextPath}/applicant" method="post">
+		<form class="form-inline" name="form" id="form" action="${pageContext.request.contextPath}/applicant/login" method="get">
 		
 			<div class="form-group">
 				<label for="userName">Username:</label>
