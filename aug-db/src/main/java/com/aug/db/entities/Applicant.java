@@ -12,8 +12,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
-@Table(name = "APPLICANT")
+@Table(name = "APPLICANT" )
 public class Applicant {
 	
 	@Id
@@ -72,6 +74,7 @@ public class Applicant {
 	@Column(name = "APPLICANT_STATUS")
 	private String applicantStatus;
 	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy", locale="en", timezone="GMT")
 	@Column(name = "APPLY_DATE")
 	private Date applyDate;
 	

@@ -22,14 +22,14 @@
 								d.position = $('#inputSearch').val();
 								
 								
-							}
+							},
 						},
 						columns:[{'data': "code"},
 						         {'data': "applyDate"},
 						         {'data' : "firstNameEN"},
-						         {'data' : "position1"},
-						         {'data' : "position2"},
-						         {'data' : "position3"},
+						         {'data' : "position1Str"},
+						         {'data' : "position2Str"},
+						         {'data' : "position3Str"},
 						         {'data' : "trackingStatus"},
 						         { data : function(data){
 						        	 return '<a href="#EditStatusModal" id="btn_table_edit"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'

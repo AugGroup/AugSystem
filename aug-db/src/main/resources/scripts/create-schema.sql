@@ -5,15 +5,15 @@
 
     alter table APPLICANT 
         drop 
-        foreign key FK29852EE27EA0E820;
-
-    alter table APPLICANT 
-        drop 
         foreign key FK29852EE27EA1D0DE;
 
     alter table APPLICANT 
         drop 
         foreign key FK29852EE27EA15C7F;
+
+    alter table APPLICANT 
+        drop 
+        foreign key FK29852EE27EA0E820;
 
     alter table ATTACHFILE 
         drop 
@@ -92,9 +92,10 @@
 
     create table APPLICANT (
         APPLICANT_ID integer not null auto_increment,
-        APPLICANT_STATUS varchar(255),
         AGE integer,
+        APPLICANT_STATUS varchar(255),
         APPLY_DATE datetime,
+        ATTITUDE varchar(255),
         BIRTHDATE datetime,
         CARD_EXPIRY_DATE datetime,
         CARD_ID varchar(255),
@@ -105,13 +106,13 @@
         EMERGENCY_ADDRESS varchar(255),
         EMERGENCY_NAME varchar(255),
         EMERGENCY_TEL varchar(255),
-        EXPACTED_SALARY varchar(255),
-        FIRST_NAME_EN varchar(255),
-        FIRST_NAME_TH varchar(255),
+        EXPECTED_SALARY varchar(255),
+        FIRSTNAME_EN varchar(255),
+        FIRSTNAME_TH varchar(255),
         HEIGHT integer,
         ISSUE_OFFICE_MARRIAGE varchar(255),
-        LAST_NAME_EN varchar(255),
-        LAST_NAME_TH varchar(255),
+        LASTNAME_EN varchar(255),
+        LASTNAME_TH varchar(255),
         MARRIAGE_CERTIFICATE_NO varchar(255),
         MARRITAL_STATUS_NAME varchar(255),
         MILITARY_FROM_YEAR varchar(255),
@@ -121,8 +122,8 @@
         MILITARY_STATUS varchar(255),
         MILITARY_TO_YEAR varchar(255),
         NATIONALITY varchar(255),
-        NICK_NAME_EN varchar(255),
-        NICK_NAME_TH varchar(255),
+        NICKNAME_EN varchar(255),
+        NICKNAME_TH varchar(255),
         NOTICE_FRIEND varchar(255),
         NOTICE_MAGAZINE varchar(255),
         NOTICE_NEWSPAPER varchar(255),
@@ -130,8 +131,10 @@
         NOTICE_WEBSITE varchar(255),
         NUMBER_OF_CHILDREN integer,
         OCCUPATION_MARRIAGE varchar(255),
+        PLACE_BIRTH varchar(255),
         RELIGION varchar(255),
         SPOUSE_NAME varchar(255),
+        TECH_SCORE varchar(255),
         TEL varchar(255),
         TRACKING_STATUS varchar(255),
         WEIGHT integer,
@@ -260,12 +263,6 @@
         references APPLICANT (APPLICANT_ID);
 
     alter table APPLICANT 
-        add index FK29852EE27EA0E820 (POSITION1_ID), 
-        add constraint FK29852EE27EA0E820 
-        foreign key (POSITION1_ID) 
-        references POSITION (ID);
-
-    alter table APPLICANT 
         add index FK29852EE27EA1D0DE (POSITION3_ID), 
         add constraint FK29852EE27EA1D0DE 
         foreign key (POSITION3_ID) 
@@ -275,6 +272,12 @@
         add index FK29852EE27EA15C7F (POSITION2_ID), 
         add constraint FK29852EE27EA15C7F 
         foreign key (POSITION2_ID) 
+        references POSITION (ID);
+
+    alter table APPLICANT 
+        add index FK29852EE27EA0E820 (POSITION1_ID), 
+        add constraint FK29852EE27EA0E820 
+        foreign key (POSITION1_ID) 
         references POSITION (ID);
 
     alter table ATTACHFILE 

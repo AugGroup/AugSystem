@@ -20,7 +20,7 @@ public class ApplicantRepositoryImpl extends
 	@Override
 	public List<ApplicantDTO> findByPosition(String position) {
 		Query query = getCurrentSession().getNamedQuery("SEARCH_APPLICANT");
-		query.setParameter("POSITION", position);
+		query.setParameter("POSITION", "%"+position+"%");
 		List<ApplicantDTO> results = query.list();
 		return results;
 	}

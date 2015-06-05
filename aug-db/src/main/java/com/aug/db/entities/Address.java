@@ -1,5 +1,6 @@
 package com.aug.db.entities;
 
+import org.hibernate.annotations.Index;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

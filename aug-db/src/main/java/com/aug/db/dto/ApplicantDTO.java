@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @NamedNativeQueries({ @NamedNativeQuery(name = "SEARCH_APPLICANT", query = " SELECT null as FIRSTNAME_TH, null as LASTNAME_TH, null as NICKNAME_TH, null as NICKNAME_EN, "
@@ -16,7 +19,7 @@ import javax.persistence.NamedNativeQuery;
 		+ "null as MILITARY_SERVICE_NO, null as MILITARY_REASON, null as MILITARY_STATUS, null as MARRITAL_STATUS_NAME, null as NUMBER_OF_CHILDREN, null as SPOUSE_NAME,"
 		+ "null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as TECH_SCORE, null as ATTITUDE,"
 		+ " a.APPLICANT_ID, a.APPLICANT_CODE, a.FIRSTNAME_EN, a.LASTNAME_EN, a.TEL, a.EMAIL, a.APPLY_DATE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.TRACKING_STATUS, p.POSITION_NAME, p.ID "
-		+ " FROM APPLICANT a JOIN POSITION p ON a.POSITION1_ID = p.ID OR a.POSITION2_ID = p.ID OR a.POSITION3_ID = p.ID WHERE p.POSITION_NAME = :POSITION ", resultClass = ApplicantDTO.class) })
+		+ " FROM APPLICANT a JOIN POSITION p ON a.POSITION1_ID = p.ID OR a.POSITION2_ID = p.ID OR a.POSITION3_ID = p.ID WHERE p.POSITION_NAME like :POSITION ", resultClass = ApplicantDTO.class) })
 public class ApplicantDTO {
 
 	@Column(name = "POSITION_NAME")
@@ -75,7 +78,11 @@ public class ApplicantDTO {
 	private String ApplicantStatus;
 
 	@Column(name = "APPLY_DATE")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone="GMT")
 	private Date applyDate;
+
+	@Transient
+	private String applyDateStr;
 
 	@Column(name = "EMERGENCY_NAME")
 	private String emergencyName;
@@ -160,6 +167,81 @@ public class ApplicantDTO {
 
 	@Column(name = "ATTITUDE")
 	private String attitude;
+	
+	@Column(name = "POSITION1_ID")
+	private Integer position1;
+	
+	@Column(name = "POSITION2_ID")
+	private Integer position2;
+	
+	@Column(name = "POSITION3_ID")
+	private Integer position3;
+	
+	@Transient
+	private String position1Str;
+	
+	public String getPosition1Str() {
+		return position1Str;
+	}
+
+	public void setPosition1Str(String position1Str) {
+		this.position1Str = position1Str;
+	}
+
+	public String getPosition2Str() {
+		return position2Str;
+	}
+
+	public void setPosition2Str(String position2Str) {
+		this.position2Str = position2Str;
+	}
+
+	public String getPosition3Str() {
+		return position3Str;
+	}
+
+	public void setPosition3Str(String position3Str) {
+		this.position3Str = position3Str;
+	}
+
+	@Transient
+	private String position2Str;
+	
+	@Transient
+	private String position3Str;
+	
+
+	public Integer getPosition1() {
+		return position1;
+	}
+
+	public void setPosition1(Integer position1) {
+		this.position1 = position1;
+	}
+
+	public Integer getPosition2() {
+		return position2;
+	}
+
+	public void setPosition2(Integer position2) {
+		this.position2 = position2;
+	}
+
+	public Integer getPosition3() {
+		return position3;
+	}
+
+	public void setPosition3(Integer position3) {
+		this.position3 = position3;
+	}
+
+	public String getApplyDateStr() {
+		return applyDateStr;
+	}
+
+	public void setApplyDateStr(String applyDateStr) {
+		this.applyDateStr = applyDateStr;
+	}
 
 	public String getEmail() {
 		return email;

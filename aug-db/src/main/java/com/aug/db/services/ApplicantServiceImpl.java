@@ -8,7 +8,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.entities.Applicant;
+import com.aug.db.entities.Position;
 import com.aug.db.repositories.ApplicantRepository;
+import com.aug.db.repositories.PositionRepository;
 
 @Service(value = "applicantService")
 @Transactional
@@ -16,6 +18,9 @@ public class ApplicantServiceImpl implements ApplicantService {
 	
 	@Autowired
 	private ApplicantRepository applicantRepository;
+	
+	@Autowired
+	private PositionRepository positionRepository;
 	
 	@Override
 	public Applicant findById(Integer id) {
@@ -56,6 +61,14 @@ public class ApplicantServiceImpl implements ApplicantService {
 	@Override
 	public List<ApplicantDTO> findByPosition(String position) {
 		List<ApplicantDTO> applicants = applicantRepository.findByPosition(position);
+		for(ApplicantDTO appl : applicants){
+			String position1 = positionRepository.findById(appl.getPosition1()).getPositionName();
+			String position2 = positionRepository.findById(appl.getPosition2()).getPositionName();	
+			String position3 = positionRepository.findById(appl.getPosition3()).getPositionName();	
+			appl.setPosition1Str(position1);
+			appl.setPosition2Str(position2);
+			appl.setPosition3Str(position3);
+		}
 		return applicants;
 	}
 }
