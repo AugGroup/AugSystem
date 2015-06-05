@@ -41,5 +41,7 @@ public class AugRequestController implements Serializable {
         public  @ResponseBody Object findAllRequest(){
             return new Object () { public List<AugRequest> data = augRequestService.findAll(); };
         }
+        
+    
     
 }

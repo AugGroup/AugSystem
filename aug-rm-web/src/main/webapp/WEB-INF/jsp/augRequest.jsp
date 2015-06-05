@@ -28,14 +28,14 @@
                     
                     ajax: {
                             type: "GET",
-                            url: '${pageContext.request.contextPath}/findAllRequest',
-                            data: function (d) {
-                                $("#id").val(d.id);
-                                $("#requestDate").val(d.requestDate);
-                                $("#positionName").val(d.positionName);
-                                $("#numberApplicant").val(d.numberApplicant);
-                                $("#status").val(d.status);
-                             }
+                            url: '${pageContext.request.contextPath}/findAllApprove'
+//                            data: function (d) {
+//                                $("#id").val(d.id);
+//                                $("#requestDate").val(d.requestDate);
+//                                $("#positionName").val(d.positionName);
+//                                $("#numberApplicant").val(d.numberApplicant);
+//                                $("#status").val(d.status);
+//                             }
                                 
                            },
                     columns : [
@@ -44,42 +44,40 @@
                           {"data" : "requesterName"},
                           {"data" : "positionName"},
                           {"data" : "numberApplicant"},
-                          {"data" : "status"},
-                          {data: function (data) {
+                          {
+                           "data" : null,
+                           "defaultContent" : "<select id='valueItems' >"
+                            + "<option value ='0' selected ='selected'>New</option>"
+                            + "<option value ='1'>Submit</option></select>"
+    
+                            },
+                          {data: function () {
                             return '<button id="sendBtn" class="btn btn-primary btn-success">Send <span class="glyphicon glyphicon-send"></span></button>';
-                           }},
-                          {data: function (data){ 
-                           return '<button id="previewBtn" class="btn btn-primary btn-primary">Preview <span class="glyphicon glyphicon-search"></span></button>';   
-                           }}
-                      ]  
+                           }}     
+                      ] 
             
                 });
                 
             });
             
-          
-            
           </script>  
 
-          <center><h1>Request Candidate</h1></center>>
+          <center><h1>Request Candidate</h1></center>
          <table id="requestTable" class="cell-border" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Request Doc. ID</th>
                     <th>Date Request</th>
                     <th>Requester</th>
-                    <th>Positon</th>
+                    <th>Position</th>
                     <th>Number of Applicant</th>
                     <th>Status</th>
-                    <th>Send</th>
                     <th>Preview</th>
             
                 </tr>
             </thead>
-        </table>
-        <button type="button" class="btn btn-primary btn-small" data-toggle="modal" data-target="#addModal">
-            Request
-        </button>
+         </table>
+        <center><button id="addReqBtn"class="btn btn-primary btn-info" data-toggle="modal" data-target="#addModal"> Request <span class="glyphicon glyphicon-plus-sign"></span></button></center>
         <!--add Modal--> 
         <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -91,22 +89,38 @@
                     <div class="modal-body">
                         <form id="form" name="form" >   
                             <div class="form-group">
-                            <label for="requesterName">Requester</label>
-                            <input type="text" class="form-control" name="requesterName" id="requesterName" />
+                                <label for="requesterName">Requester</label>
+                                <input type="text" class="form-control" name="requesterName" id="requesterName" />
                             </div>
-                            Position :  <input name="position" id="position"/><br>
-                            Number of Applicant :   <input name="numberApplicant" id="numberApplicant" placeholder="Number of Applicant" /><br>
-                            Specific Skill : <input name="specificSkill" id="specificSkill" /><br>
-                            Year Experience : <input name="yearExperience" id="yearExperience" /><br>
+                            <div class="form-group">
+                                <label for="position">Position</label> 
+                                <select name="position" id="position" class="form-control">
+                                    <c:forEach items="${position}" var="position">
+                                    <option value="${position.id}">${position.positionName }</option>
+                                </c:forEach>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="numberApplicant">Number of Applicant</label>
+                                <input type="text" class="form-control" name="numberApplicant" id="numberApplicant" placeholder="Enter Number of Applicant" />
+                            </div>
+                            <div class="form-group">
+                                <label for="specificSkill">Specific Skill </label>
+                                <textarea type="text" class="form-control" name="specificSkill" id="specificSkill" placeholder="Enter Specific Skill"></textarea>
+                            </div>
+                            <div class="form-group">
+                              <label for="specificSkill">Year Experience</label>  
+                              <input type="text" class="form-control" name="yearExperience" id="yearExperience" placeholder="Enter Year Experience"/>
+                            </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                    <input id="buttonSaveReq" type="button" value="Save" class="btn btn-primary"/>
+                                    <button id="buttonSaveReq" class="btn btn-primary btn-success">Save  <span class="glyphicon glyphicon-floppy-save"></span></button>
                                 </div>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-        </div> 
+        
 
 
