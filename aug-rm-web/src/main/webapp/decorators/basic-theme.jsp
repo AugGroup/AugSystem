@@ -39,21 +39,34 @@
 <script
 	src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
 </head>
-<body>
-	<div class="container">
+<body  >
+	<div class="head">
 		<img
 			src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png"
 			alt="logo" style="width: 600px; height: 250px;" />
 	</div>
 	<hr />
-	<decorator:body />
-
-
+	<div class="body" >
+		<!-- <div class="col-md-9 text-right">
+			<ul class="nav nav-tabs" role="navigation">
+				<li class="active"><a data-toggle="tab" href="login">Login</a></li>
+				<li><a data-toggle="tab" href="main_applicant"><span
+						class="glyphicon glyphicon-home"></span> Main Applicant</a></li>
+				<li><a data-toggle="tab" href="application"><span
+						class="glyphicon glyphicon-education"></span> Appllication</a></li>
+			</ul>
+		</div> -->
+	</div>
+	</div>
+	<div>
+		<decorator:body />
+	</div>
+	</div>
 	<hr />
 
 	<div id="footer">
 		<div class="container">
-			<p class="text-muted credit">Copyright © augmentis.co.th</p>
+			<p class="text-muted credit">Copyright © augmentis.biz </p>
 		</div>
 	</div>
 
