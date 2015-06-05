@@ -30,6 +30,7 @@
 		<mapping class="com.aug.db.entities.Languages"/>
 		<mapping class="com.aug.db.entities.Position"/>
 		<mapping class="com.aug.db.entities.Reference"/>
+		<mapping class="com.aug.db.entities.Login"/>
         <!--<mapping package="com.aug.db.entities"/>-->
 
 
