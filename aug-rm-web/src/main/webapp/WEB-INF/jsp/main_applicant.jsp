@@ -4,6 +4,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%><html>
 
+
+
+<style type="text/css">
+
+#search_row{
+	margin: 30px;
+}
+
+</style>
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var dtApplicant
@@ -20,8 +30,6 @@
 							type : 'GET',
 							data : function(d){
 								d.position = $('#inputSearch').val();
-								
-								
 							},
 						},
 						columns:[{'data': "code"},
@@ -32,17 +40,26 @@
 						         {'data' : "position3Str"},
 						         {'data' : "trackingStatus"},
 						         { data : function(data){
-						        	 return '<a href="#EditStatusModal" id="btn_table_edit"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
+						        	 return '<a href="#EditStatusModal" id="btn_table_edit data-id="'+data.id+ '"data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
 						        	 //data-id="'+data.id+'"
 						        	}},
-						        	{ data : function(data){
-							        	 return '<a href="#" id="btn_table_edit"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
-							        	 //data-id="'+data.id+'"
-							        	}}
+						         { data : function(data){
+						        	 return '<a href="#" id="btn_table_edit"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
+						        	 }}
 						        ]
 					});
 				}
 			});
+			
+			//Call application.jsp
+			$("#btn_add").on("click", function(){
+				$.ajax({
+					url : "${pageContext.request.contextPath}/callCreate",
+					type : "GET",
+				
+				});
+			});
+			
 			
 			
 		});
@@ -52,19 +69,19 @@
 	
 	<div class="container">
 		<!--Input text for Search Applicant -->
-		<div class="row">
-			<div class="col-lg-9"></div>
-			<div class="col-lg-3">
+		<div class="row" id="search_row">
+			<div class="col-lg-8"></div>
+			<div class="col-lg-4">
 				<div class="input-group">
-					<input type="text" class="form-control" id="inputSearch" placeholder="Search ?"/>
+					<input type="text" class="form-control" id="inputSearch" placeholder="- Enter position -"/>
 					<span class="input-group-btn">
-						<button class="btn btn-default" id="btn_search" type="button"> Search </button>
+						<a href="#" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> Search</a>					
 					</span>
 				</div>
 			</div>
 		</div>
 		<!--Data Table for Applicant List -->		
-		<div class="row">
+		<div class="row" id="dataTable_row">
 			<div class="col-lg-12">
 				<table id="dataTable" class="cell-border" cellspacing="0" width="90%">
 					<thead>
@@ -86,12 +103,11 @@
 		<div class="row">
 			<div class="col-lg-6"></div>
 			<div class="col-lg-6">
-				<a href="#" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New Applicant</a>
+				<button type="button" id="btn_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New Applicant</a>
 			</div>
 		</div>
 		
-		<!-- Modal -->	
-		<a href="#EditStatusModal" id="btn_register" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-plus-sign"></span> Edit Status </a>
+		<!-- Modal of Edit Status and Score-->	
 		<div id="EditStatusModal" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
