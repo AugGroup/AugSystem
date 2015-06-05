@@ -14,7 +14,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.entities.Applicant;
+import com.aug.db.entities.Login;
 import com.aug.db.services.ApplicantService;
+import com.aug.db.services.LoginService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:spring-bean-db-test.xml")
@@ -23,6 +25,9 @@ public class ApplicantTest {
 	
 	@Autowired
 	private ApplicantService applicantService;
+	
+	@Autowired
+	private LoginService loginService;
 
 	@Test
 	@Rollback(value = false)
