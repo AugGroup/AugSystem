@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Index;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -103,14 +105,17 @@ public class Applicant {
 	private String noticeOther;
 	
 	@ManyToOne
+	@Index(name = "position1Index")
 	@JoinColumn(name = "POSITION1_ID", referencedColumnName="id")
 	private Position position1;
 	
 	@ManyToOne
+	@Index(name = "position2Index")
 	@JoinColumn(name = "POSITION2_ID", referencedColumnName="id")
 	private Position position2;
 	
 	@ManyToOne
+	@Index(name = "position3Index")
 	@JoinColumn(name = "POSITION3_ID", referencedColumnName="id")
 	private Position position3;
 	

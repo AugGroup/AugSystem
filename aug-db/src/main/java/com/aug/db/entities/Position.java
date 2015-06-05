@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Index;
+
 @Entity
 @Table(name = "POSITION")
 public class Position {
@@ -19,8 +21,11 @@ public class Position {
 	@GeneratedValue
 	@Column(name = "ID")
 	private Integer id;
+
+	@Index(name = "positionNameIndex")
 	@Column(name = "POSITION_NAME")
 	private String positionName;
+
 	@Column(name = "POSITON_CODE")
 	private String positionCode;
 
