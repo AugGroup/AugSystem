@@ -16,7 +16,10 @@ $(document).ready(function() {
             userName: "required",
             password: {
                 required: true,
-                minlength: 5
+                minlength: 5,
+                remote: {
+                	
+                }
             }
         },
         messages: {
@@ -25,7 +28,8 @@ $(document).ready(function() {
             },
             password: {
                 required: "Please enter a password",
-                minlength: "Your password must be at least 5 characters"
+                minlength: "Your password must be at least 5 characters",
+                remote: "Username or Password is not correct"
         	}
         },
     });
@@ -37,8 +41,18 @@ $(document).ready(function() {
 	function login(){
 		if($('#form').valid()){
 			var userName = 	$('#userName').val();
+			var password = $('#password').val();
 			var json = {"userName" : userName,
 						"password" : password};
+			$.ajax({
+				url : "${pageContext.request.contextPath}/applicant/login",
+				type : "GET",
+				contentType:"application/json; charset=utf-8",
+				data: JSON.stringify(json),
+				success : function(){
+				}
+			});
+		
 		};
 	};
 });
@@ -46,8 +60,6 @@ $(document).ready(function() {
 	<h1>Log-In</h1>
 
 	<div class="container">
-		<img src="${pageContext.servletContext.contextPath}/static/resources/images/p_logo.png" alt="Image Error">
-		
 		<form class="form-inline" name="form" id="form" action="${pageContext.request.contextPath}/applicant" method="post">
 		
 			<div class="form-group">
