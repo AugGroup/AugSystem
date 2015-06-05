@@ -2,6 +2,7 @@ package com.aug.db.services;
 
 import java.util.List;
 
+import com.aug.db.dto.LoginDTO;
 import com.aug.db.entities.Login;
 
 public interface LoginService {
@@ -17,5 +18,7 @@ public interface LoginService {
 	public void delete(Login login);
 	
 	public List<Login> findAll();
+	
+	public List<LoginDTO> findByUserName(String userName, String password);
 
 }
