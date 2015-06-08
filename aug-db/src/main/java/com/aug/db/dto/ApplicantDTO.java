@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 		+ "null as EMERGENCY_ADDRESS, null as NOTICE_NEWSPAPER, null as NOTICE_MAGAZINE, null as NOTICE_FRIEND, null as NOTICE_WEBSITE, null as NOTICE_OTHER, null as CERTIFICATE,"
 		+ "null as EXPECTED_SALARY, null as CARD_ID, null as CARD_ISSUED_OFFICE, null as CARD_EXPIRY_DATE, null as MILITARY_FROM_YEAR, null as MILITARY_TO_YEAR, null as MILITARY_PLACE,"
 		+ "null as MILITARY_SERVICE_NO, null as MILITARY_REASON, null as MILITARY_STATUS, null as MARRITAL_STATUS_NAME, null as NUMBER_OF_CHILDREN, null as SPOUSE_NAME,"
-		+ "null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as SCORE, null as TECH_SCORE, null as ATTITUDE_HOME, null as ATTITUDE_HOME"
+		+ "null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as SCORE, null as TECH_SCORE, null as ATTITUDE_HOME, null as ATTITUDE_OFFICE,"
 		+ " a.APPLICANT_ID, a.APPLICANT_CODE, a.FIRSTNAME_EN, a.LASTNAME_EN, a.TEL, a.EMAIL, a.APPLY_DATE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.TRACKING_STATUS, p.POSITION_NAME, p.ID "
 		+ " FROM APPLICANT a JOIN POSITION p ON a.POSITION1_ID = p.ID OR a.POSITION2_ID = p.ID OR a.POSITION3_ID = p.ID WHERE p.POSITION_NAME like :POSITION ", resultClass = ApplicantDTO.class),
 			
@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 		+ "null as EMERGENCY_ADDRESS, null as NOTICE_NEWSPAPER, null as NOTICE_MAGAZINE, null as NOTICE_FRIEND, null as NOTICE_WEBSITE, null as NOTICE_OTHER, null as CERTIFICATE,"
 		+ "null as EXPECTED_SALARY, null as CARD_ID, null as CARD_ISSUED_OFFICE, null as CARD_EXPIRY_DATE, null as MILITARY_FROM_YEAR, null as MILITARY_TO_YEAR, null as MILITARY_PLACE,"
 		+ "null as MILITARY_SERVICE_NO, null as MILITARY_REASON, null as MILITARY_STATUS, null as MARRITAL_STATUS_NAME, null as NUMBER_OF_CHILDREN, null as SPOUSE_NAME,"
-		+ "null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as SCORE, null as TECH_SCORE, null as ATTITUDE_HOME, null as ATTITUDE_HOME"
+		+ "null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as SCORE, null as TECH_SCORE, null as ATTITUDE_HOME, null as ATTITUDE_OFFICE,"
 		+ " a.APPLICANT_ID, a.APPLICANT_CODE, a.FIRSTNAME_EN, a.LASTNAME_EN, a.TEL, a.EMAIL, a.APPLY_DATE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.TRACKING_STATUS, p.POSITION_NAME, p.ID "
 		+ " FROM APPLICANT a LEFT JOIN POSITION p ON a.POSITION1_ID = p.ID ORDER BY APPLICANT_ID ASC LIMIT 0,50", resultClass = ApplicantDTO.class)})
 public class ApplicantDTO {
@@ -177,8 +177,11 @@ public class ApplicantDTO {
 	@Column(name = "TECH_SCORE")
 	private String techScore;
 
-	@Column(name = "ATTITUDE")
-	private String attitude;
+	@Column(name = "SCORE")
+	private String score;
+	
+	@Column(name = "ATTITUDE_HOME")
+	private String attitudeHome;
 
 	@Column(name = "POSITION1_ID")
 	private Integer position1;
@@ -278,12 +281,21 @@ public class ApplicantDTO {
 		this.techScore = techScore;
 	}
 
-	public String getAttitude() {
-		return attitude;
+
+	public String getScore() {
+		return score;
 	}
 
-	public void setAttitude(String attitude) {
-		this.attitude = attitude;
+	public void setScore(String score) {
+		this.score = score;
+	}
+
+	public String getAttitudeHome() {
+		return attitudeHome;
+	}
+
+	public void setAttitudeHome(String attitudeHome) {
+		this.attitudeHome = attitudeHome;
 	}
 
 	public String getPositionName() {

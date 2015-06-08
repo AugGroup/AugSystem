@@ -187,30 +187,7 @@ public class Applicant {
 	
 	@Column(name = "ATTITUDE_HOME")
 	private String attitudeHome;
-	
-	public String getScore() {
-		return score;
-	}
 
-	public void setScore(String score) {
-		this.score = score;
-	}
-
-	public String getAttitudeHome() {
-		return attitudeHome;
-	}
-
-	public void setAttitudeHome(String attitudeHome) {
-		this.attitudeHome = attitudeHome;
-	}
-
-	public String getAttitudeOffice() {
-		return attitudeOffice;
-	}
-
-	public void setAttitudeOffice(String attitudeOffice) {
-		this.attitudeOffice = attitudeOffice;
-	}
 
 	@Column(name = "ATTITUDE_OFFICE")
 	private String attitudeOffice;
@@ -709,6 +686,31 @@ public class Applicant {
 
 	public void setTechScore(String techScore) {
 		this.techScore = techScore;
+	}
+	
+	
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
+	}
+
+	public String getAttitudeHome() {
+		return attitudeHome;
+	}
+
+	public void setAttitudeHome(String attitudeHome) {
+		this.attitudeHome = attitudeHome;
+	}
+
+	public String getAttitudeOffice() {
+		return attitudeOffice;
+	}
+
+	public void setAttitudeOffice(String attitudeOffice) {
+		this.attitudeOffice = attitudeOffice;
 	}
 	
 	
