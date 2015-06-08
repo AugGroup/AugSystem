@@ -13,13 +13,22 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @NamedNativeQueries({ @NamedNativeQuery(name = "SEARCH_APPLICANT", query = " SELECT null as FIRSTNAME_TH, null as LASTNAME_TH, null as NICKNAME_TH, null as NICKNAME_EN, "
-		+ "null as BIRTHDATE, null as AGE, null as HEIGHT, null as WEIGHT, null as RELIGION, null as NATIONALITY, null as APPLICANT_STATUS, null as EMERGENCY_NAME, null as EMERGENCY_TEL,"
+		+ "null as BIRTHDATE, null as AGE, null as HEIGHT, null as WEIGHT, null as SEX, null as RELIGION, null as NATIONALITY, null as APPLICANT_STATUS, null as null as EMERGENCY_NAME, null as EMERGENCY_TEL,"
 		+ "null as EMERGENCY_ADDRESS, null as NOTICE_NEWSPAPER, null as NOTICE_MAGAZINE, null as NOTICE_FRIEND, null as NOTICE_WEBSITE, null as NOTICE_OTHER, null as CERTIFICATE,"
 		+ "null as EXPECTED_SALARY, null as CARD_ID, null as CARD_ISSUED_OFFICE, null as CARD_EXPIRY_DATE, null as MILITARY_FROM_YEAR, null as MILITARY_TO_YEAR, null as MILITARY_PLACE,"
 		+ "null as MILITARY_SERVICE_NO, null as MILITARY_REASON, null as MILITARY_STATUS, null as MARRITAL_STATUS_NAME, null as NUMBER_OF_CHILDREN, null as SPOUSE_NAME,"
-		+ "null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as TECH_SCORE, null as ATTITUDE,"
+		+ "null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as SCORE, null as TECH_SCORE, null as ATTITUDE_HOME, null as ATTITUDE_HOME"
 		+ " a.APPLICANT_ID, a.APPLICANT_CODE, a.FIRSTNAME_EN, a.LASTNAME_EN, a.TEL, a.EMAIL, a.APPLY_DATE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.TRACKING_STATUS, p.POSITION_NAME, p.ID "
-		+ " FROM APPLICANT a JOIN POSITION p ON a.POSITION1_ID = p.ID OR a.POSITION2_ID = p.ID OR a.POSITION3_ID = p.ID WHERE p.POSITION_NAME like :POSITION ", resultClass = ApplicantDTO.class) })
+		+ " FROM APPLICANT a JOIN POSITION p ON a.POSITION1_ID = p.ID OR a.POSITION2_ID = p.ID OR a.POSITION3_ID = p.ID WHERE p.POSITION_NAME like :POSITION ", resultClass = ApplicantDTO.class),
+			
+		@NamedNativeQuery(name = "SEARCH_ALL", query = "SELECT null as FIRSTNAME_TH, null as LASTNAME_TH, null as NICKNAME_TH, null as NICKNAME_EN, "
+		+ "null as BIRTHDATE, null as AGE, null as HEIGHT, null as WEIGHT, null as SEX, null as RELIGION, null as NATIONALITY, null as APPLICANT_STATUS, null as EMERGENCY_NAME, null as EMERGENCY_TEL,"
+		+ "null as EMERGENCY_ADDRESS, null as NOTICE_NEWSPAPER, null as NOTICE_MAGAZINE, null as NOTICE_FRIEND, null as NOTICE_WEBSITE, null as NOTICE_OTHER, null as CERTIFICATE,"
+		+ "null as EXPECTED_SALARY, null as CARD_ID, null as CARD_ISSUED_OFFICE, null as CARD_EXPIRY_DATE, null as MILITARY_FROM_YEAR, null as MILITARY_TO_YEAR, null as MILITARY_PLACE,"
+		+ "null as MILITARY_SERVICE_NO, null as MILITARY_REASON, null as MILITARY_STATUS, null as MARRITAL_STATUS_NAME, null as NUMBER_OF_CHILDREN, null as SPOUSE_NAME,"
+		+ "null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as SCORE, null as TECH_SCORE, null as ATTITUDE_HOME, null as ATTITUDE_HOME"
+		+ " a.APPLICANT_ID, a.APPLICANT_CODE, a.FIRSTNAME_EN, a.LASTNAME_EN, a.TEL, a.EMAIL, a.APPLY_DATE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.TRACKING_STATUS, p.POSITION_NAME, p.ID "
+		+ " FROM APPLICANT a LEFT JOIN POSITION p ON a.POSITION1_ID = p.ID ORDER BY APPLICANT_ID ASC LIMIT 0,50", resultClass = ApplicantDTO.class)})
 public class ApplicantDTO {
 
 	@Column(name = "POSITION_NAME")
@@ -62,6 +71,9 @@ public class ApplicantDTO {
 	@Column(name = "WEIGHT")
 	private Integer weight;
 
+	@Column(name = "SEX")
+	private String sex;
+
 	@Column(name = "RELIGION")
 	private String religion;
 
@@ -78,7 +90,7 @@ public class ApplicantDTO {
 	private String ApplicantStatus;
 
 	@Column(name = "APPLY_DATE")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone="GMT")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
 	private Date applyDate;
 
 	@Transient
@@ -167,19 +179,29 @@ public class ApplicantDTO {
 
 	@Column(name = "ATTITUDE")
 	private String attitude;
-	
+
 	@Column(name = "POSITION1_ID")
 	private Integer position1;
-	
+
 	@Column(name = "POSITION2_ID")
 	private Integer position2;
-	
+
 	@Column(name = "POSITION3_ID")
 	private Integer position3;
-	
+
 	@Transient
 	private String position1Str;
-	
+
+	@Transient
+	private String position2Str;
+
+	@Transient
+	private String position3Str;
+
+	public Integer getPosition1() {
+		return position1;
+	}
+
 	public String getPosition1Str() {
 		return position1Str;
 	}
@@ -202,17 +224,6 @@ public class ApplicantDTO {
 
 	public void setPosition3Str(String position3Str) {
 		this.position3Str = position3Str;
-	}
-
-	@Transient
-	private String position2Str;
-	
-	@Transient
-	private String position3Str;
-	
-
-	public Integer getPosition1() {
-		return position1;
 	}
 
 	public void setPosition1(Integer position1) {
@@ -377,6 +388,14 @@ public class ApplicantDTO {
 
 	public void setWeight(Integer weight) {
 		this.weight = weight;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 
 	public String getReligion() {

@@ -71,4 +71,19 @@ public class ApplicantServiceImpl implements ApplicantService {
 		}
 		return applicants;
 	}
+	
+	
+	@Override
+	public List<ApplicantDTO> findAllApplicant() {
+		List<ApplicantDTO> applicants = applicantRepository.findAllApplicant();
+		for(ApplicantDTO appl : applicants){
+			String position1 = positionRepository.findById(appl.getPosition1()).getPositionName();
+			String position2 = positionRepository.findById(appl.getPosition2()).getPositionName();	
+			String position3 = positionRepository.findById(appl.getPosition3()).getPositionName();	
+			appl.setPosition1Str(position1);
+			appl.setPosition2Str(position2);
+			appl.setPosition3Str(position3);
+		}
+		return applicants;
+	}
 }

@@ -60,6 +60,18 @@ public class ApplicantController implements Serializable {
 		};
 	}
 	
+	// Search All
+		@RequestMapping(value = "/searchAll", method = { RequestMethod.GET })
+		public @ResponseBody Object searchAllApplicant() {
+			final List<ApplicantDTO> data = applicantService.findAllApplicant();
+
+			return new Object() {
+				public List<ApplicantDTO> getData() {
+					return data;
+				}
+			};
+		}
+	
 	//Edit Applicant Informations
 		@RequestMapping(value = "/Edit", method = {RequestMethod.POST})
 		public @ResponseBody Applicant editApplicantInfo(@RequestBody Applicant applicant,

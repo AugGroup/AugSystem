@@ -64,6 +64,9 @@ public class Applicant {
 	@Column(name = "WEIGHT")
 	private Integer weight;
 	
+	@Column(name = "SEX")
+	private String sex;
+	
 	@Column(name = "RELIGION")
 	private String religion;
 	
@@ -176,11 +179,41 @@ public class Applicant {
 	@Column(name = "OCCUPATION_MARRIAGE")
 	private String occupationMarriage;
 	
+	@Column(name = "SCORE")
+	private String score;
+	
 	@Column(name = "TECH_SCORE")
 	private String techScore;
 	
-	@Column(name = "ATTITUDE")
-	private String attitude;
+	@Column(name = "ATTITUDE_HOME")
+	private String attitudeHome;
+	
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
+	}
+
+	public String getAttitudeHome() {
+		return attitudeHome;
+	}
+
+	public void setAttitudeHome(String attitudeHome) {
+		this.attitudeHome = attitudeHome;
+	}
+
+	public String getAttitudeOffice() {
+		return attitudeOffice;
+	}
+
+	public void setAttitudeOffice(String attitudeOffice) {
+		this.attitudeOffice = attitudeOffice;
+	}
+
+	@Column(name = "ATTITUDE_OFFICE")
+	private String attitudeOffice;
 
 	@OneToMany(mappedBy = "applicant")
 	private List<Reference> references;
@@ -308,6 +341,15 @@ public class Applicant {
 	public void setWeight(Integer weight) {
 		this.weight = weight;
 	}
+	
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
 
 	public String getReligion() {
 		return religion;
@@ -668,14 +710,8 @@ public class Applicant {
 	public void setTechScore(String techScore) {
 		this.techScore = techScore;
 	}
-
-	public String getAttitude() {
-		return attitude;
-	}
 	
-	public void setAttitude(String attitude) {
-		this.attitude = attitude;
-	}
+	
 	
 	public String getPlaceBirth() {
 		return placeBirth;

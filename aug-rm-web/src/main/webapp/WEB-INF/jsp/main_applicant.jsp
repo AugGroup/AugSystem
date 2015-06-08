@@ -17,6 +17,28 @@
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var dtApplicant
+		 	//show all applicant
+			$('#dataTable').DataTable({
+				ajax : {url : '${pageContext.request.contextPath}/searchAll',
+						type : 'GET'},
+				columns:[{'data': "code"},
+						{'data': "applyDate"},
+						{'data' : "firstNameEN"},
+						{'data' : "position1Str"},
+						{'data' : "position2Str"},
+						{'data' : "position3Str"},
+						{'data' : "trackingStatus"},
+						{ data : function(data){
+							return '<a href="#EditStatusModal" id="btn_table_edit" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
+				        	 //data-id="'+data.id+'"
+						 }},
+						{ data : function(data){
+						       return '<a href="#" id="btn_table_edit"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
+						 }}
+					 ]
+				
+			}); 
+			
 			//Search and Show function 
 			$('#btn_search').on('click', function(){
 				if(dtApplicant){
@@ -40,7 +62,7 @@
 						         {'data' : "position3Str"},
 						         {'data' : "trackingStatus"},
 						         { data : function(data){
-						        	 return '<a href="#EditStatusModal" id="btn_table_edit data-id="'+data.id+ '"data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
+						        	 return '<a href="#EditStatusModal" id="btn_table_edit" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
 						        	 //data-id="'+data.id+'"
 						        	}},
 						         { data : function(data){
@@ -75,7 +97,7 @@
 				<div class="input-group">
 					<input type="text" class="form-control" id="inputSearch" placeholder="- Enter position -"/>
 					<span class="input-group-btn">
-						<a href="#" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> Search</a>					
+						<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> Search</a>					
 					</span>
 				</div>
 			</div>
@@ -108,6 +130,7 @@
 		</div>
 		
 		<!-- Modal of Edit Status and Score-->	
+		<!-- <a href="#EditStatusModal" id="btn_register" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-plus-sign"></span> Register </a> -->
 		<div id="EditStatusModal" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -118,7 +141,7 @@
 					<div class="modal-body">
 						<h5>Score Details</h5>
 						<form role="form" id="EditStatusForm">
-							<div class="form-group">
+							<div class="form-group" style="width:200px ">
 								<label for="inputScore">Score</label> 
 								<input type="text" class="form-control" id="inputScore" name="inputScore" placeholder="Enter score">
     						</div>
@@ -132,19 +155,29 @@
 								</label>
     						</div>
 							<div class="form-group">
-								<label for="inputScore">Attitude Score</label>
-    							<select name="inputScore" id="inputScore" class="form-control">
-    								<c:forEach items="${departments}" var="items">
-    									<option value="${items.deptId}">${items.dName }</option>
-    								</c:forEach>
-    							</select>
+								<label for="inputScore">Attitude Score : </label>
+    							<div class="form-group" class="form-inline" style="width: 400px" >
+									<div class="row">
+										<div class="col-lg-6">
+										<label for="inputScore">Home</label> 
+										<input type="text" class="form-control" id="inputAttitudeHome" name="inputAttitudeHome" placeholder="Enter score">  													
+										</div>
+										<div class="col-lg-6">
+									<label for="inputScore">Office</label> 
+									<input type="text" class="form-control" id="inputAttitudeOffice" name="inputAttitudeOffice" placeholder="Enter score">
+    							</div>
+    							</div>
+    							</div>
     						</div>
 							<div class="form-group">
-								<label for="inputStatus">Applicant Status</label>
+								<label for="inputStatus">Applicant Status : </label>
     							<select name="inputStatus" id="inputStatus" class="form-control">
-    								<c:forEach items="${departments}" var="items">
-    									<option value="${items.deptId}">${items.dName }</option>
-    								</c:forEach>
+    								<option value="Pending">Pending</option>
+    								<option value="Pending Test">Pending Test</option>
+    								<option value="Pending Interview">Pending Interview</option>
+    								<option value="Pending Approve">Pending Approve</option>
+    								<option value="Approve">Approve</option>
+    								<option value="Not Approve">Not Approve</option>
     							</select>
     						</div>
 						</form>

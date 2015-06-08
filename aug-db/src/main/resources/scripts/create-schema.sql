@@ -5,23 +5,15 @@
 
     alter table APPLICANT 
         drop 
-        foreign key FK29852EE27EA0E820;
-
-    alter table APPLICANT 
-        drop 
         foreign key FK29852EE27EA1D0DE;
 
     alter table APPLICANT 
         drop 
         foreign key FK29852EE27EA15C7F;
 
-    alter table APPLICANT_ADVERTISE 
+    alter table APPLICANT 
         drop 
-        foreign key FK757BAEEA6DBA8CB5;
-
-    alter table APPLICANT_ADVERTISE 
-        drop 
-        foreign key FK757BAEEAAA62BE95;
+        foreign key FK29852EE27EA0E820;
 
     alter table ATTACHFILE 
         drop 
@@ -61,11 +53,7 @@
 
     drop table if exists ADDRESS;
 
-    drop table if exists ADVERTISE;
-
     drop table if exists APPLICANT;
-
-    drop table if exists APPLICANT_ADVERTISE;
 
     drop table if exists ATTACHFILE;
 
@@ -101,12 +89,6 @@
         SUB_DISTRICT varchar(255),
         ZIPCODE integer,
         APPLICANT_ID integer,
-        primary key (ID)
-    );
-
-    create table ADVERTISE (
-        ID integer not null auto_increment,
-        ADVERTISE_NAME varchar(255),
         primary key (ID)
     );
 
@@ -153,6 +135,7 @@
         OCCUPATION_MARRIAGE varchar(255),
         PLACE_BIRTH varchar(255),
         RELIGION varchar(255),
+        SEX varchar(255),
         SPOUSE_NAME varchar(255),
         TECH_SCORE varchar(255),
         TEL varchar(255),
@@ -162,11 +145,6 @@
         POSITION2_ID integer,
         POSITION3_ID integer,
         primary key (APPLICANT_ID)
-    );
-
-    create table APPLICANT_ADVERTISE (
-        APPLICANT_ID integer not null,
-        ADVERTISE_ID integer not null
     );
 
     create table ATTACHFILE (
@@ -294,17 +272,11 @@
         foreign key (APPLICANT_ID) 
         references APPLICANT (APPLICANT_ID);
 
-    create index position3Index on APPLICANT (POSITION3_ID);
-
     create index position1Index on APPLICANT (POSITION1_ID);
 
     create index position2Index on APPLICANT (POSITION2_ID);
 
-    alter table APPLICANT 
-        add index FK29852EE27EA0E820 (POSITION1_ID), 
-        add constraint FK29852EE27EA0E820 
-        foreign key (POSITION1_ID) 
-        references POSITION (ID);
+    create index position3Index on APPLICANT (POSITION3_ID);
 
     alter table APPLICANT 
         add index FK29852EE27EA1D0DE (POSITION3_ID), 
@@ -318,17 +290,11 @@
         foreign key (POSITION2_ID) 
         references POSITION (ID);
 
-    alter table APPLICANT_ADVERTISE 
-        add index FK757BAEEA6DBA8CB5 (APPLICANT_ID), 
-        add constraint FK757BAEEA6DBA8CB5 
-        foreign key (APPLICANT_ID) 
-        references APPLICANT (APPLICANT_ID);
-
-    alter table APPLICANT_ADVERTISE 
-        add index FK757BAEEAAA62BE95 (ADVERTISE_ID), 
-        add constraint FK757BAEEAAA62BE95 
-        foreign key (ADVERTISE_ID) 
-        references ADVERTISE (ID);
+    alter table APPLICANT 
+        add index FK29852EE27EA0E820 (POSITION1_ID), 
+        add constraint FK29852EE27EA0E820 
+        foreign key (POSITION1_ID) 
+        references POSITION (ID);
 
     alter table ATTACHFILE 
         add index FKA7DE25416DBA8CB5 (APPLICANT_ID), 

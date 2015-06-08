@@ -14,6 +14,8 @@ public interface ApplicantService {
 	public List<Applicant> findAll();
 	
 	public List<ApplicantDTO> findByPosition(String position);
+	
+	public List<ApplicantDTO> findAllApplicant();
 
 	public void update(Applicant applicant);
 

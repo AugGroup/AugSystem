@@ -9,4 +9,6 @@ import com.aug.db.entities.Applicant;
 public interface ApplicantRepository extends GenericRepository<Applicant, Serializable> {
 
 	public List<ApplicantDTO> findByPosition(String position);
+	
+	public List<ApplicantDTO> findAllApplicant();
 }
