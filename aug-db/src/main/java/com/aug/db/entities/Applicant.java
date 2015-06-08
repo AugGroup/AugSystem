@@ -3,11 +3,14 @@ package com.aug.db.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -205,6 +208,10 @@ public class Applicant {
 	
 	@OneToMany(mappedBy = "applicant")
 	private List<Experience> experiences;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "APPLICANT_ADVERTISE", joinColumns = { @JoinColumn(name = "APPLICANT_ID") }, inverseJoinColumns = { @JoinColumn(name = "ADVERTISE_ID") })
+	private List<Advertise> advertise;
 
 	public Integer getId() {
 		return id;
@@ -677,4 +684,13 @@ public class Applicant {
 	public void setPlaceBirth(String placeBirth) {
 		this.placeBirth = placeBirth;
 	}
+
+	public List<Advertise> getAdvertise() {
+		return advertise;
+	}
+
+	public void setAdvertise(List<Advertise> advertise) {
+		this.advertise = advertise;
+	}
+
 }
