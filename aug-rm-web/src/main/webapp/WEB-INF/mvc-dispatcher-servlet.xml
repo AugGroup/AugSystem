@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:int="http://www.springframework.org/schema/integration"
 	xmlns:int-stream="http://www.springframework.org/schema/integration/stream"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:security="http://www.springframework.org/schema/security"
 	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -14,14 +15,13 @@
         http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 
-    <context:component-scan base-package="com.aug.db"/>
-    <context:component-scan base-package="com.aug.db.services"/>
-    <context:component-scan base-package="com.aug.db.repositories"/>
-    <context:component-scan base-package="com.aug.controllers"/>
-    
-    <mvc:annotation-driven enable-matrix-variables="true"/>
-    <mvc:resources mapping="/static/**" location="/"/>
+	<context:component-scan base-package="com.aug.db" />
+	<context:component-scan base-package="com.aug.db.services" />
+	<context:component-scan base-package="com.aug.db.repositories" />
+	<context:component-scan base-package="com.aug.controllers" />
 
+	<mvc:annotation-driven enable-matrix-variables="true" />
+	<mvc:resources mapping="/static/**" location="/" />
 
 	<!-- Declare the Interceptor -->
 	<mvc:interceptors>
@@ -33,7 +33,6 @@
 	<bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.SessionLocaleResolver" />
 
-
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> -->
@@ -42,8 +41,6 @@
 	</bean>
 
 	<tx:annotation-driven />
-
-
 
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
