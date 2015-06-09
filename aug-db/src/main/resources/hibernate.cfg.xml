@@ -32,6 +32,7 @@
 		<mapping class="com.aug.db.entities.Reference"/>
 		<mapping class="com.aug.db.entities.Login"/>
 		<mapping class="com.aug.db.entities.Advertise"/>
+		<mapping class="com.aug.db.entities.UserRoles"/>
         <!--<mapping package="com.aug.db.entities"/>-->
 
 

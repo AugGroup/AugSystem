@@ -72,3 +72,6 @@ VALUES ('Newspaper'),('Magazine'),('Website'),('Friend'),('Other');
 
 insert INTO APPLICANT_ADVERTISE(APPLICANT_ID,ADVERTISE_ID)
 VALUES ('1','2'),('1','3'),('2','3'),('3','4');
+
+insert INTO USER_ROLES(USERNAME,ROLE)
+VALUES ('rm','ROLE_ADMIN'),('rm2','ROLE_ADMIN');
