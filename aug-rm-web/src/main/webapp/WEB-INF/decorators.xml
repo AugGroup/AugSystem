@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <decorators defaultdir="/decorators">
 
-<excludes>
-		<pattern>/login</pattern>
-	</excludes> 
-
+	<!-- <excludes> <pattern></pattern> </excludes> -->
 	<decorator name="basic-theme" page="basic-theme.jsp">
 		<pattern>/*</pattern>
+		<excludes>
+			<pattern>/*login*</pattern>
+		</excludes>
+	</decorator>
+	<decorator name="basic-login" page="basic-login.jsp">
+		<pattern>/*login*</pattern>
 	</decorator>
 </decorators>

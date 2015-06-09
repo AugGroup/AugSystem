@@ -53,21 +53,21 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">Augmentis</a>
+					<a class="navbar-brand" href="${pageContext.request.contextPath}/">Augmentis</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Applicant</a></li>
-						<li><a href="#">Application</a></li>
-						<li><a href="#">Request</a></li>
-						<li><a href="#">Approve</a></li>
+						<li><a href="${pageContext.request.contextPath}/applicant">Applicant</a></li>
+						<li><a href="${pageContext.request.contextPath}/application">Application</a></li>
+						<li><a href="${pageContext.request.contextPath}/request">Request</a></li>
+						<li><a href="${pageContext.request.contextPath}/approve">Approve</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-user"></span>
+						<li><a href=""><span class="glyphicon glyphicon-user"></span>
 								UserName</a></li>
-						<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+						<li><a href="${pageContext.request.contextPath}/applicant/login"><span class="glyphicon glyphicon-log-in"></span>
 								Login</a></li>
-						<li><a href="#"><span class="glyphicon glyphicon-log-out"></span>
+						<li><a href=""><span class="glyphicon glyphicon-log-out"></span>
 								Logout</a></li>
 					</ul>
 				</div>

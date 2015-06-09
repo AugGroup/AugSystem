@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.entities.Applicant;
 import com.aug.db.entities.Department;
 import com.aug.db.entities.Position;
@@ -51,10 +52,15 @@ public class ApplicationController {
 
 	}
 	@RequestMapping(value = "/save",method ={ RequestMethod.POST })
-	public @ResponseBody Applicant save(@RequestBody Applicant applicant){
+	public @ResponseBody ApplicationDTO save(@RequestBody ApplicationDTO applicationDTO){
+		Applicant applicant = new Applicant(); 
 		
-		applicantService.create(applicant);
-		return applicantService.findById(applicant.getId());
+		applicantService.create(applicant.fromApplicationDTO(applicant, applicationDTO));
+		
+		
+		return applicationDTO;
+		
+		
 		
 	}
 	

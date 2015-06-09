@@ -71,8 +71,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 		}
 		return applicants;
 	}
-	
-	
+
 	@Override
 	public List<ApplicantDTO> findAllApplicant() {
 		List<ApplicantDTO> applicants = applicantRepository.findAllApplicant();
@@ -86,4 +85,5 @@ public class ApplicantServiceImpl implements ApplicantService {
 		}
 		return applicants;
 	}
+
 }

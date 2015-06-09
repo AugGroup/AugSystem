@@ -1,31 +1,33 @@
-package com.aug.db.entities;
+package com.aug.db.dto;
 
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Index;
 
-import com.aug.db.dto.ApplicationDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
-@Table(name = "APPLICANT")
-public class Applicant {
+@NamedNativeQueries({ @NamedNativeQuery(name = "DATA_APPLICANT", query = "SELECT FIRSTNAME_TH,FIRSTNAME_EN,LASTNAME_TH,LASTNAME_EN,NICKNAME_TH,NICKNAME_EN"
+		+ ",BIRTHDATE,PLACE_BIRTH,AGE,HEIGHT,WEIGHT,RELIGION,NATIONALITY,TEL,EMAIL,APPLY_DATE,EMERGENCY_NAME"
+		+ ",EMERGENCY_TEL,EMERGENCY_ADDRESS,NOTICE_NEWSPAPER,NOTICE_MAGAZINE,NOTICE_FRIEND,NOTICE_WEBSITE,NOTICE_OTHER"
+		+ ",CERTIFICATE,EXPECTED_SALARY,CARD_ID,CARD_ISSUED_OFFICE,CARD_EXPIRY_DATE,MILITARY_FROM_YEAR"
+		+ ",MILITARY_TO_YEAR,MILITARY_PLACE,MILITARY_SERVICE_NO,MILITARY_REASON,MILITARY_STATUS,MARRITAL_STATUS_NAME"
+		+ ",NUMBER_OF_CHILDREN,SPOUSE_NAME,MARRIAGE_CERTIFICATE_NO,ISSUE_OFFICE_MARRIAGE,OCCUPATION_MARRIAGE"+
+" FROM APPLICANT WHERE FIRSTNAME_TH = :FIRSTNAME_TH AND FIRSTNAME_EN = :FIRSTNAME_EN AND LASTNAME_TH = :LASTNAME_TH AND LASTNAME_EN = :LASTNAME_EN AND NICKNAME_TH = :NICKNAME_TH AND NICKNAME_EN = :NICKNAME_EN "
++ "AND BIRTHDATE = :BIRTHDATE AND PLACE_BIRTH = :PLACE_BIRTH AND AGE = :AGE AND HEIGHT = :HEIGHT AND WEIGHT = :WEIGHT AND RELIGION = :RELIGION AND NATIONALITY = :NATIONALITY AND TEL = :TEL "
++ "AND NATIONALITY = :NATIONALITY AND TEL", resultClass = ApplicationDTO.class) })
+public class ApplicationDTO {
+
+	@Column(name = "POSITION_NAME")
+	private String positionName;
 
 	@Id
-	@GeneratedValue
 	@Column(name = "APPLICANT_ID")
 	private Integer id;
 
@@ -52,7 +54,7 @@ public class Applicant {
 
 	@Column(name = "BIRTHDATE")
 	private Date birthDate;
-
+	
 	@Column(name = "PLACE_BIRTH")
 	private String placeBirth;
 
@@ -64,9 +66,6 @@ public class Applicant {
 
 	@Column(name = "WEIGHT")
 	private Integer weight;
-
-	@Column(name = "SEX")
-	private String sex;
 
 	@Column(name = "RELIGION")
 	private String religion;
@@ -81,11 +80,14 @@ public class Applicant {
 	private String email;
 
 	@Column(name = "APPLICANT_STATUS")
-	private String applicantStatus;
+	private String ApplicantStatus;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
 	@Column(name = "APPLY_DATE")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
 	private Date applyDate;
+
+	@Transient
+	private String applyDateStr;
 
 	@Column(name = "EMERGENCY_NAME")
 	private String emergencyName;
@@ -110,21 +112,6 @@ public class Applicant {
 
 	@Column(name = "NOTICE_OTHER")
 	private String noticeOther;
-
-	@ManyToOne
-	@Index(name = "position1Index")
-	@JoinColumn(name = "POSITION1_ID", referencedColumnName = "id")
-	private Position position1;
-
-	@ManyToOne
-	@Index(name = "position2Index")
-	@JoinColumn(name = "POSITION2_ID", referencedColumnName = "id")
-	private Position position2;
-
-	@ManyToOne
-	@Index(name = "position3Index")
-	@JoinColumn(name = "POSITION3_ID", referencedColumnName = "id")
-	private Position position3;
 
 	@Column(name = "TRACKING_STATUS")
 	private String trackingStatus;
@@ -180,50 +167,37 @@ public class Applicant {
 	@Column(name = "OCCUPATION_MARRIAGE")
 	private String occupationMarriage;
 
-	@Column(name = "SCORE")
-	private String score;
-	
 	@Column(name = "TECH_SCORE")
 	private String techScore;
-	
-	@Column(name = "ATTITUDE_HOME")
-	private String attitudeHome;
 
+	@Column(name = "ATTITUDE")
+	private String attitude;
 
-	@Column(name = "ATTITUDE_OFFICE")
-	private String attitudeOffice;
+	@Column(name = "POSITION1_ID")
+	private Integer position1;
 
+	@Column(name = "POSITION2_ID")
+	private Integer position2;
 
-	@OneToMany(mappedBy = "applicant")
-	private List<Reference> references;
+	@Column(name = "POSITION3_ID")
+	private Integer position3;
 
-	@OneToMany(mappedBy = "applicant")
-	private List<Family> families;
+	@Transient
+	private String position1Str;
 
-	@OneToMany(mappedBy = "applicant")
-	private List<AttachFile> attachFiles;
+	@Transient
+	private String position2Str;
 
-	@OneToMany(mappedBy = "applicant")
-	private List<AugEmployee> augEmployees;
+	@Transient
+	private String position3Str;
 
-	@OneToMany(mappedBy = "applicant")
-	private List<Languages> languages;
+	public String getPositionName() {
+		return positionName;
+	}
 
-	@OneToMany(mappedBy = "applicant")
-	private List<Address> address;
-
-	@OneToMany(mappedBy = "applicant")
-	private List<Education> educations;
-
-	@OneToMany(mappedBy = "applicant")
-	private List<Skill> skills;
-
-	@OneToMany(mappedBy = "applicant")
-	private List<Experience> experiences;
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "APPLICANT_ADVERTISE", joinColumns = { @JoinColumn(name = "APPLICANT_ID") }, inverseJoinColumns = { @JoinColumn(name = "ADVERTISE_ID") })
-	private List<Advertise> advertise;
+	public void setPositionName(String positionName) {
+		this.positionName = positionName;
+	}
 
 	public Integer getId() {
 		return id;
@@ -297,6 +271,14 @@ public class Applicant {
 		this.birthDate = birthDate;
 	}
 
+	public String getPlaceBirth() {
+		return placeBirth;
+	}
+
+	public void setPlaceBirth(String placeBirth) {
+		this.placeBirth = placeBirth;
+	}
+
 	public Integer getAge() {
 		return age;
 	}
@@ -320,15 +302,6 @@ public class Applicant {
 	public void setWeight(Integer weight) {
 		this.weight = weight;
 	}
-	
-	public String getSex() {
-		return sex;
-	}
-
-	public void setSex(String sex) {
-		this.sex = sex;
-	}
-
 
 	public String getReligion() {
 		return religion;
@@ -363,11 +336,11 @@ public class Applicant {
 	}
 
 	public String getApplicantStatus() {
-		return applicantStatus;
+		return ApplicantStatus;
 	}
 
 	public void setApplicantStatus(String applicantStatus) {
-		this.applicantStatus = applicantStatus;
+		ApplicantStatus = applicantStatus;
 	}
 
 	public Date getApplyDate() {
@@ -376,6 +349,14 @@ public class Applicant {
 
 	public void setApplyDate(Date applyDate) {
 		this.applyDate = applyDate;
+	}
+
+	public String getApplyDateStr() {
+		return applyDateStr;
+	}
+
+	public void setApplyDateStr(String applyDateStr) {
+		this.applyDateStr = applyDateStr;
 	}
 
 	public String getEmergencyName() {
@@ -440,30 +421,6 @@ public class Applicant {
 
 	public void setNoticeOther(String noticeOther) {
 		this.noticeOther = noticeOther;
-	}
-
-	public Position getPosition1() {
-		return position1;
-	}
-
-	public void setPosition1(Position position1) {
-		this.position1 = position1;
-	}
-
-	public Position getPosition2() {
-		return position2;
-	}
-
-	public void setPosition2(Position position2) {
-		this.position2 = position2;
-	}
-
-	public Position getPosition3() {
-		return position3;
-	}
-
-	public void setPosition3(Position position3) {
-		this.position3 = position3;
 	}
 
 	public String getTrackingStatus() {
@@ -610,78 +567,6 @@ public class Applicant {
 		this.occupationMarriage = occupationMarriage;
 	}
 
-	public List<Reference> getReferences() {
-		return references;
-	}
-
-	public void setReferences(List<Reference> references) {
-		this.references = references;
-	}
-
-	public List<Family> getFamilies() {
-		return families;
-	}
-
-	public void setFamilies(List<Family> families) {
-		this.families = families;
-	}
-
-	public List<AttachFile> getAttachFiles() {
-		return attachFiles;
-	}
-
-	public void setAttachFiles(List<AttachFile> attachFiles) {
-		this.attachFiles = attachFiles;
-	}
-
-	public List<AugEmployee> getAugEmployees() {
-		return augEmployees;
-	}
-
-	public void setAugEmployees(List<AugEmployee> augEmployees) {
-		this.augEmployees = augEmployees;
-	}
-
-	public List<Languages> getLanguages() {
-		return languages;
-	}
-
-	public void setLanguages(List<Languages> languages) {
-		this.languages = languages;
-	}
-
-	public List<Address> getAddress() {
-		return address;
-	}
-
-	public void setAddress(List<Address> address) {
-		this.address = address;
-	}
-
-	public List<Education> getEducations() {
-		return educations;
-	}
-
-	public void setEducations(List<Education> educations) {
-		this.educations = educations;
-	}
-
-	public List<Skill> getSkills() {
-		return skills;
-	}
-
-	public void setSkills(List<Skill> skills) {
-		this.skills = skills;
-	}
-
-	public List<Experience> getExperiences() {
-		return experiences;
-	}
-
-	public void setExperiences(List<Experience> experiences) {
-		this.experiences = experiences;
-	}
-
 	public String getTechScore() {
 		return techScore;
 	}
@@ -689,58 +574,202 @@ public class Applicant {
 	public void setTechScore(String techScore) {
 		this.techScore = techScore;
 	}
+
+	public String getAttitude() {
+		return attitude;
+	}
+
+	public void setAttitude(String attitude) {
+		this.attitude = attitude;
+	}
+
+	public Integer getPosition1() {
+		return position1;
+	}
+
+	public void setPosition1(Integer position1) {
+		this.position1 = position1;
+	}
+
+	public Integer getPosition2() {
+		return position2;
+	}
+
+	public void setPosition2(Integer position2) {
+		this.position2 = position2;
+	}
+
+	public Integer getPosition3() {
+		return position3;
+	}
+
+	public void setPosition3(Integer position3) {
+		this.position3 = position3;
+	}
+
+	public String getPosition1Str() {
+		return position1Str;
+	}
+
+	public void setPosition1Str(String position1Str) {
+		this.position1Str = position1Str;
+	}
+
+	public String getPosition2Str() {
+		return position2Str;
+	}
+
+	public void setPosition2Str(String position2Str) {
+		this.position2Str = position2Str;
+	}
+
+	public String getPosition3Str() {
+		return position3Str;
+	}
+
+	public void setPosition3Str(String position3Str) {
+		this.position3Str = position3Str;
+	}
+
+/*	@Column(name = "HOUSE_NO")
+	private String houseNo;
+
+	@Column(name = "ROAD")
+	private String road;
+
+	@Column(name = "DISTRICT")
+	private String district;
+
+	@Column(name = "SUB_DISTRICT")
+	private String subDistrict;
+
+	@Column(name = "ZIPCODE")
+	private int zipcode;
+
+	@Column(name = "PROVINCE")
+	private String province;
+
+	@Column(name = "ADDRESS_TYPE")
+	private String addressType;
+
+	@Column(name = "ADVERTISE_NAME")
+	private String advertiseName;
+
+	@Column(name = "ATTACH_NAME")
+	private String attachName;
+	
+	@Column(name = "TYPE")
+	private String type;
+	
+	@Column(name = "PATH")
+	private String path;
+	
+	@Column(name = "ATTACH_TYPE_FILE")
+	private String attachTypeFile;
+	
+	@Column(name="DEPARTMENT_NAME")
+	private String departmentName;
+	
+	@Column(name="DEPARTMENT_CODE")
+	private String departmentCode;
+	
+	@Column(name = "SCHOOL_NAME")
+	private String schoolName;
+
+	@Column(name = "DEGREE")
+	private String degree;
+
+	@Column(name = "FACULTY")
+	private String faculty;
+
+	@Column(name = "MAJOR")
+	private String major;
+
+	@Column(name = "GPA")
+	private double gpa;
+
+	@Column(name = "YEAR_OF_GRADUATE")
+	private String yearsOfGraduate;
+	
+	@Column(name = "POSITION") 
+	private String position;
+
+	@Column(name = "FROM_DATE")
+	private Date fromDate;
+
+	@Column(name = "TO_DATE")
+	private Date toDate;
+
+	@Column(name = "EMPLOYER_NAME")
+	private String employerName;
+
+	@Column(name = "ADDRESS")
+	private String address;
+
+	@Column(name = "TYPE_OF_BUSSINESS")
+	private String typeOfBusiness;
+
+	@Column(name = "POSITION_OF_EMPLOYER")
+	private String positionOfEmployer;
+
+	@Column(name = "REASON")
+	private String reason;
+
+	@Column(name = "SUPERVISOR")
+	private String supervisor;
+
+	@Column(name = "SALARY")
+	private long salary;
+
+	@Column(name = "DESCRIPTION")
+	private String description;
+	
+	@Column(name = "NAME")
+	private String name;
+	
+	@Column(name = "RELATION")
+	private String relation;
+	
+	@Column(name = "OCCUPATION")
+	private String occupation;
+	
+	@Column(name = "ADDRESS")
+	private String address;
+
+	@Column(name = "LANGUAGES_NAME")
+	private String languagesName;
+	
+	@Column(name = "SPEAKING")
+	private String speaking;
+	
+	@Column(name = "READING")
+	private String reading;
+	
+	@Column(name = "UNDERSTANDING")
+	private String understanding;
+	
+	@Column(name = "WRITING")
+	private String writing;
+	
+	@Index(name = "positionNameIndex")
+	@Column(name = "POSITION_NAME")
+	private String positionName;
+
+	@Column(name = "POSITON_CODE")
+	private String positionCode;
+	
+	@Column(name = "FULLNAME")
+	private String fullName;
+	@Column(name = "TEL")
+	private String tel;
+	@Column(name = "OCCUPATION")
+	private String occupation;
+	
+	@Column(name = "SKILL_DETAIL")
+	private String skillDetail;*/
+	
+
 	
 	
-	public String getScore() {
-		return score;
-	}
 
-	public void setScore(String score) {
-		this.score = score;
-	}
-
-	public String getAttitudeHome() {
-		return attitudeHome;
-	}
-
-	public void setAttitudeHome(String attitudeHome) {
-		this.attitudeHome = attitudeHome;
-	}
-
-	public String getAttitudeOffice() {
-		return attitudeOffice;
-	}
-
-	public void setAttitudeOffice(String attitudeOffice) {
-		this.attitudeOffice = attitudeOffice;
-	}
-	
-	public String getPlaceBirth() {
-		return placeBirth;
-	}
-
-	public void setPlaceBirth(String placeBirth) {
-		this.placeBirth = placeBirth;
-	}
-
-	public List<Advertise> getAdvertise() {
-		return advertise;
-	}
-
-	public void setAdvertise(List<Advertise> advertise) {
-		this.advertise = advertise;
-	}
-
-	public Applicant fromApplicationDTO(Applicant applicant,ApplicationDTO applicationDTO){
-		applicant.setId(applicationDTO.getId()); 
-		applicant.setFirstNameTH(applicationDTO.getFirstNameTH());
-		applicant.setFirstNameEN(applicationDTO.getFirstNameEN());
-		applicant.setLastNameTH(applicationDTO.getLastNameTH());
-		applicant.setLastNameEN(applicationDTO.getLastNameEN());
-		applicant.setNickNameTH(applicationDTO.getNickNameTH());
-		applicant.setNickNameEN(applicationDTO.getNickNameEN());
-		
-		return applicant;
-		
-	}
 }

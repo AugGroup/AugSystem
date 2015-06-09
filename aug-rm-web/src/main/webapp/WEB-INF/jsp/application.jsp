@@ -53,15 +53,27 @@
 				//militaryPlace : $('#positionThirdId').val(),
 				militaryServiceNo : $('#serviceNoId').val(),
 				militaryReason : $('#reasonsId').val(),
-				militaryStatus : $('#reasonsId').val(),
+				/* militaryStatus : $('#reasonsId').val(),
 				marritalStatusName : $('#reasonsId').val(),
 				numberOfChildren : $('#reasonsId').val(),
 				spouseName : $('#reasonsId').val(),
 				marriageCertificateNo : $('#reasonsId').val(),
 				issueOficeMarriage : $('#reasonsId').val(),
 				occupationMarriage : $('#reasonsId').val()
-
+ */
 			}
+			$.ajax({
+				contentType : "application/json",
+				type : "POST",
+				url : '${pageContext.request.contextPath}/save',
+				data : JSON.stringify(insertData),
+				success : function(data) {
+					alert(JSON.stringify(data));
+				}
+			});	
+			
+			
+			
 
 		})
 
@@ -94,7 +106,7 @@
 						<div class="form-group">
 							<div class="row">
 								<div class="col-md-6">
-									<img src="..." class="img-thumbnail" width="304" height="236">
+									<!-- <img src="..." class="img-thumbnail" width="304" height="236"> -->
 								</div>
 							</div>
 						</div>
@@ -293,12 +305,12 @@
 									placeholder="Enter to year">
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label for="branch">Branch of service </label> <input
 									type="text" class="form-control" id="branchId"
 									name="branchName" placeholder="Enter branch of service">
 							</div>
-
+ -->
 							<div class="form-group">
 								<label for="serviceNo">Service no </label> <input type="text"
 									class="form-control" id="serviceNoId" name="serviceNoName"
@@ -312,11 +324,11 @@
 									placeholder="Enter If not, please state the reasons">
 							</div>
 
-							<div class="form-group">
+							<!-- <div class="form-group">
 								<label for="drafted">Date to be drafted </label> <input
 									type="text" class="form-control" id="draftedId"
 									name="draftedName" placeholder="Enter date to be drafted">
-							</div>
+							</div> -->
 
 						</div>
 
@@ -398,7 +410,7 @@
 				</div>
 			</div>
 
-
+<%-- 
 			<!-- tab application -->
 			<div id="application" class="tab-pane fade">
 
@@ -781,9 +793,11 @@
 
 					</div>
 
-				</div>
+				</div> --%>
 				<button type="button" class="btn btn-success" id="buttonSave">
 					<span class="glyphicon glyphicon-off"></span> Save
+				</button>
+					<button type="button" class="btn btn-default" id="buttonCancel"> Cancel
 				</button>
 			</div>
 		</div>
