@@ -85,7 +85,7 @@
 		<div class="form-group">
 			<ul class="nav nav-tabs" role="navigation">
 
-				<li class="active"><a data-toggle="tab" href="#informations"><span
+				<li class="active"><a data-toggle="tab" href="#informations" target=""><span
 						class="glyphicon glyphicon-user"></span> Informations</a></li>
 				<li><a data-toggle="tab" href="#application"><span
 						class="glyphicon glyphicon-home"></span> Application</a></li>
@@ -221,11 +221,10 @@
 						<div class="form-group">
 							<label for="sex">Sex </label>
 							<div class="radio">
-								<label><input type="radio" name="femaleName"
-									id="femaleId">Female</label>
+								<label><input type="radio" name="sexName" value="Female" id="sexId">Female</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="maleName" id="maleId">Male</label>
+								<label><input type="radio" name="sexName" value="Male" id="sexId">Male</label>
 							</div>
 						</div>
 
