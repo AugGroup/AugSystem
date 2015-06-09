@@ -11,4 +11,7 @@ public interface ApplicantRepository extends GenericRepository<Applicant, Serial
 	public List<ApplicantDTO> findByPosition(String position);
 	
 	public List<ApplicantDTO> findAllApplicant();
+	
+	public ApplicantDTO findApplicantById(Integer id);
+	
 }

@@ -15,13 +15,13 @@ import com.aug.db.repositories.PositionRepository;
 @Service(value = "applicantService")
 @Transactional
 public class ApplicantServiceImpl implements ApplicantService {
-	
+
 	@Autowired
 	private ApplicantRepository applicantRepository;
-	
+
 	@Autowired
 	private PositionRepository positionRepository;
-	
+
 	@Override
 	public Applicant findById(Integer id) {
 		return applicantRepository.findById(id);
@@ -30,25 +30,25 @@ public class ApplicantServiceImpl implements ApplicantService {
 	@Override
 	public void create(Applicant applicant) {
 		applicantRepository.insert(applicant);
-		
+
 	}
 
 	@Override
 	public void update(Applicant applicant) {
 		applicantRepository.update(applicant);
-		
+
 	}
 
-    @Override
+	@Override
 	public void delete(Applicant applicant) {
 		applicantRepository.delete(applicant);
-		
+
 	}
-	
+
 	@Override
 	public void deleteById(Integer id) {
 		applicantRepository.deleteById(id);
-		
+
 	}
 
 	@Override
@@ -56,15 +56,18 @@ public class ApplicantServiceImpl implements ApplicantService {
 		List<Applicant> applicants = applicantRepository.findAll();
 		return applicants;
 	}
-	
-	
+
 	@Override
 	public List<ApplicantDTO> findByPosition(String position) {
-		List<ApplicantDTO> applicants = applicantRepository.findByPosition(position);
-		for(ApplicantDTO appl : applicants){
-			String position1 = positionRepository.findById(appl.getPosition1()).getPositionName();
-			String position2 = positionRepository.findById(appl.getPosition2()).getPositionName();	
-			String position3 = positionRepository.findById(appl.getPosition3()).getPositionName();	
+		List<ApplicantDTO> applicants = applicantRepository
+				.findByPosition(position);
+		for (ApplicantDTO appl : applicants) {
+			String position1 = positionRepository.findById(appl.getPosition1())
+					.getPositionName();
+			String position2 = positionRepository.findById(appl.getPosition2())
+					.getPositionName();
+			String position3 = positionRepository.findById(appl.getPosition3())
+					.getPositionName();
 			appl.setPosition1Str(position1);
 			appl.setPosition2Str(position2);
 			appl.setPosition3Str(position3);
@@ -75,14 +78,33 @@ public class ApplicantServiceImpl implements ApplicantService {
 	@Override
 	public List<ApplicantDTO> findAllApplicant() {
 		List<ApplicantDTO> applicants = applicantRepository.findAllApplicant();
-		for(ApplicantDTO appl : applicants){
-			String position1 = positionRepository.findById(appl.getPosition1()).getPositionName();
-			String position2 = positionRepository.findById(appl.getPosition2()).getPositionName();	
-			String position3 = positionRepository.findById(appl.getPosition3()).getPositionName();	
+		for (ApplicantDTO appl : applicants) {
+			String position1 = positionRepository.findById(appl.getPosition1())
+					.getPositionName();
+			String position2 = positionRepository.findById(appl.getPosition2())
+					.getPositionName();
+			String position3 = positionRepository.findById(appl.getPosition3())
+					.getPositionName();
 			appl.setPosition1Str(position1);
 			appl.setPosition2Str(position2);
 			appl.setPosition3Str(position3);
 		}
+		return applicants;
+	}
+
+	@Override
+	public ApplicantDTO findApplicantById(Integer id) {
+		ApplicantDTO applicants = applicantRepository.findApplicantById(id);
+		String position1 = positionRepository.findById(
+				applicants.getPosition1()).getPositionName();
+		String position2 = positionRepository.findById(
+				applicants.getPosition2()).getPositionName();
+		String position3 = positionRepository.findById(
+				applicants.getPosition3()).getPositionName();
+		applicants.setPosition1Str(position1);
+		applicants.setPosition2Str(position2);
+		applicants.setPosition3Str(position3);
+
 		return applicants;
 	}
 

@@ -19,7 +19,7 @@
 			var dtApplicant
 		 	//show all applicant
 			$('#dataTable').DataTable({
-				ajax : {url : '${pageContext.request.contextPath}/searchAll',
+				ajax : {url : '${pageContext.request.contextPath}/search',
 						type : 'GET'},
 				columns:[{'data': "code"},
 						{'data': "applyDate"},
@@ -29,17 +29,17 @@
 						{'data' : "position3Str"},
 						{'data' : "trackingStatus"},
 						{ data : function(data){
-							return '<a href="#EditStatusModal" id="btn_table_edit" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
+							return '<a href="##EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
 				        	 //data-id="'+data.id+'"
 						 }},
 						{ data : function(data){
-						       return '<a href="#" id="btn_table_edit"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
+						       return '<a href="#" id="btn_edit_info"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
 						 }}
 					 ]
 				
 			}); 
 			
-			//Search and Show function 
+			 //Search By Position and Show function 
 			$('#btn_search').on('click', function(){
 				if(dtApplicant){
 					dtApplicant.ajax.reload();
@@ -48,7 +48,7 @@
 						lengthChange : false,
 						searching : false,
 						ajax : {
-							url : '${pageContext.request.contextPath}/search',
+							url : '${pageContext.request.contextPath}/searchByPosition',
 							type : 'GET',
 							data : function(d){
 								d.position = $('#inputSearch').val();
@@ -62,27 +62,95 @@
 						         {'data' : "position3Str"},
 						         {'data' : "trackingStatus"},
 						         { data : function(data){
-						        	 return '<a href="#EditStatusModal" id="btn_table_edit" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
+						        	 return '<a href="##EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
 						        	 //data-id="'+data.id+'"
 						        	}},
 						         { data : function(data){
-						        	 return '<a href="#" id="btn_table_edit"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
+						        	 return '<a href="#" id="btn_edit_info"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
 						        	 }}
 						        ]
 					});
 				}
 			});
 			
-			//Call application.jsp
-			$("#btn_add").on("click", function(){
+			//Find by Id
+			function findById(id){
+				console.log(id);
 				$.ajax({
-					url : "${pageContext.request.contextPath}/callCreate",
-					type : "GET",
+					url : "${pageContext.request.contextPath}/findById/" + id,
+					type : "POST",
+					success : function(data){
+						showFillData(data);
+						}
+					});
+				}
+			
+			//Show data on inputField
+			function showFillData(data){
+				$("#inputScore").val(data.score);
+				$("#inputTechScore").val(data.techScore);
+				$("#inputAttitudeHome").val(data.attitudeHome);
+				$("#inputAttitudeOffice").val(data.attitudeOffice);
+				$("#inputStatus").val(data.trackingStatus);
 				
-				});
-			});
+			}
+			//Update Score Fuction
+			function updateUser(button){
+				var id = $(button).data("id");
+				var score = $("#inputScore").val();
+				var techScore = $('input[name="inputTechScore"]:checked').val();
+				var attitudeHome = $("#inputAttitudeHome").val();
+				var attitudeOffice = $("#inputAttitudeOffice").val();
+				var trackingStatus = $("#inputStatus").val(); 
+				console.log(techScore)
+				var json = {
+						"id" : id,
+						"score" : score,
+						"techScore" : techScore,
+						"attitudeHome" : attitudeHome,
+						"attitudeOffice" : attitudeOffice,
+						"trackingStatus" : trackingStatus
+						};
+				$.ajax({
+					url : "${pageContext.request.contextPath}/score/update/"+id,
+					type : "POST",
+					contentType :"application/json; charset=utf-8", 
+					data : JSON.stringify(json),
+					success : function(data){
+						console.log(data.id);
+						$('#myModal1').modal('hide');
+						
+						var table = $('#dataTable').DataTable();	
+					 	var rowData = table.row(button.closest('tr')).index(); 
+					 	var d = table.row(rowData).data();
+					 		d.score = data.score;
+							d.techScore = data.techScore;
+					 		d.attitudeHome = data.attitudeHome;
+					 		d.attitudeOffice = data.attitudeOffice;
+					 		d.trackingStatus = data.trackingStatus;
+					 		
+					 		table.row(rowData).data(d).draw();
+					 						 		
+					 		}
+					});
+				
+			}
 			
-			
+			//EditStatusModal
+		 	$('#EditStatusModal').on( 'show.bs.modal',function(e){
+				var button = e.relatedTarget;
+				if (button != null){
+					var applicantId = $(button).data("id");
+					if(applicantId != null){
+						findById(applicantId);
+						console.log(applicantId);
+						
+						$("#btn_submit").off("click").on("click", function(){
+							updateUser(button);
+							});
+					}
+				}
+			}); 
 			
 		});
 	
@@ -130,7 +198,7 @@
 		</div>
 		
 		<!-- Modal of Edit Status and Score-->	
-		<!-- <a href="#EditStatusModal" id="btn_register" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-plus-sign"></span> Register </a> -->
+		 <a href="#EditStatusModal" id="btn_register" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-plus-sign"></span> Register </a> 
 		<div id="EditStatusModal" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -148,10 +216,10 @@
 							<div class="form-group">
 								<label for="nameTechScore">Technical Score :  </label>
 								<label class="radio-inline">
-								    <input type="radio" value="pass" name="inputTechScore">Pass
+								    <input type="radio" value="pass" id="inputTechScore" name="inputTechScore">Pass
 								</label>
 								<label class="radio-inline">
-								    <input type="radio" value="Not pass" name="inputTechScore">Not Pass
+								    <input type="radio" value="Not pass" id="inputTechScore" name="inputTechScore">Not Pass
 								</label>
     						</div>
 							<div class="form-group">
@@ -159,11 +227,11 @@
     							<div class="form-group" class="form-inline" style="width: 400px" >
 									<div class="row">
 										<div class="col-lg-6">
-										<label for="inputScore">Home</label> 
+										<label for="inputAttitudeHome">Home</label> 
 										<input type="text" class="form-control" id="inputAttitudeHome" name="inputAttitudeHome" placeholder="Enter score">  													
 										</div>
 										<div class="col-lg-6">
-									<label for="inputScore">Office</label> 
+									<label for="inputAttitudeOffice">Office</label> 
 									<input type="text" class="form-control" id="inputAttitudeOffice" name="inputAttitudeOffice" placeholder="Enter score">
     							</div>
     							</div>
@@ -172,7 +240,7 @@
 							<div class="form-group">
 								<label for="inputStatus">Applicant Status : </label>
     							<select name="inputStatus" id="inputStatus" class="form-control">
-    								<option value="Pending">Pending</option>
+    								<option value="Waiting for consider">Waiting for consider</option>
     								<option value="Pending Test">Pending Test</option>
     								<option value="Pending Interview">Pending Interview</option>
     								<option value="Pending Approve">Pending Approve</option>

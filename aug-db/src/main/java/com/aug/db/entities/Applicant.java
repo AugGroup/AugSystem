@@ -182,13 +182,12 @@ public class Applicant {
 
 	@Column(name = "SCORE")
 	private String score;
-	
+
 	@Column(name = "TECH_SCORE")
 	private String techScore;
-	
+
 	@Column(name = "ATTITUDE_HOME")
 	private String attitudeHome;
-
 
 	@Column(name = "ATTITUDE_OFFICE")
 	private String attitudeOffice;
@@ -320,7 +319,7 @@ public class Applicant {
 	public void setWeight(Integer weight) {
 		this.weight = weight;
 	}
-	
+
 	public String getSex() {
 		return sex;
 	}
@@ -328,7 +327,6 @@ public class Applicant {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
-
 
 	public String getReligion() {
 		return religion;
@@ -689,8 +687,7 @@ public class Applicant {
 	public void setTechScore(String techScore) {
 		this.techScore = techScore;
 	}
-	
-	
+
 	public String getScore() {
 		return score;
 	}
@@ -714,7 +711,7 @@ public class Applicant {
 	public void setAttitudeOffice(String attitudeOffice) {
 		this.attitudeOffice = attitudeOffice;
 	}
-	
+
 	public String getPlaceBirth() {
 		return placeBirth;
 	}

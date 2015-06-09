@@ -1,6 +1,7 @@
 package com.aug.controllers;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -47,7 +48,7 @@ public class ApplicantController implements Serializable {
 	}
 
 	// Search by position
-	@RequestMapping(value = "/search", method = { RequestMethod.GET })
+	@RequestMapping(value = "/searchByPosition", method = { RequestMethod.GET })
 	public @ResponseBody Object searchByPosition(
 			@RequestParam final String position) {
 		final List<ApplicantDTO> data = applicantService
@@ -59,47 +60,68 @@ public class ApplicantController implements Serializable {
 			}
 		};
 	}
-	
+
 	// Search All
-		@RequestMapping(value = "/searchAll", method = { RequestMethod.GET })
-		public @ResponseBody Object searchAllApplicant() {
-			final List<ApplicantDTO> data = applicantService.findAllApplicant();
+	@RequestMapping(value = "/search", method = { RequestMethod.GET })
+	public @ResponseBody Object searchAllApplicant() {
+		final List<ApplicantDTO> data = applicantService.findAllApplicant();
 
-			return new Object() {
-				public List<ApplicantDTO> getData() {
-					return data;
-				}
-			};
-		}
-	
-	//Edit Applicant Informations
-		@RequestMapping(value = "/Edit", method = {RequestMethod.POST})
-		public @ResponseBody Applicant editApplicantInfo(@RequestBody Applicant applicant,
-				@PathVariable Integer id){
-			
-			final Applicant data = applicantService.findById(id);
+		return new Object() {
+			public List<ApplicantDTO> getData() {
+				return data;
+			}
+		};
+	}
 
-			return applicantService.findById(id);
-			
-		}
-	
-	// Call Add applicantion.jsp
-	
-	@RequestMapping(value = "/callCreate", method = {RequestMethod.GET})
-	public String callCreate(){
-		return "application";
-		
+	// Update
+	// Seach Applicant By Id
+	@RequestMapping(value = "/findById/{id}", method = { RequestMethod.POST })
+	public @ResponseBody ApplicantDTO findById(@PathVariable Integer id) {
+
+		return applicantService.findApplicantById(id);
 	}
 	
-//	//Save Score
-//	@RequestMapping(value = "/saveScore", method= {RequestMethod.POST})
-//	public @ResponseBody Applicant userPost(@RequestBody Applicant applicant) throws ParseException{
-//		applicantService.create(applicant);
-//		Applicant app = applicantService.findById(applicant.getId());
-//		return app;
-//	}
+	//Edit Applicant Score
+	@RequestMapping(value = "/score/update/{id}", method = { RequestMethod.POST })
+	public @ResponseBody ApplicantDTO updateUser(@RequestBody ApplicantDTO applicantDTO,
+			@PathVariable Integer id) throws ParseException {
+		
+		Applicant applicant = applicantService.findById(applicantDTO.getId());
+		applicant.setScore(applicantDTO.getScore());
+		applicant.setTechScore(applicantDTO.getTechScore());
+		applicant.setAttitudeHome(applicantDTO.getAttitudeHome());
+		applicant.setAttitudeOffice(applicantDTO.getAttitudeOffice());
+		applicant.setTrackingStatus(applicantDTO.getTrackingStatus());
+		
+		applicantService.update(applicant);
+		
+		
+		return applicantDTO;
+
+	}
 	
 	
+
+/*	// Edit Applicant Informations
+	@RequestMapping(value = "/Edit", method = { RequestMethod.POST })
+	public @ResponseBody Applicant editApplicantInfo(
+			@RequestBody Applicant applicant, @PathVariable Integer id) {
+
+		final Applicant data = applicantService.findById(id);
+
+		return applicantService.findById(id);
+
+	}*/
+
+	// //Save Score
+	// @RequestMapping(value = "/saveScore", method= {RequestMethod.POST})
+	// public @ResponseBody Applicant userPost(@RequestBody Applicant applicant)
+	// throws ParseException{
+	// applicantService.create(applicant);
+	// Applicant app = applicantService.findById(applicant.getId());
+	// return app;
+	// }
+
 	/*
 	 * @RequestMapping(value = "/applicant", method= {RequestMethod.POST})
 	 * public String login(@RequestParam String userName,@RequestParam String

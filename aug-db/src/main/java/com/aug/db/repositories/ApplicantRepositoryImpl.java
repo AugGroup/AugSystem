@@ -23,11 +23,24 @@ public class ApplicantRepositoryImpl extends
 		List<ApplicantDTO> results = query.list();
 		return results;
 	}
-	
+
 	@Override
 	public List<ApplicantDTO> findAllApplicant() {
 		Query query = getCurrentSession().getNamedQuery("SEARCH_ALL");
 		List<ApplicantDTO> results = query.list();
 		return results;
 	}
+
+	@Override
+	public ApplicantDTO findApplicantById(Integer id) {
+		Query query = getCurrentSession().getNamedQuery("SEARCH_BY_ID");
+		query.setParameter("ID", id);
+		List<ApplicantDTO> result = query.list();
+		ApplicantDTO app = result.get(0);
+		return app;
+	}
+	
+
+	
+	
 }
