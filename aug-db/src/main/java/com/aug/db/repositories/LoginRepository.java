@@ -8,6 +8,6 @@ import com.aug.db.entities.Login;
 
 public interface LoginRepository extends GenericRepository<Login,Serializable>{
 	
-	public List<LoginDTO> findByUserName(String userName, String password);
+	public LoginDTO findByUserName(String userName);
 
 }
