@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.aug.db.dto.LoginDTO;
 import com.aug.db.entities.Applicant;
 import com.aug.db.entities.Login;
 import com.aug.db.repositories.ApplicantRepository;
@@ -28,22 +29,27 @@ public class LoginController implements Serializable {
 	@Autowired
 	private LoginService loginService;
 
-	@RequestMapping(value = "/applicant/login", method = { RequestMethod.GET })
+	@RequestMapping(value = "/login", method = { RequestMethod.GET })
 	public String loginSpring() {
 		return "login";
 
 	}
 
-//	@RequestMapping(value = "/applicant", method = { RequestMethod.POST })
-//	public String loginSpringPost(@ModelAttribute String userName,
-//			@ModelAttribute String password, Model model) {
-////		model.addAttribute("userName", userName);
-////		model.addAttribute("password", password);
-////		if (!userName.trim().isEmpty()) {
-////			loginService.findByUserName(userName, password);
-////			return "main_applicant";
-////		}
-//		return "main_applicant";
-//	}
+	@RequestMapping(value = "/applicant", method = { RequestMethod.POST })
+	public String loginSpringPost(@RequestParam String userName,
+			@RequestParam String password) {
+		
+		 LoginDTO data = loginService.findByUserName(userName);
+//		 if() {
+//			 
+//		 }
+		// model.addAttribute("userName", userName);
+		// model.addAttribute("password", password);
+		// if (!userName.trim().isEmpty()) {
+		// loginService.findByUserName(userName, password);
+		// return "main_applicant";
+		// }
+		return "main_applicant";
+	}
 
 }

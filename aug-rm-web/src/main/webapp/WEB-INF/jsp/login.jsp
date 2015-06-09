@@ -11,66 +11,64 @@ color:red;
 
 <script type="text/javascript">
 $(document).ready(function() {
-	$('#form').validate({
+	$('#loginForm').validate({
         rules: {
-            userName: "required",
-            password: {
+            j_username: "required",
+            j_password: {
                 required: true,
-                minlength: 5,
-                remote: {
-                	
-                }
+                minlength: 2
+        
             }
         },
         messages: {
-            userName: {
+            j_username: {
             	required: "Please enter your username"
             },
-            password: {
+            j_password: {
                 required: "Please enter a password",
-                minlength: "Your password must be at least 5 characters",
-                remote: "Username or Password is not correct"
+                minlength: "Your password must be at least 2 characters"
         	}
-        },
+        }
     });
 	
-	$('#btnSubmit').on('click', function(){
-		login();
-	});
-	
-	function login(){
-		if($('#form').valid()){
-			var userName = 	$('#userName').val();
-			var password = $('#password').val();
-			var json = {"userName" : userName,
-						"password" : password};
-			$.ajax({
-				url : "${pageContext.request.contextPath}/applicant",
-				type : "POST",
-				contentType:"application/json; charset=utf-8",
-				data: JSON.stringify(json),
-			});
+// 	$('#btnSubmit').on('click', function(){
 		
-		};
-	};
+// 	});
+	
+// 	function login(){
+// 		if($('#form').valid()){
+// 			var userName = 	$('#userName').val();
+// 			var password = $('#password').val();
+// 			var json = {"userName" : userName,
+// 						"password" : password};
+// 			$.ajax({
+// 				url : "${pageContext.request.contextPath}/applicant/login",
+// 				type : "GET",
+// 				contentType:"application/json; charset=utf-8",
+// 				data: JSON.stringify(json),
+// 			});
+		
+// 		};
+// 	};
 });
 </script>
 	<h1>Log-In</h1>
 
 	<div class="container">
-		<form class="form-inline" name="form" id="form" action="${pageContext.request.contextPath}/applicant/login" method="get">
+		<form class="form-inline" id="loginForm" action="${pageContext.request.contextPath}/j_spring_security_check" method="post">
 		
 			<div class="form-group">
 				<label for="userName">Username:</label>
-				<input type="text" class="form-control" name="userName" id="userName">
+				<input type="text" class="form-control" name="j_username">
 			</div><br><br>
 			
 			<div class="form-group">
 				<label for="password" class="control-label">Password:</label> 
-				<input type="password" class="form-control" name="password" id="password">
+				<input type="password" class="form-control" name="j_password">
 			</div><br><br>
 			
 			<button type="submit" id="btnSubmit" class="btn btn-primary btn-md">Submit</button>
+<%-- 			${SPRING_SECURITY_LAST_EXCEPTION.message} --%>
 		</form>
 		
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
