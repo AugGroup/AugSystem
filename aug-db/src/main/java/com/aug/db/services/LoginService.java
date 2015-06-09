@@ -19,6 +19,6 @@ public interface LoginService {
 	
 	public List<Login> findAll();
 	
-	public List<LoginDTO> findByUserName(String userName, String password);
+	public LoginDTO findByUserName(String userName);
 
 }

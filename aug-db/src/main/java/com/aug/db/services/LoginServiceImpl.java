@@ -49,8 +49,8 @@ public class LoginServiceImpl implements LoginService{
 	}
 
 	@Override
-	public List<LoginDTO> findByUserName(String userName, String password) {
-		List<LoginDTO> logins = loginRepository.findByUserName(userName, password);
+	public LoginDTO findByUserName(String userName) {
+		LoginDTO logins = loginRepository.findByUserName(userName);
 		return logins;
 	}
 }
