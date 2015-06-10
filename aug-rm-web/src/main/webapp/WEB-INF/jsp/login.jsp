@@ -68,7 +68,6 @@ $(document).ready(function() {
 			</div><br><br>
 			
 			<button type="submit" id="btnSubmit" class="btn btn-primary btn-md">Submit</button>
-<%-- 			${SPRING_SECURITY_LAST_EXCEPTION.message} --%>
 		</form>
 		
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"

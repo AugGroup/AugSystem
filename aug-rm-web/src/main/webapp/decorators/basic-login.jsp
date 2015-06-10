@@ -66,10 +66,8 @@ form
 			alt="logo" />  --%>
 	</div>
 	
-	</div>
 	<div>
 		<decorator:body />
-	</div>
 	</div>
 	<hr />
 

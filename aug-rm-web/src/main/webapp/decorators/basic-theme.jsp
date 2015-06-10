@@ -1,4 +1,3 @@
-
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
@@ -65,7 +64,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href=""><span class="glyphicon glyphicon-user"></span>
 								UserName</a></li>
-						<li><a href="${pageContext.request.contextPath}/applicant/login"><span class="glyphicon glyphicon-log-in"></span>
+						<li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-log-in"></span>
 								Login</a></li>
 						<li><a href=""><span class="glyphicon glyphicon-log-out"></span>
 								Logout</a></li>
@@ -88,10 +87,8 @@
 			</ul>
 		</div> -->
 	</div>
-	</div>
 	<div>
 		<decorator:body />
-	</div>
 	</div>
 	<hr />
 
