@@ -16,51 +16,54 @@
 		$('#buttonSave').on("click", function() {
 
 			var insertData = {
-				firstNameTH : $('#firstNameThId').val(),
-				firstNameEN : $('#firstNameEngId').val(),
-				lastNameTH : $('#lastnameThId').val(),
-				lastNameEN : $('#lastnameEngId').val(),
-				nickNameTH : $('#nickNameThId').val(),
-				nickNameEN : $('#nickNameEngId').val(),
-				birthDate : $('#birthdayId').val(),
-				placeBirth : $('#pBirthId').val(),
-				age : $('#ageId').val(),
-				height : $('#heightId').val(),
-				weight : $('#weightId').val(),
-				religion : $('#religionId').val(),
-				nationality : $('#nationalityId').val(),
-				tel : $('#telId').val(),
-				eMail : $('#eMailId').val(),
-				applyDate : $('#applyDateId').val(),
-				emergencyName : $('#emergencyNameId').val(),
-				emergencyTel : $('#emergencyTelId').val(),
-				emergencyAddress : $('#emergencyAddressId').val(),
-				noticeNewspaper : $('#newspaperId').val(),
-				noticeMagazine : $('#magazineId').val(),
-				noticeFriend : $('#friendId').val(),
-				noticeWebSite : $('#websiteId').val(),
-				noticeOther : $('#otherId').val(),
-				position1 : $('#positionFirstId').val(),
-				position2 : $('#positionSecondId').val(),
-				position3 : $('#positionThirdId').val(),
-				certificate : $('#certificateId').val(),
-				expectedSalary : $('#salaryId').val(),
-				cardId : $('#idCardId').val(),
-				cardIssuedOffice : $('#issuedCardId').val(),
-				cardExpiryDate : $('#expiryId').val(),
-				militaryFromYear : $('#fromYearId').val(),
-				militarytoYear : $('#toYearId').val(),
-				//militaryPlace : $('#positionThirdId').val(),
-				militaryServiceNo : $('#serviceNoId').val(),
-				militaryReason : $('#reasonsId').val(),
-				/* militaryStatus : $('#reasonsId').val(),
-				marritalStatusName : $('#reasonsId').val(),
-				numberOfChildren : $('#reasonsId').val(),
-				spouseName : $('#reasonsId').val(),
-				marriageCertificateNo : $('#reasonsId').val(),
-				issueOficeMarriage : $('#reasonsId').val(),
-				occupationMarriage : $('#reasonsId').val()
- */
+					firstNameTH : $('#firstNameThId').val(),
+					firstNameEN : $('#firstNameEngId').val(),
+					lastNameTH : $('#lastnameThId').val(),
+					lastNameEN : $('#lastnameEngId').val(),
+					nickNameTH : $('#nickNameThId').val(),
+					nickNameEN : $('#nickNameEngId').val(),
+					birthDate : $('#birthdayId').val(),
+					placeBirth : $('#pBirthId').val(),
+					age : $('#ageId').val(),
+					height : $('#heightId').val(),
+					weight : $('#weightId').val(),
+					sex :$('#sexId').val(),
+					religion : $('#religionId').val(),
+					nationality : $('#nationalityId').val(),
+					tel : $('#telId').val(),
+					eMail : $('#eMailId').val(),
+					applyDate : $('#applyDateId').val(),
+					emergencyName : $('#emergencyNameId').val(),
+					emergencyTel : $('#emergencyTelId').val(),
+					emergencyAddress : $('#emergencyAddressId').val(),
+					noticeNewspaper : $('#newspaperId').val(),
+					noticeMagazine : $('#magazineId').val(),
+					noticeFriend : $('#friendId').val(),
+					noticeWebSite : $('#websiteId').val(),
+					noticeOther : $('#otherId').val(),
+					position1 : $('#positionFirstId').val(),
+					position2 : $('#positionSecondId').val(),
+					position3 : $('#positionThirdId').val(),
+					certificate : $('#certificateId').val(),
+					expectedSalary : $('#salaryId').val(),
+					cardId : $('#idCardId').val(),
+					cardIssuedOffice : $('#issuedCardId').val(),
+					cardExpiryDate : $('#expiryId').val(),
+					militaryFromYear : $('#fromYearId').val(),
+					militarytoYear : $('#toYearId').val(),
+					militaryPlace : $('#placeId').val(),
+					militaryServiceNo : $('#serviceNoId').val(),
+					militaryReason : $('#reasonsId').val(),
+					militaryStatus : $('#militaryId').val(),
+					marritalStatusName : $('#maritalId').val(),
+					numberOfChildren : $('#childrenId').val(),
+					spouseName : $('#spouseId').val(),
+					marriageCertificateNo : $('#marriageCerId').val(),
+					issueOficeMarriage : $('#issuedMarriageId').val(),
+					marriageAddress : $('#addressId').val(),
+					occupationMarriage : $('#occupationId').val(),
+					branchService : $('#branchId').val()
+					
 			}
 			$.ajax({
 				contentType : "application/json",
@@ -85,7 +88,7 @@
 		<div class="form-group">
 			<ul class="nav nav-tabs" role="navigation">
 
-				<li class="active"><a data-toggle="tab" href="#informations" target=""><span
+				<li class="active"><a data-toggle="tab" href="#informations" ><span
 						class="glyphicon glyphicon-user"></span> Informations</a></li>
 				<li><a data-toggle="tab" href="#application"><span
 						class="glyphicon glyphicon-home"></span> Application</a></li>
@@ -304,12 +307,12 @@
 									placeholder="Enter to year">
 							</div>
 
-							<!-- <div class="form-group">
+							 <div class="form-group">
 								<label for="branch">Branch of service </label> <input
 									type="text" class="form-control" id="branchId"
 									name="branchName" placeholder="Enter branch of service">
 							</div>
- -->
+
 							<div class="form-group">
 								<label for="serviceNo">Service no </label> <input type="text"
 									class="form-control" id="serviceNoId" name="serviceNoName"
@@ -323,11 +326,14 @@
 									placeholder="Enter If not, please state the reasons">
 							</div>
 
-							<!-- <div class="form-group">
-								<label for="drafted">Date to be drafted </label> <input
-									type="text" class="form-control" id="draftedId"
-									name="draftedName" placeholder="Enter date to be drafted">
-							</div> -->
+							 <div class="form-group">
+							<label for="drafted"><span
+								class="glyphicon glyphicon-calendar"></span>Date to be drafted</label>
+							<div class="input-group date">
+								<input type="text" id="draftedId" name="draftedName"
+									class="form-control"><span class="input-group-addon"><i
+									class="glyphicon glyphicon-th"></i></span>
+							</div>
 
 						</div>
 
@@ -463,18 +469,14 @@
 				</div>
 				<div class="form-group">
 					<label for="knowAugmentis">How do you know Augmentis?</label> <br>
-					<label class="checkbox-inline"><input type="checkbox"
-						id="newspaperId" name="newspaperName" value="newspaper">Newspaper
-					</label> <label class="checkbox-inline"><input type="checkbox"
-						id="magazineId" name="magazineName" value="magazine">Magazine
-					</label> <label class="checkbox-inline"><input type="checkbox"
-						id="websiteId" name="websiteName" value="website">Website
-					</label> <label class="checkbox-inline"><input type="checkbox"
-						id="friendId" name="friendName" value="friend">Friend </label> <label
-						class="checkbox-inline"><input type="checkbox"
-						id="otherId" name="otherName" value="other">Other (please
-						specify) </label> <input type="text" class="form-control" id="otherTextId"
-						name="otherTextName" placeholder="Enter other (please specify)">
+					<label class="checkbox">
+					<input type="checkbox" id="newspaperId" name="newspaperName" value="newspaper">Newspaper</label>
+					<label class="checkbox"><input type="text" class="form-control" name="newspaper" placeholder="newspaper">
+					<input type="checkbox" id="magazineId" name="magazineName" value="magazine">Magazine</label> <input type="text" class="form-control" name="magazine" placeholder="magazine">
+					<label class="checkbox"><input type="checkbox" id="websiteId" name="websiteName" value="website">Website</label> <input type="text" class="form-control" name="website" placeholder="website">
+					<label class="checkbox"><input type="checkbox" id="friendId" name="friendName" value="friend">Friend </label> <input type="text" class="form-control" name="friend" placeholder="friend">
+					<label class="checkbox"><input type="checkbox" id="otherId" name="otherName" value="other">Other (please specify) </label>
+					<input type="text" class="form-control" id="otherTextId" name="otherTextName" placeholder="Enter other (please specify)">
 				</div>
 
 				<div class="form-group">
@@ -488,9 +490,16 @@
 					</div>
 					<div class="form-group">
 						<label for="nameRelation">If yes, please write name,
-							position and relation </label> <input type="text" class="form-control"
+							position and relation </label><br>
+							<lable for="nameRelation">Name </lable> <input type="text" class="form-control"
 							id="nameRelationId" name="nameRelationName"
-							placeholder="Enter If yes, please write name, position and relation">
+							placeholder="Enter name">
+							<lable for="positionRelation">Position </lable> <input type="text" class="form-control"
+							id="positionRelationId" name="positionRelationName"
+							placeholder="Enter position">
+							<lable for="employedRelation">Relation </lable> <input type="text" class="form-control"
+							id="employedRelationId" name="employedRelationName"
+							placeholder="Enter relation">
 					</div>
 				</div>
 
@@ -498,7 +507,7 @@
 
 
 
-			<!-- tab educations -->
+			<!-- tab address -->
 			<div id="address" class="tab-pane fade">
 
 				<label for="presentAddress">Present address </label>

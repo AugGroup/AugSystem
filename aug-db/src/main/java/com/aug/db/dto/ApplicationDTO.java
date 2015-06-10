@@ -12,16 +12,22 @@ import javax.persistence.Transient;
 import org.hibernate.annotations.Index;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @NamedNativeQueries({ @NamedNativeQuery(name = "DATA_APPLICANT", query = "SELECT FIRSTNAME_TH,FIRSTNAME_EN,LASTNAME_TH,LASTNAME_EN,NICKNAME_TH,NICKNAME_EN"
 		+ ",BIRTHDATE,PLACE_BIRTH,AGE,HEIGHT,WEIGHT,RELIGION,NATIONALITY,TEL,EMAIL,APPLY_DATE,EMERGENCY_NAME"
 		+ ",EMERGENCY_TEL,EMERGENCY_ADDRESS,NOTICE_NEWSPAPER,NOTICE_MAGAZINE,NOTICE_FRIEND,NOTICE_WEBSITE,NOTICE_OTHER"
 		+ ",CERTIFICATE,EXPECTED_SALARY,CARD_ID,CARD_ISSUED_OFFICE,CARD_EXPIRY_DATE,MILITARY_FROM_YEAR"
 		+ ",MILITARY_TO_YEAR,MILITARY_PLACE,MILITARY_SERVICE_NO,MILITARY_REASON,MILITARY_STATUS,MARRITAL_STATUS_NAME"
-		+ ",NUMBER_OF_CHILDREN,SPOUSE_NAME,MARRIAGE_CERTIFICATE_NO,ISSUE_OFFICE_MARRIAGE,OCCUPATION_MARRIAGE"+
-" FROM APPLICANT WHERE FIRSTNAME_TH = :FIRSTNAME_TH AND FIRSTNAME_EN = :FIRSTNAME_EN AND LASTNAME_TH = :LASTNAME_TH AND LASTNAME_EN = :LASTNAME_EN AND NICKNAME_TH = :NICKNAME_TH AND NICKNAME_EN = :NICKNAME_EN "
-+ "AND BIRTHDATE = :BIRTHDATE AND PLACE_BIRTH = :PLACE_BIRTH AND AGE = :AGE AND HEIGHT = :HEIGHT AND WEIGHT = :WEIGHT AND RELIGION = :RELIGION AND NATIONALITY = :NATIONALITY AND TEL = :TEL "
-+ "AND NATIONALITY = :NATIONALITY ", resultClass = ApplicationDTO.class) })
+		+ ",NUMBER_OF_CHILDREN,SPOUSE_NAME,MARRIAGE_CERTIFICATE_NO,ISSUE_OFFICE_MARRIAGE,OCCUPATION_MARRIAGE,NOW_EMPLOYED,EMPLOYED_NAME,EMPLOYED_POSITION,EMPLOYED_RELATION,BRANCH_SERVICE,PREVIOUS_EMPLOYERS,PREVIOUS_EMPLOYERS_REASON,DATE_TO_BE_DRAFTED,MARRIAGE_ADDRESS"
+		+ " FROM APPLICANT WHERE FIRSTNAME_TH = :FIRSTNAME_TH AND FIRSTNAME_EN = :FIRSTNAME_EN AND LASTNAME_TH = :LASTNAME_TH AND LASTNAME_EN = :LASTNAME_EN AND NICKNAME_TH = :NICKNAME_TH AND NICKNAME_EN = :NICKNAME_EN "
+		+ "AND BIRTHDATE = :BIRTHDATE AND PLACE_BIRTH = :PLACE_BIRTH AND AGE = :AGE AND HEIGHT = :HEIGHT AND WEIGHT = :WEIGHT AND RELIGION = :RELIGION AND NATIONALITY = :NATIONALITY AND TEL = :TEL"
+		+ "AND EMAIL = :EMAIL AND APPLY_DATE = :APPLY_DATE AND EMERGENCY_NAME = :EMERGENCY_NAME AND EMERGENCY_TEL = :EMERGENCY_TEL AND EMERGENCY_ADDRESS = :EMERGENCY_ADDRESS AND NOTICE_NEWSPAPER = :NOTICE_NEWSPAPER"
+		+ "AND NOTICE_MAGAZINE = :NOTICE_MAGAZINE AND NOTICE_FRIEND = :NOTICE_FRIEND AND NOTICE_WEBSITE = :NOTICE_WEBSITE AND NOTICE_OTHER = :NOTICE_OTHER AND CERTIFICATE = :CERTIFICATE AND EXPECTED_SALARY = :EXPECTED_SALARY "
+		+ "AND CARD_ID = :CARD_ID AND CARD_ISSUED_OFFICE = :CARD_ISSUED_OFFICE AND CARD_EXPIRY_DATE = :CARD_EXPIRY_DATE AND MILITARY_FROM_YEAR = :MILITARY_FROM_YEAR AND MILITARY_TO_YEAR = :MILITARY_TO_YEAR"
+		+ "AND MILITARY_PLACE = :MILITARY_PLACE AND MILITARY_SERVICE_NO = :MILITARY_SERVICE_NO AND MILITARY_REASON = :MILITARY_REASON AND MILITARY_STATUS = :MILITARY_STATUS AND MARRITAL_STATUS_NAME = :MARRITAL_STATUS_NAME "
+		+ "AND NUMBER_OF_CHILDREN = :NUMBER_OF_CHILDREN AND SPOUSE_NAME = :SPOUSE_NAME AND MARRIAGE_CERTIFICATE_NO = :MARRIAGE_CERTIFICATE_NO AND ISSUE_OFFICE_MARRIAGE = :ISSUE_OFFICE_MARRIAGE AND OCCUPATION_MARRIAGE = :OCCUPATION_MARRIAGE AND NOW_EMPLOYED = :NOW_EMPLOYED "
+		+ "AND EMPLOYED_NAME = :EMPLOYED_NAME AND EMPLOYED_POSITION = :EMPLOYED_POSITION AND EMPLOYED_RELATION = :EMPLOYED_RELATION AND BRANCH_SERVICE = :BRANCH_SERVICE AND PREVIOUS_EMPLOYERS = :PREVIOUS_EMPLOYERS AND PREVIOUS_EMPLOYERS_REASON = :PREVIOUS_EMPLOYERS_REASON AND DATE_TO_BE_DRAFTED = :DATE_TO_BE_DRAFTED AND MARRIAGE_ADDRESS = :MARRIAGE_ADDRESS ", resultClass = ApplicationDTO.class) })
 public class ApplicationDTO {
 
 	@Column(name = "POSITION_NAME")
@@ -52,9 +58,10 @@ public class ApplicationDTO {
 	@Column(name = "NICKNAME_EN")
 	private String nickNameEN;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
 	@Column(name = "BIRTHDATE")
 	private Date birthDate;
-	
+
 	@Column(name = "PLACE_BIRTH")
 	private String placeBirth;
 
@@ -128,6 +135,7 @@ public class ApplicationDTO {
 	@Column(name = "CARD_ISSUED_OFFICE")
 	private String cardIssuedOffice;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
 	@Column(name = "CARD_EXPIRY_DATE")
 	private Date cardExpiryDate;
 
@@ -190,6 +198,135 @@ public class ApplicationDTO {
 
 	@Transient
 	private String position3Str;
+
+	@Column(name = "NOW_EMPLOYED")
+	private String nowEmployed;
+
+	@Column(name = "EMPLOYED_NAME")
+	private String employedName;
+
+	@Column(name = "EMPLOYED_POSITION")
+	private String employedPosition;
+
+	@Column(name = "EMPLOYED_RELATION")
+	private String employedRelation;
+
+	@Column(name = "BRANCH_SERVICE")
+	private String branchService;
+
+	@Column(name = "PREVIOUS_EMPLOYERS")
+	private String previousEmployers;
+
+	@Column(name = "PREVIOUS_EMPLOYERS_REASON")
+	private String previousEmployersReason;
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
+	@Column(name = "DATE_TO_BE_DRAFTED")
+	private Date dateToBeDrafted;
+
+	@Column(name = "MARRIAGE_ADDRESS")
+	private String marriageAddress;
+
+	@Column(name = "SCHOOL_NAME")
+	private String schoolName;
+
+	@Column(name = "DEGREE")
+	private String degree;
+
+	@Column(name = "FACULTY")
+	private String faculty;
+
+	@Column(name = "MAJOR")
+	private String major;
+
+	@Column(name = "GPA")
+	private double gpa;
+
+	@Column(name = "YEAR_OF_GRADUATE")
+	private String yearsOfGraduate;
+
+	@Column(name = "LANGUAGES_NAME")
+	private String languagesName;
+	@Column(name = "SPEAKING")
+	private String speaking;
+	@Column(name = "READING")
+	private String reading;
+	@Column(name = "UNDERSTANDING")
+	private String understanding;
+	@Column(name = "WRITING")
+	private String writing;
+
+	public String getNowEmployed() {
+		return nowEmployed;
+	}
+
+	public void setNowEmployed(String nowEmployed) {
+		this.nowEmployed = nowEmployed;
+	}
+
+	public String getEmployedName() {
+		return employedName;
+	}
+
+	public void setEmployedName(String employedName) {
+		this.employedName = employedName;
+	}
+
+	public String getEmployedPosition() {
+		return employedPosition;
+	}
+
+	public void setEmployedPosition(String employedPosition) {
+		this.employedPosition = employedPosition;
+	}
+
+	public String getEmployedRelation() {
+		return employedRelation;
+	}
+
+	public void setEmployedRelation(String employedRelation) {
+		this.employedRelation = employedRelation;
+	}
+
+	public String getBranchService() {
+		return branchService;
+	}
+
+	public void setBranchService(String branchService) {
+		this.branchService = branchService;
+	}
+
+	public String getPreviousEmployers() {
+		return previousEmployers;
+	}
+
+	public void setPreviousEmployers(String previousEmployers) {
+		this.previousEmployers = previousEmployers;
+	}
+
+	public String getPreviousEmployersReason() {
+		return previousEmployersReason;
+	}
+
+	public void setPreviousEmployersReason(String previousEmployersReason) {
+		this.previousEmployersReason = previousEmployersReason;
+	}
+
+	public Date getDateToBeDrafted() {
+		return dateToBeDrafted;
+	}
+
+	public void setDateToBeDrafted(Date dateToBeDrafted) {
+		this.dateToBeDrafted = dateToBeDrafted;
+	}
+
+	public String getMarriageAddress() {
+		return marriageAddress;
+	}
+
+	public void setMarriageAddress(String marriageAddress) {
+		this.marriageAddress = marriageAddress;
+	}
 
 	public String getPositionName() {
 		return positionName;
@@ -631,145 +768,92 @@ public class ApplicationDTO {
 		this.position3Str = position3Str;
 	}
 
-/*	@Column(name = "HOUSE_NO")
-	private String houseNo;
+	public String getSchoolName() {
+		return schoolName;
+	}
 
-	@Column(name = "ROAD")
-	private String road;
+	public void setSchoolName(String schoolName) {
+		this.schoolName = schoolName;
+	}
 
-	@Column(name = "DISTRICT")
-	private String district;
+	public String getDegree() {
+		return degree;
+	}
 
-	@Column(name = "SUB_DISTRICT")
-	private String subDistrict;
+	public void setDegree(String degree) {
+		this.degree = degree;
+	}
 
-	@Column(name = "ZIPCODE")
-	private int zipcode;
+	public String getFaculty() {
+		return faculty;
+	}
 
-	@Column(name = "PROVINCE")
-	private String province;
+	public void setFaculty(String faculty) {
+		this.faculty = faculty;
+	}
 
-	@Column(name = "ADDRESS_TYPE")
-	private String addressType;
+	public String getMajor() {
+		return major;
+	}
 
-	@Column(name = "ADVERTISE_NAME")
-	private String advertiseName;
+	public void setMajor(String major) {
+		this.major = major;
+	}
 
-	@Column(name = "ATTACH_NAME")
-	private String attachName;
-	
-	@Column(name = "TYPE")
-	private String type;
-	
-	@Column(name = "PATH")
-	private String path;
-	
-	@Column(name = "ATTACH_TYPE_FILE")
-	private String attachTypeFile;
-	
-	@Column(name="DEPARTMENT_NAME")
-	private String departmentName;
-	
-	@Column(name="DEPARTMENT_CODE")
-	private String departmentCode;
-	
-	@Column(name = "SCHOOL_NAME")
-	private String schoolName;
+	public double getGpa() {
+		return gpa;
+	}
 
-	@Column(name = "DEGREE")
-	private String degree;
+	public void setGpa(double gpa) {
+		this.gpa = gpa;
+	}
 
-	@Column(name = "FACULTY")
-	private String faculty;
+	public String getYearsOfGraduate() {
+		return yearsOfGraduate;
+	}
 
-	@Column(name = "MAJOR")
-	private String major;
+	public void setYearsOfGraduate(String yearsOfGraduate) {
+		this.yearsOfGraduate = yearsOfGraduate;
+	}
 
-	@Column(name = "GPA")
-	private double gpa;
+	public String getLanguagesName() {
+		return languagesName;
+	}
 
-	@Column(name = "YEAR_OF_GRADUATE")
-	private String yearsOfGraduate;
-	
-	@Column(name = "POSITION") 
-	private String position;
+	public void setLanguagesName(String languagesName) {
+		this.languagesName = languagesName;
+	}
 
-	@Column(name = "FROM_DATE")
-	private Date fromDate;
+	public String getSpeaking() {
+		return speaking;
+	}
 
-	@Column(name = "TO_DATE")
-	private Date toDate;
+	public void setSpeaking(String speaking) {
+		this.speaking = speaking;
+	}
 
-	@Column(name = "EMPLOYER_NAME")
-	private String employerName;
+	public String getReading() {
+		return reading;
+	}
 
-	@Column(name = "ADDRESS")
-	private String address;
+	public void setReading(String reading) {
+		this.reading = reading;
+	}
 
-	@Column(name = "TYPE_OF_BUSSINESS")
-	private String typeOfBusiness;
+	public String getUnderstanding() {
+		return understanding;
+	}
 
-	@Column(name = "POSITION_OF_EMPLOYER")
-	private String positionOfEmployer;
+	public void setUnderstanding(String understanding) {
+		this.understanding = understanding;
+	}
 
-	@Column(name = "REASON")
-	private String reason;
+	public String getWriting() {
+		return writing;
+	}
 
-	@Column(name = "SUPERVISOR")
-	private String supervisor;
-
-	@Column(name = "SALARY")
-	private long salary;
-
-	@Column(name = "DESCRIPTION")
-	private String description;
-	
-	@Column(name = "NAME")
-	private String name;
-	
-	@Column(name = "RELATION")
-	private String relation;
-	
-	@Column(name = "OCCUPATION")
-	private String occupation;
-	
-	@Column(name = "ADDRESS")
-	private String address;
-
-	@Column(name = "LANGUAGES_NAME")
-	private String languagesName;
-	
-	@Column(name = "SPEAKING")
-	private String speaking;
-	
-	@Column(name = "READING")
-	private String reading;
-	
-	@Column(name = "UNDERSTANDING")
-	private String understanding;
-	
-	@Column(name = "WRITING")
-	private String writing;
-	
-	@Index(name = "positionNameIndex")
-	@Column(name = "POSITION_NAME")
-	private String positionName;
-
-	@Column(name = "POSITON_CODE")
-	private String positionCode;
-	
-	@Column(name = "FULLNAME")
-	private String fullName;
-	@Column(name = "TEL")
-	private String tel;
-	@Column(name = "OCCUPATION")
-	private String occupation;
-	
-	@Column(name = "SKILL_DETAIL")
-	private String skillDetail;*/
-	
-
-	
-	
+	public void setWriting(String writing) {
+		this.writing = writing;
+	}
 
 }

@@ -1,5 +1,6 @@
 package com.aug.controllers;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -58,7 +59,7 @@ public class ApplicationController {
 
 	}
 	@RequestMapping(value = "/save",method ={ RequestMethod.POST })
-	public @ResponseBody ApplicationDTO save(@RequestBody ApplicationDTO applicationDTO){
+	public @ResponseBody ApplicationDTO save(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
 		Applicant applicant = new Applicant(); 
 		
 		applicantService.create(applicant.fromApplicationDTO(applicant, applicationDTO));
@@ -69,8 +70,63 @@ public class ApplicationController {
 		
 		
 	}
-	
+	@RequestMapping(value = "/informations", method = { RequestMethod.GET })
+	public String informations() {
+        LOGGER.info("**** Welcome to Application Controller ****");
+        return "informations";
 
+	}
+	@RequestMapping(value = "/saveinformations",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveInformations(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		Applicant applicant = new Applicant(); 
+		
+		applicantService.create(applicant.fromApplicationDTO(applicant, applicationDTO));
+		
+		
+		return applicationDTO;
+		
+		
+		
+	}
+	@RequestMapping(value = "/saveeducations",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveEducations(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		Applicant applicant = new Applicant(); 
+		
+		applicantService.create(applicant.fromApplicationDTO(applicant, applicationDTO));
+		
+		
+		return applicationDTO;
+		
+		
+		
+	}
+
+	@RequestMapping(value = "/applications", method = { RequestMethod.GET })
+	public String applications() {
+        LOGGER.info("**** Welcome to Application Controller ****");
+        return "applications";
+
+	}
+
+	@RequestMapping(value = "/address", method = { RequestMethod.GET })
+	public String address() {
+        LOGGER.info("**** Welcome to Application Controller ****");
+        return "address";
+
+	}
+	@RequestMapping(value = "/educations", method = { RequestMethod.GET })
+	public String educations() {
+        LOGGER.info("**** Welcome to Application Controller ****");
+        return "educations";
+
+	}
+	@RequestMapping(value = "/experiences", method = { RequestMethod.GET })
+	public String experiences() {
+        LOGGER.info("**** Welcome to Application Controller ****");
+        return "experiences";
+
+	}
+	
 	@ModelAttribute("departments")
 	@Transactional
 	public List<Department> departmentList() {

@@ -1,7 +1,10 @@
 package com.aug.db.entities;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -50,6 +53,7 @@ public class Applicant {
 	@Column(name = "NICKNAME_EN")
 	private String nickNameEN;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
 	@Column(name = "BIRTHDATE")
 	private Date birthDate;
 
@@ -140,7 +144,8 @@ public class Applicant {
 
 	@Column(name = "CARD_ISSUED_OFFICE")
 	private String cardIssuedOffice;
-
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
 	@Column(name = "CARD_EXPIRY_DATE")
 	private Date cardExpiryDate;
 
@@ -212,7 +217,8 @@ public class Applicant {
 
 	@Column(name = "PREVIOUS_EMPLOYERS_REASON")
 	private String previousEmployersReason;
-
+	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
 	@Column(name = "DATE_TO_BE_DRAFTED")
 	private Date dateToBeDrafted;
 
@@ -826,8 +832,7 @@ public class Applicant {
 		this.marriageAddress = marriageAddress;
 	}
 
-	public Applicant fromApplicationDTO(Applicant applicant,
-			ApplicationDTO applicationDTO) {
+	public Applicant fromApplicationDTO(Applicant applicant,ApplicationDTO applicationDTO) throws ParseException {
 		applicant.setId(applicationDTO.getId());
 		applicant.setFirstNameTH(applicationDTO.getFirstNameTH());
 		applicant.setFirstNameEN(applicationDTO.getFirstNameEN());
@@ -835,7 +840,79 @@ public class Applicant {
 		applicant.setLastNameEN(applicationDTO.getLastNameEN());
 		applicant.setNickNameTH(applicationDTO.getNickNameTH());
 		applicant.setNickNameEN(applicationDTO.getNickNameEN());
-
+	/*	String bDate = applicationDTO.getBirthDate();
+		String applyDate = applicationDTO.getApplyDate();
+		String dDate = applicationDTO.getDateToBeDrafted();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
+		Date date = null;
+		try {
+			date = dateFormat.parse(bDate);
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+		}
+		Date apply = null; 
+		try {
+			apply = dateFormat.parse(applyDate);
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+		}
+		Date drafted = null; 
+		try {
+			drafted = dateFormat.parse(dDate);
+		} catch (ParseException e) {
+			
+			e.printStackTrace();
+		}*/
+		applicant.setBirthDate(applicationDTO.getBirthDate());
+		applicant.setPlaceBirth(applicationDTO.getPlaceBirth());
+		applicant.setAge(applicationDTO.getAge());
+		applicant.setHeight(applicationDTO.getHeight());
+		applicant.setWeight(applicationDTO.getWeight());
+		applicant.setReligion(applicationDTO.getReligion());
+		applicant.setNationality(applicationDTO.getNationality());
+		applicant.setTel(applicationDTO.getTel());
+		applicant.setEmail(applicationDTO.getEmail());
+		applicant.setApplyDate(applicationDTO.getApplyDate());
+		applicant.setEmergencyName(applicationDTO.getEmergencyName());
+		applicant.setEmergencyTel(applicationDTO.getEmergencyTel());
+		applicant.setEmergencyAddress(applicationDTO.getEmergencyAddress());
+		applicant.setNoticeNewspaper(applicationDTO.getNoticeNewspaper());
+		applicant.setNoticeMagazine(applicationDTO.getNoticeMagazine());
+		applicant.setNoticeFriend(applicationDTO.getNoticeFriend());
+		applicant.setNoticeWebSite(applicationDTO.getNoticeWebSite());
+		applicant.setNoticeOther(applicationDTO.getNoticeOther());
+		applicant.setCertificate(applicationDTO.getCertificate());
+		applicant.setExpectedSalary(applicationDTO.getExpectedSalary());
+		applicant.setCardId(applicationDTO.getCardId());
+		applicant.setCardIssuedOffice(applicationDTO.getCardIssuedOffice());
+		applicant.setCardExpiryDate(applicationDTO.getCardExpiryDate());
+		applicant.setMilitaryFromYear(applicationDTO.getMilitaryFromYear());
+		applicant.setMilitarytoYear(applicationDTO.getMilitarytoYear());
+		applicant.setMilitaryPlace(applicationDTO.getMilitaryPlace());
+		applicant.setMilitaryServiceNo(applicationDTO.getMilitaryServiceNo());
+		applicant.setMilitaryReason(applicationDTO.getMilitaryReason());
+		applicant.setMilitaryStatus(applicationDTO.getMilitaryStatus());
+		applicant.setMarritalStatusName(applicationDTO.getMarritalStatusName());
+		applicant.setNumberOfChildren(applicationDTO.getNumberOfChildren());
+		applicant.setSpouseName(applicationDTO.getSpouseName());
+		applicant.setMarriageCertificateNo(applicationDTO.getMarriageCertificateNo());
+		applicant.setIssueOficeMarriage(applicationDTO.getIssueOficeMarriage());
+		applicant.setOccupationMarriage(applicationDTO.getOccupationMarriage());
+		applicant.setNowEmployed(applicationDTO.getNowEmployed());
+		applicant.setEmployedName(applicationDTO.getEmployedName());
+		applicant.setEmployedPosition(applicationDTO.getEmployedPosition());
+		applicant.setEmployedRelation(applicationDTO.getEmployedRelation());
+		applicant.setBranchService(applicationDTO.getBranchService());
+		applicant.setPreviousEmployers(applicationDTO.getPreviousEmployers());
+		applicant.setPreviousEmployersReason(applicationDTO.getPreviousEmployersReason());
+		applicant.setDateToBeDrafted(applicationDTO.getDateToBeDrafted());
+		applicant.setMarriageAddress(applicationDTO.getMarriageAddress());
+		
+		
+		
+		
 		return applicant;
 
 	}
