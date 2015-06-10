@@ -9,7 +9,10 @@ import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,7 +37,11 @@ public class ApplicantController implements Serializable {
 	private ApplicantService applicantService;
 
 	@RequestMapping(value = "/applicant", method = { RequestMethod.GET })
-	public String helloPage() {
+	public String helloPage(Model model) {
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String name = user.getUsername();
+		System.out.println("NAMEUSERNAME :" + name);
+		model.addAttribute("name", name);
 		return "main_applicant";
 	}
 
