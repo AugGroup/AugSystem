@@ -40,7 +40,6 @@ public class ApplicantController implements Serializable {
 	public String helloPage(Model model) {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String name = user.getUsername();
-		System.out.println("NAMEUSERNAME :" + name);
 		model.addAttribute("name", name);
 		return "main_applicant";
 	}
