@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%><html>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
 
 
@@ -190,14 +190,17 @@
 			</div>
 		</div>
 		<form class="form-inline" id="applicantForm" action="${pageContext.request.contextPath}/application" method="get">
+		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<div class="row">
 			<div class="col-lg-6"></div>
 			<div class="col-lg-6">
 				<button type="submit" id="btn_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New Applicant</button>
 			</div>
 		</div>
+		</sec:authorize>
 		</form>
 		
+		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<!-- Modal of Edit Status and Score-->	
 		<div id="EditStatusModal" class="modal fade">
 			<div class="modal-dialog">
@@ -256,6 +259,7 @@
     				</div>
 				</div>
 			</div>
-		</div> 
+		</div>
+		</sec:authorize>
 		
 	</div>
