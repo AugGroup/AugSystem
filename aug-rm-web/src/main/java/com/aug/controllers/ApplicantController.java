@@ -102,4 +102,5 @@ public class ApplicantController implements Serializable {
 		return applicantDTO;
 
 	}
+
 }

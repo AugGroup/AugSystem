@@ -34,8 +34,7 @@
 						{ data : function(data){
 						       return '<a href="#" id="btn_edit_info"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
 						 }}
-					 ]
-				
+					 ]			
 			}); 
 			
 			 //Search By Position and Show function 

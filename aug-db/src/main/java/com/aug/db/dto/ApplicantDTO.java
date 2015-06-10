@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 				+ "null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as SCORE, null as TECH_SCORE, null as ATTITUDE_HOME, null as ATTITUDE_OFFICE,"
 				+ " a.APPLICANT_ID, a.APPLICANT_CODE, a.FIRSTNAME_EN, a.LASTNAME_EN, a.TEL, a.EMAIL, a.APPLY_DATE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.TRACKING_STATUS, p.POSITION_NAME, p.ID "
 				+ " FROM APPLICANT a LEFT JOIN POSITION p ON a.POSITION1_ID = p.ID ORDER BY APPLICANT_ID ASC LIMIT 0,50", resultClass = ApplicantDTO.class),
-				
+
 		@NamedNativeQuery(name = "SEARCH_BY_ID", query = "SELECT a.FIRSTNAME_TH, a.LASTNAME_TH, a.NICKNAME_TH, a.NICKNAME_EN, "
 				+ "a.BIRTHDATE, a.AGE, a.HEIGHT, a.WEIGHT, a.SEX, a.RELIGION, a.NATIONALITY, a.APPLICANT_STATUS, a.EMERGENCY_NAME, a.EMERGENCY_TEL,"
 				+ "a.EMERGENCY_ADDRESS, a.NOTICE_NEWSPAPER, a.NOTICE_MAGAZINE, a.NOTICE_FRIEND, a.NOTICE_WEBSITE, a.NOTICE_OTHER, a.CERTIFICATE,"
@@ -192,7 +192,7 @@ public class ApplicantDTO {
 
 	@Column(name = "ATTITUDE_HOME")
 	private String attitudeHome;
-	
+
 	@Column(name = "ATTITUDE_OFFICE")
 	private String attitudeOffice;
 
@@ -351,7 +351,7 @@ public class ApplicantDTO {
 	}
 
 	public String getFirstNameEN() {
-		return firstNameEN;
+		return firstNameEN + " " + lastNameEN;
 	}
 
 	public void setFirstNameEN(String firstNameEN) {
