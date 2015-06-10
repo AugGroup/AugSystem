@@ -65,7 +65,7 @@ insert INTO AUG_REQUEST (REQUEST_DATE,REQUESTER_NAME,STATUS,APPROVAL_NAME,APPROV
 VALUES (STR_TO_DATE('26/05/2015','%d/%m/%Y'),'SamSmith','NEW','ChrisBrown',STR_TO_DATE('27/05/2015','%d/%m/%Y'),'JAVA',2,'HibernateSping',3);
 
 insert INTO LOGIN(USERNAME,PASSWORD)
-VALUES ('rm','12345678'),('rm2','87654321');
+VALUES ('admin','admin'),('staff','staff'),('manager','manager');
 
 insert INTO ADVERTISE(ADVERTISE_NAME)
 VALUES ('Newspaper'),('Magazine'),('Website'),('Friend'),('Other');
@@ -74,4 +74,4 @@ insert INTO APPLICANT_ADVERTISE(APPLICANT_ID,ADVERTISE_ID)
 VALUES ('1','2'),('1','3'),('2','3'),('3','4');
 
 insert INTO USER_ROLES(USERNAME,ROLE)
-VALUES ('rm','ROLE_ADMIN'),('rm2','ROLE_ADMIN');
+VALUES ('admin','ROLE_ADMIN'),('staff','ROLE_STAFF'),('manager','ROLE_MANAGER');
