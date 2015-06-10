@@ -17,23 +17,16 @@
 	<global-method-security pre-post-annotations="enabled">
 	</global-method-security>
 
-	<!-- <http use-expressions="true" auto-config="true"> -->
-	<!-- <intercept-url pattern="/**" access="ROLE_USER" /> -->
-	<!-- <intercept-url pattern="/*" access="isAuthenticated()" /> -->
-	<!-- <intercept-url pattern="/admin/*" access="hasRole('ADMIN')" /> -->
-	<!-- <logout logout-success-url="/login" /> -->
-	<!-- <form-login login-page="/login/" default-target-url="/" -->
-	<!-- always-use-default-target="true" /> -->
-	<!-- </http> -->
 	<http pattern="/static/**" security="none"></http>
 	<http use-expressions="true" auto-config='true'>
+
 		<intercept-url pattern="/login" access="permitAll" />
 		<intercept-url pattern="/applicant" access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF','ROLE_MANAGER')" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 		<logout logout-success-url="/login" delete-cookies="JSESSIONID" invalidate-session="true"/>
 		<form-login login-page="/login" default-target-url="/applicant"
 			authentication-failure-url="/login" username-parameter="j_username"
-			password-parameter="j_password" always-use-default-target="true" />
+			password-parameter="j_password" always-use-default-target="true" /> 
 	</http>
 
 	<beans:bean id="loginService" class="com.aug.db.services.LoginServiceImpl">

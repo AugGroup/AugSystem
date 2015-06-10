@@ -1,32 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.aug.db.entities;
+package com.aug.db.dto;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-/**
- *
- * @author Supannika Pattanodom
- */
 @Entity
-@Table(name = "AUG_REQUEST")
-public class AugRequest {
+@NamedNativeQueries({
+		@NamedNativeQuery(name = "SEARCH_ALL_REQUEST", query = "SELECT a.REQUEST_ID, a.REQUEST_DATE, a.REQUESTER_NAME, a.STATUS, a.APPROVAL_NAME,a.APPROVAL_DATE, a.REQUEST_POSITION, a.NUMBER_APPLICANT, a.SPECIFIC_SKILL,"
+				+ " a.YEAR_EXPERIENCE, p.POSITION_NAME, p.ID FROM AUG_REQUEST a JOIN POSITION p ON a.REQUEST_POSITION = p.ID ORDER BY REQUEST_ID ASC LIMIT 0,50", resultClass = AugRequestDTO.class),
+		@NamedNativeQuery(name = "SEARCH_REQUEST_BY_ID", query = "SELECT a.REQUEST_ID, a.REQUEST_DATE, a.REQUESTER_NAME, a.STATUS, a.APPROVAL_NAME,a.APPROVAL_DATE, a.REQUEST_POSITION, a.NUMBER_APPLICANT, a.SPECIFIC_SKILL,"
+				+ " a.YEAR_EXPERIENCE, p.POSITION_NAME, p.ID FROM AUG_REQUEST a JOIN POSITION p ON a.REQUEST_POSITION = p.ID WHERE REQUEST_ID = :ID", resultClass = AugRequestDTO.class)})
+public class AugRequestDTO {
+
+	@Column(name = "POSITION_NAME")
+	private String positionName;
 
 	@Id
-	@GeneratedValue
 	@Column(name = "REQUEST_ID")
 	private Integer id;
 
@@ -47,9 +43,8 @@ public class AugRequest {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
 	private Date approvalDate;
 
-	@ManyToOne
-	@JoinColumn(name = "REQUEST_POSITION", referencedColumnName = "id")
-	private Position positionRequest;
+	@Column(name = "REQUEST_POSITION")
+	private Integer positionRequest;
 
 	@Column(name = "NUMBER_APPLICANT")
 	private Integer numberApplicant;
@@ -59,6 +54,25 @@ public class AugRequest {
 
 	@Column(name = "YEAR_EXPERIENCE")
 	private Integer yearExperience;
+
+	@Transient
+	private String positionStr;
+
+	public String getPositionStr() {
+		return positionStr;
+	}
+
+	public void setPositionStr(String positionStr) {
+		this.positionStr = positionStr;
+	}
+
+	public String getPositionName() {
+		return positionName;
+	}
+
+	public void setPositionName(String positionName) {
+		this.positionName = positionName;
+	}
 
 	public Integer getId() {
 		return id;
@@ -84,6 +98,14 @@ public class AugRequest {
 		this.requesterName = requesterName;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public String getApprovalName() {
 		return approvalName;
 	}
@@ -100,21 +122,11 @@ public class AugRequest {
 		this.approvalDate = approvalDate;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-
-
-	public Position getPositionRequest() {
+	public Integer getPositionRequest() {
 		return positionRequest;
 	}
 
-	public void setPositionRequest(Position positionRequest) {
+	public void setPositionRequest(Integer positionRequest) {
 		this.positionRequest = positionRequest;
 	}
 

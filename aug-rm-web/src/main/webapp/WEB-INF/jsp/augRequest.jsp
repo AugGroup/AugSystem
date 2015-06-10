@@ -38,17 +38,17 @@
                 {"data": "id"},
                 {"data": "requestDate"},
                 {"data": "requesterName"},
-                {"data": "positionName"},
+                {"data": "positionStr"},
                 {"data": "numberApplicant"},
                 {"data": "status"},
                 {data: function () {
-                        return '<button id="previewBtn" class="btn btn-primary">Preview <span class="glyphicon glyphicon-search"></span></button>';
+                        return '<button id="btn_preview" class="btn btn-primary">Preview <span class="glyphicon glyphicon-search"></span></button>';
                     }},
                 {data: function (data) {
-                        return '<button id="editBtn" class="btn btn-warning" data-id="' + data.id + '" data-toggle="modal" data-target="#addModal">Edit <span class="glyphicon glyphicon-edit"></span></button>';
+                        return '<button id="btn_edit" class="btn btn-warning" data-id="' + data.id + '" data-toggle="modal" data-target="#addRequestModal">Edit <span class="glyphicon glyphicon-edit"></span></button>';
                     }},
                 {data: function (data) {
-                        return '<button id="deleteBtn" class="btn btn-danger" data-id="' + data.id + '" data-toggle="modal" data-target="#deleteModal">Delete <span class="glyphicon glyphicon-remove-sign"></span></button>';
+                        return '<button id="btn_delete" class="btn btn-danger" data-id="' + data.id + '" data-toggle="modal" data-target="#deleteModal">Delete <span class="glyphicon glyphicon-remove-sign"></span></button>';
                     }}
             ]
 
@@ -80,20 +80,20 @@
             });
         }
 
-        //addModal
-        $('#addModal').off("click").on('shown.bs.modal', function (e) {
+        //addRequestModal
+        $('#addRequestModal').off("click").on('shown.bs.modal', function (e) {
        
             var button = e.relatedTarget;
             if (button != null) {
                 var id = $(button).data("id");
                 if (id != null) {
                     editSearch(id);
-                    $('#buttonSaveReq').off('click').on('click', function () {
+                    $('#btn_save_req').off('click').on('click', function () {
                         edit(button);
                     });
                 } else {
                     $('#form')[0].reset();
-                    $('#buttonSaveReq').off('click').on('click', function () {
+                    $('#btn_save_req').off('click').on('click', function () {
                         save();
                     });
                 }
@@ -116,7 +116,7 @@
                 url: '${pageContext.request.contextPath}/saveRequest',
                 data: JSON.stringify(request),
                 success: function (request) {
-                    $('#addModal').modal('hide');
+                    $('#addRequestModal').modal('hide');
                     alert(request);
                    // dtRequest.ajax.reload();
                 }
@@ -176,7 +176,7 @@
                     dt.yearExperience = data.yearExperience;
                     dt.status = data.status;
                     dtRequest.row(index).data(dt).draw();
-                    $("#addModal").modal('hide');
+                    $("#addRequestModal").modal('hide');
                 }
             });
         }
@@ -223,9 +223,9 @@
         </tr>
     </thead>
 </table>
-<center><button id="addReqBtn"class="btn btn-primary btn-info" data-toggle="modal" data-target="#addModal"> Request <span class="glyphicon glyphicon-plus-sign"></span></button></center>
+<center><button id="btn_addReq"class="btn btn-primary btn-info" data-toggle="modal" data-target="#addRequestModal"> Request <span class="glyphicon glyphicon-plus-sign"></span></button></center>
 <!--add Modal--> 
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="addRequestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -241,8 +241,8 @@
                     <div class="form-group">
                         <label for="position">Position</label> 
                         <select name="position" id="position" class="form-control">
-                            <c:forEach items="${position}" var="position">
-                                <option value="${position.id}">${position.positionName }</option>
+                            <c:forEach items="${positionRequest}" var="items">
+                                <option value="${items.id}">${items.positionName }</option>
                             </c:forEach>
                         </select>
                     </div>
@@ -261,12 +261,12 @@
                     <div class="form-group">
                         <label for="status">Status</label>
                         <select name="status" id='status' >
-                            <option value ='New' selected ='selected'>New</option>
-                            <option value ='Submit'>Submit</option></select>
+                            <option value ='NEW' selected ='selected'>NEW</option>
+                            <option value ='SUBMIT'>SUBMIT</option></select>
                     </div>                   
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button id="buttonSaveReq" class="btn btn-primary btn-success">Save  <span class="glyphicon glyphicon-floppy-save"></span></button>
+                        <button id="btn_save_req" class="btn btn-primary btn-success">Save <span class="glyphicon glyphicon-floppy-save"></span></button>
                     </div>
             </div>
             </form>

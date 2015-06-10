@@ -41,6 +41,9 @@ public class Position {
 
 	@OneToMany(mappedBy = "position3")
 	private List<Applicant> applicantList3;
+	
+	@OneToMany(mappedBy = "positionRequest")
+	private List<AugRequest> augRequestList;
 
 	public List<Applicant> getApplicantList1() {
 		return applicantList1;
@@ -97,5 +100,15 @@ public class Position {
 	public void setPositionName(String positionName) {
 		this.positionName = positionName;
 	}
+
+	public List<AugRequest> getAugRequestList() {
+		return augRequestList;
+	}
+
+	public void setAugRequestList(List<AugRequest> augRequestList) {
+		this.augRequestList = augRequestList;
+	}
+	
+	
 
 }

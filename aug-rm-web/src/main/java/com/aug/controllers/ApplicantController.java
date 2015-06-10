@@ -77,7 +77,7 @@ public class ApplicantController implements Serializable {
 	}
 
 	// Update
-	// Seach Applicant By Id
+	// Search Applicant By Id
 	@RequestMapping(value = "/findById/{id}", method = { RequestMethod.POST })
 	public @ResponseBody ApplicantDTO findById(@PathVariable Integer id) {
 

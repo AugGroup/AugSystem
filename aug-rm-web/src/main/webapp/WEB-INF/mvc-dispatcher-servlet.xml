@@ -77,7 +77,7 @@
 				<entry key="hibernate.show_sql" value="${hibernate.show_sql}" />
 			</map>
 		</property>
-		<property name="packagesToScan" value="com.aug.db" />
+		<property name="packagesToScan" value="com.aug.db.entities" />
 	</bean>
 
 	<bean id="transactionManager"

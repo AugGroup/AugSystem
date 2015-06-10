@@ -1,11 +1,6 @@
 
-import com.aug.db.entities.AugRequest;
-import com.aug.db.services.AugRequestService;
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.transaction.annotation.Transactional;
+
+import com.aug.db.entities.AugRequest;
+import com.aug.db.services.AugRequestService;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -47,7 +43,7 @@ public class AugRequestTest {
         augRequest.setStatus("NEW");
         augRequest.setApprovalDate(new Date());
         augRequest.setRequestDate(new Date());
-        augRequest.setPositionName("JAVA");
+        //augRequest.setPosition(1);
         augRequest.setNumberApplicant(2);
         augRequest.setSpecificSkill("SpringHibernate");
         augRequest.setYearExperience(2);

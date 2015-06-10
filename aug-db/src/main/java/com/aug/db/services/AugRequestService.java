@@ -5,8 +5,10 @@
  */
 package com.aug.db.services;
 
-import com.aug.db.entities.AugRequest;
 import java.util.List;
+
+import com.aug.db.dto.AugRequestDTO;
+import com.aug.db.entities.AugRequest;
 
 /**
  *
@@ -25,4 +27,9 @@ public interface AugRequestService {
     public void deleteById(Integer id);
     
     public List<AugRequest> findAll();
+    
+    public List<AugRequestDTO> findAllAugRequest();
+    
+    public AugRequestDTO findAugRequestById(Integer id);
+    
 }

@@ -9,8 +9,6 @@ import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.Transient;
 
-import org.hibernate.annotations.Index;
-
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
