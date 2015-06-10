@@ -22,7 +22,7 @@
 	<!-- <form-login login-page="/login/" default-target-url="/" -->
 	<!-- always-use-default-target="true" /> -->
 	<!-- </http> -->
-
+	<http pattern="/static/**" security="none"></http>
 	<http use-expressions="true" auto-config='true'>
 		<intercept-url pattern="/login" access="permitAll" />
 		<intercept-url pattern="/applicant" access="hasRole('ROLE_ADMIN')" />
@@ -52,8 +52,4 @@
 				authorities-by-username-query="select username,role from USER_ROLES where username=?" />
 		</authentication-provider>
 	</authentication-manager>
-	<beans:bean id="messageSource"
-		class="org.springframework.context.support.ResourceBundleMessageSource">
-		<beans:property name="basename" value="springsecurity" />
-	</beans:bean>
 </beans:beans> 

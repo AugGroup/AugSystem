@@ -29,7 +29,7 @@
 						{'data' : "position3Str"},
 						{'data' : "trackingStatus"},
 						{ data : function(data){
-							return '<a href="##EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
+							return '<a href="#EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
 				        	 //data-id="'+data.id+'"
 						 }},
 						{ data : function(data){
@@ -62,11 +62,11 @@
 						         {'data' : "position3Str"},
 						         {'data' : "trackingStatus"},
 						         { data : function(data){
-						        	 return '<a href="##EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
+						        	 return '<a href="#EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
 						        	 //data-id="'+data.id+'"
 						        	}},
 						         { data : function(data){
-						        	 return '<a href="#" id="btn_edit_info"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
+						        	 return '<a href="#" id="btn_edit_info"  data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
 						        	 }}
 						        ]
 					});
@@ -150,8 +150,7 @@
 							});
 					}
 				}
-			}); 
-			
+			});
 		});
 	
 	</script>
@@ -165,7 +164,7 @@
 				<div class="input-group">
 					<input type="text" class="form-control" id="inputSearch" placeholder="- Enter position -"/>
 					<span class="input-group-btn">
-						<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> Search</a>					
+						<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> Search</button>				
 					</span>
 				</div>
 			</div>
@@ -190,15 +189,17 @@
 				</table>
 			</div>
 		</div>
+		<form class="form-inline" id="applicantForm" action="${pageContext.request.contextPath}/application" method="get">
 		<div class="row">
 			<div class="col-lg-6"></div>
 			<div class="col-lg-6">
-				<button type="button" id="btn_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New Applicant</a>
+				<button type="submit" id="btn_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New Applicant</button>
 			</div>
 		</div>
+		</form>
 		
 		<!-- Modal of Edit Status and Score-->	
-		 <a href="#EditStatusModal" id="btn_register" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-plus-sign"></span> Register </a> 
+		 <a href="#EditStatusModal" id="btn_register" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-plus-sign"></span> Register </a> ${name}
 		<div id="EditStatusModal" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">

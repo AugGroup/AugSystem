@@ -63,10 +63,10 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href=""><span class="glyphicon glyphicon-user"></span>
-								UserName</a></li>
+								${name}</a></li>
 						<li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-log-in"></span>
 								Login</a></li>
-						<li><a href=""><span class="glyphicon glyphicon-log-out"></span>
+						<li><a href="<c:url value="j_spring_security_logout" />"><span class="glyphicon glyphicon-log-out"></span>
 								Logout</a></li>
 					</ul>
 				</div>

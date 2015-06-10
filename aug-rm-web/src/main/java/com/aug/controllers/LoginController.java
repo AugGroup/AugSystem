@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -37,13 +39,14 @@ public class LoginController implements Serializable {
 
 	@RequestMapping(value = "/applicant", method = { RequestMethod.POST })
 	public String loginSpringPost(@RequestParam String userName,
-			@RequestParam String password) {
+			@RequestParam String password,Model model) {
 		
-		 LoginDTO data = loginService.findByUserName(userName);
-//		 if() {
-//			 
-//		 }
-		// model.addAttribute("userName", userName);
+//		 LoginDTO data = loginService.findByUserName(userName);
+		 User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	     String name = user.getUsername(); //get logged in username
+	     System.out.println("NAMEUSERNAME :" + name);
+		 model.addAttribute("name", name);
+		 
 		// model.addAttribute("password", password);
 		// if (!userName.trim().isEmpty()) {
 		// loginService.findByUserName(userName, password);
