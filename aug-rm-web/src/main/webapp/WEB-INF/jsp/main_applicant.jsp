@@ -199,7 +199,6 @@
 		</form>
 		
 		<!-- Modal of Edit Status and Score-->	
-		 <a href="#EditStatusModal" id="btn_register" class="btn btn-primary" data-toggle="modal"><span class="glyphicon glyphicon-plus-sign"></span> Register </a> ${name}
 		<div id="EditStatusModal" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
