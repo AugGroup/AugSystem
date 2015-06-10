@@ -23,6 +23,9 @@ public class Reference {
 	@Column(name = "OCCUPATION")
 	private String occupation;
 	
+	@Column(name = "COMPLETE_ADDRESS")
+	private String completeAddress;
+
 	@ManyToOne
 	@JoinColumn(name = "APPLICANT_ID")
 	private Applicant applicant;
@@ -64,6 +67,14 @@ public class Reference {
 
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
+	}
+
+	public String getCompleteAddress() {
+		return completeAddress;
+	}
+
+	public void setCompleteAddress(String completeAddress) {
+		this.completeAddress = completeAddress;
 	}
 
 }

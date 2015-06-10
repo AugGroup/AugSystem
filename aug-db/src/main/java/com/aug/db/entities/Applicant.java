@@ -192,6 +192,32 @@ public class Applicant {
 	@Column(name = "ATTITUDE_OFFICE")
 	private String attitudeOffice;
 
+	@Column(name = "NOW_EMPLOYED")
+	private String nowEmployed;
+
+	@Column(name = "EMPLOYED_NAME")
+	private String employedName;
+
+	@Column(name = "EMPLOYED_POSITION")
+	private String employedPosition;
+
+	@Column(name = "EMPLOYED_RELATION")
+	private String employedRelation;
+
+	@Column(name = "BRANCH_SERVICE")
+	private String branchService;
+
+	@Column(name = "PREVIOUS_EMPLOYERS")
+	private String previousEmployers;
+
+	@Column(name = "PREVIOUS_EMPLOYERS_REASON")
+	private String previousEmployersReason;
+
+	@Column(name = "DATE_TO_BE_DRAFTED")
+	private Date dateToBeDrafted;
+
+	@Column(name = "MARRIAGE_ADDRESS")
+	private String marriageAddress;
 
 	@OneToMany(mappedBy = "applicant")
 	private List<Reference> references;
@@ -728,16 +754,89 @@ public class Applicant {
 		this.advertise = advertise;
 	}
 
-	public Applicant fromApplicationDTO(Applicant applicant,ApplicationDTO applicationDTO){
-		applicant.setId(applicationDTO.getId()); 
+	public String getNowEmployed() {
+		return nowEmployed;
+	}
+
+	public void setNowEmployed(String nowEmployed) {
+		this.nowEmployed = nowEmployed;
+	}
+
+	public String getEmployedName() {
+		return employedName;
+	}
+
+	public void setEmployedName(String employedName) {
+		this.employedName = employedName;
+	}
+
+	public String getEmployedPosition() {
+		return employedPosition;
+	}
+
+	public void setEmployedPosition(String employedPosition) {
+		this.employedPosition = employedPosition;
+	}
+
+	public String getEmployedRelation() {
+		return employedRelation;
+	}
+
+	public void setEmployedRelation(String employedRelation) {
+		this.employedRelation = employedRelation;
+	}
+
+	public String getBranchService() {
+		return branchService;
+	}
+
+	public void setBranchService(String branchService) {
+		this.branchService = branchService;
+	}
+
+	public String getPreviousEmployers() {
+		return previousEmployers;
+	}
+
+	public void setPreviousEmployers(String previousEmployers) {
+		this.previousEmployers = previousEmployers;
+	}
+
+	public String getPreviousEmployersReason() {
+		return previousEmployersReason;
+	}
+
+	public void setPreviousEmployersReason(String previousEmployersReason) {
+		this.previousEmployersReason = previousEmployersReason;
+	}
+
+	public Date getDateToBeDrafted() {
+		return dateToBeDrafted;
+	}
+
+	public void setDateToBeDrafted(Date dateToBeDrafted) {
+		this.dateToBeDrafted = dateToBeDrafted;
+	}
+
+	public String getMarriageAddress() {
+		return marriageAddress;
+	}
+
+	public void setMarriageAddress(String marriageAddress) {
+		this.marriageAddress = marriageAddress;
+	}
+
+	public Applicant fromApplicationDTO(Applicant applicant,
+			ApplicationDTO applicationDTO) {
+		applicant.setId(applicationDTO.getId());
 		applicant.setFirstNameTH(applicationDTO.getFirstNameTH());
 		applicant.setFirstNameEN(applicationDTO.getFirstNameEN());
 		applicant.setLastNameTH(applicationDTO.getLastNameTH());
 		applicant.setLastNameEN(applicationDTO.getLastNameEN());
 		applicant.setNickNameTH(applicationDTO.getNickNameTH());
 		applicant.setNickNameEN(applicationDTO.getNickNameEN());
-		
+
 		return applicant;
-		
+
 	}
 }

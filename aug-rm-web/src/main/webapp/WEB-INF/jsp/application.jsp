@@ -231,16 +231,16 @@
 						<div class="form-group">
 							<label for="marital">Marital status </label>
 							<div class="radio">
-								<label><input type="radio" name="singleName"
-									id="singleId">Single</label>
+								<label><input type="radio" name="maritalName"
+									id="maritalId" value="Single">Single</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="marriedName"
-									id="marriedId">Married</label>
+								<label><input type="radio" name="maritalName"
+									id="maritalId" value="Married">Married</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="divorcedName"
-									id="divorcedId">Divorced</label>
+								<label><input type="radio" name="maritalName"
+									id="maritalId">Divorced</label>
 							</div>
 
 						</div>
@@ -284,12 +284,12 @@
 							<label for="military">Have you ever served in the
 								military service? </label>
 							<div class="radio">
-								<label><input type="radio" name="yesMilitaryName"
-									id="yesMilitaryId">Yes</label>
+								<label><input type="radio" name="militaryName"
+									id="militaryId">Yes</label>
 							</div>
 							<div class="radio">
-								<label><input type="radio" name="noMilitaryName"
-									id="noMilitaryId">No</label>
+								<label><input type="radio" name="militaryName"
+									id="militaryId">No</label>
 							</div>
 
 							<div class="form-group">
@@ -409,7 +409,7 @@
 				</div>
 			</div>
 
-<%-- 
+
 			<!-- tab application -->
 			<div id="application" class="tab-pane fade">
 
@@ -481,10 +481,10 @@
 					<label for="knowEmployed">Do you know anyone now being
 						employed by this company? </label>
 					<div class="radio">
-						<label><input type="radio" name="yesName" id="yesId">Yes</label>
+						<label><input type="radio" name="knowEmployedName" id="knowEmployedId" value="Yes">Yes</label>
 					</div>
 					<div class="radio">
-						<label><input type="radio" name="noName" id="noId">No</label>
+						<label><input type="radio" name="knowEmployedName" id="knowEmployedId" value="No">No</label>
 					</div>
 					<div class="form-group">
 						<label for="nameRelation">If yes, please write name,
@@ -655,12 +655,12 @@
 						previous employers regarding your character, qualification record
 						of employment? </label>
 					<div class="radio">
-						<label><input type="radio" name="yesPreviousEmployersName"
-							id="yesPreviousEmployersId">Yes</label>
+						<label><input type="radio" name="previousEmployersName"
+							id="previousEmployersId" value="Yes">Yes</label>
 					</div>
 					<div class="radio">
-						<label><input type="radio" name="noPreviousEmployersName"
-							id="noPreviousEmployersId">No</label>
+						<label><input type="radio" name="previousEmployersName"
+							id="previousEmployersId" value="No">No</label>
 					</div>
 					<div class="form-group">
 						<label for="giveReason">If not, please give the reason </label> <input
@@ -792,7 +792,7 @@
 
 					</div>
 
-				</div> --%>
+				</div>
 				<button type="button" class="btn btn-success" id="buttonSave">
 					<span class="glyphicon glyphicon-off"></span> Save
 				</button>
