@@ -326,7 +326,7 @@
 				<version>8.1.14.v20131031</version>
 				<configuration>
 					<webAppConfig>
-						<contextPath>/${project.artifactId}</contextPath>
+						<contextPath>/${project.build.finalName}</contextPath>
 					</webAppConfig>
 					<reload>manual</reload>
 					<stopKey>foo</stopKey>
