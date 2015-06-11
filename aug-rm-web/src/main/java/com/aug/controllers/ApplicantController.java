@@ -46,10 +46,8 @@ public class ApplicantController implements Serializable {
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",
-				Locale.ENGLISH);
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(
-				dateFormat, true));
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 
 	}
 
@@ -57,8 +55,7 @@ public class ApplicantController implements Serializable {
 	@RequestMapping(value = "/searchByPosition", method = { RequestMethod.GET })
 	public @ResponseBody Object searchByPosition(
 			@RequestParam final String position) {
-		final List<ApplicantDTO> data = applicantService
-				.findByPosition(position);
+		final List<ApplicantDTO> data = applicantService.findByPosition(position);
 
 		return new Object() {
 			public List<ApplicantDTO> getData() {
@@ -105,33 +102,4 @@ public class ApplicantController implements Serializable {
 		return applicantDTO;
 
 	}
-	
-	
-
-/*	// Edit Applicant Informations
-	@RequestMapping(value = "/Edit", method = { RequestMethod.POST })
-	public @ResponseBody Applicant editApplicantInfo(
-			@RequestBody Applicant applicant, @PathVariable Integer id) {
-
-		final Applicant data = applicantService.findById(id);
-
-		return applicantService.findById(id);
-
-	}*/
-
-	// //Save Score
-	// @RequestMapping(value = "/saveScore", method= {RequestMethod.POST})
-	// public @ResponseBody Applicant userPost(@RequestBody Applicant applicant)
-	// throws ParseException{
-	// applicantService.create(applicant);
-	// Applicant app = applicantService.findById(applicant.getId());
-	// return app;
-	// }
-
-	/*
-	 * @RequestMapping(value = "/applicant", method= {RequestMethod.POST})
-	 * public String login(@RequestParam String userName,@RequestParam String
-	 * pass, Model model) { model.addAttribute("userName", userName); return
-	 * "applicant"; }
-	 */
 }

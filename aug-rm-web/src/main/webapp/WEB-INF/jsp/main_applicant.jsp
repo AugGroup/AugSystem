@@ -30,7 +30,6 @@
 						{'data' : "trackingStatus"},
 						{ data : function(data){
 							return '<a href="#EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
-				        	 //data-id="'+data.id+'"
 						 }},
 						{ data : function(data){
 						       return '<a href="#" id="btn_edit_info"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
@@ -40,7 +39,7 @@
 			}); 
 			
 			 //Search By Position and Show function 
-			$('#btn_search').on('click', function(){
+			$('#btn_search').off('click').on('click', function(){
 				if(dtApplicant){
 					dtApplicant.ajax.reload();
 				}else{
@@ -63,7 +62,6 @@
 						         {'data' : "trackingStatus"},
 						         { data : function(data){
 						        	 return '<a href="#EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
-						        	 //data-id="'+data.id+'"
 						        	}},
 						         { data : function(data){
 						        	 return '<a href="#" id="btn_edit_info"  data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'

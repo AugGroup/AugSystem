@@ -30,26 +30,6 @@ $(document).ready(function() {
         	}
         }
     });
-	
-// 	$('#btnSubmit').on('click', function(){
-		
-// 	});
-	
-// 	function login(){
-// 		if($('#form').valid()){
-// 			var userName = 	$('#userName').val();
-// 			var password = $('#password').val();
-// 			var json = {"userName" : userName,
-// 						"password" : password};
-// 			$.ajax({
-// 				url : "${pageContext.request.contextPath}/applicant/login",
-// 				type : "GET",
-// 				contentType:"application/json; charset=utf-8",
-// 				data: JSON.stringify(json),
-// 			});
-		
-// 		};
-// 	};
 });
 </script>
 	<h1>Log-In</h1>
@@ -67,7 +47,7 @@ $(document).ready(function() {
 				<input type="password" class="form-control" name="j_password">
 			</div><br><br>
 			
-			<button type="submit" id="btnSubmit" class="btn btn-primary btn-md">Submit</button>
+			<button type="submit" id="btnSubmit" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-log-in"></span> Submit</button>
 		</form>
 		
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
