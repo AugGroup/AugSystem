@@ -62,10 +62,9 @@
         $('#deleteModal').off("click").on('shown.bs.modal', function (e) {
             var button = e.relatedTarget;
             var id = $(button).data("id");
-            //var row = $(button). 
             if (id !== null) {
 
-                $('#buttonDelete').on('click', function () {
+                $('#btn_delete_submit').on('click', function () {
                     deleted(button);
                 });
             }
@@ -325,8 +324,8 @@
             <div class="modal-body">
                 Do you want to delete request ?
                 <br>
-                <button  id="buttonClose" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button  id="buttonDelete" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+                <button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button  id="btn_delete_submit" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
 
             </div>
         </div>
