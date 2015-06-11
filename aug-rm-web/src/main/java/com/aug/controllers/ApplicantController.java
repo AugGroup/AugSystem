@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.entities.Applicant;
+import com.aug.db.entities.AugRequest;
 import com.aug.db.services.ApplicantService;
 
 @Controller
@@ -104,6 +106,15 @@ public class ApplicantController implements Serializable {
 		
 		return applicantDTO;
 
+	}
+	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
+	public @ResponseBody String delesteUser(@PathVariable("id") Integer id) {
+
+		applicantService.deleteById(id);
+		return "success";
+//		augRequestService.delete(augRequest);
+//		return augRequestService.findById(id);
 	}
 
 }

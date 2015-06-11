@@ -43,11 +43,16 @@
 						         {'data' : "position3Str"},
 						         {'data' : "trackingStatus"},
 						         { data : function(data){
-						        	 return '<a href="#EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
+						        	 return '<a href="#EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> Edit Score</b>'
 						        	}},
 						         { data : function(data){
-						        	 return '<a href="#" id="btn_edit_info"  data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
-						        	 }}
+						        	 return '<a href="#" id="btn_edit_info"  data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> Edit Info</b>'
+						        	 }},
+						         {data: function (data) {
+						        	 return '<a href="#deleteModal" id="btn_delete" data-id="' + data.id + '" data-toggle="modal" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove-sign"></span> Delete</b>'
+				                 	}}
+// 					                 return '<button id="btn_delete" class="btn btn-danger" data-id="' + data.id + '" data-toggle="modal" data-target="#deleteModal">Delete <span class="glyphicon glyphicon-remove-sign"></span></button>';
+// 					                 }}
 						        ]
 					});
 				}
@@ -110,9 +115,18 @@
 					 		d.trackingStatus = data.trackingStatus;
 					 		
 					 		table.row(rowData).data(d).draw();
-					 						 		
-					 		}
-					});
+					 		
+							new PNotify({
+							    title: 'Edit Success',
+							    text: 'You can edit data',
+							    type: 'success',
+							    nonblock: {
+							        nonblock: true,
+							        nonblock_opacity: .2
+							    }
+							});
+					 }
+				});
 				
 			}
 			
@@ -131,8 +145,43 @@
 					}
 				}
 			});
-			
+		 	
+	        //delete Modal
+	        $('#deleteModal').on('shown.bs.modal', function (e) {
+	            var button = e.relatedTarget;
+	            var id = $(button).data("id");
+	            if (id !== null) {
+	                $('#btn_delete_submit').off('click').on('click', function () {
+	                    deleted(button);
+	                });
+	            }
+	        });
+	        
+	        //delete function 
+	        function deleted(button) {
+	            var dtApplicant = $('#dataTable').DataTable();
+	            var id = $(button).data("id");
+	            var index = dtApplicant.row(button.closest("tr")).index();
+	            $.ajax({
+	                url: "${pageContext.request.contextPath}/delete/" + id,
+	                type: "POST",
+	                success: function () {
+	                	dtApplicant.row(index).remove().draw();
+						new PNotify({
+						    title: 'Delete Success',
+						    text: 'You can delete data',
+						    type: 'success',
+						    nonblock: {
+						        nonblock: true,
+						        nonblock_opacity: .2
+						    }
+						});
+	                }
+	            });
+	        }
+	        
 		 	$('#btn_search').trigger("click");
+		 	
 		});
 	
 	</script>
@@ -166,15 +215,18 @@
 							<th>Position2</th>
 							<th>Position3</th>
 							<th>Status</th>
-							<th style="${ss}">Edit </th>
-							<th style="${ss}">Edit Info</th>
+							<th>Edit</th>
+							<th>Edit Info</th>
+							<th>Delete</th>
+<%-- 							<th style="${ss}">Edit </th>
+							<th style="${ss}">Edit Info</th> --%>
 						</tr>
 					</thead>
 				</table>
 			</div>
 		</div>
 		</sec:authorize>
-		<sec:authorize access="hasAnyRole('ROLE_MANAGER')">
+<%--  		<sec:authorize access="hasAnyRole('ROLE_MANAGER')">
 			<div class="row" id="dataTable_row">
 			<div class="col-lg-12">
 				<table id="dataTablePreview" class="cell-border" cellspacing="0" width="90%">
@@ -192,7 +244,7 @@
 				</table>
 			</div>
 		</div>
-		</sec:authorize>
+		</sec:authorize> --%>
 		<form class="form-inline" id="applicantForm" action="${pageContext.request.contextPath}/application" method="get">
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<div class="row">
@@ -265,5 +317,24 @@
 			</div>
 		</div>
 		</sec:authorize>
+		<!-- Delete Model -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    		<div class="modal-dialog">
+        		<div class="modal-content">
+            		<div class="modal-header">
+                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                		<h4 class="modal-title" id="ModalLabel">Delete Applicant</h4>
+            		</div>
+            		<div class="modal-body">
+                		Do you want to delete this applicant ?
+                		<br>
+                		<div align="right">
+                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> Delete</button>
+                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                		</div>
+	            	</div>
+        		</div>
+    		</div>  
+		</div>
 		
 	</div>
