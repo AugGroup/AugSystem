@@ -16,38 +16,20 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var dtApplicant
-		 	//show all applicant
-			$('#dataTable').DataTable({
-				ajax : {url : '${pageContext.request.contextPath}/search',
-						type : 'GET'},
-				columns:[{'data': "code"},
-						{'data': "applyDate"},
-						{'data' : "firstNameEN"},
-						{'data' : "position1Str"},
-						{'data' : "position2Str"},
-						{'data' : "position3Str"},
-						{'data' : "trackingStatus"},
-						{ data : function(data){
-							return '<a href="#EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning">Edit Score</b>'
-						 }},
-						{ data : function(data){
-						       return '<a href="#" id="btn_edit_info"  data-toggle="modal" class="btn btn-sm btn-warning">Edit Info</b>'
-						 }}
-					 ]			
-			}); 
+			var dtApplicant		
 			
 			 //Search By Position and Show function 
-			$('#btn_search').off('click').on('click', function(){
+			$('#btn_search').on('click', function(){
 				if(dtApplicant){
 					dtApplicant.ajax.reload();
 				}else{
 					dtApplicant = $('#dataTable').DataTable({
 						lengthChange : false,
 						searching : false,
+						paging: false,
 						ajax : {
 							url : '${pageContext.request.contextPath}/searchByPosition',
-							type : 'GET',
+							type : 'POST',
 							data : function(d){
 								d.position = $('#inputSearch').val();
 							},
@@ -148,6 +130,8 @@
 					}
 				}
 			});
+			
+		 	$('#btn_search').trigger("click");
 		});
 	
 	</script>
@@ -166,7 +150,9 @@
 				</div>
 			</div>
 		</div>
-		<!--Data Table for Applicant List -->		
+		<!--Data Table for Applicant List -->
+		<c:set var="ss" value="display:none;"></c:set>
+		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<div class="row" id="dataTable_row">
 			<div class="col-lg-12">
 				<table id="dataTable" class="cell-border" cellspacing="0" width="90%">
@@ -179,13 +165,33 @@
 							<th>Position2</th>
 							<th>Position3</th>
 							<th>Status</th>
-							<th>Edit </th>
-							<th>Edit Info</th>
+							<th style="${ss}">Edit </th>
+							<th style="${ss}">Edit Info</th>
 						</tr>
 					</thead>
 				</table>
 			</div>
 		</div>
+		</sec:authorize>
+		<sec:authorize access="hasAnyRole('ROLE_MANAGER')">
+			<div class="row" id="dataTable_row">
+			<div class="col-lg-12">
+				<table id="dataTablePreview" class="cell-border" cellspacing="0" width="90%">
+					<thead>
+						<tr>
+							<th>ID Code</th>
+							<th>Date</th>
+							<th>Name</th>
+							<th>Position1</th>
+							<th>Position2</th>
+							<th>Position3</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+				</table>
+			</div>
+		</div>
+		</sec:authorize>
 		<form class="form-inline" id="applicantForm" action="${pageContext.request.contextPath}/application" method="get">
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<div class="row">

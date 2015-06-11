@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -51,19 +52,6 @@ public class ApplicantController implements Serializable {
 
 	}
 
-	// Search by position
-	@RequestMapping(value = "/searchByPosition", method = { RequestMethod.GET })
-	public @ResponseBody Object searchByPosition(
-			@RequestParam final String position) {
-		final List<ApplicantDTO> data = applicantService.findByPosition(position);
-
-		return new Object() {
-			public List<ApplicantDTO> getData() {
-				return data;
-			}
-		};
-	}
-
 	// Search All
 	@RequestMapping(value = "/search", method = { RequestMethod.GET })
 	public @ResponseBody Object searchAllApplicant() {
@@ -72,6 +60,21 @@ public class ApplicantController implements Serializable {
 		return new Object() {
 			public List<ApplicantDTO> getData() {
 				return data;
+			}
+		};
+	}
+	
+	// Search by position
+	@RequestMapping(value = "/searchByPosition", method = { RequestMethod.POST })
+	public @ResponseBody Object searchByPosition(@RequestParam final String position) {
+		List<ApplicantDTO> data = applicantService.findByPosition(position);
+		if(StringUtils.isEmpty(position)){
+			data = applicantService.findAllApplicant();
+		}
+		final List<ApplicantDTO> datas = data;
+		return new Object() {
+			public List<ApplicantDTO> getData() {
+				return datas;
 			}
 		};
 	}
