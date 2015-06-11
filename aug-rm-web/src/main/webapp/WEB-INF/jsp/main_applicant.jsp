@@ -32,6 +32,7 @@
 							type : 'POST',
 							data : function(d){
 								d.position = $('#inputSearch').val();
+								console.log(d.position)
 							},
 						},
 						columns:[{'data': "code"},

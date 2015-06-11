@@ -109,15 +109,15 @@
                 requesterName: $('#inputRequesterName').val(),
                 requestDate: $('#inputRequestDate').val(),
                 approvalName: $('#inputApprovalName').val(),
-                ApprovalDate: $('#inputApproveDate').val(),
+                approveDate: $('#inputApproveDate').val(),
                 numberApplicant : $('#inputNumberApplicant').val(),
                 specificSkill: $('#inputSpecificSkill').val(),
                 yearExperience : $('#inputYearExperience').val(),
-                position : $('#inputPosition').val(),
+                positionRequest : $('#inputPosition').val(),
                 status: $('#inputStatus').val()
             };
-
-            $.ajax({
+            console.log(request);
+            $.ajax({        	
                 contentType: "application/json",
                 type: "POST",
                 url: '${pageContext.request.contextPath}/saveRequest',
@@ -247,7 +247,7 @@
     </thead>
 </table>
 <center><button id="btn_addReq"class="btn btn-primary btn-info" data-toggle="modal" data-target="#addRequestModal"> Request <span class="glyphicon glyphicon-plus-sign"></span></button></center>
-<!--add Modal--> 
+<!--Add Modal--> 
 <div class="modal fade" id="addRequestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">

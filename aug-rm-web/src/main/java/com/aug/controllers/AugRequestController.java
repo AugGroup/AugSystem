@@ -39,14 +39,7 @@ public class AugRequestController implements Serializable {
 		return "augRequest";
 	}
 
-	@RequestMapping(value = "/addRequest", method = { RequestMethod.POST })
-	public String addRequest(
-			@ModelAttribute("augRequest") AugRequest augRequest,
-			BindingResult result) {
-		augRequestService.create(augRequest);
-		return "redirect:/request";
-	}
-
+	// Search all AugRequest
 	@RequestMapping(value = "/findAllRequest", method = { RequestMethod.GET })
 	public @ResponseBody Object findAllRequest() {
 
@@ -59,15 +52,37 @@ public class AugRequestController implements Serializable {
 		};
 	}
 
+	// Search AugRequest By Id
+	@RequestMapping(value = "/searchRequest/{id}", method = { RequestMethod.POST })
+	public @ResponseBody AugRequestDTO searchRequestById(
+			@PathVariable Integer id) {
+		return augRequestService.findAugRequestById(id);
+
+	}
+
+	// Create AugRequest
 	@RequestMapping(value = "/saveRequest", method = RequestMethod.POST)
-	public @ResponseBody AugRequest save(@RequestBody AugRequest augRequest,
-			BindingResult result) {
-		// SimpleDateFormat sf = new SimpleDateFormat("dd/MM/yyyy");
-		// System.out.println(json.getDateStr());
-		// Date birthDate = sf.parse(json.getDateStr());
-		// json.setBirthdate(birthDate);
+	public @ResponseBody AugRequestDTO saveRequest(
+			@RequestBody AugRequestDTO augRequestDTO)throws ParseException {
+
+		AugRequest augRequest = new AugRequest();
+		augRequest.setId(augRequestDTO.getId());
+		augRequest.setRequestDate(augRequestDTO.getRequestDate());
+		augRequest.setRequesterName(augRequestDTO.getRequesterName());
+		augRequest.setStatus(augRequestDTO.getStatus());
+		augRequest.setApprovalName(augRequestDTO.getApprovalName());
+		augRequest.setApproveDate(augRequestDTO.getApproveDate());
+		Position position = positionService.findById(augRequestDTO
+				.getPositionRequest());
+		augRequest.setPositionRequest(position);
+		augRequest.setNumberApplicant(augRequestDTO.getNumberApplicant());
+		augRequest.setSpecificSkill(augRequestDTO.getSpecificSkill());
+		augRequest.setYearExperience(augRequestDTO.getYearExperience());
+
 		augRequestService.create(augRequest);
-		return augRequestService.findById(augRequest.getId());
+
+		return augRequestDTO;
+
 	}
 
 	// Edit AugRequest
@@ -96,14 +111,7 @@ public class AugRequestController implements Serializable {
 
 	}
 
-	// Search AugRequest By Id
-	@RequestMapping(value = "/searchRequest/{id}", method = { RequestMethod.POST })
-	public @ResponseBody AugRequestDTO searchRequestById(
-			@PathVariable Integer id) {
-		return augRequestService.findAugRequestById(id);
-
-	}
-
+	// Delete AugRequest
 	@RequestMapping(value = "/deleteRequest/{id}", method = RequestMethod.POST)
 	public @ResponseBody AugRequest delesteUser(
 			@ModelAttribute AugRequest augRequest,
@@ -113,6 +121,7 @@ public class AugRequestController implements Serializable {
 		return augRequestService.findById(id);
 	}
 
+	// Position List
 	@ModelAttribute("positionRequest")
 	public List<Position> getPosition() {
 		return positionService.findAll();
