@@ -41,7 +41,7 @@ public class AugRequestTest {
         augRequest.setRequesterName("Sale Name");
         augRequest.setApprovalName("Approval Name");
         augRequest.setStatus("NEW");
-        augRequest.setApprovalDate(new Date());
+        augRequest.setApproveDate(new Date());
         augRequest.setRequestDate(new Date());
         //augRequest.setPosition(1);
         augRequest.setNumberApplicant(2);

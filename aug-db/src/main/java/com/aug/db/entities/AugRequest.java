@@ -31,7 +31,7 @@ public class AugRequest {
 	private Integer id;
 
 	@Column(name = "REQUEST_DATE")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", locale = "en", timezone = "GMT")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date requestDate;
 
 	@Column(name = "REQUESTER_NAME")
@@ -43,9 +43,9 @@ public class AugRequest {
 	@Column(name = "APPROVAL_NAME")
 	private String approvalName;
 
-	@Column(name = "APPROVAL_DATE")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
-	private Date approvalDate;
+	@Column(name = "APPROVE_DATE")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	private Date approveDate;
 
 	@ManyToOne
 	@JoinColumn(name = "REQUEST_POSITION", referencedColumnName = "id")
@@ -92,12 +92,12 @@ public class AugRequest {
 		this.approvalName = approvalName;
 	}
 
-	public Date getApprovalDate() {
-		return approvalDate;
+	public Date getApproveDate() {
+		return approveDate;
 	}
 
-	public void setApprovalDate(Date approvalDate) {
-		this.approvalDate = approvalDate;
+	public void setApproveDate(Date approveDate) {
+		this.approveDate = approveDate;
 	}
 
 	public String getStatus() {
@@ -107,8 +107,6 @@ public class AugRequest {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
-
 
 	public Position getPositionRequest() {
 		return positionRequest;

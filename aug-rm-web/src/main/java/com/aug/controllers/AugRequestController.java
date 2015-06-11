@@ -82,11 +82,11 @@ public class AugRequestController implements Serializable {
 		augRequest.setRequesterName(augRequestDTO.getRequesterName());
 		augRequest.setStatus(augRequestDTO.getStatus());
 		augRequest.setApprovalName(augRequestDTO.getApprovalName());
-		augRequest.setApprovalDate(augRequestDTO.getApprovalDate());
-		/*Position position = positionService.findById(augRequestDTO
+		augRequest.setApproveDate(augRequestDTO.getApproveDate());
+		Position position = positionService.findById(augRequestDTO
 				.getPositionRequest());
 		augRequest.setPositionRequest(position);
-*/		augRequest.setNumberApplicant(augRequestDTO.getNumberApplicant());
+		augRequest.setNumberApplicant(augRequestDTO.getNumberApplicant());
 		augRequest.setSpecificSkill(augRequestDTO.getSpecificSkill());
 		augRequest.setYearExperience(augRequestDTO.getYearExperience());
 
@@ -113,7 +113,7 @@ public class AugRequestController implements Serializable {
 		return augRequestService.findById(id);
 	}
 
-	@ModelAttribute("position")
+	@ModelAttribute("positionRequest")
 	public List<Position> getPosition() {
 		return positionService.findAll();
 

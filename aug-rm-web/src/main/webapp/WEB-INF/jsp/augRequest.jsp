@@ -25,14 +25,18 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+    	//Date picker format
+    	$('.input-group.date').datepicker({
+			format: "dd/mm/yyyy",
+			startView: 2
+			});
+    	
         var dtRequest;
 
-        var dtRequest = $('#requestTable').DataTable({
-            
+        var dtRequest = $('#requestTable').DataTable({           
             ajax: {
                 type: "GET",
                 url: '${pageContext.request.contextPath}/findAllRequest'
-
             },
             columns: [
                 {"data": "id"},
@@ -103,11 +107,15 @@
         //Button Save
         function save() {
             var request = {
-                requesterName: $('#requesterName').val(),
-                numberApplicant: $('#numberApplicant').val(),
-                specificSkill: $('#specificSkill').val(),
-                yearExperience: $('#yearExperience').val(),
-                status: $('#status').val()
+                requesterName: $('#inputRequesterName').val(),
+                requestDate: $('#inputRequestDate').val(),
+                approvalName: $('#inputApprovalName').val(),
+                ApprovalDate: $('#inputApproveDate').val(),
+                numberApplicant : $('#inputNumberApplicant').val(),
+                specificSkill: $('#inputSpecificSkill').val(),
+                yearExperience : $('#inputYearExperience').val(),
+                position : $('#inputPosition').val(),
+                status: $('#inputStatus').val()
             };
 
             $.ajax({
@@ -125,11 +133,15 @@
         }
         // Edit 
         function editShowData(data) {
-            $('#requesterName').val(data.requesterName);
-            $('#numberApplicant').val(data.numberApplicant);
-            $('#specificSkill').val(data.specificSkill);
-            $('#yearExperience').val(data.yearExperience);
-            $('#status').val(data.status);
+            $('#inputRequesterName').val(data.requesterName);
+            $('#inputRequestDate').val(data.requestDate);
+            $('#inputApprovalName').val(data.approvalName);
+            $('#inputApproveDate').val(data.approveDate);
+            $('#inputNumberApplicant').val(data.numberApplicant);
+            $('#inputSpecificSkill').val(data.specificSkill);
+            $('#inputYearExperience').val(data.yearExperience);
+            $('#inputPosition').val(data.positionRequest);
+            $('#inputStatus').val(data.status);
         }
 
         function editSearch(id) {
@@ -147,19 +159,27 @@
         function edit(button) {
             var id = $(button).data("id");
 
-            var requesterName = $('#requesterName').val();
-            var numberApplicant = $('#numberApplicant').val();
-            var specificSkill = $('#specificSkill').val();
-            var yearExperience = $('#yearExperience').val();
-            var status = $('status').val();
+            var requesterName = $('#inputRequesterName').val();
+            var requestDate = $('#inputRequestDate').val();
+            var approvalName = $('#inputApprovalName').val();
+            var approveDate = $('#inputApproveDate').val();
+            var numberApplicant = $('#inputNumberApplicant').val();
+            var specificSkill = $('#inputSpecificSkill').val();
+            var yearExperience = $('#inputYearExperience').val();
+            var positionRequest = $('#inputPosition').val();
+            var status = $('#inputStatus').val();
             var index = dtRequest.row(button.closest("tr")).index();
-
+            console.log(requestDate);
             var request = {
                 'id': id,
                 'requesterName': requesterName,
+                'requestDate' : requestDate,
+                'approvalName' : approvalName,
+                'approveDate' : approveDate,
                 'numberApplicant': numberApplicant,
                 'specificSkill': specificSkill,
                 'yearExperience': yearExperience, 
+                'positionRequest':positionRequest,
                 'status': status
             };
 
@@ -171,10 +191,14 @@
                 success: function (data) {
                     var dt = dtRequest.data();
                     dt.requesterName = data.requesterName;
+                    dt.requestDate = data.requestDate;
+                    dt.approvalName = data.approvalName;
+                    dt.approveDate = data.approveDate;
                     dt.numberApplicant = data.numberApplicant;
                     dt.specificSkill = data.specificSkill;
                     dt.yearExperience = data.yearExperience;
                     dt.status = data.status;
+                    dt.positionRequest = data.positionRequest;
                     dtRequest.row(index).data(dt).draw();
                     $("#addRequestModal").modal('hide');
                 }
@@ -235,40 +259,57 @@
             <div class="modal-body">
                 <form id="form" name="form" >   
                     <div class="form-group">
-                        <label for="requesterName">Requester</label>
-                        <input type="text" class="form-control" name="requesterName" id="requesterName" />
+                        <label for="inputRequesterName">Requester</label>
+                        <input type="text" class="form-control" name="inputRequesterName" id="inputRequesterName" />
                     </div>
                     <div class="form-group">
-                        <label for="position">Position</label> 
-                        <select name="position" id="position" class="form-control">
+                    	<label for="inputRequestDate">Requester Date</label>
+                    	<div class="input-group date">
+                    		<input type="text" class="form-control" name="inputRequestDate" id="inputRequestDate"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+    					</div>
+    				</div>
+                    <div class="form-group">
+                        <label for="inputPosition">Position</label> 
+                        <select name="inputPosition" id="inputPosition" class="form-control">
                             <c:forEach items="${positionRequest}" var="items">
                                 <option value="${items.id}">${items.positionName }</option>
                             </c:forEach>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="numberApplicant">Number of Applicant</label>
-                        <input type="text" class="form-control" name="numberApplicant" id="numberApplicant" placeholder="Enter Number of Applicant" />
+                        <label for="inputApprovalName">Approval Name</label>
+                        <input type="text" class="form-control" name="inputApprovalName" id="inputApprovalName" />
                     </div>
                     <div class="form-group">
-                        <label for="specificSkill">Specific Skill </label>
-                        <textarea type="text" class="form-control" name="specificSkill" id="specificSkill" placeholder="Enter Specific Skill"></textarea>
+                    	<label for="inputApproveDate">Approval Date</label>
+                    	<div class="input-group date">
+                    		<input type="text" class="form-control" name="inputApproveDate" id="inputApproveDate"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+    					</div>
+    				</div>
+                    <div class="form-group">
+                        <label for="inputNumberApplicant">Number of Applicant</label>
+                        <input type="text" class="form-control" name="inputNumberApplicant" id="inputNumberApplicant" placeholder="Enter Number of Applicant" />
                     </div>
                     <div class="form-group">
-                        <label for="specificSkill">Year Experience</label>  
-                        <input type="text" class="form-control" name="yearExperience" id="yearExperience" placeholder="Enter Year Experience"/>
+                        <label for="inputSpecificSkill">Specific Skill </label>
+                        <textarea type="text" class="form-control" name="inputSpecificSkill" id="inputSpecificSkill" placeholder="Enter Specific Skill"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="status">Status</label>
-                        <select name="status" id='status' >
+                        <label for="inputYearExperience">Year Experience</label>  
+                        <input type="text" class="form-control" name="inputYearExperience" id="inputYearExperience" placeholder="Enter Year Experience"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputStatus">Status</label>
+                        <select name="inputStatus" id='inputStatus' >
                             <option value ='NEW' selected ='selected'>NEW</option>
                             <option value ='SUBMIT'>SUBMIT</option></select>
-                    </div>                   
+                    </div>  
+                   </div>                
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button id="btn_save_req" class="btn btn-primary btn-success">Save <span class="glyphicon glyphicon-floppy-save"></span></button>
                     </div>
-            </div>
+            
             </form>
         </div>
     </div>

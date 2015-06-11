@@ -13,9 +13,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @NamedNativeQueries({
-		@NamedNativeQuery(name = "SEARCH_ALL_REQUEST", query = "SELECT a.REQUEST_ID, a.REQUEST_DATE, a.REQUESTER_NAME, a.STATUS, a.APPROVAL_NAME,a.APPROVAL_DATE, a.REQUEST_POSITION, a.NUMBER_APPLICANT, a.SPECIFIC_SKILL,"
+		@NamedNativeQuery(name = "SEARCH_ALL_REQUEST", query = "SELECT a.REQUEST_ID, a.REQUEST_DATE, a.REQUESTER_NAME, a.STATUS, a.APPROVAL_NAME,a.APPROVE_DATE, a.REQUEST_POSITION, a.NUMBER_APPLICANT, a.SPECIFIC_SKILL,"
 				+ " a.YEAR_EXPERIENCE, p.POSITION_NAME, p.ID FROM AUG_REQUEST a JOIN POSITION p ON a.REQUEST_POSITION = p.ID ORDER BY REQUEST_ID ASC LIMIT 0,50", resultClass = AugRequestDTO.class),
-		@NamedNativeQuery(name = "SEARCH_REQUEST_BY_ID", query = "SELECT a.REQUEST_ID, a.REQUEST_DATE, a.REQUESTER_NAME, a.STATUS, a.APPROVAL_NAME,a.APPROVAL_DATE, a.REQUEST_POSITION, a.NUMBER_APPLICANT, a.SPECIFIC_SKILL,"
+		@NamedNativeQuery(name = "SEARCH_REQUEST_BY_ID", query = "SELECT a.REQUEST_ID, a.REQUEST_DATE, a.REQUESTER_NAME, a.STATUS, a.APPROVAL_NAME,a.APPROVE_DATE, a.REQUEST_POSITION, a.NUMBER_APPLICANT, a.SPECIFIC_SKILL,"
 				+ " a.YEAR_EXPERIENCE, p.POSITION_NAME, p.ID FROM AUG_REQUEST a JOIN POSITION p ON a.REQUEST_POSITION = p.ID WHERE REQUEST_ID = :ID", resultClass = AugRequestDTO.class)})
 public class AugRequestDTO {
 
@@ -27,7 +27,7 @@ public class AugRequestDTO {
 	private Integer id;
 
 	@Column(name = "REQUEST_DATE")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss", locale = "en", timezone = "GMT")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
 	private Date requestDate;
 
 	@Column(name = "REQUESTER_NAME")
@@ -39,9 +39,9 @@ public class AugRequestDTO {
 	@Column(name = "APPROVAL_NAME")
 	private String approvalName;
 
-	@Column(name = "APPROVAL_DATE")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
-	private Date approvalDate;
+	@Column(name = "APPROVE_DATE")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+	private Date approveDate;
 
 	@Column(name = "REQUEST_POSITION")
 	private Integer positionRequest;
@@ -114,12 +114,12 @@ public class AugRequestDTO {
 		this.approvalName = approvalName;
 	}
 
-	public Date getApprovalDate() {
-		return approvalDate;
+	public Date getApproveDate() {
+		return approveDate;
 	}
 
-	public void setApprovalDate(Date approvalDate) {
-		this.approvalDate = approvalDate;
+	public void setApproveDate(Date approveDate) {
+		this.approveDate = approveDate;
 	}
 
 	public Integer getPositionRequest() {
