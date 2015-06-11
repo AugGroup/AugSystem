@@ -223,31 +223,31 @@ public class Applicant {
 	@Column(name = "MARRIAGE_ADDRESS")
 	private String marriageAddress;
 
-	@OneToMany(mappedBy = "applicant")
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Reference> references;
 
-	@OneToMany(mappedBy = "applicant")
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Family> families;
 
-	@OneToMany(mappedBy = "applicant")
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<AttachFile> attachFiles;
 
-	@OneToMany(mappedBy = "applicant")
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<AugEmployee> augEmployees;
 
-	@OneToMany(mappedBy = "applicant")
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Languages> languages;
 
-	@OneToMany(mappedBy = "applicant")
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Address> address;
 
-	@OneToMany(mappedBy = "applicant")
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Education> educations;
 
-	@OneToMany(mappedBy = "applicant")
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Skill> skills;
 
-	@OneToMany(mappedBy = "applicant")
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Experience> experiences;
 
 	@ManyToMany(cascade = CascadeType.ALL)
