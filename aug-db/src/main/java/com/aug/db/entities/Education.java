@@ -1,5 +1,6 @@
 package com.aug.db.entities;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +36,7 @@ public class Education {
 	@Column(name = "YEAR_OF_GRADUATE")
 	private String yearsOfGraduate;
 	
-	@ManyToOne()
+	@ManyToOne
 	@JoinColumn(name="APPLICANT_ID")
 	private Applicant applicant;
 
