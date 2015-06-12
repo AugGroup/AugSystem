@@ -1,14 +1,26 @@
 package com.aug.db.dto;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
+import com.aug.db.entities.Address;
+import com.aug.db.entities.AttachFile;
+import com.aug.db.entities.AugEmployee;
+import com.aug.db.entities.Education;
+import com.aug.db.entities.Experience;
+import com.aug.db.entities.Family;
+import com.aug.db.entities.Languages;
+import com.aug.db.entities.Reference;
+import com.aug.db.entities.Skill;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
@@ -225,34 +237,105 @@ public class ApplicationDTO {
 	@Column(name = "MARRIAGE_ADDRESS")
 	private String marriageAddress;
 
-	@Column(name = "SCHOOL_NAME")
-	private String schoolName;
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	private List<Reference> references;
 
-	@Column(name = "DEGREE")
-	private String degree;
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	private List<Family> families;
 
-	@Column(name = "FACULTY")
-	private String faculty;
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	private List<AttachFile> attachFiles;
 
-	@Column(name = "MAJOR")
-	private String major;
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	private List<AugEmployee> augEmployees;
 
-	@Column(name = "GPA")
-	private double gpa;
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	private List<Languages> languages;
 
-	@Column(name = "YEAR_OF_GRADUATE")
-	private String yearsOfGraduate;
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	private List<Address> address;
 
-	@Column(name = "LANGUAGES_NAME")
-	private String languagesName;
-	@Column(name = "SPEAKING")
-	private String speaking;
-	@Column(name = "READING")
-	private String reading;
-	@Column(name = "UNDERSTANDING")
-	private String understanding;
-	@Column(name = "WRITING")
-	private String writing;
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	private List<Education> educations;
+
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	private List<Skill> skills;
+
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	private List<Experience> experiences;
+
+
+	public List<Reference> getReferences() {
+		return references;
+	}
+
+	public void setReferences(List<Reference> references) {
+		this.references = references;
+	}
+
+	public List<Family> getFamilies() {
+		return families;
+	}
+
+	public void setFamilies(List<Family> families) {
+		this.families = families;
+	}
+
+	public List<AttachFile> getAttachFiles() {
+		return attachFiles;
+	}
+
+	public void setAttachFiles(List<AttachFile> attachFiles) {
+		this.attachFiles = attachFiles;
+	}
+
+	public List<AugEmployee> getAugEmployees() {
+		return augEmployees;
+	}
+
+	public void setAugEmployees(List<AugEmployee> augEmployees) {
+		this.augEmployees = augEmployees;
+	}
+
+	public List<Languages> getLanguages() {
+		return languages;
+	}
+
+	public void setLanguages(List<Languages> languages) {
+		this.languages = languages;
+	}
+
+	public List<Address> getAddress() {
+		return address;
+	}
+
+	public void setAddress(List<Address> address) {
+		this.address = address;
+	}
+
+	public List<Education> getEducations() {
+		return educations;
+	}
+
+	public void setEducations(List<Education> educations) {
+		this.educations = educations;
+	}
+
+	public List<Skill> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<Skill> skills) {
+		this.skills = skills;
+	}
+
+	public List<Experience> getExperiences() {
+		return experiences;
+	}
+
+	public void setExperiences(List<Experience> experiences) {
+		this.experiences = experiences;
+	}
 
 	public String getNowEmployed() {
 		return nowEmployed;
@@ -766,92 +849,5 @@ public class ApplicationDTO {
 		this.position3Str = position3Str;
 	}
 
-	public String getSchoolName() {
-		return schoolName;
-	}
-
-	public void setSchoolName(String schoolName) {
-		this.schoolName = schoolName;
-	}
-
-	public String getDegree() {
-		return degree;
-	}
-
-	public void setDegree(String degree) {
-		this.degree = degree;
-	}
-
-	public String getFaculty() {
-		return faculty;
-	}
-
-	public void setFaculty(String faculty) {
-		this.faculty = faculty;
-	}
-
-	public String getMajor() {
-		return major;
-	}
-
-	public void setMajor(String major) {
-		this.major = major;
-	}
-
-	public double getGpa() {
-		return gpa;
-	}
-
-	public void setGpa(double gpa) {
-		this.gpa = gpa;
-	}
-
-	public String getYearsOfGraduate() {
-		return yearsOfGraduate;
-	}
-
-	public void setYearsOfGraduate(String yearsOfGraduate) {
-		this.yearsOfGraduate = yearsOfGraduate;
-	}
-
-	public String getLanguagesName() {
-		return languagesName;
-	}
-
-	public void setLanguagesName(String languagesName) {
-		this.languagesName = languagesName;
-	}
-
-	public String getSpeaking() {
-		return speaking;
-	}
-
-	public void setSpeaking(String speaking) {
-		this.speaking = speaking;
-	}
-
-	public String getReading() {
-		return reading;
-	}
-
-	public void setReading(String reading) {
-		this.reading = reading;
-	}
-
-	public String getUnderstanding() {
-		return understanding;
-	}
-
-	public void setUnderstanding(String understanding) {
-		this.understanding = understanding;
-	}
-
-	public String getWriting() {
-		return writing;
-	}
-
-	public void setWriting(String writing) {
-		this.writing = writing;
-	}
-
+	
 }

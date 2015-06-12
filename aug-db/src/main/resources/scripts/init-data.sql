@@ -68,11 +68,5 @@ VALUES (STR_TO_DATE('26/05/2015','%d/%m/%Y'),'SamSmith','NEW','ChrisBrown',STR_T
 insert INTO LOGIN(USERNAME,PASSWORD)
 VALUES ('admin','admin'),('staff','staff'),('manager','manager');
 
-insert INTO ADVERTISE(ADVERTISE_NAME)
-VALUES ('Newspaper'),('Magazine'),('Website'),('Friend'),('Other');
-
-insert INTO APPLICANT_ADVERTISE(APPLICANT_ID,ADVERTISE_ID)
-VALUES ('1','2'),('1','3'),('2','3'),('3','4');
-
 insert INTO USER_ROLES(USERNAME,ROLE)
 VALUES ('admin','ROLE_ADMIN'),('staff','ROLE_STAFF'),('manager','ROLE_MANAGER');

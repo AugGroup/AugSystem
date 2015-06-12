@@ -250,10 +250,6 @@ public class Applicant {
 	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Experience> experiences;
 
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "APPLICANT_ADVERTISE", joinColumns = { @JoinColumn(name = "APPLICANT_ID") }, inverseJoinColumns = { @JoinColumn(name = "ADVERTISE_ID") })
-	private List<Advertise> advertise;
-
 	public Integer getId() {
 		return id;
 	}
@@ -748,14 +744,6 @@ public class Applicant {
 
 	public void setPlaceBirth(String placeBirth) {
 		this.placeBirth = placeBirth;
-	}
-
-	public List<Advertise> getAdvertise() {
-		return advertise;
-	}
-
-	public void setAdvertise(List<Advertise> advertise) {
-		this.advertise = advertise;
 	}
 
 	public String getNowEmployed() {
