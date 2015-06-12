@@ -64,23 +64,18 @@ background-attachment: fixed;
 
 </style>
 <body>
-<!-- 	<div class="head" > -->
 	<div class="headLogo" id="headId" >
 		 <img
 			src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png"
 			alt="logo" style="width: 250px; height: 100px;" />
+		<div class="form-group" align="right">
+			<a href="${pageContext.request.contextPath}/login?locale=en">EN</a>
+			<a href="${pageContext.request.contextPath}/login?locale=th">TH</a>
+		</div>
 	</div>
-<!-- 	<hr /> -->
-	<!-- <div class="body" id="bodyId" -->
- 	<%-- <img
-			src="${pageContext.request.contextPath}/static/decorators/header.jpg"
-			alt="logo" />  
-	</div> --%>
-	
 	<div>
 		<decorator:body />
 	</div>
-	<!-- </div> -->
 
 	<div id="footer">
 		<div class="container">

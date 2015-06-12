@@ -87,10 +87,8 @@
         				</li> --%>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href=""><span class="glyphicon glyphicon-user"></span>
-
-								${name}</a></li>
-						<li><a href="<c:url value="j_spring_security_logout" />"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+						<li><a href=""><span class="glyphicon glyphicon-user"></span> ${name}</a></li>
+						<li><a href="<c:url value="j_spring_security_logout" />"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a></li>
 					</ul>
 				</div>
 			</div>
@@ -100,16 +98,6 @@
 	</div>
 	<hr />
 	<div class="body">
-		<!-- <div class="col-md-9 text-right">
-			<ul class="nav nav-tabs" role="navigation">
-				<li class="active"><a data-toggle="tab" href="login">Login</a></li>
-				<li><a data-toggle="tab" href="main_applicant"><span
-						class="glyphicon glyphicon-home"></span> Main Applicant</a></li>
-				<li><a data-toggle="tab" href="application"><span
-						class="glyphicon glyphicon-education"></span> Appllication</a></li>
-			</ul>
-		</div> -->
-		
 		
 	<!-------------------- Report Modal -------------------->
 	<div class="modal fade" id="reportModal" tabindex="-1">
