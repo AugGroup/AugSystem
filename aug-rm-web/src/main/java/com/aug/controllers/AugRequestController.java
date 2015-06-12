@@ -59,6 +59,15 @@ public class AugRequestController implements Serializable {
 		return augRequestService.findAugRequestById(id);
 
 	}
+	
+	// Search AugRequest By Id
+		@RequestMapping(value = "/searchRequest/{id}", method = { RequestMethod.GET })
+		public @ResponseBody AugRequestDTO searchRequestByIdGet(
+				@PathVariable Integer id) {
+			return augRequestService.findAugRequestById(id);
+
+		}
+
 
 	// Create AugRequest
 	@RequestMapping(value = "/saveRequest", method = RequestMethod.POST)

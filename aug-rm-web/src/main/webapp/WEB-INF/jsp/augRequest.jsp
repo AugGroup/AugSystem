@@ -45,8 +45,8 @@
                 {"data": "positionStr"},
                 {"data": "numberApplicant"},
                 {"data": "status"},
-                {data: function () {
-                        return '<button id="btn_preview" class="btn btn-primary">Preview <span class="glyphicon glyphicon-search"></span></button>';
+                {data: function (data) {
+                        return '<button id="btn_preview" class="btn btn-primary" data-id="' + data.id + '" data-toggle="modal" data-target="#previewModal">Preview <span class="glyphicon glyphicon-search"></span></button>';
                     }},
                 {data: function (data) {
                         return '<button id="btn_edit" class="btn btn-warning" data-id="' + data.id + '" data-toggle="modal" data-target="#addRequestModal">Edit <span class="glyphicon glyphicon-edit"></span></button>';
@@ -125,7 +125,6 @@
                 success: function (request) {
                     $('#addRequestModal').modal('hide');
                     alert(request);
-                   // dtRequest.ajax.reload();
                 }
             });
 
@@ -204,28 +203,40 @@
             });
         }
 
-        //Preview 
-//        function previewShowData(data) {
-//            $('#requesterName').val(data.requesterName);
-//            $('#numberApplicant').val(data.numberApplicant);
-//            $('#specificSkill').val(data.specificSkill);
-//            $('#yearExperience').val(data.yearExperience);
-//            $('#status').val(data.status);
-//        }
-//
-//        function preview(id) {
-//
-//            $.ajax({
-//                url: "${pageContext.request.contextPath}/searchRequest/" + id,
-//                type: "POST",
-//                success: function (data) {
-//                    previewShowData(data);
-//                }
-//            });
-//
-//        }
+      //Preview Modal
+        $('#previewModal').off("click").on('shown.bs.modal', function (e) {
+            var button = e.relatedTarget;
+            var id = $(button).data("id");
+            if (id !== null) {
+            	$.ajax({
+					url : "${pageContext.request.contextPath}/searchRequest/" + id,
+					type : "POST",
+					success : function(data){
+						previewShowData(data);
+						}
+					});
+            }
+        });
+      
+      //Preview function
+      function previewShowData(data){
+    	  console.log(data.requesterName); 	 
+    	   $('#tx_requester').text(data.requesterName);
+           $('#tx_requestDate').text(data.requestDate);
+           $('#tx_approvalName').text(data.approvalName);
+           $('#tx_approveDate').text(data.approveDate);
+           $('#tx_noOfApplicant').text(data.numberApplicant);
+           $('#tx_specificSkill').text(data.specificSkill);
+           $('#tx_yearExperience').text(data.yearExperience);
+           $('#tx_position').text(data.positionRequest);
+           $('#tx_status').text(data.status); 
+      
+      }
+      
+
 
     });
+
 
 </script>  
 
@@ -303,16 +314,16 @@
                             <option value ='NEW' selected ='selected'>NEW</option>
                             <option value ='SUBMIT'>SUBMIT</option></select>
                     </div>  
-                   </div>                
+                  </form>
+             </div>                
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button id="btn_save_req" class="btn btn-primary btn-success">Save <span class="glyphicon glyphicon-floppy-save"></span></button>
                     </div>
-            
-            </form>
         </div>
     </div>
 </div>
+
 <!-- Delete Model -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -331,6 +342,57 @@
         </div>
     </div>  
 </div>
+<!-- Preview Model -->
+<div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="ModalLabel">Request Description</h4>
+            </div>
+            <div class="modal-body">
+            <div class="row">
+				<div class="col-lg-3">Requester :</div>
+				<div class="col-lg-6"> <p id="tx_requester"></p></div>
+			</div>
+			 <div class="row">
+            	<div class="col-lg-3">Request Date :</div>
+            	<div class="col-lg-6"><p id="tx_requestDate"></p></div>
+            </div>
+				 <div class="row">
+				 	<div class="col-lg-3">Position :</div> 
+				 	<div class="col-lg-6"><p id="tx_position"></p></div>
+				 </div>
+                 <div class="row">
+                 	<div class="col-lg-3">Approval Name :</div>
+                 	 <div class="col-lg-6"><p id="tx_approvalName"></p></div>
+                 </div>
+                 <div class="row">
+                	 <div class="col-lg-3">Approve Date :</div>
+                	 <div class="col-lg-6"><p id="tx_approveDate"></p></div>
+                </div>
+                 <div class="row">
+                 	<div class="col-lg-4">Number of Applicant :</div> 
+                 	<div class="col-lg-6"><p id="tx_noOfApplicant"></p></div>
+                 </div>
+                 <div class="row">
+                 	<div class="col-lg-3">Specific Skill :</div>
+                 	<div class="col-lg-6"><p id="tx_specificSkill"></p></div>
+                 </div>
+                 <div class="row">
+                 	<div class="col-lg-3">Year Experience :</div>
+                 	<div class="col-lg-6"><p id="tx_yearExperience"></p></div>
+                 </div>
+                 <div class="row">
+                 	<div class="col-lg-3">Status :</div>
+                 	<div class="col-lg-6"><p id="tx_status"></p></div>
+                 </div>
+            </div>
+           
+        </div>
+    </div>  
+</div>
+ 
 
 
 
