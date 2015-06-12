@@ -43,14 +43,14 @@
                           {"data" : "requesterName"},
                           {"data" : "positionName"},
                           {"data" : "numberApplicant"},
-                          {"data" : null,
+                         /*  {"data" : null,
                            "defaultContent" : "<select id='valueItems' >"
                             + "<option value ='0' selected ='selected'>Submit</option>"
                             + "<option value ='1'>Approve</option>"
                             + "<option value ='2'>Cancle</option></select>"
-                          },
+                          }, */
                           {data: function (data) {
-                            return '<button id="sendBtn" class="btn btn-primary btn-success">Send <span class="glyphicon glyphicon-send"></span></button>';
+                            return '<button id="btn_approve" class="btn btn-primary btn-success">Send <span class="glyphicon glyphicon-send"></span></button>';
                            }}
                       ]  
             
@@ -64,12 +64,11 @@
             <thead>
                 <tr>
                     <th>Request Doc. ID</th>
-                    <th>Date Request</th>
+                    <th>Request Date</th>
                     <th>Requester</th>
                     <th>Position</th>
                     <th>Number of Applicant</th>
-                    <th>Status</th>
-                    <th>Preview</th>
+                    <th>Approve</th>
             
                 </tr>
             </thead>

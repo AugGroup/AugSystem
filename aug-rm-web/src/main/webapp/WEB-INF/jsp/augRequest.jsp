@@ -311,8 +311,10 @@
                     <div class="form-group">
                         <label for="inputStatus">Status</label>
                         <select name="inputStatus" id='inputStatus' >
-                            <option value ='NEW' selected ='selected'>NEW</option>
-                            <option value ='SUBMIT'>SUBMIT</option></select>
+                            <option value ='New' selected ='selected'>New</option>
+                            <option value ='Submit'>Submit</option>
+                            <option value ='Cancel'>Cancel</option>
+                        </select>
                     </div>  
                   </form>
              </div>                
