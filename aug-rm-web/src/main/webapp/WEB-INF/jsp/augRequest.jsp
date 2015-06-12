@@ -167,7 +167,7 @@
             var positionRequest = $('#inputPosition').val();
             var status = $('#inputStatus').val();
             var index = dtRequest.row(button.closest("tr")).index();
-            console.log(requestDate);
+            
             var request = {
                 'id': id,
                 'requesterName': requesterName,
@@ -187,7 +187,9 @@
                 url: "${pageContext.request.contextPath}/editRequest/" + id,
                 data: JSON.stringify(request),
                 success: function (data) {
+                	console.log(data.positionStr);
                     var dt = dtRequest.data();
+                    dt.id = data.id;
                     dt.requesterName = data.requesterName;
                     dt.requestDate = data.requestDate;
                     dt.approvalName = data.approvalName;
@@ -196,7 +198,7 @@
                     dt.specificSkill = data.specificSkill;
                     dt.yearExperience = data.yearExperience;
                     dt.status = data.status;
-                    dt.positionRequest = data.positionRequest;
+                    dt.positionStr = data.positionStr;
                     dtRequest.row(index).data(dt).draw();
                     $("#addRequestModal").modal('hide');
                 }
@@ -302,7 +304,7 @@
                     </div>
                     <div class="form-group">
                         <label for="inputSpecificSkill">Specific Skill </label>
-                        <textarea type="text" class="form-control" name="inputSpecificSkill" id="inputSpecificSkill" placeholder="Enter Specific Skill"></textarea>
+                        <textarea class="form-control" name="inputSpecificSkill" id="inputSpecificSkill" placeholder="Enter Specific Skill"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="inputYearExperience">Year Experience</label>  

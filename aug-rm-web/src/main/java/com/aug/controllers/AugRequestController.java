@@ -102,6 +102,7 @@ public class AugRequestController implements Serializable {
 
 		AugRequest augRequest = augRequestService.findById(augRequestDTO
 				.getId());
+		augRequest.setId(augRequestDTO.getId());
 		augRequest.setRequestDate(augRequestDTO.getRequestDate());
 		augRequest.setRequesterName(augRequestDTO.getRequesterName());
 		augRequest.setStatus(augRequestDTO.getStatus());
@@ -109,14 +110,16 @@ public class AugRequestController implements Serializable {
 		augRequest.setApproveDate(augRequestDTO.getApproveDate());
 		Position position = positionService.findById(augRequestDTO
 				.getPositionRequest());
+		augRequest.setPositionStr(position.getPositionName());
 		augRequest.setPositionRequest(position);
 		augRequest.setNumberApplicant(augRequestDTO.getNumberApplicant());
 		augRequest.setSpecificSkill(augRequestDTO.getSpecificSkill());
 		augRequest.setYearExperience(augRequestDTO.getYearExperience());
-
+		
 		augRequestService.update(augRequest);
-
-		return augRequestDTO;
+		AugRequestDTO augDTO =  augRequestService.findAugRequestById(id);
+		augDTO.setPositionStr(position.getPositionName());
+		return augDTO;
 
 	}
 

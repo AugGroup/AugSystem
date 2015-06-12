@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.AugRequestDTO;
@@ -62,6 +63,17 @@ public class AugRequest {
 
 	@Column(name = "YEAR_EXPERIENCE")
 	private Integer yearExperience;
+	
+	@Transient
+	private String positionStr;
+
+	public String getPositionStr() {
+		return positionStr;
+	}
+
+	public void setPositionStr(String positionStr) {
+		this.positionStr = positionStr;
+	}
 
 	public Integer getId() {
 		return id;
