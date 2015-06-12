@@ -300,6 +300,7 @@
         });
       
         /*-------------------- Preview Function --------------------*/
+        
         function previewShowData(data){
         	//console.log(data.requesterName);
         	$('#tx_requester').text(data.requesterName);
@@ -313,10 +314,7 @@
             $('#tx_status').text(data.status);
             }
         });
-
-
 </script> 
-
 <div class="container">
 	<h1 align="center"><spring:message code="request.title"/></h1>
 	<table id="requestTable" class="cell-border" style="width: 100%">
