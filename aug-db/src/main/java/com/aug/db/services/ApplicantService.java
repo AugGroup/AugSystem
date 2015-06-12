@@ -3,6 +3,7 @@ package com.aug.db.services;
 import java.util.List;
 
 import com.aug.db.dto.ApplicantDTO;
+import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.entities.Applicant;
 
 public interface ApplicantService {
@@ -24,5 +25,12 @@ public interface ApplicantService {
 	public void delete(Applicant applicant);
 
 	public void deleteById(Integer id);
+	
+	public ApplicationDTO saveEducation(ApplicationDTO applicationDTO);
+	
+	public ApplicationDTO saveAddress(ApplicationDTO applicationDTO);
+	
+	public ApplicationDTO saveApplications(ApplicationDTO applicationDTO);
 
+	public ApplicationDTO saveExperiences(ApplicationDTO applicationDTO);
 }

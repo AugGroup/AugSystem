@@ -24,9 +24,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.aug.db.dto.ApplicationDTO;
+import com.aug.db.entities.Address;
 import com.aug.db.entities.Applicant;
 import com.aug.db.entities.Department;
 import com.aug.db.entities.Position;
+import com.aug.db.services.AddressService;
 import com.aug.db.services.ApplicantService;
 import com.aug.db.services.DepartmentService;
 import com.aug.db.services.PositionService;
@@ -42,7 +44,6 @@ public class ApplicationController {
 	private PositionService positionService;
 	@Autowired
 	private ApplicantService applicantService;
-
 	@InitBinder public void InitBinder(WebDataBinder binder){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat,true));
@@ -61,14 +62,20 @@ public class ApplicationController {
 	@RequestMapping(value = "/save",method ={ RequestMethod.POST })
 	public @ResponseBody ApplicationDTO save(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
 		Applicant applicant = new Applicant(); 
-		
+		applicant.setTrackingStatus("Waiting for consider");
 		applicantService.create(applicant.fromApplicationDTO(applicant, applicationDTO));
 		
 		
 		return applicationDTO;
-		
-		
-		
+	}
+	@RequestMapping(value = "/applicationMenu", method = { RequestMethod.GET })
+	public String applicationMenu(Model model) {
+        LOGGER.info("**** Welcome to Application Controller ****");
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String name = user.getUsername();
+		model.addAttribute("name", name);
+        return "applicationMenu";
+
 	}
 	@RequestMapping(value = "/informations", method = { RequestMethod.GET })
 	public String informations() {
@@ -76,57 +83,70 @@ public class ApplicationController {
         return "informations";
 
 	}
-	@RequestMapping(value = "/saveinformations",method ={ RequestMethod.POST })
-	public @ResponseBody ApplicationDTO saveInformations(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+	@RequestMapping(value = "/saveInformations",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveInformations(@RequestBody ApplicationDTO applicationDTO,Model model) throws ParseException{
 		Applicant applicant = new Applicant(); 
-		
+		applicant.setTrackingStatus("Waiting for consider");
 		applicantService.create(applicant.fromApplicationDTO(applicant, applicationDTO));
-		
-		
+		model.addAttribute("id",applicant.getId());
 		return applicationDTO;
-		
-		
-		
-	}
-	@RequestMapping(value = "/saveeducations",method ={ RequestMethod.POST })
-	public @ResponseBody ApplicationDTO saveEducations(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
-		Applicant applicant = new Applicant(); 
-		
-		applicantService.create(applicant.fromApplicationDTO(applicant, applicationDTO));
-		
-		
-		return applicationDTO;
-		
-		
-		
 	}
 
 	@RequestMapping(value = "/applications", method = { RequestMethod.GET })
-	public String applications() {
+	public String applications(Model model) {
         LOGGER.info("**** Welcome to Application Controller ****");
+        model.addAttribute("id",2);
         return "applications";
-
 	}
-
+	@RequestMapping(value = "/saveApplications",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveApplications(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		Applicant applicant = applicantService.findById(applicationDTO.getId());
+		applicantService.create(applicant.fromApplicationDTO(applicant, applicationDTO));
+		
+		return applicationDTO;
+	}
 	@RequestMapping(value = "/address", method = { RequestMethod.GET })
-	public String address() {
+	public String address(Model model) {
         LOGGER.info("**** Welcome to Application Controller ****");
+        model.addAttribute("id",2);
         return "address";
 
 	}
+	@RequestMapping(value = "/saveAddress",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveAddress(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		applicantService.saveAddress(applicationDTO);
+		return applicationDTO;
+	}
 	@RequestMapping(value = "/educations", method = { RequestMethod.GET })
-	public String educations() {
+	public String educations(Model model) {
         LOGGER.info("**** Welcome to Application Controller ****");
+		model.addAttribute("id",2);
+
         return "educations";
 
 	}
+	@RequestMapping(value = "/saveEducations",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveEducations(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+//		Applicant applicant = applicantService.findById(applicationDTO.getId());
+		applicantService.saveEducation(applicationDTO);
+		
+		return applicationDTO;
+		
+	}
 	@RequestMapping(value = "/experiences", method = { RequestMethod.GET })
-	public String experiences() {
+	public String experiences(Model model) {
         LOGGER.info("**** Welcome to Application Controller ****");
+        model.addAttribute("id",2);
         return "experiences";
 
 	}
-	
+	@RequestMapping(value = "/saveExperiences",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveExperiences(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		applicantService.saveExperiences(applicationDTO);
+		return applicationDTO;
+		
+	}
+
 	@ModelAttribute("departments")
 	@Transactional
 	public List<Department> departmentList() {

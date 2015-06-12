@@ -1,6 +1,7 @@
 package com.aug.db.entities;
 
 import org.hibernate.annotations.Index;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,10 +36,10 @@ public class Address {
 
 	@Column(name = "PROVINCE")
 	private String province;
-
-	@Column(name = "ADDRESS_TYPE")// present address or permanent address
-	private String addressType;
 	
+	@Column(name="ADDRESS_TYPE")
+	private String addressType;
+
 	@ManyToOne
 	@JoinColumn(name="APPLICANT_ID")
 	private Applicant applicant;

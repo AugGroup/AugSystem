@@ -7,10 +7,26 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.dto.ApplicantDTO;
+import com.aug.db.dto.ApplicationDTO;
+import com.aug.db.entities.Address;
 import com.aug.db.entities.Applicant;
+import com.aug.db.entities.Education;
+import com.aug.db.entities.Experience;
+import com.aug.db.entities.Languages;
 import com.aug.db.entities.Position;
+import com.aug.db.entities.Reference;
+import com.aug.db.entities.Skill;
+import com.aug.db.repositories.AddressRepository;
+import com.aug.db.repositories.AddressRepositoryImpl;
 import com.aug.db.repositories.ApplicantRepository;
+import com.aug.db.repositories.DepartmentRepositoryImpl;
+import com.aug.db.repositories.EducationRepositoryImpl;
+import com.aug.db.repositories.ExperienceRepositoryImpl;
+import com.aug.db.repositories.LanguagesRepository;
+import com.aug.db.repositories.LanguagesRepositoryImpl;
 import com.aug.db.repositories.PositionRepository;
+import com.aug.db.repositories.ReferenceRepositoryImpl;
+import com.aug.db.repositories.SkillRepositoryImpl;
 
 @Service(value = "applicantService")
 @Transactional
@@ -106,6 +122,83 @@ public class ApplicantServiceImpl implements ApplicantService {
 		applicants.setPosition3Str(position3);
 
 		return applicants;
+	}
+
+	@Autowired
+	private SkillRepositoryImpl skillRepositoryImpl;
+
+	@Autowired
+	private EducationRepositoryImpl educationRepositoryImpl;
+
+	@Autowired
+	private LanguagesRepositoryImpl languagesRepositoryImpl;
+
+	@Override
+	public ApplicationDTO saveEducation(ApplicationDTO applicationDTO) {
+		List<Skill> skills = applicationDTO.getSkills();
+		for (Skill sk : skills) {
+
+			sk.setId(applicationDTO.getId());
+			skillRepositoryImpl.insert(sk);
+
+		}
+		List<Education> educations = applicationDTO.getEducations();
+		for (Education ed : educations) {
+
+			ed.setId(applicationDTO.getId());
+			educationRepositoryImpl.insert(ed);
+
+		}
+		List<Languages> languages = applicationDTO.getLanguages();
+		for (Languages lang : languages) {
+
+			lang.setId(applicationDTO.getId());
+			languagesRepositoryImpl.insert(lang);
+
+		}
+		return applicationDTO;
+	}
+
+	@Autowired
+	private AddressRepositoryImpl addressRepositoryImpl;
+
+	@Override
+	public ApplicationDTO saveAddress(ApplicationDTO applicationDTO) {
+		List<Address> address = applicationDTO.getAddress();
+		for (Address add : address) {
+			add.setId(applicationDTO.getId());
+			addressRepositoryImpl.insert(add);
+		}
+		return applicationDTO;
+	}
+@Autowired
+private DepartmentRepositoryImpl departmentRepositoryImpl;
+	@Override
+	public ApplicationDTO saveApplications(ApplicationDTO applicationDTO) {
+		
+		
+		return applicationDTO;
+	}
+
+	@Autowired
+	private ExperienceRepositoryImpl experienceRepositoryImpl;
+	@Autowired 
+	private ReferenceRepositoryImpl referenceRepositoryImpl;
+	@Override
+	public ApplicationDTO saveExperiences(ApplicationDTO applicationDTO) {
+		List<Experience> experiences = applicationDTO.getExperiences();
+		for (Experience experience : experiences) {
+			experience.setId(applicationDTO.getId());
+			experienceRepositoryImpl.insert(experience);
+
+		}
+		List<Reference> references = applicationDTO.getReferences();
+		for (Reference reference : references) {
+			reference.setId(applicationDTO.getId());
+			referenceRepositoryImpl.insert(reference);
+
+		}
+	return applicationDTO;
 	}
 
 }

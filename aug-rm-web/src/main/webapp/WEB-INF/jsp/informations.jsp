@@ -27,7 +27,7 @@
 				age : $('#ageId').val(),
 				height : $('#heightId').val(),
 				weight : $('#weightId').val(),
-				sex : $('#sexId').val(),
+				sex : $('input[name=sexName]:checked').val(),
 				religion : $('#religionId').val(),
 				nationality : $('#nationalityId').val(),
 				tel : $('#telId').val(),
@@ -39,7 +39,7 @@
 				militaryPlace : $('#placeId').val(),
 				militaryServiceNo : $('#serviceNoId').val(),
 				militaryReason : $('#reasonsId').val(),
-				militaryStatus : $('#militaryId').val(),
+				militaryStatus : $('input[name=maritalName]:checked').val(),
 				marritalStatusName : $('#maritalId').val(),
 				numberOfChildren : $('#childrenId').val(),
 				spouseName : $('#spouseId').val(),
@@ -54,7 +54,7 @@
 			$.ajax({
 				contentType : "application/json",
 				type : "POST",
-				url : '${pageContext.request.contextPath}/saveinformations',
+				url : '${pageContext.request.contextPath}/saveInformations',
 				data : JSON.stringify(insertData),
 				success : function(data) {
 					alert(JSON.stringify(data));
@@ -65,7 +65,7 @@
 
 	});
 </script>
-
+<jsp:include page = "applicationMenu.jsp"/>
 <!-- tab informations -->
 <div id="informations">
 	<div class="row">
@@ -77,6 +77,11 @@
 					</div>
 				</div>
 			</div>
+			<div class="form-group">
+				<input type="hidden" id="applicantId" name="applicantName"
+					value="${id}">
+			</div>
+
 			<div class="form-group">
 				<label for="photograph">PHOTOGRAPH</label> <input type="file"
 					id="photographId" name="photographName">
@@ -312,79 +317,72 @@
 				<div class="form-group">
 					<label for="informationFamily">Information regarding family
 						(Including Parents Brothers and Sisters) </label>
-					<div class="form-group">
-						<label for="itemNoFirst">1) Item No. </label> <input type="text"
-							class="form-control" id="itemNoFirstId" name="itemNoFirstName"
-							placeholder="Enter Item No.">
+				<%-- </div>
+				<br>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<h1>Experiences</h1>
+							<button class="btn btn-primary" id="experiencesAdd"
+								data-toggle="modal" data-target="#experiencesModal">
+								<span class="glyphicon glyphicon-plus"></span> Experiences
+							</button>
+						</div>
 					</div>
+					</div>
+					<div class="modal fade" id="experiencesModal" role="dialog">
+						<div class="modal-dialog">
 
-					<div class="form-group">
-						<label for="nameFamilyFirst">Name </label> <input type="text"
-							class="form-control" id="nameFamilyFirstId"
-							name="nameFamilyFirstName" placeholder="Enter name">
-					</div>
+							<div class="modal-content">
+								<div class="modal-header" style="padding: 35px 50px;">
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4>
+										<span class="glyphicon glyphicon-lock"></span> Experiences
+									</h4>
+								</div>
+								<div class="modal-body" style="padding: 40px 50px;">
+									<form role="form" id="experiencesForm">
+										<div class="form-group">
+											<input type="hidden" id="applicantId" name="applicantName"
+												value="${id}">
+										</div> --%>
+										<div class="form-group">
+											<label for="nameFamilyFirst">Name </label> <input
+												type="text" class="form-control" id="nameFamilyFirstId"
+												name="nameFamilyFirstName" placeholder="Enter name">
+										</div>
 
-					<div class="form-group">
-						<label for="relationFamilyFirst">Relation </label> <input
-							type="text" class="form-control" id="relationFamilyFirstId"
-							name="relationFamilyFirstName" placeholder="Enter relation">
-					</div>
-					<div class="form-group">
-						<label for="occupationFamilyFirst">Occupation </label> <input
-							type="text" class="form-control" id="occupationFamilyFirstId"
-							name="occupationFamilyFirstName" placeholder="Enter occupation ">
-					</div>
+										<div class="form-group">
+											<label for="relationFamilyFirst">Relation </label> <input
+												type="text" class="form-control" id="relationFamilyFirstId"
+												name="relationFamilyFirstName" placeholder="Enter relation">
+										</div>
+										<div class="form-group">
+											<label for="occupationFamilyFirst">Occupation </label> <input
+												type="text" class="form-control"
+												id="occupationFamilyFirstId"
+												name="occupationFamilyFirstName"
+												placeholder="Enter occupation ">
+										</div>
 
-					<div class="form-group">
-						<label for="addressFamilyFirst">Address </label> <input
-							type="textarea" class="form-control" id="addressFamilyFirstId"
-							name="addressFamilyFirstName" placeholder="Enter address ">
-					</div>
+										<div class="form-group">
+											<label for="addressFamilyFirst">Address </label> <input
+												type="textarea" class="form-control"
+												id="addressFamilyFirstId" name="addressFamilyFirstName"
+												placeholder="Enter address ">
+										</div>
 
-					<div class="form-group">
-						<label for="positionFamilyFirst">Position </label> <input
-							type="text" class="form-control" id="positionFamilyFirstId"
-							name="positionFamilyFirstName" placeholder="Enter position">
-					</div>
-					<div class="form-group">
-						<label for="itemNoSecond">2) Item No. </label> <input type="text"
-							class="form-control" id="itemNoSecondId" name="itemNoSecondName"
-							placeholder="Enter Item No.">
-					</div>
+										<div class="form-group">
+											<label for="positionFamilyFirst">Position </label> <input
+												type="text" class="form-control" id="positionFamilyFirstId"
+												name="positionFamilyFirstName" placeholder="Enter position">
+										</div>
 
-					<div class="form-group">
-						<label for="nameFamilySecond">Name </label> <input type="text"
-							class="form-control" id="nameFamilySecondId"
-							name="nameFamilySecondName" placeholder="Enter name">
-					</div>
+										
+								</div>
+							</div>
+						</div>
 
-					<div class="form-group">
-						<label for="relationFamilySecond">Relation </label> <input
-							type="text" class="form-control" id="relationFamilySecondId"
-							name="relationFamilySecondName" placeholder="Enter relation">
-					</div>
-					<div class="form-group">
-						<label for="occupationFamilySecond">Occupation </label> <input
-							type="text" class="form-control" id="occupationFamilySecondId"
-							name="occupationFamilySecondName" placeholder="Enter occupation ">
-					</div>
-
-					<div class="form-group">
-						<label for="addressFamilySecond">Address </label>
-						<textarea class="form-control" rows="5" id="addressFamilySecondId"
-							name="addressFamilySecondName" placeholder="Enter address"></textarea>
-
-					</div>
-
-					<div class="form-group">
-						<label for="positionFamilySecond">Position </label> <input
-							type="text" class="form-control" id="positionFamilySecondId"
-							name="positionFamilySecondName" placeholder="Enter position">
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<button type="button" class="btn btn-success" id="buttonSave">
-			<span class="glyphicon glyphicon-off"></span> Save
-		</button>
+						<button type="button" class="btn btn-success" id="buttonSave">
+							<span class="glyphicon glyphicon-off"></span> Save
+						</button>

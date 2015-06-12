@@ -57,7 +57,7 @@ form
 	<div class="head" id="headId">
 		 <img
 			src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png"
-			alt="logo" style="width: 600px; height: 250px;" /> 
+			alt="logo" style="width: 250px; height: 100px;" /> 
 	</div>
 	<hr />
 	<div class="body" id="bodyId">

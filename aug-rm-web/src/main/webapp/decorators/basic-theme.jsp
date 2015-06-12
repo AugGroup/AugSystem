@@ -42,7 +42,7 @@
 	<div class="head">
 		<img
 			src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png"
-			alt="logo" style="width: 600px; height: 250px;" />
+			alt="logo" style="width: 250px; height: 100px;" />
 			
 			<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
@@ -52,7 +52,7 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="${pageContext.request.contextPath}/">Augmentis</a>
+					<a class="navbar-brand" href="https://www.augmentis.biz/">Augmentis</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">

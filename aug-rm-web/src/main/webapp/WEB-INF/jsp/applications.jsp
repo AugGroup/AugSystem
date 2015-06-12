@@ -47,8 +47,7 @@
 
 	});
 </script>
-
-
+<jsp:include page = "applicationMenu.jsp"/>
 <label for="applyDate"><span
 	class="glyphicon glyphicon-calendar"></span>Apply date</label>
 <div class="input-group date">
