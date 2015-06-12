@@ -33,7 +33,10 @@
     	
         var dtRequest;
 
-        var dtRequest = $('#requestTable').DataTable({           
+        if(dtRequest){
+        	dtRequest.ajax.reload();
+		}else{
+         dtRequest = $('#requestTable').DataTable({           
             ajax: {
                 type: "GET",
                 url: '${pageContext.request.contextPath}/findAllRequest'
@@ -55,8 +58,9 @@
                         return '<button id="btn_delete" class="btn btn-danger" data-id="' + data.id + '" data-toggle="modal" data-target="#deleteModal">Delete <span class="glyphicon glyphicon-remove-sign"></span></button>';
                     }}
             ]
-
-        });
+         });
+		}
+        
 
         //delete Modal
         $('#deleteModal').off("click").on('shown.bs.modal', function (e) {
@@ -104,7 +108,8 @@
         });
 
         //Button Save
-        function save() {
+        function save(button) {
+        	
             var request = {
                 requesterName: $('#inputRequesterName').val(),
                 requestDate: $('#inputRequestDate').val(),
@@ -122,9 +127,11 @@
                 type: "POST",
                 url: '${pageContext.request.contextPath}/saveRequest',
                 data: JSON.stringify(request),
-                success: function (request) {
+                success: function (data) {
                     $('#addRequestModal').modal('hide');
-                    alert(request);
+                    dtRequest.ajax.reload();
+                    console.log(data.requesterName);
+                    
                 }
             });
 
@@ -236,14 +243,13 @@
       }
       
 
-
     });
 
 
 </script>  
-
-<center><h1>Request Candidate</h1></center>
-<table id="requestTable" class="cell-border" cellspacing="0" width="100%">
+<div class="container">
+<h1 align="center">Request Candidate</h1>
+<table id="requestTable" class="cell-border" style="width: 100%">
     <thead>
         <tr>
             <th>Request Doc. ID</th>
@@ -268,7 +274,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">Request Applicant</h4>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="width:400px">
                 <form id="form" name="form" >   
                     <div class="form-group">
                         <label for="inputRequesterName">Requester</label>
@@ -312,10 +318,10 @@
                     </div>
                     <div class="form-group">
                         <label for="inputStatus">Status</label>
-                        <select name="inputStatus" id='inputStatus' >
-                            <option value ='New' selected ='selected'>New</option>
-                            <option value ='Submit'>Submit</option>
-                            <option value ='Cancel'>Cancel</option>
+                         <select name="inputStatus" id='inputStatus' class="form-control" >
+                            <option value ='New Request' selected ='selected'>New Request</option>
+                            <option value ='Approve'>Approve</option>
+                            <option value ='Not Approve'>Not Approve</option>
                         </select>
                     </div>  
                   </form>
@@ -395,6 +401,7 @@
            
         </div>
     </div>  
+</div>
 </div>
  
 

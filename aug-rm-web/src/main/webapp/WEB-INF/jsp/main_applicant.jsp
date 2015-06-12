@@ -203,12 +203,11 @@
 		<!--Data Table for Applicant List -->
 		<c:set var="ss" value="display:none;"></c:set>
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
-		<div class="row" id="dataTable_row">
-			<div class="col-lg-12">
-				<table id="dataTable" class="cell-border" cellspacing="0" width="90%">
+		
+				<table id="dataTable" class="cell-border" cellspacing="0" width="100%">
 					<thead>
 						<tr>
-							<th>ID Code</th>
+							<th width="10%">ID Code</th>
 							<th>Date</th>
 							<th>Name</th>
 							<th>Position1</th>
@@ -223,28 +222,9 @@
 						</tr>
 					</thead>
 				</table>
-			</div>
-		</div>
+			
+		
 		</sec:authorize>
-<%--  		<sec:authorize access="hasAnyRole('ROLE_MANAGER')">
-			<div class="row" id="dataTable_row">
-			<div class="col-lg-12">
-				<table id="dataTablePreview" class="cell-border" cellspacing="0" width="90%">
-					<thead>
-						<tr>
-							<th>ID Code</th>
-							<th>Date</th>
-							<th>Name</th>
-							<th>Position1</th>
-							<th>Position2</th>
-							<th>Position3</th>
-							<th>Status</th>
-						</tr>
-					</thead>
-				</table>
-			</div>
-		</div>
-		</sec:authorize> --%>
 		<form class="form-inline" id="applicantForm" action="${pageContext.request.contextPath}/application" method="get">
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<div class="row">
