@@ -482,6 +482,7 @@
                  <div class="row">
                  	<div class="col-md-2"></div>
                  	<div class="col-md-3">Year Experience :</div>
+                 	
                  	<div class="col-md-6"><p id="tx_yearExperience"></p></div>
                  </div>
                  <div class="row">
