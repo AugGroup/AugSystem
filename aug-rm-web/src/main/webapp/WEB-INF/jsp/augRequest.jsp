@@ -319,17 +319,17 @@
 <div class="container">
 	<h1 align="center">Request Candidate</h1>
 	<table id="requestTable" class="cell-border" style="width: 100%">
-		<thead>
-			<tr>
-				<th>Request Doc. ID</th>
-            	<th>Date Request</th>
-            	<th>Requester</th>
-            	<th>Position</th>
-            	<th>Number of Applicant</th>
-            	<th>Status</th>
-            	<th>Preview</th>
-           		<th>Edit</th>
-            	<th>Delete</th>
+    	<thead>
+        	<tr>
+            	<th><spring:message code="request.id"/></th>
+            	<th><spring:message code="request.date"/></th>
+            	<th><spring:message code="request.human"/></th>
+            	<th><spring:message code="info.position"/></th>
+            	<th><spring:message code="request.number"/></th>
+            	<th><spring:message code="main.status"/></th>
+            	<th><spring:message code="request.preview"/></th>
+            	<th><spring:message code="main.edit"/></th>
+            	<th><spring:message code="main.delete"/></th>
         	</tr>
     	</thead>
 </table>
