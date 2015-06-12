@@ -315,9 +315,10 @@
         });
 
 
-</script>  
+</script> 
+
 <div class="container">
-	<h1 align="center">Request Candidate</h1>
+	<h1 align="center"><spring:message code="request.title"/></h1>
 	<table id="requestTable" class="cell-border" style="width: 100%">
     	<thead>
         	<tr>
@@ -337,7 +338,7 @@
 <div class="row">
 	<div class="col-md-6"></div>
 	<div class="col-md-6" align="center">
-		<button id="btn_addReq"class="btn btn-primary btn-info" data-toggle="modal" data-target="#addRequestModal"> Request <span class="glyphicon glyphicon-plus-sign"></span></button>
+		<button id="btn_addReq"class="btn btn-primary btn-info" data-toggle="modal" data-target="#addRequestModal"> <spring:message code="request.button"/> <span class="glyphicon glyphicon-plus-sign"></span></button>
 	</div>
 </div>
 <!-------------------- Save Modal --------------------> 
@@ -500,7 +501,3 @@
     </div>  
 </div>
 </div>
- 
-
-
-

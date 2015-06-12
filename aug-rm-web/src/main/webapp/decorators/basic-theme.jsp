@@ -87,6 +87,8 @@
         				</li> --%>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
+						<li><a href="${pageContext.request.contextPath}/login?locale=en">EN</a></li>
+						<li><a href="${pageContext.request.contextPath}/login?locale=th">TH</a></li>
 						<li><a href=""><span class="glyphicon glyphicon-user"></span> ${name}</a></li>
 						<li><a href="<c:url value="j_spring_security_logout" />"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a></li>
 					</ul>
