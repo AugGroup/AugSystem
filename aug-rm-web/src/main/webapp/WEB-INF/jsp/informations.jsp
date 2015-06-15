@@ -435,10 +435,7 @@
 					</div>
 					</div>
 				</div>
-			</div>
-		</div>
- </div>
-				 <div class="form-group">
+		 <div class="form-group">
 					<label for="informationFamily">Information regarding family
 						(Including Parents Brothers and Sisters) </label>
 				</div>
@@ -538,6 +535,10 @@
 
 			</div>
  --%>
+ 		</div>
+		</div>
+ </div>
+			
 			<button type="button" class="btn btn-success" id="buttonSave">
 				<span class="glyphicon glyphicon-off"></span> Save
 			</button>
