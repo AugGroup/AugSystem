@@ -5,73 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script>
 	$(document).ready(function() {
-
-		$('#applicationsForm').validate({
-			rules : {
-				applyDateName : {
-					required : true
-				},
-				departmentName : {
-					required : true
-				},
-				positionFirstName : {
-					required : true
-				},
-				positionSecondName : {
-					required : true
-				},
-				positionThirdName : {
-					required : true
-				},
-				salaryName : {
-					required : true
-				},
-				knowEmployedName : {
-					required : true
-				},
-				nameRelationName : {
-					required : true
-				},
-				positionRelationName : {
-					required : true
-				},
-				employedRelationName : {
-					required : true
-				}
-			},
-			messages : {
-				applyDateName : {
-					required : "Apply date is required!"
-				},
-				departmentName : {
-					required : "Department is required!"
-				},
-				positionFirstName : {
-					required : "Position 1 is required!"
-				},
-				positionSecondName : {
-					required : "Position 2 is required!"
-				},
-				positionThirdName : {
-					required : "Position 3 is required!"
-				},
-				salaryName : {
-					required : "Salary expected is required!"
-				},
-				knowEmployedName : {
-					required : "Do you know anyone now being employed by this company? is required!"
-				},
-				nameRelationName : {
-					required : "Name is required!"
-				},
-				positionRelationName : {
-					required : "Position is required!"
-				},
-				employedRelationName : {
-					required : "Relation is required!"
-				}
-			}
-		});
 		
 		$('.input-group.date').datepicker({
 			startView : 2,
@@ -82,7 +15,7 @@
 
 		$('#buttonSave').on("click", function() {
 			if ($('#applicationsForm').valid()) {
-			var insertData = "{";
+				var insertData = "{";
 				insertData+="applyDate : '"+$('#applyDateId').val()+"',";
 				insertData+="nowEmployed : '"+ $('input[name=knowEmployedName]:checked').val()+"',";
 				insertData+="employedName : '"+$('#nameRelationId').val()+"',";
@@ -117,20 +50,85 @@
 				    });
 				}
 			});
-		};
-	})
+			}
+		});
+
+		
+// 		//Update function
+// 		function updateUser(button){
+// 			var id = $(button).data("id");
+// 			var applyDate = $("#applyDateId").val();
+// 			var department = $('#departmentId').val();
+// 			var position1 = $("#positionFirstId").val();
+// 			var position2 = $("#positionSecondId").val();
+// 			var position3 = $("#positionThirdId").val();
+// 			var trackingStatus = $("#salaryId").val();
+// 			var techScore = $('input[name="newspaperName"]:checked').val();
+// 			var techScore = $('input[name="magazineName"]:checked').val();
+// 			var techScore = $('input[name="websiteName"]:checked').val();
+// 			var techScore = $('input[name="friendName"]:checked').val();
+// 			var techScore = $('input[name="otherName"]:checked').val();
+// 			var trackingStatus = $("#otherTextId").val();
+// 			var trackingStatus = $("#otherId").val();
+// 			var techScore = $('input[name="inputTechScore"]:checked').val();
+			
+// 			console.log(techScore)
+// 			var json = {
+// 					"id" : id,
+// 					"score" : score,
+// 					"techScore" : techScore,
+// 					"attitudeHome" : attitudeHome,
+// 					"attitudeOffice" : attitudeOffice,
+// 					"trackingStatus" : trackingStatus
+// 					};
+// 			$.ajax({
+// 				url : "${pageContext.request.contextPath}/score/update/"+id,
+// 				type : "POST",
+// 				contentType :"application/json; charset=utf-8", 
+// 				data : JSON.stringify(json),
+// 				success : function(data){
+// 					console.log(data.id);
+// 					$('#myModal1').modal('hide');
+					
+// 					var table = $('#dataTable').DataTable();	
+// 				 	var rowData = table.row(button.closest('tr')).index(); 
+// 				 	var d = table.row(rowData).data();
+// 				 		d.score = data.score;
+// 						d.techScore = data.techScore;
+// 				 		d.attitudeHome = data.attitudeHome;
+// 				 		d.attitudeOffice = data.attitudeOffice;
+// 				 		d.trackingStatus = data.trackingStatus;
+				 		
+// 				 		table.row(rowData).data(d).draw();
+				 		
+// 						new PNotify({
+// 						    title: 'Edit Success',
+// 						    text: 'You can edit data',
+// 						    type: 'success',
+// 						    nonblock: {
+// 						        nonblock: true,
+// 						        nonblock_opacity: .2
+// 						    }
+// 						});
+// 				 }
+// 			});
+			
+// 		}
 
 	});
 </script>
 <jsp:include page = "applicationMenu.jsp"/>
-<div class="container">
-<form role="form" id="applicationsForm" class="form-inline">
-<label for="applyDate"><span
-	class="glyphicon glyphicon-calendar"></span>Apply date</label>
+
+<label for="applyDate"><span class="glyphicon glyphicon-calendar"></span>Apply date</label>
 <div class="input-group date">
+<<<<<<< HEAD
 	<input type="text" id="applyDate" name="applyDate"
 		class="form-control"><span class="input-group-addon"><i
 		class="glyphicon glyphicon-th"></i></span>
+=======
+	<input type="text" id="applyDateId" name="applyDateName" class="form-control">
+	<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
+>>>>>>> Edit ApplicantController,ApplicationController,applications.jsp,educations.jsp,main_applicant.jsp
 </div>
 <br>
 <br>
@@ -180,13 +178,13 @@
 <br>
 <br>
 <div class="form-group">
-	<label for="salary">Salary expected </label> <input type="text"
-		class="form-control" id="expectedSalary" name="expectedSalary"
-		placeholder="Enter salary">
+	<label for="salary">Salary expected </label> 
+	<input type="text" class="form-control" id="expectedSalary" name="expectedSalary" placeholder="Enter salary">
 </div>
 <br>
 <br>
 <div class="form-group">
+
 	<label for="knowAugmentis">How do you know Augmentis?</label> <br>
 	 <div class="checkbox">
   		<label><input type="checkbox" 
@@ -230,32 +228,22 @@
 	<label for="nowEmployed">Do you know anyone now being employed
 		by this company? </label><br><br>
 	<div class="radio">
-		<label><input type="radio" name="nowEmployed"
-			id="nowEmployed" value="Yes">Yes</label>
+		<label><input type="radio" name="nowEmployed" id="nowEmployed" value="Yes">Yes</label>
 	</div>
 	<div class="radio">
-		<label><input type="radio" name="knowEmployedName"
-			id="nowEmployed" value="No">No</label>
+		<label><input type="radio" name="knowEmployedName" id="nowEmployed" value="No">No</label>
 	</div>
 	<br>
 	<br>
 	<div class="form-group">
-		<label for="nameRelation">If yes, please write name, position
-			and relation </label><br><br>
-		<lable for="employedName">Name </lable>
-		<input type="text" class="form-control" id="employedName"
-			name="employedName" placeholder="Enter name">
-		<lable for="employedPosition">Position </lable>
-		<input type="text" class="form-control" id="employedPosition"
-			name="employedPosition" placeholder="Enter position">
-		<lable for="employedRelation">Relation </lable>
-		<input type="text" class="form-control" id="employedRelation"
-			name="employedRelation" placeholder="Enter relation">
+		<label for="nameRelation">If yes, please write name, position and relation </label><br><br>
+		<label for="employedName">Name </label>
+		<input type="text" class="form-control" id="employedName" name="employedName" placeholder="Enter name">
+		<label for="employedPosition">Position </label>
+		<input type="text" class="form-control" id="employedPosition" name="employedPosition" placeholder="Enter position">
+		<label for="employedRelation">Relation </label>
+		<input type="text" class="form-control" id="employedRelation" name="employedRelation" placeholder="Enter relation">
 	</div>
 </div>
-</form>
 
-<button type="button" class="btn btn-success" id="buttonSave">
-	<span class="glyphicon glyphicon-off"></span> Save
-</button>
-</div>
+<button type="button" class="btn btn-success" id="buttonSave"><span class="glyphicon glyphicon-off"></span> Save</button>

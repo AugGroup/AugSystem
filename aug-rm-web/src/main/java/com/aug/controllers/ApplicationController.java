@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,6 +30,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.entities.Applicant;
 import com.aug.db.entities.Department;
@@ -259,8 +262,35 @@ public class ApplicationController {
 	public @ResponseBody ApplicationDTO saveExperiences(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
 		applicantService.saveExperiences(applicationDTO);
 		return applicationDTO;
-		
+
 	}*/
+	
+	// Update
+	// Search Applicant By Id
+	@RequestMapping(value = "/findById/{id}", method = { RequestMethod.POST })
+	public @ResponseBody ApplicantDTO findById(@PathVariable Integer id) {
+
+		return applicantService.findApplicantById(id);
+	}
+	
+	//Edit Applicant Score
+	@RequestMapping(value = "/applicant/update/{id}", method = { RequestMethod.POST })
+	public @ResponseBody ApplicantDTO updateUser(@RequestBody ApplicantDTO applicantDTO,
+			@PathVariable Integer id) throws ParseException {
+		
+		Applicant applicant = applicantService.findById(applicantDTO.getId());
+		applicant.setScore(applicantDTO.getScore());
+		applicant.setTechScore(applicantDTO.getTechScore());
+		applicant.setAttitudeHome(applicantDTO.getAttitudeHome());
+		applicant.setAttitudeOffice(applicantDTO.getAttitudeOffice());
+		applicant.setTrackingStatus(applicantDTO.getTrackingStatus());
+		
+		applicantService.update(applicant);
+		
+		
+		return applicantDTO;
+
+	}
 
 	@ModelAttribute("departments")
 	@Transactional

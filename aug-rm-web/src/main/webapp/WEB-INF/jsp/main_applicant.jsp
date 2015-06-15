@@ -91,9 +91,9 @@
 					type : "POST",
 					success : function(data){
 						showFillData(data);
-						}
-					});
-				}
+					}
+				});
+			}
 			
 			//Show data on inputField
 			function showFillData(data){
