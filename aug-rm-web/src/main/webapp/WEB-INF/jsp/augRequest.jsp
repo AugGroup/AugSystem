@@ -362,40 +362,40 @@
             </div>
             <div class="modal-body">
             <div class="row">
-				<div class="col-lg-3">Requester :</div>
-				<div class="col-lg-6"> <p id="tx_requester"></p></div>
+				<div class="col-md-3">Requester :</div>
+				<div class="col-md-6"> <p id="tx_requester"></p></div>
 			</div>
 			 <div class="row">
-            	<div class="col-lg-3">Request Date :</div>
-            	<div class="col-lg-6"><p id="tx_requestDate"></p></div>
+            	<div class="col-md-3">Request Date :</div>
+            	<div class="col-md-6"><p id="tx_requestDate"></p></div>
             </div>
 				 <div class="row">
-				 	<div class="col-lg-3">Position :</div> 
-				 	<div class="col-lg-6"><p id="tx_position"></p></div>
+				 	<div class="col-md-3">Position :</div> 
+				 	<div class="col-md-6"><p id="tx_position"></p></div>
 				 </div>
                  <div class="row">
-                 	<div class="col-lg-3">Approval Name :</div>
-                 	 <div class="col-lg-6"><p id="tx_approvalName"></p></div>
+                 	<div class="col-md-3">Approval Name :</div>
+                 	 <div class="col-md-6"><p id="tx_approvalName"></p></div>
                  </div>
                  <div class="row">
-                	 <div class="col-lg-3">Approve Date :</div>
-                	 <div class="col-lg-6"><p id="tx_approveDate"></p></div>
+                	 <div class="col-md-3">Approve Date :</div>
+                	 <div class="col-md-6"><p id="tx_approveDate"></p></div>
                 </div>
                  <div class="row">
-                 	<div class="col-lg-4">Number of Applicant :</div> 
-                 	<div class="col-lg-6"><p id="tx_noOfApplicant"></p></div>
+                 	<div class="col-md-4">Number of Applicant :</div> 
+                 	<div class="col-md-6"><p id="tx_noOfApplicant"></p></div>
                  </div>
                  <div class="row">
-                 	<div class="col-lg-3">Specific Skill :</div>
-                 	<div class="col-lg-6"><p id="tx_specificSkill"></p></div>
+                 	<div class="col-md-3">Specific Skill :</div>
+                 	<div class="col-md-6"><p id="tx_specificSkill"></p></div>
                  </div>
                  <div class="row">
-                 	<div class="col-lg-3">Year Experience :</div>
-                 	<div class="col-lg-6"><p id="tx_yearExperience"></p></div>
+                 	<div class="col-md-3">Year Experience :</div>
+                 	<div class="col-md-6"><p id="tx_yearExperience"></p></div>
                  </div>
                  <div class="row">
-                 	<div class="col-lg-3">Status :</div>
-                 	<div class="col-lg-6"><p id="tx_status"></p></div>
+                 	<div class="col-md-3">Status :</div>
+                 	<div class="col-md-6"><p id="tx_status"></p></div>
                  </div>
             </div>
            

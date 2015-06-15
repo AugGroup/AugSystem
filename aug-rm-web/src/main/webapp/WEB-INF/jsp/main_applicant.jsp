@@ -228,8 +228,8 @@
 		<form class="form-inline" id="applicantForm" action="${pageContext.request.contextPath}/informations" method="get">
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<div class="row">
-			<div class="col-lg-6"></div>
-			<div class="col-lg-6">
+			<div class="col-md-6"></div>
+			<div class="col-md-6">
 				<button type="submit" id="btn_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New Applicant</button>
 			</div>
 		</div>
@@ -265,11 +265,11 @@
 								<label for="inputScore">Attitude Score : </label>
     							<div class="form-group" class="form-inline" style="width: 400px" >
 									<div class="row">
-										<div class="col-lg-6">
+										<div class="col-md-6">
 										<label for="inputAttitudeHome">Home</label> 
 										<input type="text" class="form-control" id="inputAttitudeHome" name="inputAttitudeHome" placeholder="Enter score">  													
 										</div>
-										<div class="col-lg-6">
+										<div class="col-md-6">
 									<label for="inputAttitudeOffice">Office</label> 
 									<input type="text" class="form-control" id="inputAttitudeOffice" name="inputAttitudeOffice" placeholder="Enter score">
     							</div>
