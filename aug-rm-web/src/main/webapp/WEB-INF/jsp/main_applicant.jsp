@@ -103,7 +103,7 @@
 					data : JSON.stringify(json),
 					success : function(data){
 						console.log(data.id);
-						$('#myModal1').modal('hide');
+						$('#EditStatusModal').modal('hide');
 						
 						var table = $('#dataTable').DataTable();	
 					 	var rowData = table.row(button.closest('tr')).index(); 
