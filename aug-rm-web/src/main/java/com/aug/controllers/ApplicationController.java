@@ -100,8 +100,7 @@ public class ApplicationController {
 	}
 	@RequestMapping(value = "/saveApplications",method ={ RequestMethod.POST })
 	public @ResponseBody ApplicationDTO saveApplications(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
-		Applicant applicant = applicantService.findById(applicationDTO.getId());
-		applicantService.create(applicant.fromApplicationDTO(applicant, applicationDTO));
+		applicantService.saveApplications(applicationDTO);
 		
 		return applicationDTO;
 	}
@@ -121,15 +120,12 @@ public class ApplicationController {
 	public String educations(Model model) {
         LOGGER.info("**** Welcome to Application Controller ****");
 		model.addAttribute("id",2);
-
         return "educations";
 
 	}
 	@RequestMapping(value = "/saveEducations",method ={ RequestMethod.POST })
 	public @ResponseBody ApplicationDTO saveEducations(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
-//		Applicant applicant = applicantService.findById(applicationDTO.getId());
 		applicantService.saveEducation(applicationDTO);
-		
 		return applicationDTO;
 		
 	}

@@ -23,10 +23,10 @@ VALUES ('C201501','แย้ม','Yam','หมั่นกิจ','Mankit','แ�
 
 insert INTO AUGEMPLOYEE (APPLICANT_ID,EMPLOYED_NAME) VALUES ('1','Ethan'),('2','Carter'),('3','Ashley'),('4','Andrea');
 
-insert INTO FAMILY (APPLICANT_ID,ADDRESS,NAME,OCCUPATION,RELATION) VALUES ('1','House No.197, Charoenrat Road, Watgate sub-district, Mueang Chiang Mai district, Chiang Mai province, 50000, Thailand','Olivia','Photographer','Sister'),
-('2','888 Ekachai Road, Soi Kamnanmaen 7, Sub-soi 1, Bangbon Sub-district, Bangbon District, Bangkok 10150','Michael','Doctor','Brother'),
-('3','No.115, Moo 2, San Klang Sub District, San Kam Peang District, Chiangmai','Daniel','Scientist','Father'),
-('4','House No.39, Village No.3, Nhong Kwai sub-district, Chiang Mai','Emily','Engineer','Mother');
+insert INTO FAMILY (APPLICANT_ID,ADDRESS,NAME,OCCUPATION,RELATION,POSITION_FAMILY) VALUES ('1','House No.197, Charoenrat Road, Watgate sub-district, Mueang Chiang Mai district, Chiang Mai province, 50000, Thailand','Olivia','Photographer','Sister','Manager'),
+('2','888 Ekachai Road, Soi Kamnanmaen 7, Sub-soi 1, Bangbon Sub-district, Bangbon District, Bangkok 10150','Michael','Doctor','Brother','Manager'),
+('3','No.115, Moo 2, San Klang Sub District, San Kam Peang District, Chiangmai','Daniel','Scientist','Father','Manager'),
+('4','House No.39, Village No.3, Nhong Kwai sub-district, Chiang Mai','Emily','Engineer','Mother','Manager');
 
 
 insert INTO REFERENCE (APPLICANT_ID,FULLNAME,COMPLETE_ADDRESS,OCCUPATION,TEL) VALUES ('1','Sydney','17/4 Village No.5 Bamroongrat Road, Pibulsongkram Sub-district, Muang District, Chiang Rai, 51000','Pharmacist','086-9741352'),('2','Kimberly','99 Sukhumvit Soi 123, Klongtoey-nua, Wattana, Sukhumvit, Bangkok, Thailand 10110','Physicist','097-4857695'),('3','Layla','220/1 Moo 2, Sai asia Rd,Tambol Nongbuatai,Muang District,Tak, 63000

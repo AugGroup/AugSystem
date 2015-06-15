@@ -7,10 +7,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
+
+import org.hibernate.annotations.Index;
 
 import com.aug.db.entities.Address;
 import com.aug.db.entities.AttachFile;
@@ -19,6 +23,7 @@ import com.aug.db.entities.Education;
 import com.aug.db.entities.Experience;
 import com.aug.db.entities.Family;
 import com.aug.db.entities.Languages;
+import com.aug.db.entities.Position;
 import com.aug.db.entities.Reference;
 import com.aug.db.entities.Skill;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -190,7 +195,7 @@ public class ApplicationDTO {
 
 	@Column(name = "ATTITUDE")
 	private String attitude;
-
+/*
 	@Column(name = "POSITION1_ID")
 	private Integer position1;
 
@@ -199,7 +204,7 @@ public class ApplicationDTO {
 
 	@Column(name = "POSITION3_ID")
 	private Integer position3;
-
+*/
 	@Transient
 	private String position1Str;
 
@@ -237,33 +242,47 @@ public class ApplicationDTO {
 	@Column(name = "MARRIAGE_ADDRESS")
 	private String marriageAddress;
 
-	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
 	private List<Reference> references;
 
-	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
 	private List<Family> families;
 
-	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
 	private List<AttachFile> attachFiles;
 
-	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
 	private List<AugEmployee> augEmployees;
 
-	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
 	private List<Languages> languages;
 
-	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
 	private List<Address> address;
 
-	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
 	private List<Education> educations;
 
-	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
 	private List<Skill> skills;
 
-	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
 	private List<Experience> experiences;
 
+	@ManyToOne
+	@Index(name = "position1Index")
+	@JoinColumn(name = "POSITION1_ID", referencedColumnName = "id")
+	private Position position1;
+
+	@ManyToOne
+	@Index(name = "position2Index")
+	@JoinColumn(name = "POSITION2_ID", referencedColumnName = "id")
+	private Position position2;
+
+	@ManyToOne
+	@Index(name = "position3Index")
+	@JoinColumn(name = "POSITION3_ID", referencedColumnName = "id")
+	private Position position3;
 
 	public List<Reference> getReferences() {
 		return references;
@@ -800,7 +819,7 @@ public class ApplicationDTO {
 	public void setAttitude(String attitude) {
 		this.attitude = attitude;
 	}
-
+/*
 	public Integer getPosition1() {
 		return position1;
 	}
@@ -824,7 +843,7 @@ public class ApplicationDTO {
 	public void setPosition3(Integer position3) {
 		this.position3 = position3;
 	}
-
+*/
 	public String getPosition1Str() {
 		return position1Str;
 	}
@@ -849,5 +868,28 @@ public class ApplicationDTO {
 		this.position3Str = position3Str;
 	}
 
-	
+	public Position getPosition1() {
+		return position1;
+	}
+
+	public void setPosition1(Position position1) {
+		this.position1 = position1;
+	}
+
+	public Position getPosition2() {
+		return position2;
+	}
+
+	public void setPosition2(Position position2) {
+		this.position2 = position2;
+	}
+
+	public Position getPosition3() {
+		return position3;
+	}
+
+	public void setPosition3(Position position3) {
+		this.position3 = position3;
+	}
+
 }

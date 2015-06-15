@@ -236,6 +236,7 @@
         ADDRESS varchar(255),
         NAME varchar(255),
         OCCUPATION varchar(255),
+        POSITION_FAMILY varchar(255),
         RELATION varchar(255),
         APPLICANT_ID integer,
         primary key (ID)

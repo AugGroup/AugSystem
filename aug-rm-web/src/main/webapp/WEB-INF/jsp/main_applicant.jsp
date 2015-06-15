@@ -225,7 +225,7 @@
 			
 		
 		</sec:authorize>
-		<form class="form-inline" id="applicantForm" action="${pageContext.request.contextPath}/application" method="get">
+		<form class="form-inline" id="applicantForm" action="${pageContext.request.contextPath}/informations" method="get">
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<div class="row">
 			<div class="col-lg-6"></div>

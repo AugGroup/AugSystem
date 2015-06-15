@@ -4,68 +4,190 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script>
-	$(document).ready(function() {
+	$(document)
+			.ready(
+					function() {
 
-		$('.input-group.date').datepicker({
-			startView : 2,
-			todayBtn : "linked",
-			format : "dd/mm/yyyy"
+						$('.input-group.date').datepicker({
+							startView : 2,
+							todayBtn : "linked",
+							format : "dd/mm/yyyy"
 
-		});
+						});
+/* 
+						$('#familyTable')
+								.DataTable(
+										{
+											ajax : {
+												url : '${pageContext.request.contextPath}/informations',
+												type : 'GET'
+											},
+											columns : [ {
+												data : "name"
+											}, {
+												data : "relation"
+											}, {
+												data : "occupation"
+											}, {
+												data : "address"
+											}],
+											searching : false
 
-		$('#buttonSave').on("click", function() {
+										});
 
-			var insertData = {
-				firstNameTH : $('#firstNameThId').val(),
-				firstNameEN : $('#firstNameEngId').val(),
-				lastNameTH : $('#lastnameThId').val(),
-				lastNameEN : $('#lastnameEngId').val(),
-				nickNameTH : $('#nickNameThId').val(),
-				nickNameEN : $('#nickNameEngId').val(),
-				birthDate : $('#birthdayId').val(),
-				placeBirth : $('#pBirthId').val(),
-				age : $('#ageId').val(),
-				height : $('#heightId').val(),
-				weight : $('#weightId').val(),
-				sex : $('input[name=sexName]:checked').val(),
-				religion : $('#religionId').val(),
-				nationality : $('#nationalityId').val(),
-				tel : $('#telId').val(),
-				eMail : $('#eMailId').val(),
-				cardId : $('#idCardId').val(),
-				cardIssuedOffice : $('#issuedCardId').val(),
-				militaryFromYear : $('#fromYearId').val(),
-				militarytoYear : $('#toYearId').val(),
-				militaryPlace : $('#placeId').val(),
-				militaryServiceNo : $('#serviceNoId').val(),
-				militaryReason : $('#reasonsId').val(),
-				militaryStatus : $('input[name=maritalName]:checked').val(),
-				marritalStatusName : $('#maritalId').val(),
-				numberOfChildren : $('#childrenId').val(),
-				spouseName : $('#spouseId').val(),
-				marriageCertificateNo : $('#marriageCerId').val(),
-				issueOficeMarriage : $('#issuedMarriageId').val(),
-				marriageAddress : $('#addressId').val(),
-				occupationMarriage : $('#occupationId').val(),
-				branchService : $('#branchId').val(),
-				dateToBeDrafted : $('#draftedId').val(),
-				cardExpiryDate : $('#expiryId').val()
-			}
-			$.ajax({
-				contentType : "application/json",
-				type : "POST",
-				url : '${pageContext.request.contextPath}/saveInformations',
-				data : JSON.stringify(insertData),
-				success : function(data) {
-					alert(JSON.stringify(data));
-				}
-			});
+						$('#familySave').on("click", function() {
 
-		})
+							var table = $('#familyTable').DataTable();
 
-	});
+							table.row.add({
+								name : $('#nameFamilyId').val(),
+								relation : $('#relationFamilyId').val(),
+								occupation : $('#occupationFamilyId').val(),
+								address : $('#addressFamilyId').val(),
+								positionFamily : $('#positionFamilyId').val()
+								}).draw();
+							$('#familyModal').modal('hide');
+
+						})
+ */
+						$('#buttonSave').on("click",function() {
+
+											var inputData = {
+												firstNameTH : $('#firstNameThId').val(),
+												firstNameEN : $('#firstNameEngId').val(),
+												lastNameTH : $('#lastnameThId').val(),
+												lastNameEN : $('#lastnameEngId').val(),
+												nickNameTH : $('#nickNameThId').val(),
+												nickNameEN : $('#nickNameEngId').val(),
+												birthDate : $('#birthdayId').val(),
+												placeBirth : $('#pBirthId').val(),
+												age : $('#ageId').val(),
+												height : $('#heightId').val(),
+												weight : $('#weightId').val(),
+												sex : $('#sexId').val(),
+												religion : $('#religionId').val(),
+												nationality : $('#nationalityId').val(),
+												tel : $('#telId').val(),
+												eMail : $('#eMailId').val(),
+												applyDate : $('#applyDateId').val(),
+												emergencyName : $('#emergencyNameId').val(),
+												emergencyTel : $('#emergencyTelId').val(),
+												emergencyAddress : $('#emergencyAddressId').val(),
+												noticeNewspaper : $('#newspaperId').val(),
+												noticeMagazine : $('#magazineId').val(),
+												noticeFriend : $('#friendId').val(),
+												noticeWebSite : $('#websiteId').val(),
+												noticeOther : $('#otherId').val(),
+												certificate : $('#certificateId').val(),
+												expectedSalary : $('#salaryId').val(),
+												cardId : $('#idCardId').val(),
+												cardIssuedOffice : $('#issuedCardId').val(),
+												cardExpiryDate : $('#expiryId').val(),
+												militaryFromYear : $('#fromYearId').val(),
+												militarytoYear : $('#toYearId').val(),
+												militaryPlace : $('#placeId').val(),
+												militaryServiceNo : $('#serviceNoId').val(),
+												militaryReason : $('#reasonsId').val(),
+												militaryStatus : $('#militaryId').val(),
+												marritalStatusName : $('#maritalId').val(),
+												numberOfChildren : $('#childrenId').val(),
+												spouseName : $('#spouseId').val(),
+												marriageCertificateNo : $('#marriageCerId').val(),
+												issueOficeMarriage : $('#issuedMarriageId').val(),
+												marriageAddress : $('#addressId').val(),
+												occupationMarriage : $('#occupationId').val(),
+												branchService : $('#branchId').val(),
+												family : [ {
+													applicant : {
+														id : $('#applicantId').val()
+													},
+													name : $('#nameFamilyId').val(),
+													relation : $('#relationFamilyId').val(),
+													occupation : $('#occupationFamilyId').val(),
+													address : $('#addressFamilyId').val(),
+													positionFamily : $('#positionFamilyId').val()
+												} ]
+
+											}
+											/* var insertData = "{";
+											insertData += "firstNameTH : '"+ $('#firstNameThId').val()+ "',";
+											insertData += "firstNameEN : '"+ $('#firstNameEngId').val() + "',";
+											insertData += "lastNameTH : '"+ $('#lastnameThId').val()+ "',";
+											insertData += "lastNameEN : '"+ $('#lastnameEngId').val()+ "',";
+											insertData += "nickNameTH : '"+ $('#nickNameThId').val()+ "',";
+											insertData += "nickNameEN : '"+ $('#nickNameEngId').val()+ "',";
+											insertData += "birthDate : '"+ $('#birthdayId').val()+ "',";
+											insertData += "placeBirth : '"+ $('#pBirthId').val()+ "',";
+											insertData += "age : "+ $('#ageId').val() + ",";
+											insertData += "height : "+ $('#heightId').val()+ ",";
+											insertData += "weight : "+ $('#weightId').val()+ ",";
+											insertData += "sex : '"+ $('#sexId').val() + "',";
+											insertData += "religion : '"+ $('#religionId').val()+ "',";
+											insertData += "nationality : '"+ $('#nationalityId').val()+ "',";
+											insertData += "tel : '"+ $('#telId').val() + "',";
+											insertData += "eMail : '"+ $('#eMailId').val()+ "',";
+											insertData += "applyDate : '"+ $('#applyDateId').val()+ "',";
+											insertData += "emergencyName : '"+ $('#emergencyNameId').val() + "',";
+											insertData += "emergencyTel : '"+ $('#emergencyTelId').val() + "',";
+											insertData += "emergencyAddress : '"+ $('#emergencyAddressId').val() + "',";
+											insertData += "noticeNewspaper : '"+ $('#newspaperId').val()+ "',";
+											insertData += "noticeMagazine : '"+ $('#magazineId').val()+ "',";
+											insertData += "noticeFriend : '"+ $('#friendId').val()+ "',";
+											insertData += "noticeWebSite : '"+ $('#websiteId').val()+ "',";
+											insertData += "noticeOther : '"+ $('#otherId').val()+ "',";
+											insertData += "certificate : '"+ $('#certificateId').val()+ "',";
+											insertData += "expectedSalary : '"+ $('#salaryId').val()+ "',";
+											insertData += "cardId : '"+ $('#idCardId').val()+ "',";
+											insertData += "cardIssuedOffice : '"+ $('#issuedCardId').val()+ "',";
+											insertData += "cardExpiryDate : '"+ $('#expiryId').val()+ "',";
+											insertData += "militaryFromYear : '"+ $('#fromYearId').val()+ "',";
+											insertData += "militarytoYear : '"+ $('#toYearId').val()+ "',";
+											insertData += "militaryPlace : '"+ $('#placeId').val()+ "',";
+											insertData += "militaryServiceNo : '"+ $('#serviceNoId').val()+ "',";
+											insertData += "militaryReason : '"+ $('#reasonsId').val()+ "',";
+											insertData += "militaryStatus : '"+ $('#militaryId').val()+ "',";
+											insertData += "marritalStatusName : '"+ $('#maritalId').val()+ "',";
+											insertData += "numberOfChildren : '"+ $('#childrenId').val()+ "',";
+											insertData += "spouseName : '"+ $('#spouseId').val()+ "',";
+											insertData += "marriageCertificateNo : '"+ $('#maritalId').val()+ "',";
+											insertData += "issueOficeMarriage : '"+ $('#issuedMarriageId').val() + "',";
+											insertData += "marriageAddress : '"+ $('#addressId').val()+ "',";
+											insertData += "issueOficeMarriage : '"+ $('#issuedMarriageId').val() + "',";
+											insertData += "occupationMarriage : '"+ $('#occupationId').val()+ "',";
+											insertData += "branchService : '"+ $('#branchId').val()+ "'";
+											insertData+="family : [ ";
+											
+											var familyTable = $("#familyTable").DataTable();
+											familyTable.rows().iterator( 'row', function ( context, index ) {
+											  
+												insertData+="{";
+												insertData+="applicant : {id :"+$('#applicantId').val()+"},";
+												insertData+="name : '"+familyTable.cell( index,0 ).data()+"',";
+												insertData+="relation : '"+familyTable.cell( index,1 ).data()+"',";
+												insertData+="occupation : '"+familyTable.cell( index,2 ).data()+"',";
+												insertData+="address : '"+familyTable.cell( index,3 ).data()+"',";
+												insertData+="positionFamily : '"+familyTable.cell( index,4 ).data()+"'},";
+											});
+
+											insertData=insertData.substring(0,insertData.length-1);
+											insertData+="}";
+											insertData+="]"; */
+											
+											$.ajax({
+														contentType : "application/json",
+														type : "POST",
+														url : '${pageContext.request.contextPath}/saveInformations',
+														data : /* JSON.stringify(eval("(" + insertData + ")")), */JSON.stringify(inputData),
+														success : function(data) {
+															alert(JSON.stringify(data));
+														}
+													});
+
+										})
+
+					});
 </script>
-<jsp:include page = "applicationMenu.jsp"/>
+<jsp:include page="applicationMenu.jsp" />
 <!-- tab informations -->
 <div id="informations">
 	<div class="row">
@@ -311,78 +433,111 @@
 							class="form-control"><span class="input-group-addon"><i
 							class="glyphicon glyphicon-th"></i></span>
 					</div>
-
+					</div>
 				</div>
-
-				<div class="form-group">
+			</div>
+		</div>
+ </div>
+				 <div class="form-group">
 					<label for="informationFamily">Information regarding family
 						(Including Parents Brothers and Sisters) </label>
-				<%-- </div>
+				</div>
 				<br>
-				<div class="container">
+				<%-- <div class="container">
 					<div class="row">
 						<div class="col-md-6">
-							<h1>Experiences</h1>
-							<button class="btn btn-primary" id="experiencesAdd"
-								data-toggle="modal" data-target="#experiencesModal">
-								<span class="glyphicon glyphicon-plus"></span> Experiences
+							<h1>Family</h1>
+							<button class="btn btn-primary" id="familyAdd"
+								data-toggle="modal" data-target="#familyModal">
+								<span class="glyphicon glyphicon-plus"></span> Family
 							</button>
 						</div>
 					</div>
-					</div>
-					<div class="modal fade" id="experiencesModal" role="dialog">
-						<div class="modal-dialog">
+				</div>
+				<div class="modal fade" id="familyModal" role="dialog">
+					<div class="modal-dialog">
 
-							<div class="modal-content">
-								<div class="modal-header" style="padding: 35px 50px;">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4>
-										<span class="glyphicon glyphicon-lock"></span> Experiences
-									</h4>
-								</div>
-								<div class="modal-body" style="padding: 40px 50px;">
-									<form role="form" id="experiencesForm">
-										<div class="form-group">
-											<input type="hidden" id="applicantId" name="applicantName"
-												value="${id}">
-										</div> --%>
-										<div class="form-group">
-											<label for="nameFamilyFirst">Name </label> <input
-												type="text" class="form-control" id="nameFamilyFirstId"
-												name="nameFamilyFirstName" placeholder="Enter name">
-										</div>
+						<div class="modal-content">
+							<div class="modal-header" style="padding: 35px 50px;">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4>
+									<span class="glyphicon glyphicon-lock"></span> Family
+								</h4>
+							</div>
+							<div class="modal-body" style="padding: 40px 50px;">
+								<form role="form" id="familyForm">/
+									<div class="form-group">
+										<input type="hidden" id="applicantId" name="applicantName"
+											value="${id}">
+									</div> --%>
+									<div class="form-group">
+										<label for="nameFamily">Name </label> <input type="text"
+											class="form-control" id="nameFamilyId" name="nameFamilyName"
+											placeholder="Enter name">
+									</div>
 
-										<div class="form-group">
-											<label for="relationFamilyFirst">Relation </label> <input
-												type="text" class="form-control" id="relationFamilyFirstId"
-												name="relationFamilyFirstName" placeholder="Enter relation">
-										</div>
-										<div class="form-group">
-											<label for="occupationFamilyFirst">Occupation </label> <input
-												type="text" class="form-control"
-												id="occupationFamilyFirstId"
-												name="occupationFamilyFirstName"
-												placeholder="Enter occupation ">
-										</div>
+									<div class="form-group">
+										<label for="relationFamily">Relation </label> <input
+											type="text" class="form-control" id="relationFamilyId"
+											name="relationFamilyName" placeholder="Enter relation">
+									</div>
+									<div class="form-group">
+										<label for="occupationFamily">Occupation </label> <input
+											type="text" class="form-control" id="occupationFamilyId"
+											name="occupationFamilyName" placeholder="Enter occupation ">
+									</div>
 
-										<div class="form-group">
-											<label for="addressFamilyFirst">Address </label> <input
-												type="textarea" class="form-control"
-												id="addressFamilyFirstId" name="addressFamilyFirstName"
-												placeholder="Enter address ">
-										</div>
+									<div class="form-group">
+										<label for="addressFamily">Address </label> <input
+											type="textarea" class="form-control"
+											id="addressFamilyId" name="addressFamilyName"
+											placeholder="Enter address ">
+									</div>
 
-										<div class="form-group">
-											<label for="positionFamilyFirst">Position </label> <input
-												type="text" class="form-control" id="positionFamilyFirstId"
-												name="positionFamilyFirstName" placeholder="Enter position">
-										</div>
-
-										
-								</div>
+									<div class="form-group">
+										<label for="positionFamily">Position </label> <input
+											type="text" class="form-control" id="positionFamilyId"
+											name="positionFamilyName" placeholder="Enter position">
+									</div>
+								<%-- 	<br> <br>
+									<button type="button" class="btn btn-success"
+										id="familySave">
+										<span class="glyphicon glyphicon-off"></span> Save
+									</button>
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<p>Please fill your information</p>
 							</div>
 						</div>
 
-						<button type="button" class="btn btn-success" id="buttonSave">
-							<span class="glyphicon glyphicon-off"></span> Save
-						</button>
+					</div>
+				</div>
+				<br> <br>
+				<div>
+					<table id="familyTable" class="display" cellspacing="0"
+						width="100%">
+						<thead>
+							<tr>
+								<th>NAME</th>
+								<th>RELATION</th>
+								<th>OCCUPATION</th>
+								<th>ADDRESS</th>
+
+							</tr>
+						</thead>
+
+
+						<tbody></tbody>
+					</table>
+
+				</div>
+
+
+			</div>
+ --%>
+			<button type="button" class="btn btn-success" id="buttonSave">
+				<span class="glyphicon glyphicon-off"></span> Save
+			</button>

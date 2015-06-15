@@ -15,7 +15,7 @@
 
 		$('#buttonSave').on("click", function() {
 
-			var insertData = {
+			var inputData = {
 
 				applyDate : $('#applyDateId').val(),
 				nowEmployed : $('#knowEmployedId').val(),
@@ -33,6 +33,21 @@
 				position3 : $('#positionThirdId').val(),
 
 			}
+			var insertData = "{";
+				insertData+="applyDate : '"+$('#applyDateId').val()+"',";
+				insertData+="nowEmployed : '"+$('#knowEmployedId').val()+"',";
+				insertData+="employedName : '"+$('#nameRelationId').val()+"',";
+				insertData+="employedPosition : '"+$('#positionRelationId').val()+"',";
+				insertData+="employedRelation : '"+$('#employedRelationId').val()+"',";
+				insertData+="noticeNewspaper : '"+$('#newspaperId').val()+"',";
+				insertData+="noticeMagazine : '"+$('#magazineId').val()+"',";
+				insertData+="noticeFriend : '"+$('#friendId').val()+"',";
+				insertData+="noticeWebSite : '"+$('#websiteId').val()+"',";
+				insertData+="noticeOther : '"+$('#otherId').val()+"',";
+				insertData+="expectedSalary : '"+$('#salaryId').val()+"',";
+				insertData+="position1 : '"+$('#positionFirstId').val()+"',";
+				insertData+="position2 : '"+$('#positionSecondId').val()+"',";
+				insertData+="position3 : '"+$('#positionThirdId').val()+"'}";
 			$.ajax({
 				contentType : "application/json",
 				type : "POST",
@@ -97,23 +112,24 @@
 </div>
 <div class="form-group">
 	<label for="knowAugmentis">How do you know Augmentis?</label> <br>
-	<label class="checkbox"> <input type="checkbox"
-		id="newspaperId" name="newspaperName" value="newspaper">Newspaper
-	</label> <label class="checkbox"><input type="text"
-		class="form-control" name="newspaper" placeholder="newspaper">
-		<input type="checkbox" id="magazineId" name="magazineName"
-		value="magazine">Magazine</label> <input type="text"
-		class="form-control" name="magazine" placeholder="magazine"> <label
-		class="checkbox"><input type="checkbox" id="websiteId"
-		name="websiteName" value="website">Website</label> <input type="text"
-		class="form-control" name="website" placeholder="website"> <label
-		class="checkbox"><input type="checkbox" id="friendId"
-		name="friendName" value="friend">Friend </label> <input type="text"
-		class="form-control" name="friend" placeholder="friend"> <label
-		class="checkbox"><input type="checkbox" id="otherId"
-		name="otherName" value="other">Other (please specify) </label> <input
-		type="text" class="form-control" id="otherTextId" name="otherTextName"
-		placeholder="Enter other (please specify)">
+	<div class="checkbox">
+  		<label><input type="checkbox" 
+		id="newspaperId" name="newspaperName" value="newspaper">Newspaper</label>
+	</div>
+	<div class="checkbox">
+ 		 <label><input type="checkbox" id="magazineId" name="magazineName"
+		value="magazine">Magazine</label>
+	</div>
+	<div class="checkbox">
+  		<label><input type="checkbox" id="websiteId" name="websiteName" value="website">Website</label>
+	</div>
+	<div class="checkbox">
+  		<label><input type="checkbox" id="friendId" name="friendName" value="friend">Friend</label>
+	</div>
+	<div class="checkbox">
+  		<label><input type="checkbox" id="otherId" name="otherName" value="other">Other (please specify) </label>
+	</div>
+	
 </div>
 
 <div class="form-group">

@@ -13,104 +13,7 @@
 
 		});
 
-		$('#buttonSave').on("click", function() {
-
-			var inputData = {
-				previousEmployers : $('#previousEmployersId').val,
-				previousEmployersReason : $('#giveReasonId').val,
-				experiences : [ {
-					applicant : {
-						id : $('#applicantId').val()
-					},
-					position : $('#workBackgroundId').val(),
-					fromDate : $('#fromWorkYearId').val(),
-					toDate : $('#toWorkYearId').val(),
-					employerName : $('#empId').val(),
-					address : $('#addressBackgroundId').val(),
-					typeOfBusiness : $('#businessId').val(),
-					positionOfEmployer : $('#positionBackgroundId').val(),
-					reason : $('#reasonLeavingId').val(),
-					supervisor : $('#supervisorBackgroundId').val(),
-					salary : $('#salaryBackgroundId').val(),
-					description : $('#descriptionBackgroundId').val()
-				} ],
-				references : [ {
-					applicant : {
-						id : $('#applicantId').val()
-					},
-					fullName : $('#fullNameId').val(),
-					tel : $('#telNoId').val(),
-					occupation : $('#occupationRefId').val(),
-					completeAddress : $('#completeAddressId').val()
-				} ]
-
-			}
-var insertData = "{";
-			
-			insertData+="experiences : [ ";
-			var experiencesTable = $("#experiencesTable").DataTable();
-			
-			experiencesTable.rows().iterator( 'row', function ( context, index ) {
-			insertData+="{";
-			insertData+="applicant : {id :"+$('#applicantId').val()+"},";
-			insertData+="position : '"+experiencesTable.cell( index,0 ).data()+"',";
-			insertData+="fromDate : '"+experiencesTable.cell( index,1 ).data()+"',";
-			insertData+="toDate : '"+experiencesTable.cell( index,2 ).data()+"',";
-			insertData+="employerName : '"+experiencesTable.cell( index,3 ).data()+"',";
-			insertData+="address : "+experiencesTable.cell( index,4 ).data()+",";
-			insertData+="typeOfBusiness : '"+experiencesTable.cell( index,5 ).data()+"',";
-			insertData+="positionOfEmployer : '"+experiencesTable.cell( index,6 ).data()+"',";
-			insertData+="reason : '"+experiencesTable.cell( index,7 ).data()+"',";
-			insertData+="supervisor : '"+experiencesTable.cell( index,8 ).data()+"',";
-			insertData+="salary : '"+experiencesTable.cell( index,9 ).data()+"',";
-			insertData+="description : '"+experiencesTable.cell( index,9 ).data()+"'},";
-			});
-				insertData=insertData.substring(0,insertData.length-1);
-				insertData+="],";
-			
-			insertData+="references : [ ";
-			
-			var referenceTable = $("#referenceTable").DataTable();
-			skillTable.rows().iterator( 'row', function ( context, index ) {
-			  
-				insertData+="{";
-				insertData+="applicant : {id :"+$('#applicantId').val()+"},";
-				insertData+="skillDetail : '"+skillTable.cell( index,0 ).data()+"'},";
-			});
-
-			insertData=insertData.substring(0,insertData.length-1);
-			
-			insertData+="],";
-			
-			insertData+="languages : [ ";
-			var languagesTable = $("#languagesTable").DataTable();
-			
-			languagesTable.rows().iterator( 'row', function ( context, index ) {
-			insertData+="{";
-			insertData+="applicant : {id :"+$('#applicantId').val()+"},";
-			insertData+="languagesName : '"+languagesTable.cell( index,0 ).data()+"',";
-			insertData+="speaking : '"+languagesTable.cell( index,1 ).data()+"',";
-			insertData+="reading : '"+languagesTable.cell( index,2 ).data()+"',";
-			insertData+="understanding : '"+languagesTable.cell( index,3 ).data()+"',";
-			insertData+="writing : '"+languagesTable.cell( index,4 ).data()+"'},";
-			
-			});
-				insertData=insertData.substring(0,insertData.length-1);
-				insertData+="],";
-			
-			insertData+="certificate : '"+$('#certificateId').val()+"'}";
-			
-			$.ajax({
-				contentType : "application/json",
-				type : "POST",
-				url : '${pageContext.request.contextPath}/saveExperiences',
-				data : JSON.stringify(eval("(" + insertData + ")")),
-				success : function(data) {
-					alert(JSON.stringify(data));
-				}
-			});
-
-		})
+		
 
 		$('#referenceTable').DataTable({
 			ajax : {
@@ -162,13 +65,13 @@ var insertData = "{";
 			}, {
 				data : "positionOfEmployer"
 			}, {
-				data : "reason"
-			}, {
 				data : "supervisor"
 			}, {
 				data : "salary"
 			}, {
 				data : "description"
+			}, {
+				data : "reason"
 			} ],
 			searching : false
 
@@ -184,14 +87,100 @@ var insertData = "{";
 				address : $('#addressBackgroundId').val(),
 				typeOfBusiness : $('#businessId').val(),
 				positionOfEmployer : $('#positionBackgroundId').val(),
-				reason : $('#reasonLeavingId').val(),
 				supervisor : $('#supervisorBackgroundId').val(),
 				salary : $('#salaryBackgroundId').val(),
-				description : $('#descriptionBackgroundId').val()
+				description : $('#descriptionBackgroundId').val(),
+				reason : $('#reasonLeavingId').val()
 			}).draw();
 			$('#experiencesModal').modal('hide');
 
 		}) 
+		$('#buttonSave').on("click", function() {
+
+			var inputData = {
+				
+				experiences : [ {
+					applicant : {
+						id : $('#applicantId').val()
+					},
+					position : $('#workBackgroundId').val(),
+					fromDate : $('#fromWorkYearId').val(),
+					toDate : $('#toWorkYearId').val(),
+					employerName : $('#empId').val(),
+					address : $('#addressBackgroundId').val(),
+					typeOfBusiness : $('#businessId').val(),
+					positionOfEmployer : $('#positionBackgroundId').val(),
+					reason : $('#reasonLeavingId').val(),
+					supervisor : $('#supervisorBackgroundId').val(),
+					salary : $('#salaryBackgroundId').val(),
+					description : $('#descriptionBackgroundId').val()
+				} ],
+				references : [ {
+					applicant : {
+						id : $('#applicantId').val()
+					},
+					fullName : $('#fullNameId').val(),
+					tel : $('#telNoId').val(),
+					occupation : $('#occupationRefId').val(),
+					completeAddress : $('#completeAddressId').val()
+				} ],
+			previousEmployers : $('#previousEmployersId').val,
+			previousEmployersReason : $('#giveReasonId').val
+			}
+		var insertData = "{";
+			
+			insertData+="experiences : [ ";
+			var experiencesTable = $("#experiencesTable").DataTable();
+			
+			experiencesTable.rows().iterator( 'row', function ( context, index ) {
+			insertData+="{";
+			insertData+="applicant : {id :"+$('#applicantId').val()+"},";
+			insertData+="position : '"+experiencesTable.cell( index,0 ).data()+"',";
+			insertData+="fromDate : '"+experiencesTable.cell( index,1 ).data()+"',";
+			insertData+="toDate : '"+experiencesTable.cell( index,2 ).data()+"',";
+			insertData+="employerName : '"+experiencesTable.cell( index,3 ).data()+"',";
+			insertData+="address : '"+experiencesTable.cell( index,4 ).data()+"',";
+			insertData+="typeOfBusiness : '"+experiencesTable.cell( index,5 ).data()+"',";
+			insertData+="positionOfEmployer : '"+experiencesTable.cell( index,6 ).data()+"',";
+			insertData+="supervisor : '"+experiencesTable.cell( index,7 ).data()+"',";
+			insertData+="salary : "+experiencesTable.cell( index,8 ).data()+",";
+			insertData+="description : '"+experiencesTable.cell( index,9 ).data()+"',";
+			insertData+="reason : '"+experiencesTable.cell( index,10 ).data()+"'},";
+			});
+				insertData=insertData.substring(0,insertData.length-1);
+				insertData+="],";
+			
+			insertData+="references : [ ";
+			
+			var referenceTable = $("#referenceTable").DataTable();
+			referenceTable.rows().iterator( 'row', function ( context, index ) {
+			  
+				insertData+="{";
+				insertData+="applicant : {id :"+$('#applicantId').val()+"},";
+				insertData+="fullName : '"+referenceTable.cell( index,0 ).data()+"',";
+				insertData+="tel : '"+referenceTable.cell( index,1 ).data()+"',";
+				insertData+="occupation : '"+referenceTable.cell( index,2 ).data()+"',";
+				insertData+="completeAddress : '"+referenceTable.cell( index,3 ).data()+"'},";
+			});
+
+			insertData=insertData.substring(0,insertData.length-1);
+			
+			insertData+="],";
+			
+			insertData+="previousEmployers : '"+$('#previousEmployersId').val()+"',";
+			insertData+="previousEmployersReason : '"+$('#giveReasonId').val()+"'}";
+			
+			$.ajax({
+				contentType : "application/json",
+				type : "POST",
+				url : '${pageContext.request.contextPath}/saveExperiences',
+				data : JSON.stringify(eval("(" + insertData + ")")),
+				success : function(data) {
+					alert(JSON.stringify(data));
+				}
+			});
+
+		})
 
 	});
 </script>

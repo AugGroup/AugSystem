@@ -15,7 +15,7 @@
 
 		$('#buttonSave').on("click", function() {
 
-			var insertData = {
+			var inputData = {
 					firstNameTH : $('#firstNameThId').val(),
 					firstNameEN : $('#firstNameEngId').val(),
 					lastNameTH : $('#lastnameThId').val(),
@@ -41,9 +41,9 @@
 					noticeFriend : $('#friendId').val(),
 					noticeWebSite : $('#websiteId').val(),
 					noticeOther : $('#otherId').val(),
-					position1 : $('#positionFirstId').val(),
+					/* position1 : $('#positionFirstId').val(),
 					position2 : $('#positionSecondId').val(),
-					position3 : $('#positionThirdId').val(),
+					position3 : $('#positionThirdId').val(), */
 					certificate : $('#certificateId').val(),
 					expectedSalary : $('#salaryId').val(),
 					cardId : $('#idCardId').val(),
@@ -65,11 +65,58 @@
 					branchService : $('#branchId').val()
 					
 			}
+		var insertData = "{";
+		insertData+="firstNameTH : '"+$('#firstNameThId').val()+"',";
+		insertData+="firstNameEN : '"+$('#firstNameEngId').val()+"',";
+		insertData+="lastNameTH : '"+$('#lastnameThId').val()+"',";
+		insertData+="lastNameEN : '"+$('#lastnameEngId').val()+"',";
+		insertData+="nickNameTH : '"+$('#nickNameThId').val()+"',";
+		insertData+="nickNameEN : '"+$('#nickNameEngId').val()+"',";
+		insertData+="birthDate : '"+$('#birthdayId').val()+"',";
+		insertData+="placeBirth : '"+$('#pBirthId').val()+"',";
+		insertData+="age : "+$('#ageId').val()+",";
+		insertData+="height : "+$('#heightId').val()+",";
+		insertData+="weight : "+$('#weightId').val()+",";
+		insertData+="sex : '"+$('#sexId').val()+"',";
+		insertData+="religion : '"+$('#religionId').val()+"',";
+		insertData+="nationality : '"+$('#nationalityId').val()+"',";
+		insertData+="tel : '"+$('#telId').val()+"',";
+		insertData+="eMail : '"+$('#eMailId').val()+"',";
+		insertData+="applyDate : '"+$('#applyDateId').val()+"',";
+		insertData+="emergencyName : '"+$('#emergencyNameId').val()+"',";
+		insertData+="emergencyTel : '"+$('#emergencyTelId').val()+"',";
+		insertData+="emergencyAddress : '"+$('#emergencyAddressId').val()+"',";
+		insertData+="noticeNewspaper : '"+$('#newspaperId').val()+"',";
+		insertData+="noticeMagazine : '"+$('#magazineId').val()+"',";
+		insertData+="noticeFriend : '"+$('#friendId').val()+"',";
+		insertData+="noticeWebSite : '"+$('#websiteId').val()+"',";
+		insertData+="noticeOther : '"+$('#otherId').val()+"',";
+		insertData+="certificate : '"+$('#certificateId').val()+"',";
+		insertData+="expectedSalary : '"+$('#salaryId').val()+"',";
+		insertData+="cardId : '"+$('#idCardId').val()+"',";
+		insertData+="cardIssuedOffice : '"+$('#issuedCardId').val()+"',";
+		insertData+="cardExpiryDate : '"+$('#expiryId').val()+"',";
+		insertData+="militaryFromYear : '"+$('#fromYearId').val()+"',";
+		insertData+="militarytoYear : '"+$('#toYearId').val()+"',";
+		insertData+="militaryPlace : '"+$('#placeId').val()+"',";
+		insertData+="militaryServiceNo : '"+$('#serviceNoId').val()+"',";
+		insertData+="militaryReason : '"+$('#reasonsId').val()+"',";
+		insertData+="militaryStatus : '"+$('#militaryId').val()+"',";
+		insertData+="marritalStatusName : '"+$('#maritalId').val()+"',";
+		insertData+="numberOfChildren : '"+$('#childrenId').val()+"',";
+		insertData+="spouseName : '"+$('#spouseId').val()+"',";
+		insertData+="marriageCertificateNo : '"+$('#maritalId').val()+"',";
+		insertData+="issueOficeMarriage : '"+$('#issuedMarriageId').val()+"',";
+		insertData+="marriageAddress : '"+$('#addressId').val()+"',";
+		insertData+="issueOficeMarriage : '"+$('#issuedMarriageId').val()+"',";
+		insertData+="occupationMarriage : '"+$('#occupationId').val()+"',";
+		insertData+="branchService : '"+$('#branchId').val()+"'}";
+			
 			$.ajax({
 				contentType : "application/json",
 				type : "POST",
 				url : '${pageContext.request.contextPath}/save',
-				data : JSON.stringify(insertData),
+				data :  JSON.stringify(eval("(" + insertData + ")")),
 				success : function(data) {
 					alert(JSON.stringify(data));
 				}

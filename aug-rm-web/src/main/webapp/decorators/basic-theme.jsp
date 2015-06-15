@@ -57,7 +57,6 @@
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
 						<li><a href="${pageContext.request.contextPath}/applicant">Applicant</a></li>
-						<li><a href="${pageContext.request.contextPath}/application">Application</a></li>
 						<li><a href="${pageContext.request.contextPath}/request">Request</a></li>
 						<li><a href="${pageContext.request.contextPath}/approve">Approve</a></li>
 					</ul>

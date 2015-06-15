@@ -23,6 +23,8 @@ public class Family {
 	private String occupation;
 	@Column(name = "ADDRESS")
 	private String address;
+	@Column(name = "POSITION_FAMILY")
+	private String positionFamily;
 
 	@ManyToOne
 	@JoinColumn(name = "APPLICANT_ID")
@@ -74,6 +76,14 @@ public class Family {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public String getPositionFamily() {
+		return positionFamily;
+	}
+
+	public void setPositionFamily(String positionFamily) {
+		this.positionFamily = positionFamily;
 	}
 
 }
