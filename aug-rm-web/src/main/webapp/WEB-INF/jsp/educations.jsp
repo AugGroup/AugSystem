@@ -298,7 +298,7 @@
 			
 		}
 
-	});
+});
 </script>
 <jsp:include page="applicationMenu.jsp" />
 

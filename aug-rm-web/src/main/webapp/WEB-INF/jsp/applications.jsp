@@ -121,14 +121,9 @@
 
 <label for="applyDate"><span class="glyphicon glyphicon-calendar"></span>Apply date</label>
 <div class="input-group date">
-<<<<<<< HEAD
 	<input type="text" id="applyDate" name="applyDate"
 		class="form-control"><span class="input-group-addon"><i
 		class="glyphicon glyphicon-th"></i></span>
-=======
-	<input type="text" id="applyDateId" name="applyDateName" class="form-control">
-	<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
->>>>>>> Edit ApplicantController,ApplicationController,applications.jsp,educations.jsp,main_applicant.jsp
 </div>
 <br>
 <br>
