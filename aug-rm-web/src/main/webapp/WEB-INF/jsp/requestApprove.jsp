@@ -92,9 +92,10 @@
                 
             });
    </script>
-    <div class="container">
-   <h1 align="center">Request Candidate</h1>
-   <table id="requestTable" class="cell-border"  style="width: 100%">
+<div class="container">
+ 	<div class="row">
+		<h1 align="center">Request Candidate</h1>
+    	<table id="requestTable" class="cell-border" style="width: 100%">
             <thead>
                 <tr>
                     <th>Request Doc. ID</th>
@@ -107,6 +108,7 @@
                 </tr>
             </thead>
          </table>
+     </div>
          
          
 <!-- Approve Model -->

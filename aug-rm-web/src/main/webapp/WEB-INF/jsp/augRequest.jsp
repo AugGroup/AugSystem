@@ -21,6 +21,11 @@
     .form-horizontal .control-label{
         padding-top: 7px;
     }
+    
+    .error{
+     	color :red;
+ 		padding: 3px;
+	}
 </style>
 
 <script type="text/javascript">
@@ -29,14 +34,43 @@
     	$('.input-group.date').datepicker({
 			format: "dd/mm/yyyy",
 			startView: 2
-			});
+			}); 
     	
-        var dtRequest;
+		/* $('#inputRequestDate').datepicker({
+			format: "dd/mm/yyyy",
+			startView: 2,
+			minDate: 0,
+			onSelect: function (date) {
+	            var date2 = $('#inputRequestDate').datepicker('getDate');
+	            date2.setDate(date2.getDate() + 1);
+	            $('#inputApproveDate').datepicker('setDate', date2);
+	            //sets minDate to dt1 date + 1
+	            $('#inputApproveDate').datepicker('option', 'minDate', date2);
+	        }
+		});
+		$('#inputApproveDate').datepicker({
+			format: "dd/mm/yyyy",
+			startView: 2,
+			onClose: function () {
+	            var dt1 = $('#inputRequestDate').datepicker('getDate');
+	            var dt2 = $('#inputApproveDate').datepicker('getDate');
+	            //check to prevent a user from entering a date below date of dt1
+	            if (dt2 <= dt1) {
+	                var minDate = $('#inputApproveDate').datepicker('option', 'minDate');
+	                $('#inputApproveDate').datepicker('setDate', minDate);
+	            }
+	        }
+			});
+			 */
 
+        var dtRequest;
         if(dtRequest){
         	dtRequest.ajax.reload();
 		}else{
-         dtRequest = $('#requestTable').DataTable({           
+         dtRequest = $('#requestTable').DataTable({ 
+        	 searching : true,
+        	 paging: 10,
+        	 sort : false,
             ajax: {
                 type: "GET",
                 url: '${pageContext.request.contextPath}/findAllRequest'
@@ -89,8 +123,9 @@
 
         //addRequestModal
         $('#addRequestModal').off("click").on('shown.bs.modal', function (e) {
-       
-            var button = e.relatedTarget;
+            
+        	var button = e.relatedTarget;
+        	
             if (button != null) {
                 var id = $(button).data("id");
                 if (id != null) {
@@ -99,18 +134,20 @@
                         edit(button);
                     });
                 } else {
-                    $('#form')[0].reset();
+                   // $('#requestForm')[0].reset();
                     $('#btn_save_req').off('click').on('click', function () {
                         save();
                     });
                 }
             }
+            
+       		
         });
 
         //Button Save
         function save(button) {
-        	
-            var request = {
+           //if($("requestForm").valid()){
+        	   var request = {
                 requesterName: $('#inputRequesterName').val(),
                 requestDate: $('#inputRequestDate').val(),
                 approvalName: $('#inputApprovalName').val(),
@@ -122,18 +159,27 @@
                 status: $('#inputStatus').val()
             };
             console.log(request);
+            
+            var isValid = $("#requestForm").valid();
+            
+           //debugger;
+            
+            if(isValid){
             $.ajax({        	
                 contentType: "application/json",
                 type: "POST",
                 url: '${pageContext.request.contextPath}/saveRequest',
                 data: JSON.stringify(request),
                 success: function (data) {
-                    $('#addRequestModal').modal('hide');
+                	$('#addRequestModal').modal('hide');
                     dtRequest.ajax.reload();
                     console.log(data.requesterName);
                     
                 }
             });
+            
+            
+           };
 
         }
         // Edit 
@@ -161,7 +207,7 @@
 
         }
 
-        function edit(button) {
+        function edit(button){
             var id = $(button).data("id");
 
             var requesterName = $('#inputRequesterName').val();
@@ -187,7 +233,7 @@
                 'positionRequest':positionRequest,
                 'status': status
             };
-
+            if($("#requestForm").valid()){
             $.ajax({
                 contentType: "application/json",
                 type: "POST",
@@ -210,6 +256,7 @@
                     $("#addRequestModal").modal('hide');
                 }
             });
+            };
         }
 
       //Preview Modal
@@ -242,30 +289,58 @@
       
       }
       
-
+      $('#requestForm').validate({
+  		rules:{
+  			inputRequesterName:{required: true},
+  			inputRequestDate:{required: true},
+  			inputPosition:{required: true},
+  			inputApprovalName:{required: true},
+				inputApproveDate:{required: true},
+				inputNumberApplicant:{required: true},
+				inputSpecificSkill:{required: true},
+				inputYearExperience:{required: true},
+				inputStatus:{required: true}
+  		},
+  		messages: {
+  			inputRequesterName:{required: "Requester Name is required"},
+  			inputRequestDate:{required: "Request Date is required"},
+  			inputPosition:{required: "Position is required"},
+  			inputApprovalName:{required: "Approval Name is required"},
+				inputApproveDate:{required: "Approve Date is required"},
+				inputNumberApplicant:{required: "Number Applicant is required"},
+				inputSpecificSkill:{required: "Specific Skill is required"},
+				inputYearExperience:{required: "Year Experience is required"},
+				inputStatus:{required: "Status is required"}
+				}
+  	});
+ 
     });
 
 
 </script>  
 <div class="container">
-<h1 align="center">Request Candidate</h1>
-<table id="requestTable" class="cell-border" style="width: 100%">
-    <thead>
-        <tr>
-            <th>Request Doc. ID</th>
-            <th>Date Request</th>
-            <th>Requester</th>
-            <th>Position</th>
-            <th>Number of Applicant</th>
-            <th>Status</th>
-            <th>Preview</th>
-            <th>Edit</th>
-            <th>Delete</th>
-
-        </tr>
-    </thead>
+	<h1 align="center">Request Candidate</h1>
+	<table id="requestTable" class="cell-border" style="width: 100%">
+		<thead>
+			<tr>
+            	<th>Request Doc. ID</th>
+            	<th>Date Request</th>
+            	<th>Requester</th>
+            	<th>Position</th>
+            	<th>Number of Applicant</th>
+            	<th>Status</th>
+            	<th>Preview</th>
+           		<th>Edit</th>
+            	<th>Delete</th>
+        	</tr>
+    	</thead>
 </table>
-<center><button id="btn_addReq"class="btn btn-primary btn-info" data-toggle="modal" data-target="#addRequestModal"> Request <span class="glyphicon glyphicon-plus-sign"></span></button></center>
+<div class="row">
+	<div class="col-md-6"></div>
+	<div class="col-md-6" align="center">
+		<button id="btn_addReq"class="btn btn-primary btn-info" data-toggle="modal" data-target="#addRequestModal"> Request <span class="glyphicon glyphicon-plus-sign"></span></button>
+	</div>
+</div>
 <!--Add Modal--> 
 <div class="modal fade" id="addRequestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -275,7 +350,7 @@
                 <h4 class="modal-title" id="myModalLabel">Request Applicant</h4>
             </div>
             <div class="modal-body" style="width:400px">
-                <form id="form" name="form" >   
+                <form role='form' id="requestForm" name="requestForm" >   
                     <div class="form-group">
                         <label for="inputRequesterName">Requester</label>
                         <input type="text" class="form-control" name="inputRequesterName" id="inputRequesterName" />
@@ -323,14 +398,16 @@
                             <option value ='Approve'>Approve</option>
                             <option value ='Not Approve'>Not Approve</option>
                         </select>
-                    </div>  
-                  </form>
-             </div>                
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button id="btn_save_req" class="btn btn-primary btn-success">Save <span class="glyphicon glyphicon-floppy-save"></span></button>
-                    </div>
-        </div>
+                    </div> 
+                   <div align="right">
+                   		<button type="button" id="btn_save_req" class="btn btn-primary btn-success">Save 
+                    		<span class="glyphicon glyphicon-floppy-save"></span>
+                    	</button>
+                   		<button type="button" id="btn_close" class="btn btn-default" data-dismiss="modal">Close</button>                 
+                	</div>
+                 </form>
+             </div>
+         </div>
     </div>
 </div>
 
@@ -343,15 +420,23 @@
                 <h4 class="modal-title" id="ModalLabel">Delete Request</h4>
             </div>
             <div class="modal-body">
-                Do you want to delete request ?
-                <br>
-                <button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button  id="btn_delete_submit" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
-
-            </div>
-        </div>
-    </div>  
+            	<div class="container">
+            		<div class="row">
+               	 		Do you want to delete request ?
+            		</div>
+                	<div class="row">
+                		<div class="col-md-4"></div>
+                		<div class="col-md-2">
+                			<button  id="btn_delete_submit" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
+							<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            			</div>
+            		</div>
+            	</div>
+        	</div>
+    	</div>  
+	</div>
 </div>
+
 <!-- Preview Model -->
 <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -362,43 +447,56 @@
             </div>
             <div class="modal-body">
             <div class="row">
+            	<div class="col-md-2"></div>
 				<div class="col-md-3">Requester :</div>
 				<div class="col-md-6"> <p id="tx_requester"></p></div>
 			</div>
 			 <div class="row">
+			 	<div class="col-md-2"></div>
             	<div class="col-md-3">Request Date :</div>
             	<div class="col-md-6"><p id="tx_requestDate"></p></div>
             </div>
 				 <div class="row">
+				 	<div class="col-md-2"></div>
 				 	<div class="col-md-3">Position :</div> 
 				 	<div class="col-md-6"><p id="tx_position"></p></div>
 				 </div>
                  <div class="row">
+                 	<div class="col-md-2"></div>
                  	<div class="col-md-3">Approval Name :</div>
-                 	 <div class="col-md-6"><p id="tx_approvalName"></p></div>
+                 	<div class="col-md-6"><p id="tx_approvalName"></p></div>
                  </div>
                  <div class="row">
-                	 <div class="col-md-3">Approve Date :</div>
-                	 <div class="col-md-6"><p id="tx_approveDate"></p></div>
+                 	<div class="col-md-2"></div>
+                 	<div class="col-md-3">Approve Date :</div>
+                 	<div class="col-md-6"><p id="tx_approveDate"></p></div>
                 </div>
                  <div class="row">
+                 	<div class="col-md-2"></div>
                  	<div class="col-md-4">Number of Applicant :</div> 
                  	<div class="col-md-6"><p id="tx_noOfApplicant"></p></div>
                  </div>
                  <div class="row">
+                 	<div class="col-md-2"></div>
                  	<div class="col-md-3">Specific Skill :</div>
                  	<div class="col-md-6"><p id="tx_specificSkill"></p></div>
                  </div>
                  <div class="row">
+                 	<div class="col-md-2"></div>
                  	<div class="col-md-3">Year Experience :</div>
                  	<div class="col-md-6"><p id="tx_yearExperience"></p></div>
                  </div>
                  <div class="row">
+                 	<div class="col-md-2"></div>
                  	<div class="col-md-3">Status :</div>
                  	<div class="col-md-6"><p id="tx_status"></p></div>
                  </div>
             </div>
-           
+            <div class="modal-footer">
+            	<div align="right">
+                 	<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            	 </div>
+            </div>
         </div>
     </div>  
 </div>

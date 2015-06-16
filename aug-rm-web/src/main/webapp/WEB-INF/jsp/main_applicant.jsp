@@ -25,7 +25,7 @@
 				}else{
 					dtApplicant = $('#dataTable').DataTable({
 						lengthChange : false,
-						searching : false,
+						searching : true,
 						paging: false,
 						ajax : {
 							url : '${pageContext.request.contextPath}/searchByPosition',
