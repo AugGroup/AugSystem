@@ -11,12 +11,38 @@
 #search_row{
 	margin: 30px;
 }
+ .error{
+     color :red;
+ 	padding: 3px;
+}
 
 </style>
 
 	<script type="text/javascript">
 		$(document).ready(function(){
 			var dtApplicant		
+			
+			EditStatusForm
+			
+			 $('#EditStatusForm').validate({
+			  		rules:{
+			  			inputRequesterName:{required: true},
+			  			inputScore:{required: true},
+			  			inputTechScore:{required: true},
+			  			inputAttitudeHome:{required: true},
+			  			inputAttitudeOffice:{required: true},
+			  			inputStatus:{required: true}
+			  		},
+			  		messages: {
+			  			inputRequesterName:{required: "Requester name is required"},
+			  			inputScore:{required: "Score is required"},
+			  			inputTechScore:{required: "Technical score is required"},
+			  			inputAttitudeHome:{required: "Attitude at home is required"},
+			  			inputAttitudeOffice:{required: "Attitude at office is required"},
+			  			inputStatus:{required: "Request status is required"}
+					}
+			  	});
+			 
 			
 			 //Search By Position and Show function 
 			$('#btn_search').on('click', function(){
@@ -96,38 +122,39 @@
 						"attitudeOffice" : attitudeOffice,
 						"trackingStatus" : trackingStatus
 						};
-				$.ajax({
-					url : "${pageContext.request.contextPath}/score/update/"+id,
-					type : "POST",
-					contentType :"application/json; charset=utf-8", 
-					data : JSON.stringify(json),
-					success : function(data){
-						console.log(data.id);
-						$('#EditStatusModal').modal('hide');
+				if($("#EditStatusForm").valid()){
+					$.ajax({
+						url : "${pageContext.request.contextPath}/score/update/"+id,
+						type : "POST",
+						contentType :"application/json; charset=utf-8", 
+						data : JSON.stringify(json),
+						success : function(data){
+							console.log(data.id);
+							$('#EditStatusModal').modal('hide');
 						
-						var table = $('#dataTable').DataTable();	
-					 	var rowData = table.row(button.closest('tr')).index(); 
-					 	var d = table.row(rowData).data();
-					 		d.score = data.score;
-							d.techScore = data.techScore;
-					 		d.attitudeHome = data.attitudeHome;
-					 		d.attitudeOffice = data.attitudeOffice;
-					 		d.trackingStatus = data.trackingStatus;
+							var table = $('#dataTable').DataTable();	
+					 		var rowData = table.row(button.closest('tr')).index(); 
+					 		var d = table.row(rowData).data();
+					 			d.score = data.score;
+								d.techScore = data.techScore;
+					 			d.attitudeHome = data.attitudeHome;
+					 			d.attitudeOffice = data.attitudeOffice;
+					 			d.trackingStatus = data.trackingStatus;
 					 		
-					 		table.row(rowData).data(d).draw();
+					 			table.row(rowData).data(d).draw();
 					 		
-							new PNotify({
-							    title: 'Edit Success',
-							    text: 'You can edit data',
-							    type: 'success',
-							    nonblock: {
-							        nonblock: true,
-							        nonblock_opacity: .2
-							    }
-							});
-					 }
-				});
-				
+								new PNotify({
+							    	title: 'Edit score is successful',
+							    	text: '',
+							    	type: 'success',
+							    	nonblock: {
+							       	 nonblock: true,
+							       	 nonblock_opacity: .2
+							    	}
+								});
+						 }
+					});
+				}
 			}
 			
 			//EditStatusModal
@@ -247,7 +274,7 @@
 					</div>
 					<div class="modal-body">
 						<h5>Score Details</h5>
-						<form role="form" id="EditStatusForm">
+						<form role="form" id="EditStatusForm" name="EditStatusForm">
 							<div class="form-group" style="width:200px ">
 								<label for="inputScore">Score</label> 
 								<input type="text" class="form-control" id="inputScore" name="inputScore" placeholder="Enter score">

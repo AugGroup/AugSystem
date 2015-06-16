@@ -62,6 +62,31 @@
 	        }
 			});
 			 */
+			 $('#requestForm').validate({
+			  		rules:{
+			  			inputRequesterName:{required: true},
+			  			inputRequestDate:{required: true},
+			  			inputPosition:{required: true},
+			  			inputApprovalName:{required: true},
+							inputApproveDate:{required: true},
+							inputNumberApplicant:{required: true},
+							inputSpecificSkill:{required: true},
+							inputYearExperience:{required: true},
+							inputStatus:{required: true}
+			  		},
+			  		messages: {
+			  			inputRequesterName:{required: "Requester Name is required"},
+			  			inputRequestDate:{required: "Request Date is required"},
+			  			inputPosition:{required: "Position is required"},
+			  			inputApprovalName:{required: "Approval Name is required"},
+							inputApproveDate:{required: "Approve Date is required"},
+							inputNumberApplicant:{required: "Number Applicant is required"},
+							inputSpecificSkill:{required: "Specific Skill is required"},
+							inputYearExperience:{required: "Year Experience is required"},
+							inputStatus:{required: "Status is required"}
+							}
+			  	});
+			 
 
         var dtRequest;
         if(dtRequest){
@@ -146,7 +171,6 @@
 
         //Button Save
         function save(button) {
-           //if($("requestForm").valid()){
         	   var request = {
                 requesterName: $('#inputRequesterName').val(),
                 requestDate: $('#inputRequestDate').val(),
@@ -174,6 +198,15 @@
                 	$('#addRequestModal').modal('hide');
                     dtRequest.ajax.reload();
                     console.log(data.requesterName);
+                    new PNotify({
+				    	title: 'Create request is successful.',
+				    	text: '',
+				    	type: 'success',
+				    	nonblock: {
+				       	 nonblock: true,
+				       	 nonblock_opacity: .2
+				    	}
+					});
                     
                 }
             });
@@ -254,6 +287,15 @@
                     dt.positionStr = data.positionStr;
                     dtRequest.row(index).data(dt).draw();
                     $("#addRequestModal").modal('hide');
+                    new PNotify({
+				    	title: 'Edit request is successful.',
+				    	text: '',
+				    	type: 'success',
+				    	nonblock: {
+				       	 nonblock: true,
+				       	 nonblock_opacity: .2
+				    	}
+					});
                 }
             });
             };
@@ -289,31 +331,6 @@
       
       }
       
-      $('#requestForm').validate({
-  		rules:{
-  			inputRequesterName:{required: true},
-  			inputRequestDate:{required: true},
-  			inputPosition:{required: true},
-  			inputApprovalName:{required: true},
-				inputApproveDate:{required: true},
-				inputNumberApplicant:{required: true},
-				inputSpecificSkill:{required: true},
-				inputYearExperience:{required: true},
-				inputStatus:{required: true}
-  		},
-  		messages: {
-  			inputRequesterName:{required: "Requester Name is required"},
-  			inputRequestDate:{required: "Request Date is required"},
-  			inputPosition:{required: "Position is required"},
-  			inputApprovalName:{required: "Approval Name is required"},
-				inputApproveDate:{required: "Approve Date is required"},
-				inputNumberApplicant:{required: "Number Applicant is required"},
-				inputSpecificSkill:{required: "Specific Skill is required"},
-				inputYearExperience:{required: "Year Experience is required"},
-				inputStatus:{required: "Status is required"}
-				}
-  	});
- 
     });
 
 
