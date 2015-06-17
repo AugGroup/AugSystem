@@ -59,6 +59,7 @@
 						<li><a href="${pageContext.request.contextPath}/applicant">Applicant</a></li>
 						<li><a href="${pageContext.request.contextPath}/request">Request</a></li>
 						<li><a href="${pageContext.request.contextPath}/approve">Approve</a></li>
+						<li><a href="${pageContext.request.contextPath}/report">Report</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href=""><span class="glyphicon glyphicon-user"></span>

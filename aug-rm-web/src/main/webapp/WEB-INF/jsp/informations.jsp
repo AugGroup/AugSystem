@@ -276,21 +276,15 @@
 	<div class="row">
 		<div class="col-md-6">
 			<form role="form" id="infoForm">
-				<div class="form-group">
-					<div class="row">
-						<div class="col-md-6">
-						<!-- <img src="..." class="img-thumbnail" width="304" height="236"> -->
-					</div>
-				</div>
-			</div>
+				
 			<div class="form-group">
 				<input type="hidden" id="applicantId" name="applicantName"
 					value="${id}">
 			</div>
 
 			<div class="form-group">
-				<label for="photograph">PHOTOGRAPH</label> <input type="file"
-					id="photographId" name="photographName">
+				PHOTOGRAPH <input type="file" name="photographName" id="photographId"><br />
+				<input type="submit" value="Upload"> Press here to upload the file!
 				<p class="help-block">Block-level help text here.</p>
 			</div>
 
