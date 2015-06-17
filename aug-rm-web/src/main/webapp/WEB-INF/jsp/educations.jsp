@@ -222,6 +222,15 @@
 				data : JSON.stringify(eval("(" + insertData + ")")),
 				success : function(data) {
 					alert(JSON.stringify(data));
+					new PNotify({
+				        title: 'Success',
+				        text: 'Successful Add Education!!!',
+				        type: 'success',
+				        nonblock: {
+				            nonblock: true,
+				            nonblock_opacity: .2
+				        }
+				    });
 					
 				
 				}
@@ -401,18 +410,18 @@
 
 
 </div>
+		<div class="form-group">
+			<label for="resume">Resume</label> <input type="file" id="resumeId"
+			name="resumeName">
+		<p class="help-block">Block-level help text here.</p>
+		</div>
 
-<div class="form-group">
-	<label for="resume">Resume</label> <input type="file" id="resumeId"
-		name="resumeName">
-	<p class="help-block">Block-level help text here.</p>
-</div>
+		<div class="form-group">
+			<label for="transcript">Transcript</label> <input type="file"
+			id="transcriptId" name="transcriptName">
+		<p class="help-block">Block-level help text here.</p>
+		</div>
 
-<div class="form-group">
-	<label for="transcript">Transcript</label> <input type="file"
-		id="transcriptId" name="transcriptName">
-	<p class="help-block">Block-level help text here.</p>
-</div>
 <br>
 <br>
 <div class="container">

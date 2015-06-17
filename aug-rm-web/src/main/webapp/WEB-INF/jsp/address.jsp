@@ -105,6 +105,16 @@
 				data : JSON.stringify(eval("(" + insertData + ")")),
 				success : function(data) {
 					alert(JSON.stringify(data));
+
+					new PNotify({
+				        title: 'Success',
+				        text: 'Successful Add Address',
+				        type: 'success',
+				        nonblock: {
+				            nonblock: true,
+				            nonblock_opacity: .2
+				        }
+				    });
 				}
 			});
 

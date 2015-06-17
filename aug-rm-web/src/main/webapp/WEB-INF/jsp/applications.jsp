@@ -15,46 +15,39 @@
 
 		$('#buttonSave').on("click", function() {
 
-			var inputData = {
-
-				applyDate : $('#applyDateId').val(),
-				nowEmployed : $('#knowEmployedId').val(),
-				employedName : $('#nameRelationId').val(),
-				employedPosition : $('#positionRelationId').val(),
-				employedRelation : $('#employedRelationId').val(),
-				noticeNewspaper : $('#newspaperId').val(),
-				noticeMagazine : $('#magazineId').val(),
-				noticeFriend : $('#friendId').val(),
-				noticeWebSite : $('#websiteId').val(),
-				noticeOther : $('#otherId').val(),
-				expectedSalary : $('#salaryId').val(),
-				position1 : $('#positionFirstId').val(),
-				position2 : $('#positionSecondId').val(),
-				position3 : $('#positionThirdId').val(),
-
-			}
 			var insertData = "{";
 				insertData+="applyDate : '"+$('#applyDateId').val()+"',";
-				insertData+="nowEmployed : '"+$('#knowEmployedId').val()+"',";
+				insertData+="nowEmployed : '"+ $('input[name=knowEmployedName]:checked').val()+"',";
 				insertData+="employedName : '"+$('#nameRelationId').val()+"',";
 				insertData+="employedPosition : '"+$('#positionRelationId').val()+"',";
 				insertData+="employedRelation : '"+$('#employedRelationId').val()+"',";
-				insertData+="noticeNewspaper : '"+$('#newspaperId').val()+"',";
-				insertData+="noticeMagazine : '"+$('#magazineId').val()+"',";
-				insertData+="noticeFriend : '"+$('#friendId').val()+"',";
-				insertData+="noticeWebSite : '"+$('#websiteId').val()+"',";
-				insertData+="noticeOther : '"+$('#otherId').val()+"',";
+				insertData+="noticeNewspaper : '"+$('#newspaperId:checked').val()+"',";
+				insertData+="noticeMagazine : '"+$('#magazineId:checked').val()+"',";
+				insertData+="noticeFriend : '"+$('#friendId:checked').val()+"',";
+				insertData+="noticeWebSite : '"+$('#websiteId:checked').val()+"',";
+				insertData+="noticeOther : '"+$('#otherId:checked').val()+"',";
 				insertData+="expectedSalary : '"+$('#salaryId').val()+"',";
-				insertData+="position1 : '"+$('#positionFirstId').val()+"',";
-				insertData+="position2 : '"+$('#positionSecondId').val()+"',";
-				insertData+="position3 : '"+$('#positionThirdId').val()+"'}";
+				insertData+="position1 :{ id :'"+$('#positionFirstId').val()+"'},";
+				insertData+="position2 :{ id :'"+$('#positionSecondId').val()+"'},";
+				insertData+="position3 :{ id :'"+$('#positionThirdId').val()+"'}";
+				insertData+= "}";
 			$.ajax({
 				contentType : "application/json",
 				type : "POST",
-				url : '${pageContext.request.contextPath}/save',
-				data : JSON.stringify(insertData),
+				url : '${pageContext.request.contextPath}/saveApplications',
+				data : JSON.stringify(eval("(" + insertData + ")")),
 				success : function(data) {
 					alert(JSON.stringify(data));
+
+					new PNotify({
+				        title: 'Success',
+				        text: 'Successful Add Applications!!!',
+				        type: 'success',
+				        nonblock: {
+				            nonblock: true,
+				            nonblock_opacity: .2
+				        }
+				    });
 				}
 			});
 
@@ -63,6 +56,7 @@
 	});
 </script>
 <jsp:include page = "applicationMenu.jsp"/>
+
 <label for="applyDate"><span
 	class="glyphicon glyphicon-calendar"></span>Apply date</label>
 <div class="input-group date">
@@ -73,9 +67,10 @@
 
 
 <div class="form-group">
-	<label for="department">Department </label> <select id="departmentId"
-		class="form-control">
-		<c:forEach var="departmentList" items="${departments}">
+	<label for="department">Department </label> 
+	<select id="departmentId" class="form-control">
+		<option value="-1" label="please select data"/>
+		<c:forEach var="departmentList" items="${departments}" >
 			<option value="${departmentList.id}">${departmentList.departmentName}</option>
 		</c:forEach>
 	</select>
@@ -83,6 +78,8 @@
 <div class="form-group">
 	<label for="positionFirst">Position 1 </label> <select
 		id="positionFirstId" name="positionFirstName" class="form-control">
+		<option value="-1" label="please select data"/>
+		
 		<c:forEach var="positionList" items="${positions}">
 			<option value="${positionList.id}">${positionList.positionName}</option>
 		</c:forEach>
@@ -91,6 +88,7 @@
 <div class="form-group">
 	<label for="positionSecond">Position 2 </label> <select
 		id="positionSecondId" name="positionSecondName" class="form-control">
+		<option value="-1" label="please select data"/>
 		<c:forEach var="positionList" items="${positions}">
 			<option value="${positionList.id}">${positionList.positionName}</option>
 		</c:forEach>
@@ -99,6 +97,7 @@
 <div class="form-group">
 	<label for="positionThird">Position 3 </label> <select
 		id="positionThirdId" name="positionThirdName" class="form-control">
+		<option value="-1" label="please select data"/>
 		<c:forEach var="positionList" items="${positions}">
 			<option value="${positionList.id}">${positionList.positionName}</option>
 		</c:forEach>
@@ -112,24 +111,33 @@
 </div>
 <div class="form-group">
 	<label for="knowAugmentis">How do you know Augmentis?</label> <br>
-	<div class="checkbox">
+	 <div class="checkbox">
   		<label><input type="checkbox" 
 		id="newspaperId" name="newspaperName" value="newspaper">Newspaper</label>
+		<input type="text" class="form-control" id="newspaperlistId"
+			name="newspaperlistName" placeholder="Enter newspaper">
 	</div>
 	<div class="checkbox">
  		 <label><input type="checkbox" id="magazineId" name="magazineName"
 		value="magazine">Magazine</label>
+		<input type="text" class="form-control" id="magazinelistId"
+			name="magazinelistName" placeholder="Enter magazine">
 	</div>
 	<div class="checkbox">
   		<label><input type="checkbox" id="websiteId" name="websiteName" value="website">Website</label>
+  		<input type="text" class="form-control" id="websitelistId"
+			name="websitelistName" placeholder="Enter website">
 	</div>
 	<div class="checkbox">
   		<label><input type="checkbox" id="friendId" name="friendName" value="friend">Friend</label>
+  		<input type="text" class="form-control" id="friendlistId"
+			name="friendlistName" placeholder="Enter friend">
 	</div>
 	<div class="checkbox">
   		<label><input type="checkbox" id="otherId" name="otherName" value="other">Other (please specify) </label>
-	</div>
-	
+  		<input type="text" class="form-control" id="otherlistId"
+			name="otherlistName" placeholder="Enter other">
+	</div> 
 </div>
 
 <div class="form-group">

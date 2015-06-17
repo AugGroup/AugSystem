@@ -1,5 +1,6 @@
 package com.aug.db.services;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,12 +51,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 
 	@Override
 	public void create(Applicant applicant) {
-		/*List<Family> families = applicationDTO.getFamilies();
-		for (Family family : families) {
-			family.setId(applicationDTO.getId());
-			familyRepository.insert(family);
-
-		}*/
+		
 		applicantRepository.insert(applicant);
 
 	}
@@ -186,13 +182,13 @@ public class ApplicantServiceImpl implements ApplicantService {
 	
 	@Override
 	public ApplicationDTO saveApplications(ApplicationDTO applicationDTO) {
-		/*
+		
 			Position position1 = applicationDTO.getPosition1();
 			positionRepository.insert(position1);
 			Position position2 = applicationDTO.getPosition2();
 			positionRepository.insert(position2);
 			Position position3 = applicationDTO.getPosition3();
-			positionRepository.insert(position3);*/
+			positionRepository.insert(position3);
 		return applicationDTO;
 	}
 	
@@ -216,6 +212,26 @@ public class ApplicantServiceImpl implements ApplicantService {
 			referenceRepository.insert(reference);
 
 		}
+		return applicationDTO;
+	}
+
+	@Override
+	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO) {
+		Applicant applicant = new Applicant(); 
+		try {
+			applicant.setTrackingStatus("Waiting for consider");
+			applicantRepository.insert(applicant.fromApplicationDTO(applicant, applicationDTO));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		List<Family> families = applicationDTO.getFamilies();
+		for (Family family : families) {
+			family.setId(applicant.getId());
+			familyRepository.insert(family);
+
+		}
+		applicationDTO.setId(applicant.getId());
 		return applicationDTO;
 	}
 

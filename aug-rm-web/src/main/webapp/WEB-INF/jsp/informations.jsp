@@ -4,20 +4,155 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script>
-	$(document)
-			.ready(
-					function() {
-
-						$('.input-group.date').datepicker({
-							startView : 2,
+	$(document).ready(function() {
+			$('.input-group.date').datepicker({startView : 2,
 							todayBtn : "linked",
 							format : "dd/mm/yyyy"
 
 						});
-/* 
-						$('#familyTable')
-								.DataTable(
-										{
+		/* 	$('#infoForm').validate({
+				rules : {
+					photographName : {
+						required : true
+					},
+					firstNameThName : {
+						required : true
+					},
+					lastnameThName : {
+						required : true
+					},
+					nickNameThName : {
+						required : true
+					},
+					firstNameEngId : {
+						required : true
+					},
+					lastnameEngName : {
+						required : true
+					},
+					nickNameEngName : {
+						required : true
+					},
+					telName : {
+						required : true
+					},
+					eMailName : {
+						required : true
+					},
+					birthdayName : {
+						required : true
+					},
+					pBirthName : {
+						required : true
+					},
+					ageName : {
+						required : true
+					},
+					religionName : {
+						required : true
+					},
+					nationalityName : {
+						required : true
+					},
+					idCardName : {
+						required : true
+					},
+					issuedCardName : {
+						required : true
+					},
+					expiryName : {
+						required : true
+					},
+					heightName : {
+						required : true
+					},
+					weightName : {
+						required : true
+					},
+					sexName : {
+						required : true
+					},
+					maritalName : {
+						required : true
+					},
+					childrenName : {
+						required : true
+					}
+				},
+				messages : {
+					photographName : {
+						required : "Photograph is required!"
+					},
+					firstNameThName : {
+						required : "Firstname Thai is required!"
+					},
+					lastnameThName : {
+						required : "lastname Thai is required"
+					},
+					nickNameThName : {
+						required : "Firstname is required!"
+					},
+					firstNameEngId : {
+						required : "Firstname English is required!"
+					},
+					lastnameEngName : {
+						required : "Birthday is required!"
+					},
+					nickNameEngName : {
+						required : "Birthday is required!"
+					},
+					telName : {
+						required : "Birthday is required!"
+					},
+					eMailName : {
+						required : "Birthday is required!"
+					},
+					birthdayName : {
+						required : "Birthday is required!"
+					},
+					pBirthName : {
+						required : "Birthday is required!"
+					},
+					ageName : {
+						required : "Birthday is required!"
+					},
+					religionName : {
+						required : "Birthday is required!"
+					},
+					nationalityName : {
+						required : "Birthday is required!"
+					},
+					idCardName : {
+						required : "Birthday is required!"
+					},
+					issuedCardName : {
+						required : "Birthday is required!"
+					},
+					expiryName : {
+						required : "Birthday is required!"
+					},
+					heightName : {
+						required : "Birthday is required!"
+					},
+					weightName : {
+						required : "Birthday is required!"
+					},
+					sexName : {
+						required : "Birthday is required!"
+					},
+					maritalName : {
+						required : "Birthday is required!"
+					},
+					childrenName : {
+						required : "Birthday is required!"
+					}
+					
+				}
+			});
+ */
+			
+
+						$('#familyTable').DataTable({
 											ajax : {
 												url : '${pageContext.request.contextPath}/informations',
 												type : 'GET'
@@ -30,6 +165,8 @@
 												data : "occupation"
 											}, {
 												data : "address"
+											}, {
+												data : "positionFamily"
 											}],
 											searching : false
 
@@ -44,72 +181,14 @@
 								relation : $('#relationFamilyId').val(),
 								occupation : $('#occupationFamilyId').val(),
 								address : $('#addressFamilyId').val(),
-								positionFamily : $('#positionFamilyId').val()
-								}).draw();
+								positionFamily : $('#positionFamilyId').val()}).draw();
+							
 							$('#familyModal').modal('hide');
 
 						})
- */
+
 						$('#buttonSave').on("click",function() {
-
-											var inputData = {
-												firstNameTH : $('#firstNameThId').val(),
-												firstNameEN : $('#firstNameEngId').val(),
-												lastNameTH : $('#lastnameThId').val(),
-												lastNameEN : $('#lastnameEngId').val(),
-												nickNameTH : $('#nickNameThId').val(),
-												nickNameEN : $('#nickNameEngId').val(),
-												birthDate : $('#birthdayId').val(),
-												placeBirth : $('#pBirthId').val(),
-												age : $('#ageId').val(),
-												height : $('#heightId').val(),
-												weight : $('#weightId').val(),
-												sex : $('#sexId').val(),
-												religion : $('#religionId').val(),
-												nationality : $('#nationalityId').val(),
-												tel : $('#telId').val(),
-												eMail : $('#eMailId').val(),
-												applyDate : $('#applyDateId').val(),
-												emergencyName : $('#emergencyNameId').val(),
-												emergencyTel : $('#emergencyTelId').val(),
-												emergencyAddress : $('#emergencyAddressId').val(),
-												noticeNewspaper : $('#newspaperId').val(),
-												noticeMagazine : $('#magazineId').val(),
-												noticeFriend : $('#friendId').val(),
-												noticeWebSite : $('#websiteId').val(),
-												noticeOther : $('#otherId').val(),
-												certificate : $('#certificateId').val(),
-												expectedSalary : $('#salaryId').val(),
-												cardId : $('#idCardId').val(),
-												cardIssuedOffice : $('#issuedCardId').val(),
-												cardExpiryDate : $('#expiryId').val(),
-												militaryFromYear : $('#fromYearId').val(),
-												militarytoYear : $('#toYearId').val(),
-												militaryPlace : $('#placeId').val(),
-												militaryServiceNo : $('#serviceNoId').val(),
-												militaryReason : $('#reasonsId').val(),
-												militaryStatus : $('#militaryId').val(),
-												marritalStatusName : $('#maritalId').val(),
-												numberOfChildren : $('#childrenId').val(),
-												spouseName : $('#spouseId').val(),
-												marriageCertificateNo : $('#marriageCerId').val(),
-												issueOficeMarriage : $('#issuedMarriageId').val(),
-												marriageAddress : $('#addressId').val(),
-												occupationMarriage : $('#occupationId').val(),
-												branchService : $('#branchId').val(),
-												family : [ {
-													applicant : {
-														id : $('#applicantId').val()
-													},
-													name : $('#nameFamilyId').val(),
-													relation : $('#relationFamilyId').val(),
-													occupation : $('#occupationFamilyId').val(),
-													address : $('#addressFamilyId').val(),
-													positionFamily : $('#positionFamilyId').val()
-												} ]
-
-											}
-											/* var insertData = "{";
+											 var insertData = "{";
 											insertData += "firstNameTH : '"+ $('#firstNameThId').val()+ "',";
 											insertData += "firstNameEN : '"+ $('#firstNameEngId').val() + "',";
 											insertData += "lastNameTH : '"+ $('#lastnameThId').val()+ "',";
@@ -121,22 +200,16 @@
 											insertData += "age : "+ $('#ageId').val() + ",";
 											insertData += "height : "+ $('#heightId').val()+ ",";
 											insertData += "weight : "+ $('#weightId').val()+ ",";
-											insertData += "sex : '"+ $('#sexId').val() + "',";
+											insertData += "sex : '"+ $('input[name=sexName]:checked').val() + "',";
 											insertData += "religion : '"+ $('#religionId').val()+ "',";
 											insertData += "nationality : '"+ $('#nationalityId').val()+ "',";
 											insertData += "tel : '"+ $('#telId').val() + "',";
 											insertData += "eMail : '"+ $('#eMailId').val()+ "',";
-											insertData += "applyDate : '"+ $('#applyDateId').val()+ "',";
+											insertData += "applicantStatus : '"+ $('input[name=maritalName]:checked').val() + "',";
 											insertData += "emergencyName : '"+ $('#emergencyNameId').val() + "',";
 											insertData += "emergencyTel : '"+ $('#emergencyTelId').val() + "',";
 											insertData += "emergencyAddress : '"+ $('#emergencyAddressId').val() + "',";
-											insertData += "noticeNewspaper : '"+ $('#newspaperId').val()+ "',";
-											insertData += "noticeMagazine : '"+ $('#magazineId').val()+ "',";
-											insertData += "noticeFriend : '"+ $('#friendId').val()+ "',";
-											insertData += "noticeWebSite : '"+ $('#websiteId').val()+ "',";
-											insertData += "noticeOther : '"+ $('#otherId').val()+ "',";
 											insertData += "certificate : '"+ $('#certificateId').val()+ "',";
-											insertData += "expectedSalary : '"+ $('#salaryId').val()+ "',";
 											insertData += "cardId : '"+ $('#idCardId').val()+ "',";
 											insertData += "cardIssuedOffice : '"+ $('#issuedCardId').val()+ "',";
 											insertData += "cardExpiryDate : '"+ $('#expiryId').val()+ "',";
@@ -145,56 +218,67 @@
 											insertData += "militaryPlace : '"+ $('#placeId').val()+ "',";
 											insertData += "militaryServiceNo : '"+ $('#serviceNoId').val()+ "',";
 											insertData += "militaryReason : '"+ $('#reasonsId').val()+ "',";
-											insertData += "militaryStatus : '"+ $('#militaryId').val()+ "',";
+											insertData += "militaryStatus : '"+ $('input[name=militaryName]:checked').val() + "',";
 											insertData += "marritalStatusName : '"+ $('#maritalId').val()+ "',";
 											insertData += "numberOfChildren : '"+ $('#childrenId').val()+ "',";
 											insertData += "spouseName : '"+ $('#spouseId').val()+ "',";
 											insertData += "marriageCertificateNo : '"+ $('#maritalId').val()+ "',";
 											insertData += "issueOficeMarriage : '"+ $('#issuedMarriageId').val() + "',";
+											insertData += "dateToBeDrafted : '"+ $('#draftedId').val() + "',";
 											insertData += "marriageAddress : '"+ $('#addressId').val()+ "',";
 											insertData += "issueOficeMarriage : '"+ $('#issuedMarriageId').val() + "',";
 											insertData += "occupationMarriage : '"+ $('#occupationId').val()+ "',";
-											insertData += "branchService : '"+ $('#branchId').val()+ "'";
-											insertData+="family : [ ";
+											insertData += "branchService : '"+ $('#branchId').val()+ "',";
+											insertData+="families : [ ";
 											
 											var familyTable = $("#familyTable").DataTable();
 											familyTable.rows().iterator( 'row', function ( context, index ) {
 											  
 												insertData+="{";
-												insertData+="applicant : {id :"+$('#applicantId').val()+"},";
+												//insertData+="applicant : {id :'"+$('#applicantId').val()+"'},";
 												insertData+="name : '"+familyTable.cell( index,0 ).data()+"',";
 												insertData+="relation : '"+familyTable.cell( index,1 ).data()+"',";
 												insertData+="occupation : '"+familyTable.cell( index,2 ).data()+"',";
 												insertData+="address : '"+familyTable.cell( index,3 ).data()+"',";
 												insertData+="positionFamily : '"+familyTable.cell( index,4 ).data()+"'},";
 											});
-
-											insertData=insertData.substring(0,insertData.length-1);
-											insertData+="}";
-											insertData+="]"; */
 											
+											insertData=insertData.substring(0,insertData.length-1);
+											insertData+="]";
+											insertData+="}";
 											$.ajax({
 														contentType : "application/json",
 														type : "POST",
 														url : '${pageContext.request.contextPath}/saveInformations',
-														data : /* JSON.stringify(eval("(" + insertData + ")")), */JSON.stringify(inputData),
+														data : JSON.stringify(eval("(" + insertData + ")")),
 														success : function(data) {
 															alert(JSON.stringify(data));
+
+															new PNotify({
+														        title: 'Success',
+														        text: 'Successful Add Information!!!',
+														        type: 'success',
+														        nonblock: {
+														            nonblock: true,
+														            nonblock_opacity: .2
+														        }
+														    });
 														}
-													});
+											});
 
 										})
 
-					});
+});
 </script>
 <jsp:include page="applicationMenu.jsp" />
 <!-- tab informations -->
 <div id="informations">
 	<div class="row">
 		<div class="col-md-6">
-			<div class="form-group">
-				<div class="row">
-					<div class="col-md-6">
+			<form role="form" id="infoForm">
+				<div class="form-group">
+					<div class="row">
+						<div class="col-md-6">
 						<!-- <img src="..." class="img-thumbnail" width="304" height="236"> -->
 					</div>
 				</div>
@@ -350,8 +434,10 @@
 					class="form-control" id="childrenId" name="childrenName"
 					placeholder="Enter number of children">
 			</div>
-		</div>
-		<div class="col-md-6">
+		</form>
+	</div>
+	<div class="col-md-6">
+		<form role="form" id="informationForm">
 			<div class="form-group">
 				<label for="spouse">Spouse: Name </label> <input type="text"
 					class="form-control" id="spouseId" name="spouseName"
@@ -364,17 +450,17 @@
 					name="marriageCerName" placeholder="Enter marriage certificate No.">
 			</div>
 			<div class="form-group">
-				<label for="issuedMarriage">Issued office: </label> <input
+				<label for="issuedMarriage">Issued office </label> <input
 					type="text" class="form-control" id="issuedMarriageId"
 					name="issuedMarriageName" placeholder="Enter Issued office">
 			</div>
 			<div class="form-group">
-				<label for="address">Address: </label> <input type="text"
+				<label for="address">Address </label> <input type="text"
 					class="form-control" rows="5" id="addressId" name="addressName"
 					placeholder="Enter address">
 			</div>
 			<div class="form-group">
-				<label for="occupation">Occupation: </label> <input type="text"
+				<label for="occupation">Occupation </label> <input type="text"
 					class="form-control" id="occupationId" name="occupationName"
 					placeholder="Enter occupation">
 			</div>
@@ -435,12 +521,14 @@
 					</div>
 					</div>
 				</div>
+			</form>
+				
 		 <div class="form-group">
 					<label for="informationFamily">Information regarding family
 						(Including Parents Brothers and Sisters) </label>
 				</div>
 				<br>
-				<%-- <div class="container">
+				<div class="container">
 					<div class="row">
 						<div class="col-md-6">
 							<h1>Family</h1>
@@ -462,11 +550,7 @@
 								</h4>
 							</div>
 							<div class="modal-body" style="padding: 40px 50px;">
-								<form role="form" id="familyForm">/
-									<div class="form-group">
-										<input type="hidden" id="applicantId" name="applicantName"
-											value="${id}">
-									</div> --%>
+								<form role="form" id="familyForm">
 									<div class="form-group">
 										<label for="nameFamily">Name </label> <input type="text"
 											class="form-control" id="nameFamilyId" name="nameFamilyName"
@@ -496,7 +580,7 @@
 											type="text" class="form-control" id="positionFamilyId"
 											name="positionFamilyName" placeholder="Enter position">
 									</div>
-								<%-- 	<br> <br>
+									<br> <br>
 									<button type="button" class="btn btn-success"
 										id="familySave">
 										<span class="glyphicon glyphicon-off"></span> Save
@@ -522,6 +606,7 @@
 								<th>RELATION</th>
 								<th>OCCUPATION</th>
 								<th>ADDRESS</th>
+								<th>POSITION_FAMILY</th>
 
 							</tr>
 						</thead>
@@ -534,10 +619,10 @@
 
 
 			</div>
- --%>
+
  		</div>
 		</div>
- </div>
+
 			
 			<button type="button" class="btn btn-success" id="buttonSave">
 				<span class="glyphicon glyphicon-off"></span> Save

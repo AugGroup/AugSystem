@@ -30,14 +30,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @NamedNativeQueries({ @NamedNativeQuery(name = "DATA_APPLICANT", query = "SELECT FIRSTNAME_TH,FIRSTNAME_EN,LASTNAME_TH,LASTNAME_EN,NICKNAME_TH,NICKNAME_EN"
-		+ ",BIRTHDATE,PLACE_BIRTH,AGE,HEIGHT,WEIGHT,RELIGION,NATIONALITY,TEL,EMAIL,APPLY_DATE,EMERGENCY_NAME"
+		+ ",BIRTHDATE,PLACE_BIRTH,AGE,HEIGHT,WEIGHT,RELIGION,NATIONALITY,TEL,EMAIL,APPLICANT_STATUS,APPLY_DATE,EMERGENCY_NAME"
 		+ ",EMERGENCY_TEL,EMERGENCY_ADDRESS,NOTICE_NEWSPAPER,NOTICE_MAGAZINE,NOTICE_FRIEND,NOTICE_WEBSITE,NOTICE_OTHER"
 		+ ",CERTIFICATE,EXPECTED_SALARY,CARD_ID,CARD_ISSUED_OFFICE,CARD_EXPIRY_DATE,MILITARY_FROM_YEAR"
 		+ ",MILITARY_TO_YEAR,MILITARY_PLACE,MILITARY_SERVICE_NO,MILITARY_REASON,MILITARY_STATUS,MARRITAL_STATUS_NAME"
 		+ ",NUMBER_OF_CHILDREN,SPOUSE_NAME,MARRIAGE_CERTIFICATE_NO,ISSUE_OFFICE_MARRIAGE,OCCUPATION_MARRIAGE,NOW_EMPLOYED,EMPLOYED_NAME,EMPLOYED_POSITION,EMPLOYED_RELATION,BRANCH_SERVICE,PREVIOUS_EMPLOYERS,PREVIOUS_EMPLOYERS_REASON,DATE_TO_BE_DRAFTED,MARRIAGE_ADDRESS"
 		+ " FROM APPLICANT WHERE FIRSTNAME_TH = :FIRSTNAME_TH AND FIRSTNAME_EN = :FIRSTNAME_EN AND LASTNAME_TH = :LASTNAME_TH AND LASTNAME_EN = :LASTNAME_EN AND NICKNAME_TH = :NICKNAME_TH AND NICKNAME_EN = :NICKNAME_EN "
 		+ "AND BIRTHDATE = :BIRTHDATE AND PLACE_BIRTH = :PLACE_BIRTH AND AGE = :AGE AND HEIGHT = :HEIGHT AND WEIGHT = :WEIGHT AND RELIGION = :RELIGION AND NATIONALITY = :NATIONALITY AND TEL = :TEL"
-		+ "AND EMAIL = :EMAIL AND APPLY_DATE = :APPLY_DATE AND EMERGENCY_NAME = :EMERGENCY_NAME AND EMERGENCY_TEL = :EMERGENCY_TEL AND EMERGENCY_ADDRESS = :EMERGENCY_ADDRESS AND NOTICE_NEWSPAPER = :NOTICE_NEWSPAPER"
+		+ "AND EMAIL = :EMAIL AND APPLICANT_STATUS = :APPLICANT_STATUS AND APPLY_DATE = :APPLY_DATE AND EMERGENCY_NAME = :EMERGENCY_NAME AND EMERGENCY_TEL = :EMERGENCY_TEL AND EMERGENCY_ADDRESS = :EMERGENCY_ADDRESS AND NOTICE_NEWSPAPER = :NOTICE_NEWSPAPER"
 		+ "AND NOTICE_MAGAZINE = :NOTICE_MAGAZINE AND NOTICE_FRIEND = :NOTICE_FRIEND AND NOTICE_WEBSITE = :NOTICE_WEBSITE AND NOTICE_OTHER = :NOTICE_OTHER AND CERTIFICATE = :CERTIFICATE AND EXPECTED_SALARY = :EXPECTED_SALARY "
 		+ "AND CARD_ID = :CARD_ID AND CARD_ISSUED_OFFICE = :CARD_ISSUED_OFFICE AND CARD_EXPIRY_DATE = :CARD_EXPIRY_DATE AND MILITARY_FROM_YEAR = :MILITARY_FROM_YEAR AND MILITARY_TO_YEAR = :MILITARY_TO_YEAR"
 		+ "AND MILITARY_PLACE = :MILITARY_PLACE AND MILITARY_SERVICE_NO = :MILITARY_SERVICE_NO AND MILITARY_REASON = :MILITARY_REASON AND MILITARY_STATUS = :MILITARY_STATUS AND MARRITAL_STATUS_NAME = :MARRITAL_STATUS_NAME "
@@ -102,7 +102,7 @@ public class ApplicationDTO {
 	private String email;
 
 	@Column(name = "APPLICANT_STATUS")
-	private String ApplicantStatus;
+	private String applicantStatus;
 
 	@Column(name = "APPLY_DATE")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
@@ -195,24 +195,6 @@ public class ApplicationDTO {
 
 	@Column(name = "ATTITUDE")
 	private String attitude;
-/*
-	@Column(name = "POSITION1_ID")
-	private Integer position1;
-
-	@Column(name = "POSITION2_ID")
-	private Integer position2;
-
-	@Column(name = "POSITION3_ID")
-	private Integer position3;
-*/
-	@Transient
-	private String position1Str;
-
-	@Transient
-	private String position2Str;
-
-	@Transient
-	private String position3Str;
 
 	@Column(name = "NOW_EMPLOYED")
 	private String nowEmployed;
@@ -270,17 +252,14 @@ public class ApplicationDTO {
 	private List<Experience> experiences;
 
 	@ManyToOne
-	@Index(name = "position1Index")
 	@JoinColumn(name = "POSITION1_ID", referencedColumnName = "id")
 	private Position position1;
 
 	@ManyToOne
-	@Index(name = "position2Index")
 	@JoinColumn(name = "POSITION2_ID", referencedColumnName = "id")
 	private Position position2;
 
 	@ManyToOne
-	@Index(name = "position3Index")
 	@JoinColumn(name = "POSITION3_ID", referencedColumnName = "id")
 	private Position position3;
 
@@ -573,11 +552,11 @@ public class ApplicationDTO {
 	}
 
 	public String getApplicantStatus() {
-		return ApplicantStatus;
+		return applicantStatus;
 	}
 
 	public void setApplicantStatus(String applicantStatus) {
-		ApplicantStatus = applicantStatus;
+		applicantStatus = applicantStatus;
 	}
 
 	public Date getApplyDate() {
@@ -818,54 +797,6 @@ public class ApplicationDTO {
 
 	public void setAttitude(String attitude) {
 		this.attitude = attitude;
-	}
-/*
-	public Integer getPosition1() {
-		return position1;
-	}
-
-	public void setPosition1(Integer position1) {
-		this.position1 = position1;
-	}
-
-	public Integer getPosition2() {
-		return position2;
-	}
-
-	public void setPosition2(Integer position2) {
-		this.position2 = position2;
-	}
-
-	public Integer getPosition3() {
-		return position3;
-	}
-
-	public void setPosition3(Integer position3) {
-		this.position3 = position3;
-	}
-*/
-	public String getPosition1Str() {
-		return position1Str;
-	}
-
-	public void setPosition1Str(String position1Str) {
-		this.position1Str = position1Str;
-	}
-
-	public String getPosition2Str() {
-		return position2Str;
-	}
-
-	public void setPosition2Str(String position2Str) {
-		this.position2Str = position2Str;
-	}
-
-	public String getPosition3Str() {
-		return position3Str;
-	}
-
-	public void setPosition3Str(String position3Str) {
-		this.position3Str = position3Str;
 	}
 
 	public Position getPosition1() {

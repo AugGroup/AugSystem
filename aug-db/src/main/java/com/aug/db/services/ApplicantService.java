@@ -28,6 +28,8 @@ public interface ApplicantService {
 	
 	public ApplicationDTO saveEducation(ApplicationDTO applicationDTO);
 	
+	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO);
+
 	public ApplicationDTO saveAddress(ApplicationDTO applicationDTO);
 	
 	public ApplicationDTO saveApplications(ApplicationDTO applicationDTO);

@@ -3,6 +3,11 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+.error {
+	color: #ff0000;
+}
+</style>
 <script>
 	$(document).ready(function() {
 
@@ -12,8 +17,25 @@
 			format : "dd/mm/yyyy"
 
 		});
-
-		
+	/* 	$('#previousEmployers').validate({
+			rules : {
+				previousEmployersName : {
+					required : true
+				},
+				giveReasonName : {
+					required : true,
+				}
+			},
+			messages : {
+				previousEmployersName : {
+					required : "Please choose is required!"
+				},
+				giveReasonName : {
+					required : "Please give the reason is required!"
+				}
+			}
+		});
+		 */
 
 		$('#referenceTable').DataTable({
 			ajax : {
@@ -96,37 +118,7 @@
 
 		}) 
 		$('#buttonSave').on("click", function() {
-
-			var inputData = {
-				
-				experiences : [ {
-					applicant : {
-						id : $('#applicantId').val()
-					},
-					position : $('#workBackgroundId').val(),
-					fromDate : $('#fromWorkYearId').val(),
-					toDate : $('#toWorkYearId').val(),
-					employerName : $('#empId').val(),
-					address : $('#addressBackgroundId').val(),
-					typeOfBusiness : $('#businessId').val(),
-					positionOfEmployer : $('#positionBackgroundId').val(),
-					reason : $('#reasonLeavingId').val(),
-					supervisor : $('#supervisorBackgroundId').val(),
-					salary : $('#salaryBackgroundId').val(),
-					description : $('#descriptionBackgroundId').val()
-				} ],
-				references : [ {
-					applicant : {
-						id : $('#applicantId').val()
-					},
-					fullName : $('#fullNameId').val(),
-					tel : $('#telNoId').val(),
-					occupation : $('#occupationRefId').val(),
-					completeAddress : $('#completeAddressId').val()
-				} ],
-			previousEmployers : $('#previousEmployersId').val,
-			previousEmployersReason : $('#giveReasonId').val
-			}
+		/* 	if ($('#previousEmployers').valid()) { */
 		var insertData = "{";
 			
 			insertData+="experiences : [ ";
@@ -167,7 +159,7 @@
 			
 			insertData+="],";
 			
-			insertData+="previousEmployers : '"+$('#previousEmployersId').val()+"',";
+			insertData+="previousEmployers : '"+$('input[name=previousEmployersName]:checked').val()+"',";
 			insertData+="previousEmployersReason : '"+$('#giveReasonId').val()+"'}";
 			
 			$.ajax({
@@ -177,15 +169,25 @@
 				data : JSON.stringify(eval("(" + insertData + ")")),
 				success : function(data) {
 					alert(JSON.stringify(data));
+
+					new PNotify({
+				        title: 'Success',
+				        text: 'Successful Add Experience!!!',
+				        type: 'success',
+				        nonblock: {
+				            nonblock: true,
+				            nonblock_opacity: .2
+				        }
+				    });
 				}
 			});
-
+			/* }; */
 		})
 
 	});
 </script>
 <jsp:include page = "applicationMenu.jsp"/>
-<div id="experiences">
+<form role="form" id="previousEmployers" > 
 	<div class="form-group">
 		<label for="previousEmployers">May inquiry be made of your
 			previous employers regarding your character, qualification record of
@@ -214,6 +216,7 @@
 			THAN YOUR RELATIVE OR FORMER EMPLOYER who have definite knowledge of
 			your qualifications and your conducts. </label>
 	</div>
+	</form>
 	<br>
 	<div class="container">
 		<div class="row">

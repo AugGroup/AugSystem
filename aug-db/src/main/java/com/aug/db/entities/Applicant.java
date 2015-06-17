@@ -859,6 +859,7 @@ public class Applicant {
 		applicant.setReligion(applicationDTO.getReligion());
 		applicant.setNationality(applicationDTO.getNationality());
 		applicant.setTel(applicationDTO.getTel());
+		applicant.setApplicantStatus(applicationDTO.getApplicantStatus());
 		applicant.setEmail(applicationDTO.getEmail());
 		applicant.setApplyDate(applicationDTO.getApplyDate());
 		applicant.setEmergencyName(applicationDTO.getEmergencyName());

@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -44,30 +45,15 @@ public class ApplicationController {
 	private PositionService positionService;
 	@Autowired
 	private ApplicantService applicantService;
+	
+	Integer keepId;
+	
 	@InitBinder public void InitBinder(WebDataBinder binder){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat,true));
 	  
 	  }
-	
-	@RequestMapping(value = "/application", method = { RequestMethod.GET })
-	public String application(Model model) {
-        LOGGER.info("**** Welcome to Application Controller ****");
-		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		String name = user.getUsername();
-		model.addAttribute("name", name);
-        return "application";
 
-	}
-	@RequestMapping(value = "/save",method ={ RequestMethod.POST })
-	public @ResponseBody ApplicationDTO save(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
-		Applicant applicant = new Applicant(); 
-		applicant.setTrackingStatus("Waiting for consider");
-		applicantService.create(applicant.fromApplicationDTO(applicant, applicationDTO));
-		
-		
-		return applicationDTO;
-	}
 	@RequestMapping(value = "/applicationMenu", method = { RequestMethod.GET })
 	public String applicationMenu(Model model) {
         LOGGER.info("**** Welcome to Application Controller ****");
@@ -85,28 +71,29 @@ public class ApplicationController {
 	}
 	@RequestMapping(value = "/saveInformations",method ={ RequestMethod.POST })
 	public @ResponseBody ApplicationDTO saveInformations(@RequestBody ApplicationDTO applicationDTO,Model model) throws ParseException{
-		Applicant applicant = new Applicant(); 
-		applicant.setTrackingStatus("Waiting for consider");
-		applicantService.create(applicant.fromApplicationDTO(applicant, applicationDTO));
-		model.addAttribute("id",applicant.getId());
+		
+		applicantService.saveInformations(applicationDTO);
+		model.addAttribute("id",applicationDTO.getId());
+//		keepId = applicant.getId();
 		return applicationDTO;
 	}
 
 	@RequestMapping(value = "/applications", method = { RequestMethod.GET })
 	public String applications(Model model) {
         LOGGER.info("**** Welcome to Application Controller ****");
-        model.addAttribute("id",2);
+//        
+//        System.out.println("PATHVARIABLE ID : "+id);
+//        System.out.println("ID : "+keepId);
+       model.addAttribute("id",2);
         return "applications";
 	}
 	@RequestMapping(value = "/saveApplications",method ={ RequestMethod.POST })
 	public @ResponseBody ApplicationDTO saveApplications(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
 		applicantService.saveApplications(applicationDTO);
-		
 		return applicationDTO;
 	}
 	@RequestMapping(value = "/address", method = { RequestMethod.GET })
 	public String address(Model model) {
-        LOGGER.info("**** Welcome to Application Controller ****");
         model.addAttribute("id",2);
         return "address";
 
@@ -118,7 +105,6 @@ public class ApplicationController {
 	}
 	@RequestMapping(value = "/educations", method = { RequestMethod.GET })
 	public String educations(Model model) {
-        LOGGER.info("**** Welcome to Application Controller ****");
 		model.addAttribute("id",2);
         return "educations";
 
@@ -131,7 +117,7 @@ public class ApplicationController {
 	}
 	@RequestMapping(value = "/experiences", method = { RequestMethod.GET })
 	public String experiences(Model model) {
-        LOGGER.info("**** Welcome to Application Controller ****");
+		
         model.addAttribute("id",2);
         return "experiences";
 
