@@ -55,26 +55,6 @@
 		})
 
 		$('#buttonSave').on("click", function() {
-
-			var inputData = {
-				
-				address : [ {
-					applicant : {
-						id : $('#applicantId').val()
-					},
-					addressType : $('#inputAddress').val(),
-					houseNo : $('#permanentHouseNoId').val(),
-					road : $('#permanentRoadId').val(),
-					district : $('#permanentDistrictId').val(),
-					subDistrict : $('#permanentSubDistrictId').val(),
-					zipcode : $('#permanentZipcodeId').val(),
-					province : $('#permanentProvinceId').val()
-
-				} ],
-			emergencyName : $('#emergencyNameId').val(),
-			emergencyTel : $('#emergencyTelId').val(),
-			emergencyAddress : $('#emergencyAddressId').val()
-			}
 			
 			var insertData = "{";
 			

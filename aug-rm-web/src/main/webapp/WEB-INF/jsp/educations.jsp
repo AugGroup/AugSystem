@@ -129,43 +129,6 @@
 
 		$('#buttonSave').on("click", function() {
 		
-
-			var inputData = {
-
-				educations : [ {
-					applicant : {
-						id : $('#applicantId').val()
-					},
-					schoolName : $('#universityId').val(),
-					degree : $('#degreeId').val(),
-					faculty : $('#facultyId').val(),
-					major : $('#majorId').val(),
-					gpa : $('#gpaId').val(),
-					yearsOfGraduate : $('#graduateId').val()
-				} ],
-				skills : [ {
-					applicant : {
-						id : $('#applicantId').val()
-					},
-					skillDetail : $('#skillId').val()
-
-				} ],
-
-				languages : [ {
-					applicant : {
-						id : $('#applicantId').val()
-					},
-					languagesName : $('#languagesId').val(),
-					speaking : $('#speakingId').val(),
-					reading : $('#readingId').val(),
-					understanding : $('#understandingId').val(),
-					writing : $('#writingId').val()
-
-				}],
-
-				certificate : $('#certificateId').val()
-
-			} 
 			var insertData = "{";
 			
 			insertData+="educations : [ ";

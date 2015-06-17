@@ -15,56 +15,6 @@
 
 		$('#buttonSave').on("click", function() {
 
-			var inputData = {
-					firstNameTH : $('#firstNameThId').val(),
-					firstNameEN : $('#firstNameEngId').val(),
-					lastNameTH : $('#lastnameThId').val(),
-					lastNameEN : $('#lastnameEngId').val(),
-					nickNameTH : $('#nickNameThId').val(),
-					nickNameEN : $('#nickNameEngId').val(),
-					birthDate : $('#birthdayId').val(),
-					placeBirth : $('#pBirthId').val(),
-					age : $('#ageId').val(),
-					height : $('#heightId').val(),
-					weight : $('#weightId').val(),
-					sex :$('#sexId').val(),
-					religion : $('#religionId').val(),
-					nationality : $('#nationalityId').val(),
-					tel : $('#telId').val(),
-					eMail : $('#eMailId').val(),
-					applyDate : $('#applyDateId').val(),
-					emergencyName : $('#emergencyNameId').val(),
-					emergencyTel : $('#emergencyTelId').val(),
-					emergencyAddress : $('#emergencyAddressId').val(),
-					noticeNewspaper : $('#newspaperId').val(),
-					noticeMagazine : $('#magazineId').val(),
-					noticeFriend : $('#friendId').val(),
-					noticeWebSite : $('#websiteId').val(),
-					noticeOther : $('#otherId').val(),
-					/* position1 : $('#positionFirstId').val(),
-					position2 : $('#positionSecondId').val(),
-					position3 : $('#positionThirdId').val(), */
-					certificate : $('#certificateId').val(),
-					expectedSalary : $('#salaryId').val(),
-					cardId : $('#idCardId').val(),
-					cardIssuedOffice : $('#issuedCardId').val(),
-					cardExpiryDate : $('#expiryId').val(),
-					militaryFromYear : $('#fromYearId').val(),
-					militarytoYear : $('#toYearId').val(),
-					militaryPlace : $('#placeId').val(),
-					militaryServiceNo : $('#serviceNoId').val(),
-					militaryReason : $('#reasonsId').val(),
-					militaryStatus : $('#militaryId').val(),
-					marritalStatusName : $('#maritalId').val(),
-					numberOfChildren : $('#childrenId').val(),
-					spouseName : $('#spouseId').val(),
-					marriageCertificateNo : $('#marriageCerId').val(),
-					issueOficeMarriage : $('#issuedMarriageId').val(),
-					marriageAddress : $('#addressId').val(),
-					occupationMarriage : $('#occupationId').val(),
-					branchService : $('#branchId').val()
-					
-			}
 		var insertData = "{";
 		insertData+="firstNameTH : '"+$('#firstNameThId').val()+"',";
 		insertData+="firstNameEN : '"+$('#firstNameEngId').val()+"',";
