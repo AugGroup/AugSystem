@@ -279,6 +279,98 @@
 						$('#buttonSave').on("click",function() {
 							if ($('#infoForm').valid()||$('#informationForm').valid()) {
 											 var insertData = "{";
+// 						$('#familyTable').DataTable({
+// 											ajax : {
+// 												url : '${pageContext.request.contextPath}/informations',
+// 												type : 'GET'
+// 											},
+// 											columns : [ {
+// 												data : "name"
+// 											}, {
+// 												data : "relation"
+// 											}, {
+// 												data : "occupation"
+// 											}, {
+// 												data : "address"
+// 											}, {
+// 												data : "positionFamily"
+// 											}],
+// 											searching : false
+
+// 										});
+
+// 						$('#familySave').on("click", function() {
+// 							if($('#familyForm').valid()){
+// 							var table = $('#familyTable').DataTable();
+
+// 							table.row.add({
+// 								name : $('#nameFamilyId').val(),
+// 								relation : $('#relationFamilyId').val(),
+// 								occupation : $('#occupationFamilyId').val(),
+// 								address : $('#addressFamilyId').val(),
+// 								positionFamily : $('#positionFamilyId').val()}).draw();
+							
+// 							$('#familyModal').modal('hide');
+// 							};
+// 						})
+ 	
+// // 	$('#buttonSave').on("click",function() {
+	
+// 	function saveInformation(){
+// // 		var inputData = {firstNameTH : $('#firstNameThId').val(),
+// // 						 firstNameEN : $('#firstNameEngId').val(),
+// // 						 lastNameTH : $('#lastnameThId').val(),
+// // 						 lastNameEN : $('#lastnameEngId').val(),
+// // 						 nickNameTH : $('#nickNameThId').val(),
+// // 						 nickNameEN : $('#nickNameEngId').val(),
+// // 						 birthDate : $('#birthdayId').val(),
+// // 						 placeBirth : $('#pBirthId').val(),
+// // 						 age : $('#ageId').val(),
+// // 						 height : $('#heightId').val(),
+// // 						 weight : $('#weightId').val(),
+// // 						 sex : $('#sexId').val(),
+// // 						 religion : $('#religionId').val(),
+// // 						 nationality : $('#nationalityId').val(),
+// // 						 tel : $('#telId').val(),
+// // 						 eMail : $('#eMailId').val(),
+// // 						 applyDate : $('#applyDateId').val(),
+// // 						 emergencyName : $('#emergencyNameId').val(),
+// // 						 emergencyTel : $('#emergencyTelId').val(),
+// // 						 emergencyAddress : $('#emergencyAddressId').val(),
+// // 						 noticeNewspaper : $('#newspaperId').val(),
+// // 						 noticeMagazine : $('#magazineId').val(),
+// // 						 noticeFriend : $('#friendId').val(),
+// // 						 noticeWebSite : $('#websiteId').val(),
+// // 						 noticeOther : $('#otherId').val(),
+// // 						 certificate : $('#certificateId').val(),
+// // 						 expectedSalary : $('#salaryId').val(),
+// // 						 cardId : $('#idCardId').val(),
+// // 						 cardIssuedOffice : $('#issuedCardId').val(),
+// // 						 cardExpiryDate : $('#expiryId').val(),
+// // 						 militaryFromYear : $('#fromYearId').val(),
+// // 						 militarytoYear : $('#toYearId').val(),
+// // 						 militaryPlace : $('#placeId').val(),
+// // 						 militaryServiceNo : $('#serviceNoId').val(),
+// // 						 militaryReason : $('#reasonsId').val(),
+// // 						 militaryStatus : $('#militaryId').val(),
+// // 						 marritalStatusName : $('#maritalId').val(),
+// // 						 numberOfChildren : $('#childrenId').val(),
+// // 						 spouseName : $('#spouseId').val(),
+// // 						 marriageCertificateNo : $('#marriageCerId').val(),
+// // 						 issueOficeMarriage : $('#issuedMarriageId').val(),
+// // 						 marriageAddress : $('#addressId').val(),
+// // 						 occupationMarriage : $('#occupationId').val(),
+// // 						 branchService : $('#branchId').val(),
+// // 						 family : [{applicant : {id : $('#applicantId').val()},
+// // 												 name : $('#nameFamilyId').val(),
+// // 												 relation : $('#relationFamilyId').val(),
+// // 												 occupation : $('#occupationFamilyId').val(),
+// // 												 address : $('#addressFamilyId').val(),
+// // 												 positionFamily : $('#positionFamilyId').val()
+// // 								  }]
+// // 						}
+// // 						$('#buttonSave').on("click",function() {
+// 											var insertData = "{";
 											insertData += "firstNameTH : '"+ $('#firstNameThId').val()+ "',";
 											insertData += "firstNameEN : '"+ $('#firstNameEngId').val() + "',";
 											insertData += "lastNameTH : '"+ $('#lastnameThId').val()+ "',";
@@ -324,6 +416,7 @@
 											insertData += "attachFiles : [{attachName:'pic',type:'.png',path:'C:',attachTypeFile:'picture'}]";
 			
 											insertData+="}";
+											
 											$.ajax({
 														contentType : "application/json",
 														type : "POST",
@@ -343,10 +436,303 @@
 														    });
 														}
 											});
-										}
-									})
 
+// 										})
+								}
+				});
+
+// });
+// 											insertData+="]"; */
+											
+// 		$.ajax({contentType : "application/json",
+// 				type : "POST",
+// 				url : '${pageContext.request.contextPath}/saveInformations',
+// 				data : /* JSON.stringify(eval("(" + insertData + ")")), */JSON.stringify(inputData),
+// 				success : function(data) {
+// 					alert(JSON.stringify(data));
+// 				}
+// 			});
+
+// 		})
+// 	}
+		
+		//Find by Id
+		function findById(id){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/findById/" + id,
+				type : "POST",
+				success : function(data){
+					showFillData(data);
+				}
+			});
+		}
+		
+		//Show data on inputField
+		function showFillData(data){
+			$("#firstNameThId").val(data.firstNameTH);
+			$("#firstNameEngId").val(data.firstNameEN);
+			$("#lastnameThId").val(data.lastNameTH);
+			$("#lastnameEngId").val(data.lastNameEN);
+			$("#nickNameThId").val(data.nickNameTH);
+			
+			$("#nickNameEngId").val(data.nickNameEN);
+			$("#birthdayId").val(data.birthDate);
+			$("#pBirthId").val(data.placeBirth);
+			$("#ageId").val(data.age);
+			$("#heightId").val(data.height);
+			
+			$("#weightId").val(data.weight);
+			$("#sexId").val(data.sex);
+			$("#religionId").val(data.religion);
+			$("#nationalityId").val(data.nationality);
+			$("#telId").val(data.tel);
+			
+			$("#eMailId").val(data.email);
+			$("#applyDateId").val(data.applyDate);
+			$("#emergencyNameId").val(data.emergencyName);
+			$("#emergencyTelId").val(data.emergencyTel);
+			$("#emergencyAddressId").val(data.emergencyAddress);
+			
+			$("#newspaperId").val(data.noticeNewspaper);
+			$("#magazineId").val(data.noticeMagazine);
+			$("#friendId").val(data.noticeFriend);
+			$("#websiteId").val(data.noticeWebSite);
+			$("#otherId").val(data.noticeOther);
+			
+			$("#certificateId").val(data.certificate);
+			$("#salaryId").val(data.expectedSalary);
+			$("#idCardId").val(data.cardId);
+			$("#issuedCardId").val(data.cardIssuedOffice);
+			$("#expiryId").val(data.cardExpiryDate);
+			
+			$("#fromYearId").val(data.militaryFromYear);
+			$("#toYearId").val(data.militarytoYear);
+			$("#placeId").val(data.militaryPlace);
+			$("#serviceNoId").val(data.militaryServiceNo);
+			$("#reasonsId").val(data.militaryReason);
+			
+			$("#militaryId").val(data.militaryStatus);
+			$("#maritalId").val(data.marritalStatusName);
+			$("#childrenId").val(data.numberOfChildren);
+			$("#spouseId").val(data.spouseName);
+			$("#marriageCerId").val(data.marriageCertificateNo);
+			
+			$("#issuedMarriageId").val(data.issueOficeMarriage);
+			$("#addressId").val(data.marriageAddress);
+			$("#occupationId").val(data.occupationMarriage);
+			$("#branchId").val(data.branchService);
+			$("#draftedId").val(data.dateToBeDrafted);
+		}
+		
+		//Update function
+		function updateUser(){
+// 			var id = $(button).data("id");
+			var id = '${id}';
+			var firstNameTh = $("#firstNameThId").val();
+			var firstNameEn = $('#firstNameEngId').val();
+			var lastNameTh = $("#lastnameThId").val();
+			var lastNameEn = $("#lastnameEngId").val();
+			var nickNameTh = $("#nickNameThId").val();
+			
+			var nickNameEn = $("#nickNameEngId").val();
+			var birthday = $('#birthdayId').val();
+			var pBirthday = $("#pBirthId").val();
+			var age = $("#ageId").val();
+			var height = $("#heightId").val();
+			
+			var weight = $("#weightId").val();
+			var sex = $('#sexId').val();
+			var religion = $("#religionId").val();
+			var nationality = $("#nationalityId").val();
+			var tel = $("#telId").val();
+			
+			var eMail = $("#eMailId").val();
+			var applyDate = $('#applyDateId').val();
+			var emergencyName = $("#emergencyNameId").val();
+			var emergencyTel = $("#emergencyTelId").val();
+			var emergencyAddress = $("#emergencyAddressId").val();
+			
+			var newspaper = $("#newspaperId").val();
+			var magazine = $('#magazineId').val();
+			var friend = $("#friendId").val();
+			var website = $("#websiteId").val();
+			var other = $("#otherId").val();
+			
+			var certificate = $("#certificateId").val();
+			var salary = $('#salaryId').val();
+			var idCard = $("#idCardId").val();
+			var issuedCard = $("#issuedCardId").val();
+			var expiry = $("#expiryId").val();
+			
+			var militaryFromYear = $("#fromYearId").val();
+			var militaryToYear = $('#toYearId').val();
+			var place = $("#placeId").val();
+			var serviceNo = $("#serviceNoId").val();
+			var reason = $("#reasonsId").val();
+			
+			var military = $("#militaryId").val();
+			var marital = $('#maritalId').val();
+			var children = $("#childrenId").val();
+			var spouse = $("#spouseId").val();
+			var marriageCer = $("#marriageCerId").val();
+			
+			var issuedMarriage = $("#issuedMarriageId").val();
+			var address = $('#addressId').val();
+			var occupation = $("#occupationId").val();
+			var branch = $("#branchId").val();
+			var drafted = $('#draftedId').val();
+
+			var json = {
+					"id" : id,
+					"firstNameTH" : firstNameTh,
+					"firstNameEN" : firstNameEn,
+					"lastNameTH" : lastNameTh,
+					"lastNameEN" : lastNameEn,
+					"nickNameTH" : nickNameTh,
+					
+					"nickNameEN" : nickNameEn,
+					"birthDate" : birthday,
+					"placeBirth" : pBirthday,
+					"age" : age,
+					"height" : height,
+					
+					"weight" : weight,
+					"sex" : sex,
+					"religion" : religion,
+					"nationality" : nationality,
+					"tel" : tel,
+					
+					"email" : eMail,
+					"applyDate" : applyDate,
+					"emergencyName" : emergencyName,
+					"emergencyTel" : emergencyTel,
+					"emergencyAddress" : emergencyAddress,
+					
+					"noticeNewspaper" : newspaper,
+					"noticeMagazine" : magazine,
+					"noticeFriend" : friend,
+					"noticeWebSite" : website,
+					"noticeOther" : other,
+					
+					"certificate" : certificate,
+					"expectedSalary" : salary,
+					"cardId" : idCard,
+					"cardIssuedOffice" : issuedCard,
+					"cardExpiryDate" : expiry,
+					
+					"militaryFromYear" : militaryFromYear,
+					"militarytoYear" : militaryToYear,
+					"militaryPlace" : place,
+					"militaryServiceNo" : serviceNo,
+					"militaryReason" : reason,
+					
+					"militaryStatus" : military,
+					"marritalStatusName" : marital,
+					"numberOfChildren" : children,
+					"spouseName" : spouse,
+					"marriageCertificateNo" : marriageCer,
+					
+					"issueOficeMarriage" : issuedMarriage,
+					"marriageAddress" : address,
+					"occupationMarriage" : occupation,
+					"branchService" : branch,
+					"dateToBeDrafted" : drafted
+					};
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/informations/"+id,
+				type : "POST",
+				contentType :"application/json; charset=utf-8",
+				data : JSON.stringify(json),
+				success : function(data){
+// 					var table = $('#dataTable').DataTable();	
+// 				 	var rowData = table.row(this).index(); 
+// 				 	var d = table.row(rowData).data();
+// 				 		console.log(data.firstNameTH);
+// 				 		d.firstNameTH = data.firstNameTH;
+// 						d.firstNameEn = data.firstNameEN;
+// 				 		d.lastNameTh = data.lastNameTH;
+// 				 		d.lastNameEn = data.lastNameEN;
+// 				 		d.nickNameTh = data.nickNameTH;
+				 		
+// 				 		d.nickNameEn = data.nickNameEN;
+// 						d.birthday = data.birthDate;
+// 				 		d.pBirthday = data.placeBirth;
+// 				 		d.age = data.age;
+// 				 		d.height = data.height;
+				 		
+// 				 		d.weight = data.weight;
+// 						d.sex = data.sex;
+// 				 		d.religion = data.religion;
+// 				 		d.nationality = data.nationality;
+// 				 		d.tel = data.tel;
+				 		
+// 				 		d.eMail = data.email;
+// 						d.applyDate = data.applyDate;
+// 				 		d.emergencyName = data.emergencyName;
+// 				 		d.emergencyTel = data.emergencyTel;
+// 				 		d.emergencyAddress = data.emergencyAddress;
+				 		
+// 				 		d.newspaper = data.noticeNewspaper;
+// 						d.magazine = data.noticeMagazine;
+// 				 		d.friend = data.noticeFriend;
+// 				 		d.website = data.noticeWebSite;
+// 				 		d.other = data.noticeOther;
+						
+// 				 		d.certificate = data.certificate;
+// 						d.salary = data.expectedSalary;
+// 				 		d.idCard = data.cardId;
+// 				 		d.issuedCard = data.cardIssuedOffice;
+// 				 		d.expiry = data.cardExpiryDate;
+				 		
+// 				 		d.militaryFromYear = data.militaryFromYear;
+// 						d.militaryToYear = data.militarytoYear;
+// 				 		d.place = data.militaryPlace;
+// 				 		d.serviceNo = data.militaryServiceNo;
+// 				 		d.reason = data.militaryReason;
+
+// 				 		d.military = data.militaryStatus;
+// 						d.marital = data.marritalStatusName;
+// 				 		d.children = data.numberOfChildren;
+// 				 		d.spouse = data.spouseName;
+// 				 		d.marriageCer = data.marriageCertificateNo;
+				 		
+// 				 		d.issuedMarriage = data.issueOficeMarriage;
+// 						d.address = data.issueOficeMarriage;
+// 				 		d.occupation = data.occupationMarriage;
+// 				 		d.branch = data.branchService;
+				 		
+// 				 		table.row(rowData).data(d).draw();
+				 		
+						new PNotify({
+						    title: 'Edit Success',
+						    text: 'You can edit data',
+						    type: 'success',
+						    nonblock: {
+						        nonblock: true,
+						        nonblock_opacity: .2
+						    }
+						});
+				 }
+			});
+		}
+		
+		var applicantId = '${id}';
+		if(applicantId != null){
+			findById('${id}');
+			$('#buttonSave').off('click').on('click', function(id){
+				updateUser();
+			});
+			
+		}else{
+			$('#informationForm')[0].reset();
+			$('#buttonSave').off('click').on('click', function(){
+				saveUser();
+			});
+		}
 });
+
+
 </script>
 <jsp:include page="applicationMenu.jsp" />
 <!-- tab informations -->
@@ -848,10 +1234,11 @@
 <%-- <div id="informations">
 <div class="container">
 	<div class="row">
+		<f:form id="informationForm" name="informationForm">
 		<div class="col-md-6">
 			<div class="form-group">
-				<input type="hidden" id="applicantId" name="applicantName"
-					value="${id}">
+<%-- 				<f:hidden path="id" name="applicantName" id="applicantId" value="${id}"/> --%>
+				<input type="hidden" id="applicantId" name="applicantName" value="${id}">
 			</div>
 			<form enctype="multipart/form-data">
 			<div class="form-group">
@@ -865,15 +1252,17 @@
 			<form class="form-inline" role="form" id="infoForm">
 			<div class="form-group">
 				<label for="firstNameTh">Firstname (TH) </label> <input type="text"
-					class="form-control" id="firstNameThId" name="firstNameThName"
-					placeholder="Enter Firstname(TH)">
+ 					class="form-control" id="firstNameThId" name="firstNameThName"
+ 					placeholder="Enter Firstname(TH)"
+					>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="lastnameTh">Lastname (TH) </label> <input type="text"
-					class="form-control" id="lastnameThId" name="lastnameThName"
-					placeholder="Enter lastname(TH)">
+ 					class="form-control" id="lastnameThId" name="lastnameThName"
+					placeholder="Enter lastname(TH)"
+					/>
 			</div>
 			<br>
 			<br>
@@ -1035,7 +1424,8 @@
 					placeholder="Enter number of children">
 			</div>
 		</form>
-	</div>
+<!-- 	</div> -->
+<%-- 	</f:form> --%>
 	<div class="col-md-6">
 		<form role="form" id="informationForm" class="form-inline">
 			<div class="form-group">
@@ -1137,8 +1527,8 @@
 							class="form-control"><span class="input-group-addon"><i
 							class="glyphicon glyphicon-th"></i></span>
 					</div>
-					</div>
 				</div>
+<<<<<<< HEAD
 			</form>
 				
 		
@@ -1150,3 +1540,114 @@
 			
 		</div>
 	</div> --%>
+=======
+				</div>
+			</form>
+		</div>
+		<div class="form-group">
+				<label for="informationFamily">Information regarding family (Including Parents Brothers and Sisters) </label>
+		</div><br>
+		
+		<div class="container">
+					<div class="row">
+						<div class="col-md-6">
+							<h1>Family</h1>
+							<button class="btn btn-primary" id="familyAdd"
+								data-toggle="modal" data-target="#familyModal">
+								<span class="glyphicon glyphicon-plus"></span> Family
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="modal fade" id="familyModal" role="dialog">
+					<div class="modal-dialog">
+
+						<div class="modal-content">
+							<div class="modal-header" style="padding: 35px 50px;">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4>
+									<span class="glyphicon glyphicon-lock"></span> Family
+								</h4>
+							</div>
+							<div class="modal-body" style="padding: 40px 50px;">
+								<form role="form" id="familyForm">/
+									<div class="form-group">
+
+										<label for="addressFamily">Address </label> 
+										<textarea class="form-control" rows="5" id="addressFamilyId"
+										name="addressFamilyName" placeholder="Enter address"></textarea>
+									</div>
+
+									<div class="form-group">
+										<label for="positionFamily">Position </label> <input
+											type="text" class="form-control" id="positionFamilyId"
+											name="positionFamilyName" placeholder="Enter position">
+									</div>
+									<br> <br>
+									<button type="button" class="btn btn-success"
+										id="familySave">
+										<span class="glyphicon glyphicon-off"></span> Save
+									</button>
+									<button type="button" class="btn btn-default"
+										data-dismiss="modal">Close</button>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<p>Please fill your information</p>
+							</div>
+						</div>
+
+					</div>
+
+<!-- 										<input type="hidden" id="applicantId" name="applicantName" -->
+<%-- 											value="${id}"> --%>
+<!-- 									</div> --%> -->
+<%-- 			<form role="form" id="familyForm"> --%>
+<!-- 				<div class="form-group"> -->
+<!-- 					<label for="nameFamily">Name </label> <input type="text" class="form-control" id="nameFamilyId" name="nameFamilyName" placeholder="Enter name"> -->
+
+				</div>
+				<div class="form-group">
+					<label for="relationFamily">Relation </label> 
+					<input type="text" class="form-control" id="relationFamilyId" name="relationFamilyName" placeholder="Enter relation">
+				</div>
+				<div class="form-group">
+					<label for="occupationFamily">Occupation </label> 
+					<input type="text" class="form-control" id="occupationFamilyId" name="occupationFamilyName" placeholder="Enter occupation ">
+				</div>
+				<div class="form-group">
+					<label for="addressFamily">Address </label> 
+					<input type="textarea" class="form-control" id="addressFamilyId" name="addressFamilyName" placeholder="Enter address ">
+				</div>
+				<div class="form-group">
+					<label for="positionFamily">Position </label> 
+					<input type="text" class="form-control" id="positionFamilyId" name="positionFamilyName" placeholder="Enter position">
+				</div>
+				<br><br>
+				<button type="button" class="btn btn-success" id="familySave"><span class="glyphicon glyphicon-off"></span> Save</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</form>
+<!-- 		</div> -->
+				<div class="modal-footer">
+					<p>Please fill your information</p>
+				</div>
+		</div>
+	</div>
+</div>
+<br><br>
+	<div>
+		<table id="familyTable" class="display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th>NAME</th>
+					<th>RELATION</th>
+					<th>OCCUPATION</th>
+					<th>ADDRESS</th>
+					<th>POSITION_FAMILY</th>
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+	<button type="button" class="btn btn-success" id="buttonSave"> <span class="glyphicon glyphicon-off"></span> Save</button>
+>>>>>>> Create AddressDTO

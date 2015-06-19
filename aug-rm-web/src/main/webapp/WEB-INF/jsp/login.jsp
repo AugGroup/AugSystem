@@ -17,9 +17,7 @@ $(document).ready(function() {
         rules: {
             j_username: "required",
             j_password: {
-                required: true,
-                minlength: 2
-        
+                required: true
             }
         },
         messages: {
@@ -28,7 +26,6 @@ $(document).ready(function() {
             },
             j_password: {
                 required: "Please enter a password",
-                minlength: "Your password must be at least 2 characters"
         	}
         }
     });

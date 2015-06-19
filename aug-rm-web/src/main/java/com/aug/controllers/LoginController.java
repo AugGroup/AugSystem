@@ -28,21 +28,6 @@ public class LoginController implements Serializable {
 
 	@RequestMapping(value = "/applicant", method = { RequestMethod.POST })
 	public String loginSpringPost(Model model) {
-		System.out.println("POST pOST POST pOST POST POST POST POSTB  POSTSt");
-		// @RequestParam String userName,
-		// @RequestParam String password,ModelMap model) {
-
-		// LoginDTO data = loginService.findByUserName(userName);
-		// User user =
-		// (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		// String name = user.getUsername(); //get logged in username
-
-//		Authentication auth = SecurityContextHolder.getContext()
-//				.getAuthentication();
-//		String name = auth.getName();
-//
-//		System.out.println("NAMEUSERNAME :" + name);
-//		model.addAttribute("name", name);
 
 		return "main_applicant";
 	}

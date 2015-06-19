@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ReportApplicantDTO;
+import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.entities.Applicant;
 
 @Repository(value = "applicantRepository")
@@ -48,7 +49,12 @@ public class ApplicantRepositoryImpl extends
 		return results;
 	}
 	
-
-	
-	
+	@Override
+	public ApplicationDTO findApplicationById(Integer id) {
+		Query query = getCurrentSession().getNamedQuery("SEARCH_BY_ID_APPLICATION");
+		query.setParameter("ID", id);
+		List<ApplicationDTO> result = query.list();
+		ApplicationDTO app = result.get(0);
+		return app;
+	}
 }

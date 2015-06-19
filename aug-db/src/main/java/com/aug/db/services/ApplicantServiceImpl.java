@@ -77,7 +77,6 @@ public class ApplicantServiceImpl implements ApplicantService {
 
 	@Override
 	public void create(Applicant applicant) {
-
 		applicantRepository.insert(applicant);
 
 	}
@@ -194,6 +193,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 	
 
 	@Override
+
 	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO) {
 		Applicant applicant = new Applicant();
 			applicant.setTrackingStatus("Waiting for consider");
@@ -271,4 +271,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 		return applicationDTO;
 	}
 
+	public ApplicationDTO findByIdApplicant(Integer id) {
+		return applicantRepository.findApplicationById(id);
+	}
 }

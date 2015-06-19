@@ -74,6 +74,7 @@ public class ApplicantDTO {
 	@Column(name = "NICKNAME_EN")
 	private String nickNameEN;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
 	@Column(name = "BIRTHDATE")
 	private Date birthDate;
 

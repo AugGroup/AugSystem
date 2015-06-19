@@ -5,25 +5,26 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container">
 <div class="form-group">
-			<ul class="nav nav-tabs" role="navigation">
 
-				<li ><a href="${pageContext.request.contextPath}/informations" ><span
+<!-- <input type="hidden" value="id"> -->
+			<ul class="nav nav-tabs" role="navigation">
+				<li ><a href="${pageContext.request.contextPath}/informations/${id}" ><span
 						class="glyphicon glyphicon-user"></span> Informations</a></li>
-				<li><a  href="${pageContext.request.contextPath}/address"><span
+				<li><a  href="${pageContext.request.contextPath}/address/${id}"><span
 						class="glyphicon glyphicon-home"></span> Address</a></li>
-				<li><a  href="${pageContext.request.contextPath}/family"><span
+				<li><a  href="${pageContext.request.contextPath}/family/"${id}><span
 						class="glyphicon glyphicon-file"></span> Family</a></li>
-				<li><a  href="${pageContext.request.contextPath}/educations"><span
+				<li><a  href="${pageContext.request.contextPath}/educations/"${id}><span
 						class="glyphicon glyphicon-education"></span> Educations</a></li>
-				<li><a  href="${pageContext.request.contextPath}/certificates"><span
+				<li><a  href="${pageContext.request.contextPath}/certificates/"${id}><span
 						class="glyphicon glyphicon-file"></span> Certificates</a></li>
-				<li><a  href="${pageContext.request.contextPath}/skills"><span
+				<li><a  href="${pageContext.request.contextPath}/skills/"${id}><span
 						class="glyphicon glyphicon-education"></span> Skills</a></li>
-				<li><a  href="${pageContext.request.contextPath}/languages"><span
+				<li><a  href="${pageContext.request.contextPath}/languages/"${id}><span
 						class="glyphicon glyphicon-education"></span> Languages</a></li>
-				<li><a  href="${pageContext.request.contextPath}/references"><span
+				<li><a  href="${pageContext.request.contextPath}/references/"${id}><span
 						class="glyphicon glyphicon-file"></span> References</a></li>
-				<li><a  href="${pageContext.request.contextPath}/experiences"><span
+				<li><a  href="${pageContext.request.contextPath}/experiences/"${id}><span
 						class="glyphicon glyphicon-file"></span> Experiences</a></li>
 			</ul>
 		</div>

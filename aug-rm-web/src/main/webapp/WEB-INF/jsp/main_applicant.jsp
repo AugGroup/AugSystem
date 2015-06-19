@@ -71,7 +71,7 @@
 						        	 return '<a href="#EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="edit.button.edit.score"/></b>'
 						        	}},
 						         { data : function(data){
-						        	 return '<a href="#" id="btn_edit_info"  data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></b>'
+						        	 return '<a href="${pageContext.request.contextPath}/informations/'+data.id+'" id="btn_edit_info"  data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></b>'
 						        	 }},
 						         {data: function (data) {
 						        	 return '<a href="#deleteModal" id="btn_delete" data-id="' + data.id + '" data-toggle="modal" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></b>'

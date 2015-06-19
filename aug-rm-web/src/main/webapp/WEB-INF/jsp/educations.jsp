@@ -248,55 +248,55 @@
 			$("#graduateId").val(data.graduate);
 		}
 		
-		//Update function
-		function updateUser(button){
-			var id = $(button).data("id");
-			var university = $("#universityId").val();
-			var degree = $('#degreeId').val();
-			var faculty = $("#facultyId").val();
-			var major = $("#majorId").val();
-			var graduate = $("#graduateId").val();
+// 		//Update function
+// 		function updateUser(button){
+// 			var id = $(button).data("id");
+// 			var university = $("#universityId").val();
+// 			var degree = $('#degreeId').val();
+// 			var faculty = $("#facultyId").val();
+// 			var major = $("#majorId").val();
+// 			var graduate = $("#graduateId").val();
 
-			var json = {
-					"id" : id,
-					"university" : university,
-					"degree" : degree,
-					"faculty" : faculty,
-					"major" : major,
-					"yearsOfGraduate" : graduate
-					};
-			$.ajax({
-				url : "${pageContext.request.contextPath}applicant/update/"+id,
-				type : "POST",
-				contentType :"application/json; charset=utf-8",
-				data : JSON.stringify(json),
-				success : function(data){
-					$('#educationModal').modal('hide');
+// 			var json = {
+// 					"id" : id,
+// 					"university" : university,
+// 					"degree" : degree,
+// 					"faculty" : faculty,
+// 					"major" : major,
+// 					"yearsOfGraduate" : graduate
+// 					};
+// 			$.ajax({
+// 				url : "${pageContext.request.contextPath}applicant/update/"+id,
+// 				type : "POST",
+// 				contentType :"application/json; charset=utf-8",
+// 				data : JSON.stringify(json),
+// 				success : function(data){
+// 					$('#educationModal').modal('hide');
 					
-					var table = $('#dataTable').DataTable();	
-				 	var rowData = table.row(button.closest('tr')).index(); 
-				 	var d = table.row(rowData).data();
-				 		d.university = data.university;
-						d.degree = data.degree;
-				 		d.faculty = data.faculty;
-				 		d.major = data.major;
-				 		d.graduate = data.yearsOfGraduate;
+// 					var table = $('#dataTable').DataTable();	
+// 				 	var rowData = table.row(button.closest('tr')).index(); 
+// 				 	var d = table.row(rowData).data();
+// 				 		d.university = data.university;
+// 						d.degree = data.degree;
+// 				 		d.faculty = data.faculty;
+// 				 		d.major = data.major;
+// 				 		d.graduate = data.yearsOfGraduate;
 				 		
-				 		table.row(rowData).data(d).draw();
+// 				 		table.row(rowData).data(d).draw();
 				 		
-						new PNotify({
-						    title: 'Edit Success',
-						    text: 'You can edit data',
-						    type: 'success',
-						    nonblock: {
-						        nonblock: true,
-						        nonblock_opacity: .2
-						    }
-						});
-				 }
-			});
+// 						new PNotify({
+// 						    title: 'Edit Success',
+// 						    text: 'You can edit data',
+// 						    type: 'success',
+// 						    nonblock: {
+// 						        nonblock: true,
+// 						        nonblock_opacity: .2
+// 						    }
+// 						});
+// 				 }
+// 			});
 			
-		}
+// 		}
 
 });
 </script>

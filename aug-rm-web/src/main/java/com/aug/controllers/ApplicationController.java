@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -35,6 +36,11 @@ import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.entities.Applicant;
 import com.aug.db.entities.Department;
 import com.aug.db.entities.Position;
+import com.aug.db.repositories.AddressRepository;
+import com.aug.db.repositories.AddressRepositoryImpl;
+import com.aug.db.repositories.ApplicantRepository;
+import com.aug.db.repositories.ApplicantRepositoryImpl;
+import com.aug.db.services.AddressService;
 import com.aug.db.services.ApplicantService;
 import com.aug.db.services.DepartmentService;
 import com.aug.db.services.PositionService;
@@ -53,6 +59,9 @@ public class ApplicationController {
 	private ApplicantService applicantService;
 	@Autowired
 	private UploadService uploadService;
+
+	@Autowired
+	private AddressRepository addressRepository;
 	
 	@InitBinder public void InitBinder(WebDataBinder binder){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
@@ -267,29 +276,49 @@ public class ApplicationController {
 	
 	// Update
 	// Search Applicant By Id
-	@RequestMapping(value = "/findById/{id}", method = { RequestMethod.POST })
-	public @ResponseBody ApplicantDTO findById(@PathVariable Integer id) {
+//	@RequestMapping(value = "/findIdAddress/{id}", method = { RequestMethod.POST })
+//	public @ResponseBody ApplicationDTO findById(@PathVariable Integer id) {
+//
+//		return applicantService.findById(id);
+//	}
+	
+	@RequestMapping(value = "/address/{id}", method = { RequestMethod.GET })
+	public String informations(@PathVariable Integer id,Model model) {
+		System.out.println("ADDRESS : " + id);
+		System.out.println("ADDRESS ADDRESS ADDRESS ADDRESS");
+		model.addAttribute("id",id);
+//		addressService.findById(id);
+		applicantService.findById(id);
+        return "address";
 
-		return applicantService.findApplicantById(id);
 	}
 	
-	//Edit Applicant Score
-	@RequestMapping(value = "/applicant/update/{id}", method = { RequestMethod.POST })
-	public @ResponseBody ApplicantDTO updateUser(@RequestBody ApplicantDTO applicantDTO,
-			@PathVariable Integer id) throws ParseException {
+	@RequestMapping(value = "/address/{id}", method = { RequestMethod.POST })
+	public @ResponseBody ApplicationDTO findIdAddress(@PathVariable Integer id) {
+		System.out.println("ADDRESS : " + id);
+		System.out.println("ADDRESS2 ADDRESS2 ADDRESS2 ADDRESS2");
 		
-		Applicant applicant = applicantService.findById(applicantDTO.getId());
-		applicant.setScore(applicantDTO.getScore());
-		applicant.setTechScore(applicantDTO.getTechScore());
-		applicant.setAttitudeHome(applicantDTO.getAttitudeHome());
-		applicant.setAttitudeOffice(applicantDTO.getAttitudeOffice());
-		applicant.setTrackingStatus(applicantDTO.getTrackingStatus());
+		//find Applicant
+		ApplicationDTO applicant = applicantService.findByIdApplicant(id);
+		applicant.setAddress(addressRepository.findAddressById(id));
 		
-		applicantService.update(applicant);
+//		System.out.println(addr);
+//		for(Address a : addr){
+//			System.out.println("ADDRESS ::::::  "+a.getAddressType());
+//		}
 		
+		System.out.println("ADDRESS LIST ::: " + applicant);
+//		for(Address a : data){
+//			a.setAddressType();
+//		}
+//		return new Object() {
+//			public List<ApplicantDTO> getData() {
+//				return data;
+//			}
+//		};
 		
-		return applicantDTO;
-
+		return applicant;
+//		return new Object(){public List<Address> data = addressRepository.findAddressById(applicationDTO.getId());};
 	}
 
 	@ModelAttribute("departments")

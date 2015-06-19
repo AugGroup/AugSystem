@@ -48,4 +48,6 @@ public interface ApplicantService {
 	public ApplicationDTO saveFamily(ApplicationDTO applicationDTO);
 	
 	public List<ReportApplicantDTO> reportApplicant();
+
+	public ApplicationDTO findByIdApplicant(Integer id);
 }

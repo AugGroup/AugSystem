@@ -17,4 +17,8 @@ public interface AddressService {
 	public void delete(Address address);
 
 	public List<Address> findAll();
+	
+//	public List<Address> findAllByApplicantId(Integer id);
+	
+//	public ApplicationDTO findApplicantById(Integer id);
 }

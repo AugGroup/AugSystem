@@ -41,7 +41,6 @@ public abstract class HibernateRepositoryImpl<Entity, ID extends Serializable> i
         return (Entity) getCurrentSession().get(clazz, id);
     }
 
-    
     public void update(Entity entity) {
         getCurrentSession().saveOrUpdate(entity);
     }

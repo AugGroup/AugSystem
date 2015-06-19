@@ -31,20 +31,24 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.mail.handlers.multipart_mixed;
 
 @Entity
-@NamedNativeQueries({ @NamedNativeQuery(name = "DATA_APPLICANT", query = "SELECT FIRSTNAME_TH,FIRSTNAME_EN,LASTNAME_TH,LASTNAME_EN,NICKNAME_TH,NICKNAME_EN"
-		+ ",BIRTHDATE,PLACE_BIRTH,AGE,HEIGHT,WEIGHT,RELIGION,NATIONALITY,TEL,EMAIL,APPLICANT_STATUS,APPLY_DATE,EMERGENCY_NAME"
-		+ ",EMERGENCY_TEL,EMERGENCY_ADDRESS,NOTICE_NEWSPAPER,NOTICE_MAGAZINE,NOTICE_FRIEND,NOTICE_WEBSITE,NOTICE_OTHER"
-		+ ",EXPECTED_SALARY,CARD_ID,CARD_ISSUED_OFFICE,CARD_EXPIRY_DATE,MILITARY_FROM_YEAR"
-		+ ",MILITARY_TO_YEAR,MILITARY_PLACE,MILITARY_SERVICE_NO,MILITARY_REASON"
-		+ ",NUMBER_OF_CHILDREN,SPOUSE_NAME,MARRIAGE_CERTIFICATE_NO,ISSUE_OFFICE_MARRIAGE,OCCUPATION_MARRIAGE,NOW_EMPLOYED,EMPLOYED_NAME,EMPLOYED_POSITION,EMPLOYED_RELATION,BRANCH_SERVICE,PREVIOUS_EMPLOYERS,PREVIOUS_EMPLOYERS_REASON,DATE_TO_BE_DRAFTED,MARRIAGE_ADDRESS,RESUME,TRANSCRIPT,IMAGE"
-		+ " FROM APPLICANT WHERE FIRSTNAME_TH = :FIRSTNAME_TH AND FIRSTNAME_EN = :FIRSTNAME_EN AND LASTNAME_TH = :LASTNAME_TH AND LASTNAME_EN = :LASTNAME_EN AND NICKNAME_TH = :NICKNAME_TH AND NICKNAME_EN = :NICKNAME_EN "
-		+ "AND BIRTHDATE = :BIRTHDATE AND PLACE_BIRTH = :PLACE_BIRTH AND AGE = :AGE AND HEIGHT = :HEIGHT AND WEIGHT = :WEIGHT AND RELIGION = :RELIGION AND NATIONALITY = :NATIONALITY AND TEL = :TEL"
-		+ "AND EMAIL = :EMAIL AND APPLICANT_STATUS = :APPLICANT_STATUS AND APPLY_DATE = :APPLY_DATE AND EMERGENCY_NAME = :EMERGENCY_NAME AND EMERGENCY_TEL = :EMERGENCY_TEL AND EMERGENCY_ADDRESS = :EMERGENCY_ADDRESS AND NOTICE_NEWSPAPER = :NOTICE_NEWSPAPER"
-		+ "AND NOTICE_MAGAZINE = :NOTICE_MAGAZINE AND NOTICE_FRIEND = :NOTICE_FRIEND AND NOTICE_WEBSITE = :NOTICE_WEBSITE AND NOTICE_OTHER = :NOTICE_OTHER AND EXPECTED_SALARY = :EXPECTED_SALARY "
-		+ "AND CARD_ID = :CARD_ID AND CARD_ISSUED_OFFICE = :CARD_ISSUED_OFFICE AND CARD_EXPIRY_DATE = :CARD_EXPIRY_DATE AND MILITARY_FROM_YEAR = :MILITARY_FROM_YEAR AND MILITARY_TO_YEAR = :MILITARY_TO_YEAR"
-		+ "AND MILITARY_PLACE = :MILITARY_PLACE AND MILITARY_SERVICE_NO = :MILITARY_SERVICE_NO AND MILITARY_REASON = :MILITARY_REASON "
-		+ "AND NUMBER_OF_CHILDREN = :NUMBER_OF_CHILDREN AND SPOUSE_NAME = :SPOUSE_NAME AND MARRIAGE_CERTIFICATE_NO = :MARRIAGE_CERTIFICATE_NO AND ISSUE_OFFICE_MARRIAGE = :ISSUE_OFFICE_MARRIAGE AND OCCUPATION_MARRIAGE = :OCCUPATION_MARRIAGE AND NOW_EMPLOYED = :NOW_EMPLOYED "
-		+ "AND EMPLOYED_NAME = :EMPLOYED_NAME AND EMPLOYED_POSITION = :EMPLOYED_POSITION AND EMPLOYED_RELATION = :EMPLOYED_RELATION AND BRANCH_SERVICE = :BRANCH_SERVICE AND PREVIOUS_EMPLOYERS = :PREVIOUS_EMPLOYERS AND PREVIOUS_EMPLOYERS_REASON = :PREVIOUS_EMPLOYERS_REASON AND DATE_TO_BE_DRAFTED = :DATE_TO_BE_DRAFTED AND MARRIAGE_ADDRESS = :MARRIAGE_ADDRESS AND RESUME = :RESUME AND TRANSCRIPT = :TRANSCRIPT AND IMAGE = :IMAGE ", resultClass = ApplicationDTO.class) })
+@NamedNativeQueries({ 
+	@NamedNativeQuery(name = "SEARCH_ADDRESS", query = "SELECT null as APPLICANT_CODE, null as FIRSTNAME_TH, null as FIRSTNAME_EN, null as LASTNAME_TH, null as LASTNAME_EN, null as NICKNAME_TH, null as NICKNAME_EN,"
+		+ "null as BIRTHDATE, null as PLACE_BIRTH, null as AGE, null as HEIGHT, null as WEIGHT, null as RELIGION, null as NATIONALITY, null as TEL, null as EMAIL,"
+		+ "null as APPLICANT_STATUS, null as APPLY_DATE, null as EMERGENCY_NAME, null as EMERGENCY_TEL, null as EMERGENCY_ADDRESS, null as NOTICE_NEWSPAPER, null as NOTICE_MAGAZINE, null as NOTICE_FRIEND, null as NOTICE_WEBSITE, null as NOTICE_OTHER, null as TRACKING_STATUS,"
+		+ "null as CERTIFICATE, null as EXPECTED_SALARY, null as CARD_ID, null as CARD_ISSUED_OFFICE, null as CARD_EXPIRY_DATE, null as MILITARY_FROM_YEAR, null as MILITARY_TO_YEAR, null as MILITARY_PLACE, null as MILITARY_SERVICE_NO, null as MILITARY_REASON, null as MILITARY_STATUS, null as MARRITAL_STATUS_NAME,"
+		+ "null as NUMBER_OF_CHILDREN, null as SPOUSE_NAME, null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as TECH_SCORE, null as POSITION1_ID, null as POSITION2_ID, null as POSITION3_ID, null as NOW_EMPLOYED, null as EMPLOYED_NAME, null as EMPLOYED_POSITION,"
+		+ "null as EMPLOYED_RELATION, null as BRANCH_SERVICE, null as PREVIOUS_EMPLOYERS, null as PREVIOUS_EMPLOYERS_REASON, null as DATE_TO_BE_DRAFTED, null as MARRIAGE_ADDRESS, null as POSITION_NAME, null as ATTITUDE"
+		+ "ad.ADDRESS_TYPE, ad.DISTRICT, ad.HOUSE_NO, ad.PROVINCE, "
+		+ "ad.ROAD, ad.SUB_DISTRICT, ad.ZIPCODE, ad.APPLICANT_ID"
+		+ " FROM ADDRESS ad WHERE ad.APPLICANT_ID = :ID", resultClass = ApplicationDTO.class),
+	@NamedNativeQuery(name = "SEARCH_BY_ID_APPLICATION", query = "SELECT a.APPLICANT_ID, a.APPLICANT_CODE, a.FIRSTNAME_TH, a.FIRSTNAME_EN, a.LASTNAME_TH, a.LASTNAME_EN, a.NICKNAME_TH, a.NICKNAME_EN,"
+		+ "a.BIRTHDATE, a.PLACE_BIRTH, a.AGE, a.HEIGHT, a.WEIGHT, a.RELIGION, a.NATIONALITY, a.TEL, a.EMAIL,"
+		+ "a.APPLICANT_STATUS, a.APPLY_DATE, a.EMERGENCY_NAME, a.EMERGENCY_TEL, a.EMERGENCY_ADDRESS, a.NOTICE_NEWSPAPER, a.NOTICE_MAGAZINE, a.NOTICE_FRIEND, a.NOTICE_WEBSITE, a.NOTICE_OTHER, a.TRACKING_STATUS,"
+		+ "a.CERTIFICATE, a.EXPECTED_SALARY, a.CARD_ID, a.CARD_ISSUED_OFFICE, a.CARD_EXPIRY_DATE, a.MILITARY_FROM_YEAR, a.MILITARY_TO_YEAR, a.MILITARY_PLACE, a.MILITARY_SERVICE_NO, a.MILITARY_REASON, a.MILITARY_STATUS, a.MARRITAL_STATUS_NAME,"
+		+ "a.NUMBER_OF_CHILDREN, a.SPOUSE_NAME, a.MARRIAGE_CERTIFICATE_NO, a.ISSUE_OFFICE_MARRIAGE, a.OCCUPATION_MARRIAGE, null as TECH_SCORE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.NOW_EMPLOYED, a.EMPLOYED_NAME, a.EMPLOYED_POSITION, a.ATTITUDE"
+		+ "a.EMPLOYED_RELATION, a.BRANCH_SERVICE, a.PREVIOUS_EMPLOYERS, a.PREVIOUS_EMPLOYERS_REASON, a.DATE_TO_BE_DRAFTED, a.MARRIAGE_ADDRESS, null as POSITION_NAME"
+		+ " FROM APPLICANT a WHERE a.APPLICANT_ID = :ID", resultClass = ApplicationDTO.class) 		
+	})
 public class ApplicationDTO {
 
 	@Column(name = "POSITION_NAME")
@@ -189,6 +193,15 @@ public class ApplicationDTO {
 	@Column(name = "ATTITUDE")
 	private String attitude;
 
+	@Transient
+	private String position1Str;
+
+	@Transient
+	private String position2Str;
+
+	@Transient
+	private String position3Str;
+
 	@Column(name = "NOW_EMPLOYED")
 	private String nowEmployed;
 
@@ -228,40 +241,48 @@ public class ApplicationDTO {
 	@Transient
 	private List<MultipartFile> multipartFile ;
 
-	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
+	@Transient
 	private List<Reference> references;
 
-	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
+	@Transient
 	private List<Family> families;
 
-	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
+	@Transient
 	private List<AugEmployee> augEmployees;
 
-	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
+	@Transient
 	private List<Languages> languages;
 
-	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
+	@Transient
 	private List<Address> address;
 
-	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
+	@Transient
 	private List<Education> educations;
 
-	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
+	@Transient
 	private List<Skill> skills;
 
-	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
+	@Transient
 	private List<Experience> experiences;
 
-	@ManyToOne
-	@JoinColumn(name = "POSITION1_ID", referencedColumnName = "id")
+//	@ManyToOne
+//	@JoinColumn(name = "POSITION1_ID", referencedColumnName = "id")
+//	private Position position1;
+//
+//	@ManyToOne
+//	@JoinColumn(name = "POSITION2_ID", referencedColumnName = "id")
+//	private Position position2;
+//
+//	@ManyToOne
+//	@JoinColumn(name = "POSITION3_ID", referencedColumnName = "id")
+
+	@Transient
 	private Position position1;
 
-	@ManyToOne
-	@JoinColumn(name = "POSITION2_ID", referencedColumnName = "id")
+	@Transient
 	private Position position2;
 
-	@ManyToOne
-	@JoinColumn(name = "POSITION3_ID", referencedColumnName = "id")
+	@Transient
 	private Position position3;
 	
 	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
@@ -801,6 +822,62 @@ public class ApplicationDTO {
 
 	public void setAttitude(String attitude) {
 		this.attitude = attitude;
+	}
+
+//	public String getAttitude() {
+//		return attitude;
+//	}
+//
+//	public void setAttitude(String attitude) {
+//		this.attitude = attitude;
+//	}
+/*
+	public Integer getPosition1() {
+		return position1;
+	}
+
+	public void setPosition1(Integer position1) {
+		this.position1 = position1;
+	}
+
+	public Integer getPosition2() {
+		return position2;
+	}
+
+	public void setPosition2(Integer position2) {
+		this.position2 = position2;
+	}
+
+	public Integer getPosition3() {
+		return position3;
+	}
+
+	public void setPosition3(Integer position3) {
+		this.position3 = position3;
+	}
+*/
+	public String getPosition1Str() {
+		return position1Str;
+	}
+
+	public void setPosition1Str(String position1Str) {
+		this.position1Str = position1Str;
+	}
+
+	public String getPosition2Str() {
+		return position2Str;
+	}
+
+	public void setPosition2Str(String position2Str) {
+		this.position2Str = position2Str;
+	}
+
+	public String getPosition3Str() {
+		return position3Str;
+	}
+
+	public void setPosition3Str(String position3Str) {
+		this.position3Str = position3Str;
 	}
 
 	public Position getPosition1() {

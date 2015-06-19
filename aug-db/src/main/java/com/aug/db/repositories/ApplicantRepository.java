@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ReportApplicantDTO;
+import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.entities.Applicant;
 
 public interface ApplicantRepository extends GenericRepository<Applicant, Serializable> {
@@ -14,8 +15,10 @@ public interface ApplicantRepository extends GenericRepository<Applicant, Serial
 	public List<ApplicantDTO> findAllApplicant();
 	
 	public ApplicantDTO findApplicantById(Integer id);
-	
+
 	//for report
 	public List<ReportApplicantDTO> reportApplicant();
+	
+	public ApplicationDTO findApplicationById(Integer id);
 	
 }

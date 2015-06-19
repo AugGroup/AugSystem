@@ -34,6 +34,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ReportApplicantDTO;
+import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.entities.Applicant;
 import com.aug.db.entities.Position;
 import com.aug.db.services.ApplicantService;
@@ -92,8 +93,66 @@ public class ApplicantController implements Serializable {
 			}
 		};
 	}
-
+	
 	/*-------------------- Update Method --------------------*/
+	
+	@RequestMapping(value = "/informations/{id}", method = { RequestMethod.GET })
+	public String informations(@PathVariable Integer id,Model model) {
+		System.out.println("APPLICANT_ID : " + id);
+		model.addAttribute("id",id);
+		applicantService.findById(id);
+//		ApplicantDTO applicantDto = applicantService.findApplicantById(id);
+        return "informations";
+
+	}
+	
+	@RequestMapping(value = "/informations/{id}", method = { RequestMethod.POST })
+	public @ResponseBody ApplicationDTO updateUser(@RequestBody ApplicationDTO applicationDTO,@RequestBody ApplicantDTO applicantDTO,
+			@PathVariable Integer id) throws ParseException {
+		System.out.println("EDIT EDIT EDIT EDIT");
+		Applicant applicant = applicantService.findById(applicationDTO.getId());
+
+		applicant.setId(applicationDTO.getId());
+		applicant.setFirstNameTH(applicantDTO.getFirstNameTH());
+//		applicant.setFirstNameTH(applicationDTO.getFirstNameTH());
+//		applicant.setFirstNameEN(applicationDTO.getFirstNameEN());
+//		applicant.setLastNameTH(applicationDTO.getLastNameTH());
+//		applicant.setLastNameEN(applicationDTO.getLastNameEN());
+//		applicant.setNickNameTH(applicationDTO.getNickNameTH());
+//		applicant.setNickNameEN(applicationDTO.getNickNameEN());
+//		applicant.setBirthDate(applicationDTO.getBirthDate());
+//		applicant.setPlaceBirth(applicationDTO.getPlaceBirth());
+//		applicant.setAge(applicationDTO.getAge());
+//		applicant.setHeight(applicationDTO.getHeight());
+//		applicant.setWeight(applicationDTO.getWeight());
+//		applicant.setReligion(applicationDTO.getReligion());
+//		applicant.setNationality(applicationDTO.getNationality());
+//		applicant.setTel(applicationDTO.getTel());
+//		applicant.setEmail(applicationDTO.getEmail());
+//		applicant.setCardId(applicationDTO.getCardId());
+//		applicant.setCardIssuedOffice(applicationDTO.getCardIssuedOffice());
+//		applicant.setCardExpiryDate(applicationDTO.getCardExpiryDate());
+//		applicant.setMilitaryFromYear(applicationDTO.getMilitaryFromYear());
+//		applicant.setMilitarytoYear(applicationDTO.getMilitarytoYear());
+//		applicant.setMilitaryPlace(applicationDTO.getMilitaryPlace());
+//		applicant.setMilitaryServiceNo(applicationDTO.getMilitaryServiceNo());
+//		applicant.setMilitaryReason(applicationDTO.getMilitaryReason());
+//		applicant.setMilitaryStatus(applicationDTO.getMilitaryStatus());
+//		applicant.setMarritalStatusName(applicationDTO.getMarritalStatusName());
+//		applicant.setNumberOfChildren(applicationDTO.getNumberOfChildren());
+//		applicant.setSpouseName(applicationDTO.getSpouseName());
+//		applicant.setMarriageCertificateNo(applicationDTO.getMarriageCertificateNo());
+//		applicant.setIssueOficeMarriage(applicationDTO.getIssueOficeMarriage());
+//		applicant.setOccupationMarriage(applicationDTO.getOccupationMarriage());
+//		applicant.setBranchService(applicationDTO.getBranchService());
+//		applicant.setDateToBeDrafted(applicationDTO.getDateToBeDrafted());
+//		applicant.setMarriageAddress(applicationDTO.getMarriageAddress());
+
+		applicantService.update(applicant);
+		System.out.println("EDIT2 EDIT2 EDIT2 EDIT2");
+		return applicationDTO;
+
+	}
 	
 	//Search Applicant By Id 
 	@RequestMapping(value = "/applicant/search/{id}", method = { RequestMethod.POST })
@@ -103,9 +162,7 @@ public class ApplicantController implements Serializable {
 
 	//Update Applicant Score
 	@RequestMapping(value = "/update/score/{id}", method = { RequestMethod.POST })
-	public @ResponseBody ApplicantDTO updateUser(
-			@RequestBody ApplicantDTO applicantDTO, @PathVariable Integer id)
-			throws ParseException {
+	public @ResponseBody ApplicantDTO updateUser(@RequestBody ApplicantDTO applicantDTO, @PathVariable Integer id) throws ParseException {
 
 		Applicant applicant = applicantService.findById(applicantDTO.getId());
 		applicant.setScore(applicantDTO.getScore());

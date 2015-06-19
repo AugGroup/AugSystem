@@ -112,26 +112,51 @@
 			searching : false
 
 		});
-		$('#addressSave').on("click", function() {
-			if ($('#addressForm').valid()) {
-			var table = $('#addressTable').DataTable();
+// 		$('#addressSave').on("click", function() {
+// 			if ($('#addressForm').valid()) {
+// 			var table = $('#addressTable').DataTable();
 
-			table.row.add({
-				addressType : $('#inputAddress').val(),
-				houseNo : $('#houseNo').val(),
-				road : $('#road').val(),
-				district : $('#district').val(),
-				subDistrict : $('#subDistrict').val(),
-				zipcode : $('#zipcode').val(),
-				province : $('#province').val()
+// 			table.row.add({
+// 				addressType : $('#inputAddress').val(),
+// 				houseNo : $('#houseNo').val(),
+// 				road : $('#road').val(),
+// 				district : $('#district').val(),
+// 				subDistrict : $('#subDistrict').val(),
+// 				zipcode : $('#zipcode').val(),
+// 				province : $('#province').val()
 				
 				
-			}).draw();
-			$('#addressModal').modal('hide');
-			};
-		})
+// 			}).draw();
+// 			$('#addressModal').modal('hide');
+// 			};
+// 		})
 
+// <<<<<<< HEAD
 		$('#addressSave').on("click", function() {
+// =======
+// 		$('#buttonSave').on("click", function() {
+// 			if ($('#emergencyForm').valid()) {
+// 				var inputData = {
+				
+// 				address : [ {
+// 					applicant : {
+// 						id : $('#applicantId').val()
+// 					},
+// 					addressType : $('#inputAddress').val(),
+// 					houseNo : $('#permanentHouseNoId').val(),
+// 					road : $('#permanentRoadId').val(),
+// 					district : $('#permanentDistrictId').val(),
+// 					subDistrict : $('#permanentSubDistrictId').val(),
+// 					zipcode : $('#permanentZipcodeId').val(),
+// 					province : $('#permanentProvinceId').val()
+
+// 				} ],
+// 				emergencyName : $('#emergencyNameId').val(),
+// 				emergencyTel : $('#emergencyTelId').val(),
+// 				emergencyAddress : $('#emergencyAddressId').val()
+// 			}
+
+// >>>>>>> Create AddressDTO
 			var insertData = "{";
 			
 			insertData+="address : [ ";
@@ -172,8 +197,112 @@
 				}
 			});
 		})
+		
+		//Find by Id
+		function findById(id){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/findById/" + id,
+				type : "POST",
+				success : function(data){
+					showFillData(data);
+				}
+			});
+		}
+		
+		//Show data on inputField
+		function showFillData(data){
+			$('#inputAddress').val(data.addressType);
+			$("#houseNoId").val(data.houseNo);
+			$("#roadId").val(data.road);
+			$("#districtId").val(data.district);
+			$("#subDistrictId").val(data.subDistrict);
+			$("#zipcodeId").val(data.zipcode);
+			
+			$("#provinceId").val(data.province);
+// 			$("#emergencyNameId").val(data.addressType);
+// 			$("#emergencyTelId").val(data.province);
+// 			$("#emergencyAddressId").val(data.addressType);
+		}
+		
+		//Update function
+		function updateUser(){
+// 			var id = $(button).data("id");
+			var id = '${id}';
+			var addressType = $('#inputAddress').val();
+			var houseNo = $("#houseNoId").val();
+			var road = $('#roadId').val();
+			var district = $("#districtId").val();
+			var subDistrict = $("#subDistrictId").val();
+			var zipcode = $("#zipcodeId").val();
+			var province = $("#provinceId").val();
+// 			var emergencyName = $("#emergencyNameId").val();
+// 			var emergencyTel = $("#emergencyTelId").val();
+// 			var emergencyAddress = $("#emergencyAddressId").val();
+			
+			var json = {
+					"id" : id,
+					"addressType" : addressType,
+					"houseNo" : houseNo,
+					"road" : road,
+					"district" : district,
+					"subDistrict" : subDistrict,
+					"zipcode" : zipcode,
+					"province" : province,
+// 					"emergencyName" : emergencyName,
+// 					"emergencyTel" : emergencyTel,
+// 					"emergencyAddress" : emergencyAddress
+					};
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/address/"+id,
+				type : "POST",
+				contentType :"application/json; charset=utf-8",
+				data : JSON.stringify(json),
+				success : function(data){
+					var table = $('#addressTable').DataTable();	
+				 	var rowData = table.row(this).index(); 
+				 	var d = table.row(rowData).data();
+				 		console.log(data.houseNo);
+				 		
+				 		d.addressType = data.addressType,
+				 		d.houseNo = data.houseNo;
+						d.road = data.road;
+				 		d.district = data.district;
+				 		d.subDistrict = data.subDistrict;
+				 		d.zipcode = data.zipcode;
+				 		d.province = data.province;
+				 		
+				 		table.row(rowData).data(d).draw();
+				 		
+						new PNotify({
+						    title: 'Edit Success',
+						    text: 'You can edit data',
+						    type: 'success',
+						    nonblock: {
+						        nonblock: true,
+						        nonblock_opacity: .2
+						    }
+						});
+				 }
+			});
+		}
+		
+// 		var applicantId = '${id}';
+// 		if(applicantId != null){
+			findById('${id}');
+// 			$('#buttonSave').off('click').on('click', function(id){
+				updateUser();
+// 			});
+			
+// 		}else{
+// 			$('#informationForm')[0].reset();
+// 			$('#buttonSave').off('click').on('click', function(){
+// 				saveUser();
+// 			});
+// 		}
 
-	});
+});
+	
 </script>
 <jsp:include page = "applicationMenu.jsp"/>
 <div id="address">
