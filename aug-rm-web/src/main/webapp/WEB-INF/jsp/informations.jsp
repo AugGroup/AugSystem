@@ -459,7 +459,7 @@
 		//Find by Id
 		function findById(id){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/findById/" + id,
+				url : "${pageContext.request.contextPath}/findByIdApplication/" + id,
 				type : "POST",
 				success : function(data){
 					showFillData(data);

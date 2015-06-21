@@ -114,8 +114,102 @@
 // 			});
 			
 // 		}
+		
+		//Find by Id
+		function findById(id){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/findByIdApplication/" + id,
+				type : "POST",
+				success : function(data){
+					showFillData(data);
+				}
+			});
+		}
+		
+		//Show data on inputField
+		function showFillData(data){
+			$("#applyDateId").val(data.applyDate);
+			$("#positionFirstId").val(data.position1Str);
+			$("#positionSecondId").val(data.position2Str);
+			$("#positionThirdId").val(data.position3Str);
+			$("#salaryId").val(data.expectedSalary);
+			
+			$("#newspaperId").val(data.noticeNewspaper);
+			$("#magazineId").val(data.noticeMagazine);
+			$("#websiteId").val(data.noticeWebSite);
+			$("#friendId").val(data.noticeFriend);
+			$("#otherId").val(data.noticeOther);
+			
+// 			$("#knowEmployedId").val(data.firstNameTH);
+// 			$("#nameRelationId").val(data.firstNameEN);
+// 			$("#positionRelationId").val(data.lastNameTH);
+// 			$("#employedRelationId").val(data.lastNameEN);
+		}
+		
+		//Update function
+		function updateUser(){
+			var id = '${id}';
+			var applyDate = $("#applyDateId").val();
+			var positionF = $('#positionFirstId').val();
+			var positionS = $("#positionSecondId").val();
+			var positionT = $("#positionThirdId").val();
+			var salary = $("#salaryId").val();
+			
+			var newspaper = $("#newspaperId").val();
+			var magazine = $("#magazineId").val();
+			var website = $("#websiteId").val();
+			var friend = $("#friendId").val();
+			var other = $("#otherId").val();
 
-	});
+			var json = {
+					"id" : id,
+					"applyDate" : applyDate,
+					"position1Str" : positionF,
+					"position2Str" : positionS,
+					"position3Str" : positionT,
+					"expectedSalary" : salary,
+					
+					"noticeNewspaper" : newspaper,
+					"noticeMagazine" : magazine,
+					"noticeWebSite" : website,
+					"noticeFriend" : friend,
+					"noticeOther" : other,
+					};
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/applications/"+id,
+				type : "POST",
+				contentType :"application/json; charset=utf-8",
+				data : JSON.stringify(json),
+				success : function(data){
+						new PNotify({
+						    title: 'Edit Success',
+						    text: 'You can edit data',
+						    type: 'success',
+						    nonblock: {
+						        nonblock: true,
+						        nonblock_opacity: .2
+						    }
+						});
+				 }
+			});
+		}
+		
+// 		var applicantId = '${id}';
+// 		if(applicantId != null){
+			findById('${id}');
+// 			$('#buttonSave').off('click').on('click', function(id){
+// 				updateUser();
+// 			});
+			
+// 		}else{
+// 			$('#informationForm')[0].reset();
+// 			$('#buttonSave').off('click').on('click', function(){
+// 				saveUser();
+// 			});
+// 		}
+
+});
 </script>
 <jsp:include page = "applicationMenu.jsp"/>
 

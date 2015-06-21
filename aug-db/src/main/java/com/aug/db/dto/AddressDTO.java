@@ -2,6 +2,7 @@ package com.aug.db.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 
@@ -9,10 +10,15 @@ import javax.persistence.NamedNativeQuery;
 @NamedNativeQueries({
 	@NamedNativeQuery(name = "SEARCH_ADDRESS", query = "SELECT ad.ID, ad.ADDRESS_TYPE, ad.DISTRICT, ad.HOUSE_NO, ad.PROVINCE,"
 		+ "ad.ROAD, ad.SUB_DISTRICT, ad.ZIPCODE, ad.APPLICANT_ID"
-		+ " FROM ADDRESS ad LEFT JOIN APPLICANT a on ad.APPLICANT_ID = a.APPLICANT_ID WHERE ad.APPLICANT_ID = :ID", resultClass = AddressDTO.class)
+		+ " FROM ADDRESS ad LEFT JOIN APPLICANT a on ad.APPLICANT_ID = a.APPLICANT_ID WHERE ad.APPLICANT_ID = :ID", resultClass = AddressDTO.class),
+		
+	@NamedNativeQuery(name = "SEARCH_ADDRESS_ID", query = "SELECT ad.ID, ad.ADDRESS_TYPE, ad.DISTRICT, ad.HOUSE_NO, ad.PROVINCE,"
+		+ "ad.ROAD, ad.SUB_DISTRICT, ad.ZIPCODE, ad.APPLICANT_ID"
+		+ " FROM ADDRESS ad WHERE ad.ID = :ID", resultClass = AddressDTO.class)
 	})
 public class AddressDTO {
 	
+	@Id
 	@Column(name = "ID")
 	private Integer id;
 	

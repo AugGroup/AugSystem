@@ -81,6 +81,7 @@
 			format : "dd/mm/yyyy"
 
 		});
+		
 		$('#addressTable').DataTable({
 			ajax : {
 				url : '${pageContext.request.contextPath}/address',
@@ -130,6 +131,49 @@
 // 			$('#addressModal').modal('hide');
 // 			};
 // 		})
+
+// 		if(dtApplicant){
+// 			dtApplicant.ajax.reload();
+// 		}else{
+// 			var id = '${id}';
+// 			dtApplicant = $('#addressTable').DataTable({
+// 				ajax : {
+// 					url : "${pageContext.request.contextPath}/findByIdAddress/" + id,
+// 					type : "POST"
+// 				},
+// 				columns : [ {data : "addressType"},
+// 					{data : "houseNo"},
+// 					{data : "road"},
+// 					{data : "district"}, 
+// 					{data : "subDistrict"},
+// 					{data : "zipcode"},
+// 					{data : "province"},
+// 			        {data : function(data){
+// 			        	 return '<a href="#addressModal" id="btn_edit"  data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></b>'
+// 			        }}],
+// 				searching : false
+
+// 			});
+// 		}
+		
+		function saveAddress(){
+			$('#addressSave').on("click", function() {
+				var table = $('#addressTable').DataTable();
+
+				table.row.add({
+					addressType : $('#inputAddress').val(),
+					houseNo : $('#houseNoId').val(),
+					road : $('#roadId').val(),
+					district : $('#districtId').val(),
+					subDistrict : $('#subDistrictId').val(),
+					zipcode : $('#zipcodeId').val(),
+					province : $('#provinceId').val()
+				
+				}).draw();
+				$('#addressModal').modal('hide');
+
+			})
+		}
 
 // <<<<<<< HEAD
 		$('#addressSave').on("click", function() {
@@ -198,10 +242,12 @@
 			});
 		})
 		
+		var dtApplicant	
+		
 		//Find by Id
 		function findById(id){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/findById/" + id,
+				url : "${pageContext.request.contextPath}/findAddressId/" + id,
 				type : "POST",
 				success : function(data){
 					showFillData(data);
@@ -209,25 +255,36 @@
 			});
 		}
 		
+// 		function findById(id){
+// 			console.log(id);
+// 			$.ajax({
+// 					url : "${pageContext.request.contextPath}/findByIdAddress/"+id,
+// 					type : "POST",
+// 					success : function(data) {
+// 						showFillData(data);
+// 					}
+// 				});
+// 		}
+		
 		//Show data on inputField
 		function showFillData(data){
-			$('#inputAddress').val(data.addressType);
+// 			$('#inputAddress').val(data.addressType);
 			$("#houseNoId").val(data.houseNo);
 			$("#roadId").val(data.road);
 			$("#districtId").val(data.district);
 			$("#subDistrictId").val(data.subDistrict);
 			$("#zipcodeId").val(data.zipcode);
+			console.log(data.houseNo);
 			
 			$("#provinceId").val(data.province);
-// 			$("#emergencyNameId").val(data.addressType);
-// 			$("#emergencyTelId").val(data.province);
-// 			$("#emergencyAddressId").val(data.addressType);
+// 			$("#emergencyNameId").val(data.emergencyName);
+// 			$("#emergencyTelId").val(data.emergencyTel);
+// 			$("#emergencyAddressId").val(data.emergencyAddress);
 		}
 		
 		//Update function
-		function updateUser(){
-// 			var id = $(button).data("id");
-			var id = '${id}';
+		function updateAddress(button){
+			var id = $(button).data("id");
 			var addressType = $('#inputAddress').val();
 			var houseNo = $("#houseNoId").val();
 			var road = $('#roadId').val();
@@ -235,6 +292,7 @@
 			var subDistrict = $("#subDistrictId").val();
 			var zipcode = $("#zipcodeId").val();
 			var province = $("#provinceId").val();
+			console.log(id);
 // 			var emergencyName = $("#emergencyNameId").val();
 // 			var emergencyTel = $("#emergencyTelId").val();
 // 			var emergencyAddress = $("#emergencyAddressId").val();
@@ -254,17 +312,18 @@
 					};
 			
 			$.ajax({
-				url : "${pageContext.request.contextPath}/address/"+id,
+				url : "${pageContext.request.contextPath}/findByIdAddress/"+id,
 				type : "POST",
 				contentType :"application/json; charset=utf-8",
 				data : JSON.stringify(json),
 				success : function(data){
+					$('#addressModal').modal('hide');
 					var table = $('#addressTable').DataTable();	
-				 	var rowData = table.row(this).index(); 
+				 	var rowData = table.row(button.closest('tr')).index(); 
 				 	var d = table.row(rowData).data();
 				 		console.log(data.houseNo);
-				 		
-				 		d.addressType = data.addressType,
+
+				 		d.addressType = data.addressType;
 				 		d.houseNo = data.houseNo;
 						d.road = data.road;
 				 		d.district = data.district;
@@ -288,19 +347,26 @@
 		}
 		
 // 		var applicantId = '${id}';
-// 		if(applicantId != null){
-			findById('${id}');
-// 			$('#buttonSave').off('click').on('click', function(id){
-				updateUser();
-// 			});
-			
-// 		}else{
-// 			$('#informationForm')[0].reset();
-// 			$('#buttonSave').off('click').on('click', function(){
-// 				saveUser();
-// 			});
-// 		}
-
+		
+        $('#addressModal').on('shown.bs.modal', function (e) {
+        	var button = e.relatedTarget;
+			if(button != null){
+				var id = $(button).data("id");
+				if(id != null){
+					console.log(id);
+					findById(id);
+					$('#btn_edit').off('click').on('click', function(id){
+						updateAddress(button);
+					});
+				
+				}else{
+					$('#addressForm')[0].reset();
+					$('#btn_edit').off('click').on('click', function(){
+						saveAddress();
+					});
+				}
+			}
+       });
 });
 	
 </script>

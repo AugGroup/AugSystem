@@ -145,6 +145,13 @@ public class ApplicantServiceImpl implements ApplicantService {
 
 		return applicants;
 	}
+	
+	@Override
+	public ApplicationDTO findApplicationById(Integer id) {
+		ApplicationDTO applicants = applicantRepository.findApplicationById(id);
+
+		return applicants;
+	}
 
 	@Override
 	public ApplicationDTO saveEducation(ApplicationDTO applicationDTO) {

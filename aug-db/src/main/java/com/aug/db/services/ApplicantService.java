@@ -50,4 +50,6 @@ public interface ApplicantService {
 	public List<ReportApplicantDTO> reportApplicant();
 
 	public ApplicationDTO findByIdApplicant(Integer id);
+	
+	public ApplicationDTO findApplicationById(Integer id);
 }

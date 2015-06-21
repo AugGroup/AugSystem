@@ -3,12 +3,12 @@ package com.aug.controllers;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.aug.db.dto.AddressDTO;
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.entities.Applicant;
@@ -282,43 +283,83 @@ public class ApplicationController {
 //		return applicantService.findById(id);
 //	}
 	
+	@RequestMapping(value = "/findByIdApplicants/{id}", method = { RequestMethod.POST })
+	public @ResponseBody ApplicationDTO findByIdApplications(@RequestBody ApplicationDTO applicationDTO,@PathVariable Integer id) {
+		applicationDTO = applicantService.findApplicationById(id);
+		return applicationDTO;
+	}
+	
+	@RequestMapping(value = "/findAddressId/{id}", method = { RequestMethod.POST })
+	public @ResponseBody AddressDTO findAddress(@PathVariable Integer id) {
+//		System.out.println("ADDRESS//////// :: ");
+//		AddressDTO addressDTO = addressRepository.findByAddressId(id);
+//		System.out.println("ADDRESS//////// :: " + addressDTO.getId());
+//		System.out.println("ADDRESS//////// :: " + addressDTO.getAddressType());
+//		System.out.println("ADDRESS//////// :: " + addressDTO.getHouseNo());
+//		System.out.println("ADDRESS//////// :: " + addressDTO.getDistrict());
+//		System.out.println("ADDRESS//////// :: " + addressDTO.getSubDistrict());
+//		System.out.println("ADDRESS//////// :: " + addressDTO.getRoad());
+//		System.out.println("ADDRESS//////// :: " + addressDTO.getProvince());
+//		System.out.println("ADDRESS//////// :: " + addressDTO.getZipcode());
+//		return addressDTO;
+		return addressRepository.findByAddressId(id);
+	}
+	
+	@RequestMapping(value = "/findByIdAddress/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Object findByIdApplication(@PathVariable Integer id) {
+		 final List<AddressDTO> list= addressRepository.findAddressById(id);
+		 AddressDTO add = new AddressDTO();
+		 for(AddressDTO ad : list){
+			 add.setAddressType(ad.getAddressType());
+			 add.setHouseNo(ad.getHouseNo());
+			 add.setRoad(ad.getRoad());
+			 add.setDistrict(ad.getDistrict());
+			 add.setSubDistrict(ad.getSubDistrict());
+			 add.setProvince(ad.getProvince());
+			 add.setZipcode(ad.getZipcode());
+		 }
+		 
+		 for(AddressDTO ad : list){
+			 System.out.println("////////////////////" + ad.getAddressType());
+			 System.out.println("////////////////////" + ad.getHouseNo());
+		 }
+		 
+		return new Object() {
+			public List<AddressDTO> getData() {
+				return list;
+			}
+		};
+		 
+//		 List<AddressDTO> addrList = new ArrayList<AddressDTO>();
+//		 addrList.add(add);
+//		return list;
+	}
+	
+	@RequestMapping(value = "/applications/{id}", method = { RequestMethod.GET })
+	public String applications(@PathVariable Integer id,Model model) {
+		System.out.println("APPLICANT_ID : " + id);
+		model.addAttribute("id",id);
+        return "applications";
+
+	}
+	
 	@RequestMapping(value = "/address/{id}", method = { RequestMethod.GET })
 	public String informations(@PathVariable Integer id,Model model) {
-		System.out.println("ADDRESS : " + id);
-		System.out.println("ADDRESS ADDRESS ADDRESS ADDRESS");
-		model.addAttribute("id",id);
-//		addressService.findById(id);
-		applicantService.findById(id);
         return "address";
 
 	}
 	
 	@RequestMapping(value = "/address/{id}", method = { RequestMethod.POST })
-	public @ResponseBody ApplicationDTO findIdAddress(@PathVariable Integer id) {
+	public @ResponseBody Object findIdAddress(@RequestBody AddressDTO addressDTO,@PathVariable Integer id) {
 		System.out.println("ADDRESS : " + id);
 		System.out.println("ADDRESS2 ADDRESS2 ADDRESS2 ADDRESS2");
 		
-		//find Applicant
-		ApplicationDTO applicant = applicantService.findByIdApplicant(id);
-		applicant.setAddress(addressRepository.findAddressById(id));
-		
-//		System.out.println(addr);
-//		for(Address a : addr){
-//			System.out.println("ADDRESS ::::::  "+a.getAddressType());
-//		}
-		
-		System.out.println("ADDRESS LIST ::: " + applicant);
-//		for(Address a : data){
-//			a.setAddressType();
-//		}
-//		return new Object() {
-//			public List<ApplicantDTO> getData() {
-//				return data;
-//			}
-//		};
-		
-		return applicant;
-//		return new Object(){public List<Address> data = addressRepository.findAddressById(applicationDTO.getId());};
+		final List<AddressDTO> data = addressRepository.findAddressById(id);
+		return new Object() {
+			public List<AddressDTO> getData() {
+				return data;
+			}
+		};
 	}
 
 	@ModelAttribute("departments")

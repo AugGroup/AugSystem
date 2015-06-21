@@ -100,8 +100,7 @@ public class ApplicantController implements Serializable {
 	public String informations(@PathVariable Integer id,Model model) {
 		System.out.println("APPLICANT_ID : " + id);
 		model.addAttribute("id",id);
-		applicantService.findById(id);
-//		ApplicantDTO applicantDto = applicantService.findApplicantById(id);
+//		applicantService.findById(id);
         return "informations";
 
 	}
@@ -110,6 +109,7 @@ public class ApplicantController implements Serializable {
 	public @ResponseBody ApplicationDTO updateUser(@RequestBody ApplicationDTO applicationDTO,@RequestBody ApplicantDTO applicantDTO,
 			@PathVariable Integer id) throws ParseException {
 		System.out.println("EDIT EDIT EDIT EDIT");
+		applicationDTO = applicantService.findApplicationById(id);
 		Applicant applicant = applicantService.findById(applicationDTO.getId());
 
 		applicant.setId(applicationDTO.getId());
@@ -159,8 +159,14 @@ public class ApplicantController implements Serializable {
 	public @ResponseBody ApplicantDTO findById(@PathVariable Integer id) {
 		return applicantService.findApplicantById(id);
 	}
+	
+	@RequestMapping(value = "/findByIdApplication/{id}", method = { RequestMethod.POST })
+	public @ResponseBody ApplicationDTO findByIdApplication(@PathVariable Integer id) {
 
-	//Update Applicant Score
+		return applicantService.findApplicationById(id);
+	}
+	
+	//Edit Applicant Score
 	@RequestMapping(value = "/update/score/{id}", method = { RequestMethod.POST })
 	public @ResponseBody ApplicantDTO updateUser(@RequestBody ApplicantDTO applicantDTO, @PathVariable Integer id) throws ParseException {
 
