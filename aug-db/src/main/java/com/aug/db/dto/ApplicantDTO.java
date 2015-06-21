@@ -11,8 +11,8 @@ import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-@Entity
-@NamedNativeQueries({  //SEARCH_BY_POSITION
+@NamedNativeQueries({ 
+	    // SEARCH_BY_POSITION
 		@NamedNativeQuery(name = "SEARCH_APPLICANT", query = " SELECT null as FIRSTNAME_TH, null as LASTNAME_TH, null as NICKNAME_TH, null as NICKNAME_EN, "
 				+ "null as BIRTHDATE, null as AGE, null as HEIGHT, null as WEIGHT, null as SEX, null as RELIGION, null as NATIONALITY, null as APPLICANT_STATUS, null as EMERGENCY_NAME, null as EMERGENCY_TEL,"
 				+ "null as EMERGENCY_ADDRESS, null as NOTICE_NEWSPAPER, null as NOTICE_MAGAZINE, null as NOTICE_FRIEND, null as NOTICE_WEBSITE, null as NOTICE_OTHER, null as CERTIFICATE,"
@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 				+ " FROM APPLICANT a LEFT JOIN POSITION p1 ON a.POSITION1_ID = p1.ID "
 				+ "LEFT JOIN POSITION p2 ON a.POSITION2_ID = p2.ID "
 				+ "LEFT JOIN POSITION p3 ON a.POSITION3_ID = p3.ID "
-				+ "WHERE p1.POSITION_NAME like :POSITION OR p2.POSITION_NAME like :POSITION OR p3.POSITION_NAME like :POSITION" , resultClass = ApplicantDTO.class),
+				+ "WHERE p1.POSITION_NAME like :POSITION OR p2.POSITION_NAME like :POSITION OR p3.POSITION_NAME like :POSITION", resultClass = ApplicantDTO.class),
 
 		@NamedNativeQuery(name = "SEARCH_ALL", query = "SELECT null as FIRSTNAME_TH, null as LASTNAME_TH, null as NICKNAME_TH, null as NICKNAME_EN, "
 				+ "null as BIRTHDATE, null as AGE, null as HEIGHT, null as WEIGHT, null as SEX, null as RELIGION, null as NATIONALITY, null as APPLICANT_STATUS, null as EMERGENCY_NAME, null as EMERGENCY_TEL,"
@@ -32,7 +32,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 				+ "null as MILITARY_SERVICE_NO, null as MILITARY_REASON, null as MILITARY_STATUS, null as MARRITAL_STATUS_NAME, null as NUMBER_OF_CHILDREN, null as SPOUSE_NAME,"
 				+ "null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as SCORE, null as TECH_SCORE, null as ATTITUDE_HOME, null as ATTITUDE_OFFICE,"
 				+ " a.APPLICANT_ID, a.APPLICANT_CODE, a.FIRSTNAME_EN, a.LASTNAME_EN, a.TEL, a.EMAIL, a.APPLY_DATE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.TRACKING_STATUS, p.POSITION_NAME, p.ID "
-				+ " FROM APPLICANT a JOIN POSITION p ON a.POSITION1_ID = p.ID ORDER BY a.APPLY_DATE DESC", resultClass = ApplicantDTO.class), //ORDER BY APPLICANT_ID ASC LIMIT 0,50
+				+ " FROM APPLICANT a JOIN POSITION p ON a.POSITION1_ID = p.ID "
+				+ "ORDER BY a.APPLY_DATE DESC", resultClass = ApplicantDTO.class), // ORDER BY APPLICANT_ID ASC LIMIT 0,50
 
 		@NamedNativeQuery(name = "SEARCH_BY_ID", query = "SELECT a.FIRSTNAME_TH, a.LASTNAME_TH, a.NICKNAME_TH, a.NICKNAME_EN, "
 				+ "a.BIRTHDATE, a.AGE, a.HEIGHT, a.WEIGHT, a.SEX, a.RELIGION, a.NATIONALITY, a.APPLICANT_STATUS, a.EMERGENCY_NAME, a.EMERGENCY_TEL,"
@@ -41,7 +42,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 				+ "a.MILITARY_SERVICE_NO, a.MILITARY_REASON, a.MILITARY_STATUS, a.MARRITAL_STATUS_NAME, a.NUMBER_OF_CHILDREN, a.SPOUSE_NAME,"
 				+ "a.MARRIAGE_CERTIFICATE_NO, a.ISSUE_OFFICE_MARRIAGE, a.OCCUPATION_MARRIAGE, a.SCORE, a.TECH_SCORE, a.ATTITUDE_HOME, a.ATTITUDE_OFFICE,"
 				+ " a.APPLICANT_ID, a.APPLICANT_CODE, a.FIRSTNAME_EN, a.LASTNAME_EN, a.TEL, a.EMAIL, a.APPLY_DATE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.TRACKING_STATUS, p.POSITION_NAME, p.ID "
-				+ " FROM APPLICANT a LEFT JOIN POSITION p ON a.POSITION1_ID = p.ID WHERE a.APPLICANT_ID = :ID", resultClass = ApplicantDTO.class) })
+				+ " FROM APPLICANT a LEFT JOIN POSITION p ON a.POSITION1_ID = p.ID WHERE a.APPLICANT_ID = :ID", resultClass = ApplicantDTO.class), })
+@Entity
 public class ApplicantDTO {
 
 	@Column(name = "POSITION_NAME")

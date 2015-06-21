@@ -20,9 +20,7 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			var dtApplicant		
-			
-			EditStatusForm
+			var dtApplicant	
 			
 			 $('#EditStatusForm').validate({
 			  		rules:{
@@ -54,7 +52,7 @@
 						searching : true,
 						paging: false,
 						ajax : {
-							url : '${pageContext.request.contextPath}/searchByPosition',
+							url : '${pageContext.request.contextPath}/applicant/search',
 							type : 'POST',
 							data : function(d){
 								d.position = $('#inputSearch').val();
@@ -83,12 +81,14 @@
 					});
 				}
 			});
+			 
+			
 			
 			//Find by Id
 			function findById(id){
 				console.log(id);
 				$.ajax({
-					url : "${pageContext.request.contextPath}/findById/" + id,
+					url : "${pageContext.request.contextPath}/applicant/search/" + id,
 					type : "POST",
 					success : function(data){
 						showFillData(data);
@@ -124,7 +124,7 @@
 						};
 				if($("#EditStatusForm").valid()){
 					$.ajax({
-						url : "${pageContext.request.contextPath}/score/update/"+id,
+						url : "${pageContext.request.contextPath}/update/score/"+id,
 						type : "POST",
 						contentType :"application/json; charset=utf-8", 
 						data : JSON.stringify(json),
@@ -207,7 +207,7 @@
 	            });
 	        }
 	        
-		 	$('#btn_search').trigger("click");
+	        $('#btn_search').trigger("click");
 		 	
 		});
 	

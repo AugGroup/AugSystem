@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ApplicationDTO;
+import com.aug.db.dto.ReportApplicantDTO;
 import com.aug.db.entities.Applicant;
 
 public interface ApplicantService {
@@ -35,4 +36,6 @@ public interface ApplicantService {
 	public ApplicationDTO saveApplications(ApplicationDTO applicationDTO);
 
 	public ApplicationDTO saveExperiences(ApplicationDTO applicationDTO);
+	
+	public List<ReportApplicantDTO> reportApplicant();
 }

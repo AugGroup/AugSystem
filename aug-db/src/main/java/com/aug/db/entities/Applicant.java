@@ -15,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.Index;
 
@@ -125,7 +126,7 @@ public class Applicant {
 
 	@ManyToOne
 	@Index(name = "position3Index")
-	@JoinColumn(name = "POSITION3_ID", referencedColumnName = "id")
+	@JoinColumn(name = "POSITION3_ID", referencedColumnName = "id",insertable = false, updatable = false)
 	private Position position3;
 
 	@Column(name = "TRACKING_STATUS")
@@ -249,6 +250,17 @@ public class Applicant {
 
 	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Experience> experiences;
+	
+	@Transient
+	private String reportType;
+
+	public String getReportType() {
+		return reportType;
+	}
+
+	public void setReportType(String reportType) {
+		this.reportType = reportType;
+	}
 
 	public Integer getId() {
 		return id;

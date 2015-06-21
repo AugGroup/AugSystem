@@ -26,22 +26,18 @@ import com.aug.db.services.PositionService;
 @Controller
 public class AugRequestController implements Serializable {
 
-	@Autowired
-	AugRequestService augRequestService;
-
-	@Autowired
-	PositionService positionService;
+	private static final long serialVersionUID = 1L;
+	@Autowired private AugRequestService augRequestService;
+	@Autowired private PositionService positionService;
 
 	@RequestMapping(value = "/request", method = { RequestMethod.GET })
 	public String listRequest() {
-
 		return "augRequest";
 	}
 
-	// Search all AugRequest
-	@RequestMapping(value = "/findAllRequest", method = { RequestMethod.GET })
+	/*-------------------- Search All Request --------------------*/
+	@RequestMapping(value = "/request/search", method = { RequestMethod.GET })
 	public @ResponseBody Object findAllRequest() {
-
 		final List<AugRequestDTO> data = augRequestService.findAllAugRequest();
 
 		return new Object() {
@@ -50,29 +46,26 @@ public class AugRequestController implements Serializable {
 			}
 		};
 	}
-
-	// Search AugRequest By Id
-	@RequestMapping(value = "/searchRequest/{id}", method = { RequestMethod.POST })
+	/*-------------------- Search Request By Id--------------------*/
+	@RequestMapping(value = "/request/search/{id}", method = { RequestMethod.POST })
 	public @ResponseBody AugRequestDTO searchRequestById(
+			@PathVariable Integer id) {
+		return augRequestService.findAugRequestById(id);
+	}
+
+	/*-------------------- Search Request By Id--------------------*/
+	@RequestMapping(value = "/request/search/{id}", method = { RequestMethod.GET })
+	public @ResponseBody AugRequestDTO searchRequestByIdGet(
 			@PathVariable Integer id) {
 		return augRequestService.findAugRequestById(id);
 
 	}
-	
-	// Search AugRequest By Id
-		@RequestMapping(value = "/searchRequest/{id}", method = { RequestMethod.GET })
-		public @ResponseBody AugRequestDTO searchRequestByIdGet(
-				@PathVariable Integer id) {
-			return augRequestService.findAugRequestById(id);
 
-		}
-
-
-	// Create AugRequest
-	@RequestMapping(value = "/saveRequest", method = RequestMethod.POST)
+	/*-------------------- Save Request--------------------*/
+	@RequestMapping(value = "/request/save", method = RequestMethod.POST)
 	public @ResponseBody AugRequestDTO saveRequest(
-			@RequestBody AugRequestDTO augRequestDTO)throws ParseException {
-
+			@RequestBody AugRequestDTO augRequestDTO) throws ParseException {
+		
 		AugRequest augRequest = new AugRequest();
 		augRequest.setId(augRequestDTO.getId());
 		augRequest.setRequestDate(augRequestDTO.getRequestDate());
@@ -80,8 +73,7 @@ public class AugRequestController implements Serializable {
 		augRequest.setStatus(augRequestDTO.getStatus());
 		augRequest.setApprovalName(augRequestDTO.getApprovalName());
 		augRequest.setApproveDate(augRequestDTO.getApproveDate());
-		Position position = positionService.findById(augRequestDTO
-				.getPositionRequest());
+		Position position = positionService.findById(augRequestDTO.getPositionRequest());
 		augRequest.setPositionRequest(position);
 		augRequest.setNumberApplicant(augRequestDTO.getNumberApplicant());
 		augRequest.setSpecificSkill(augRequestDTO.getSpecificSkill());
@@ -90,40 +82,37 @@ public class AugRequestController implements Serializable {
 		augRequestService.create(augRequest);
 
 		return augRequestDTO;
-
 	}
 
-	// Edit AugRequest
-	@RequestMapping(value = "/editRequest/{id}", method = { RequestMethod.POST })
+	/*-------------------- Update Request--------------------*/
+	@RequestMapping(value = "/request/edit/{id}", method = { RequestMethod.POST })
 	public @ResponseBody AugRequestDTO editAugRequest(
 			@RequestBody AugRequestDTO augRequestDTO, @PathVariable Integer id)
 			throws ParseException {
-
-		AugRequest augRequest = augRequestService.findById(augRequestDTO
-				.getId());
+		AugRequest augRequest = augRequestService.findById(augRequestDTO.getId());
 		augRequest.setId(augRequestDTO.getId());
 		augRequest.setRequestDate(augRequestDTO.getRequestDate());
 		augRequest.setRequesterName(augRequestDTO.getRequesterName());
 		augRequest.setStatus(augRequestDTO.getStatus());
 		augRequest.setApprovalName(augRequestDTO.getApprovalName());
 		augRequest.setApproveDate(augRequestDTO.getApproveDate());
-		Position position = positionService.findById(augRequestDTO
-				.getPositionRequest());
+		Position position = positionService.findById(augRequestDTO.getPositionRequest());
 		augRequest.setPositionStr(position.getPositionName());
 		augRequest.setPositionRequest(position);
 		augRequest.setNumberApplicant(augRequestDTO.getNumberApplicant());
 		augRequest.setSpecificSkill(augRequestDTO.getSpecificSkill());
 		augRequest.setYearExperience(augRequestDTO.getYearExperience());
-		
+
 		augRequestService.update(augRequest);
-		AugRequestDTO augDTO =  augRequestService.findAugRequestById(id);
-		augDTO.setPositionStr(position.getPositionName());
-		return augDTO;
+		
+		AugRequestDTO requestDTO = augRequestService.findAugRequestById(id);
+		requestDTO.setPositionStr(position.getPositionName());
+		return requestDTO;
 
 	}
 
-	// Delete AugRequest
-	@RequestMapping(value = "/deleteRequest/{id}", method = RequestMethod.POST)
+	/*-------------------- Delete Request--------------------*/
+	@RequestMapping(value = "/request/delete/{id}", method = RequestMethod.POST)
 	public @ResponseBody AugRequest delesteUser(
 			@ModelAttribute AugRequest augRequest,
 			@PathVariable("id") Integer id) {
@@ -132,7 +121,7 @@ public class AugRequestController implements Serializable {
 		return augRequestService.findById(id);
 	}
 
-	// Position List
+	/*-------------------- Position List--------------------*/
 	@ModelAttribute("positionRequest")
 	public List<Position> getPosition() {
 		return positionService.findAll();

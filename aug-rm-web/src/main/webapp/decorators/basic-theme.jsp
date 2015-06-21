@@ -59,7 +59,15 @@
 						<li><a href="${pageContext.request.contextPath}/applicant">Applicant</a></li>
 						<li><a href="${pageContext.request.contextPath}/request">Request</a></li>
 						<li><a href="${pageContext.request.contextPath}/approve">Approve</a></li>
-						<li><a href="${pageContext.request.contextPath}/report">Report</a></li>
+						<li class="dropdown">
+         					 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
+         					 <ul class="dropdown-menu">
+         					 	<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalDegreeReport">Degree Report</a> </li>
+            					<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalMajorReport">Major Report</a> </li>
+         					 	<li class="divider"></li>	
+         					 	<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalMonthlyReport">Monthly Report</a></li>
+         					 </ul>
+        				</li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href=""><span class="glyphicon glyphicon-user"></span>
@@ -86,6 +94,15 @@
 						class="glyphicon glyphicon-education"></span> Appllication</a></li>
 			</ul>
 		</div> -->
+		
+		
+	<!-------------------- Report Modal -------------------->
+	<div class="modal fade" id="reportModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content"></div>
+		</div>
+	</div>
+	
 	</div>
 	<div>
 		<decorator:body />
@@ -97,7 +114,15 @@
 			<p class="text-muted credit">Copyright © augmentis.biz </p>
 		</div>
 	</div>
-
-
+	
+<!-------------------- Modal -------------------->	
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('body').on('hidden.bs.modal', '.modal', function () {
+			  $(this).removeData('bs.modal');
+		});
+	});
+</script>
+	
 </body>
 </html>

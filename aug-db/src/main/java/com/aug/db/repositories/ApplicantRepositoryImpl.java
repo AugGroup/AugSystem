@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.dto.ApplicantDTO;
+import com.aug.db.dto.ReportApplicantDTO;
 import com.aug.db.entities.Applicant;
 
 @Repository(value = "applicantRepository")
@@ -38,6 +39,13 @@ public class ApplicantRepositoryImpl extends
 		List<ApplicantDTO> result = query.list();
 		ApplicantDTO app = result.get(0);
 		return app;
+	}
+
+	@Override
+	public List<ReportApplicantDTO> reportApplicant() {
+		Query query = getCurrentSession().getNamedQuery("REPORT_APPLICANT");
+		List<ReportApplicantDTO> results = query.list();
+		return results;
 	}
 	
 
