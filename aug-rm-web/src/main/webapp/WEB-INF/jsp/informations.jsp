@@ -296,8 +296,19 @@
 // 												data : "positionFamily"
 // 											}],
 // 											searching : false
+						$('#familyTable').DataTable({
+											ajax : {
+												url : '${pageContext.request.contextPath}/informations',
+												type : 'GET'
+											},
+											columns : [ {data : "name"},
+											            {data : "relation"},
+											            {data : "occupation"},
+											            {data : "address"},
+											            {data : "positionFamily"}],
+											searching : false
 
-// 										});
+						});
 
 // 						$('#familySave').on("click", function() {
 // 							if($('#familyForm').valid()){
@@ -1251,114 +1262,95 @@
 			
 			<form class="form-inline" role="form" id="infoForm">
 			<div class="form-group">
-				<label for="firstNameTh">Firstname (TH) </label> <input type="text"
- 					class="form-control" id="firstNameThId" name="firstNameThName"
- 					placeholder="Enter Firstname(TH)"
-					>
+				<label for="firstNameTh">Firstname (TH) </label> 
+				<input type="text" class="form-control" id="firstNameThId" name="firstNameThName" placeholder="Enter Firstname(TH)">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="lastnameTh">Lastname (TH) </label> <input type="text"
- 					class="form-control" id="lastnameThId" name="lastnameThName"
-					placeholder="Enter lastname(TH)"
-					/>
+				<label for="lastnameTh">Lastname (TH) </label> 
+				<input type="text" class="form-control" id="lastnameThId" name="lastnameThName" placeholder="Enter lastname(TH)"/>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="nickNameTh">Nickname (TH) </label> <input type="text"
-					class="form-control" id="nickNameThId" name="nickNameThName"
-					placeholder="Enter nickname(TH)">
+				<label for="nickNameTh">Nickname (TH) </label> 
+				<input type="text" class="form-control" id="nickNameThId" name="nickNameThName" placeholder="Enter nickname(TH)">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="firstNameEng">Firstname (ENG) </label> <input
-					type="text" class="form-control" id="firstNameEngId"
-					name="firstNameEngName" placeholder="Enter Firstname(ENG)">
+				<label for="firstNameEng">Firstname (ENG) </label> 
+				<input type="text" class="form-control" id="firstNameEngId" name="firstNameEngName" placeholder="Enter Firstname(ENG)">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="lastnameEng">Lastname (ENG) </label> <input type="text"
-					class="form-control" id="lastnameEngId" name="lastnameEngName"
-					placeholder="Enter lastname(ENG)">
+				<label for="lastnameEng">Lastname (ENG) </label> 
+				<input type="text" class="form-control" id="lastnameEngId" name="lastnameEngName" placeholder="Enter lastname(ENG)">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="nickNameEng">Nickname (Eng) </label> <input type="text"
-					class="form-control" id="nickNameEngId" name="nickNameEngName"
-					placeholder="Enter nickname(Eng)">
+				<label for="nickNameEng">Nickname (Eng) </label> 
+				<input type="text" class="form-control" id="nickNameEngId" name="nickNameEngName" placeholder="Enter nickname(Eng)">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="tel">TELEPHONE NO. </label> <input type="text"
-					class="form-control" id="telId" name="telName"
-					placeholder="Enter tel">
+				<label for="tel">TELEPHONE NO. </label> 
+				<input type="text" class="form-control" id="telId" name="telName" placeholder="Enter tel">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="eMail">E-Mail </label> <input type="e"
-					class="form-control" id="eMailId" name="eMailName"
-					placeholder="Enter E-Mail">
+				<label for="eMail">E-Mail </label> 
+				<input type="e" class="form-control" id="eMailId" name="eMailName" placeholder="Enter E-Mail">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="birthday"><span
-					class="glyphicon glyphicon-calendar"></span> Birthday</label>
+				<label for="birthday"><span class="glyphicon glyphicon-calendar"></span> Birthday</label>
 				<div class="input-group date">
-					<input type="text" id="birthdayId" name="birthdayName"
-						class="form-control"><span class="input-group-addon"><i
-						class="glyphicon glyphicon-th"></i></span>
+					<input type="text" id="birthdayId" name="birthdayName" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 				</div>
 
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="pBirth">Place of birth </label> <input type="text"
-					class="form-control" id="pBirthId" name="pBirthName"
-					placeholder="Enter place of birth">
+				<label for="pBirth">Place of birth </label> 
+				<input type="text" class="form-control" id="pBirthId" name="pBirthName" placeholder="Enter place of birth">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="age">Age </label> <input type="text"
-					class="form-control" id="ageId" name="ageName"
-					placeholder="Enter age">
+				<label for="age">Age </label> 
+				<input type="text" class="form-control" id="ageId" name="ageName" placeholder="Enter age">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="religion">Religion </label> <input type="text"
-					class="form-control" id="religionId" name="religionName"
-					placeholder="Enter religion">
+				<label for="religion">Religion </label> 
+				<input type="text" class="form-control" id="religionId" name="religionName" placeholder="Enter religion">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="nationality">Nationality </label> <input type="text"
-					class="form-control" id="nationalityId" name="nationalityName"
-					placeholder="Enter nationality">
+				<label for="nationality">Nationality </label> 
+				<input type="text" class="form-control" id="nationalityId" name="nationalityName" placeholder="Enter nationality">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="idCard">ID. Card no. </label> <input type="text"
-					class="form-control" id="idCardId" name="idCardName"
-					placeholder="Enter ID. Card no.">
+				<label for="idCard">ID. Card no. </label> 
+				<input type="text" class="form-control" id="idCardId" name="idCardName" placeholder="Enter ID. Card no.">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="issuedCard">Issued office </label> <input type="text"
-					class="form-control" id="issuedCardId" name="issuedCardName"
-					placeholder="Enter issued office">
+				<label for="issuedCard">Issued office </label> 
+				<input type="text" class="form-control" id="issuedCardId" name="issuedCardName" placeholder="Enter issued office">
 			</div>
 			<br>
 			<br>
@@ -1366,36 +1358,30 @@
 				<label for="expiry"><span
 					class="glyphicon glyphicon-calendar"></span>Expiry date </label>
 				<div class="input-group date">
-					<input type="text" id="expiryId" name="expiryName"
-						class="form-control"><span class="input-group-addon"><i
-						class="glyphicon glyphicon-th"></i></span>
+					<input type="text" id="expiryId" name="expiryName" class="form-control"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 				</div>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="height">Height (cms) </label> <input type="text"
-					class="form-control" id="heightId" name="heightName"
-					placeholder="Enter height (cms)">
+				<label for="height">Height (cms) </label> 
+				<input type="text" class="form-control" id="heightId" name="heightName" placeholder="Enter height (cms)">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="weight">Weight (kgs) </label> <input type="text"
-					class="form-control" id="weightId" name="weightName"
-					placeholder="Enter weight (kgs)">
+				<label for="weight">Weight (kgs) </label>
+				<input type="text" class="form-control" id="weightId" name="weightName" placeholder="Enter weight (kgs)">
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="sex">Sex </label>
 				<div class="radio">
-					<label><input type="radio" name="sexName" value="Female"
-						id="sexId">Female</label>
+					<label><input type="radio" name="sexName" value="Female" id="sexId">Female</label>
 				</div>
 				<div class="radio">
-					<label><input type="radio" name="sexName" value="Male"
-						id="sexId">Male</label>
+					<label><input type="radio" name="sexName" value="Male" id="sexId">Male</label>
 				</div>
 			</div>
 			<br>
@@ -1403,25 +1389,21 @@
 			<div class="form-group">
 				<label for="marital">Marital status </label>
 				<div class="radio">
-					<label><input type="radio" name="maritalName"
-						id="maritalId" value="Single">Single</label>
+					<label><input type="radio" name="maritalName" id="maritalId" value="Single">Single</label>
 				</div>
 				<div class="radio">
-					<label><input type="radio" name="maritalName"
-						id="maritalId" value="Married">Married</label>
+					<label><input type="radio" name="maritalName" id="maritalId" value="Married">Married</label>
 				</div>
 				<div class="radio">
-					<label><input type="radio" name="maritalName"
-						id="maritalId">Divorced</label>
+					<label><input type="radio" name="maritalName" id="maritalId">Divorced</label>
 				</div>
 
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="children">Number of children </label> <input type="text"
-					class="form-control" id="childrenId" name="childrenName"
-					placeholder="Enter number of children">
+				<label for="children">Number of children </label> 
+				<input type="text" class="form-control" id="childrenId" name="childrenName" placeholder="Enter number of children">
 			</div>
 		</form>
 <!-- 	</div> -->
