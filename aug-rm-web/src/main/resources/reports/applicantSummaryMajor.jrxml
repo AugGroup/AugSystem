@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="applicantSummaryMajor" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9d67b443-1603-4009-b5e2-4bd78897d9fd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT applicant.APPLICANT_ID AS id ,
+		applicant.AGE AS age,
+		applicant.APPLICANT_STATUS AS applicantStatus,
+		applicant.APPLY_DATE AS applyDate,
+		applicant.ATTITUDE_HOME AS attitudeHome,
+		applicant.ATTITUDE_OFFICE AS attitudeOffice,
+		applicant.CERTIFICATE AS certificate,
+		applicant.APPLICANT_CODE AS code,
+		applicant.EMAIL AS email,
+		applicant.FIRSTNAME_EN AS firstNameEN,
+		applicant.LASTNAME_EN AS lastNameEN,
+		applicant.SCORE AS score,
+		applicant.SEX AS sex,
+		applicant.TECH_SCORE AS techScore,
+		applicant.TEL AS tel,
+		applicant.TRACKING_STATUS AS trackingStatus,
+		applicant.POSITION1_ID AS position1,
+		applicant.POSITION2_ID AS position2,
+		applicant.POSITION3_ID AS position3,
+		education.DEGREE AS degree,
+		education.FACULTY AS faculty,
+		education.GPA AS gpa,
+		education.MAJOR AS major,
+		education.SCHOOL_NAME AS schoolName,
+		education.YEAR_OF_GRADUATE AS yearOfgraduate,
+		education.APPLICANT_ID AS applicantId
+		FROM APPLICANT applicant LEFT JOIN EDUCATION education ON applicant.APPLICANT_ID = education.APPLICANT_ID]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="age" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="applicantStatus" class="java.lang.String"/>
+	<field name="applyDate" class="java.sql.Timestamp"/>
+	<field name="attitudeHome" class="java.lang.String"/>
+	<field name="attitudeOffice" class="java.lang.String"/>
+	<field name="certificate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="code" class="java.lang.String"/>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="firstNameEN" class="java.lang.String"/>
+	<field name="lastNameEN" class="java.lang.String"/>
+	<field name="score" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sex" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="techScore" class="java.lang.String"/>
+	<field name="tel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="trackingStatus" class="java.lang.String"/>
+	<field name="position1" class="java.lang.Integer"/>
+	<field name="position2" class="java.lang.Integer"/>
+	<field name="position3" class="java.lang.Integer"/>
+	<variable name="fullname" class="java.lang.String">
+		<variableExpression><![CDATA[$F{firstNameEN}+" "+$F{lastNameEN}]]></variableExpression>
+	</variable>
+	<group name="major">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="60">
+				<staticText>
+					<reportElement x="509" y="34" width="32" height="20" uuid="bdaacd50-126d-418d-aab9-ddbe1b7a72b8"/>
+					<text><![CDATA[GPA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="59" y="34" width="87" height="20" uuid="2e0a05a2-bf80-4f3a-b329-308ee63d41e0"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[NAME]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="330" y="34" width="97" height="20" uuid="89a0af17-944e-475a-9538-3f99be8389d7"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[FACULTY]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="10" y="34" width="49" height="20" uuid="495b469f-a882-4efd-9385-dc89f2322d5a"/>
+					<text><![CDATA[ID CODE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="146" y="34" width="111" height="20" uuid="3bfd9637-5fc1-459e-a732-30f0f812c8e3"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[SCHOOL NAME]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="257" y="34" width="73" height="20" uuid="c7dba8b2-ee99-4dc9-a94a-29931983acb8"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[DEGREE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="427" y="34" width="82" height="20" uuid="503cc3a5-eb30-411e-8019-4f6d3c744f28"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[MAJOR]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="69" y="4" width="54" height="20" uuid="073ca78f-b078-4f2d-be25-5553ac13a90e"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[MAJOR :]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="123" y="4" width="100" height="20" uuid="c1567517-6519-4a75-895a-2617ea0b9a7b"/>
+				</textField>
+				<line>
+					<reportElement x="0" y="26" width="555" height="1" uuid="f26a0032-05d2-4ee9-b512-72d1d9512610"/>
+				</line>
+				<line>
+					<reportElement x="0" y="57" width="555" height="1" uuid="e6e46a64-4da2-4cc7-8346-9a1503927a19"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="38">
+				<staticText>
+					<reportElement x="358" y="18" width="100" height="20" uuid="1c088801-c109-4e7f-94a8-6de57a6b375e"/>
+					<text><![CDATA[Summary :]]></text>
+				</staticText>
+				<line>
+					<reportElement x="0" y="5" width="555" height="1" uuid="a19895e1-de05-4ca5-b28e-07548dafc535"/>
+				</line>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="69" splitType="Stretch">
+			<rectangle>
+				<reportElement x="37" y="0" width="483" height="69" backcolor="#FFCC00" uuid="467edca9-8ad2-45dd-ad00-8f155de31a9f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="37" y="19" width="483" height="50" uuid="87732af8-d2dc-4260-add6-fa13a2fb728e"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MAJOR SUMMARY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="39" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="19" width="49" height="20" uuid="41099021-9ffa-4ed2-a105-9d167dc36e19"/>
+				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="59" y="19" width="87" height="20" uuid="58d8e49c-9c76-41af-be3a-7fadbcc884e8"/>
+				<textFieldExpression><![CDATA[$V{fullname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="146" y="19" width="111" height="20" uuid="f2ed44a2-644b-4225-9e16-eb740e2531aa"/>
+			</textField>
+			<textField>
+				<reportElement x="257" y="19" width="73" height="20" uuid="ed6961a6-f106-4126-8de4-3b6ade024984"/>
+			</textField>
+			<textField>
+				<reportElement x="330" y="19" width="100" height="20" uuid="4363c118-a684-458c-98ce-dc368526106d"/>
+			</textField>
+			<textField>
+				<reportElement x="430" y="19" width="79" height="20" uuid="0a6e4066-b77d-4b84-a82a-1cb0de865144"/>
+			</textField>
+			<textField>
+				<reportElement x="509" y="19" width="32" height="20" uuid="92d79d9f-f1bb-457e-acba-25be00496717"/>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="221" y="16" width="100" height="20" uuid="fb03683d-2d5f-4883-b013-4f73ddb780ee"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

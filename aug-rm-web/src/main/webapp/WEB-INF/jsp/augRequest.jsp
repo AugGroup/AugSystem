@@ -1,27 +1,17 @@
-<%-- 
-    Document   : augRequest
-    Created on : May 29, 2015, 3:51:22 PM
-    Author     : Supannika Pattanodom
---%>
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
 <title>Request for Application</title>
 
 <style type="text/css">
-    .bs-example{
-        margin: 20px;
-    }
-    /* Fix alignment issue of label on extra small devices in Bootstrap 3.2 */
+	.bs-example{
+		 margin: 20px;
+	}
     .form-horizontal .control-label{
         padding-top: 7px;
     }
-    
     .error{
      	color :red;
  		padding: 3px;
@@ -30,13 +20,14 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-    	//Date picker format
+    	/* ------------------ Date picker format ------------------ */
     	$('.input-group.date').datepicker({
-			format: "dd/mm/yyyy",
+    		format: "dd/mm/yyyy",
 			startView: 2
 			}); 
     	
-		/* $('#inputRequestDate').datepicker({
+		/*validate date
+		$('#inputRequestDate').datepicker({
 			format: "dd/mm/yyyy",
 			startView: 2,
 			minDate: 0,
@@ -62,83 +53,86 @@
 	        }
 			});
 			 */
-			 $('#requestForm').validate({
-			  		rules:{
-			  			inputRequesterName:{required: true},
-			  			inputRequestDate:{required: true},
-			  			inputPosition:{required: true},
-			  			inputApprovalName:{required: true},
-							inputApproveDate:{required: true},
-							inputNumberApplicant:{required: true},
-							inputSpecificSkill:{required: true},
-							inputYearExperience:{required: true},
-							inputStatus:{required: true}
-			  		},
-			  		messages: {
-			  			inputRequesterName:{required: "Requester Name is required"},
-			  			inputRequestDate:{required: "Request Date is required"},
-			  			inputPosition:{required: "Position is required"},
-			  			inputApprovalName:{required: "Approval Name is required"},
-							inputApproveDate:{required: "Approve Date is required"},
-							inputNumberApplicant:{required: "Number Applicant is required"},
-							inputSpecificSkill:{required: "Specific Skill is required"},
-							inputYearExperience:{required: "Year Experience is required"},
-							inputStatus:{required: "Status is required"}
-							}
+			 
+		/*-------------------- Validate Request Form--------------------*/
+		$('#requestForm').validate({
+			rules:{
+				inputRequesterName:{required: true},
+				inputRequestDate:{required: true},
+				inputPosition:{required: true},
+			  	inputApprovalName:{required: true},
+				inputApproveDate:{required: true},
+				inputNumberApplicant:{required: true},
+				inputSpecificSkill:{required: true},
+				inputYearExperience:{required: true},
+				inputStatus:{required: true}
+				},
+			messages:{
+				inputRequesterName:{required: "Requester Name is required"},
+			  	inputRequestDate:{required: "Request Date is required"},
+			  	inputPosition:{required: "Position is required"},
+			  	inputApprovalName:{required: "Approval Name is required"},
+				inputApproveDate:{required: "Approve Date is required"},
+				inputNumberApplicant:{required: "Number Applicant is required"},
+				inputSpecificSkill:{required: "Specific Skill is required"},
+				inputYearExperience:{required: "Year Experience is required"},
+				inputStatus:{required: "Status is required"}
+				}
 			  	});
 			 
-
+		/*-------------------- DataTable--------------------*/	 
         var dtRequest;
         if(dtRequest){
         	dtRequest.ajax.reload();
 		}else{
-         dtRequest = $('#requestTable').DataTable({ 
+         dtRequest = $('#requestTable').DataTable({
         	 searching : true,
         	 paging: 10,
         	 sort : false,
-            ajax: {
-                type: "GET",
-                url: '${pageContext.request.contextPath}/findAllRequest'
-            },
-            columns: [
-                {"data": "id"},
-                {"data": "requestDate"},
-                {"data": "requesterName"},
-                {"data": "positionStr"},
-                {"data": "numberApplicant"},
-                {"data": "status"},
-                {data: function (data) {
-                        return '<button id="btn_preview" class="btn btn-primary" data-id="' + data.id + '" data-toggle="modal" data-target="#previewModal">Preview <span class="glyphicon glyphicon-search"></span></button>';
-                    }},
-                {data: function (data) {
+        	 ajax: {
+        		 type: "GET",
+        		 url: '${pageContext.request.contextPath}/request/search'
+        		 },
+        	columns: [
+        	          {"data": "id"},
+        	          {"data": "requestDate"},
+        	          {"data": "requesterName"},
+        	          {"data": "positionStr"},
+        	          {"data": "numberApplicant"},
+        	          {"data": "status"},
+        	          {data: function (data) {
+        	        	  return '<button id="btn_preview" class="btn btn-primary" data-id="' + data.id + '" data-toggle="modal" data-target="#previewModal">Preview <span class="glyphicon glyphicon-search"></span></button>';
+        	        	  }
+        	          },
+        	          {data: function (data) {
                         return '<button id="btn_edit" class="btn btn-warning" data-id="' + data.id + '" data-toggle="modal" data-target="#addRequestModal">Edit <span class="glyphicon glyphicon-edit"></span></button>';
-                    }},
-                {data: function (data) {
-                        return '<button id="btn_delete" class="btn btn-danger" data-id="' + data.id + '" data-toggle="modal" data-target="#deleteModal">Delete <span class="glyphicon glyphicon-remove-sign"></span></button>';
-                    }}
-            ]
-         });
-		}
+                        }
+        	          },
+        	          {data: function (data) {
+        	        	  return '<button id="btn_delete" class="btn btn-danger" data-id="' + data.id + '" data-toggle="modal" data-target="#deleteModal">Delete <span class="glyphicon glyphicon-remove-sign"></span></button>';
+        	        	  }
+        	          }
+        	          ]
+        		 });
+         }
         
-
-        //delete Modal
+        /*-------------------- Delete Modal Function--------------------*/
         $('#deleteModal').off("click").on('shown.bs.modal', function (e) {
-            var button = e.relatedTarget;
+        	var button = e.relatedTarget;
             var id = $(button).data("id");
             if (id !== null) {
-
-                $('#btn_delete_submit').on('click', function () {
-                    deleted(button);
-                });
-            }
-        });
-        //delete function 
+            	$('#btn_delete_submit').on('click', function () {
+            		deleted(button);
+            		});
+            	}
+            });
+        /*-------------------- Delete Function--------------------*/
         function deleted(button) {
-            var dtRequest = $('#requestTable').DataTable();
+        	var dtRequest = $('#requestTable').DataTable();
             var id = $(button).data("id");
             var index = dtRequest.row(button.closest("tr")).index();
             $.ajax({
-                url: "${pageContext.request.contextPath}/deleteRequest/" + id,
+                url: "${pageContext.request.contextPath}/request/delete/" + id,
                 type: "POST",
                 success: function () {
                     dtRequest.row(index).remove().draw();
@@ -146,78 +140,79 @@
             });
         }
 
-        //addRequestModal
+        /*-------------------- Save and Edit Request Modal Function--------------------*/
         $('#addRequestModal').off("click").on('shown.bs.modal', function (e) {
-            
         	var button = e.relatedTarget;
-        	
-            if (button != null) {
-                var id = $(button).data("id");
+        	if (button != null) {
+        		var id = $(button).data("id");
                 if (id != null) {
-                    editSearch(id);
-                    $('#btn_save_req').off('click').on('click', function () {
-                        edit(button);
-                    });
+                	editSearch(id);
+                	$('#btn_save_req').off('click').on('click', function () {
+                		edit(button);
+                		});
                 } else {
-                   // $('#requestForm')[0].reset();
-                    $('#btn_save_req').off('click').on('click', function () {
-                        save();
-                    });
+                	// $('#requestForm')[0].reset();
+                	$('#btn_save_req').off('click').on('click', function () {
+                		save();
+                		});
+                	}
                 }
-            }
-            
-       		
-        });
+        	});
 
-        //Button Save
+        /*-------------------- Save Function--------------------*/
         function save(button) {
-        	   var request = {
-                requesterName: $('#inputRequesterName').val(),
-                requestDate: $('#inputRequestDate').val(),
-                approvalName: $('#inputApprovalName').val(),
-                approveDate: $('#inputApproveDate').val(),
-                numberApplicant : $('#inputNumberApplicant').val(),
-                specificSkill: $('#inputSpecificSkill').val(),
-                yearExperience : $('#inputYearExperience').val(),
-                positionRequest : $('#inputPosition').val(),
-                status: $('#inputStatus').val()
-            };
-            console.log(request);
-            
-            var isValid = $("#requestForm").valid();
-            
-           //debugger;
-            
+        	var request = {
+        			requesterName: $('#inputRequesterName').val(),
+        			requestDate: $('#inputRequestDate').val(),
+        			approvalName: $('#inputApprovalName').val(),
+        			approveDate: $('#inputApproveDate').val(),
+        			numberApplicant : $('#inputNumberApplicant').val(),
+        			specificSkill: $('#inputSpecificSkill').val(),
+        			yearExperience : $('#inputYearExperience').val(),
+        			positionRequest : $('#inputPosition').val(),
+        			status: $('#inputStatus').val()
+        			};
+        	//console.log(request);
+        	var isValid = $("#requestForm").valid();
+            //debugger;
             if(isValid){
-            $.ajax({        	
-                contentType: "application/json",
-                type: "POST",
-                url: '${pageContext.request.contextPath}/saveRequest',
-                data: JSON.stringify(request),
-                success: function (data) {
-                	$('#addRequestModal').modal('hide');
-                    dtRequest.ajax.reload();
-                    console.log(data.requesterName);
-                    new PNotify({
-				    	title: 'Create request is successful.',
-				    	text: '',
-				    	type: 'success',
-				    	nonblock: {
-				       	 nonblock: true,
-				       	 nonblock_opacity: .2
-				    	}
-					});
-                    
-                }
-            });
-            
-            
-           };
-
+            	$.ajax({
+            		contentType: "application/json",
+            		type: "POST",
+            		url: '${pageContext.request.contextPath}/request/save',
+            		data: JSON.stringify(request),
+            		success: function (data) {
+            			$('#addRequestModal').modal('hide');
+            			dtRequest.ajax.reload();
+            			//console.log(data.requesterName);
+            			new PNotify({
+            				title: 'Create request is successful.',
+            				text: '',
+            				type: 'success',
+            				nonblock: {
+            					nonblock: true,
+            					nonblock_opacity: .2
+            					}
+            			});
+            		}
+            	});
+            };
+           }
+        
+        /*-------------------- Edit Function (Search id)--------------------*/
+        function editSearch(id) {
+        	$.ajax({
+        		url: "${pageContext.request.contextPath}/request/search/" + id,
+        		type: "POST",
+        		success: function (data) {
+        			editShowData(data);
+        		}
+        	});
         }
-        // Edit 
+        
+        /*-------------------- Edit Function (Fill Data)--------------------*/
         function editShowData(data) {
-            $('#inputRequesterName').val(data.requesterName);
+        	$('#inputRequesterName').val(data.requesterName);
             $('#inputRequestDate').val(data.requestDate);
             $('#inputApprovalName').val(data.approvalName);
             $('#inputApproveDate').val(data.approveDate);
@@ -227,22 +222,10 @@
             $('#inputPosition').val(data.positionRequest);
             $('#inputStatus').val(data.status);
         }
-
-        function editSearch(id) {
-
-            $.ajax({
-                url: "${pageContext.request.contextPath}/searchRequest/" + id,
-                type: "POST",
-                success: function (data) {
-                    editShowData(data);
-                }
-            });
-
-        }
-
+       
+        /*-------------------- Edit Function --------------------*/
         function edit(button){
             var id = $(button).data("id");
-
             var requesterName = $('#inputRequesterName').val();
             var requestDate = $('#inputRequestDate').val();
             var approvalName = $('#inputApprovalName').val();
@@ -270,10 +253,10 @@
             $.ajax({
                 contentType: "application/json",
                 type: "POST",
-                url: "${pageContext.request.contextPath}/editRequest/" + id,
+                url: "${pageContext.request.contextPath}/request/edit/" + id,
                 data: JSON.stringify(request),
                 success: function (data) {
-                	console.log(data.positionStr);
+                	//console.log(data.positionStr);
                     var dt = dtRequest.data();
                     dt.id = data.id;
                     dt.requesterName = data.requesterName;
@@ -301,37 +284,35 @@
             };
         }
 
-      //Preview Modal
+        /*-------------------- Preview Modal Function --------------------*/
         $('#previewModal').off("click").on('shown.bs.modal', function (e) {
             var button = e.relatedTarget;
             var id = $(button).data("id");
             if (id !== null) {
             	$.ajax({
-					url : "${pageContext.request.contextPath}/searchRequest/" + id,
+            		url : "${pageContext.request.contextPath}/request/search/" + id,
 					type : "POST",
 					success : function(data){
 						previewShowData(data);
-						}
-					});
+					}
+            	});
             }
         });
       
-      //Preview function
-      function previewShowData(data){
-    	  console.log(data.requesterName); 	 
-    	   $('#tx_requester').text(data.requesterName);
-           $('#tx_requestDate').text(data.requestDate);
-           $('#tx_approvalName').text(data.approvalName);
-           $('#tx_approveDate').text(data.approveDate);
-           $('#tx_noOfApplicant').text(data.numberApplicant);
-           $('#tx_specificSkill').text(data.specificSkill);
-           $('#tx_yearExperience').text(data.yearExperience);
-           $('#tx_position').text(data.positionRequest);
-           $('#tx_status').text(data.status); 
-      
-      }
-      
-    });
+        /*-------------------- Preview Function --------------------*/
+        function previewShowData(data){
+        	//console.log(data.requesterName);
+        	$('#tx_requester').text(data.requesterName);
+            $('#tx_requestDate').text(data.requestDate);
+            $('#tx_approvalName').text(data.approvalName);
+            $('#tx_approveDate').text(data.approveDate);
+            $('#tx_noOfApplicant').text(data.numberApplicant);
+            $('#tx_specificSkill').text(data.specificSkill);
+            $('#tx_yearExperience').text(data.yearExperience);
+            $('#tx_position').text(data.positionRequest);
+            $('#tx_status').text(data.status);
+            }
+        });
 
 
 </script>  
@@ -340,7 +321,7 @@
 	<table id="requestTable" class="cell-border" style="width: 100%">
 		<thead>
 			<tr>
-            	<th>Request Doc. ID</th>
+				<th>Request Doc. ID</th>
             	<th>Date Request</th>
             	<th>Requester</th>
             	<th>Position</th>
@@ -352,13 +333,14 @@
         	</tr>
     	</thead>
 </table>
+
 <div class="row">
 	<div class="col-md-6"></div>
 	<div class="col-md-6" align="center">
 		<button id="btn_addReq"class="btn btn-primary btn-info" data-toggle="modal" data-target="#addRequestModal"> Request <span class="glyphicon glyphicon-plus-sign"></span></button>
 	</div>
 </div>
-<!--Add Modal--> 
+<!-------------------- Save Modal --------------------> 
 <div class="modal fade" id="addRequestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -428,7 +410,7 @@
     </div>
 </div>
 
-<!-- Delete Model -->
+<!-------------------- Delete Model -------------------->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -454,7 +436,7 @@
 	</div>
 </div>
 
-<!-- Preview Model -->
+<!-------------------- Preview Model -------------------->
 <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
