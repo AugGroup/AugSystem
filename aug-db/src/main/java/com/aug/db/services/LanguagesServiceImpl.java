@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.db.dto.LanguagesDTO;
 import com.aug.db.entities.Languages;
 import com.aug.db.repositories.LanguagesRepository;
 
@@ -44,6 +45,18 @@ public class LanguagesServiceImpl implements LanguagesService {
 	public List<Languages> findAll() {
 		List<Languages> languageList = languagesRepository.findAll();
 		return languageList;
+	}
+
+	@Override
+	public List<LanguagesDTO> findLanguagesById(Integer id) {
+		List<LanguagesDTO> languageses = languagesRepository.findLanguagesById(id);
+		return languageses;
+	}
+
+	@Override
+	public LanguagesDTO findLanguages(Integer id) {
+		LanguagesDTO languages = languagesRepository.findByLanguagesId(id);
+		return languages;
 	}
 
 }

@@ -49,7 +49,74 @@
 		});
 	
 		
+// <<<<<<< HEAD
 	
+// =======
+// 		$('#certificateForm').validate({
+// 			rules : {
+// 				certificateName : {
+// 					required : true
+// 				}
+// 			},
+// 			messages : {
+// 				certificateName : {
+// 					required : "Certificate is required!"
+// 				}
+// 			}
+// 		});
+		
+// 		$('#skillForm').validate({
+// 			rules : {
+// 				skillName : {
+// 					required : true
+// 				}
+// 			},
+// 			messages : {
+// 				skillName : {
+// 					required : "Skill Detail is required!"
+// 				}
+// 			}
+// 		});
+// 		$('#languagesForm').validate({
+// 			rules : {
+// 				languagesName : {
+// 					required : true
+// 				},
+// 				speakingName : {
+// 					required : true
+// 				},
+// 				understandingName : {
+// 					required : true
+// 				},
+// 				readingName : {
+// 					required : true
+// 				},
+// 				writingName : {
+// 					required : true
+// 				}
+// 			},
+// 			messages : {
+// 				languagesName : {
+// 					required : "Languages is required!"
+// 				},
+// 				speakingName : {
+// 					required : "Speaking is required!"
+// 				},
+// 				understandingName : {
+// 					required : "Understanding is required!"
+// 				},
+// 				readingName : {
+// 					required : "Reading is required!"
+// 				},
+// 				writingName : {
+// 					required : "Writing is required!"
+// 				}
+// 			}
+// 		});
+
+// 		var dtApplicant;
+		
+// >>>>>>> Edit EducationRepository.java, EducationRepositoryImpl.java, LanguagesRepository.java, LanguagesRepositoryImpl.java, SkillRepository.java, SkillRepositoryImpl.java, EducationService.java, EducationServiceImpl.java, LanguagesService.java, LanguagesServiceImpl.java, SkillService.java, SkillServiceImpl.java, ApplicationController.java, educations.jsp, experiences.jsp
 		$('.input-group.date').datepicker({
 			startView : 2,
 			todayBtn : "linked",
@@ -57,10 +124,14 @@
 
 		});
 
+		if(dtApplicant){
+			dtApplicant.ajax.reload();
+		}else{
+			var id = '${id}';
 		$('#educationTable').DataTable({
 			ajax : {
-				url : '${pageContext.request.contextPath}/educations',
-				type : 'GET'
+				url : '${pageContext.request.contextPath}/findByIdEducation/'+ id,
+				type : 'POST'
 			},
 
 			columns : [ {data : "schoolName"},
@@ -78,6 +149,33 @@
 			searching : false
 
 		});
+// <<<<<<< HEAD
+// =======
+// 		}
+		
+// 		 $("#buttonUpload").on("click",function() {
+// 			 uplodFile();
+// 	 	 });
+		 
+// 		function uplodFile(){	
+// 			var file = $('#file')[0].files[0];
+// 			var formData = new FormData();
+// 			formData.append('file', file);
+			
+// 		$.ajax({
+// 		     	dataType:"text", 
+// 				contentType: false,
+// 			    processData: false,
+// 				enctype: 'multipart/form-data',
+// 				type : "POST",
+// 				url : '${pageContext.request.contextPath}/upload',
+// 				data : formData,
+// 				success : function(data) {
+// 					alert(JSON.stringify(data));	
+// 				}
+// 			});
+// 		}
+// >>>>>>> Edit EducationRepository.java, EducationRepositoryImpl.java, LanguagesRepository.java, LanguagesRepositoryImpl.java, SkillRepository.java, SkillRepositoryImpl.java, EducationService.java, EducationServiceImpl.java, LanguagesService.java, LanguagesServiceImpl.java, SkillService.java, SkillServiceImpl.java, ApplicationController.java, educations.jsp, experiences.jsp
 		$('#educationSave').on("click", function() {
 			if ($('#educationsForm').valid()) { 
 			var table = $('#educationTable').DataTable();
@@ -94,24 +192,39 @@
 			};
 		})
 // <<<<<<< HEAD
+// // <<<<<<< HEAD
 		
-// 		$('#educationSave').on("click", function() {
-// =======
-		$('#certificateTable').DataTable({
-			ajax : {
-				url : '${pageContext.request.contextPath}/educations',
-				type : 'GET'
-			},
-			columns : [ {data : "certificate"},
-			            {data : function(data) {
-							return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
-						}},
-						{data : function(data) {
-							return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
-						}}],
-			searching : false
+// // 		$('#educationSave').on("click", function() {
+// // =======
+// 		$('#certificateTable').DataTable({
+// 			ajax : {
+// 				url : '${pageContext.request.contextPath}/educations',
+// 				type : 'GET'
+// 			},
+// 			columns : [ {data : "certificate"},
+// 			            {data : function(data) {
+// 							return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+// 						}},
+// 						{data : function(data) {
+// 							return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+// 						}}],
+// 			searching : false
 
-		});
+// 		});
+// =======
+// // 		$('#certificateTable').DataTable({
+// // 			ajax : {
+// // 				url : '${pageContext.request.contextPath}/educations',
+// // 				type : 'GET'
+// // 			},
+// // 			columns : [ {data : "certificate"}],
+// // // 				        {data : function(data){
+// // // 				        	 return '<a href="#educationsForm" id="btn_edit" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span>Edit</b>'
+// // // 				        }} ],
+// // 			searching : false
+
+// // 		});
+// >>>>>>> Edit EducationRepository.java, EducationRepositoryImpl.java, LanguagesRepository.java, LanguagesRepositoryImpl.java, SkillRepository.java, SkillRepositoryImpl.java, EducationService.java, EducationServiceImpl.java, LanguagesService.java, LanguagesServiceImpl.java, SkillService.java, SkillServiceImpl.java, ApplicationController.java, educations.jsp, experiences.jsp
 
 		$('#certificateSave').on("click", function() {
 			if ($('#certificateForm').valid()) {
@@ -123,10 +236,15 @@
 			$('#certificateModal').modal('hide');
 			};
 		})
+		
+		if(dtApplicant){
+			dtApplicant.ajax.reload();
+		}else{
+			var id = '${id}';
 		$('#skillTable').DataTable({
 			ajax : {
-				url : '${pageContext.request.contextPath}/educations',
-				type : 'GET'
+				url : '${pageContext.request.contextPath}/findByIdSkill/'+id,
+				type : 'POST'
 			},
 			columns : [ {data : "skillDetail"},
 			            {data : function(data) {
@@ -138,6 +256,7 @@
 			searching : false
 
 		});
+		}
 		$('#skillSave').on("click", function() {
 			if ($('#skillForm').valid()) {
 			var table = $('#skillTable').DataTable();
@@ -149,10 +268,14 @@
 			};
 		})
 
+		if(dtApplicant){
+			dtApplicant.ajax.reload();
+		}else{
+			var id = '${id}';
 		$('#languagesTable').DataTable({
 			ajax : {
-				url : '${pageContext.request.contextPath}/educations',
-				type : 'GET'
+				url : '${pageContext.request.contextPath}/findByIdLanguages/'+id,
+				type : 'POST'
 			},
 			columns : [ {data : "languagesName"},
 			            {data : "speaking"},
@@ -168,6 +291,7 @@
 			searching : false
 
 		});
+		}
 
 		$('#languagesSave').on("click", function() {
 			if ($('#languagesForm').valid()) { 

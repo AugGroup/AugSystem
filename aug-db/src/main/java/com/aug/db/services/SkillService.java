@@ -2,6 +2,7 @@ package com.aug.db.services;
 
 import java.util.List;
 
+import com.aug.db.dto.SkillDTO;
 import com.aug.db.entities.Skill;
 
 public interface SkillService {
@@ -17,5 +18,9 @@ public interface SkillService {
 	public void delete(Skill skill);
 
 	public List<Skill> findAll();
+	
+	public List<SkillDTO> findSkillById(Integer id);
+
+	public SkillDTO findSkill(Integer id);
 
 }

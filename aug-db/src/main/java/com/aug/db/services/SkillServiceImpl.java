@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.db.dto.ReferenceDTO;
+import com.aug.db.dto.SkillDTO;
 import com.aug.db.entities.Skill;
 import com.aug.db.repositories.SkillRepository;
 
@@ -50,6 +52,18 @@ public class SkillServiceImpl implements SkillService{
 	public List<Skill> findAll() {
 		List<Skill> skillList = skillRepository.findAll();
 		return skillList;
+	}
+
+	@Override
+	public List<SkillDTO> findSkillById(Integer id) {
+		List<SkillDTO> skills = skillRepository.findSkillById(id);
+		return skills;
+	}
+
+	@Override
+	public SkillDTO findSkill(Integer id) {
+		SkillDTO skill = skillRepository.findBySkillId(id);
+		return skill;
 	}
 	
 

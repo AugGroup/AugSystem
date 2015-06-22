@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.db.dto.EducationDTO;
+import com.aug.db.dto.ReferenceDTO;
 import com.aug.db.entities.Education;
 import com.aug.db.repositories.EducationRepository;
 @Service(value = "educationService")
@@ -47,6 +49,18 @@ public class EducationServiceImpl implements EducationService{
 	public List<Education> findAll() {
 		List<Education> educationList = educationRepository.findAll();
 		return educationList;
+	}
+
+	@Override
+	public List<EducationDTO> findEducationById(Integer id) {
+		List<EducationDTO> educations = educationRepository.findEducationById(id);
+		return educations;
+	}
+
+	@Override
+	public EducationDTO findEducatione(Integer id) {
+		EducationDTO education = educationRepository.findByEducationId(id);
+		return education;
 	}
 	
 

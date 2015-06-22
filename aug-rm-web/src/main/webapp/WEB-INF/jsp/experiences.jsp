@@ -11,7 +11,7 @@
 <script>
 	$(document).ready(function() {
 		
-		var dtApplicant	
+		var dtApplicant;
 		
 		$('.input-group.date').datepicker({
 			startView : 2,

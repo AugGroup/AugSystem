@@ -31,17 +31,23 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import com.aug.db.dto.AddressDTO;
 import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.entities.Applicant;
+import com.aug.db.dto.EducationDTO;
 import com.aug.db.dto.ExperienceDTO;
+import com.aug.db.dto.LanguagesDTO;
 import com.aug.db.dto.ReferenceDTO;
 import com.aug.db.entities.Department;
 import com.aug.db.entities.Position;
 import com.aug.db.repositories.AddressRepository;
 import com.aug.db.repositories.ExperienceRepository;
+import com.aug.db.dto.SkillDTO;
 import com.aug.db.services.ApplicantService;
 import com.aug.db.services.DepartmentService;
+import com.aug.db.services.EducationService;
+import com.aug.db.services.LanguagesService;
 import com.aug.db.services.PositionService;
 import com.aug.services.UploadService;
 import com.aug.db.services.ReferenceService;
+import com.aug.db.services.SkillService;
 
 @Controller
 public class ApplicationController {
@@ -62,6 +68,12 @@ public class ApplicationController {
 	private AddressRepository addressRepository;
 	@Autowired
 	private ExperienceRepository experienceRepository;
+	@Autowired
+	private EducationService educationService;
+	@Autowired
+	private SkillService skillService;
+	@Autowired
+	private LanguagesService languagesService;
 	
 	@InitBinder public void InitBinder(WebDataBinder binder){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
@@ -273,6 +285,8 @@ public class ApplicationController {
 
 	}*/
 	
+	
+	
 	// Update
 	// Search Applicant By Id
 	@RequestMapping(value = "/findByIdApplicants/{id}", method = { RequestMethod.POST })
@@ -363,6 +377,63 @@ public class ApplicationController {
 		 
 		return new Object() {
 			public List<ReferenceDTO> getData() {
+				return list;
+			}
+		};
+	}
+	
+	@RequestMapping(value = "/findByIdEducation/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Object findByIdEducation(@PathVariable Integer id) {
+		 final List<EducationDTO> list = educationService.findEducationById(id);
+		 EducationDTO edDto = new EducationDTO();
+		 for(EducationDTO ed : list){
+			 edDto.setId(ed.getId());
+			 edDto.setDegree(ed.getDegree());
+			 edDto.setFaculty(ed.getFaculty());
+			 edDto.setGpa(ed.getGpa());
+			 edDto.setMajor(ed.getMajor());
+			 edDto.setSchoolName(ed.getSchoolName());
+			 edDto.setYearsOfGraduate(ed.getYearsOfGraduate());
+		 }
+		 
+		return new Object() {
+			public List<EducationDTO> getData() {
+				return list;
+			}
+		};
+	}
+	
+	@RequestMapping(value = "/findByIdSkill/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Object findByIdSkill(@PathVariable Integer id) {
+		 final List<SkillDTO> list = skillService.findSkillById(id);
+		 SkillDTO skillDto = new SkillDTO();
+		 for(SkillDTO skill : list){
+			 skillDto.setId(skill.getId());
+			 skillDto.setSkillDetail(skill.getSkillDetail());
+		 }
+		 
+		return new Object() {
+			public List<SkillDTO> getData() {
+				return list;
+			}
+		};
+	}
+	
+	@RequestMapping(value = "/findByIdLanguages/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Object findByIdLanguages(@PathVariable Integer id) {
+		 final List<LanguagesDTO> list = languagesService.findLanguagesById(id);
+		 LanguagesDTO langDto = new LanguagesDTO();
+		 for(LanguagesDTO lang : list){
+			 langDto.setId(lang.getId());
+			 langDto.setLanguagesName(lang.getLanguagesName());
+			 langDto.setReading(lang.getReading());
+			 langDto.setSpeaking(lang.getSpeaking());
+			 langDto.setUnderstanding(lang.getUnderstanding());
+			 langDto.setWriting(lang.getWriting());
+		 }
+		 
+		return new Object() {
+			public List<LanguagesDTO> getData() {
 				return list;
 			}
 		};

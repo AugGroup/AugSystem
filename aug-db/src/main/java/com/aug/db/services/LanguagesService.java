@@ -2,6 +2,7 @@ package com.aug.db.services;
 
 import java.util.List;
 
+import com.aug.db.dto.LanguagesDTO;
 import com.aug.db.entities.Languages;
 
 public interface LanguagesService {
@@ -17,5 +18,9 @@ public interface LanguagesService {
 	public void delete(Languages languages);
 	
 	public List<Languages> findAll();
+	
+	public List<LanguagesDTO> findLanguagesById(Integer id);
+
+	public LanguagesDTO findLanguages(Integer id);
 
 }

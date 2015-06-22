@@ -2,6 +2,7 @@ package com.aug.db.services;
 
 import java.util.List;
 
+import com.aug.db.dto.EducationDTO;
 import com.aug.db.entities.Education;
 
 public interface EducationService {
@@ -17,5 +18,9 @@ public interface EducationService {
 	public void deleteById(Integer id);
 
 	public List<Education> findAll();
+	
+	public List<EducationDTO> findEducationById(Integer id);
+
+	public EducationDTO findEducatione(Integer id);
 
 }
