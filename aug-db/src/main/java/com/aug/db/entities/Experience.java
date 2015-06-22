@@ -19,7 +19,7 @@ public class Experience {
 	@Column(name = "ID")
 	private Integer id;
 	
-	@ManyToOne()
+	@ManyToOne
 	@JoinColumn(name="APPLICANT_ID")
 	private Applicant applicant;
 	
