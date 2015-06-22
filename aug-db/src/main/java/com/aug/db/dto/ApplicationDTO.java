@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.Index;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.aug.db.entities.Address;
 import com.aug.db.entities.AttachFile;
@@ -27,6 +28,7 @@ import com.aug.db.entities.Position;
 import com.aug.db.entities.Reference;
 import com.aug.db.entities.Skill;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.sun.mail.handlers.multipart_mixed;
 
 @Entity
 @NamedNativeQueries({ @NamedNativeQuery(name = "DATA_APPLICANT", query = "SELECT FIRSTNAME_TH,FIRSTNAME_EN,LASTNAME_TH,LASTNAME_EN,NICKNAME_TH,NICKNAME_EN"
@@ -223,6 +225,8 @@ public class ApplicationDTO {
 
 	@Column(name = "MARRIAGE_ADDRESS")
 	private String marriageAddress;
+	@Transient
+	private List<MultipartFile> multipartFile ;
 
 	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
 	private List<Reference> references;
@@ -822,5 +826,11 @@ public class ApplicationDTO {
 	public void setPosition3(Position position3) {
 		this.position3 = position3;
 	}
+	public List<MultipartFile> getMultipartFile() {
+		return multipartFile;
+	}
 
+	public void setMultipartFile(List<MultipartFile> multipartFile) {
+		this.multipartFile = multipartFile;
+	}
 }

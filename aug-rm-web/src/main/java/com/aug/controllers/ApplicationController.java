@@ -1,8 +1,10 @@
 package com.aug.controllers;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -18,21 +20,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.aug.db.dto.ApplicationDTO;
-import com.aug.db.entities.Address;
-import com.aug.db.entities.Applicant;
 import com.aug.db.entities.Department;
 import com.aug.db.entities.Position;
-import com.aug.db.services.AddressService;
 import com.aug.db.services.ApplicantService;
 import com.aug.db.services.DepartmentService;
 import com.aug.db.services.PositionService;
+import com.aug.db.services.UploadService;
 
 @Controller
 public class ApplicationController {
@@ -45,8 +47,8 @@ public class ApplicationController {
 	private PositionService positionService;
 	@Autowired
 	private ApplicantService applicantService;
-	
-	Integer keepId;
+	@Autowired
+	private UploadService uploadService;
 	
 	@InitBinder public void InitBinder(WebDataBinder binder){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
@@ -63,6 +65,21 @@ public class ApplicationController {
         return "applicationMenu";
 
 	}
+	@RequestMapping(value = "/upload")
+	public @ResponseBody String upload(MultipartHttpServletRequest request)throws Exception {
+	    Iterator<String> itrator = request.getFileNames();
+        MultipartFile multiFile = request.getFile(itrator.next());			
+			try {
+				uploadService.upload("Appilcant", multiFile.getOriginalFilename(), multiFile);
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+	
+		return "SUCCESS";
+	}
+	
 	@RequestMapping(value = "/informations", method = { RequestMethod.GET })
 	public String informations() {
         LOGGER.info("**** Welcome to Application Controller ****");
@@ -74,7 +91,6 @@ public class ApplicationController {
 		
 		applicantService.saveInformations(applicationDTO);
 		model.addAttribute("id",applicationDTO.getId());
-//		keepId = applicant.getId();
 		return applicationDTO;
 	}
 

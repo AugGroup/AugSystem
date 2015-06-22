@@ -36,7 +36,7 @@ insert into LANGUAGES (APPLICANT_ID,LANGUAGES_NAME,READING,SPEAKING,UNDERSTANDIN
 
 insert into ATTACHFILE (APPLICANT_ID,ATTACH_NAME,ATTACH_TYPE_File,PATH,TYPE) VALUES ('1','resume.pdf','resume','resume','.pdf'),
 ('2','picture.png','picture','picture','.png'),
-('3','transcript.pdf','transcript','transcript','.pdf'),('4','certificate.pdf','certificate','certificate','.pdf');
+('3','transcript.pdf','transcript','transcript','.pdf'),('4','resume.pdf','resume','resume','.pdf');
 
 INSERT INTO ADDRESS (APPLICANT_ID, HOUSE_NO, ROAD, SUB_DISTRICT, DISTRICT, PROVINCE, ZIPCODE, ADDRESS_TYPE)
 VALUES ('1','11/1','Sukumwit','Bangjak','Prakanong','Bankok','10260','permanent'),

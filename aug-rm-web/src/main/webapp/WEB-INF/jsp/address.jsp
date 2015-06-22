@@ -5,7 +5,76 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script>
 	$(document).ready(function() {
-
+		
+		$('#addressForm').validate({
+			rules : {
+				inputAddress : {
+					required : true
+				},
+				houseNoName : {
+					required : true
+				},
+				roadName : {
+					required : true
+				},
+				districtName : {
+					required : true
+				},
+				subDistrictName : {
+					required : true
+				},
+				zipcodeName : {
+					required : true
+				},
+				provinceName : {
+					required : true
+				}
+			},
+			messages : {
+				inputAddress : {
+					required : "Address is required!"
+				},
+				houseNoName : {
+					required : "House No. is required!"
+				},
+				roadName : {
+					required : "Road is required!"
+				},
+				districtName : {
+					required : "District is required!"
+				},
+				subDistrictName : {
+					required : "Sub District is required!"
+				},
+				provinceName : {
+					required : "Province is required!"
+				}
+			}
+		});
+		$('#emergencyForm').validate({
+			rules : {
+				emergencyName : {
+					required : true
+				},
+				emergencyTelName : {
+					required : true
+				},
+				emergencyAddressName : {
+					required : true
+				}
+			},
+			messages : {
+				emergencyName : {
+					required : "Emergency Name is required!"
+				},
+				emergencyTelName : {
+					required : "Emergency Telephone is required!"
+				},
+				emergencyAddressName : {
+					required : "Emergency Address is required!"
+				}
+			}
+		});
 		$('.input-group.date').datepicker({
 			startView : 2,
 			todayBtn : "linked",
@@ -37,6 +106,7 @@
 
 		});
 		$('#addressSave').on("click", function() {
+			if ($('#addressForm').valid()) {
 			var table = $('#addressTable').DataTable();
 
 			table.row.add({
@@ -51,11 +121,11 @@
 				
 			}).draw();
 			$('#addressModal').modal('hide');
-
+			};
 		})
 
 		$('#buttonSave').on("click", function() {
-			
+			if ($('#emergencyForm').valid()) {
 			var insertData = "{";
 			
 			insertData+="address : [ ";
@@ -97,7 +167,7 @@
 				    });
 				}
 			});
-
+			};
 		})
 
 	});
@@ -128,7 +198,7 @@
 						</h4>
 					</div>
 					<div class="modal-body" style="padding: 40px 50px;">
-						<form role="form" id="addressForm">
+						<form role="form" id="addressForm" >
 							<div class="form-group">
 								<input type="hidden" id="applicantId" name="applicantName"
 									value="${id}">
@@ -138,7 +208,7 @@
 								<option value="Permanent">Permanent</option>
 							</select>
 							<div class="form-group">
-								<label for="houseNo">House No </label> <input type="text"
+								<label for="houseNo">House No. </label> <input type="text"
 									class="form-control" id="houseNoId"
 									name="houseNoName" placeholder="Enter House No">
 							</div>
@@ -183,7 +253,7 @@
 			</div>
 
 		</div>
-	</div>
+	
 	<br> <br>
 	<div>
 		<table id="addressTable" class="display" cellspacing="0" width="100%">
@@ -202,28 +272,39 @@
 
 			<tbody></tbody>
 		</table>
-
-	</div>
+</div>
+	
 	<br>
-	<br> <label for="emergency">In case of emergency , notify
+	<br> 
+	<form role="form" id="emergencyForm" class="form-inline">
+	<label for="emergency">In case of emergency , notify
 		, ( Name , Address and Telephone ) </label>
+		<br>
+		<br>
 	<div class="form-group">
 		<label for="emergencyOfName">Emergency Name </label> <input
 			type="text" class="form-control" id="emergencyNameId"
 			name="emergencyName" placeholder="Enter emergency name">
 	</div>
+	<br>
+	<br>
 	<div class="form-group">
 		<label for="emergencyTel">Emergency Telephone </label> <input
 			type="text" class="form-control" id="emergencyTelId"
 			name="emergencyTelName" placeholder="Enter emergency tel">
 	</div>
+	<br>
+	<br>
 	<div class="form-group">
-		<label for="emergencyAddress">Emergency Address </label> <input
-			type="textarea" class="form-control" id="emergencyAddressId"
-			name="emergencyAddressName" placeholder="Enter emergency address">
+		<label for="emergencyAddress">Emergency Address </label>
+			<textarea class="form-control" rows="5" id="emergencyAddressId"
+			name="emergencyAddressName" placeholder="Enter emergency address"></textarea>
+			
 	</div>
+	</form>
 	<br>
 	<button type="button" class="btn btn-success" id="buttonSave">
 		<span class="glyphicon glyphicon-off"></span> Save
 	</button>
+</div>
 </div>

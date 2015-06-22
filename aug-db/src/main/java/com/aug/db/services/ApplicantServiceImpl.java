@@ -1,5 +1,6 @@
 package com.aug.db.services;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
@@ -7,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.method.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.entities.Address;
 import com.aug.db.entities.Applicant;
+import com.aug.db.entities.AttachFile;
 import com.aug.db.entities.Department;
 import com.aug.db.entities.Education;
 import com.aug.db.entities.Experience;
@@ -22,6 +26,7 @@ import com.aug.db.entities.Reference;
 import com.aug.db.entities.Skill;
 import com.aug.db.repositories.AddressRepository;
 import com.aug.db.repositories.ApplicantRepository;
+import com.aug.db.repositories.AttachFileRepository;
 import com.aug.db.repositories.DepartmentRepository;
 import com.aug.db.repositories.EducationRepository;
 import com.aug.db.repositories.ExperienceRepository;
@@ -43,6 +48,30 @@ public class ApplicantServiceImpl implements ApplicantService {
 
 	@Autowired
 	private FamilyRepository familyRepository;
+	
+	@Autowired
+	private AttachFileRepository attachFileRepository;
+	
+	@Autowired
+	private UploadService uploadService;
+	
+	@Autowired
+	private SkillRepository skillRepository;
+
+	@Autowired
+	private EducationRepository educationRepository;
+
+	@Autowired
+	private LanguagesRepository languagesRepository;
+	
+	@Autowired
+	private AddressRepository addressRepository;
+
+	@Autowired
+	private ExperienceRepository experienceRepository;
+	
+	@Autowired
+	private ReferenceRepository referenceRepository;
 	
 	@Override
 	public Applicant findById(Integer id) {
@@ -131,15 +160,6 @@ public class ApplicantServiceImpl implements ApplicantService {
 		return applicants;
 	}
 
-	@Autowired
-	private SkillRepository skillRepository;
-
-	@Autowired
-	private EducationRepository educationRepository;
-
-	@Autowired
-	private LanguagesRepository languagesRepository;
-
 	@Override
 	public ApplicationDTO saveEducation(ApplicationDTO applicationDTO) {
 		List<Skill> skills = applicationDTO.getSkills();
@@ -163,11 +183,9 @@ public class ApplicantServiceImpl implements ApplicantService {
 			languagesRepository.insert(lang);
 
 		}
+		
 		return applicationDTO;
 	}
-
-	@Autowired
-	private AddressRepository addressRepository;
 
 	@Override
 	public ApplicationDTO saveAddress(ApplicationDTO applicationDTO) {
@@ -191,12 +209,6 @@ public class ApplicantServiceImpl implements ApplicantService {
 			positionRepository.insert(position3);
 		return applicationDTO;
 	}
-	
-
-	@Autowired
-	private ExperienceRepository experienceRepository;
-	@Autowired
-	private ReferenceRepository referenceRepository;
 
 	@Override
 	public ApplicationDTO saveExperiences(ApplicationDTO applicationDTO) {
@@ -214,15 +226,17 @@ public class ApplicantServiceImpl implements ApplicantService {
 		}
 		return applicationDTO;
 	}
+	
 
 	@Override
 	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO) {
 		Applicant applicant = new Applicant(); 
 		try {
 			applicant.setTrackingStatus("Waiting for consider");
+			
+			
 			applicantRepository.insert(applicant.fromApplicationDTO(applicant, applicationDTO));
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		List<Family> families = applicationDTO.getFamilies();
@@ -230,6 +244,10 @@ public class ApplicantServiceImpl implements ApplicantService {
 			family.setId(applicant.getId());
 			familyRepository.insert(family);
 
+		}
+		for(AttachFile file : applicationDTO.getAttachFiles()){
+					file.setApplicant(applicant);
+					attachFileRepository.insert(file);
 		}
 		applicationDTO.setId(applicant.getId());
 		return applicationDTO;

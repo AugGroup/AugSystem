@@ -17,7 +17,7 @@
 			format : "dd/mm/yyyy"
 
 		});
-	/* 	$('#previousEmployers').validate({
+	 	$('#previousEmployers').validate({
 			rules : {
 				previousEmployersName : {
 					required : true
@@ -35,7 +35,108 @@
 				}
 			}
 		});
-		 */
+	 	$('#referenceForm').validate({
+			rules : {
+				fullName : {
+					required : true
+				},
+				completeAddressName : {
+					required : true,
+				},
+				telNoName : {
+					required : true,
+				},
+				occupationRefName : {
+					required : true,
+				}
+			},
+			messages : {
+				fullName : {
+					required : "FULL NAME is required!"
+				},
+				completeAddressName : {
+					required : "COMPLETE ADDRESS. is required!"
+				},
+				telNoName : {
+					required : "TELEPHONE NO. is required!"
+				},
+				occupationRefName : {
+					required : "OCCUPATION is required!"
+				}
+			}
+		});
+	 	$('#experiencesForm').validate({
+			rules : {
+				workBackgroundName : {
+					required : true,
+				},
+				fromWorkYearName : {
+					required : true,
+				},
+				toWorkYearName : {
+					required : true,
+				},
+				empName : {
+					required : true,
+				},
+				addressBackgroundName : {
+					required : true,
+				},
+				businessName : {
+					required : true,
+				},
+				positionBackgroundName : {
+					required : true,
+				},
+				supervisorBackgroundName : {
+					required : true,
+				},
+				salaryBackgroundName : {
+					required : true,
+				},
+				descriptionBackgroundName : {
+					required : true,
+				},
+				reasonLeavingName : {
+					required : true,
+				}
+			},
+			messages : {
+				workBackgroundName : {
+					required : "Present or last position is required!"
+				},
+				fromWorkYearName : {
+					required : "From (month, year) is required!"
+				},
+				toWorkYearName : {
+					required : "To (month, year) is required!"
+				},
+				empName : {
+					required : "Employer Name is required!"
+				},
+				addressBackgroundName : {
+					required : "Address is required!"
+				},
+				businessName : {
+					required : "Type of business is required!"
+				},
+				positionBackgroundName : {
+					required : "Position is required!"
+				},
+				supervisorBackgroundName : {
+					required : "Supervisor is required!"
+				},
+				salaryBackgroundName : {
+					required : "Salary ,Wages is required!"
+				},
+				descriptionBackgroundName : {
+					required : "Description of duties and responsibilities is required!"
+				},
+				reasonLeavingName : {
+					required : "Reason for leaving is required!"
+				}
+			}
+		});
 
 		$('#referenceTable').DataTable({
 			ajax : {
@@ -55,6 +156,8 @@
 
 		});
 		$('#referenceSave').on("click", function() {
+
+			if ($('#referenceForm').valid()) { 
 			var table = $('#referenceTable').DataTable();
 
 			table.row.add({
@@ -64,7 +167,7 @@
 				completeAddress : $('#completeAddressId').val()
 			}).draw();
 			$('#referenceModal').modal('hide');
-
+			};
 		})
 
 		$('#experiencesTable').DataTable({
@@ -99,6 +202,7 @@
 
 		});
 		$('#experiencesSave').on("click", function() {
+			if ($('#experiencesForm').valid()) { 
 			var table = $('#experiencesTable').DataTable();
 
 			table.row.add({
@@ -115,10 +219,10 @@
 				reason : $('#reasonLeavingId').val()
 			}).draw();
 			$('#experiencesModal').modal('hide');
-
+			};
 		}) 
 		$('#buttonSave').on("click", function() {
-		/* 	if ($('#previousEmployers').valid()) { */
+		 	if ($('#previousEmployers').valid()) { 
 		var insertData = "{";
 			
 			insertData+="experiences : [ ";
@@ -181,17 +285,20 @@
 				    });
 				}
 			});
-			/* }; */
+			 }; 
 		})
 
 	});
 </script>
 <jsp:include page = "applicationMenu.jsp"/>
-<form role="form" id="previousEmployers" > 
+<div class="container">
+<form role="form" id="previousEmployers" class="form-inline"> 
 	<div class="form-group">
 		<label for="previousEmployers">May inquiry be made of your
 			previous employers regarding your character, qualification record of
 			employment? </label>
+			<br>
+			<br>
 		<div class="form-group">
 			<input type="hidden" id="applicantId" name="applicantName"
 				value="${id}">
@@ -204,6 +311,8 @@
 			<label><input type="radio" name="previousEmployersName"
 				id="previousEmployersId" value="No">No</label>
 		</div>
+		<br>
+		<br>
 		<div class="form-group">
 			<label for="giveReason">If not, please give the reason </label> <input
 				type="text" class="form-control" id="giveReasonId"
@@ -211,12 +320,14 @@
 				placeholder="Enter If not, please give the reason">
 		</div>
 	</div>
+	<br><br>
 	<div class="form-group">
 		<label for="reference">REFERENCE: List three persons OTHER
 			THAN YOUR RELATIVE OR FORMER EMPLOYER who have definite knowledge of
 			your qualifications and your conducts. </label>
 	</div>
 	</form>
+	</div>
 	<br>
 	<div class="container">
 		<div class="row">
@@ -280,11 +391,10 @@
 			</div>
 
 		</div>
-	</div>
+	
 	<br> <br>
 	<div>
-		<table id="referenceTable" class="display" cellspacing="0"
-			width="100%">
+		<table id="referenceTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th>FULLNAME</th>
@@ -297,9 +407,9 @@
 
 			<tbody></tbody>
 		</table>
-
+		</div>
 	</div>
-
+<div class="container">
 	<div class="form-group">
 		<label for="experiences">Experiences (start with your present
 			or last position of work background) </label>
@@ -453,8 +563,8 @@
 
 			<tbody></tbody>
 		</table>
-
 	</div>
+
 
 	<button type="button" class="btn btn-success" id="buttonSave">
 		<span class="glyphicon glyphicon-off"></span> Save

@@ -38,8 +38,22 @@
 <script
 	src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
 </head>
+<style>
+.error {
+	color: #ff0000;
+}
+/* #imagePreview {
+    width: 180px;
+    height: 180px;
+    background-position: center center;
+    background-size: cover;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+    display: inline-block;
+} */
+</style>
+
 <body  >
-	<div class="head">
+	<div class="headLogo" id="headId" >
 		<img
 			src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png"
 			alt="logo" style="width: 250px; height: 100px;" />
@@ -65,8 +79,6 @@
 						<li><a href=""><span class="glyphicon glyphicon-user"></span>
 
 								${name}</a></li>
-						<li><a href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon-log-in"></span>
-								Login</a></li>
 						<li><a href="<c:url value="j_spring_security_logout" />"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
 					</ul>
 				</div>
@@ -94,7 +106,7 @@
 
 	<div id="footer">
 		<div class="container">
-			<p class="text-muted credit">Copyright © augmentis.biz </p>
+			<p class="text-muted credit">Copyright &copy; <a href="http://www.augmentis.biz/" > augmentis.biz</a></p>
 		</div>
 	</div>
 

@@ -40,40 +40,54 @@
 	src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
 </head>
 <style>
-#bodyId{
-	background:
-		url('${pageContext.request.contextPath}/static/decorators/bg.jpg')
-		fixed;
-}
-form
+/* #bodyId{ */
+/* 	background: */
+/* 		url('${pageContext.request.contextPath}/static/decorators/intro-bg.jpg') */
+/* 		fixed; */
+/* } */
+
+body {
+background-image: url(${pageContext.request.contextPath}/static/decorators/body1.jpg);
+-moz-background-size: cover;
+-webkit-background-size: cover;
+background-size: cover;
+background-position: top center !important;
+background-repeat: no-repeat !important;
+background-attachment: fixed;
+} 
+
+#loginForm
 {
-    width: 250px;
+    width: 245px;
     margin: 0 auto;
+   
+    
     
 }
 
 </style>
 <body>
-	<div class="head" id="headId">
+<!-- 	<div class="head" > -->
+	<div class="headLogo" id="headId" >
 		 <img
 			src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png"
-			alt="logo" style="width: 250px; height: 100px;" /> 
+			alt="logo" style="width: 250px; height: 100px;" />
 	</div>
-	<hr />
-	<div class="body" id="bodyId">
-<%-- 	<img
-			src="${pageContext.request.contextPath}/static/decorators/bg.jpg"
-			alt="logo" />  --%>
-	</div>
+<!-- 	<hr /> -->
+	<!-- <div class="body" id="bodyId" -->
+ 	<%-- <img
+			src="${pageContext.request.contextPath}/static/decorators/header.jpg"
+			alt="logo" />  
+	</div> --%>
 	
 	<div>
 		<decorator:body />
 	</div>
-	<hr />
+	<!-- </div> -->
 
 	<div id="footer">
 		<div class="container">
-			<p class="text-muted credit">Copyright © augmentis.biz</p>
+			<p class="text-muted credit">Copyright &copy; <a href="http://www.augmentis.biz/" > augmentis.biz</a></p>
 		</div>
 	</div>
 

@@ -10,7 +10,7 @@
 							format : "dd/mm/yyyy"
 
 						});
-		/* 	$('#infoForm').validate({
+			$('#infoForm').validate({
 				rules : {
 					photographName : {
 						required : true
@@ -24,7 +24,7 @@
 					nickNameThName : {
 						required : true
 					},
-					firstNameEngId : {
+					firstNameEngName : {
 						required : true
 					},
 					lastnameEngName : {
@@ -87,71 +87,221 @@
 						required : "Firstname Thai is required!"
 					},
 					lastnameThName : {
-						required : "lastname Thai is required"
+						required : "Lastname Thai is required"
 					},
 					nickNameThName : {
-						required : "Firstname is required!"
+						required : "Nickname Thai is required!"
 					},
-					firstNameEngId : {
+					firstNameEngName : {
 						required : "Firstname English is required!"
 					},
 					lastnameEngName : {
-						required : "Birthday is required!"
+						required : "Lastname English is required!"
 					},
 					nickNameEngName : {
-						required : "Birthday is required!"
+						required : "Nickname English is required!"
 					},
 					telName : {
-						required : "Birthday is required!"
+						required : "Tel. is required!"
 					},
 					eMailName : {
-						required : "Birthday is required!"
+						required : "E-Mail is required!"
 					},
 					birthdayName : {
 						required : "Birthday is required!"
 					},
 					pBirthName : {
-						required : "Birthday is required!"
+						required : "Place of birth is required!"
 					},
 					ageName : {
-						required : "Birthday is required!"
+						required : "Age is required!"
 					},
 					religionName : {
-						required : "Birthday is required!"
+						required : "Religion is required!"
 					},
 					nationalityName : {
-						required : "Birthday is required!"
+						required : "Nationality is required!"
 					},
 					idCardName : {
-						required : "Birthday is required!"
+						required : "ID. Card no. is required!"
 					},
 					issuedCardName : {
-						required : "Birthday is required!"
+						required : "Issued office is required!"
 					},
 					expiryName : {
-						required : "Birthday is required!"
+						required : "Expiry date is required!"
 					},
 					heightName : {
-						required : "Birthday is required!"
+						required : "Height is required!"
 					},
 					weightName : {
-						required : "Birthday is required!"
+						required : "Weight is required!"
 					},
 					sexName : {
-						required : "Birthday is required!"
+						required : "Sex is required!"
 					},
 					maritalName : {
-						required : "Birthday is required!"
+						required : "Marital status is required!"
 					},
 					childrenName : {
-						required : "Birthday is required!"
+						required : "Number of children is required!"
 					}
 					
 				}
 			});
- */
-			
+			$('#informationForm').validate({
+				rules : {
+					spouseName : {
+						required : true
+					},
+					marriageCerName : {
+						required : true
+					},
+					issuedMarriageName : {
+						required : true
+					},
+					addressName : {
+						required : true
+					},
+					occupationName : {
+						required : true
+					},
+					militaryName : {
+						required : true
+					},
+					fromYearName : {
+						required : true
+					},
+					toYearName : {
+						required : true
+					},
+					branchName : {
+						required : true
+					},
+					placeName : {
+						required : true
+					},
+					serviceNoName : {
+						required : true
+					},
+					reasonsName : {
+						required : true
+					},
+					draftedName : {
+						required : true
+					}
+				},
+				messages : {
+					spouseName : {
+						required : "Spouse: Name is required!"
+					},
+					marriageCerName : {
+						required : "Marriage certificate No. is required!"
+					},
+					issuedMarriageName : {
+						required : "Issued office is required!"
+					},
+					addressName : {
+						required : "Address is required!"
+					},
+					occupationName : {
+						required : "Occupation is required!"
+					},
+					militaryName : {
+						required : "Military service is required!"
+					},
+					fromYearName : {
+						required : "From year is required!"
+					},
+					toYearName : {
+						required : "To year is required!"
+					},
+					branchName : {
+						required : "Branch of service is required!"
+					},
+					placeName : {
+						required : "Military place is required!"
+					},
+					serviceNoName : {
+						required : "Service No. is required!"
+					},
+					reasonsName : {
+						required : "Reasons is required!"
+					},
+					draftedName : {
+						required : "Date to be drafted is required!"
+					}
+					
+				}
+			});
+			$('#familyForm').validate({
+				rules : {
+					nameFamilyName : {
+						required : true
+					},
+					relationFamilyName : {
+						required : true
+					},
+					occupationFamilyName : {
+						required : true
+					},
+					addressFamilyName : {
+						required : true
+					},
+					occupationName : {
+						required : true
+					},
+					positionFamilyName : {
+						required : true
+					}
+				},
+				messages : {
+					nameFamilyName : {
+						required : "Spouse: Name is required!"
+					},
+					relationFamilyName : {
+						required : "Marriage certificate No. is required!"
+					},
+					occupationFamilyName : {
+						required : "Issued office is required!"
+					},
+					addressFamilyName : {
+						required : "Address is required!"
+					},
+					occupationName : {
+						required : "Occupation is required!"
+					},
+					positionFamilyName : {
+						required : "Military service is required!"
+					}
+				}
+				
+				
+			});
+			 $("#buttonUpload").on("click",function() {
+				 uplodFile();
+		 	 });
+			 
+			function uplodFile(){		
+				var file = $('#photograph')[0].files[0];
+				var formData = new FormData();
 
+			formData.append('file', file);
+			$.ajax({
+			     	dataType:"text", 
+					contentType: false,
+				    processData: false,
+					enctype: 'multipart/form-data',
+					type : "POST",
+					url : '${pageContext.request.contextPath}/upload',
+					data : formData,
+					success : function(data) {
+						alert(JSON.stringify(data));
+
+						
+					}
+				});
+			}
 						$('#familyTable').DataTable({
 											ajax : {
 												url : '${pageContext.request.contextPath}/informations',
@@ -173,7 +323,7 @@
 										});
 
 						$('#familySave').on("click", function() {
-
+							if($('#familyForm').valid()){
 							var table = $('#familyTable').DataTable();
 
 							table.row.add({
@@ -184,10 +334,11 @@
 								positionFamily : $('#positionFamilyId').val()}).draw();
 							
 							$('#familyModal').modal('hide');
-
+							};
 						})
-
+					
 						$('#buttonSave').on("click",function() {
+							if ($('#infoForm').valid()||$('#informationForm').valid()) {
 											 var insertData = "{";
 											insertData += "firstNameTH : '"+ $('#firstNameThId').val()+ "',";
 											insertData += "firstNameEN : '"+ $('#firstNameEngId').val() + "',";
@@ -244,7 +395,9 @@
 											});
 											
 											insertData=insertData.substring(0,insertData.length-1);
-											insertData+="]";
+											insertData+="],";
+											insertData += "attachFiles : [{attachName:'pic',type:'.png',path:'C:',attachTypeFile:'picture'}]";
+			
 											insertData+="}";
 											$.ajax({
 														contentType : "application/json",
@@ -253,7 +406,7 @@
 														data : JSON.stringify(eval("(" + insertData + ")")),
 														success : function(data) {
 															alert(JSON.stringify(data));
-
+														/* 	uplodFile(); */
 															new PNotify({
 														        title: 'Success',
 														        text: 'Successful Add Information!!!',
@@ -265,75 +418,88 @@
 														    });
 														}
 											});
-
-										})
+										}
+									})
 
 });
 </script>
 <jsp:include page="applicationMenu.jsp" />
 <!-- tab informations -->
 <div id="informations">
+<div class="container">
 	<div class="row">
 		<div class="col-md-6">
-			<form role="form" id="infoForm">
-				
 			<div class="form-group">
 				<input type="hidden" id="applicantId" name="applicantName"
 					value="${id}">
 			</div>
-
+			<form enctype="multipart/form-data">
 			<div class="form-group">
-				PHOTOGRAPH <input type="file" name="photographName" id="photographId"><br />
-				<input type="submit" value="Upload"> Press here to upload the file!
-				<p class="help-block">Block-level help text here.</p>
+				PHOTOGRAPH 
+				<!-- <div id="imagePreview "></div> -->
+				<input type="file" name="photograph" id="photograph"><br><br>
+				<input type="button" id="buttonUpload" name="buttonUpload" value="Upload"/>
 			</div>
-
+			</form>
+			
+			<form class="form-inline" role="form" id="infoForm">
 			<div class="form-group">
 				<label for="firstNameTh">Firstname (TH) </label> <input type="text"
 					class="form-control" id="firstNameThId" name="firstNameThName"
 					placeholder="Enter Firstname(TH)">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="lastnameTh">Lastname (TH) </label> <input type="text"
 					class="form-control" id="lastnameThId" name="lastnameThName"
 					placeholder="Enter lastname(TH)">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="nickNameTh">Nickname (TH) </label> <input type="text"
 					class="form-control" id="nickNameThId" name="nickNameThName"
 					placeholder="Enter nickname(TH)">
 			</div>
-
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="firstNameEng">Firstname (ENG) </label> <input
 					type="text" class="form-control" id="firstNameEngId"
 					name="firstNameEngName" placeholder="Enter Firstname(ENG)">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="lastnameEng">Lastname (ENG) </label> <input type="text"
 					class="form-control" id="lastnameEngId" name="lastnameEngName"
 					placeholder="Enter lastname(ENG)">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="nickNameEng">Nickname (Eng) </label> <input type="text"
 					class="form-control" id="nickNameEngId" name="nickNameEngName"
 					placeholder="Enter nickname(Eng)">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="tel">TELEPHONE NO. </label> <input type="text"
 					class="form-control" id="telId" name="telName"
 					placeholder="Enter tel">
 			</div>
-
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="eMail">E-Mail </label> <input type="e"
 					class="form-control" id="eMailId" name="eMailName"
 					placeholder="Enter E-Mail">
 			</div>
-
-
+			<br>
+			<br>
 			<div class="form-group">
-
 				<label for="birthday"><span
 					class="glyphicon glyphicon-calendar"></span> Birthday</label>
 				<div class="input-group date">
@@ -343,38 +509,50 @@
 				</div>
 
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="pBirth">Place of birth </label> <input type="text"
 					class="form-control" id="pBirthId" name="pBirthName"
 					placeholder="Enter place of birth">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="age">Age </label> <input type="text"
 					class="form-control" id="ageId" name="ageName"
 					placeholder="Enter age">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="religion">Religion </label> <input type="text"
 					class="form-control" id="religionId" name="religionName"
 					placeholder="Enter religion">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="nationality">Nationality </label> <input type="text"
 					class="form-control" id="nationalityId" name="nationalityName"
 					placeholder="Enter nationality">
 			</div>
-
-
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="idCard">ID. Card no. </label> <input type="text"
 					class="form-control" id="idCardId" name="idCardName"
 					placeholder="Enter ID. Card no.">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="issuedCard">Issued office </label> <input type="text"
 					class="form-control" id="issuedCardId" name="issuedCardName"
 					placeholder="Enter issued office">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="expiry"><span
 					class="glyphicon glyphicon-calendar"></span>Expiry date </label>
@@ -384,16 +562,22 @@
 						class="glyphicon glyphicon-th"></i></span>
 				</div>
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="height">Height (cms) </label> <input type="text"
 					class="form-control" id="heightId" name="heightName"
 					placeholder="Enter height (cms)">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="weight">Weight (kgs) </label> <input type="text"
 					class="form-control" id="weightId" name="weightName"
 					placeholder="Enter weight (kgs)">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="sex">Sex </label>
 				<div class="radio">
@@ -405,7 +589,8 @@
 						id="sexId">Male</label>
 				</div>
 			</div>
-
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="marital">Marital status </label>
 				<div class="radio">
@@ -422,7 +607,8 @@
 				</div>
 
 			</div>
-
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="children">Number of children </label> <input type="text"
 					class="form-control" id="childrenId" name="childrenName"
@@ -431,34 +617,42 @@
 		</form>
 	</div>
 	<div class="col-md-6">
-		<form role="form" id="informationForm">
+		<form role="form" id="informationForm" class="form-inline">
 			<div class="form-group">
 				<label for="spouse">Spouse: Name </label> <input type="text"
 					class="form-control" id="spouseId" name="spouseName"
 					placeholder="Enter spouse: name">
 			</div>
-
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="marriageCer">Marriage certificate No </label> <input
 					type="text" class="form-control" id="marriageCerId"
 					name="marriageCerName" placeholder="Enter marriage certificate No.">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="issuedMarriage">Issued office </label> <input
 					type="text" class="form-control" id="issuedMarriageId"
 					name="issuedMarriageName" placeholder="Enter Issued office">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="address">Address </label> <input type="text"
 					class="form-control" rows="5" id="addressId" name="addressName"
 					placeholder="Enter address">
 			</div>
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="occupation">Occupation </label> <input type="text"
 					class="form-control" id="occupationId" name="occupationName"
 					placeholder="Enter occupation">
 			</div>
-
+			<br>
+			<br>
 			<div class="form-group">
 				<label for="military">Have you ever served in the military
 					service? </label>
@@ -470,41 +664,51 @@
 					<label><input type="radio" name="militaryName"
 						id="militaryId">No</label>
 				</div>
-
+			<br>
+			<br>
 				<div class="form-group">
 					<label for="militaryComplete">If yes, please complete the
 						blanks below </label> <label for="fromYear">From year </label> <input
 						type="text" class="form-control" id="fromYearId"
 						name="fromYearName" placeholder="Enter from year">
 				</div>
+			<br>
+			<br>
 				<div class="form-group">
 					<label for="toYear">To year </label> <input type="text"
 						class="form-control" id="toYearId" name="toYearName"
 						placeholder="Enter to year">
 				</div>
-
+			<br>
+			<br>
 				<div class="form-group">
 					<label for="branch">Branch of service </label> <input type="text"
 						class="form-control" id="branchId" name="branchName"
 						placeholder="Enter branch of service">
 				</div>
+				<br>
+				<br>
 				<div class="form-group">
 					<label for="place">Military place </label> <input type="text"
 						class="form-control" id="placeId" name="placeName"
 						placeholder="Enter military place">
 				</div>
+				<br>
+				<br>
 				<div class="form-group">
 					<label for="serviceNo">Service no </label> <input type="text"
 						class="form-control" id="serviceNoId" name="serviceNoName"
 						placeholder="Enter Service no">
 				</div>
-
+			<br>
+			<br>
 				<div class="form-group">
 					<label for="reasons">If not, please state the reasons </label> <input
 						type="text" class="form-control" id="reasonsId" name="reasonsName"
 						placeholder="Enter If not, please state the reasons">
 				</div>
-
+			<br>
+			<br>
 				<div class="form-group">
 					<label for="drafted"><span
 						class="glyphicon glyphicon-calendar"></span>Date to be drafted</label>
@@ -521,7 +725,6 @@
 					<label for="informationFamily">Information regarding family
 						(Including Parents Brothers and Sisters) </label>
 				</div>
-				<br>
 				<div class="container">
 					<div class="row">
 						<div class="col-md-6">
@@ -563,10 +766,9 @@
 									</div>
 
 									<div class="form-group">
-										<label for="addressFamily">Address </label> <input
-											type="textarea" class="form-control"
-											id="addressFamilyId" name="addressFamilyName"
-											placeholder="Enter address ">
+										<label for="addressFamily">Address </label> 
+										<textarea class="form-control" rows="5" id="addressFamilyId"
+										name="addressFamilyName" placeholder="Enter address"></textarea>
 									</div>
 
 									<div class="form-group">
@@ -615,9 +817,12 @@
 			</div>
 
  		</div>
-		</div>
+
 
 			
 			<button type="button" class="btn btn-success" id="buttonSave">
 				<span class="glyphicon glyphicon-off"></span> Save
 			</button>
+			
+		</div>
+	</div>

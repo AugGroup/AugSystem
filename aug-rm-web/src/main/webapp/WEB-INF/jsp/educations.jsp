@@ -5,6 +5,110 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script>
 	$(document).ready(function() {
+		$('#educationsForm').validate({
+			rules : {
+				universityName : {
+					required : true
+				},
+				degreeName : {
+					required : true
+				},
+				facultyName : {
+					required : true
+				},
+				majorName : {
+					required : true
+				},
+				gpaName : {
+					required : true
+				},
+				graduateName : {
+					required : true
+				}
+			},
+			messages : {
+				universityName : {
+					required : "University is required!"
+				},
+				degreeName : {
+					required : "Degree is required!"
+				},
+				facultyName : {
+					required : "Faculty is required!"
+				},
+				majorName : {
+					required : "Major is required!"
+				},
+				gpaName : {
+					required : "GPA is required!"
+				},
+				graduateName : {
+					required : "Years of graduate is required!"
+				}
+			}
+		});
+		
+		$('#certificateForm').validate({
+			rules : {
+				certificateName : {
+					required : true
+				}
+			},
+			messages : {
+				certificateName : {
+					required : "Certificate is required!"
+				}
+			}
+		});
+		
+		$('#skillForm').validate({
+			rules : {
+				skillName : {
+					required : true
+				}
+			},
+			messages : {
+				skillName : {
+					required : "Skill Detail is required!"
+				}
+			}
+		});
+		$('#languagesForm').validate({
+			rules : {
+				languagesName : {
+					required : true
+				},
+				speakingName : {
+					required : true
+				},
+				understandingName : {
+					required : true
+				},
+				readingName : {
+					required : true
+				},
+				writingName : {
+					required : true
+				}
+			},
+			messages : {
+				languagesName : {
+					required : "Languages is required!"
+				},
+				speakingName : {
+					required : "Speaking is required!"
+				},
+				understandingName : {
+					required : "Understanding is required!"
+				},
+				readingName : {
+					required : "Reading is required!"
+				},
+				writingName : {
+					required : "Writing is required!"
+				}
+			}
+		});
 
 		$('.input-group.date').datepicker({
 			startView : 2,
@@ -34,9 +138,33 @@
 			searching : false
 
 		});
+		
+		 $("#buttonUpload").on("click",function() {
+			 uplodFile();
+	 	 });
+		 
+		function uplodFile(){		
+			var file = $('#file')[0].files[0];
+			var formData = new FormData();
+			formData.append('file', file);
+			
+		$.ajax({
+		     	dataType:"text", 
+				contentType: false,
+			    processData: false,
+				enctype: 'multipart/form-data',
+				type : "POST",
+				url : '${pageContext.request.contextPath}/upload',
+				data : formData,
+				success : function(data) {
+					alert(JSON.stringify(data));
 
+					
+				}
+			});
+		}
 		$('#educationSave').on("click", function() {
-
+			if ($('#educationsForm').valid()) { 
 			var table = $('#educationTable').DataTable();
 
 			table.row.add({
@@ -48,7 +176,7 @@
 				yearsOfGraduate : $('#graduateId').val()
 			}).draw();
 			$('#educationModal').modal('hide');
-
+			};
 		})
 		$('#certificateTable').DataTable({
 			ajax : {
@@ -63,14 +191,14 @@
 		});
 
 		$('#certificateSave').on("click", function() {
-
+			if ($('#certificateForm').valid()) {
 			var table = $('#certificateTable').DataTable();
 
 			table.row.add({
 				certificate : $('#certificateId').val()
 			}).draw();
 			$('#certificateModal').modal('hide');
-
+			};
 		})
 		$('#skillTable').DataTable({
 			ajax : {
@@ -84,12 +212,14 @@
 
 		});
 		$('#skillSave').on("click", function() {
+			if ($('#skillForm').valid()) {
 			var table = $('#skillTable').DataTable();
 
 			table.row.add({
 				skillDetail : $('#skillId').val()
 			}).draw();
 			$('#skillModal').modal('hide');
+			};
 		})
 
 		$('#languagesTable').DataTable({
@@ -113,7 +243,7 @@
 		});
 
 		$('#languagesSave').on("click", function() {
-
+			if ($('#languagesForm').valid()) { 
 			var table = $('#languagesTable').DataTable();
 
 			table.row.add({
@@ -124,7 +254,7 @@
 				writing : $('input[name=writingName]:checked').val()
 			}).draw();
 			$('#languagesModal').modal('hide');
-
+			};
 		})
 
 		$('#buttonSave').on("click", function() {
@@ -373,18 +503,25 @@
 
 
 </div>
+<div class="container">
+<form enctype="multipart/form-data" method="post">
 		<div class="form-group">
-			<label for="resume">Resume</label> <input type="file" id="resumeId"
-			name="resumeName">
+			<label for="file">File</label> <input type="file" multiple="multiple" id="file"
+			name="file">
 		<p class="help-block">Block-level help text here.</p>
 		</div>
 
-		<div class="form-group">
+		<!-- <div class="form-group">
 			<label for="transcript">Transcript</label> <input type="file"
-			id="transcriptId" name="transcriptName">
+			id="transcript" name="transcript">
 		<p class="help-block">Block-level help text here.</p>
-		</div>
-
+		</div> -->
+		<br>
+		<input type="button" id="buttonUpload" name="buttonUpload" value="Upload"/>
+		
+		
+</form>
+</div>
 <br>
 <br>
 <div class="container">
