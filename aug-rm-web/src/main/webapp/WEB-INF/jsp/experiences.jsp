@@ -10,13 +10,16 @@
 </style>
 <script>
 	$(document).ready(function() {
-
+		
+		var dtApplicant	
+		
 		$('.input-group.date').datepicker({
 			startView : 2,
 			todayBtn : "linked",
 			format : "dd/mm/yyyy"
 
 		});
+
 	 	/* $('#previousEmployers').validate({
 			rules : {
 				previousEmployersName : {
@@ -110,11 +113,52 @@
 		});
 	 	 */
 		
+// =======
+		
+// 		if(dtApplicant){
+// 			dtApplicant.ajax.reload();
+// 		}else{
+// 			var id = '${id}';
+// 		$('#referenceTable').DataTable({
+// 			ajax : {
+// 				url : '${pageContext.request.contextPath}/findByIdReference/' + id,
+// 				type : 'POST'
+// 			},
+// 			columns : [ {data : "fullName"},
+// 			            {data : "tel"},
+// 						{data : "occupation"},
+// 						{data : "completeAddress"}],
+// 			searching : false
+
+// 		});
+// 		}
+		
+// 		$('#referenceSave').on("click", function() {
+
+// 			if ($('#referenceForm').valid()) { 
+// 			var table = $('#referenceTable').DataTable();
+
+// 			table.row.add({
+// 				fullName : $('#fullNameId').val(),
+// 				tel : $('#telNoId').val(),
+// 				occupation : $('#occupationRefId').val(),
+// 				completeAddress : $('#completeAddressId').val()
+// 			}).draw();
+// 			$('#referenceModal').modal('hide');
+// 			};
+// 		})
+
+// 		if(dtApplicant){
+// 			dtApplicant.ajax.reload();
+// 		}else{
+// 			var id = '${id}';
+// >>>>>>> Edit AddressRepository.java, AddressRepositoryImpl.java, ExperienceRepository.java, /ExperienceRepositoryImpl.java, ReferenceRepository.java, ReferenceRepositoryImpl.java, ReferenceService.java, ReferenceServiceImpl.java, ApplicationController.java, address.jsp, applicationMenu.jsp, applications.jsp, experiences.jsp
 		$('#experiencesTable').DataTable({
 			ajax : {
-				url : '${pageContext.request.contextPath}/experiences',
-				type : 'GET'
+				url : '${pageContext.request.contextPath}/findByIdExperience/' + id,
+				type : 'POST'
 			},
+// <<<<<<< HEAD
 			columns : [ {
 				data : "position"
 			}, {
@@ -144,6 +188,19 @@
 				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
 			}
 		} ],
+// =======
+// 			columns : [ {data : "position"},
+// 						{data : "fromDate"},
+// 						{data : "toDate"},
+// 						{data : "employerName"},
+// 						{data : "address"},
+// 						{data : "typeOfBusiness"},
+// 						{data : "positionOfEmployer"},
+// 						{data : "supervisor"},
+// 						{data : "salary"},
+// 						{data : "description"},
+// 						{data : "reason"}],
+// >>>>>>> Edit AddressRepository.java, AddressRepositoryImpl.java, ExperienceRepository.java, /ExperienceRepositoryImpl.java, ReferenceRepository.java, ReferenceRepositoryImpl.java, ReferenceService.java, ReferenceServiceImpl.java, ApplicationController.java, address.jsp, applicationMenu.jsp, applications.jsp, experiences.jsp
 			searching : false
 
 		});
@@ -167,7 +224,13 @@
 			$('#experiencesModal').modal('hide');
 // 			};
 		}) 
+// <<<<<<< HEAD
 		$('#experiencesSave').on("click", function() {
+// =======
+// 		$('#buttonSave').on("click", function() {
+// 		 	if ($('#previousEmployers').valid()) { 
+
+// >>>>>>> Edit AddressRepository.java, AddressRepositoryImpl.java, ExperienceRepository.java, /ExperienceRepositoryImpl.java, ReferenceRepository.java, ReferenceRepositoryImpl.java, ReferenceService.java, ReferenceServiceImpl.java, ApplicationController.java, address.jsp, applicationMenu.jsp, applications.jsp, experiences.jsp
 		var insertData = "{";
 			
 			insertData+="experiences : [ ";
@@ -211,6 +274,30 @@
 				}
 			});
 		})
+		
+		//Find by Id
+		function findById(id){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/findAddressId/" + id,
+				type : "POST",
+				success : function(data){
+					showFillData(data);
+				}
+			});
+		}
+		
+		//Show data on inputField
+		function showFillData(data){
+// 			$('#inputAddress').val(data.addressType);
+			$("#houseNoId").val(data.houseNo);
+			$("#roadId").val(data.road);
+			$("#districtId").val(data.district);
+			$("#subDistrictId").val(data.subDistrict);
+			$("#zipcodeId").val(data.zipcode);
+			console.log(data.houseNo);
+			
+			$("#provinceId").val(data.province);
+		}
 
 	});
 </script>

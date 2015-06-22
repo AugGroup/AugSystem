@@ -54,67 +54,6 @@
 		});
 
 		
-// 		//Update function
-// 		function updateUser(button){
-// 			var id = $(button).data("id");
-// 			var applyDate = $("#applyDateId").val();
-// 			var department = $('#departmentId').val();
-// 			var position1 = $("#positionFirstId").val();
-// 			var position2 = $("#positionSecondId").val();
-// 			var position3 = $("#positionThirdId").val();
-// 			var trackingStatus = $("#salaryId").val();
-// 			var techScore = $('input[name="newspaperName"]:checked').val();
-// 			var techScore = $('input[name="magazineName"]:checked').val();
-// 			var techScore = $('input[name="websiteName"]:checked').val();
-// 			var techScore = $('input[name="friendName"]:checked').val();
-// 			var techScore = $('input[name="otherName"]:checked').val();
-// 			var trackingStatus = $("#otherTextId").val();
-// 			var trackingStatus = $("#otherId").val();
-// 			var techScore = $('input[name="inputTechScore"]:checked').val();
-			
-// 			console.log(techScore)
-// 			var json = {
-// 					"id" : id,
-// 					"score" : score,
-// 					"techScore" : techScore,
-// 					"attitudeHome" : attitudeHome,
-// 					"attitudeOffice" : attitudeOffice,
-// 					"trackingStatus" : trackingStatus
-// 					};
-// 			$.ajax({
-// 				url : "${pageContext.request.contextPath}/score/update/"+id,
-// 				type : "POST",
-// 				contentType :"application/json; charset=utf-8", 
-// 				data : JSON.stringify(json),
-// 				success : function(data){
-// 					console.log(data.id);
-// 					$('#myModal1').modal('hide');
-					
-// 					var table = $('#dataTable').DataTable();	
-// 				 	var rowData = table.row(button.closest('tr')).index(); 
-// 				 	var d = table.row(rowData).data();
-// 				 		d.score = data.score;
-// 						d.techScore = data.techScore;
-// 				 		d.attitudeHome = data.attitudeHome;
-// 				 		d.attitudeOffice = data.attitudeOffice;
-// 				 		d.trackingStatus = data.trackingStatus;
-				 		
-// 				 		table.row(rowData).data(d).draw();
-				 		
-// 						new PNotify({
-// 						    title: 'Edit Success',
-// 						    text: 'You can edit data',
-// 						    type: 'success',
-// 						    nonblock: {
-// 						        nonblock: true,
-// 						        nonblock_opacity: .2
-// 						    }
-// 						});
-// 				 }
-// 			});
-			
-// 		}
-		
 		//Find by Id
 		function findById(id){
 			$.ajax({
@@ -129,9 +68,9 @@
 		//Show data on inputField
 		function showFillData(data){
 			$("#applyDateId").val(data.applyDate);
-			$("#positionFirstId").val(data.position1Str);
-			$("#positionSecondId").val(data.position2Str);
-			$("#positionThirdId").val(data.position3Str);
+			$("#positionFirstId").val(data.position1);
+			$("#positionSecondId").val(data.position2);
+			$("#positionThirdId").val(data.position3);
 			$("#salaryId").val(data.expectedSalary);
 			
 			$("#newspaperId").val(data.noticeNewspaper);
@@ -150,9 +89,9 @@
 		function updateUser(){
 			var id = '${id}';
 			var applyDate = $("#applyDateId").val();
-			var positionF = $('#positionFirstId').val();
-			var positionS = $("#positionSecondId").val();
-			var positionT = $("#positionThirdId").val();
+			var positionF = {id : $('#positionFirstId').val()};
+			var positionS = {id : $("#positionSecondId").val()};
+			var positionT = {id : $("#positionThirdId").val()};
 			var salary = $("#salaryId").val();
 			
 			var newspaper = $("#newspaperId").val();

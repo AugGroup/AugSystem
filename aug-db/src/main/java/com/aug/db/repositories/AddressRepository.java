@@ -11,7 +11,5 @@ public interface AddressRepository extends GenericRepository<Address, Serializab
 	
 	public List<AddressDTO> findAddressById(Integer id);
 	
-	public List<AddressDTO> findALLAddressById();
-	
 	public AddressDTO findByAddressId(Integer id);
 }

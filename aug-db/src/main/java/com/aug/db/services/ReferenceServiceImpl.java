@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.db.dto.ReferenceDTO;
 import com.aug.db.entities.Reference;
 import com.aug.db.repositories.ReferenceRepository;
 
@@ -44,6 +45,20 @@ public class ReferenceServiceImpl implements ReferenceService {
 
 	public List<Reference> findAll() {
 		List<Reference> references = referenceRepository.findAll();
+		return references;
+	}
+	
+	@Override
+	public List<ReferenceDTO> findReferenceById(Integer id){
+		
+		List<ReferenceDTO> references = referenceRepository.findReferenceById(id);
+		return references;
+	}
+	
+	@Override
+	public ReferenceDTO findReference(Integer id){
+		
+		ReferenceDTO references = referenceRepository.findReference(id);
 		return references;
 	}
 

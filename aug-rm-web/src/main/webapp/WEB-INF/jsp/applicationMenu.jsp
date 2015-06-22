@@ -12,6 +12,7 @@
 						class="glyphicon glyphicon-user"></span> Informations</a></li>
 				<li><a  href="${pageContext.request.contextPath}/address/${id}"><span
 						class="glyphicon glyphicon-home"></span> Address</a></li>
+<<<<<<< HEAD
 				<li><a  href="${pageContext.request.contextPath}/family/"${id}><span
 						class="glyphicon glyphicon-file"></span> Family</a></li>
 				<li><a  href="${pageContext.request.contextPath}/educations/"${id}><span
@@ -24,8 +25,13 @@
 						class="glyphicon glyphicon-education"></span> Languages</a></li>
 				<li><a  href="${pageContext.request.contextPath}/references/"${id}><span
 						class="glyphicon glyphicon-file"></span> References</a></li>
-				<li><a  href="${pageContext.request.contextPath}/experiences/"${id}><span
+				<li><a  href="${pageContext.request.contextPath}/experiences/"${id}><span 
 						class="glyphicon glyphicon-file"></span> Experiences</a></li>
+<!-- ======= -->
+<%-- 				<li><a  href="${pageContext.request.contextPath}/educations/${id}"><span --%>
+<!-- 						class="glyphicon glyphicon-education"></span> Educations</a></li> -->
+<%-- 				<li><a  href="${pageContext.request.contextPath}/experiences/${id}"><span --%>
+<!-- >>>>>>> Edit AddressRepository.java, AddressRepositoryImpl.java, ExperienceRepository.java, /ExperienceRepositoryImpl.java, ReferenceRepository.java, ReferenceRepositoryImpl.java, ReferenceService.java, ReferenceServiceImpl.java, ApplicationController.java, address.jsp, applicationMenu.jsp, applications.jsp, experiences.jsp -->
 			</ul>
 		</div>
 </div>

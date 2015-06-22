@@ -9,8 +9,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.dto.AddressDTO;
-import com.aug.db.dto.ApplicantDTO;
-import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.entities.Address;
 
 @Repository(value = "addressRepository")
@@ -33,19 +31,6 @@ public class AddressRepositoryImpl extends HibernateRepositoryImpl<Address, Seri
 		List<AddressDTO> result = query.list();
 		AddressDTO app = result.get(0);
 		return app;
-	}
-	
-	@Override
-	public List<AddressDTO> findALLAddressById() {
-		Query query = getCurrentSession().getNamedQuery("SEARCH_ADDRESS_ALL");
-		List<Address> result = query.list();
-		List<AddressDTO> addrDto = convert(result);
-		for(AddressDTO addr : addrDto){
-			System.out.println("ADDRESS :: " + addr.getHouseNo());
-		}
-		
-		System.out.println("QUERYADDRESS :: " + result);
-		return addrDto;
 	}
 	
 	private List<AddressDTO> convert(List<Address> address){

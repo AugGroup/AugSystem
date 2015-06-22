@@ -3,7 +3,6 @@ package com.aug.controllers;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -18,7 +17,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,26 +24,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.aug.db.dto.AddressDTO;
-import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.entities.Applicant;
+import com.aug.db.dto.ExperienceDTO;
+import com.aug.db.dto.ReferenceDTO;
 import com.aug.db.entities.Department;
 import com.aug.db.entities.Position;
 import com.aug.db.repositories.AddressRepository;
-import com.aug.db.repositories.AddressRepositoryImpl;
-import com.aug.db.repositories.ApplicantRepository;
-import com.aug.db.repositories.ApplicantRepositoryImpl;
-import com.aug.db.services.AddressService;
+import com.aug.db.repositories.ExperienceRepository;
 import com.aug.db.services.ApplicantService;
 import com.aug.db.services.DepartmentService;
 import com.aug.db.services.PositionService;
 import com.aug.services.UploadService;
+import com.aug.db.services.ReferenceService;
 
 @Controller
 public class ApplicationController {
@@ -60,9 +56,12 @@ public class ApplicationController {
 	private ApplicantService applicantService;
 	@Autowired
 	private UploadService uploadService;
-
+	@Autowired
+	private ReferenceService referenceService;
 	@Autowired
 	private AddressRepository addressRepository;
+	@Autowired
+	private ExperienceRepository experienceRepository;
 	
 	@InitBinder public void InitBinder(WebDataBinder binder){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
@@ -249,9 +248,9 @@ public class ApplicationController {
 		applicantService.saveAddress(applicationDTO);
 		return applicationDTO;
 	}
-	@RequestMapping(value = "/educations", method = { RequestMethod.GET })
-	public String educations(Model model) {
-		model.addAttribute("id",2);
+	@RequestMapping(value = "/educations/{id}", method = { RequestMethod.GET })
+	public String educations(@PathVariable Integer id,Model model) {
+		model.addAttribute("id",id);
         return "educations";
 
 	}
@@ -261,10 +260,9 @@ public class ApplicationController {
 		return applicationDTO;
 		
 	}
-	@RequestMapping(value = "/experiences", method = { RequestMethod.GET })
-	public String experiences(Model model) {
-		
-        model.addAttribute("id",2);
+	@RequestMapping(value = "/experiences/{id}", method = { RequestMethod.GET })
+	public String experiences(@PathVariable Integer id,Model model) {
+        model.addAttribute("id",id);
         return "experiences";
 
 	}
@@ -277,12 +275,6 @@ public class ApplicationController {
 	
 	// Update
 	// Search Applicant By Id
-//	@RequestMapping(value = "/findIdAddress/{id}", method = { RequestMethod.POST })
-//	public @ResponseBody ApplicationDTO findById(@PathVariable Integer id) {
-//
-//		return applicantService.findById(id);
-//	}
-	
 	@RequestMapping(value = "/findByIdApplicants/{id}", method = { RequestMethod.POST })
 	public @ResponseBody ApplicationDTO findByIdApplications(@RequestBody ApplicationDTO applicationDTO,@PathVariable Integer id) {
 		applicationDTO = applicantService.findApplicationById(id);
@@ -305,6 +297,11 @@ public class ApplicationController {
 		return addressRepository.findByAddressId(id);
 	}
 	
+	@RequestMapping(value = "/findExperienceId/{id}", method = { RequestMethod.POST })
+	public @ResponseBody ExperienceDTO findExperience(@PathVariable Integer id) {
+		return experienceRepository.findExperience(id);
+	}
+	
 	@RequestMapping(value = "/findByIdAddress/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Object findByIdApplication(@PathVariable Integer id) {
 		 final List<AddressDTO> list= addressRepository.findAddressById(id);
@@ -319,20 +316,56 @@ public class ApplicationController {
 			 add.setZipcode(ad.getZipcode());
 		 }
 		 
-		 for(AddressDTO ad : list){
-			 System.out.println("////////////////////" + ad.getAddressType());
-			 System.out.println("////////////////////" + ad.getHouseNo());
-		 }
-		 
 		return new Object() {
 			public List<AddressDTO> getData() {
 				return list;
 			}
 		};
+	}
+	
+	@RequestMapping(value = "/findByIdExperience/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Object findByIdExperience(@PathVariable Integer id) {
+		 final List<ExperienceDTO> list= experienceRepository.findExperienceById(id);
+		 ExperienceDTO expDto = new ExperienceDTO();
+			for(ExperienceDTO exp : list){
+				expDto.setId(exp.getId());
+				expDto.setAddress(exp.getAddress());
+				expDto.setDescription(exp.getDescription());
+				expDto.setEmployerName(exp.getEmployerName());
+				expDto.setFromDate(exp.getFromDate());
+				expDto.setToDate(exp.getToDate());
+				expDto.setPosition(exp.getPosition());
+				expDto.setPositionOfEmployer(exp.getPositionOfEmployer());
+				expDto.setReason(exp.getReason());
+				expDto.setSalary(exp.getSalary());
+				expDto.setSupervisor(exp.getSupervisor());
+				expDto.setTypeOfBusiness(exp.getTypeOfBusiness());
+			}
 		 
-//		 List<AddressDTO> addrList = new ArrayList<AddressDTO>();
-//		 addrList.add(add);
-//		return list;
+		return new Object() {
+			public List<ExperienceDTO> getData() {
+				return list;
+			}
+		};
+	}
+	
+	@RequestMapping(value = "/findByIdReference/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Object findByIdReference(@PathVariable Integer id) {
+		 final List<ReferenceDTO> list = referenceService.findReferenceById(id);
+		 ReferenceDTO refDto = new ReferenceDTO();
+		 for(ReferenceDTO ref : list){
+			 refDto.setId(ref.getId());
+			 refDto.setCompleteAddress(ref.getCompleteAddress());
+			 refDto.setFullName(ref.getFullName());
+			 refDto.setOccupation(ref.getOccupation());
+			 refDto.setTel(ref.getTel());
+		 }
+		 
+		return new Object() {
+			public List<ReferenceDTO> getData() {
+				return list;
+			}
+		};
 	}
 	
 	@RequestMapping(value = "/applications/{id}", method = { RequestMethod.GET })
@@ -345,6 +378,7 @@ public class ApplicationController {
 	
 	@RequestMapping(value = "/address/{id}", method = { RequestMethod.GET })
 	public String informations(@PathVariable Integer id,Model model) {
+		model.addAttribute("id",id);
         return "address";
 
 	}

@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script>
 	$(document).ready(function() {
-		
 		$('#addressForm').validate({
 			rules : {
 				inputAddress : {
@@ -75,6 +74,9 @@
 				}
 			}
 		});
+
+		var dtApplicant	
+
 		$('.input-group.date').datepicker({
 			startView : 2,
 			todayBtn : "linked",
@@ -242,8 +244,6 @@
 			});
 		})
 		
-		var dtApplicant	
-		
 		//Find by Id
 		function findById(id){
 			$.ajax({
@@ -254,17 +254,6 @@
 				}
 			});
 		}
-		
-// 		function findById(id){
-// 			console.log(id);
-// 			$.ajax({
-// 					url : "${pageContext.request.contextPath}/findByIdAddress/"+id,
-// 					type : "POST",
-// 					success : function(data) {
-// 						showFillData(data);
-// 					}
-// 				});
-// 		}
 		
 		//Show data on inputField
 		function showFillData(data){
