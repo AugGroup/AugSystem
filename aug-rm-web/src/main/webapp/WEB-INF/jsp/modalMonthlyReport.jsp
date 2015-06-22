@@ -19,7 +19,6 @@
 	<h4 class="modal-title">Monthly Report</h4>
 </div>
 <f:form method="post" name="reportForm" target="_blank" commandName="applicant" action="${pageContext.request.contextPath}/searchMonthlyReport" cssClass="form-horizontal">
-
 	 <div class="modal-body">
 	 	Monthly Report
          <%-- <div class="form-group form-group-sm">
@@ -53,7 +52,7 @@
       </div>
 
 	<div class="modal-footer">
+		<button type="button" class="btn btn-default submit" value="preview">Preview</button>
 		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		<button type="button" class="btn btn-default submit" value="search">Search</button>
 	</div>
 </f:form>

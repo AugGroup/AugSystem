@@ -4,7 +4,6 @@ package com.aug.controllers;
 
 import java.io.Serializable;
 import java.text.ParseException;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,13 +24,14 @@ public class RequestApproveController implements Serializable {
 	@Autowired private AugRequestService augRequestService;
 
 	
+	/*--------------------Approve ------------------*/
 	@RequestMapping(value = "/approve", method = { RequestMethod.GET })
-	public String listRequest() {
+	public String listApprove() {
 		return "requestApprove";
 	}
 
 	/*--------------------Search All Request ------------------*/
-	@RequestMapping(value = "/request/search", method = { RequestMethod.GET })
+	/*@RequestMapping(value = "/request/search", method = { RequestMethod.GET })
 	public @ResponseBody Object findAllApprove() {
 		final List<AugRequestDTO> data = augRequestService.findAllAugRequest();
 		return new Object() {
@@ -39,7 +39,7 @@ public class RequestApproveController implements Serializable {
 				return data;
 			}
 		};
-	}
+	}*/
 
 	/*--------------------Update Approve Status ------------------*/
 	@RequestMapping(value = "/approve/update/{id}", method = { RequestMethod.POST })
