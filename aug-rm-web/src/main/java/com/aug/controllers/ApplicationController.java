@@ -40,9 +40,11 @@ import com.aug.db.entities.Position;
 import com.aug.db.repositories.AddressRepository;
 import com.aug.db.repositories.ExperienceRepository;
 import com.aug.db.dto.SkillDTO;
+import com.aug.db.services.AddressService;
 import com.aug.db.services.ApplicantService;
 import com.aug.db.services.DepartmentService;
 import com.aug.db.services.EducationService;
+import com.aug.db.services.ExperienceService;
 import com.aug.db.services.LanguagesService;
 import com.aug.db.services.PositionService;
 import com.aug.services.UploadService;
@@ -65,9 +67,9 @@ public class ApplicationController {
 	@Autowired
 	private ReferenceService referenceService;
 	@Autowired
-	private AddressRepository addressRepository;
+	private AddressService addressService;
 	@Autowired
-	private ExperienceRepository experienceRepository;
+	private ExperienceService experienceService;
 	@Autowired
 	private EducationService educationService;
 	@Autowired
@@ -298,12 +300,12 @@ public class ApplicationController {
 	
 	@RequestMapping(value = "/findAddressId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody AddressDTO findAddress(@PathVariable Integer id) {
-		return addressRepository.findByAddressId(id);
+		return addressService.findAddress(id);
 	}
 	
 	@RequestMapping(value = "/findExperienceId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody ExperienceDTO findExperience(@PathVariable Integer id) {
-		return experienceRepository.findExperience(id);
+		return experienceService.findExperience(id);
 	}
 	
 	@RequestMapping(value = "/findEducationId/{id}", method = { RequestMethod.POST })
@@ -323,7 +325,7 @@ public class ApplicationController {
 	
 	@RequestMapping(value = "/findByIdAddress/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Object findByIdApplication(@PathVariable Integer id) {
-		 final List<AddressDTO> list= addressRepository.findAddressById(id);
+		 final List<AddressDTO> list= addressService.findAddressById(id);
 		 AddressDTO add = new AddressDTO();
 		 for(AddressDTO ad : list){
 			 add.setAddressType(ad.getAddressType());
@@ -344,7 +346,7 @@ public class ApplicationController {
 	
 	@RequestMapping(value = "/findByIdExperience/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Object findByIdExperience(@PathVariable Integer id) {
-		 final List<ExperienceDTO> list= experienceRepository.findExperienceById(id);
+		 final List<ExperienceDTO> list= experienceService.findExperienceById(id);
 		 ExperienceDTO expDto = new ExperienceDTO();
 			for(ExperienceDTO exp : list){
 				expDto.setId(exp.getId());
@@ -464,7 +466,7 @@ public class ApplicationController {
 		System.out.println("ADDRESS : " + id);
 		System.out.println("ADDRESS2 ADDRESS2 ADDRESS2 ADDRESS2");
 		
-		final List<AddressDTO> data = addressRepository.findAddressById(id);
+		final List<AddressDTO> data = addressService.findAddressById(id);
 		return new Object() {
 			public List<AddressDTO> getData() {
 				return data;
