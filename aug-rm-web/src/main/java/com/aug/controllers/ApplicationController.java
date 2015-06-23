@@ -37,8 +37,6 @@ import com.aug.db.dto.LanguagesDTO;
 import com.aug.db.dto.ReferenceDTO;
 import com.aug.db.entities.Department;
 import com.aug.db.entities.Position;
-import com.aug.db.repositories.AddressRepository;
-import com.aug.db.repositories.ExperienceRepository;
 import com.aug.db.dto.SkillDTO;
 import com.aug.db.services.AddressService;
 import com.aug.db.services.ApplicantService;
