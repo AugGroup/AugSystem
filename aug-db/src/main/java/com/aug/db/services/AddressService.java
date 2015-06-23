@@ -2,6 +2,7 @@ package com.aug.db.services;
 
 import java.util.List;
 
+import com.aug.db.dto.AddressDTO;
 import com.aug.db.entities.Address;
 
 public interface AddressService {
@@ -18,7 +19,7 @@ public interface AddressService {
 
 	public List<Address> findAll();
 	
-//	public List<Address> findAllByApplicantId(Integer id);
-	
-//	public ApplicationDTO findApplicantById(Integer id);
+	public List<AddressDTO> findAddressById(Integer id);
+
+	public AddressDTO findAddress(Integer id);
 }

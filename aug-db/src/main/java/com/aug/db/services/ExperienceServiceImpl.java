@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.db.dto.ExperienceDTO;
+import com.aug.db.dto.SkillDTO;
 import com.aug.db.entities.Experience;
 import com.aug.db.repositories.ExperienceRepository;
 
@@ -49,6 +51,18 @@ public class ExperienceServiceImpl implements ExperienceService{
 	public List<Experience> findAll() {
 		List<Experience> experienceList = experienceRepository.findAll();
 		return experienceList;
+	}
+
+	@Override
+	public List<ExperienceDTO> findExperienceById(Integer id) {
+		List<ExperienceDTO> experiences = experienceRepository.findExperienceById(id);
+		return experiences;
+	}
+
+	@Override
+	public ExperienceDTO findExperience(Integer id) {
+		ExperienceDTO experience = experienceRepository.findExperience(id);
+		return experience;
 	}
 	
 
