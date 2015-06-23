@@ -12,7 +12,6 @@ import com.aug.db.dto.AddressDTO;
 import com.aug.db.entities.Address;
 
 @Repository(value = "addressRepository")
-@Transactional
 public class AddressRepositoryImpl extends HibernateRepositoryImpl<Address, Serializable> implements AddressRepository {
 	
 	@Override

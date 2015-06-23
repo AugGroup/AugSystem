@@ -14,7 +14,6 @@ import com.aug.db.entities.Address;
 import com.aug.db.entities.Experience;
 
 @Repository(value="experienceRepository")
-@Transactional
 public class ExperienceRepositoryImpl extends HibernateRepositoryImpl<Experience, Serializable> implements ExperienceRepository {
 
 	@Override
