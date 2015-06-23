@@ -158,24 +158,22 @@
 // 			});
 // 		}
 		
-		function saveAddress(){
-			$('#addressSave').on("click", function() {
-				var table = $('#addressTable').DataTable();
+// 		function saveAddress(){
+// 			$('#addressSave').on("click", function() {
+// 				var table = $('#addressTable').DataTable();
 
-				table.row.add({
-					addressType : $('#inputAddress').val(),
-					houseNo : $('#houseNoId').val(),
-					road : $('#roadId').val(),
-					district : $('#districtId').val(),
-					subDistrict : $('#subDistrictId').val(),
-					zipcode : $('#zipcodeId').val(),
-					province : $('#provinceId').val()
-				
-				}).draw();
-				$('#addressModal').modal('hide');
-
-			})
-		}
+// 				table.row.add({
+// 					addressType : $('#inputAddress').val(),
+// 					houseNo : $('#houseNoId').val(),
+// 					road : $('#roadId').val(),
+// 					district : $('#districtId').val(),
+// 					subDistrict : $('#subDistrictId').val(),
+// 					zipcode : $('#zipcodeId').val(),
+// 					province : $('#provinceId').val()
+// 				}).draw();
+// 				$('#addressModal').modal('hide');
+// 			})
+// 		}
 
 // <<<<<<< HEAD
 		$('#addressSave').on("click", function() {
@@ -257,7 +255,7 @@
 		
 		//Show data on inputField
 		function showFillData(data){
-// 			$('#inputAddress').val(data.addressType);
+			$('#inputAddress').val(data.addressType);
 			$("#houseNoId").val(data.houseNo);
 			$("#roadId").val(data.road);
 			$("#districtId").val(data.district);
@@ -266,9 +264,6 @@
 			console.log(data.houseNo);
 			
 			$("#provinceId").val(data.province);
-// 			$("#emergencyNameId").val(data.emergencyName);
-// 			$("#emergencyTelId").val(data.emergencyTel);
-// 			$("#emergencyAddressId").val(data.emergencyAddress);
 		}
 		
 		//Update function
@@ -282,9 +277,6 @@
 			var zipcode = $("#zipcodeId").val();
 			var province = $("#provinceId").val();
 			console.log(id);
-// 			var emergencyName = $("#emergencyNameId").val();
-// 			var emergencyTel = $("#emergencyTelId").val();
-// 			var emergencyAddress = $("#emergencyAddressId").val();
 			
 			var json = {
 					"id" : id,
@@ -295,9 +287,6 @@
 					"subDistrict" : subDistrict,
 					"zipcode" : zipcode,
 					"province" : province,
-// 					"emergencyName" : emergencyName,
-// 					"emergencyTel" : emergencyTel,
-// 					"emergencyAddress" : emergencyAddress
 					};
 			
 			$.ajax({

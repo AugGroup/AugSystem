@@ -75,7 +75,8 @@ public class ApplicationController {
 	@Autowired
 	private LanguagesService languagesService;
 	
-	@InitBinder public void InitBinder(WebDataBinder binder){
+	@InitBinder 
+	public void initBinder(WebDataBinder binder){
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat,true));
 	  
@@ -297,23 +298,27 @@ public class ApplicationController {
 	
 	@RequestMapping(value = "/findAddressId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody AddressDTO findAddress(@PathVariable Integer id) {
-//		System.out.println("ADDRESS//////// :: ");
-//		AddressDTO addressDTO = addressRepository.findByAddressId(id);
-//		System.out.println("ADDRESS//////// :: " + addressDTO.getId());
-//		System.out.println("ADDRESS//////// :: " + addressDTO.getAddressType());
-//		System.out.println("ADDRESS//////// :: " + addressDTO.getHouseNo());
-//		System.out.println("ADDRESS//////// :: " + addressDTO.getDistrict());
-//		System.out.println("ADDRESS//////// :: " + addressDTO.getSubDistrict());
-//		System.out.println("ADDRESS//////// :: " + addressDTO.getRoad());
-//		System.out.println("ADDRESS//////// :: " + addressDTO.getProvince());
-//		System.out.println("ADDRESS//////// :: " + addressDTO.getZipcode());
-//		return addressDTO;
 		return addressRepository.findByAddressId(id);
 	}
 	
 	@RequestMapping(value = "/findExperienceId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody ExperienceDTO findExperience(@PathVariable Integer id) {
 		return experienceRepository.findExperience(id);
+	}
+	
+	@RequestMapping(value = "/findEducationId/{id}", method = { RequestMethod.POST })
+	public @ResponseBody EducationDTO findEducation(@PathVariable Integer id) {
+		return educationService.findEducation(id);
+	}
+	
+	@RequestMapping(value = "/findSkillId/{id}", method = { RequestMethod.POST })
+	public @ResponseBody SkillDTO findSkill(@PathVariable Integer id) {
+		return skillService.findSkill(id);
+	}
+	
+	@RequestMapping(value = "/findLanguagesId/{id}", method = { RequestMethod.POST })
+	public @ResponseBody LanguagesDTO findLanguages(@PathVariable Integer id) {
+		return languagesService.findLanguages(id);
 	}
 	
 	@RequestMapping(value = "/findByIdAddress/{id}", method = { RequestMethod.POST })
@@ -465,6 +470,29 @@ public class ApplicationController {
 				return data;
 			}
 		};
+	}
+	
+	
+	// delete method
+	@RequestMapping(value = "/deleteEducation/{id}", method = RequestMethod.POST)
+	public @ResponseBody String delesteEducation(@PathVariable("id") Integer id) {
+
+		educationService.deleteById(id);
+		return "success";
+	}
+	
+	@RequestMapping(value = "/deleteSkill/{id}", method = RequestMethod.POST)
+	public @ResponseBody String delesteSkill(@PathVariable("id") Integer id) {
+
+		skillService.deleteById(id);
+		return "success";
+	}
+	
+	@RequestMapping(value = "/deleteLanguages/{id}", method = RequestMethod.POST)
+	public @ResponseBody String delesteLanguages(@PathVariable("id") Integer id) {
+
+		languagesService.deleteById(id);
+		return "success";
 	}
 
 	@ModelAttribute("departments")

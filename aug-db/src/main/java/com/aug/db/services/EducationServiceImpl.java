@@ -58,7 +58,7 @@ public class EducationServiceImpl implements EducationService{
 	}
 
 	@Override
-	public EducationDTO findEducatione(Integer id) {
+	public EducationDTO findEducation(Integer id) {
 		EducationDTO education = educationRepository.findByEducationId(id);
 		return education;
 	}

@@ -21,6 +21,6 @@ public interface EducationService {
 	
 	public List<EducationDTO> findEducationById(Integer id);
 
-	public EducationDTO findEducatione(Integer id);
+	public EducationDTO findEducation(Integer id);
 
 }

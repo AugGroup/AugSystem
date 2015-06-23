@@ -393,7 +393,7 @@
 											insertData += "age : "+ $('#ageId').val() + ",";
 											insertData += "height : "+ $('#heightId').val()+ ",";
 											insertData += "weight : "+ $('#weightId').val()+ ",";
-											insertData += "sex : '"+ $('input[name=sexName]:checked').val() + "',";
+											insertData += "sex : '"+ $('input[name=sex]:checked').val() + "',";
 											insertData += "religion : '"+ $('#religionId').val()+ "',";
 											insertData += "nationality : '"+ $('#nationalityId').val()+ "',";
 											insertData += "tel : '"+ $('#telId').val() + "',";
@@ -493,7 +493,7 @@
 			$("#heightId").val(data.height);
 			
 			$("#weightId").val(data.weight);
-			$("#sexId").val(data.sex);
+			$("#sex").val(data.sex);
 			$("#religionId").val(data.religion);
 			$("#nationalityId").val(data.nationality);
 			$("#telId").val(data.tel);
@@ -552,7 +552,7 @@
 			var height = $("#heightId").val();
 			
 			var weight = $("#weightId").val();
-			var sex = $('#sexId').val();
+			var sex = $('input[name="sex"]:checked').val();
 			var religion = $("#religionId").val();
 			var nationality = $("#nationalityId").val();
 			var tel = $("#telId").val();
@@ -656,65 +656,6 @@
 				contentType :"application/json; charset=utf-8",
 				data : JSON.stringify(json),
 				success : function(data){
-// 					var table = $('#dataTable').DataTable();	
-// 				 	var rowData = table.row(this).index(); 
-// 				 	var d = table.row(rowData).data();
-// 				 		console.log(data.firstNameTH);
-// 				 		d.firstNameTH = data.firstNameTH;
-// 						d.firstNameEn = data.firstNameEN;
-// 				 		d.lastNameTh = data.lastNameTH;
-// 				 		d.lastNameEn = data.lastNameEN;
-// 				 		d.nickNameTh = data.nickNameTH;
-				 		
-// 				 		d.nickNameEn = data.nickNameEN;
-// 						d.birthday = data.birthDate;
-// 				 		d.pBirthday = data.placeBirth;
-// 				 		d.age = data.age;
-// 				 		d.height = data.height;
-				 		
-// 				 		d.weight = data.weight;
-// 						d.sex = data.sex;
-// 				 		d.religion = data.religion;
-// 				 		d.nationality = data.nationality;
-// 				 		d.tel = data.tel;
-				 		
-// 				 		d.eMail = data.email;
-// 						d.applyDate = data.applyDate;
-// 				 		d.emergencyName = data.emergencyName;
-// 				 		d.emergencyTel = data.emergencyTel;
-// 				 		d.emergencyAddress = data.emergencyAddress;
-				 		
-// 				 		d.newspaper = data.noticeNewspaper;
-// 						d.magazine = data.noticeMagazine;
-// 				 		d.friend = data.noticeFriend;
-// 				 		d.website = data.noticeWebSite;
-// 				 		d.other = data.noticeOther;
-						
-// 				 		d.certificate = data.certificate;
-// 						d.salary = data.expectedSalary;
-// 				 		d.idCard = data.cardId;
-// 				 		d.issuedCard = data.cardIssuedOffice;
-// 				 		d.expiry = data.cardExpiryDate;
-				 		
-// 				 		d.militaryFromYear = data.militaryFromYear;
-// 						d.militaryToYear = data.militarytoYear;
-// 				 		d.place = data.militaryPlace;
-// 				 		d.serviceNo = data.militaryServiceNo;
-// 				 		d.reason = data.militaryReason;
-
-// 				 		d.military = data.militaryStatus;
-// 						d.marital = data.marritalStatusName;
-// 				 		d.children = data.numberOfChildren;
-// 				 		d.spouse = data.spouseName;
-// 				 		d.marriageCer = data.marriageCertificateNo;
-				 		
-// 				 		d.issuedMarriage = data.issueOficeMarriage;
-// 						d.address = data.issueOficeMarriage;
-// 				 		d.occupation = data.occupationMarriage;
-// 				 		d.branch = data.branchService;
-				 		
-// 				 		table.row(rowData).data(d).draw();
-				 		
 						new PNotify({
 						    title: 'Edit Success',
 						    text: 'You can edit data',
@@ -1248,7 +1189,6 @@
 		<f:form id="informationForm" name="informationForm">
 		<div class="col-md-6">
 			<div class="form-group">
-<%-- 				<f:hidden path="id" name="applicantName" id="applicantId" value="${id}"/> --%>
 				<input type="hidden" id="applicantId" name="applicantName" value="${id}">
 			</div>
 			<form enctype="multipart/form-data">
@@ -1378,10 +1318,10 @@
 			<div class="form-group">
 				<label for="sex">Sex </label>
 				<div class="radio">
-					<label><input type="radio" name="sexName" value="Female" id="sexId">Female</label>
+					<label><input type="radio" name="sex" value="Female" id="sex">Female</label>
 				</div>
 				<div class="radio">
-					<label><input type="radio" name="sexName" value="Male" id="sexId">Male</label>
+					<label><input type="radio" name="sex" value="Male" id="sex">Male</label>
 				</div>
 			</div>
 			<br>
@@ -1588,6 +1528,9 @@
 <!-- 				<div class="form-group"> -->
 <!-- 					<label for="nameFamily">Name </label> <input type="text" class="form-control" id="nameFamilyId" name="nameFamilyName" placeholder="Enter name"> -->
 
+<%-- 			<form role="form" id="familyForm"> --%>
+<!-- 				<div class="form-group"> -->
+<!-- 					<label for="nameFamily">Name </label> <input type="text" class="form-control" id="nameFamilyId" name="nameFamilyName" placeholder="Enter name"> -->
 				</div>
 				<div class="form-group">
 					<label for="relationFamily">Relation </label> 
