@@ -299,7 +299,7 @@ public class ApplicationDTO {
 	@Transient
 	private Position position3;
 	
-	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	@Transient
 	private List<Certificate> certificates;
 	
 	public String getResume() {

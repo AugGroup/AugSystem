@@ -70,10 +70,10 @@
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
 					<ul class="nav navbar-nav">
-						<li><a href="${pageContext.request.contextPath}/applicant">Applicant</a></li>
-						<li><a href="${pageContext.request.contextPath}/request">Request</a></li>
-						<li><a href="${pageContext.request.contextPath}/approve">Approve</a></li>
-						<li><a href="${pageContext.request.contextPath}/report">Report</a></li>
+						<li><a href="${pageContext.request.contextPath}/applicant"><spring:message code="main.text.applicant"/></a></li>
+						<li><a href="${pageContext.request.contextPath}/request"><spring:message code="request.button"/></a></li>
+						<li><a href="${pageContext.request.contextPath}/approve"><spring:message code="request.approve"/></a></li>
+						<li><a href="${pageContext.request.contextPath}/report"><spring:message code="report.text"/></a></li>
 						<%-- <li class="dropdown">
          					 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
          					 <ul class="dropdown-menu">
@@ -81,14 +81,11 @@
             					<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalDegreeReport">Degree Report</a> </li>
             					<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalMajorReport">Major Report</a> </li>
          					 	<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalPositionReport">Position Report</a> </li>
-         					 	<li class="divider"></li>	
-         					 	<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalMonthlyReport">Monthly Report</a></li>
-         					 </ul>
         				</li> --%>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="${pageContext.request.contextPath}/login?locale=en">EN</a></li>
-						<li><a href="${pageContext.request.contextPath}/login?locale=th">TH</a></li>
+						<li><a href="${pageContext.request.contextPath}/login?locale=en"><spring:message code="sitemesh.en"/></a></li>
+						<li><a href="${pageContext.request.contextPath}/login?locale=th"><spring:message code="sitemesh.th"/></a></li>
 						<li><a href=""><span class="glyphicon glyphicon-user"></span> ${name}</a></li>
 						<li><a href="<c:url value="j_spring_security_logout" />"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a></li>
 					</ul>

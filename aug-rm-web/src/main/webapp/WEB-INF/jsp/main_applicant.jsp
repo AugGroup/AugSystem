@@ -262,7 +262,7 @@
 		<div class="row">
 			<div class="col-md-6"></div>
 			<div class="col-md-6">
-				<button type="submit" id="btn_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> Add New Applicant</button>
+				<button type="submit" id="btn_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></button>
 			</div>
 		</div>
 		</sec:authorize>
