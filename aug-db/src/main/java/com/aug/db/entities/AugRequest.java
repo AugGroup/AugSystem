@@ -5,7 +5,6 @@
  */
 package com.aug.db.entities;
 
-import java.text.ParseException;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -17,8 +16,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
-import com.aug.db.dto.ApplicantDTO;
-import com.aug.db.dto.AugRequestDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 /**
