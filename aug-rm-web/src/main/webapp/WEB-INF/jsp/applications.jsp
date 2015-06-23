@@ -128,7 +128,7 @@
 <label for="applyDate"><span
 	class="glyphicon glyphicon-calendar"></span>Apply date</label>
 <div class="input-group date">
-	<input type="text" id="applyDateId" name="applyDateName"
+	<input type="text" id="applyDate" name="applyDate"
 		class="form-control"><span class="input-group-addon"><i
 		class="glyphicon glyphicon-th"></i></span>
 </div>
@@ -146,8 +146,8 @@
 <br>
 <br>
 <div class="form-group">
-	<label for="positionFirst">Position 1 </label> <select
-		id="positionFirstId" name="positionFirstName" class="form-control">
+	<label for="position1">Position 1 </label> <select
+		id="position1" name="position1" class="form-control">
 		<option value="-1" label="please select data"/>
 		
 		<c:forEach var="positionList" items="${positions}">
@@ -158,8 +158,8 @@
 <br>
 <br>
 <div class="form-group">
-	<label for="positionSecond">Position 2 </label> <select
-		id="positionSecondId" name="positionSecondName" class="form-control">
+	<label for="position2">Position 2 </label> <select
+		id="position2" name="position2" class="form-control">
 		<option value="-1" label="please select data"/>
 		<c:forEach var="positionList" items="${positions}">
 			<option value="${positionList.id}">${positionList.positionName}</option>
@@ -169,8 +169,8 @@
 <br>
 <br>
 <div class="form-group">
-	<label for="positionThird">Position 3 </label> <select
-		id="positionThirdId" name="positionThirdName" class="form-control">
+	<label for="position3">Position 3 </label> <select
+		id="position3" name="position3" class="form-control">
 		<option value="-1" label="please select data"/>
 		<c:forEach var="positionList" items="${positions}">
 			<option value="${positionList.id}">${positionList.positionName}</option>
@@ -181,7 +181,7 @@
 <br>
 <div class="form-group">
 	<label for="salary">Salary expected </label> <input type="text"
-		class="form-control" id="salaryId" name="salaryName"
+		class="form-control" id="expectedSalary" name="expectedSalary"
 		placeholder="Enter salary">
 </div>
 <br>
@@ -191,66 +191,66 @@
 	 <div class="checkbox">
   		<label><input type="checkbox" 
 		id="newspaperId" name="newspaperName" value="newspaper">Newspaper</label>
-		<input type="text" class="form-control" id="newspaperlistId"
-			name="newspaperlistName" placeholder="Enter newspaper">
+		<input type="text" class="form-control" id="noticeNewspaper"
+			name="noticeNewspaper" placeholder="Enter newspaper">
 	</div>
 	<br>
 	<br>
 	<div class="checkbox">
  		 <label><input type="checkbox" id="magazineId" name="magazineName"
 		value="magazine">Magazine</label>
-		<input type="text" class="form-control" id="magazinelistId"
-			name="magazinelistName" placeholder="Enter magazine">
+		<input type="text" class="form-control" id="noticeMagazine"
+			name="noticeMagazine" placeholder="Enter magazine">
 	</div>
 	<br>
 	<br>
 	<div class="checkbox">
   		<label><input type="checkbox" id="websiteId" name="websiteName" value="website">Website</label>
-  		<input type="text" class="form-control" id="websitelistId"
-			name="websitelistName" placeholder="Enter website">
+  		<input type="text" class="form-control" id="noticeWebSite"
+			name="noticeWebSite" placeholder="Enter website">
 	</div>
 	<br>
 	<br>
 	<div class="checkbox">
   		<label><input type="checkbox" id="friendId" name="friendName" value="friend">Friend</label>
-  		<input type="text" class="form-control" id="friendlistId"
-			name="friendlistName" placeholder="Enter friend">
+  		<input type="text" class="form-control" id="noticeFriend"
+			name="noticeFriend" placeholder="Enter friend">
 	</div>
 	<br>
 	<br>
 	<div class="checkbox">
   		<label><input type="checkbox" id="otherId" name="otherName" value="other">Other (please specify) </label>
-  		<input type="text" class="form-control" id="otherlistId"
-			name="otherlistName" placeholder="Enter other">
+  		<input type="text" class="form-control" id="noticeOther"
+			name="noticeOther" placeholder="Enter other">
 	</div> 
 </div>
 <br>
 <br>
 <div class="form-group">
-	<label for="knowEmployed">Do you know anyone now being employed
+	<label for="nowEmployed">Do you know anyone now being employed
 		by this company? </label><br><br>
 	<div class="radio">
-		<label><input type="radio" name="knowEmployedName"
-			id="knowEmployedId" value="Yes">Yes</label>
+		<label><input type="radio" name="nowEmployed"
+			id="nowEmployed" value="Yes">Yes</label>
 	</div>
 	<div class="radio">
 		<label><input type="radio" name="knowEmployedName"
-			id="knowEmployedId" value="No">No</label>
+			id="nowEmployed" value="No">No</label>
 	</div>
 	<br>
 	<br>
 	<div class="form-group">
 		<label for="nameRelation">If yes, please write name, position
 			and relation </label><br><br>
-		<lable for="nameRelation">Name </lable>
-		<input type="text" class="form-control" id="nameRelationId"
-			name="nameRelationName" placeholder="Enter name">
-		<lable for="positionRelation">Position </lable>
-		<input type="text" class="form-control" id="positionRelationId"
-			name="positionRelationName" placeholder="Enter position">
+		<lable for="employedName">Name </lable>
+		<input type="text" class="form-control" id="employedName"
+			name="employedName" placeholder="Enter name">
+		<lable for="employedPosition">Position </lable>
+		<input type="text" class="form-control" id="employedPosition"
+			name="employedPosition" placeholder="Enter position">
 		<lable for="employedRelation">Relation </lable>
-		<input type="text" class="form-control" id="employedRelationId"
-			name="employedRelationName" placeholder="Enter relation">
+		<input type="text" class="form-control" id="employedRelation"
+			name="employedRelation" placeholder="Enter relation">
 	</div>
 </div>
 </form>

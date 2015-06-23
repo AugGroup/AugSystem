@@ -18,8 +18,8 @@ import org.hibernate.annotations.Index;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.aug.db.entities.Address;
-import com.aug.db.entities.AttachFile;
 import com.aug.db.entities.AugEmployee;
+import com.aug.db.entities.Certificate;
 import com.aug.db.entities.Education;
 import com.aug.db.entities.Experience;
 import com.aug.db.entities.Family;
@@ -34,17 +34,17 @@ import com.sun.mail.handlers.multipart_mixed;
 @NamedNativeQueries({ @NamedNativeQuery(name = "DATA_APPLICANT", query = "SELECT FIRSTNAME_TH,FIRSTNAME_EN,LASTNAME_TH,LASTNAME_EN,NICKNAME_TH,NICKNAME_EN"
 		+ ",BIRTHDATE,PLACE_BIRTH,AGE,HEIGHT,WEIGHT,RELIGION,NATIONALITY,TEL,EMAIL,APPLICANT_STATUS,APPLY_DATE,EMERGENCY_NAME"
 		+ ",EMERGENCY_TEL,EMERGENCY_ADDRESS,NOTICE_NEWSPAPER,NOTICE_MAGAZINE,NOTICE_FRIEND,NOTICE_WEBSITE,NOTICE_OTHER"
-		+ ",CERTIFICATE,EXPECTED_SALARY,CARD_ID,CARD_ISSUED_OFFICE,CARD_EXPIRY_DATE,MILITARY_FROM_YEAR"
-		+ ",MILITARY_TO_YEAR,MILITARY_PLACE,MILITARY_SERVICE_NO,MILITARY_REASON,MILITARY_STATUS,MARRITAL_STATUS_NAME"
-		+ ",NUMBER_OF_CHILDREN,SPOUSE_NAME,MARRIAGE_CERTIFICATE_NO,ISSUE_OFFICE_MARRIAGE,OCCUPATION_MARRIAGE,NOW_EMPLOYED,EMPLOYED_NAME,EMPLOYED_POSITION,EMPLOYED_RELATION,BRANCH_SERVICE,PREVIOUS_EMPLOYERS,PREVIOUS_EMPLOYERS_REASON,DATE_TO_BE_DRAFTED,MARRIAGE_ADDRESS"
+		+ ",EXPECTED_SALARY,CARD_ID,CARD_ISSUED_OFFICE,CARD_EXPIRY_DATE,MILITARY_FROM_YEAR"
+		+ ",MILITARY_TO_YEAR,MILITARY_PLACE,MILITARY_SERVICE_NO,MILITARY_REASON"
+		+ ",NUMBER_OF_CHILDREN,SPOUSE_NAME,MARRIAGE_CERTIFICATE_NO,ISSUE_OFFICE_MARRIAGE,OCCUPATION_MARRIAGE,NOW_EMPLOYED,EMPLOYED_NAME,EMPLOYED_POSITION,EMPLOYED_RELATION,BRANCH_SERVICE,PREVIOUS_EMPLOYERS,PREVIOUS_EMPLOYERS_REASON,DATE_TO_BE_DRAFTED,MARRIAGE_ADDRESS,RESUME,TRANSCRIPT,IMAGE"
 		+ " FROM APPLICANT WHERE FIRSTNAME_TH = :FIRSTNAME_TH AND FIRSTNAME_EN = :FIRSTNAME_EN AND LASTNAME_TH = :LASTNAME_TH AND LASTNAME_EN = :LASTNAME_EN AND NICKNAME_TH = :NICKNAME_TH AND NICKNAME_EN = :NICKNAME_EN "
 		+ "AND BIRTHDATE = :BIRTHDATE AND PLACE_BIRTH = :PLACE_BIRTH AND AGE = :AGE AND HEIGHT = :HEIGHT AND WEIGHT = :WEIGHT AND RELIGION = :RELIGION AND NATIONALITY = :NATIONALITY AND TEL = :TEL"
 		+ "AND EMAIL = :EMAIL AND APPLICANT_STATUS = :APPLICANT_STATUS AND APPLY_DATE = :APPLY_DATE AND EMERGENCY_NAME = :EMERGENCY_NAME AND EMERGENCY_TEL = :EMERGENCY_TEL AND EMERGENCY_ADDRESS = :EMERGENCY_ADDRESS AND NOTICE_NEWSPAPER = :NOTICE_NEWSPAPER"
-		+ "AND NOTICE_MAGAZINE = :NOTICE_MAGAZINE AND NOTICE_FRIEND = :NOTICE_FRIEND AND NOTICE_WEBSITE = :NOTICE_WEBSITE AND NOTICE_OTHER = :NOTICE_OTHER AND CERTIFICATE = :CERTIFICATE AND EXPECTED_SALARY = :EXPECTED_SALARY "
+		+ "AND NOTICE_MAGAZINE = :NOTICE_MAGAZINE AND NOTICE_FRIEND = :NOTICE_FRIEND AND NOTICE_WEBSITE = :NOTICE_WEBSITE AND NOTICE_OTHER = :NOTICE_OTHER AND EXPECTED_SALARY = :EXPECTED_SALARY "
 		+ "AND CARD_ID = :CARD_ID AND CARD_ISSUED_OFFICE = :CARD_ISSUED_OFFICE AND CARD_EXPIRY_DATE = :CARD_EXPIRY_DATE AND MILITARY_FROM_YEAR = :MILITARY_FROM_YEAR AND MILITARY_TO_YEAR = :MILITARY_TO_YEAR"
-		+ "AND MILITARY_PLACE = :MILITARY_PLACE AND MILITARY_SERVICE_NO = :MILITARY_SERVICE_NO AND MILITARY_REASON = :MILITARY_REASON AND MILITARY_STATUS = :MILITARY_STATUS AND MARRITAL_STATUS_NAME = :MARRITAL_STATUS_NAME "
+		+ "AND MILITARY_PLACE = :MILITARY_PLACE AND MILITARY_SERVICE_NO = :MILITARY_SERVICE_NO AND MILITARY_REASON = :MILITARY_REASON "
 		+ "AND NUMBER_OF_CHILDREN = :NUMBER_OF_CHILDREN AND SPOUSE_NAME = :SPOUSE_NAME AND MARRIAGE_CERTIFICATE_NO = :MARRIAGE_CERTIFICATE_NO AND ISSUE_OFFICE_MARRIAGE = :ISSUE_OFFICE_MARRIAGE AND OCCUPATION_MARRIAGE = :OCCUPATION_MARRIAGE AND NOW_EMPLOYED = :NOW_EMPLOYED "
-		+ "AND EMPLOYED_NAME = :EMPLOYED_NAME AND EMPLOYED_POSITION = :EMPLOYED_POSITION AND EMPLOYED_RELATION = :EMPLOYED_RELATION AND BRANCH_SERVICE = :BRANCH_SERVICE AND PREVIOUS_EMPLOYERS = :PREVIOUS_EMPLOYERS AND PREVIOUS_EMPLOYERS_REASON = :PREVIOUS_EMPLOYERS_REASON AND DATE_TO_BE_DRAFTED = :DATE_TO_BE_DRAFTED AND MARRIAGE_ADDRESS = :MARRIAGE_ADDRESS ", resultClass = ApplicationDTO.class) })
+		+ "AND EMPLOYED_NAME = :EMPLOYED_NAME AND EMPLOYED_POSITION = :EMPLOYED_POSITION AND EMPLOYED_RELATION = :EMPLOYED_RELATION AND BRANCH_SERVICE = :BRANCH_SERVICE AND PREVIOUS_EMPLOYERS = :PREVIOUS_EMPLOYERS AND PREVIOUS_EMPLOYERS_REASON = :PREVIOUS_EMPLOYERS_REASON AND DATE_TO_BE_DRAFTED = :DATE_TO_BE_DRAFTED AND MARRIAGE_ADDRESS = :MARRIAGE_ADDRESS AND RESUME = :RESUME AND TRANSCRIPT = :TRANSCRIPT AND IMAGE = :IMAGE ", resultClass = ApplicationDTO.class) })
 public class ApplicationDTO {
 
 	@Column(name = "POSITION_NAME")
@@ -140,9 +140,6 @@ public class ApplicationDTO {
 	@Column(name = "TRACKING_STATUS")
 	private String trackingStatus;
 
-	@Column(name = "CERTIFICATE")
-	private String certificate;
-
 	@Column(name = "EXPECTED_SALARY")
 	private String expectedSalary;
 
@@ -170,12 +167,6 @@ public class ApplicationDTO {
 
 	@Column(name = "MILITARY_REASON")
 	private String militaryReason;
-
-	@Column(name = "MILITARY_STATUS")
-	private String militaryStatus;
-
-	@Column(name = "MARRITAL_STATUS_NAME")
-	private String marritalStatusName;
 
 	@Column(name = "NUMBER_OF_CHILDREN")
 	private Integer numberOfChildren;
@@ -225,6 +216,15 @@ public class ApplicationDTO {
 
 	@Column(name = "MARRIAGE_ADDRESS")
 	private String marriageAddress;
+	
+	@Column(name = "RESUME")
+	private String resume;
+	
+	@Column(name = "TRANSCRIPT")
+	private String transcript;
+	
+	@Column(name = "IMAGE")
+	private String image;
 	@Transient
 	private List<MultipartFile> multipartFile ;
 
@@ -233,9 +233,6 @@ public class ApplicationDTO {
 
 	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
 	private List<Family> families;
-
-	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
-	private List<AttachFile> attachFiles;
 
 	@OneToMany(mappedBy = "applicant", cascade = CascadeType.REMOVE)
 	private List<AugEmployee> augEmployees;
@@ -266,6 +263,41 @@ public class ApplicationDTO {
 	@ManyToOne
 	@JoinColumn(name = "POSITION3_ID", referencedColumnName = "id")
 	private Position position3;
+	
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	private List<Certificate> certificates;
+	
+	public String getResume() {
+		return resume;
+	}
+
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
+
+	public String getTranscript() {
+		return transcript;
+	}
+
+	public void setTranscript(String transcript) {
+		this.transcript = transcript;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public List<Certificate> getCertificates() {
+		return certificates;
+	}
+
+	public void setCertificates(List<Certificate> certificates) {
+		this.certificates = certificates;
+	}
 
 	public List<Reference> getReferences() {
 		return references;
@@ -281,14 +313,6 @@ public class ApplicationDTO {
 
 	public void setFamilies(List<Family> families) {
 		this.families = families;
-	}
-
-	public List<AttachFile> getAttachFiles() {
-		return attachFiles;
-	}
-
-	public void setAttachFiles(List<AttachFile> attachFiles) {
-		this.attachFiles = attachFiles;
 	}
 
 	public List<AugEmployee> getAugEmployees() {
@@ -651,14 +675,6 @@ public class ApplicationDTO {
 		this.trackingStatus = trackingStatus;
 	}
 
-	public String getCertificate() {
-		return certificate;
-	}
-
-	public void setCertificate(String certificate) {
-		this.certificate = certificate;
-	}
-
 	public String getExpectedSalary() {
 		return expectedSalary;
 	}
@@ -729,22 +745,6 @@ public class ApplicationDTO {
 
 	public void setMilitaryReason(String militaryReason) {
 		this.militaryReason = militaryReason;
-	}
-
-	public String getMilitaryStatus() {
-		return militaryStatus;
-	}
-
-	public void setMilitaryStatus(String militaryStatus) {
-		this.militaryStatus = militaryStatus;
-	}
-
-	public String getMarritalStatusName() {
-		return marritalStatusName;
-	}
-
-	public void setMarritalStatusName(String marritalStatusName) {
-		this.marritalStatusName = marritalStatusName;
 	}
 
 	public Integer getNumberOfChildren() {

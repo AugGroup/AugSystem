@@ -132,9 +132,6 @@ public class Applicant {
 	@Column(name = "TRACKING_STATUS")
 	private String trackingStatus;
 
-	@Column(name = "CERTIFICATE")
-	private String certificate;
-
 	@Column(name = "EXPECTED_SALARY")
 	private String expectedSalary;
 
@@ -162,12 +159,6 @@ public class Applicant {
 
 	@Column(name = "MILITARY_REASON")
 	private String militaryReason;
-
-	@Column(name = "MILITARY_STATUS")
-	private String militaryStatus;
-
-	@Column(name = "MARRITAL_STATUS_NAME")
-	private String marritalStatusName;
 
 	@Column(name = "NUMBER_OF_CHILDREN")
 	private Integer numberOfChildren;
@@ -223,6 +214,15 @@ public class Applicant {
 
 	@Column(name = "MARRIAGE_ADDRESS")
 	private String marriageAddress;
+	
+	@Column(name = "RESUME")
+	private String resume;
+	
+	@Column(name = "TRANSCRIPT")
+	private String transcript;
+	
+	@Column(name = "IMAGE")
+	private String image;
 
 	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Reference> references;
@@ -230,8 +230,8 @@ public class Applicant {
 	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Family> families;
 
-	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
-	private List<AttachFile> attachFiles;
+	/*@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	private List<AttachFile> attachFiles;*/
 
 	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<AugEmployee> augEmployees;
@@ -250,6 +250,9 @@ public class Applicant {
 
 	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Experience> experiences;
+	
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	private List<Certificate> certificates;
 	
 	@Transient
 	private String reportType;
@@ -510,13 +513,13 @@ public class Applicant {
 		this.trackingStatus = trackingStatus;
 	}
 
-	public String getCertificate() {
-		return certificate;
-	}
-
-	public void setCertificate(String certificate) {
-		this.certificate = certificate;
-	}
+//	public String getCertificate() {
+//		return certificate;
+//	}
+//
+//	public void setCertificate(String certificate) {
+//		this.certificate = certificate;
+//	}
 
 	public String getExpectedSalary() {
 		return expectedSalary;
@@ -590,22 +593,6 @@ public class Applicant {
 		this.militaryReason = militaryReason;
 	}
 
-	public String getMilitaryStatus() {
-		return militaryStatus;
-	}
-
-	public void setMilitaryStatus(String militaryStatus) {
-		this.militaryStatus = militaryStatus;
-	}
-
-	public String getMarritalStatusName() {
-		return marritalStatusName;
-	}
-
-	public void setMarritalStatusName(String marritalStatusName) {
-		this.marritalStatusName = marritalStatusName;
-	}
-
 	public Integer getNumberOfChildren() {
 		return numberOfChildren;
 	}
@@ -660,14 +647,6 @@ public class Applicant {
 
 	public void setFamilies(List<Family> families) {
 		this.families = families;
-	}
-
-	public List<AttachFile> getAttachFiles() {
-		return attachFiles;
-	}
-
-	public void setAttachFiles(List<AttachFile> attachFiles) {
-		this.attachFiles = attachFiles;
 	}
 
 	public List<AugEmployee> getAugEmployees() {
@@ -830,6 +809,39 @@ public class Applicant {
 		this.marriageAddress = marriageAddress;
 	}
 
+	public String getResume() {
+		return resume;
+	}
+
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
+
+	public String getTranscript() {
+		return transcript;
+	}
+
+	public void setTranscript(String transcript) {
+		this.transcript = transcript;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+
+	public List<Certificate> getCertificates() {
+		return certificates;
+	}
+
+	public void setCertificates(List<Certificate> certificates) {
+		this.certificates = certificates;
+	}
+
 	public Applicant fromApplicationDTO(Applicant applicant,ApplicationDTO applicationDTO) throws ParseException {
 		applicant.setId(applicationDTO.getId());
 		applicant.setFirstNameTH(applicationDTO.getFirstNameTH());
@@ -838,31 +850,6 @@ public class Applicant {
 		applicant.setLastNameEN(applicationDTO.getLastNameEN());
 		applicant.setNickNameTH(applicationDTO.getNickNameTH());
 		applicant.setNickNameEN(applicationDTO.getNickNameEN());
-	/*	String bDate = applicationDTO.getBirthDate();
-		String applyDate = applicationDTO.getApplyDate();
-		String dDate = applicationDTO.getDateToBeDrafted();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
-		Date date = null;
-		try {
-			date = dateFormat.parse(bDate);
-		} catch (ParseException e) {
-			
-			e.printStackTrace();
-		}
-		Date apply = null; 
-		try {
-			apply = dateFormat.parse(applyDate);
-		} catch (ParseException e) {
-			
-			e.printStackTrace();
-		}
-		Date drafted = null; 
-		try {
-			drafted = dateFormat.parse(dDate);
-		} catch (ParseException e) {
-			
-			e.printStackTrace();
-		}*/
 		applicant.setBirthDate(applicationDTO.getBirthDate());
 		applicant.setPlaceBirth(applicationDTO.getPlaceBirth());
 		applicant.setAge(applicationDTO.getAge());
@@ -882,7 +869,6 @@ public class Applicant {
 		applicant.setNoticeFriend(applicationDTO.getNoticeFriend());
 		applicant.setNoticeWebSite(applicationDTO.getNoticeWebSite());
 		applicant.setNoticeOther(applicationDTO.getNoticeOther());
-		applicant.setCertificate(applicationDTO.getCertificate());
 		applicant.setExpectedSalary(applicationDTO.getExpectedSalary());
 		applicant.setCardId(applicationDTO.getCardId());
 		applicant.setCardIssuedOffice(applicationDTO.getCardIssuedOffice());
@@ -892,8 +878,6 @@ public class Applicant {
 		applicant.setMilitaryPlace(applicationDTO.getMilitaryPlace());
 		applicant.setMilitaryServiceNo(applicationDTO.getMilitaryServiceNo());
 		applicant.setMilitaryReason(applicationDTO.getMilitaryReason());
-		applicant.setMilitaryStatus(applicationDTO.getMilitaryStatus());
-		applicant.setMarritalStatusName(applicationDTO.getMarritalStatusName());
 		applicant.setNumberOfChildren(applicationDTO.getNumberOfChildren());
 		applicant.setSpouseName(applicationDTO.getSpouseName());
 		applicant.setMarriageCertificateNo(applicationDTO.getMarriageCertificateNo());
@@ -908,9 +892,9 @@ public class Applicant {
 		applicant.setPreviousEmployersReason(applicationDTO.getPreviousEmployersReason());
 		applicant.setDateToBeDrafted(applicationDTO.getDateToBeDrafted());
 		applicant.setMarriageAddress(applicationDTO.getMarriageAddress());
-		
-		
-		
+		applicant.setResume(applicationDTO.getResume());
+		applicant.setTranscript(applicationDTO.getTranscript());
+		applicant.setImage(applicationDTO.getImage());
 		
 		return applicant;
 

@@ -101,7 +101,14 @@
 				data : "zipcode"
 			}, {
 				data : "province"
-			}],
+			},{ data : function(data) {
+					 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+				}
+},
+{ data : function(data) {
+					 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+				}
+}],
 			searching : false
 
 		});
@@ -111,12 +118,12 @@
 
 			table.row.add({
 				addressType : $('#inputAddress').val(),
-				houseNo : $('#houseNoId').val(),
-				road : $('#roadId').val(),
-				district : $('#districtId').val(),
-				subDistrict : $('#subDistrictId').val(),
-				zipcode : $('#zipcodeId').val(),
-				province : $('#provinceId').val()
+				houseNo : $('#houseNo').val(),
+				road : $('#road').val(),
+				district : $('#district').val(),
+				subDistrict : $('#subDistrict').val(),
+				zipcode : $('#zipcode').val(),
+				province : $('#province').val()
 				
 				
 			}).draw();
@@ -124,8 +131,7 @@
 			};
 		})
 
-		$('#buttonSave').on("click", function() {
-			if ($('#emergencyForm').valid()) {
+		$('#addressSave').on("click", function() {
 			var insertData = "{";
 			
 			insertData+="address : [ ";
@@ -133,7 +139,7 @@
 			
 			addressTable.rows().iterator( 'row', function ( context, index ) {
 			insertData+="{";
-			insertData+="applicant : {id :"+$('#applicantId').val()+"},";
+			insertData+="applicant : {id :"+$('#applicant').val()+"},";
 			insertData+="addressType : '"+addressTable.cell( index,0 ).data()+"',";
 			insertData+="houseNo : '"+addressTable.cell( index,1 ).data()+"',";
 			insertData+="road : '"+addressTable.cell( index,2 ).data()+"',";
@@ -143,10 +149,8 @@
 			insertData+="province : '"+addressTable.cell( index,6 ).data()+"'},";
 			});
 				insertData=insertData.substring(0,insertData.length-1);
-				insertData+="],";
-			insertData+="emergencyName : '"+$('#emergencyNameId').val()+"',";
-			insertData+="emergencyTel : '"+$('#emergencyTelId').val()+"',";
-			insertData+="emergencyAddress : '"+$('#emergencyAddressId').val()+"'}";
+				insertData+="]";
+				insertData+="}";
 			
 			$.ajax({
 				contentType : "application/json",
@@ -167,15 +171,12 @@
 				    });
 				}
 			});
-			};
 		})
 
 	});
 </script>
 <jsp:include page = "applicationMenu.jsp"/>
 <div id="address">
-
-	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
 				<h1>Address</h1>
@@ -200,7 +201,7 @@
 					<div class="modal-body" style="padding: 40px 50px;">
 						<form role="form" id="addressForm" >
 							<div class="form-group">
-								<input type="hidden" id="applicantId" name="applicantName"
+								<input type="hidden" id="applicant" name="applicant"
 									value="${id}">
 							</div>
 							<label for="address">Address </label><select class="form-control" id="inputAddress" name="inputAddress">
@@ -209,18 +210,18 @@
 							</select>
 							<div class="form-group">
 								<label for="houseNo">House No. </label> <input type="text"
-									class="form-control" id="houseNoId"
-									name="houseNoName" placeholder="Enter House No">
+									class="form-control" id="houseNo"
+									name="houseNo" placeholder="Enter House No">
 							</div>
 							<div class="form-group">
 								<label for="road">Road </label> <input type="text"
-									class="form-control" id="roadId" name="roadName"
+									class="form-control" id="road" name="road"
 									placeholder="Enter road">
 							</div>
 							<div class="form-group">
 								<label for="district">District </label> <input
-									type="text" class="form-control" id="districtId"
-									name="districtName" placeholder="Enter district">
+									type="text" class="form-control" id="district"
+									name="district" placeholder="Enter district">
 							</div>
 							<div class="form-group">
 								<label for="subDistrict">Sub District </label> <input
@@ -229,13 +230,13 @@
 							</div>
 							<div class="form-group">
 								<label for="zipcode">Zipcode </label> <input type="text"
-									class="form-control" id="zipcodeId"
-									name="zipcodeName" placeholder="Enter zipcode">
+									class="form-control" id="zipcode"
+									name="zipcode" placeholder="Enter zipcode">
 							</div>
 							<div class="form-group">
 								<label for="province">Province </label> <input
-									type="text" class="form-control" id="provinceId"
-									name="provinceName" placeholder="Enter province">
+									type="text" class="form-control" id="province"
+									name="province" placeholder="Enter province">
 							</div>
 
 							<br> <br>
@@ -266,45 +267,13 @@
 					<th>SUB_DISTRICT</th>
 					<th>ZIPCODE</th>
 					<th>PROVINCE</th>
+					<th>Edit</th>
+                	<th>Delete</th>
 				</tr>
 			</thead>
 
 
 			<tbody></tbody>
 		</table>
-</div>
-	
-	<br>
-	<br> 
-	<form role="form" id="emergencyForm" class="form-inline">
-	<label for="emergency">In case of emergency , notify
-		, ( Name , Address and Telephone ) </label>
-		<br>
-		<br>
-	<div class="form-group">
-		<label for="emergencyOfName">Emergency Name </label> <input
-			type="text" class="form-control" id="emergencyNameId"
-			name="emergencyName" placeholder="Enter emergency name">
 	</div>
-	<br>
-	<br>
-	<div class="form-group">
-		<label for="emergencyTel">Emergency Telephone </label> <input
-			type="text" class="form-control" id="emergencyTelId"
-			name="emergencyTelName" placeholder="Enter emergency tel">
-	</div>
-	<br>
-	<br>
-	<div class="form-group">
-		<label for="emergencyAddress">Emergency Address </label>
-			<textarea class="form-control" rows="5" id="emergencyAddressId"
-			name="emergencyAddressName" placeholder="Enter emergency address"></textarea>
-			
-	</div>
-	</form>
-	<br>
-	<button type="button" class="btn btn-success" id="buttonSave">
-		<span class="glyphicon glyphicon-off"></span> Save
-	</button>
-</div>
 </div>

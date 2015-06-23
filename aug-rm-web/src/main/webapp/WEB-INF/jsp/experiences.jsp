@@ -17,7 +17,7 @@
 			format : "dd/mm/yyyy"
 
 		});
-	 	$('#previousEmployers').validate({
+	 	/* $('#previousEmployers').validate({
 			rules : {
 				previousEmployersName : {
 					required : true
@@ -35,36 +35,7 @@
 				}
 			}
 		});
-	 	$('#referenceForm').validate({
-			rules : {
-				fullName : {
-					required : true
-				},
-				completeAddressName : {
-					required : true,
-				},
-				telNoName : {
-					required : true,
-				},
-				occupationRefName : {
-					required : true,
-				}
-			},
-			messages : {
-				fullName : {
-					required : "FULL NAME is required!"
-				},
-				completeAddressName : {
-					required : "COMPLETE ADDRESS. is required!"
-				},
-				telNoName : {
-					required : "TELEPHONE NO. is required!"
-				},
-				occupationRefName : {
-					required : "OCCUPATION is required!"
-				}
-			}
-		});
+	 	
 	 	$('#experiencesForm').validate({
 			rules : {
 				workBackgroundName : {
@@ -137,39 +108,8 @@
 				}
 			}
 		});
-
-		$('#referenceTable').DataTable({
-			ajax : {
-				url : '${pageContext.request.contextPath}/experiences',
-				type : 'GET'
-			},
-			columns : [ {
-				data : "fullName"
-			}, {
-				data : "tel"
-			}, {
-				data : "occupation"
-			}, {
-				data : "completeAddress"
-			} ],
-			searching : false
-
-		});
-		$('#referenceSave').on("click", function() {
-
-			if ($('#referenceForm').valid()) { 
-			var table = $('#referenceTable').DataTable();
-
-			table.row.add({
-				fullName : $('#fullNameId').val(),
-				tel : $('#telNoId').val(),
-				occupation : $('#occupationRefId').val(),
-				completeAddress : $('#completeAddressId').val()
-			}).draw();
-			$('#referenceModal').modal('hide');
-			};
-		})
-
+	 	 */
+		
 		$('#experiencesTable').DataTable({
 			ajax : {
 				url : '${pageContext.request.contextPath}/experiences',
@@ -197,32 +137,37 @@
 				data : "description"
 			}, {
 				data : "reason"
-			} ],
+			},{ data : function(data) {
+				 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+			}
+			},{ data : function(data) {
+				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+			}
+		} ],
 			searching : false
 
 		});
 		$('#experiencesSave').on("click", function() {
-			if ($('#experiencesForm').valid()) { 
+// 			if ($('#experiencesForm').valid()) { 
 			var table = $('#experiencesTable').DataTable();
 
 			table.row.add({
-				position : $('#workBackgroundId').val(),
-				fromDate : $('#fromWorkYearId').val(),
-				toDate : $('#toWorkYearId').val(),
-				employerName : $('#empId').val(),
-				address : $('#addressBackgroundId').val(),
-				typeOfBusiness : $('#businessId').val(),
-				positionOfEmployer : $('#positionBackgroundId').val(),
-				supervisor : $('#supervisorBackgroundId').val(),
-				salary : $('#salaryBackgroundId').val(),
-				description : $('#descriptionBackgroundId').val(),
-				reason : $('#reasonLeavingId').val()
+				position : $('#workBackground').val(),
+				fromDate : $('#fromWorkYear').val(),
+				toDate : $('#toWorkYear').val(),
+				employerName : $('#emp').val(),
+				address : $('#addressBackground').val(),
+				typeOfBusiness : $('#business').val(),
+				positionOfEmployer : $('#positionBackground').val(),
+				supervisor : $('#supervisorBackground').val(),
+				salary : $('#salaryBackground').val(),
+				description : $('#descriptionBackground').val(),
+				reason : $('#reasonLeaving').val()
 			}).draw();
 			$('#experiencesModal').modal('hide');
-			};
+// 			};
 		}) 
-		$('#buttonSave').on("click", function() {
-		 	if ($('#previousEmployers').valid()) { 
+		$('#experiencesSave').on("click", function() {
 		var insertData = "{";
 			
 			insertData+="experiences : [ ";
@@ -230,7 +175,7 @@
 			
 			experiencesTable.rows().iterator( 'row', function ( context, index ) {
 			insertData+="{";
-			insertData+="applicant : {id :"+$('#applicantId').val()+"},";
+			insertData+="applicant : {id :"+$('#applicant').val()+"},";
 			insertData+="position : '"+experiencesTable.cell( index,0 ).data()+"',";
 			insertData+="fromDate : '"+experiencesTable.cell( index,1 ).data()+"',";
 			insertData+="toDate : '"+experiencesTable.cell( index,2 ).data()+"',";
@@ -244,27 +189,7 @@
 			insertData+="reason : '"+experiencesTable.cell( index,10 ).data()+"'},";
 			});
 				insertData=insertData.substring(0,insertData.length-1);
-				insertData+="],";
-			
-			insertData+="references : [ ";
-			
-			var referenceTable = $("#referenceTable").DataTable();
-			referenceTable.rows().iterator( 'row', function ( context, index ) {
-			  
-				insertData+="{";
-				insertData+="applicant : {id :"+$('#applicantId').val()+"},";
-				insertData+="fullName : '"+referenceTable.cell( index,0 ).data()+"',";
-				insertData+="tel : '"+referenceTable.cell( index,1 ).data()+"',";
-				insertData+="occupation : '"+referenceTable.cell( index,2 ).data()+"',";
-				insertData+="completeAddress : '"+referenceTable.cell( index,3 ).data()+"'},";
-			});
-
-			insertData=insertData.substring(0,insertData.length-1);
-			
-			insertData+="],";
-			
-			insertData+="previousEmployers : '"+$('input[name=previousEmployersName]:checked').val()+"',";
-			insertData+="previousEmployersReason : '"+$('#giveReasonId').val()+"'}";
+				insertData+="]}";
 			
 			$.ajax({
 				contentType : "application/json",
@@ -285,131 +210,11 @@
 				    });
 				}
 			});
-			 }; 
 		})
 
 	});
 </script>
 <jsp:include page = "applicationMenu.jsp"/>
-<div class="container">
-<form role="form" id="previousEmployers" class="form-inline"> 
-	<div class="form-group">
-		<label for="previousEmployers">May inquiry be made of your
-			previous employers regarding your character, qualification record of
-			employment? </label>
-			<br>
-			<br>
-		<div class="form-group">
-			<input type="hidden" id="applicantId" name="applicantName"
-				value="${id}">
-		</div>
-		<div class="radio">
-			<label><input type="radio" name="previousEmployersName"
-				id="previousEmployersId" value="Yes">Yes</label>
-		</div>
-		<div class="radio">
-			<label><input type="radio" name="previousEmployersName"
-				id="previousEmployersId" value="No">No</label>
-		</div>
-		<br>
-		<br>
-		<div class="form-group">
-			<label for="giveReason">If not, please give the reason </label> <input
-				type="text" class="form-control" id="giveReasonId"
-				name="giveReasonName"
-				placeholder="Enter If not, please give the reason">
-		</div>
-	</div>
-	<br><br>
-	<div class="form-group">
-		<label for="reference">REFERENCE: List three persons OTHER
-			THAN YOUR RELATIVE OR FORMER EMPLOYER who have definite knowledge of
-			your qualifications and your conducts. </label>
-	</div>
-	</form>
-	</div>
-	<br>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6">
-				<h1>REFERENCE</h1>
-				<button class="btn btn-primary" id="referenceAdd"
-					data-toggle="modal" data-target="#referenceModal">
-					<span class="glyphicon glyphicon-plus"></span> REFERENCE
-				</button>
-			</div>
-		</div>
-		<div class="modal fade" id="referenceModal" role="dialog">
-			<div class="modal-dialog">
-
-				<div class="modal-content">
-					<div class="modal-header" style="padding: 35px 50px;">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4>
-							<span class="glyphicon glyphicon-lock"></span> REFERENCE
-						</h4>
-					</div>
-					<div class="modal-body" style="padding: 40px 50px;">
-						<form role="form" id="referenceForm">
-							<div class="form-group">
-								<input type="hidden" id="applicantId" name="applicantName"
-									value="${id}">
-							</div>
-							<div class="form-group">
-								<label for="fullNameRef">FULL NAME </label> <input type="text"
-									class="form-control" id="fullNameId" name="fullName"
-									placeholder="Enter FULL NAME">
-							</div>
-							<div class="form-group">
-								<label for="completeAddress">COMPLETE ADDRESS. </label> <input
-									type="text" class="form-control" id="completeAddressId"
-									name="completeAddressName"
-									placeholder="Enter COMPLETE ADDRESS.">
-							</div>
-							<div class="form-group">
-								<label for="telNo">TELEPHONE NO. </label> <input type="text"
-									class="form-control" id="telNoId" name="telNoName"
-									placeholder="Enter TELEPHONE NO.">
-							</div>
-							<div class="form-group">
-								<label for="occupationRef">OCCUPATION </label> <input
-									type="text" class="form-control" id="occupationRefId"
-									name="occupationRefName" placeholder="Enter occupation">
-							</div>
-							<br> <br>
-							<button type="button" class="btn btn-success" id="referenceSave">
-								<span class="glyphicon glyphicon-off"></span> Save
-							</button>
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
-						</form>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<p>Please fill your information</p>
-				</div>
-			</div>
-
-		</div>
-	
-	<br> <br>
-	<div>
-		<table id="referenceTable" class="display" cellspacing="0" width="100%">
-			<thead>
-				<tr>
-					<th>FULLNAME</th>
-					<th>TEL</th>
-					<th>OCCUPATION</th>
-					<th>COMPLETE_ADDRESS</th>
-				</tr>
-			</thead>
-
-
-			<tbody></tbody>
-		</table>
-		</div>
-	</div>
-<div class="container">
 	<div class="form-group">
 		<label for="experiences">Experiences (start with your present
 			or last position of work background) </label>
@@ -438,14 +243,14 @@
 					<div class="modal-body" style="padding: 40px 50px;">
 						<form role="form" id="experiencesForm">
 							<div class="form-group">
-								<input type="hidden" id="applicantId" name="applicantName"
+								<input type="hidden" id="applicant" name="applicant"
 									value="${id}">
 							</div>
 
 							<div class="form-group">
 								<label for="workBackground">Present or last position </label> <input
-									type="text" class="form-control" id="workBackgroundId"
-									name="workBackgroundName"
+									type="text" class="form-control" id="workBackground"
+									name="workBackground"
 									placeholder="Enter present or last position ">
 							</div>
 
@@ -454,7 +259,7 @@
 									class="glyphicon glyphicon-calendar"></span>From (month, year)
 								</label>
 								<div class="input-group date">
-									<input type="text" id="fromWorkYearId" name="fromWorkYearName"
+									<input type="text" id="fromWorkYear" name="fromWorkYear"
 										class="form-control"><span class="input-group-addon"><i
 										class="glyphicon glyphicon-th"></i></span>
 								</div>
@@ -465,7 +270,7 @@
 								<label for="toWorkYear"><span
 									class="glyphicon glyphicon-calendar"></span>To (month, year) </label>
 								<div class="input-group date">
-									<input type="text" id="toWorkYearId" name="toWorkYearName"
+									<input type="text" id="toWorkYear" name="toWorkYear"
 										class="form-control"><span class="input-group-addon"><i
 										class="glyphicon glyphicon-th"></i></span>
 								</div>
@@ -474,53 +279,53 @@
 							</div>
 							<div class="form-group">
 								<label for="emp">Employer Name </label> <input type="text"
-									class="form-control" id="empId" name="empName"
+									class="form-control" id="emp" name="emp"
 									placeholder="Enter employer name ">
 							</div>
 
 							<div class="form-group">
 								<label for="addressBackground">Address </label>
-								<textarea class="form-control" rows="5" id="addressBackgroundId"
-									name="addressBackgroundName" placeholder="Enter address"></textarea>
+								<textarea class="form-control" rows="5" id="addressBackground"
+									name="addressBackground" placeholder="Enter address"></textarea>
 
 							</div>
 
 							<div class="form-group">
 								<label for="business">Type of business </label> <input
-									type="text" class="form-control" id="businessId"
-									name="businessName" placeholder="Enter type of business ">
+									type="text" class="form-control" id="business"
+									name="business" placeholder="Enter type of business ">
 							</div>
 
 							<div class="form-group">
 								<label for="positionBackground">Position </label> <input
-									type="text" class="form-control" id="positionBackgroundId"
-									name="positionBackgroundName" placeholder="Enter position ">
+									type="text" class="form-control" id="positionBackground"
+									name="positionBackground" placeholder="Enter position ">
 							</div>
 
 							<div class="form-group">
 								<label for="supervisorBackground">Supervisor </label> <input
-									type="text" class="form-control" id="supervisorBackgroundId"
-									name="supervisorBackgroundName" placeholder="Enter supervisor">
+									type="text" class="form-control" id="supervisorBackground"
+									name="supervisorBackground" placeholder="Enter supervisor">
 							</div>
 
 							<div class="form-group">
 								<label for="salaryBackground">Salary ,Wages </label> <input
-									type="text" class="form-control" id="salaryBackgroundId"
-									name="salaryBackgroundName" placeholder="Enter salary ,wages ">
+									type="text" class="form-control" id="salaryBackground"
+									name="salaryBackground" placeholder="Enter salary ,wages ">
 							</div>
 
 							<div class="form-group">
 								<label for="descriptionBackground">Description of duties
 									and responsibilities </label>
 								<textarea class="form-control" rows="5"
-									id="descriptionBackgroundId" name="descriptionBackgroundName"
+									id="descriptionBackground" name="descriptionBackground"
 									placeholder="Enter description of duties and responsibilities"></textarea>
 							</div>
 
 							<div class="form-group">
 								<label for="reasonLeaving">Reason for leaving </label>
-								<textarea class="form-control" rows="5" id="reasonLeavingId"
-									name="reasonLeavingName" placeholder="Enter reason for leaving"></textarea>
+								<textarea class="form-control" rows="5" id="reasonLeaving"
+									name="reasonLeaving" placeholder="Enter reason for leaving"></textarea>
 
 							</div>
 							<br> <br>
@@ -557,6 +362,8 @@
 					<th>SALARY</th>
 					<th>DESCRIPTION</th>
 					<th>REASON</th>
+					<th>Edit</th>
+                	<th>Delete</th>
 				</tr>
 			</thead>
 
@@ -564,9 +371,3 @@
 			<tbody></tbody>
 		</table>
 	</div>
-
-
-	<button type="button" class="btn btn-success" id="buttonSave">
-		<span class="glyphicon glyphicon-off"></span> Save
-	</button>
-</div>

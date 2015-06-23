@@ -9,12 +9,20 @@
 
 				<li ><a href="${pageContext.request.contextPath}/informations" ><span
 						class="glyphicon glyphicon-user"></span> Informations</a></li>
-				<li><a  href="${pageContext.request.contextPath}/applications"><span
-						class="glyphicon glyphicon-home"></span> Application</a></li>
 				<li><a  href="${pageContext.request.contextPath}/address"><span
 						class="glyphicon glyphicon-home"></span> Address</a></li>
+				<li><a  href="${pageContext.request.contextPath}/family"><span
+						class="glyphicon glyphicon-file"></span> Family</a></li>
 				<li><a  href="${pageContext.request.contextPath}/educations"><span
 						class="glyphicon glyphicon-education"></span> Educations</a></li>
+				<li><a  href="${pageContext.request.contextPath}/certificates"><span
+						class="glyphicon glyphicon-file"></span> Certificates</a></li>
+				<li><a  href="${pageContext.request.contextPath}/skills"><span
+						class="glyphicon glyphicon-education"></span> Skills</a></li>
+				<li><a  href="${pageContext.request.contextPath}/languages"><span
+						class="glyphicon glyphicon-education"></span> Languages</a></li>
+				<li><a  href="${pageContext.request.contextPath}/references"><span
+						class="glyphicon glyphicon-file"></span> References</a></li>
 				<li><a  href="${pageContext.request.contextPath}/experiences"><span
 						class="glyphicon glyphicon-file"></span> Experiences</a></li>
 			</ul>

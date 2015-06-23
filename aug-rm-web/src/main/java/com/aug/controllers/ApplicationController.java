@@ -29,12 +29,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.aug.db.dto.ApplicationDTO;
+import com.aug.db.entities.Applicant;
 import com.aug.db.entities.Department;
 import com.aug.db.entities.Position;
 import com.aug.db.services.ApplicantService;
 import com.aug.db.services.DepartmentService;
 import com.aug.db.services.PositionService;
-import com.aug.db.services.UploadService;
+import com.aug.services.UploadService;
 
 @Controller
 public class ApplicationController {
@@ -79,7 +80,122 @@ public class ApplicationController {
 	
 		return "SUCCESS";
 	}
+	@RequestMapping(value = "/informations", method = { RequestMethod.GET })
+	public String informations() {
+        LOGGER.info("**** Welcome to Application Controller ****");
+        return "informations";
+
+	}
+	@RequestMapping(value = "/saveInformations",method ={ RequestMethod.POST })
+	public String saveInformations(@ModelAttribute ApplicationDTO applicationDTO,Model model) throws ParseException{
+		
+		applicantService.saveInformations(applicationDTO);
+		model.addAttribute("id",applicationDTO.getId());
+		return "redirect:/informations";
+	}
 	
+	@RequestMapping(value = "/address", method = { RequestMethod.GET })
+	public String address(Model model) {
+        model.addAttribute("id",2);
+        return "address";
+
+	}
+	@RequestMapping(value = "/saveAddress",method ={ RequestMethod.POST })
+	public  ApplicationDTO saveAddress(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		applicantService.saveAddress(applicationDTO);
+		return applicationDTO;
+	}
+	@RequestMapping(value = "/family", method = { RequestMethod.GET })
+	public String family(Model model) {
+        model.addAttribute("id",2);
+        return "family";
+
+	}
+	@RequestMapping(value = "/saveFamily",method ={ RequestMethod.POST })
+	public  ApplicationDTO saveFamily(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		applicantService.saveFamily(applicationDTO);
+		return applicationDTO;
+	}
+	
+	@RequestMapping(value = "/educations", method = { RequestMethod.GET })
+	public String educations(Model model) {
+		model.addAttribute("id",2);
+        return "educations";
+
+	}
+	@RequestMapping(value = "/saveEducations",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveEducations(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		applicantService.saveEducation(applicationDTO);
+		return applicationDTO;
+		
+	}
+	@RequestMapping(value = "/experiences", method = { RequestMethod.GET })
+	public String experiences(Model model) {
+		
+        model.addAttribute("id",2);
+        return "experiences";
+
+	}
+	@RequestMapping(value = "/saveExperiences",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveExperiences(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		applicantService.saveExperiences(applicationDTO);
+		return applicationDTO;
+		
+	}
+	@RequestMapping(value = "/certificates", method = { RequestMethod.GET })
+	public String certificate(Model model) {
+		
+        model.addAttribute("id",2);
+        return "certificate";
+
+	}
+	@RequestMapping(value = "/saveCertificate",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveCertificates(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		applicantService.saveCertificate(applicationDTO);
+		return applicationDTO;
+		
+	}
+	@RequestMapping(value = "/languages", method = { RequestMethod.GET })
+	public String languages(Model model) {
+		
+        model.addAttribute("id",2);
+        return "languages";
+
+	}
+	@RequestMapping(value = "/saveLanguages",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveLanguages(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		applicantService.saveLanguages(applicationDTO);
+		return applicationDTO;
+		
+	}
+	@RequestMapping(value = "/references", method = { RequestMethod.GET })
+	public String references(Model model) {
+		
+        model.addAttribute("id",2);
+        return "references";
+
+	}
+	@RequestMapping(value = "/saveReferences",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveReferences(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		applicantService.saveReferences(applicationDTO);
+		return applicationDTO;
+		
+	}
+	@RequestMapping(value = "/skills", method = { RequestMethod.GET })
+	public String skills(Model model) {
+		
+        model.addAttribute("id",2);
+        return "skills";
+
+	}
+	@RequestMapping(value = "/saveSkills",method ={ RequestMethod.POST })
+	public @ResponseBody ApplicationDTO saveSkills(@RequestBody ApplicationDTO applicationDTO) throws ParseException{
+		applicantService.saveSkills(applicationDTO);
+		return applicationDTO;
+		
+	}
+
+	/*
 	@RequestMapping(value = "/informations", method = { RequestMethod.GET })
 	public String informations() {
         LOGGER.info("**** Welcome to Application Controller ****");
@@ -94,6 +210,7 @@ public class ApplicationController {
 		return applicationDTO;
 	}
 
+	
 	@RequestMapping(value = "/applications", method = { RequestMethod.GET })
 	public String applications(Model model) {
         LOGGER.info("**** Welcome to Application Controller ****");
@@ -143,7 +260,7 @@ public class ApplicationController {
 		applicantService.saveExperiences(applicationDTO);
 		return applicationDTO;
 		
-	}
+	}*/
 
 	@ModelAttribute("departments")
 	@Transactional

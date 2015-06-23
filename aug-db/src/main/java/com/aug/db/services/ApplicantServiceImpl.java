@@ -15,7 +15,7 @@ import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.dto.ReportApplicantDTO;
 import com.aug.db.entities.Address;
 import com.aug.db.entities.Applicant;
-import com.aug.db.entities.AttachFile;
+import com.aug.db.entities.Certificate;
 import com.aug.db.entities.Department;
 import com.aug.db.entities.Education;
 import com.aug.db.entities.Experience;
@@ -26,7 +26,7 @@ import com.aug.db.entities.Reference;
 import com.aug.db.entities.Skill;
 import com.aug.db.repositories.AddressRepository;
 import com.aug.db.repositories.ApplicantRepository;
-import com.aug.db.repositories.AttachFileRepository;
+import com.aug.db.repositories.CertificateRepository;
 import com.aug.db.repositories.DepartmentRepository;
 import com.aug.db.repositories.EducationRepository;
 import com.aug.db.repositories.ExperienceRepository;
@@ -42,16 +42,13 @@ public class ApplicantServiceImpl implements ApplicantService {
 
 	@Autowired
 	private ApplicantRepository applicantRepository;
+	
 	@Autowired
 	private PositionRepository positionRepository;
+	
 	@Autowired
 	private FamilyRepository familyRepository;
-	@Autowired
-	private AttachFileRepository attachFileRepository;
-	
-	@Autowired
-	private UploadService uploadService;
-	
+
 	@Autowired
 	private SkillRepository skillRepository;
 
@@ -69,6 +66,9 @@ public class ApplicantServiceImpl implements ApplicantService {
 	
 	@Autowired
 	private ReferenceRepository referenceRepository;
+	
+	@Autowired
+	private CertificateRepository certificateRepository;
 	
 	@Override
 	public Applicant findById(Integer id) {
@@ -149,28 +149,13 @@ public class ApplicantServiceImpl implements ApplicantService {
 
 	@Override
 	public ApplicationDTO saveEducation(ApplicationDTO applicationDTO) {
-		List<Skill> skills = applicationDTO.getSkills();
-		for (Skill sk : skills) {
-
-			sk.setId(applicationDTO.getId());
-			skillRepository.insert(sk);
-
-		}
+		
 		List<Education> educations = applicationDTO.getEducations();
 		for (Education ed : educations) {
 
 			ed.setId(applicationDTO.getId());
 			educationRepository.insert(ed);
-
 		}
-		List<Languages> languages = applicationDTO.getLanguages();
-		for (Languages lang : languages) {
-
-			lang.setId(applicationDTO.getId());
-			languagesRepository.insert(lang);
-
-		}
-		
 		return applicationDTO;
 	}
 
@@ -204,6 +189,55 @@ public class ApplicantServiceImpl implements ApplicantService {
 			experienceRepository.insert(experience);
 
 		}
+		return applicationDTO;
+	}
+	
+
+	@Override
+	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO) {
+		Applicant applicant = new Applicant();
+			applicant.setTrackingStatus("Waiting for consider");
+			try {
+				applicantRepository.insert(applicant.fromApplicationDTO(applicant, applicationDTO));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		
+	
+		applicationDTO.setId(applicant.getId());
+		return applicationDTO;
+	}
+
+	@Override
+	public List<ReportApplicantDTO> reportApplicant() {
+		return applicantRepository.reportApplicant();
+	}
+	
+	@Override
+	public ApplicationDTO saveCertificate(ApplicationDTO applicationDTO) {
+		List<Certificate> certificates = applicationDTO.getCertificates();
+		for (Certificate certificate : certificates ) {
+			certificate.setId(applicationDTO.getId());
+			certificateRepository.insert(certificate);
+
+		}
+		return applicationDTO;
+	}
+
+	@Override
+	public ApplicationDTO saveLanguages(ApplicationDTO applicationDTO) {
+		List<Languages> languages = applicationDTO.getLanguages();
+		for (Languages lang : languages) {
+
+			lang.setId(applicationDTO.getId());
+			languagesRepository.insert(lang);
+
+	}
+		return applicationDTO;
+	}
+
+	@Override
+	public ApplicationDTO saveReferences(ApplicationDTO applicationDTO) {
 		List<Reference> references = applicationDTO.getReferences();
 		for (Reference reference : references) {
 			reference.setId(applicationDTO.getId());
@@ -212,34 +246,29 @@ public class ApplicantServiceImpl implements ApplicantService {
 		}
 		return applicationDTO;
 	}
-	
 
 	@Override
-	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO) {
-		Applicant applicant = new Applicant();
-		try {
-			applicant.setTrackingStatus("Waiting for consider");
-			applicantRepository.insert(applicant.fromApplicationDTO(applicant, applicationDTO));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		List<Family> families = applicationDTO.getFamilies();
-		for (Family family : families) {
-			family.setId(applicant.getId());
-			familyRepository.insert(family);
+	public ApplicationDTO saveSkills(ApplicationDTO applicationDTO) {
+
+		List<Skill> skills = applicationDTO.getSkills();
+		for (Skill sk : skills) {
+
+			sk.setId(applicationDTO.getId());
+			skillRepository.insert(sk);
 
 		}
-		for(AttachFile file : applicationDTO.getAttachFiles()){
-					file.setApplicant(applicant);
-					attachFileRepository.insert(file);
-		}
-		applicationDTO.setId(applicant.getId());
 		return applicationDTO;
 	}
 
 	@Override
-	public List<ReportApplicantDTO> reportApplicant() {
-		return applicantRepository.reportApplicant();
+	public ApplicationDTO saveFamily(ApplicationDTO applicationDTO) {	
+		List<Family> families = applicationDTO.getFamilies();
+	for (Family family : families) {
+		family.setId(applicationDTO.getId());
+		familyRepository.insert(family);
+
+	}
+		return applicationDTO;
 	}
 
 }

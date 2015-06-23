@@ -37,5 +37,15 @@ public interface ApplicantService {
 
 	public ApplicationDTO saveExperiences(ApplicationDTO applicationDTO);
 	
+	public ApplicationDTO saveCertificate(ApplicationDTO applicationDTO);
+	
+	public ApplicationDTO saveLanguages(ApplicationDTO applicationDTO);
+	
+	public ApplicationDTO saveReferences(ApplicationDTO applicationDTO);
+
+	public ApplicationDTO saveSkills(ApplicationDTO applicationDTO);
+	
+	public ApplicationDTO saveFamily(ApplicationDTO applicationDTO);
+	
 	public List<ReportApplicantDTO> reportApplicant();
 }

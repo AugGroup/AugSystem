@@ -11,8 +11,6 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.aug.db.entities.AttachFile;
 import com.aug.db.entities.AugEmployee;
 import com.aug.db.services.AugEmployeeService;
 

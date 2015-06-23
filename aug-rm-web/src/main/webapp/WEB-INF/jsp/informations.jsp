@@ -10,17 +10,10 @@
 							format : "dd/mm/yyyy"
 
 						});
-			$('#infoForm').validate({
-				rules : {
-					photographName : {
-						required : true
-					},
-					firstNameThName : {
-						required : true
-					},
-					lastnameThName : {
-						required : true
-					},
+			/* $('#infoForm').validate({
+				rules : {photographName : { required : true },
+					firstNameThName : { required : true },
+					lastnameThName : { required : true },
 					nickNameThName : {
 						required : true
 					},
@@ -234,50 +227,30 @@
 					
 				}
 			});
-			$('#familyForm').validate({
+			 */
+			
+			
+			$('#previousEmployers').validate({
 				rules : {
-					nameFamilyName : {
+					previousEmployersName : {
 						required : true
 					},
-					relationFamilyName : {
-						required : true
-					},
-					occupationFamilyName : {
-						required : true
-					},
-					addressFamilyName : {
-						required : true
-					},
-					occupationName : {
-						required : true
-					},
-					positionFamilyName : {
-						required : true
+					giveReasonName : {
+						required : true,
 					}
 				},
 				messages : {
-					nameFamilyName : {
-						required : "Spouse: Name is required!"
+					previousEmployersName : {
+						required : "Please choose is required!"
 					},
-					relationFamilyName : {
-						required : "Marriage certificate No. is required!"
-					},
-					occupationFamilyName : {
-						required : "Issued office is required!"
-					},
-					addressFamilyName : {
-						required : "Address is required!"
-					},
-					occupationName : {
-						required : "Occupation is required!"
-					},
-					positionFamilyName : {
-						required : "Military service is required!"
+					giveReasonName : {
+						required : "Please give the reason is required!"
 					}
 				}
-				
-				
 			});
+			
+			
+			
 			 $("#buttonUpload").on("click",function() {
 				 uplodFile();
 		 	 });
@@ -302,40 +275,6 @@
 					}
 				});
 			}
-						$('#familyTable').DataTable({
-											ajax : {
-												url : '${pageContext.request.contextPath}/informations',
-												type : 'GET'
-											},
-											columns : [ {
-												data : "name"
-											}, {
-												data : "relation"
-											}, {
-												data : "occupation"
-											}, {
-												data : "address"
-											}, {
-												data : "positionFamily"
-											}],
-											searching : false
-
-										});
-
-						$('#familySave').on("click", function() {
-							if($('#familyForm').valid()){
-							var table = $('#familyTable').DataTable();
-
-							table.row.add({
-								name : $('#nameFamilyId').val(),
-								relation : $('#relationFamilyId').val(),
-								occupation : $('#occupationFamilyId').val(),
-								address : $('#addressFamilyId').val(),
-								positionFamily : $('#positionFamilyId').val()}).draw();
-							
-							$('#familyModal').modal('hide');
-							};
-						})
 					
 						$('#buttonSave').on("click",function() {
 							if ($('#infoForm').valid()||$('#informationForm').valid()) {
@@ -370,7 +309,6 @@
 											insertData += "militaryServiceNo : '"+ $('#serviceNoId').val()+ "',";
 											insertData += "militaryReason : '"+ $('#reasonsId').val()+ "',";
 											insertData += "militaryStatus : '"+ $('input[name=militaryName]:checked').val() + "',";
-											insertData += "marritalStatusName : '"+ $('#maritalId').val()+ "',";
 											insertData += "numberOfChildren : '"+ $('#childrenId').val()+ "',";
 											insertData += "spouseName : '"+ $('#spouseId').val()+ "',";
 											insertData += "marriageCertificateNo : '"+ $('#maritalId').val()+ "',";
@@ -380,22 +318,9 @@
 											insertData += "issueOficeMarriage : '"+ $('#issuedMarriageId').val() + "',";
 											insertData += "occupationMarriage : '"+ $('#occupationId').val()+ "',";
 											insertData += "branchService : '"+ $('#branchId').val()+ "',";
-											insertData+="families : [ ";
+											insertData+="previousEmployers : '"+$('input[name=previousEmployersName]:checked').val()+"',";
+											insertData+="previousEmployersReason : '"+$('#giveReasonId').val()+"',";
 											
-											var familyTable = $("#familyTable").DataTable();
-											familyTable.rows().iterator( 'row', function ( context, index ) {
-											  
-												insertData+="{";
-												//insertData+="applicant : {id :'"+$('#applicantId').val()+"'},";
-												insertData+="name : '"+familyTable.cell( index,0 ).data()+"',";
-												insertData+="relation : '"+familyTable.cell( index,1 ).data()+"',";
-												insertData+="occupation : '"+familyTable.cell( index,2 ).data()+"',";
-												insertData+="address : '"+familyTable.cell( index,3 ).data()+"',";
-												insertData+="positionFamily : '"+familyTable.cell( index,4 ).data()+"'},";
-											});
-											
-											insertData=insertData.substring(0,insertData.length-1);
-											insertData+="],";
 											insertData += "attachFiles : [{attachName:'pic',type:'.png',path:'C:',attachTypeFile:'picture'}]";
 			
 											insertData+="}";
@@ -425,7 +350,502 @@
 </script>
 <jsp:include page="applicationMenu.jsp" />
 <!-- tab informations -->
-<div id="informations">
+<f:form id="informationApplicant" name="informationApplicant" action="${pageContext.request.contextPath}/saveInformations"
+		modelAttribute="applicant" method="post" enctype="multipart/form-data" class="form-inline" >
+	<div class="row">
+			<div class="col-md-6">
+	<div class="form-group">
+				<input type="hidden" id="applicant" name="applicant"
+					value="${id}">
+	</div>
+		<div class="form-group">
+				PHOTOGRAPH 
+				<!-- <div id="imagePreview "></div> -->
+				<input type="file" name="photograph" id="photograph"><br><br>
+				<input type="button" id="buttonUpload" name="buttonUpload" value="Upload"/>
+		</div>
+		<br>
+		<br>
+			<div class="form-group">
+				<label for="firstNameTh">Firstname (TH) </label> <input type="text"
+					class="form-control" id="firstNameTH" name="firstNameTH"
+					placeholder="Enter Firstname(TH)">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="lastnameTh">Lastname (TH) </label> <input type="text"
+					class="form-control" id="lastNameTH" name="lastNameTH"
+					placeholder="Enter lastname(TH)">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="nickNameTh">Nickname (TH) </label> <input type="text"
+					class="form-control" id="nickNameTH" name="nickNameTH"
+					placeholder="Enter nickname(TH)">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="firstNameEng">Firstname (ENG) </label> <input
+					type="text" class="form-control" id="firstNameEN"
+					name="firstNameEN" placeholder="Enter Firstname(ENG)">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="lastnameEng">Lastname (ENG) </label> <input type="text"
+					class="form-control" id="lastNameEN" name="lastNameEN"
+					placeholder="Enter lastname(ENG)">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="nickNameEng">Nickname (Eng) </label> <input type="text"
+					class="form-control" id="nickNameEN" name="nickNameEN"
+					placeholder="Enter nickname(Eng)">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="tel">TELEPHONE NO. </label> <input type="text"
+					class="form-control" id="tel" name="tel"
+					placeholder="Enter tel">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="eMail">E-Mail </label> <input type="e"
+					class="form-control" id="email" name="email"
+					placeholder="Enter E-Mail">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="birthday"><span
+					class="glyphicon glyphicon-calendar"></span> Birthday</label>
+				<div class="input-group date">
+					<input type="text" id="birthDate" name="birthDate"
+						class="form-control"><span class="input-group-addon"><i
+						class="glyphicon glyphicon-th"></i></span>
+				</div>
+
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="pBirth">Place of birth </label> <input type="text"
+					class="form-control" id="placeBirth" name="placeBirth"
+					placeholder="Enter place of birth">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="age">Age </label> <input type="text"
+					class="form-control" id="age" name="age"
+					placeholder="Enter age">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="religion">Religion </label> <input type="text"
+					class="form-control" id="religion" name="religion"
+					placeholder="Enter religion">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="nationality">Nationality </label> <input type="text"
+					class="form-control" id="nationality" name="nationality"
+					placeholder="Enter nationality">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="cardId">ID. Card no. </label> <input type="text"
+					class="form-control" id="cardId" name="cardId"
+					placeholder="Enter ID. Card no.">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="cardIssuedOffice">Issued office </label> <input type="text"
+					class="form-control" id="cardIssuedOffice" name="cardIssuedOffice"
+					placeholder="Enter issued office">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="cardExpiryDate"><span
+					class="glyphicon glyphicon-calendar"></span>Expiry date </label>
+				<div class="input-group date">
+					<input type="text" id="cardExpiryDate" name="cardExpiryDate"
+						class="form-control"><span class="input-group-addon"><i
+						class="glyphicon glyphicon-th"></i></span>
+				</div>
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="height">Height (cms) </label> <input type="text"
+					class="form-control" id="height" name="height"
+					placeholder="Enter height (cms)">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="weight">Weight (kgs) </label> <input type="text"
+					class="form-control" id="weight" name="weight"
+					placeholder="Enter weight (kgs)">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="sex">Sex </label>
+				<div class="radio">
+					<label><input type="radio" name="sex" value="Female"
+						id="sex">Female</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="sex" value="Male"
+						id="sex">Male</label>
+				</div>
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="applicantStatus">Marital status </label>
+				<div class="radio">
+					<label><input type="radio" name="applicantStatus"
+						id="applicantStatus" value="Single">Single</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="applicantStatus"
+						id="applicantStatus" value="Married">Married</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="applicantStatus"
+						id="applicantStatus">Divorced</label>
+				</div>
+
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="children">Number of children </label> <input type="text"
+					class="form-control" id="numberOfChildren" name="numberOfChildren"
+					placeholder="Enter number of children">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="spouseName">Spouse: Name </label> <input type="text"
+					class="form-control" id="spouseName" name="spouseName"
+					placeholder="Enter spouse: name">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="marriageCertificateNo">Marriage certificate No </label> <input
+					type="text" class="form-control" id="marriageCertificateNo"
+					name="marriageCertificateNo" placeholder="Enter marriage certificate No.">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="issueOficeMarriage">Issued office </label> <input
+					type="text" class="form-control" id="issueOficeMarriage"
+					name="issueOficeMarriage" placeholder="Enter Issued office">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="marriageAddress">Address </label> <input type="text"
+					class="form-control" rows="5" id="marriageAddress" name="marriageAddress"
+					placeholder="Enter address">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="occupationMarriage">Occupation </label> <input type="text"
+					class="form-control" id="occupationMarriage" name="occupationMarriage"
+					placeholder="Enter occupation">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="military">Have you ever served in the military
+					service? </label>
+				<div class="radio">
+					<label><input type="radio" name="militaryStatus"
+						id="militaryStatus">Yes</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="militaryStatus"
+						id="militaryStatus">No</label>
+				</div>
+			<br>
+			<br>
+				<div class="form-group">
+					<label for="militaryComplete">If yes, please complete the
+						blanks below </label> <label for="militaryFromYear">From year </label> <input
+						type="text" class="form-control" id="militaryFromYear"
+						name="militaryFromYear" placeholder="Enter from year">
+				</div>
+			<br>
+			<br>
+				<div class="form-group">
+					<label for="militarytoYear">To year </label> <input type="text"
+						class="form-control" id="militarytoYear" name="militarytoYear"
+						placeholder="Enter to year">
+				</div>
+			<br>
+			<br>
+				<div class="form-group">
+					<label for="branchService">Branch of service </label> <input type="text"
+						class="form-control" id="branchService" name="branchService"
+						placeholder="Enter branch of service">
+				</div>
+			<br>
+			<br>
+				<div class="form-group">
+					<label for="militaryPlace">Military place </label> <input type="text"
+						class="form-control" id="militaryPlace" name="militaryPlace"
+						placeholder="Enter military place">
+				</div>
+			<br>
+			<br>
+				<div class="form-group">
+					<label for="serviceNo">Service no </label> <input type="text"
+						class="form-control" id="militaryServiceNo" name="militaryServiceNo"
+						placeholder="Enter Service no">
+				</div>
+			<br>
+			<br>
+				<div class="form-group">
+					<label for="reasons">If not, please state the reasons </label> <input
+						type="text" class="form-control" id="militaryReason" name="militaryReason"
+						placeholder="Enter If not, please state the reasons">
+				</div>
+			<br>
+			<br>
+				<div class="form-group">
+					<label for="dateToBeDrafted"><span
+						class="glyphicon glyphicon-calendar"></span>Date to be drafted</label>
+					<div class="input-group date">
+						<input type="text" id="dateToBeDrafted" name="dateToBeDrafted"
+							class="form-control"><span class="input-group-addon"><i
+							class="glyphicon glyphicon-th"></i></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+			<br>
+			<br>
+	<div class="row">
+		<div class="col-md-6">
+			<label for="applyDate"><span class="glyphicon glyphicon-calendar"></span>Apply date</label>
+			<div class="input-group date">
+				<input type="text" id="applyDate" name="applyDate"
+					class="form-control"><span class="input-group-addon"><i
+					class="glyphicon glyphicon-th"></i></span>
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="department">Department </label> 
+				<select id="departmentId" class="form-control" name="departmentName">
+					<option value="-1" label="please select data"/>
+					<c:forEach var="departmentList" items="${departments}" >
+						<option value="${departmentList.id}">${departmentList.departmentName}</option>
+					</c:forEach>
+				</select>
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="position1">Position 1 </label> <select
+					id="position1" name="position1" class="form-control">
+					<option value="-1" label="please select data"/>
+					
+					<c:forEach var="positionList" items="${positions}">
+						<option value="${positionList.id}">${positionList.positionName}</option>
+					</c:forEach>
+				</select>
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="position2">Position 2 </label> <select
+					id="position2" name="position2" class="form-control">
+					<option value="-1" label="please select data"/>
+					<c:forEach var="positionList" items="${positions}">
+						<option value="${positionList.id}">${positionList.positionName}</option>
+					</c:forEach>
+				</select>
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="position3">Position 3 </label> <select
+					id="position3" name="position3" class="form-control">
+					<option value="-1" label="please select data"/>
+					<c:forEach var="positionList" items="${positions}">
+						<option value="${positionList.id}">${positionList.positionName}</option>
+					</c:forEach>
+				</select>
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="salary">Salary expected </label> <input type="text"
+					class="form-control" id="expectedSalary" name="expectedSalary"
+					placeholder="Enter salary">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="knowAugmentis">How do you know Augmentis?</label> <br>
+				 <div class="checkbox">
+			  		<label><input type="checkbox" 
+					id="newspaperId" name="newspaperName" value="newspaper">Newspaper</label>
+					<input type="text" class="form-control" id="noticeNewspaper"
+						name="noticeNewspaper" placeholder="Enter newspaper">
+				</div>
+				<br>
+				<br>
+				<div class="checkbox">
+			 		 <label><input type="checkbox" id="magazineId" name="magazineName"
+					value="magazine">Magazine</label>
+					<input type="text" class="form-control" id="noticeMagazine"
+						name="noticeMagazine" placeholder="Enter magazine">
+				</div>
+				<br>
+				<br>
+				<div class="checkbox">
+			  		<label><input type="checkbox" id="websiteId" name="websiteName" value="website">Website</label>
+			  		<input type="text" class="form-control" id="noticeWebSite"
+						name="noticeWebSite" placeholder="Enter website">
+				</div>
+				<br>
+				<br>
+				<div class="checkbox">
+			  		<label><input type="checkbox" id="friendId" name="friendName" value="friend">Friend</label>
+			  		<input type="text" class="form-control" id="noticeFriend"
+						name="noticeFriend" placeholder="Enter friend">
+				</div>
+				<br>
+				<br>
+				<div class="checkbox">
+			  		<label><input type="checkbox" id="otherId" name="otherName" value="other">Other (please specify) </label>
+			  		<input type="text" class="form-control" id="noticeOther"
+						name="noticeOther" placeholder="Enter other">
+				</div> 
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="nowEmployed">Do you know anyone now being employed
+					by this company? </label><br><br>
+				<div class="radio">
+					<label><input type="radio" name="nowEmployed"
+						id="nowEmployed" value="Yes">Yes</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="knowEmployedName"
+						id="nowEmployed" value="No">No</label>
+				</div>
+				<br>
+				<br>
+				<div class="form-group">
+					<label for="nameRelation">If yes, please write name, position
+						and relation </label><br><br>
+					<lable for="employedName">Name </lable>
+					<input type="text" class="form-control" id="employedName"
+						name="employedName" placeholder="Enter name">
+					<lable for="employedPosition">Position </lable>
+					<input type="text" class="form-control" id="employedPosition"
+						name="employedPosition" placeholder="Enter position">
+					<lable for="employedRelation">Relation </lable>
+					<input type="text" class="form-control" id="employedRelation"
+						name="employedRelation" placeholder="Enter relation">
+				</div>
+			</div>
+				<br>
+				<br>
+			<label for="emergency">In case of emergency , notify , ( Name , Address and Telephone ) </label>
+				<br>
+				<br>
+			<div class="form-group">
+				<label for="emergencyOfName">Emergency Name </label> <input
+					type="text" class="form-control" id="emergencyName"
+					name="emergencyName" placeholder="Enter emergency name">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="emergencyTel">Emergency Telephone </label> <input
+					type="text" class="form-control" id="emergencyTel"
+					name="emergencyTel" placeholder="Enter emergency tel">
+			</div>
+			<br>
+			<br>
+			<div class="form-group">
+				<label for="emergencyAddress">Emergency Address </label>
+					<textarea class="form-control" rows="5" id="emergencyAddress"
+					name="emergencyAddress" placeholder="Enter emergency address"></textarea>
+					
+			</div>
+		<br>
+		<br>			
+		<div class="form-group">
+		<label for="previousEmployers">May inquiry be made of your
+			previous employers regarding your character, qualification record of
+			employment? </label>
+			<br>
+			<br>
+		<div class="form-group">
+			<input type="hidden" id="applicantId" name="applicantName"
+				value="${id}">
+		</div>
+		<div class="radio">
+			<label><input type="radio" name="previousEmployers"
+				id="previousEmployers" value="Yes">Yes</label>
+		</div>
+		<div class="radio">
+			<label><input type="radio" name="previousEmployers"
+				id="previousEmployers" value="No">No</label>
+		</div>
+		<br>
+		<br>
+		<div class="form-group">
+			<label for="previousEmployersReason">If not, please give the reason </label> <input
+				type="text" class="form-control" id="previousEmployersReason"
+				name="previousEmployersReason"
+				placeholder="Enter If not, please give the reason">
+		</div>
+	</div>
+		<br>
+		<br>
+		<div class="form-group">
+			<label for="file">File</label> <input type="file" id="file" name="file">
+				<p class="help-block">Block-level help text here.</p>
+			<label for="file">File</label> <input type="file" id="file" name="file">
+				<p class="help-block">Block-level help text here.</p>
+		</div>
+		<br>
+		<input type="button" id="buttonUpload" name="buttonUpload" value="Upload"/>
+			<br>
+			<br>
+			<button type="button" class="btn btn-success" id="buttonSave">
+				<span class="glyphicon glyphicon-off"></span> Save
+			</button>
+ 	</div>
+ </div>
+</f:form>
+<%-- <div id="informations">
 <div class="container">
 	<div class="row">
 		<div class="col-md-6">
@@ -721,103 +1141,7 @@
 				</div>
 			</form>
 				
-		 <div class="form-group">
-					<label for="informationFamily">Information regarding family
-						(Including Parents Brothers and Sisters) </label>
-				</div>
-				<div class="container">
-					<div class="row">
-						<div class="col-md-6">
-							<h1>Family</h1>
-							<button class="btn btn-primary" id="familyAdd"
-								data-toggle="modal" data-target="#familyModal">
-								<span class="glyphicon glyphicon-plus"></span> Family
-							</button>
-						</div>
-					</div>
-				</div>
-				<div class="modal fade" id="familyModal" role="dialog">
-					<div class="modal-dialog">
-
-						<div class="modal-content">
-							<div class="modal-header" style="padding: 35px 50px;">
-								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4>
-									<span class="glyphicon glyphicon-lock"></span> Family
-								</h4>
-							</div>
-							<div class="modal-body" style="padding: 40px 50px;">
-								<form role="form" id="familyForm">
-									<div class="form-group">
-										<label for="nameFamily">Name </label> <input type="text"
-											class="form-control" id="nameFamilyId" name="nameFamilyName"
-											placeholder="Enter name">
-									</div>
-
-									<div class="form-group">
-										<label for="relationFamily">Relation </label> <input
-											type="text" class="form-control" id="relationFamilyId"
-											name="relationFamilyName" placeholder="Enter relation">
-									</div>
-									<div class="form-group">
-										<label for="occupationFamily">Occupation </label> <input
-											type="text" class="form-control" id="occupationFamilyId"
-											name="occupationFamilyName" placeholder="Enter occupation ">
-									</div>
-
-									<div class="form-group">
-										<label for="addressFamily">Address </label> 
-										<textarea class="form-control" rows="5" id="addressFamilyId"
-										name="addressFamilyName" placeholder="Enter address"></textarea>
-									</div>
-
-									<div class="form-group">
-										<label for="positionFamily">Position </label> <input
-											type="text" class="form-control" id="positionFamilyId"
-											name="positionFamilyName" placeholder="Enter position">
-									</div>
-									<br> <br>
-									<button type="button" class="btn btn-success"
-										id="familySave">
-										<span class="glyphicon glyphicon-off"></span> Save
-									</button>
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">Close</button>
-								</form>
-							</div>
-							<div class="modal-footer">
-								<p>Please fill your information</p>
-							</div>
-						</div>
-
-					</div>
-				</div>
-				<br> <br>
-				<div>
-					<table id="familyTable" class="display" cellspacing="0"
-						width="100%">
-						<thead>
-							<tr>
-								<th>NAME</th>
-								<th>RELATION</th>
-								<th>OCCUPATION</th>
-								<th>ADDRESS</th>
-								<th>POSITION_FAMILY</th>
-
-							</tr>
-						</thead>
-
-
-						<tbody></tbody>
-					</table>
-
-				</div>
-
-
-			</div>
-
- 		</div>
-
+		
 
 			
 			<button type="button" class="btn btn-success" id="buttonSave">
@@ -825,4 +1149,4 @@
 			</button>
 			
 		</div>
-	</div>
+	</div> --%>

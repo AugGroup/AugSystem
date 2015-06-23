@@ -117,7 +117,9 @@
 	
 	</div>
 	<div>
-		<decorator:body />
+		<div class="container">
+			<decorator:body />
+		</div>
 	</div>
 	<hr />
 
