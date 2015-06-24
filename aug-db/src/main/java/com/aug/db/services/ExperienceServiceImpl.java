@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.dto.ExperienceDTO;
-import com.aug.db.dto.SkillDTO;
 import com.aug.db.entities.Experience;
 import com.aug.db.repositories.ExperienceRepository;
 

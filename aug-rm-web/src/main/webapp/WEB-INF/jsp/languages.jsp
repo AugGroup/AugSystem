@@ -6,6 +6,9 @@
 
 <script>
 $(document).ready(function() {
+	
+	var dtApplicant;
+	
 		$('#languagesForm').validate({
 			rules : {
 				languagesName : {
@@ -43,11 +46,15 @@ $(document).ready(function() {
 			}
 		});
 
-	
+		if(dtApplicant) {
+			dtOrder.ajax.reload();
+		}
+		else {
+		var id = '${id}';
 	$('#languagesTable').DataTable({
 		ajax : {
-			url : '${pageContext.request.contextPath}/languages',
-			type : 'GET'
+			url : '${pageContext.request.contextPath}/findByIdLanguages/' +id,
+			type : 'POST'
 		},
 		columns : [ {
 			data : "languagesName"
@@ -60,30 +67,16 @@ $(document).ready(function() {
 		}, {
 			data : "writing"
 		},{ data : function(data) {
-			 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+			 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#languagesModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
 		}
 		},{ data : function(data) {
-			 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+			 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
 		}
 	}],
 		searching : false
 
 	});
-
-	$('#languagesSave').on("click", function() {
-		if ($('#languagesForm').valid()) { 
-		var table = $('#languagesTable').DataTable();
-
-		table.row.add({
-			languagesName : $('#languages').val(),
-			speaking : $('input[name=speaking]:checked').val(),
-			reading : $('input[name=reading]:checked').val(),
-			understanding : $('input[name=understanding]:checked').val(),
-			writing : $('input[name=writing]:checked').val()
-		}).draw();
-		$('#languagesModal').modal('hide');
-		};
-	})
+		}
 	
 	
 	$('#languagesSave').on("click", function() {
@@ -126,6 +119,109 @@ $(document).ready(function() {
 			}
 		}); 
 });
+	
+	//Update 
+	function findById(id){
+		$.ajax({
+			url : "${pageContext.request.contextPath}/findLanguagesId/" + id,
+			type : "POST",
+			success : function(data){
+				showFillData(data);
+			}
+		});
+	}
+	
+	//Show data on inputField
+	function showFillData(data){
+		$("#languages").val(data.languagesName);
+ 	}
+	
+	//Update function
+	function updated(button){
+		var id = $(button).data("id");
+		var languagesName = $("#languages").val();
+		
+		var json = {
+				"id" : id,
+				"languagesName" : languagesName,
+				};
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/updateLanguages/"+id,
+			type : "POST",
+			contentType :"application/json; charset=utf-8",
+			data : JSON.stringify(json),
+			success : function(data){
+				$('#languagesModal').modal('hide');
+				
+				var table = $('#languagesTable').DataTable();	
+			 	var rowData = table.row(button.closest('tr')).index(); 
+			 	var d = table.row(rowData).data();
+			 	
+			 		d.languagesName = data.languagesName;
+			 		
+			 		table.row(rowData).data(d).draw();
+			 		
+					new PNotify({
+					    title: 'Edit Languages Success!!',
+					    text: 'You can edit data',
+					    type: 'success',
+					    nonblock: {
+					        nonblock: true,
+					        nonblock_opacity: .2
+					    }
+					});
+			 }
+		});
+	}
+	
+	  //delete Modal
+    $('#deleteModal').on('shown.bs.modal', function (e) {
+        var button = e.relatedTarget;
+        var id = $(button).data("id");
+        if (id !== null) {
+            $('#btn_delete_submit').off('click').on('click', function () {
+                deleted(button);
+            });
+        }
+    });
+	
+    function deleteLanguages(button) {
+        var dtApplicant = $('#languagesTable').DataTable();
+        var id = $(button).data("id");
+        var index = dtApplicant.row(button.closest("tr")).index();
+        $.ajax({
+            url: "${pageContext.request.contextPath}/deleteLanguages/" + id,
+            type: "POST",
+            success: function () {
+            	dtApplicant.row(index).remove().draw();
+				new PNotify({
+				    title: 'Delete Success',
+				    text: 'You can delete data',
+				    type: 'success',
+				    nonblock: {
+				        nonblock: true,
+				        nonblock_opacity: .2
+				    }
+				});
+            }
+        });
+    }
+    
+    $('#languagesModal').on('shown.bs.modal', function (e) {
+    	var button = e.relatedTarget;
+		if(button != null){
+			var id = $(button).data("id");
+			if(id != null){
+				console.log(id);
+				findById(id);
+				$('#btn_save').off('click').on('click', function(id){
+					updated(button);
+				});
+			}
+
+		}
+   });
 
 	
 });
@@ -224,19 +320,37 @@ $(document).ready(function() {
 							</div>
 						</div>
 						<br> <br>
-						<button type="button" class="btn btn-success" id="languagesSave">
+						<button type="button" class="btn btn-success" id="btn_save">
 							<span class="glyphicon glyphicon-off"></span> Save
 						</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 					</form>
 				</div>
-				<div class="modal-footer">
-					<p>Please fill your information</p>
-				</div>
 			</div>
 
 		</div>
 	</div>
+	
+			<!-- Delete Model -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    		<div class="modal-dialog">
+        		<div class="modal-content">
+            		<div class="modal-header">
+                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.title"/></h4>
+            		</div>
+            		<div class="modal-body">
+                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.confirm.title"/></h4>
+                		<br>
+                		<div align="right">
+                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>
+                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
+                		</div>
+	            	</div>
+        		</div>
+    		</div>  
+		</div>
+		
 	<br> <br>
 	<div>
 		<table id="languagesTable" class="display" cellspacing="0"

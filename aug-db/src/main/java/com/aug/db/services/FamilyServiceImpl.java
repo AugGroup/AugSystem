@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.db.dto.FamilyDTO;
 import com.aug.db.entities.Family;
 import com.aug.db.repositories.FamilyRepository;
 
@@ -42,6 +43,18 @@ public class FamilyServiceImpl implements FamilyService {
 	public List<Family> findAll() {
 		List<Family> families = familyRepository.findAll();
 		return families;
+	}
+
+	@Override
+	public List<FamilyDTO> findFamilyById(Integer id) {
+		List<FamilyDTO> families = familyRepository.findFamilyById(id);
+		return families;
+	}
+
+	@Override
+	public FamilyDTO findFamily(Integer id) {
+		FamilyDTO family = familyRepository.findFamily(id);
+		return family;
 	}
 
 }

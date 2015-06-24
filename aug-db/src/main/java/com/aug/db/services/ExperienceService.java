@@ -3,7 +3,6 @@ package com.aug.db.services;
 import java.util.List;
 
 import com.aug.db.dto.ExperienceDTO;
-import com.aug.db.dto.SkillDTO;
 import com.aug.db.entities.Experience;
 
 public interface ExperienceService {

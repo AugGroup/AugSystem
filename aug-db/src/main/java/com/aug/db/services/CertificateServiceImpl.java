@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.aug.db.dto.CertificatedDTO;
 import com.aug.db.entities.Certificate;
 import com.aug.db.repositories.CertificateRepository;
 @Service(value = "certificateService")
@@ -44,6 +45,18 @@ public class CertificateServiceImpl implements CertificateService {
 	@Override
 	public List<Certificate> findAll() {
 		return certificateRepository.findAll();
+	}
+
+	@Override
+	public List<CertificatedDTO> findCertificateById(Integer id) {
+		List<CertificatedDTO> certificates = certificateRepository.findCertificateById(id);
+		return certificates;
+	}
+
+	@Override
+	public CertificatedDTO findCertificate(Integer id) {
+		CertificatedDTO certificate = certificateRepository.findCertificate(id);
+		return certificate;
 	}
 
 }

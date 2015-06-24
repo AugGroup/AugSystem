@@ -1,14 +1,11 @@
 package com.aug.db.services;
 
-import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ApplicationDTO;
@@ -16,7 +13,6 @@ import com.aug.db.dto.ReportApplicantDTO;
 import com.aug.db.entities.Address;
 import com.aug.db.entities.Applicant;
 import com.aug.db.entities.Certificate;
-import com.aug.db.entities.Department;
 import com.aug.db.entities.Education;
 import com.aug.db.entities.Experience;
 import com.aug.db.entities.Family;
@@ -27,7 +23,6 @@ import com.aug.db.entities.Skill;
 import com.aug.db.repositories.AddressRepository;
 import com.aug.db.repositories.ApplicantRepository;
 import com.aug.db.repositories.CertificateRepository;
-import com.aug.db.repositories.DepartmentRepository;
 import com.aug.db.repositories.EducationRepository;
 import com.aug.db.repositories.ExperienceRepository;
 import com.aug.db.repositories.FamilyRepository;

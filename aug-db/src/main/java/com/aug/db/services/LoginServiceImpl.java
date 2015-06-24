@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.LoginDTO;
 import com.aug.db.entities.Login;
 import com.aug.db.repositories.LoginRepository;

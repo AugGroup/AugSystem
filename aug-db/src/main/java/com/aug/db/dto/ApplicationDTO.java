@@ -298,7 +298,7 @@ public class ApplicationDTO {
 
 	@Transient
 	private Position position3;
-	
+
 	@Transient
 	private List<Certificate> certificates;
 	

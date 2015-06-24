@@ -2,6 +2,7 @@ package com.aug.db.services;
 
 import java.util.List;
 
+import com.aug.db.dto.FamilyDTO;
 import com.aug.db.entities.Family;
 
 public interface FamilyService {
@@ -17,5 +18,10 @@ public interface FamilyService {
 	public void delete(Family family);
 	
 	public List<Family> findAll();
+	
+	public List<FamilyDTO> findFamilyById(Integer id);
+
+	public FamilyDTO findFamily(Integer id);
+
 
 }

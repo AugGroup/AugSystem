@@ -2,6 +2,7 @@ package com.aug.db.services;
 
 import java.util.List;
 
+import com.aug.db.dto.CertificatedDTO;
 import com.aug.db.entities.Certificate;
 
 public interface CertificateService {
@@ -17,4 +18,8 @@ public interface CertificateService {
 	public void delete(Certificate certificate);
 
 	public List<Certificate> findAll();
+	
+	public List<CertificatedDTO> findCertificateById(Integer id);
+
+	public CertificatedDTO findCertificate(Integer id);
 }

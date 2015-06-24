@@ -5,6 +5,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script>
 	$(document).ready(function() {
+		
+		var dtApplicant;
+		
 		$('#referenceForm').validate({
 			rules : {
 				fullName : {
@@ -36,10 +39,16 @@
 			}
 		});
 		
+		if(dtApplicant) {
+			dtOrder.ajax.reload();
+		}
+		else {
+		
+		var id = '${id}';
 		$('#referenceTable').DataTable({
 			ajax : {
-				url : '${pageContext.request.contextPath}/experiences',
-				type : 'GET'
+				url : '${pageContext.request.contextPath}/findByIdReference/'+id,
+				type : 'POST'
 			},
 			columns : [ {
 				data : "fullName"
@@ -50,7 +59,7 @@
 			}, {
 				data : "completeAddress"
 			}, { data : function(data) {
-				 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+				 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#referenceModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
 			}
 			}, { data : function(data) {
 				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
@@ -59,6 +68,7 @@
 			searching : false
 
 		});
+		}
 		$('#referenceSave').on("click", function() {
 
 			if ($('#referenceForm').valid()) { 
@@ -117,7 +127,120 @@
 			}); 
 	});
 		
+		//Update 
+		function findById(id){
+			$.ajax({
+				url : "${pageContext.request.contextPath}/findReferenceId/" + id,
+				type : "POST",
+				success : function(data){
+					showFillData(data);
+				}
+			});
+		}
 		
+		//Show data on inputField
+		function showFillData(data){
+			$("#fullName").val(data.fullName);
+			$("#completeAddress").val(data.completeAddress);
+			$("#telNo").val(data.tel);
+			$("#occupationRef").val(data.occupation);
+	 	}
+		
+		//Update function
+		function updated(button){
+			var id = $(button).data("id");
+			var fullName = $("#fullName").val();
+			var completeAddress = $("#completeAddress").val();
+			var tel= $("#telNo").val(data.tel);
+			var occupation = $("#occupationRef").val();
+			
+			var json = {
+					"id" : id,
+					"fullName" : fullName,
+					"completeAddress" : completeAddress,
+					"tel" : tel,
+					"occupation" : occupation,
+					};
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/updateReferences/"+id,
+				type : "POST",
+				contentType :"application/json; charset=utf-8",
+				data : JSON.stringify(json),
+				success : function(data){
+					$('#referenceModal').modal('hide');
+					
+					var table = $('#referenceTable').DataTable();	
+				 	var rowData = table.row(button.closest('tr')).index(); 
+				 	var d = table.row(rowData).data();
+				 	
+				 		d.fullName = data.fullName;
+				 		d.completeAddress = data.completeAddress;
+				 		d.tel = data.tel;
+				 		d.occupation = data.occupation;
+				 		
+				 		table.row(rowData).data(d).draw();
+				 		
+						new PNotify({
+						    title: 'Edit Reference Success!!',
+						    text: 'You can edit data',
+						    type: 'success',
+						    nonblock: {
+						        nonblock: true,
+						        nonblock_opacity: .2
+						    }
+						});
+				 }
+			});
+		}
+		
+		  //delete Modal
+	    $('#deleteModal').on('shown.bs.modal', function (e) {
+	        var button = e.relatedTarget;
+	        var id = $(button).data("id");
+	        if (id !== null) {
+	            $('#btn_delete_submit').off('click').on('click', function () {
+	                deleted(button);
+	            });
+	        }
+	    });
+		  
+	    function deleted(button) {
+	        var dtApplicant = $('#skillTable').DataTable();
+	        var id = $(button).data("id");
+	        var index = dtApplicant.row(button.closest("tr")).index();
+	        $.ajax({
+	            url: "${pageContext.request.contextPath}/deleteSkill/" + id,
+	            type: "POST",
+	            success: function () {
+	            	dtApplicant.row(index).remove().draw();
+					new PNotify({
+					    title: 'Delete Success',
+					    text: 'You can delete data',
+					    type: 'success',
+					    nonblock: {
+					        nonblock: true,
+					        nonblock_opacity: .2
+					    }
+					});
+	            }
+	        });
+	    }
+		
+	    $('#referenceModal').on('shown.bs.modal', function (e) {
+	    	var button = e.relatedTarget;
+			if(button != null){
+				var id = $(button).data("id");
+				if(id != null){
+					console.log(id);
+					findById(id);
+					$('#btn_save').off('click').on('click', function(id){
+						updated(button);
+					});
+				}
+
+			}
+	   });
 		
 		
 		
@@ -177,7 +300,7 @@
 									name="occupationRef" placeholder="Enter occupation">
 							</div>
 							<br> <br>
-							<button type="button" class="btn btn-success" id="referenceSave">
+							<button type="button" class="btn btn-success" id="btn_save">
 								<span class="glyphicon glyphicon-off"></span> Save
 							</button>
 							<button type="button" class="btn btn-default"
@@ -185,11 +308,28 @@
 						</form>
 					</div>
 				</div>
-				<div class="modal-footer">
-					<p>Please fill your information</p>
-				</div>
 			</div>
 
+		</div>
+		
+		<!-- Delete Model -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    		<div class="modal-dialog">
+        		<div class="modal-content">
+            		<div class="modal-header">
+                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.title"/></h4>
+            		</div>
+            		<div class="modal-body">
+                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.confirm.title"/></h4>
+                		<br>
+                		<div align="right">
+                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>
+                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
+                		</div>
+	            	</div>
+        		</div>
+    		</div>  
 		</div>
 	
 	<br> <br>

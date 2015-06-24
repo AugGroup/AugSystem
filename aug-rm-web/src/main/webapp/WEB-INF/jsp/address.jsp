@@ -84,37 +84,34 @@
 
 		});
 		
+		if(dtApplicant) {
+			dtOrder.ajax.reload();
+		}
+		else {
+		
+		var id = '${id}';
 		$('#addressTable').DataTable({
 			ajax : {
-				url : '${pageContext.request.contextPath}/address',
-				type : 'GET'
+				url : '${pageContext.request.contextPath}/findByIdAddress/'+id,
+				type : 'POST'
 			},
-			columns : [ {
-				data : "addressType"
-			},
-			{
-				data : "houseNo"
-			}, {
-				data : "road"
-			}, {
-				data : "district"
-			}, {
-				data : "subDistrict"
-			}, {
-				data : "zipcode"
-			}, {
-				data : "province"
-			},{ data : function(data) {
-					 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
-				}
-},
-{ data : function(data) {
-					 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
-				}
-}],
+			columns : [ {data : "addressType"},
+						{data : "houseNo"},
+						{data : "road"},
+						{data : "district"},
+						{data : "subDistrict"},
+						{data : "zipcode"},
+						{data : "province"},
+						{data : function(data) {
+					 		return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#addressModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+						}},
+						{ data : function(data) {
+					 		return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+						}}],
 			searching : false
 
 		});
+		}
 // 		$('#addressSave').on("click", function() {
 // 			if ($('#addressForm').valid()) {
 // 			var table = $('#addressTable').DataTable();
@@ -176,7 +173,9 @@
 // 		}
 
 // <<<<<<< HEAD
-		$('#addressSave').on("click", function() {
+
+// 		$('#addressSave').on("click", function() {
+	
 // =======
 // 		$('#buttonSave').on("click", function() {
 // 			if ($('#emergencyForm').valid()) {
@@ -201,46 +200,46 @@
 // 			}
 
 // >>>>>>> Create AddressDTO
-			var insertData = "{";
+// 			var insertData = "{";
 			
-			insertData+="address : [ ";
-			var addressTable = $("#addressTable").DataTable();
+// 			insertData+="address : [ ";
+// 			var addressTable = $("#addressTable").DataTable();
 			
-			addressTable.rows().iterator( 'row', function ( context, index ) {
-			insertData+="{";
-			insertData+="applicant : {id :"+$('#applicant').val()+"},";
-			insertData+="addressType : '"+addressTable.cell( index,0 ).data()+"',";
-			insertData+="houseNo : '"+addressTable.cell( index,1 ).data()+"',";
-			insertData+="road : '"+addressTable.cell( index,2 ).data()+"',";
-			insertData+="district : '"+addressTable.cell( index,3 ).data()+"',";
-			insertData+="subDistrict : '"+addressTable.cell( index,4 ).data()+"',";
-			insertData+="zipcode : "+addressTable.cell( index,5 ).data()+",";
-			insertData+="province : '"+addressTable.cell( index,6 ).data()+"'},";
-			});
-				insertData=insertData.substring(0,insertData.length-1);
-				insertData+="]";
-				insertData+="}";
+// 			addressTable.rows().iterator( 'row', function ( context, index ) {
+// 			insertData+="{";
+// 			insertData+="applicant : {id :"+$('#applicant').val()+"},";
+// 			insertData+="addressType : '"+addressTable.cell( index,0 ).data()+"',";
+// 			insertData+="houseNo : '"+addressTable.cell( index,1 ).data()+"',";
+// 			insertData+="road : '"+addressTable.cell( index,2 ).data()+"',";
+// 			insertData+="district : '"+addressTable.cell( index,3 ).data()+"',";
+// 			insertData+="subDistrict : '"+addressTable.cell( index,4 ).data()+"',";
+// 			insertData+="zipcode : "+addressTable.cell( index,5 ).data()+",";
+// 			insertData+="province : '"+addressTable.cell( index,6 ).data()+"'},";
+// 			});
+// 				insertData=insertData.substring(0,insertData.length-1);
+// 				insertData+="]";
+// 				insertData+="}";
 			
-			$.ajax({
-				contentType : "application/json",
-				type : "POST",
-				url : '${pageContext.request.contextPath}/saveAddress',
-				data : JSON.stringify(eval("(" + insertData + ")")),
-				success : function(data) {
-					alert(JSON.stringify(data));
+// 			$.ajax({
+// 				contentType : "application/json",
+// 				type : "POST",
+// 				url : '${pageContext.request.contextPath}/saveAddress',
+// 				data : JSON.stringify(eval("(" + insertData + ")")),
+// 				success : function(data) {
+// 					alert(JSON.stringify(data));
 
-					new PNotify({
-				        title: 'Success',
-				        text: 'Successful Add Address',
-				        type: 'success',
-				        nonblock: {
-				            nonblock: true,
-				            nonblock_opacity: .2
-				        }
-				    });
-				}
-			});
-		})
+// 					new PNotify({
+// 				        title: 'Success',
+// 				        text: 'Successful Add Address',
+// 				        type: 'success',
+// 				        nonblock: {
+// 				            nonblock: true,
+// 				            nonblock_opacity: .2
+// 				        }
+// 				    });
+// 				}
+// 			});
+// 		})
 		
 		//Find by Id
 		function findById(id){
@@ -256,26 +255,26 @@
 		//Show data on inputField
 		function showFillData(data){
 			$('#inputAddress').val(data.addressType);
-			$("#houseNoId").val(data.houseNo);
-			$("#roadId").val(data.road);
-			$("#districtId").val(data.district);
-			$("#subDistrictId").val(data.subDistrict);
-			$("#zipcodeId").val(data.zipcode);
+			$("#houseNo").val(data.houseNo);
+			$("#road").val(data.road);
+			$("#district").val(data.district);
+			$("#subDistrict").val(data.subDistrict);
+			$("#zipcode").val(data.zipcode);
 			console.log(data.houseNo);
 			
-			$("#provinceId").val(data.province);
+			$("#province").val(data.province);
 		}
 		
 		//Update function
 		function updateAddress(button){
 			var id = $(button).data("id");
 			var addressType = $('#inputAddress').val();
-			var houseNo = $("#houseNoId").val();
-			var road = $('#roadId').val();
-			var district = $("#districtId").val();
-			var subDistrict = $("#subDistrictId").val();
-			var zipcode = $("#zipcodeId").val();
-			var province = $("#provinceId").val();
+			var houseNo = $("#houseNo").val();
+			var road = $('#road').val();
+			var district = $("#district").val();
+			var subDistrict = $("#subDistrict").val();
+			var zipcode = $("#zipcode").val();
+			var province = $("#province").val();
 			console.log(id);
 			
 			var json = {
@@ -290,12 +289,13 @@
 					};
 			
 			$.ajax({
-				url : "${pageContext.request.contextPath}/findByIdAddress/"+id,
+				url : "${pageContext.request.contextPath}/updateAddress/"+id,
 				type : "POST",
 				contentType :"application/json; charset=utf-8",
 				data : JSON.stringify(json),
 				success : function(data){
 					$('#addressModal').modal('hide');
+					
 					var table = $('#addressTable').DataTable();	
 				 	var rowData = table.row(button.closest('tr')).index(); 
 				 	var d = table.row(rowData).data();
@@ -324,7 +324,39 @@
 			});
 		}
 		
-// 		var applicantId = '${id}';
+		  //delete Modal
+        $('#deleteModal').on('shown.bs.modal', function (e) {
+            var button = e.relatedTarget;
+            var id = $(button).data("id");
+            if (id !== null) {
+                $('#btn_delete_submit').off('click').on('click', function () {
+                    deleted(button);
+                });
+            }
+        });
+        
+        //delete function 
+        function deleted(button) {
+            var dtApplicant = $('#addressTable').DataTable();
+            var id = $(button).data("id");
+            var index = dtApplicant.row(button.closest("tr")).index();
+            $.ajax({
+                url: "${pageContext.request.contextPath}/delete/" + id,
+                type: "POST",
+                success: function () {
+                	dtApplicant.row(index).remove().draw();
+					new PNotify({
+					    title: 'Delete Success',
+					    text: 'You can delete data',
+					    type: 'success',
+					    nonblock: {
+					        nonblock: true,
+					        nonblock_opacity: .2
+					    }
+					});
+                }
+            });
+        }
 		
         $('#addressModal').on('shown.bs.modal', function (e) {
         	var button = e.relatedTarget;
@@ -333,16 +365,11 @@
 				if(id != null){
 					console.log(id);
 					findById(id);
-					$('#btn_edit').off('click').on('click', function(id){
+					$('#btn_save').off('click').on('click', function(id){
 						updateAddress(button);
 					});
-				
-				}else{
-					$('#addressForm')[0].reset();
-					$('#btn_edit').off('click').on('click', function(){
-						saveAddress();
-					});
 				}
+
 			}
        });
 });
@@ -398,8 +425,8 @@
 							</div>
 							<div class="form-group">
 								<label for="subDistrict">Sub District </label> <input
-									type="text" class="form-control" id="subDistrictId"
-									name="subDistrictName" placeholder="Enter sub district">
+									type="text" class="form-control" id="subDistrict"
+									name="subDistrict" placeholder="Enter sub district">
 							</div>
 							<div class="form-group">
 								<label for="zipcode">Zipcode </label> <input type="text"
@@ -413,7 +440,7 @@
 							</div>
 
 							<br> <br>
-							<button type="button" class="btn btn-success" id="addressSave">
+							<button type="button" class="btn btn-success" id="btn_save">
 								<span class="glyphicon glyphicon-off"></span> Save
 							</button>
 							<button type="button" class="btn btn-default"
@@ -421,11 +448,28 @@
 						</form>
 					</div>
 				</div>
-				<div class="modal-footer">
-					<p>Please fill your information</p>
-				</div>
 			</div>
 
+		</div>
+		
+				<!-- Delete Model -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    		<div class="modal-dialog">
+        		<div class="modal-content">
+            		<div class="modal-header">
+                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.title"/></h4>
+            		</div>
+            		<div class="modal-body">
+                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.confirm.title"/></h4>
+                		<br>
+                		<div align="right">
+                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>
+                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
+                		</div>
+	            	</div>
+        		</div>
+    		</div>  
 		</div>
 	
 	<br> <br>

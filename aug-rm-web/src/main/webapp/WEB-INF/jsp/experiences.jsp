@@ -19,146 +19,18 @@
 			format : "dd/mm/yyyy"
 
 		});
-
-	 	/* $('#previousEmployers').validate({
-			rules : {
-				previousEmployersName : {
-					required : true
-				},
-				giveReasonName : {
-					required : true,
-				}
-			},
-			messages : {
-				previousEmployersName : {
-					required : "Please choose is required!"
-				},
-				giveReasonName : {
-					required : "Please give the reason is required!"
-				}
-			}
-		});
-	 	
-	 	$('#experiencesForm').validate({
-			rules : {
-				workBackgroundName : {
-					required : true,
-				},
-				fromWorkYearName : {
-					required : true,
-				},
-				toWorkYearName : {
-					required : true,
-				},
-				empName : {
-					required : true,
-				},
-				addressBackgroundName : {
-					required : true,
-				},
-				businessName : {
-					required : true,
-				},
-				positionBackgroundName : {
-					required : true,
-				},
-				supervisorBackgroundName : {
-					required : true,
-				},
-				salaryBackgroundName : {
-					required : true,
-				},
-				descriptionBackgroundName : {
-					required : true,
-				},
-				reasonLeavingName : {
-					required : true,
-				}
-			},
-			messages : {
-				workBackgroundName : {
-					required : "Present or last position is required!"
-				},
-				fromWorkYearName : {
-					required : "From (month, year) is required!"
-				},
-				toWorkYearName : {
-					required : "To (month, year) is required!"
-				},
-				empName : {
-					required : "Employer Name is required!"
-				},
-				addressBackgroundName : {
-					required : "Address is required!"
-				},
-				businessName : {
-					required : "Type of business is required!"
-				},
-				positionBackgroundName : {
-					required : "Position is required!"
-				},
-				supervisorBackgroundName : {
-					required : "Supervisor is required!"
-				},
-				salaryBackgroundName : {
-					required : "Salary ,Wages is required!"
-				},
-				descriptionBackgroundName : {
-					required : "Description of duties and responsibilities is required!"
-				},
-				reasonLeavingName : {
-					required : "Reason for leaving is required!"
-				}
-			}
-		});
-	 	 */
 		
-// =======
-		
-// 		if(dtApplicant){
-// 			dtApplicant.ajax.reload();
-// 		}else{
-// 			var id = '${id}';
-// 		$('#referenceTable').DataTable({
-// 			ajax : {
-// 				url : '${pageContext.request.contextPath}/findByIdReference/' + id,
-// 				type : 'POST'
-// 			},
-// 			columns : [ {data : "fullName"},
-// 			            {data : "tel"},
-// 						{data : "occupation"},
-// 						{data : "completeAddress"}],
-// 			searching : false
-
-// 		});
-// 		}
-		
-// 		$('#referenceSave').on("click", function() {
-
-// 			if ($('#referenceForm').valid()) { 
-// 			var table = $('#referenceTable').DataTable();
-
-// 			table.row.add({
-// 				fullName : $('#fullNameId').val(),
-// 				tel : $('#telNoId').val(),
-// 				occupation : $('#occupationRefId').val(),
-// 				completeAddress : $('#completeAddressId').val()
-// 			}).draw();
-// 			$('#referenceModal').modal('hide');
-// 			};
-// 		})
-
-// 		if(dtApplicant){
-// 			dtApplicant.ajax.reload();
-// 		}else{
-// 			var id = '${id}';
-// >>>>>>> Edit AddressRepository.java, AddressRepositoryImpl.java, ExperienceRepository.java, /ExperienceRepositoryImpl.java, ReferenceRepository.java, ReferenceRepositoryImpl.java, ReferenceService.java, ReferenceServiceImpl.java, ApplicationController.java, address.jsp, applicationMenu.jsp, applications.jsp, experiences.jsp
+			if(dtApplicant) {
+		dtOrder.ajax.reload();
+	}
+	else {
+	
+	var id = '${id}';
 		$('#experiencesTable').DataTable({
 			ajax : {
 				url : '${pageContext.request.contextPath}/findByIdExperience/' + id,
 				type : 'POST'
 			},
-// <<<<<<< HEAD
 			columns : [ {
 				data : "position"
 			}, {
@@ -182,28 +54,16 @@
 			}, {
 				data : "reason"
 			},{ data : function(data) {
-				 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#myModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+				 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#experiencesModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
 			}
 			},{ data : function(data) {
-				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
 			}
 		} ],
-// =======
-// 			columns : [ {data : "position"},
-// 						{data : "fromDate"},
-// 						{data : "toDate"},
-// 						{data : "employerName"},
-// 						{data : "address"},
-// 						{data : "typeOfBusiness"},
-// 						{data : "positionOfEmployer"},
-// 						{data : "supervisor"},
-// 						{data : "salary"},
-// 						{data : "description"},
-// 						{data : "reason"}],
-// >>>>>>> Edit AddressRepository.java, AddressRepositoryImpl.java, ExperienceRepository.java, /ExperienceRepositoryImpl.java, ReferenceRepository.java, ReferenceRepositoryImpl.java, ReferenceService.java, ReferenceServiceImpl.java, ApplicationController.java, address.jsp, applicationMenu.jsp, applications.jsp, experiences.jsp
 			searching : false
 
 		});
+	}
 		$('#experiencesSave').on("click", function() {
 // 			if ($('#experiencesForm').valid()) { 
 			var table = $('#experiencesTable').DataTable();
@@ -278,7 +138,7 @@
 		//Find by Id
 		function findById(id){
 			$.ajax({
-				url : "${pageContext.request.contextPath}/findAddressId/" + id,
+				url : "${pageContext.request.contextPath}/findExperienceId/" + id,
 				type : "POST",
 				success : function(data){
 					showFillData(data);
@@ -288,16 +148,141 @@
 		
 		//Show data on inputField
 		function showFillData(data){
-// 			$('#inputAddress').val(data.addressType);
-			$("#houseNoId").val(data.houseNo);
-			$("#roadId").val(data.road);
-			$("#districtId").val(data.district);
-			$("#subDistrictId").val(data.subDistrict);
-			$("#zipcodeId").val(data.zipcode);
-			console.log(data.houseNo);
+			$("#workBackground").val(data.position);
+			$("#fromWorkYear").val(data.fromDate);
+			$("#toWorkYear").val(data.toDate);
+			$("#emp").val(data.employerName);
+			$("#addressBackground").val(data.address);
+
+			$("#business").val(data.typeOfBusiness);
+			$("#positionBackground").val(data.positionOfEmployer);
+			$("#reasonLeaving").val(data.reason);
+			$("#supervisorBackground").val(data.supervisor);
+			$("#salaryBackground").val(data.salary);
 			
-			$("#provinceId").val(data.province);
+			$("#descriptionBackground").val(data.description);
 		}
+		
+		//Update function
+		function updated(button){
+			var id = $(button).data("id");
+			var position = $("#workBackground").val();
+			var fromDate = $("#fromWorkYear").val();
+			var toDate = $("#toWorkYear").val();
+			var employerName = $("#emp").val();
+			var address = $("#addressBackground").val();
+
+			var typeOfBusiness = $("#business").val();
+			var positionOfEmployer = $("#positionBackground").val();
+			var reason = $("#reasonLeaving").val();
+			var supervisor = $("#supervisorBackground").val();
+			var salary = $("#salaryBackground").val();
+			
+			var description = $("#descriptionBackground").val();
+			
+			var json = {
+					"id" : id,
+					"position" : position,
+					"fromDate" : fromDate,
+					"toDate" : toDate,
+					"employerName" : employerName,
+					"address" : address,
+					"fromDate" : fromDate,
+					"typeOfBusiness" : typeOfBusiness,
+					"positionOfEmployer" : positionOfEmployer,
+					"reason" : reason,
+					"supervisor" : supervisor,
+					"salary" : salary,
+					"description" : description
+					};
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/updateExperience/"+id,
+				type : "POST",
+				contentType :"application/json; charset=utf-8",
+				data : JSON.stringify(json),
+				success : function(data){
+					$('#experiencesModal').modal('hide');
+					
+					var table = $('#experiencesTable').DataTable();	
+				 	var rowData = table.row(button.closest('tr')).index(); 
+				 	var d = table.row(rowData).data();
+				 	
+					d.position = data.position,
+					d.fromDate = data.fromDate,
+					d.toDate = data.toDate,
+					d.employerName = data.employerName,
+					d.address = data.address,
+					d.fromDate = data.fromDate,
+					d.typeOfBusiness = data.typeOfBusiness,
+					d.positionOfEmployer = data.positionOfEmployer,
+					d.reason = data.reason,
+					d.supervisor = data.supervisor,
+					d.salary = data.salary,
+					d.description = data.description
+				 		
+				 		table.row(rowData).data(d).draw();
+				 		
+						new PNotify({
+						    title: 'Edit Reference Success!!',
+						    text: 'You can edit data',
+						    type: 'success',
+						    nonblock: {
+						        nonblock: true,
+						        nonblock_opacity: .2
+						    }
+						});
+				 }
+			});
+		}
+		
+		  //delete Modal
+	    $('#deleteModal').on('shown.bs.modal', function (e) {
+	        var button = e.relatedTarget;
+	        var id = $(button).data("id");
+	        if (id !== null) {
+	            $('#btn_delete_submit').off('click').on('click', function () {
+	                deleted(button);
+	            });
+	        }
+	    });
+		  
+	    function deleted(button) {
+	        var dtApplicant = $('#experiencesTable').DataTable();
+	        var id = $(button).data("id");
+	        var index = dtApplicant.row(button.closest("tr")).index();
+	        $.ajax({
+	            url: "${pageContext.request.contextPath}/deleteSkill/" + id,
+	            type: "POST",
+	            success: function () {
+	            	dtApplicant.row(index).remove().draw();
+					new PNotify({
+					    title: 'Delete Success',
+					    text: 'You can delete data',
+					    type: 'success',
+					    nonblock: {
+					        nonblock: true,
+					        nonblock_opacity: .2
+					    }
+					});
+	            }
+	        });
+	    }
+
+	    $('#experiencesModal').on('shown.bs.modal', function (e) {
+	    	var button = e.relatedTarget;
+			if(button != null){
+				var id = $(button).data("id");
+				if(id != null){
+					console.log(id);
+					findById(id);
+					$('#btn_save').off('click').on('click', function(id){
+						updated(button);
+					});
+				}
+
+			}
+	   });
 
 	});
 </script>
@@ -417,7 +402,7 @@
 							</div>
 							<br> <br>
 							<button type="button" class="btn btn-success"
-								id="experiencesSave">
+								id="btn_save">
 								<span class="glyphicon glyphicon-off"></span> Save
 							</button>
 							<button type="button" class="btn btn-default"
@@ -425,11 +410,28 @@
 						</form>
 					</div>
 				</div>
-				<div class="modal-footer">
-					<p>Please fill your information</p>
-				</div>
 			</div>
 
+		</div>
+		
+									<!-- Delete Model -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    		<div class="modal-dialog">
+        		<div class="modal-content">
+            		<div class="modal-header">
+                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.title"/></h4>
+            		</div>
+            		<div class="modal-body">
+                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.confirm.title"/></h4>
+                		<br>
+                		<div align="right">
+                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>
+                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
+                		</div>
+	            	</div>
+        		</div>
+    		</div>  
 		</div>
 	</div>
 	<br> <br>

@@ -133,7 +133,6 @@
 						contentType :"application/json; charset=utf-8", 
 						data : JSON.stringify(json),
 						success : function(data){
-							console.log(data.id);
 							$('#EditStatusModal').modal('hide');
 						
 							var table = $('#dataTable').DataTable();	

@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.dto.AddressDTO;
 import com.aug.db.entities.Address;
