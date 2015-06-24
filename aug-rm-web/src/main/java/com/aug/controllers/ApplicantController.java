@@ -11,6 +11,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import net.sf.jasperreports.engine.JRParameter;
+
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -31,6 +33,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aug.db.dto.ApplicantDTO;
+import com.aug.db.dto.ReportApplicantDTO;
 import com.aug.db.entities.Applicant;
 import com.aug.db.services.ApplicantService;
 import com.aug.services.ReportService;
@@ -135,7 +138,7 @@ public class ApplicantController implements Serializable {
 	public ModelAndView searchDegreeReport(
 			@ModelAttribute(value = "applicant") Applicant applicant,
 			ModelMap map, HttpSession session, Locale locale) {
-		List<Applicant> reportApplicantList = applicantService.findAll();
+		List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
 		Map<String, Object> parameterMap = new HashMap<String, Object>();
 		ModelAndView mv = reportService.getReport(reportApplicantList,
 				"applicantSummaryDegree", "pdf", parameterMap);
@@ -152,12 +155,30 @@ public class ApplicantController implements Serializable {
 	public ModelAndView searchMajorReport(
 			@ModelAttribute(value = "applicant") Applicant applicant,
 			ModelMap map, HttpSession session, Locale locale) {
-		List<Applicant> reportApplicantList = applicantService.findAll();
+		List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
 		Map<String, Object> parameterMap = new HashMap<String, Object>();
 		ModelAndView mv = reportService.getReport(reportApplicantList,
 				"applicantSummaryMajor", "pdf", parameterMap);
 		return mv;
 	}
+	
+	// Position report
+		@RequestMapping(value = "/modalPositionReport", method = RequestMethod.GET)
+		public String modalPositionReport(ModelMap map) {
+			return "/modalPositionReport";
+		}
+
+		@RequestMapping(value = "/searchPositionReport", method = { RequestMethod.POST })
+		public ModelAndView searchPositionReport(
+				@ModelAttribute(value = "applicant") Applicant applicant,
+				ModelMap map, HttpSession session, Locale locale) {
+			List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
+			Map<String, Object> parameterMap = new HashMap<String, Object>();
+			ModelAndView mv = reportService.getReport(reportApplicantList,
+					"applicantSummaryPos", "pdf", parameterMap);
+			return mv;
+		}
+
 
 	// Monthly report
 	@RequestMapping(value = "/modalMonthlyReport", method = RequestMethod.GET)
@@ -169,12 +190,37 @@ public class ApplicantController implements Serializable {
 	public ModelAndView searchMonthlyReport(
 			@ModelAttribute(value = "applicant") Applicant applicant,
 			ModelMap map, HttpSession session, Locale locale) {
-		List<Applicant> reportApplicantList = applicantService.findAll();
+		//List<Applicant> reportApplicantList = applicantService.findAll();	
+		List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
 		Map<String, Object> parameterMap = new HashMap<String, Object>();
 		// ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
 		// parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
+		parameterMap.put("date", new java.util.Date());
+		parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
 		ModelAndView mv = reportService.getReport(reportApplicantList,
 				"applicantSummaryMonthly", "pdf", parameterMap);
+		return mv;
+	}
+	
+	// position EE report
+	@RequestMapping(value = "/modalEEReport", method = RequestMethod.GET)
+	public String modalEEReport(ModelMap map) {
+		return "/modalEEReport";
+	}
+
+	@RequestMapping(value = "/searchEEReport", method = { RequestMethod.POST })
+	public ModelAndView searchEEReport(
+			@ModelAttribute(value = "applicant") Applicant applicant,
+			ModelMap map, HttpSession session, Locale locale) {
+		//List<Applicant> reportApplicantList = applicantService.findAll();	
+		List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
+		Map<String, Object> parameterMap = new HashMap<String, Object>();
+		// ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
+		// parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
+		parameterMap.put("date", new java.util.Date());
+		parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
+		ModelAndView mv = reportService.getReport(reportApplicantList,
+				"applicantSummaryPos", "pdf", parameterMap);
 		return mv;
 	}
 

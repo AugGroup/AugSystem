@@ -4,17 +4,57 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[]]>
+		<![CDATA[SELECT applicant.APPLICANT_ID AS id ,
+		applicant.AGE AS age,
+		applicant.APPLICANT_STATUS AS applicantStatus,
+		applicant.APPLY_DATE AS applyDate,
+		applicant.ATTITUDE_HOME AS attitudeHome,
+		applicant.ATTITUDE_OFFICE AS attitudeOffice,
+		applicant.CERTIFICATE AS certificate,
+		applicant.APPLICANT_CODE AS code,
+		applicant.EMAIL AS email,
+		applicant.FIRSTNAME_EN AS firstNameEN,
+		applicant.LASTNAME_EN AS lastNameEN,
+		applicant.SCORE AS score,
+		applicant.SEX AS sex,
+		applicant.TECH_SCORE AS techScore,
+		applicant.TEL AS tel,
+		applicant.TRACKING_STATUS AS trackingStatus,
+		applicant.POSITION1_ID AS position1,
+		applicant.POSITION2_ID AS position2,
+		applicant.POSITION3_ID AS position3,
+		education.DEGREE AS degree,
+		education.FACULTY AS faculty,
+		education.GPA AS gpa,
+		education.MAJOR AS major,
+		education.SCHOOL_NAME AS schoolName,
+		education.APPLICANT_ID AS applicantId,
+		applicant.POSITION1_ID AS position1,
+		applicant.POSITION2_ID AS position2,
+		applicant.POSITION3_ID AS position3,
+		position1.ID AS pos1Id,
+     		position1.POSITON_CODE AS positionCode1,
+     		position1.POSITION_NAME AS positionName1,
+		position2.ID AS pos2Id,
+     		position2.POSITON_CODE AS positionCode2,
+     		position2.POSITION_NAME AS positionName2,
+		position3.ID AS pos3Id,
+     		position3.POSITON_CODE AS positionCode3,
+     		position3.POSITION_NAME AS positionName3
+
+		FROM APPLICANT applicant LEFT JOIN EDUCATION education ON applicant.APPLICANT_ID = education.APPLICANT_ID
+LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
+     LEFT JOIN position position2 ON applicant.POSITION2_ID = position2.ID
+     LEFT JOIN position position3 ON applicant.POSITION3_ID = position3.ID]]>
 	</queryString>
 	<field name="id" class="java.lang.Integer"/>
 	<field name="age" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="applicantStatus" class="java.lang.String"/>
-	<field name="applyDate" class="java.util.Date"/>
+	<field name="applyDate" class="java.sql.Timestamp"/>
 	<field name="attitudeHome" class="java.lang.String"/>
 	<field name="attitudeOffice" class="java.lang.String"/>
-	<field name="cardId" class="java.lang.String"/>
 	<field name="certificate" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -35,11 +75,32 @@
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="trackingStatus" class="java.lang.String"/>
-	<field name="position1.positionName" class="java.lang.String"/>
-	<field name="position2.positionName" class="java.lang.String"/>
-	<field name="position3.positionName" class="java.lang.String"/>
-	<field name="educations.education" class="java.lang.String"/>
-	<field name="educations" class="java.lang.String"/>
+	<field name="position1" class="java.lang.Integer"/>
+	<field name="position2" class="java.lang.Integer"/>
+	<field name="position3" class="java.lang.Integer"/>
+	<field name="degree" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="faculty" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gpa" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="major" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="schoolName" class="java.lang.String"/>
+	<field name="applicantId" class="java.lang.Integer"/>
+	<field name="pos1Id" class="java.lang.Integer"/>
+	<field name="positionCode1" class="java.lang.String"/>
+	<field name="positionName1" class="java.lang.String"/>
+	<field name="pos2Id" class="java.lang.Integer"/>
+	<field name="positionCode2" class="java.lang.String"/>
+	<field name="positionName2" class="java.lang.String"/>
+	<field name="pos3Id" class="java.lang.Integer"/>
+	<field name="positionCode3" class="java.lang.String"/>
+	<field name="positionName3" class="java.lang.String"/>
 	<variable name="name" class="java.lang.String">
 		<variableExpression><![CDATA[$F{firstNameEN}+" "+$F{lastNameEN}]]></variableExpression>
 	</variable>
@@ -61,10 +122,10 @@
 						<pen lineWidth="2.0" lineStyle="Double"/>
 					</graphicElement>
 				</line>
-				<textField pattern="MM/yyyy">
-					<reportElement x="93" y="45" width="100" height="20" uuid="fd46cef1-6445-47f9-b06a-1f6e779ac184"/>
+				<textField isStretchWithOverflow="true" pattern="MMMMM">
+					<reportElement x="91" y="45" width="100" height="20" uuid="b4b6a424-0c9d-476b-bc1e-d63bd5413415"/>
 					<textElement>
-						<font isPdfEmbedded="true"/>
+						<font size="12"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{applyDate}]]></textFieldExpression>
 				</textField>
@@ -75,7 +136,7 @@
 				<staticText>
 					<reportElement x="30" y="24" width="137" height="20" uuid="e1cbc76f-af44-4c9f-9c17-6ccacd6850cd"/>
 					<textElement textAlignment="Center">
-						<font size="14"/>
+						<font size="12"/>
 					</textElement>
 					<text><![CDATA[MONTH SUMMARY :]]></text>
 				</staticText>
@@ -86,14 +147,17 @@
 					</graphicElement>
 				</line>
 				<textField>
-					<reportElement x="167" y="24" width="100" height="20" uuid="07f95750-b994-4318-bb14-4a4e21c9c043"/>
+					<reportElement x="153" y="24" width="100" height="20" uuid="07f95750-b994-4318-bb14-4a4e21c9c043"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
 					<textFieldExpression><![CDATA[$V{By_Date_COUNT}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
 	</group>
-	<group name="By_Degree">
-		<groupExpression><![CDATA[$F{educations.education}]]></groupExpression>
+	<group name="By_Major">
+		<groupExpression><![CDATA[$F{major}]]></groupExpression>
 		<groupHeader>
 			<band height="53">
 				<staticText>
@@ -140,10 +204,6 @@
 					<reportElement x="27" y="3" width="56" height="20" uuid="df71e256-71e0-471f-b766-c0ade733316e"/>
 					<text><![CDATA[MAJOR : ]]></text>
 				</staticText>
-				<textField>
-					<reportElement x="83" y="3" width="100" height="20" uuid="3cb062e0-aabe-4258-a4e7-8e9dd57d3664"/>
-					<textFieldExpression><![CDATA[$F{educations.education}]]></textFieldExpression>
-				</textField>
 				<line>
 					<reportElement x="26" y="24" width="504" height="1" uuid="f616fd60-a199-40b7-9148-5b6927c185fb"/>
 				</line>
@@ -153,20 +213,30 @@
 						<pen lineStyle="Dashed"/>
 					</graphicElement>
 				</line>
+				<textField>
+					<reportElement x="77" y="3" width="90" height="20" uuid="d5012796-2c29-4f82-8db4-c1129838a7be"/>
+					<textFieldExpression><![CDATA[$F{major}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="37">
+			<band height="72">
 				<staticText>
-					<reportElement x="372" y="13" width="104" height="20" uuid="1844db8f-cbac-4b42-b2ea-a98fac2c7371"/>
+					<reportElement x="363" y="13" width="120" height="20" uuid="1844db8f-cbac-4b42-b2ea-a98fac2c7371"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
 					<text><![CDATA[MAJOR SUMMARY :]]></text>
 				</staticText>
 				<line>
 					<reportElement x="26" y="6" width="490" height="1" uuid="5792b01f-6f10-46c8-9181-d8f446a9046b"/>
 				</line>
 				<textField>
-					<reportElement x="475" y="13" width="52" height="20" uuid="e8ad503d-d470-4142-bbfc-17111e0c2cf9"/>
-					<textFieldExpression><![CDATA[$V{By_Degree_COUNT}]]></textFieldExpression>
+					<reportElement x="472" y="13" width="61" height="20" uuid="e8ad503d-d470-4142-bbfc-17111e0c2cf9"/>
+					<textElement>
+						<font size="10"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{By_Major_COUNT}]]></textFieldExpression>
 				</textField>
 				<line>
 					<reportElement x="26" y="36" width="490" height="1" uuid="458b6281-ddc8-4945-bae0-579b374805cc"/>
@@ -197,32 +267,33 @@
 				<reportElement x="77" y="17" width="76" height="20" uuid="511fdb25-c3ed-4c9b-bd87-664c4dc54e81"/>
 				<textFieldExpression><![CDATA[$V{name}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="229" y="17" width="57" height="20" uuid="20ddc6b8-570e-43b4-ab81-268db7422c7a"/>
-				<textFieldExpression><![CDATA[$F{position1.positionName}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="286" y="17" width="60" height="20" uuid="160caafd-d333-4f11-922d-ea5056eef3a8"/>
-				<textFieldExpression><![CDATA[$F{position2.positionName}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="346" y="17" width="58" height="20" uuid="91a9a359-d986-49c2-8d76-42bf25f867a1"/>
-				<textFieldExpression><![CDATA[$F{position3.positionName}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="463" y="17" width="64" height="20" uuid="1c827e7c-6cca-4e81-a594-3ec9914d9d2b"/>
-			</textField>
-			<textField>
-				<reportElement x="407" y="17" width="56" height="20" uuid="e6099d23-c37a-4c25-941a-62a6a51835a7"/>
-				<textFieldExpression><![CDATA[$F{educations.education}]]></textFieldExpression>
-			</textField>
-			<textField pattern="dd/MM/yyyy">
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy">
 				<reportElement x="153" y="17" width="71" height="20" uuid="2ce57a1f-c88d-4450-bbd3-ba1cfd444b81"/>
 				<textFieldExpression><![CDATA[$F{applyDate}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="26" y="17" width="46" height="20" uuid="327f7ee9-e4a6-4bcf-8c3b-5b7662e818e3"/>
 				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="235" y="17" width="56" height="20" uuid="12142a7d-2d3f-4823-adc8-92aefb9b7020"/>
+				<textFieldExpression><![CDATA[$F{positionName1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="17" width="56" height="20" uuid="1a08e247-4c03-4d8a-a797-88511edb7496"/>
+				<textFieldExpression><![CDATA[$F{positionName2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="347" y="17" width="56" height="20" uuid="0a9556ea-51e2-41aa-9d13-7f443db67a58"/>
+				<textFieldExpression><![CDATA[$F{positionName3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="407" y="17" width="56" height="20" uuid="fe118699-3b9e-43e8-aa60-2a843f8eeb0c"/>
+				<textFieldExpression><![CDATA[$F{degree}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="463" y="17" width="67" height="20" uuid="7ceb7b5d-3a73-461b-abd9-569a82e87358"/>
+				<textFieldExpression><![CDATA[$F{major}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -7,6 +7,7 @@
 .error{
 color:red;
 }
+
 </style>
 
 <script type="text/javascript">
@@ -32,7 +33,7 @@ $(document).ready(function() {
     });
 });
 </script>
-	<h1>Log-In</h1>
+	<h3>Log-In</h3>
 
 	<div class="container">
 		<form class="form-inline" id="loginForm" action="${pageContext.request.contextPath}/j_spring_security_check" method="post">

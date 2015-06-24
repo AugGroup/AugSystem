@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" columnCount="2" pageWidth="595" pageHeight="842" columnWidth="277" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="75e2fe38-ff8f-406f-8dc5-02bfe0ed23bd">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="159"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["E:\\MAVEN_Spring_Struts2\\AugSystem\\aug-rm-web\\src\\main\\resources\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT applicant.APPLICANT_ID AS id ,
+		applicant.AGE AS age,
+		applicant.APPLICANT_STATUS AS applicantStatus,
+		applicant.APPLY_DATE AS applyDate,
+		applicant.ATTITUDE_HOME AS attitudeHome,
+		applicant.ATTITUDE_OFFICE AS attitudeOffice,
+		applicant.CERTIFICATE AS certificate,
+		applicant.APPLICANT_CODE AS code,
+		applicant.EMAIL AS email,
+		applicant.FIRSTNAME_EN AS firstNameEN,
+		applicant.LASTNAME_EN AS lastNameEN,
+		applicant.SCORE AS score,
+		applicant.SEX AS sex,
+		applicant.TECH_SCORE AS techScore,
+		applicant.TEL AS tel,
+		applicant.TRACKING_STATUS AS trackingStatus,
+		applicant.POSITION1_ID AS position1,
+		applicant.POSITION2_ID AS position2,
+		applicant.POSITION3_ID AS position3,
+		position1.ID AS pos1Id,
+     		position1.POSITION_CODE AS positionCode1,
+     		position1.POSITION_NAME AS positionName1,
+		position2.ID AS pos2Id,
+     		position2.POSITION_CODE AS positionCode2,
+     		position2.POSITION_NAME AS positionName2,
+		position3.ID AS pos3Id,
+     		position3.POSITION_CODE AS positionCode3,
+     		position3.POSITION_NAME AS positionName3
+		FROM APPLICANT applicant
+		LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
+    		LEFT JOIN position position2 ON applicant.POSITION2_ID = position2.ID
+     		LEFT JOIN position position3 ON applicant.POSITION3_ID = position3.ID]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="age" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="applicantStatus" class="java.lang.String"/>
+	<field name="applyDate" class="java.sql.Timestamp"/>
+	<field name="attitudeHome" class="java.lang.String"/>
+	<field name="attitudeOffice" class="java.lang.String"/>
+	<field name="certificate" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="code" class="java.lang.String"/>
+	<field name="email" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="firstNameEN" class="java.lang.String"/>
+	<field name="lastNameEN" class="java.lang.String"/>
+	<field name="score" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="sex" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="techScore" class="java.lang.String"/>
+	<field name="tel" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="trackingStatus" class="java.lang.String"/>
+	<field name="position1" class="java.lang.Integer"/>
+	<field name="position2" class="java.lang.Integer"/>
+	<field name="position3" class="java.lang.Integer"/>
+	<field name="pos1Id" class="java.lang.Integer"/>
+	<field name="positionCode1" class="java.lang.String"/>
+	<field name="positionName1" class="java.lang.String"/>
+	<field name="pos2Id" class="java.lang.Integer"/>
+	<field name="positionCode2" class="java.lang.String"/>
+	<field name="positionName2" class="java.lang.String"/>
+	<field name="pos3Id" class="java.lang.Integer"/>
+	<field name="positionCode3" class="java.lang.String"/>
+	<field name="positionName3" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="124" y="2" width="100" height="20" uuid="edd4386c-4309-478c-ba95-8322ca761369"/>
+				<text><![CDATA[positionName]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="2" width="100" height="20" uuid="75f2bd25-e85e-4ab9-bbbe-04d3c34f0044"/>
+				<text><![CDATA[positionCode]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="2" width="100" height="20" uuid="ff75d1c3-7af1-4f68-ac68-ba6fede1ed9b"/>
+				<text><![CDATA[firstNameEN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="2" width="100" height="20" uuid="97763ded-35c3-49f4-a119-c14b0a61b082"/>
+				<text><![CDATA[id]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="89" y="58" width="100" height="20" uuid="cd4caccd-ccb5-4642-970e-ee97cf03fddd"/>
+				<textFieldExpression><![CDATA[$F{firstNameEN}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="36" y="65" width="100" height="20" uuid="2519e45b-1390-4eb6-bef4-d38a3b22879f"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

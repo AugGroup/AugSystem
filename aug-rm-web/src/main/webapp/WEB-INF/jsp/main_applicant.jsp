@@ -99,7 +99,12 @@
 			//Show data on inputField
 			function showFillData(data){
 				$("#inputScore").val(data.score);
-				$("#inputTechScore").val(data.techScore);
+				var tscr = $("#inputTechScore").val(data.techScore);
+				if(tscr == "Pass"){
+					$("input[name=inputTechScore][value=" + data.techScore + "]").prop('checked', true);
+				}else if(tscr == "Not pass"){
+					$("input[name=inputTechScore][value=" + data.techScore + "]").prop('checked', true);
+				}
 				$("#inputAttitudeHome").val(data.attitudeHome);
 				$("#inputAttitudeOffice").val(data.attitudeOffice);
 				$("#inputStatus").val(data.trackingStatus);

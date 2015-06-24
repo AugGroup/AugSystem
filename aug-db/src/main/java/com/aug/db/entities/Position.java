@@ -26,7 +26,7 @@ public class Position {
 	@Column(name = "POSITION_NAME")
 	private String positionName;
 
-	@Column(name = "POSITON_CODE")
+	@Column(name = "POSITION_CODE")
 	private String positionCode;
 
 	@ManyToOne

@@ -35,21 +35,18 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 		+ "education.GPA AS gpa,"
 		+ "education.MAJOR AS major,"
 		+ "education.SCHOOL_NAME AS schoolName,"
-		+ "education.YEAR_OF_GRADUATE AS yearOfgraduate,"
 		+ "education.APPLICANT_ID AS applicantId,"
 		+ "position1.ID AS pos1Id,"
-		+ "position1.POSITON_CODE AS position1Code,"
-		+ "position1.POSITION_NAME AS position1Name,"
-		+ "position1.DEPARTMENT_ID AS department1,"
+		+ "position1.POSITION_CODE AS positionCode1,"
+		+ "position1.POSITION_NAME AS positionName1,"
 		+ "position2.ID AS pos2Id,"
-		+ "position2.POSITON_CODE AS position2Code,"
-		+ "position2.POSITION_NAME AS position2Name,"
-		+ "position2.DEPARTMENT_ID AS department2,"
+		+ "position2.POSITION_CODE AS positionCode2,"
+		+ "position2.POSITION_NAME AS positionName2,"
 		+ "position3.ID AS pos3Id,"
-		+ "position3.POSITON_CODE AS position3Code,"
-		+ "position3.POSITION_NAME AS position3Name,"
-		+ "position3.DEPARTMENT_ID AS department3 "
-		+ "FROM APPLICANT applicant LEFT JOIN EDUCATION education ON applicant.APPLICANT_ID = education.APPLICANT_ID "
+		+ "position3.POSITION_CODE AS positionCode3,"
+		+ "position3.POSITION_NAME AS positionName3 "
+		+ "FROM APPLICANT applicant "
+		+ "LEFT JOIN EDUCATION education ON applicant.APPLICANT_ID = education.APPLICANT_ID "
 		+ "LEFT JOIN POSITION position1 ON applicant.POSITION1_ID = position1.ID "
 		+ "LEFT JOIN POSITION position2 ON applicant.POSITION2_ID = position2.ID "
 		+ "LEFT JOIN POSITION position3 ON applicant.POSITION3_ID = position3.ID ", resultClass = ReportApplicantDTO.class) })
@@ -131,39 +128,34 @@ public class ReportApplicantDTO {
 	@Column(name = "schoolName")
 	private String schoolName;
 
-	@Column(name = "yearOfGraduate")
-	private String yearOfGraduate;
+	/*@Column(name = "yearOfGraduate")
+	private String yearOfGraduate;*/
 	
 	@Column(name = "ApplicantId")
 	private String ApplicantId;
-	
+		
 	@Column(name = "pos1Id")
-	private Integer pos1Id;	
+	private Integer pos1Id;
 	@Column(name = "pos2Id")
-	private Integer pos2Id;	
+	private Integer pos2Id;
 	@Column(name = "pos3Id")
 	private Integer pos3Id;
-		
-	@Column(name = "position1Code")
-	private Integer position1Code;	
-	@Column(name = "position2Code")
-	private Integer position2Code;
-	@Column(name = "position3Code")
-	private Integer position3Code;
-
-	@Column(name = "position1Name")
-	private Integer position1Name;	
-	@Column(name = "position2Name")
-	private Integer position2Name;
-	@Column(name = "position3Name")
-	private Integer position3Name;
 	
-	@Column(name = "department1")
-	private Integer department1;
-	@Column(name = "department2")
-	private Integer department2;
-	@Column(name = "department3")
-	private Integer department3;
+	@Column(name = "positionCode1")
+	private String positionCode1;
+	@Column(name = "positionCode2")
+	private String positionCode2;
+	@Column(name = "positionCode3")
+	private String positionCode3;
+	
+	@Column(name = "positionName1")
+	private String positionName1;
+	@Column(name = "positionName2")
+	private String positionName2;
+	@Column(name = "positionName3")
+	private String positionName3;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -308,18 +300,13 @@ public class ReportApplicantDTO {
 	public void setSchoolName(String schoolName) {
 		this.schoolName = schoolName;
 	}
-	public String getYearOfGraduate() {
-		return yearOfGraduate;
-	}
-	public void setYearOfGraduate(String yearOfGraduate) {
-		this.yearOfGraduate = yearOfGraduate;
-	}
 	public String getApplicantId() {
 		return ApplicantId;
 	}
 	public void setApplicantId(String applicantId) {
 		ApplicantId = applicantId;
 	}
+	
 	public Integer getPos1Id() {
 		return pos1Id;
 	}
@@ -338,62 +325,41 @@ public class ReportApplicantDTO {
 	public void setPos3Id(Integer pos3Id) {
 		this.pos3Id = pos3Id;
 	}
-	public Integer getPosition1Code() {
-		return position1Code;
+	public String getPositionCode1() {
+		return positionCode1;
 	}
-	public void setPosition1Code(Integer position1Code) {
-		this.position1Code = position1Code;
+	public void setPositionCode1(String positionCode1) {
+		this.positionCode1 = positionCode1;
 	}
-	public Integer getPosition2Code() {
-		return position2Code;
+	public String getPositionCode2() {
+		return positionCode2;
 	}
-	public void setPosition2Code(Integer position2Code) {
-		this.position2Code = position2Code;
+	public void setPositionCode2(String positionCode2) {
+		this.positionCode2 = positionCode2;
 	}
-	public Integer getPosition3Code() {
-		return position3Code;
+	public String getPositionCode3() {
+		return positionCode3;
 	}
-	public void setPosition3Code(Integer position3Code) {
-		this.position3Code = position3Code;
+	public void setPositionCode3(String positionCode3) {
+		this.positionCode3 = positionCode3;
 	}
-	public Integer getPosition1Name() {
-		return position1Name;
+	public String getPositionName1() {
+		return positionName1;
 	}
-	public void setPosition1Name(Integer position1Name) {
-		this.position1Name = position1Name;
+	public void setPositionName1(String positionName1) {
+		this.positionName1 = positionName1;
 	}
-	public Integer getPosition2Name() {
-		return position2Name;
+	public String getPositionName2() {
+		return positionName2;
 	}
-	public void setPosition2Name(Integer position2Name) {
-		this.position2Name = position2Name;
+	public void setPositionName2(String positionName2) {
+		this.positionName2 = positionName2;
 	}
-	public Integer getPosition3Name() {
-		return position3Name;
+	public String getPositionName3() {
+		return positionName3;
 	}
-	public void setPosition3Name(Integer position3Name) {
-		this.position3Name = position3Name;
+	public void setPositionName3(String positionName3) {
+		this.positionName3 = positionName3;
 	}
-	public Integer getDepartment1() {
-		return department1;
-	}
-	public void setDepartment1(Integer department1) {
-		this.department1 = department1;
-	}
-	public Integer getDepartment2() {
-		return department2;
-	}
-	public void setDepartment2(Integer department2) {
-		this.department2 = department2;
-	}
-	public Integer getDepartment3() {
-		return department3;
-	}
-	public void setDepartment3(Integer department3) {
-		this.department3 = department3;
-	}
-	
-	
-	
-	
+
 }

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -242,7 +243,7 @@ public class Applicant {
 	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Address> address;
 
-	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
+	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	private List<Education> educations;
 
 	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)

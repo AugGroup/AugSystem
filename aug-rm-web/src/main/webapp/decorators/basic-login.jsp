@@ -56,13 +56,10 @@ background-repeat: no-repeat !important;
 background-attachment: fixed;
 } 
 
-#loginForm
-{
+#loginForm{
+	height:500px;
     width: 245px;
-    margin: 0 auto;
-   
-    
-    
+    margin: 0 auto;  
 }
 
 </style>
