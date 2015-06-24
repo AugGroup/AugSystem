@@ -160,6 +160,9 @@ public class Applicant {
 
 	@Column(name = "MILITARY_REASON")
 	private String militaryReason;
+	
+	@Column(name = "MILITARY_STATUS")
+	private String militaryStatus;
 
 	@Column(name = "NUMBER_OF_CHILDREN")
 	private Integer numberOfChildren;

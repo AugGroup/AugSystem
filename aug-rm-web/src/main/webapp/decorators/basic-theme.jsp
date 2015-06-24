@@ -73,17 +73,18 @@
 						<li><a href="${pageContext.request.contextPath}/applicant">Applicant</a></li>
 						<li><a href="${pageContext.request.contextPath}/request">Request</a></li>
 						<li><a href="${pageContext.request.contextPath}/approve">Approve</a></li>
-						<li class="dropdown">
+						<li><a href="${pageContext.request.contextPath}/report">Report</a></li>
+						<%-- <li class="dropdown">
          					 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
          					 <ul class="dropdown-menu">
-         					 	<%-- <li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalEEReport">EE Report</a> </li> --%>
+         					 	<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalEEReport">EE Report</a> </li>
             					<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalDegreeReport">Degree Report</a> </li>
             					<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalMajorReport">Major Report</a> </li>
          					 	<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalPositionReport">Position Report</a> </li>
          					 	<li class="divider"></li>	
          					 	<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalMonthlyReport">Monthly Report</a></li>
          					 </ul>
-        				</li>
+        				</li> --%>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href=""><span class="glyphicon glyphicon-user"></span>

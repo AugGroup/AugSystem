@@ -2,7 +2,8 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="applicantSummaryPos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8ad2ff04-dcbf-4102-a100-065e5e1ca10a">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="header" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT applicant.APPLICANT_ID AS id ,
 		applicant.AGE AS age,
@@ -183,13 +184,6 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 			<rectangle>
 				<reportElement x="35" y="10" width="485" height="69" backcolor="#FFCC00" uuid="1cb1ad47-e86b-414e-97de-aab39348ed24"/>
 			</rectangle>
-			<staticText>
-				<reportElement x="35" y="28" width="485" height="51" uuid="8c42132f-ed85-4d90-90e9-1c45ea3710d6"/>
-				<textElement textAlignment="Center">
-					<font size="24" isBold="true"/>
-				</textElement>
-				<text><![CDATA[POSITION SUMMARY]]></text>
-			</staticText>
 		</band>
 	</title>
 	<pageHeader>

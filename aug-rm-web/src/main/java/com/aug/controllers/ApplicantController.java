@@ -35,7 +35,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ReportApplicantDTO;
 import com.aug.db.entities.Applicant;
+import com.aug.db.entities.Position;
 import com.aug.db.services.ApplicantService;
+import com.aug.db.services.PositionService;
 import com.aug.services.ReportService;
 
 @Controller
@@ -44,6 +46,7 @@ public class ApplicantController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Autowired private ApplicantService applicantService;
+	@Autowired private PositionService positionService;
 	@Autowired private ReportService reportService;
 
 	@RequestMapping(value = "/applicant", method = { RequestMethod.GET })
@@ -127,7 +130,41 @@ public class ApplicantController implements Serializable {
 	}
 
 	/*-------------------- Report Method --------------------*/
-
+	//Main report
+	@RequestMapping(value="/report", method = RequestMethod.GET)
+	public String mainReport(){
+		return "/main_report";
+	}
+	//Report search all Don't use
+	@RequestMapping(value = "/report/search", method = { RequestMethod.GET })
+	public @ResponseBody Object searchAllApplicantForReport() {
+		final List<ReportApplicantDTO> data = applicantService.reportApplicant();
+		return new Object() {
+			public List<ReportApplicantDTO> getData() {
+				return data;
+			}
+		};
+	}
+	
+	/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
+/*	@RequestMapping(value = "/report/search", method = { RequestMethod.POST })
+	public @ResponseBody Object searchAllApplicantForReport(
+			@RequestParam final String position, String degree, String major, double gpa,String schoolName) {
+		final List<ReportApplicantDTO> data = applicantService.reportApplicant();
+		if (StringUtils.isEmpty(major)) {
+			data = applicantService.reportApplicant();
+		}
+		final List<ReportApplicantDTO> datas = data;
+		return new Object() {
+			public List<ReportApplicantDTO> getData() {
+				return data;
+			}
+		};
+	}
+	*/
+	
+	
+/*
 	// Degree report
 	@RequestMapping(value = "/modalDegreeReport", method = RequestMethod.GET)
 	public String modalDegreeReport(ModelMap map) {
@@ -223,5 +260,12 @@ public class ApplicantController implements Serializable {
 				"applicantSummaryPos", "pdf", parameterMap);
 		return mv;
 	}
+*/
+	
+	/*-------------------- Position List--------------------*/
+	@ModelAttribute("positionRequest")
+	public List<Position> getPosition() {
+		return positionService.findAll();
 
+	}
 }

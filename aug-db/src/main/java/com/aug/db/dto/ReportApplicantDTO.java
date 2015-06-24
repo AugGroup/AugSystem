@@ -17,7 +17,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 		+ "applicant.APPLY_DATE AS applyDate,"
 		+ "applicant.ATTITUDE_HOME AS attitudeHome,"
 		+ "applicant.ATTITUDE_OFFICE AS attitudeOffice,"
-		+ "applicant.CERTIFICATE AS certificate,"
 		+ "applicant.APPLICANT_CODE AS code,"
 		+ "applicant.EMAIL AS email,"
 		+ "applicant.FIRSTNAME_EN AS firstNameEn,"
@@ -76,9 +75,6 @@ public class ReportApplicantDTO {
 	@Column(name = "code")
 	private String code;
 
-	@Column(name = "certificate")
-	private String certificate;
-
 	@Column(name = "email")
 	private String email;
 
@@ -87,6 +83,7 @@ public class ReportApplicantDTO {
 
 	@Column(name = "lastNameEN")
 	private String lastNameEN;
+	
 
 	@Column(name = "sex")
 	private String sex;
@@ -198,12 +195,7 @@ public class ReportApplicantDTO {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	public String getCertificate() {
-		return certificate;
-	}
-	public void setCertificate(String certificate) {
-		this.certificate = certificate;
-	}
+	
 	public String getEmail() {
 		return email;
 	}
