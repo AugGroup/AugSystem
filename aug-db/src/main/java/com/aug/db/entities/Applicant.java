@@ -163,7 +163,7 @@ public class Applicant {
 	private String militaryStatus;
 
 	@Column(name = "NUMBER_OF_CHILDREN")
-	private Integer numberOfChildren;
+	private String numberOfChildren;
 
 	@Column(name = "SPOUSE_NAME")
 	private String spouseName;
@@ -592,11 +592,11 @@ public class Applicant {
 		this.militaryReason = militaryReason;
 	}
 
-	public Integer getNumberOfChildren() {
+	public String getNumberOfChildren() {
 		return numberOfChildren;
 	}
 
-	public void setNumberOfChildren(Integer numberOfChildren) {
+	public void setNumberOfChildren(String numberOfChildren) {
 		this.numberOfChildren = numberOfChildren;
 	}
 

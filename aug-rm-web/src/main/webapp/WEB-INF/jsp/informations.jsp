@@ -11,28 +11,34 @@
 
  						});
 			
-			 $('#infoForm').validate({
-				rules : {imageMultipartFile : { required : true },
-					firstNameTH : { required : true },
-					lastNameTH : { required : true },
+			 $('#informationApplicant').validate({
+				rules : {imageMultipartFile : {
+					required : true
+					},
+					firstNameTH : {
+						required : true
+						},
+					lastNameTH : {
+						required : true
+						},
 					nickNameTH : {
 						required : true
-					},
+						},
 					firstNameEN : {
 						required : true
-					},
+						},
 					lastNameEN : {
 						required : true
-					},
+						},
 					nickNameEN : {
 						required : true
-					},
+						},
 					tel : {
 						required : true
-					},
+						},
 					email : {
 						required : true
-					},
+						},
 					birthDate : {
 						required : true
 					},
@@ -114,45 +120,51 @@
 					previousEmployers : {
  						required : true
  					},
- 					giveReasonName : {
+ 					previousEmployersReason : {
  						required : true
  					},emergencyName : {
  						required : true
  					},
- 					emergencyTelName : {
+ 					emergencyTel : {
  						required : true
  					},
- 					emergencyAddressName : {
+ 					emergencyAddress : {
  						required : true
  					},
- 					applyDateName : {
+ 					applyDate : {
  						required : true
- 					},
- 					departmentName : {
+ 					},/* 
+ 					department : {
  						required : true
  					},
  					positionFirstName : {
  						required : true
  					},
- 					positionSecondName : {
+ 					position2 : {
  						required : true
  					},
- 					positionThirdName : {
+ 					position3 : {
+ 						required : true
+ 					}, */
+ 					expectedSalary : {
  						required : true
  					},
- 					salaryName : {
+ 					nowEmployed : {
  						required : true
  					},
- 					knowEmployedName : {
+ 					employedName : {
  						required : true
  					},
- 					nameRelationName : {
+ 					employedPosition : {
  						required : true
  					},
- 					positionRelationName : {
+ 					employedRelation : {
  						required : true
  					},
- 					employedRelationName : {
+ 					resumeMultipartFile : {
+ 						required : true
+ 					},
+ 					transcriptMultipartFile : {
  						required : true
  					}
 				},
@@ -263,46 +275,58 @@
 					},emergencyName : {
 						required : "Emergency Name is required!"
 					},
-					emergencyTelName : {
+					emergencyTel : {
 						required : "Emergency Telephone is required!"
 					},
-					emergencyAddressName : {
+					emergencyAddress : {
 						required : "Emergency Address is required!"
-					},applyDateName : {
+					},applyDate : {
 						required : "Apply date is required!"
-					},
-					departmentName : {
+					}/* ,
+					department : {
 						required : "Department is required!"
 					},
-					positionFirstName : {
+					position1 : {
 						required : "Position 1 is required!"
 					},
-					positionSecondName : {
+					position2 : {
 						required : "Position 2 is required!"
 					},
-					positionThirdName : {
+					position3 : {
 						required : "Position 3 is required!"
-					},
-					salaryName : {
+					} */,
+					expectedSalary : {
 						required : "Salary expected is required!"
 					},
-					knowEmployedName : {
+					nowEmployed : {
 						required : "Do you know anyone now being employed by this company? is required!"
 					},
-					nameRelationName : {
+					employedName : {
 						required : "Name is required!"
 					},
-					positionRelationName : {
+					employedPosition : {
 						required : "Position is required!"
 					},
-					employedRelationName : {
+					employedRelation : {
 						required : "Relation is required!"
-					}
+					},
+					previousEmployers : {
+ 						required :  "previous employers is required!"
+ 					},
+ 					previousEmployersReason : {
+ 						required :  "Reason is required!"
+ 					},
+ 					resumeMultipartFile : {
+ 						required : "Resume is required!"
+ 					},
+ 					transcriptMultipartFile : {
+ 						required :  "Transcript is required!"
+ 					}
 					
 				}
 			});
 
-		//Find by Id
+		/* //Find by Id
 		function findById(id){
 			$.ajax({
 				url : "${pageContext.request.contextPath}/findByIdApplication/" + id,
@@ -516,7 +540,7 @@
 			$('#buttonSave').off('click').on('click', function(){
 				saveUser();
 			});
-		}
+		} */
 });
 
 </script>
@@ -526,10 +550,6 @@
 		modelAttribute="applicant" method="post" enctype="multipart/form-data" class="form-inline" >
 	<div class="row">
 			<div class="col-md-6">
-	<%-- <div class="form-group">
-				<input type="hidden" id="applicant" name="applicant"
-					value="${id}">
-	</div> --%>
 		  <div class="form-group">
 				PHOTOGRAPH 
 				<div id="imagePreview "></div>
@@ -587,7 +607,7 @@
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="eMail">E-Mail </label> <input type="e"
+				<label for="eMail">E-Mail </label> <input type="email"
 					class="form-control" id="email" name="email"
 					placeholder="Enter E-Mail">
 			</div>
@@ -673,20 +693,14 @@
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="sex">Sex </label>
-				<div class="radio">
-					<label><input type="radio" name="sex" value="Female"
-						id="sex">Female</label>
-				</div>
-				<div class="radio">
-					<label><input type="radio" name="sex" value="Male"
-						id="sex">Male</label>
-				</div>
+				<label> Sex</label>
+				<f:radiobutton path="sex" value="Female"></f:radiobutton><label> Female</label>
+				<f:radiobutton path="sex" value="Male"></f:radiobutton><label> Male</label>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="applicantStatus">Marital status </label>
+				<label for="applicantStatus">Marriage status </label>
 				<div class="radio">
 					<label><input type="radio" name="applicantStatus"
 						id="applicantStatus" value="Single">Single</label>
@@ -748,13 +762,8 @@
 			<div class="form-group">
 				<label for="military">Have you ever served in the military
 					service? </label>
-				<div class="radio">
-					<label><input type="radio" name="militaryStatus"
-						id="militaryStatus">Yes</label>
-				</div>
-				<div class="radio">
-					<label><input type="radio" name="militaryStatus"
-						id="militaryStatus">No</label>
+				<f:radiobutton path="militaryStatus" value="Yes"></f:radiobutton><label> Yes</label>
+				<f:radiobutton path="militaryStatus" value="No"></f:radiobutton><label> No</label>
 				</div>
 			<br>
 			<br>
@@ -812,7 +821,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+
 			<br>
 			<br>
 	<div class="row">
@@ -827,12 +836,12 @@
 			<br>
 			<div class="form-group">
 				<label for="department">Department </label> 
-				<select id="departmentId" class="form-control" name="departmentName">
+			<select id="department" class="form-control" name="department">
 					<option value="-1" label="please select data"/>
 					<c:forEach var="departmentList" items="${departments}" >
 						<option value="${departmentList.id}">${departmentList.departmentName}</option>
 					</c:forEach>
-				</select>
+				</select> 
 			</div>
 			<br>
 			<br>
@@ -919,30 +928,24 @@
 			<div class="form-group">
 				<label for="nowEmployed">Do you know anyone now being employed
 					by this company? </label><br><br>
-				<div class="radio">
-					<label><input type="radio" name="nowEmployed"
-						id="nowEmployed" value="Yes">Yes</label>
-				</div>
-				<div class="radio">
-					<label><input type="radio" name="nowEmployed"
-						id="nowEmployed" value="No">No</label>
-				</div>
-				<br>
+				<f:radiobutton path="nowEmployed" value="Yes"></f:radiobutton><label> Yes</label>
+				<f:radiobutton path="nowEmployed" value="No"></f:radiobutton><label> No</label>
+				<br> 
 				<br>
 				<div class="form-group">
 					<label for="nameRelation">If yes, please write name, position
 						and relation </label><br><br>
-					<lable for="employedName">Name </lable>
+					<label for="employedName">Name </label>
 					<input type="text" class="form-control" id="employedName"
 						name="employedName" placeholder="Enter name">
 						<br>
 						<br>
-					<lable for="employedPosition">Position </lable>
+					<label for="employedPosition">Position </label>
 					<input type="text" class="form-control" id="employedPosition"
 						name="employedPosition" placeholder="Enter position">
 						<br>
 						<br>
-					<lable for="employedRelation">Relation </lable>
+					<label for="employedRelation">Relation </label>
 					<input type="text" class="form-control" id="employedRelation"
 						name="employedRelation" placeholder="Enter relation">
 				</div>
@@ -980,14 +983,9 @@
 			employment? </label>
 			<br>
 			<br>
-		<div class="radio">
-			<label><input type="radio" name="previousEmployers"
-				id="previousEmployers" value="Yes">Yes</label>
-		</div>
-		<div class="radio">
-			<label><input type="radio" name="previousEmployers"
-				id="previousEmployers" value="No">No</label>
-		</div>
+		<f:radiobutton path="previousEmployers" value="Yes"></f:radiobutton><label> Yes</label>
+		<f:radiobutton path="previousEmployers" value="No"></f:radiobutton><label> No</label>
+		
 		<br>
 		<br>
 		<div class="form-group">

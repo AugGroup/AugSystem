@@ -45,17 +45,6 @@ $(document).ready(function() {
 
 	});
 	}
-	$('#skillSave').on("click", function() {
-		if ($('#skillForm').valid()) {
-		var table = $('#skillTable').DataTable();
-
-		table.row.add({
-			skillDetail : $('#skill').val()
-		}).draw();
-		$('#skillModal').modal('hide');
-		};
-	})
-	
 	//Update 
 	function findById(id){
 		$.ajax({
@@ -74,6 +63,7 @@ $(document).ready(function() {
 	
 	//Update function
 	function updated(button){
+		if ($('#skillForm').valid()) {
 		var id = $(button).data("id");
 		var skillDetail = $("#skill").val();
 		var json = {
@@ -108,6 +98,7 @@ $(document).ready(function() {
 					});
 			 }
 		});
+		};
 	}
 	
 	  //delete Modal
@@ -157,6 +148,8 @@ $(document).ready(function() {
 
 		}
    });
+    
+    
 	
 	
 	

@@ -521,5 +521,9 @@ public class ApplicationController {
 		System.out.println(positionService.findAll());
 		return positionService.findAll();
 	}
+	@ModelAttribute("applicant")
+	public ApplicationDTO applicant() {
+		return new ApplicationDTO();
+	}
 
 }

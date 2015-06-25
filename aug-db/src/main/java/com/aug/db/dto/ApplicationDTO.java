@@ -58,9 +58,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 	@NamedNativeQuery(name = "SEARCH_BY_ID_APPLICATION", query = "SELECT null as ATTITUDE, a.APPLICANT_ID, a.APPLICANT_CODE, a.FIRSTNAME_TH, a.FIRSTNAME_EN, a.LASTNAME_TH, a.LASTNAME_EN, a.NICKNAME_TH, a.NICKNAME_EN,"
 		+ "a.BIRTHDATE, a.PLACE_BIRTH, a.AGE, a.HEIGHT, a.WEIGHT, a.RELIGION, a.NATIONALITY, a.TEL, a.EMAIL,"
 		+ "a.APPLICANT_STATUS, a.APPLY_DATE, a.EMERGENCY_NAME, a.EMERGENCY_TEL, a.EMERGENCY_ADDRESS, a.NOTICE_NEWSPAPER, a.NOTICE_MAGAZINE, a.NOTICE_FRIEND, a.NOTICE_WEBSITE, a.NOTICE_OTHER, a.TRACKING_STATUS,"
-		+ "a.CERTIFICATE, a.EXPECTED_SALARY, a.CARD_ID, a.CARD_ISSUED_OFFICE, a.CARD_EXPIRY_DATE, a.MILITARY_FROM_YEAR, a.MILITARY_TO_YEAR, a.MILITARY_PLACE, a.MILITARY_SERVICE_NO, a.MILITARY_REASON, a.MILITARY_STATUS, a.MARRITAL_STATUS_NAME,"
+		+ "a.EXPECTED_SALARY, a.CARD_ID, a.CARD_ISSUED_OFFICE, a.CARD_EXPIRY_DATE, a.MILITARY_FROM_YEAR, a.MILITARY_TO_YEAR, a.MILITARY_PLACE, a.MILITARY_SERVICE_NO, a.MILITARY_REASON, a.MILITARY_STATUS,"
 		+ "a.NUMBER_OF_CHILDREN, a.SPOUSE_NAME, a.MARRIAGE_CERTIFICATE_NO, a.ISSUE_OFFICE_MARRIAGE, a.OCCUPATION_MARRIAGE, null as TECH_SCORE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.NOW_EMPLOYED, a.EMPLOYED_NAME, a.EMPLOYED_POSITION,"
-		+ "a.EMPLOYED_RELATION, a.BRANCH_SERVICE, a.PREVIOUS_EMPLOYERS, a.PREVIOUS_EMPLOYERS_REASON, a.DATE_TO_BE_DRAFTED, a.MARRIAGE_ADDRESS, null as POSITION_NAME, a.EMERGENCY_NAME,a.EMERGENCY_TEL,a.EMERGENCY_ADDRESS"
+		+ "a.EMPLOYED_RELATION, a.BRANCH_SERVICE, a.PREVIOUS_EMPLOYERS, a.PREVIOUS_EMPLOYERS_REASON, a.DATE_TO_BE_DRAFTED, a.MARRIAGE_ADDRESS, null as POSITION_NAME, a.EMERGENCY_NAME,a.EMERGENCY_TEL,a.EMERGENCY_ADDRESS,a.RESUME,a.TRANSCRIPT,a.IMAGE,a.SEX"
 		+ " FROM APPLICANT a WHERE a.APPLICANT_ID = :ID", resultClass = ApplicationDTO.class)
 	})
 public class ApplicationDTO {
@@ -164,6 +164,9 @@ public class ApplicationDTO {
 	@Column(name = "CARD_ID")
 	private String cardId;
 
+	@Column(name = "SEX")
+	private String sex;
+
 	@Column(name = "CARD_ISSUED_OFFICE")
 	private String cardIssuedOffice;
 
@@ -187,7 +190,7 @@ public class ApplicationDTO {
 	private String militaryReason;
 
 	@Column(name = "NUMBER_OF_CHILDREN")
-	private Integer numberOfChildren;
+	private String numberOfChildren;
 
 	@Column(name = "SPOUSE_NAME")
 	private String spouseName;
@@ -206,6 +209,9 @@ public class ApplicationDTO {
 
 	@Column(name = "ATTITUDE")
 	private String attitude;
+	
+	@Column(name = "MILITARY_STATUS")
+	private String militaryStatus;
 
 	@Transient
 	private String position1Str;
@@ -285,17 +291,6 @@ public class ApplicationDTO {
 
 	@Transient
 	private List<Experience> experiences;
-
-//	@ManyToOne
-//	@JoinColumn(name = "POSITION1_ID", referencedColumnName = "id")
-//	private Position position1;
-//
-//	@ManyToOne
-//	@JoinColumn(name = "POSITION2_ID", referencedColumnName = "id")
-//	private Position position2;
-//
-//	@ManyToOne
-//	@JoinColumn(name = "POSITION3_ID", referencedColumnName = "id")
 
 	@Transient
 	private Position position1;
@@ -789,11 +784,11 @@ public class ApplicationDTO {
 		this.militaryReason = militaryReason;
 	}
 
-	public Integer getNumberOfChildren() {
+	public String getNumberOfChildren() {
 		return numberOfChildren;
 	}
 
-	public void setNumberOfChildren(Integer numberOfChildren) {
+	public void setNumberOfChildren(String numberOfChildren) {
 		this.numberOfChildren = numberOfChildren;
 	}
 
@@ -914,6 +909,22 @@ public class ApplicationDTO {
 
 	public void setImageMultipartFile(MultipartFile imageMultipartFile) {
 		this.imageMultipartFile = imageMultipartFile;
+	}
+
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getMilitaryStatus() {
+		return militaryStatus;
+	}
+
+	public void setMilitaryStatus(String militaryStatus) {
+		this.militaryStatus = militaryStatus;
 	}
 
 }
