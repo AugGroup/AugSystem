@@ -28,7 +28,7 @@ public interface ApplicantService {
 	public void deleteById(Integer id);
 	
 	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO);
-
+	
 	public List<ReportApplicantDTO> reportApplicant();
 
 	public ApplicationDTO findByIdApplicant(Integer id);

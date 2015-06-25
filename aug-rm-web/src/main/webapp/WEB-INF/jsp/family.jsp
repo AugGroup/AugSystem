@@ -57,33 +57,26 @@
 			dtOrder.ajax.reload();
 		}
 		else {
-		
-		var id = '${id}';
-		$('#familyTable').DataTable({
-			ajax : {
-				url : '${pageContext.request.contextPath}/findByIdFamily/'+id,
-				type : 'POST'
-			},
-			columns : [ {
-				data : "name"
-			}, {
-				data : "relation"
-			}, {
-				data : "occupation"
-			}, {
-				data : "address"
-			}, {
-				data : "positionFamily"
-			},{ data : function(data) {
-				 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#familyModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
-			}
-			},{ data : function(data) {
-				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
-			}
-		} ],
-			searching : false
+			var id = '${id}';
+			$('#familyTable').DataTable({
+				ajax : {
+					url : '${pageContext.request.contextPath}/findByIdFamily/'+id,
+					type : 'POST'
+				},
+				columns : [ {data : "name"},
+							{data : "relation"},
+							{data : "occupation"},
+							{data : "address"},
+							{data : "positionFamily"},
+							{data : function(data) {
+					 			return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#familyModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+							}},
+							{data : function(data) {
+					 			return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+							}}],
+				searching : false
 
-		});
+			});
 		}
 
 			$('#familySave').on("click", function() {
@@ -270,8 +263,7 @@
 					<div class="row">
 						<div class="col-md-6">
 							<h1>Family</h1>
-							<button class="btn btn-primary" id="familyAdd"
-								data-toggle="modal" data-target="#familyModal">
+							<button class="btn btn-primary" id="familyAdd" data-toggle="modal" data-target="#familyModal">
 								<span class="glyphicon glyphicon-plus"></span> Family
 							</button>
 						</div>
@@ -292,40 +284,33 @@
 									<input type="hidden" id="applicant" name="applicant" value="${id}">
 								</div>
 									<div class="form-group">
-										<label for="nameFamily">Name </label> <input type="text"
-											class="form-control" id="nameFamily" name="nameFamily"
-											placeholder="Enter name">
+										<label for="nameFamily">Name </label> 
+										<input type="text" class="form-control" id="nameFamily" name="nameFamily" placeholder="Enter name">
 									</div>
 
 									<div class="form-group">
-										<label for="relationFamily">Relation </label> <input
-											type="text" class="form-control" id="relationFamily"
-											name="relationFamily" placeholder="Enter relation">
+										<label for="relationFamily">Relation </label> 
+										<input type="text" class="form-control" id="relationFamily" name="relationFamily" placeholder="Enter relation">
 									</div>
 									<div class="form-group">
-										<label for="occupationFamily">Occupation </label> <input
-											type="text" class="form-control" id="occupationFamily"
-											name="occupationFamily" placeholder="Enter occupation ">
+										<label for="occupationFamily">Occupation </label> 
+										<input type="text" class="form-control" id="occupationFamily" name="occupationFamily" placeholder="Enter occupation ">
 									</div>
 
 									<div class="form-group">
 										<label for="addressFamily">Address </label> 
-										<textarea class="form-control" rows="5" id="addressFamily"
-										name="addressFamily" placeholder="Enter address"></textarea>
+										<textarea class="form-control" rows="5" id="addressFamily" name="addressFamily" placeholder="Enter address"></textarea>
 									</div>
 
 									<div class="form-group">
-										<label for="positionFamily">Position </label> <input
-											type="text" class="form-control" id="positionFamily"
-											name="positionFamily" placeholder="Enter position">
+										<label for="positionFamily">Position </label> 
+										<input type="text" class="form-control" id="positionFamily" name="positionFamily" placeholder="Enter position">
 									</div>
 									<br> <br>
-									<button type="button" class="btn btn-success"
-										id="btn_save">
+									<button type="button" class="btn btn-success" id="btn_save">
 										<span class="glyphicon glyphicon-off"></span> Save
 									</button>
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 								</form>
 							</div>
 						</div>
