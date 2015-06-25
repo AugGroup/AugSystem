@@ -8,11 +8,11 @@ import javax.persistence.NamedNativeQuery;
 
 @Entity
 @NamedNativeQueries({
-	@NamedNativeQuery(name = "SEARCH_FAMILY", query = "SELECT f.ID, f.NAME, f.DISTRICT, f.RELATION, f.OCCUPATION,"
+	@NamedNativeQuery(name = "SEARCH_FAMILY", query = "SELECT f.ID, f.NAME, f.RELATION, f.OCCUPATION,"
 		+ "f.ADDRESS, f.POSITION_FAMILY, f.APPLICANT_ID"
 		+ " FROM FAMILY f LEFT JOIN APPLICANT a on f.APPLICANT_ID = a.APPLICANT_ID WHERE f.APPLICANT_ID = :ID", resultClass = FamilyDTO.class),
 		
-	@NamedNativeQuery(name = "SEARCH_FAMILY_ID", query = "SELECT f.ID, f.NAME, f.DISTRICT, f.RELATION, f.OCCUPATION,"
+	@NamedNativeQuery(name = "SEARCH_FAMILY_ID", query = "SELECT f.ID, f.NAME, f.RELATION, f.OCCUPATION,"
 		+ "f.ADDRESS, f.POSITION_FAMILY, f.APPLICANT_ID"
 		+ " FROM FAMILY f WHERE f.ID = :ID", resultClass = FamilyDTO.class)
 	})

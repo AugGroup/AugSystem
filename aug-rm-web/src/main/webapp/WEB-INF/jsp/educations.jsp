@@ -62,44 +62,28 @@
 			dtApplicant.ajax.reload();
 		}else{
 			var id = '${id}';
-		$('#educationTable').DataTable({
-			ajax : {
-				url : '${pageContext.request.contextPath}/findByIdEducation/'+ id,
-				type : 'POST'
-			},
+			$('#educationTable').DataTable({
+				ajax : {
+					url : '${pageContext.request.contextPath}/findByIdEducation/'+ id,
+					type : 'POST'
+				},
 
-			columns : [ {data : "schoolName"},
-			            {data : "degree"}, 
-			            {data : "faculty"}, 
-			            {data : "major"},
-			            {data : "gpa"},
-			            {data : "yearsOfGraduate"},
-			            {data : function(data) {
-							return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#educationModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
-						}},
-						{data : function(data) {
-							return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
-						}}],
-			searching : false
+				columns : [ {data : "schoolName"},
+				            {data : "degree"}, 
+				            {data : "faculty"}, 
+				            {data : "major"},
+				            {data : "gpa"},
+				            {data : "yearsOfGraduate"},
+				            {data : function(data) {
+								return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#educationModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+							}},
+							{data : function(data) {
+								return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+							}}],
+				searching : false
 
-		});
+			});
 		}
-		
-		$('#educationSave').on("click", function() {
-			if ($('#educationsForm').valid()) { 
-			var table = $('#educationTable').DataTable();
-
-			table.row.add({
-				schoolName : $('#university').val(),
-				degree : $('#degree').val(),
-				faculty : $('#faculty').val(),
-				major : $('#major').val(),
-				gpa : $('#gpa').val(),
-				yearsOfGraduate : $('#graduate').val()
-			}).draw();
-			$('#educationModal').modal('hide');
-			};
-		})
 
 		$('#buttonSave').on("click", function() {
 		
@@ -197,11 +181,11 @@
 				 	var d = table.row(rowData).data();
 				 		console.log(data.houseNo);
 
-				 		d.university = data.university;
+				 		d.university = data.schoolName;
 				 		d.degree = data.degree;
 						d.faculty = data.faculty;
 				 		d.major = data.major;
-				 		d.graduate = data.graduate;
+				 		d.graduate = data.yearsOfGraduate;
 				 		d.gpa = data.gpa;
 				 		
 				 		table.row(rowData).data(d).draw();
