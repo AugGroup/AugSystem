@@ -10,26 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.dto.ReportApplicantDTO;
-import com.aug.db.entities.Address;
 import com.aug.db.entities.Applicant;
-import com.aug.db.entities.Certificate;
-import com.aug.db.entities.Education;
-import com.aug.db.entities.Experience;
-import com.aug.db.entities.Family;
-import com.aug.db.entities.Languages;
 import com.aug.db.entities.Position;
-import com.aug.db.entities.Reference;
-import com.aug.db.entities.Skill;
-import com.aug.db.repositories.AddressRepository;
 import com.aug.db.repositories.ApplicantRepository;
-import com.aug.db.repositories.CertificateRepository;
-import com.aug.db.repositories.EducationRepository;
-import com.aug.db.repositories.ExperienceRepository;
-import com.aug.db.repositories.FamilyRepository;
-import com.aug.db.repositories.LanguagesRepository;
 import com.aug.db.repositories.PositionRepository;
-import com.aug.db.repositories.ReferenceRepository;
-import com.aug.db.repositories.SkillRepository;
 
 @Service(value = "applicantService")
 @Transactional
@@ -40,31 +24,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 	
 	@Autowired
 	private PositionRepository positionRepository;
-	
-	@Autowired
-	private FamilyRepository familyRepository;
 
-	@Autowired
-	private SkillRepository skillRepository;
-
-	@Autowired
-	private EducationRepository educationRepository;
-
-	@Autowired
-	private LanguagesRepository languagesRepository;
-	
-	@Autowired
-	private AddressRepository addressRepository;
-
-	@Autowired
-	private ExperienceRepository experienceRepository;
-	
-	@Autowired
-	private ReferenceRepository referenceRepository;
-	
-	@Autowired
-	private CertificateRepository certificateRepository;
-	
 	@Override
 	public Applicant findById(Integer id) {
 		return applicantRepository.findById(id);
@@ -140,7 +100,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 
 		return applicants;
 	}
-	
+
 	@Override
 	public ApplicationDTO findApplicationById(Integer id) {
 		ApplicationDTO applicants = applicantRepository.findApplicationById(id);
@@ -149,58 +109,13 @@ public class ApplicantServiceImpl implements ApplicantService {
 	}
 
 	@Override
-	public ApplicationDTO saveEducation(ApplicationDTO applicationDTO) {
-		
-		List<Education> educations = applicationDTO.getEducations();
-		for (Education ed : educations) {
-
-			ed.setId(applicationDTO.getId());
-			educationRepository.insert(ed);
-		}
-		return applicationDTO;
-	}
-
-	@Override
-	public ApplicationDTO saveAddress(ApplicationDTO applicationDTO) {
-		List<Address> address = applicationDTO.getAddress();
-		for (Address add : address) {
-			add.setId(applicationDTO.getId());
-			addressRepository.insert(add);
-		}
-		return applicationDTO;
-	}
-
-	@Override
-	public ApplicationDTO saveApplications(ApplicationDTO applicationDTO) {
-
-		Position position1 = applicationDTO.getPosition1();
-		positionRepository.insert(position1);
-		Position position2 = applicationDTO.getPosition2();
-		positionRepository.insert(position2);
-		Position position3 = applicationDTO.getPosition3();
-		positionRepository.insert(position3);
-		return applicationDTO;
-	}
-
-	@Override
-	public ApplicationDTO saveExperiences(ApplicationDTO applicationDTO) {
-		List<Experience> experiences = applicationDTO.getExperiences();
-		for (Experience experience : experiences) {
-			experience.setId(applicationDTO.getId());
-			experienceRepository.insert(experience);
-
-		}
-		return applicationDTO;
-	}
-	
-
-	@Override
 
 	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO) {
-		Applicant applicant = new Applicant();
+			Applicant applicant = new Applicant();
 			applicant.setTrackingStatus("Waiting for consider");
+		
 			try {
-				applicantRepository.insert(applicant.fromApplicationDTO(applicant, applicationDTO));
+				applicantRepository.insert(applicant.fromApplicationDTO(applicant, applicationDTO));			
 			} catch (ParseException e) {
 				e.printStackTrace();
 			}
@@ -214,64 +129,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 	public List<ReportApplicantDTO> reportApplicant() {
 		return applicantRepository.reportApplicant();
 	}
-	
-	@Override
-	public ApplicationDTO saveCertificate(ApplicationDTO applicationDTO) {
-		List<Certificate> certificates = applicationDTO.getCertificates();
-		for (Certificate certificate : certificates ) {
-			certificate.setId(applicationDTO.getId());
-			certificateRepository.insert(certificate);
 
-		}
-		return applicationDTO;
-	}
-
-	@Override
-	public ApplicationDTO saveLanguages(ApplicationDTO applicationDTO) {
-		List<Languages> languages = applicationDTO.getLanguages();
-		for (Languages lang : languages) {
-
-			lang.setId(applicationDTO.getId());
-			languagesRepository.insert(lang);
-
-	}
-		return applicationDTO;
-	}
-
-	@Override
-	public ApplicationDTO saveReferences(ApplicationDTO applicationDTO) {
-		List<Reference> references = applicationDTO.getReferences();
-		for (Reference reference : references) {
-			reference.setId(applicationDTO.getId());
-			referenceRepository.insert(reference);
-
-		}
-		return applicationDTO;
-	}
-
-	@Override
-	public ApplicationDTO saveSkills(ApplicationDTO applicationDTO) {
-
-		List<Skill> skills = applicationDTO.getSkills();
-		for (Skill sk : skills) {
-
-			sk.setId(applicationDTO.getId());
-			skillRepository.insert(sk);
-
-		}
-		return applicationDTO;
-	}
-
-	@Override
-	public ApplicationDTO saveFamily(ApplicationDTO applicationDTO) {	
-		List<Family> families = applicationDTO.getFamilies();
-	for (Family family : families) {
-		family.setId(applicationDTO.getId());
-		familyRepository.insert(family);
-
-	}
-		return applicationDTO;
-	}
 
 	public ApplicationDTO findByIdApplicant(Integer id) {
 		return applicantRepository.findApplicationById(id);

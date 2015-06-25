@@ -20,6 +20,79 @@
 
 		});
 		
+	 	$('#experiencesForm').validate({
+			rules : {
+				workBackground : {
+					required : true,
+				},
+				fromWorkYear : {
+					required : true,
+				},
+				toWorkYear : {
+					required : true,
+				},
+				emp : {
+					required : true,
+				},
+				addressBackground : {
+					required : true,
+				},
+				business : {
+					required : true,
+				},
+				positionBackground : {
+					required : true,
+				},
+				supervisorBackground : {
+					required : true,
+				},
+				salaryBackground : {
+					required : true,
+				},
+				descriptionBackground : {
+					required : true,
+				},
+				reasonLeaving : {
+					required : true,
+				}
+			},
+			messages : {
+				workBackground : {
+					required : "Present or last position is required!"
+				},
+				fromWorkYear : {
+					required : "From (month, year) is required!"
+				},
+				toWorkYear : {
+					required : "To (month, year) is required!"
+				},
+				emp : {
+					required : "Employer Name is required!"
+				},
+				addressBackground : {
+					required : "Address is required!"
+				},
+				business : {
+					required : "Type of business is required!"
+				},
+				positionBackground : {
+					required : "Position is required!"
+				},
+				supervisorBackground : {
+					required : "Supervisor is required!"
+				},
+				salaryBackground : {
+					required : "Salary ,Wages is required!"
+				},
+				descriptionBackground : {
+					required : "Description of duties and responsibilities is required!"
+				},
+				reasonLeaving : {
+					required : "Reason for leaving is required!"
+				}
+			}
+		});
+		
 			if(dtApplicant) {
 		dtOrder.ajax.reload();
 	}
@@ -65,7 +138,7 @@
 		});
 	}
 		$('#experiencesSave').on("click", function() {
-// 			if ($('#experiencesForm').valid()) { 
+ 			if ($('#experiencesForm').valid()) { 
 			var table = $('#experiencesTable').DataTable();
 
 			table.row.add({
@@ -82,14 +155,10 @@
 				reason : $('#reasonLeaving').val()
 			}).draw();
 			$('#experiencesModal').modal('hide');
-// 			};
+ 			};
 		}) 
-// <<<<<<< HEAD
+		
 		$('#experiencesSave').on("click", function() {
-// =======
-// 		$('#buttonSave').on("click", function() {
-// 		 	if ($('#previousEmployers').valid()) { 
-
 // >>>>>>> Edit AddressRepository.java, AddressRepositoryImpl.java, ExperienceRepository.java, /ExperienceRepositoryImpl.java, ReferenceRepository.java, ReferenceRepositoryImpl.java, ReferenceService.java, ReferenceServiceImpl.java, ApplicationController.java, address.jsp, applicationMenu.jsp, applications.jsp, experiences.jsp
 		var insertData = "{";
 			

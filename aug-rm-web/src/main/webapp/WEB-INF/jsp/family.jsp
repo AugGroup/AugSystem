@@ -10,43 +10,43 @@
 		
 		$('#familyForm').validate({
 			rules : {
-				nameFamilyName : {
+				nameFamily : {
 					required : true
 				},
-				relationFamilyName : {
+				relationFamily : {
 					required : true
 				},
-				occupationFamilyName : {
+				occupationFamily : {
 					required : true
 				},
-				addressFamilyName : {
+				addressFamily : {
 					required : true
 				},
-				occupationName : {
+				occupation : {
 					required : true
 				},
-				positionFamilyName : {
+				positionFamily : {
 					required : true
 				}
 			},
 			messages : {
-				nameFamilyName : {
+				nameFamily : {
 					required : "Spouse: Name is required!"
 				},
-				relationFamilyName : {
+				relationFamily : {
 					required : "Marriage certificate No. is required!"
 				},
-				occupationFamilyName : {
+				occupationFamily : {
 					required : "Issued office is required!"
 				},
-				addressFamilyName : {
+				addressFamily : {
 					required : "Address is required!"
 				},
-				occupationName : {
+				occupation : {
 					required : "Occupation is required!"
 				},
-				positionFamilyName : {
-					required : "Military service is required!"
+				positionFamily : {
+					required : "Position service is required!"
 				}
 			}
 			
@@ -87,7 +87,7 @@
 		}
 
 			$('#familySave').on("click", function() {
-// 				if($('#familyForm').valid()){
+ 				if($('#familyForm').valid()){
 				var table = $('#familyTable').DataTable();
 				
 				table.row.add({
@@ -98,7 +98,7 @@
 				positionFamily : $('#positionFamily').val()}).draw();
 			
 				$('#familyModal').modal('hide');
-// 				};
+				};
 			})
 			$('#familySave').on("click", function() {
 			var insertData = "{";

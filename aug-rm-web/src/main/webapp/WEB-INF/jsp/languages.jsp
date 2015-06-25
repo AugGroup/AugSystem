@@ -10,40 +10,18 @@ $(document).ready(function() {
 	var dtApplicant;
 	
 		$('#languagesForm').validate({
-			rules : {
-				languagesName : {
-					required : true
-				},
-				speakingName : {
-					required : true
-				},
-				understandingName : {
-					required : true
-				},
-				readingName : {
-					required : true
-				},
-				writingName : {
-					required : true
+			rules : {languages : {required : true},
+				speaking : {required : true},
+				understanding : {required : true},
+				reading : {required : true},
+				writing : {required : true}},
+			messages : {languages : {
+					required : "Languages is required!"},
+				speaking : {required : "Speaking is required!"},
+				understanding : {required : "Understanding is required!"},
+				reading : {required : "Reading is required!"},
+				writing : {required : "Writing is required!"}
 				}
-			},
-			messages : {
-				languagesName : {
-					required : "Languages is required!"
-				},
-				speakingName : {
-					required : "Speaking is required!"
-				},
-				understandingName : {
-					required : "Understanding is required!"
-				},
-				readingName : {
-					required : "Reading is required!"
-				},
-				writingName : {
-					required : "Writing is required!"
-				}
-			}
 		});
 
 		if(dtApplicant) {

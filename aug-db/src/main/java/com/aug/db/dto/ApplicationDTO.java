@@ -252,8 +252,15 @@ public class ApplicationDTO {
 	
 	@Column(name = "IMAGE")
 	private String image;
+	
 	@Transient
-	private List<MultipartFile> multipartFile ;
+	private MultipartFile resumeMultipartFile;
+	
+	@Transient
+	private MultipartFile transcriptMultipartFile;
+	
+	@Transient
+	private MultipartFile imageMultipartFile;
 
 	@Transient
 	private List<Reference> references;
@@ -837,32 +844,6 @@ public class ApplicationDTO {
 	public void setAttitude(String attitude) {
 		this.attitude = attitude;
 	}
-
-/*
-	public Integer getPosition1() {
-		return position1;
-	}
-
-	public void setPosition1(Integer position1) {
-		this.position1 = position1;
-	}
-
-	public Integer getPosition2() {
-		return position2;
-	}
-
-	public void setPosition2(Integer position2) {
-		this.position2 = position2;
-	}
-
-	public Integer getPosition3() {
-		return position3;
-	}
-
-	public void setPosition3(Integer position3) {
-		this.position3 = position3;
-	}
-*/
 	public String getPosition1Str() {
 		return position1Str;
 	}
@@ -911,11 +892,28 @@ public class ApplicationDTO {
 		this.position3 = position3;
 	}
 
-	public List<MultipartFile> getMultipartFile() {
-		return multipartFile;
+	public MultipartFile getResumeMultipartFile() {
+		return resumeMultipartFile;
 	}
 
-	public void setMultipartFile(List<MultipartFile> multipartFile) {
-		this.multipartFile = multipartFile;
+	public void setResumeMultipartFile(MultipartFile resumeMultipartFile) {
+		this.resumeMultipartFile = resumeMultipartFile;
 	}
+
+	public MultipartFile getTranscriptMultipartFile() {
+		return transcriptMultipartFile;
+	}
+
+	public void setTranscriptMultipartFile(MultipartFile transcriptMultipartFile) {
+		this.transcriptMultipartFile = transcriptMultipartFile;
+	}
+
+	public MultipartFile getImageMultipartFile() {
+		return imageMultipartFile;
+	}
+
+	public void setImageMultipartFile(MultipartFile imageMultipartFile) {
+		this.imageMultipartFile = imageMultipartFile;
+	}
+
 }

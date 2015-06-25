@@ -10,12 +10,12 @@ $(document).ready(function() {
 	
 	$('#certificateForm').validate({
 		rules : {
-			certificateName : {
+			certificate : {
 				required : true
 			}
 		},
 		messages : {
-			certificateName : {
+			certificate : {
 				required : "Certificate is required!"
 			}
 		}

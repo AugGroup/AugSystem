@@ -13,13 +13,13 @@
 				fullName : {
 					required : true
 				},
-				completeAddressName : {
+				completeAddress : {
 					required : true,
 				},
-				telNoName : {
+				telNo : {
 					required : true,
 				},
-				occupationRefName : {
+				occupationRef : {
 					required : true,
 				}
 			},
@@ -27,13 +27,13 @@
 				fullName : {
 					required : "FULL NAME is required!"
 				},
-				completeAddressName : {
+				completeAddress : {
 					required : "COMPLETE ADDRESS. is required!"
 				},
-				telNoName : {
+				telNo : {
 					required : "TELEPHONE NO. is required!"
 				},
-				occupationRefName : {
+				occupationRef : {
 					required : "OCCUPATION is required!"
 				}
 			}

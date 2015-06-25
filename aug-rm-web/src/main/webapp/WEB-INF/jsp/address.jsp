@@ -10,22 +10,22 @@
 				inputAddress : {
 					required : true
 				},
-				houseNoName : {
+				houseNo : {
 					required : true
 				},
-				roadName : {
+				road : {
 					required : true
 				},
-				districtName : {
+				district : {
 					required : true
 				},
-				subDistrictName : {
+				subDistrict : {
 					required : true
 				},
-				zipcodeName : {
+				zipcode : {
 					required : true
 				},
-				provinceName : {
+				province : {
 					required : true
 				}
 			},
@@ -33,45 +33,29 @@
 				inputAddress : {
 					required : "Address is required!"
 				},
-				houseNoName : {
+				houseNo : {
 					required : "House No. is required!"
 				},
-				roadName : {
+				road : {
 					required : "Road is required!"
 				},
-				districtName : {
+				district : {
 					required : "District is required!"
 				},
-				subDistrictName : {
+				subDistrict : {
 					required : "Sub District is required!"
 				},
-				provinceName : {
+				province : {
 					required : "Province is required!"
 				}
 			}
 		});
 		$('#emergencyForm').validate({
 			rules : {
-				emergencyName : {
-					required : true
-				},
-				emergencyTelName : {
-					required : true
-				},
-				emergencyAddressName : {
-					required : true
-				}
+				
 			},
 			messages : {
-				emergencyName : {
-					required : "Emergency Name is required!"
-				},
-				emergencyTelName : {
-					required : "Emergency Telephone is required!"
-				},
-				emergencyAddressName : {
-					required : "Emergency Address is required!"
-				}
+				
 			}
 		});
 

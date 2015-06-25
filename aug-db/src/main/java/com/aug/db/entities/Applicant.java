@@ -125,7 +125,7 @@ public class Applicant {
 
 	@ManyToOne
 	@Index(name = "position3Index")
-	@JoinColumn(name = "POSITION3_ID", referencedColumnName = "id",insertable = false, updatable = false)
+	@JoinColumn(name = "POSITION3_ID", referencedColumnName = "id")
 	private Position position3;
 
 	@Column(name = "TRACKING_STATUS")
@@ -231,9 +231,6 @@ public class Applicant {
 
 	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<Family> families;
-
-	/*@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
-	private List<AttachFile> attachFiles;*/
 
 	@OneToMany(mappedBy = "applicant",cascade=CascadeType.REMOVE)
 	private List<AugEmployee> augEmployees;
@@ -844,6 +841,14 @@ public class Applicant {
 		this.certificates = certificates;
 	}
 
+	public String getMilitaryStatus() {
+		return militaryStatus;
+	}
+
+	public void setMilitaryStatus(String militaryStatus) {
+		this.militaryStatus = militaryStatus;
+	}
+
 	public Applicant fromApplicationDTO(Applicant applicant,ApplicationDTO applicationDTO) throws ParseException {
 		applicant.setId(applicationDTO.getId());
 		applicant.setFirstNameTH(applicationDTO.getFirstNameTH());
@@ -897,7 +902,12 @@ public class Applicant {
 		applicant.setResume(applicationDTO.getResume());
 		applicant.setTranscript(applicationDTO.getTranscript());
 		applicant.setImage(applicationDTO.getImage());
-		
+		applicant.setPosition1(applicationDTO.getPosition1());
+		applicant.setPosition2(applicationDTO.getPosition2());
+		applicant.setPosition3(applicationDTO.getPosition3());
+		applicant.setImage(applicationDTO.getImage());
+		applicant.setTranscript(applicationDTO.getTranscript());
+		applicant.setResume(applicationDTO.getResume());
 		return applicant;
 
 	}

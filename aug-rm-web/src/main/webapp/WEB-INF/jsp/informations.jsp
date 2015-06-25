@@ -4,384 +4,307 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script>
-	$(document).ready(function() {
+ 	$(document).ready(function() {
 			$('.input-group.date').datepicker({startView : 2,
-							todayBtn : "linked",
-							format : "dd/mm/yyyy"
+ 							todayBtn : "linked",
+ 							format : "dd/mm/yyyy"
 
-						});
-			/* $('#infoForm').validate({
-				rules : {photographName : { required : true },
-					firstNameThName : { required : true },
-					lastnameThName : { required : true },
-					nickNameThName : {
+ 						});
+			
+			 $('#infoForm').validate({
+				rules : {imageMultipartFile : { required : true },
+					firstNameTH : { required : true },
+					lastNameTH : { required : true },
+					nickNameTH : {
 						required : true
 					},
-					firstNameEngName : {
+					firstNameEN : {
 						required : true
 					},
-					lastnameEngName : {
+					lastNameEN : {
 						required : true
 					},
-					nickNameEngName : {
+					nickNameEN : {
 						required : true
 					},
-					telName : {
+					tel : {
 						required : true
 					},
-					eMailName : {
+					email : {
 						required : true
 					},
-					birthdayName : {
+					birthDate : {
 						required : true
 					},
-					pBirthName : {
+					placeBirth : {
 						required : true
 					},
-					ageName : {
+					age : {
 						required : true
 					},
-					religionName : {
+					religion : {
 						required : true
 					},
-					nationalityName : {
+					nationality : {
 						required : true
 					},
-					idCardName : {
+					cardId : {
 						required : true
 					},
-					issuedCardName : {
+					cardIssuedOffice : {
 						required : true
 					},
-					expiryName : {
+					cardExpiryDate : {
 						required : true
 					},
-					heightName : {
+					height : {
 						required : true
 					},
-					weightName : {
+					weight : {
 						required : true
 					},
-					sexName : {
+					sex : {
 						required : true
 					},
-					maritalName : {
+					applicantStatus : {
 						required : true
 					},
-					childrenName : {
+					numberOfChildren : {
 						required : true
-					}
+					},
+					spouseName : {
+						required : true
+					},
+					marriageCertificateNo : {
+						required : true
+					},
+					issueOficeMarriage : {
+						required : true
+					},
+					marriageAddress : {
+						required : true
+					},
+					occupationMarriage : {
+						required : true
+					},
+					militaryStatus : {
+						required : true
+					},
+					militaryFromYear : {
+						required : true
+					},
+					militarytoYear : {
+						required : true
+					},
+					branchService : {
+						required : true
+					},
+					militaryPlace : {
+						required : true
+					},
+					militaryServiceNo : {
+						required : true
+					},
+					militaryReason : {
+						required : true
+					},
+					dateToBeDrafted : {
+						required : true
+					},
+					previousEmployers : {
+ 						required : true
+ 					},
+ 					giveReasonName : {
+ 						required : true
+ 					},emergencyName : {
+ 						required : true
+ 					},
+ 					emergencyTelName : {
+ 						required : true
+ 					},
+ 					emergencyAddressName : {
+ 						required : true
+ 					},
+ 					applyDateName : {
+ 						required : true
+ 					},
+ 					departmentName : {
+ 						required : true
+ 					},
+ 					positionFirstName : {
+ 						required : true
+ 					},
+ 					positionSecondName : {
+ 						required : true
+ 					},
+ 					positionThirdName : {
+ 						required : true
+ 					},
+ 					salaryName : {
+ 						required : true
+ 					},
+ 					knowEmployedName : {
+ 						required : true
+ 					},
+ 					nameRelationName : {
+ 						required : true
+ 					},
+ 					positionRelationName : {
+ 						required : true
+ 					},
+ 					employedRelationName : {
+ 						required : true
+ 					}
 				},
 				messages : {
-					photographName : {
+					imageMultipartFile : {
 						required : "Photograph is required!"
 					},
-					firstNameThName : {
+					firstNameTH : {
 						required : "Firstname Thai is required!"
 					},
-					lastnameThName : {
+					lastNameTH : {
 						required : "Lastname Thai is required"
 					},
-					nickNameThName : {
+					nickNameTH : {
 						required : "Nickname Thai is required!"
 					},
-					firstNameEngName : {
+					firstNameEN : {
 						required : "Firstname English is required!"
 					},
-					lastnameEngName : {
+					lastNameEN : {
 						required : "Lastname English is required!"
 					},
-					nickNameEngName : {
+					nickNameEN : {
 						required : "Nickname English is required!"
 					},
-					telName : {
+					tel : {
 						required : "Tel. is required!"
 					},
-					eMailName : {
+					email : {
 						required : "E-Mail is required!"
 					},
-					birthdayName : {
+					birthDate : {
 						required : "Birthday is required!"
 					},
-					pBirthName : {
+					placeBirth : {
 						required : "Place of birth is required!"
 					},
-					ageName : {
+					age : {
 						required : "Age is required!"
 					},
-					religionName : {
+					religion : {
 						required : "Religion is required!"
 					},
-					nationalityName : {
+					nationality : {
 						required : "Nationality is required!"
 					},
-					idCardName : {
+					cardId : {
 						required : "ID. Card no. is required!"
 					},
-					issuedCardName : {
+					cardIssuedOffice : {
 						required : "Issued office is required!"
 					},
-					expiryName : {
+					cardExpiryDate : {
 						required : "Expiry date is required!"
 					},
-					heightName : {
+					height : {
 						required : "Height is required!"
 					},
-					weightName : {
+					weight : {
 						required : "Weight is required!"
 					},
-					sexName : {
+					sex : {
 						required : "Sex is required!"
 					},
-					maritalName : {
+					applicantStatus : {
 						required : "Marital status is required!"
 					},
-					childrenName : {
+					numberOfChildren : {
 						required : "Number of children is required!"
-					}
-					
-				}
-			});
-			$('#informationForm').validate({
-				rules : {
-					spouseName : {
-						required : true
-					},
-					marriageCerName : {
-						required : true
-					},
-					issuedMarriageName : {
-						required : true
-					},
-					addressName : {
-						required : true
-					},
-					occupationName : {
-						required : true
-					},
-					militaryName : {
-						required : true
-					},
-					fromYearName : {
-						required : true
-					},
-					toYearName : {
-						required : true
-					},
-					branchName : {
-						required : true
-					},
-					placeName : {
-						required : true
-					},
-					serviceNoName : {
-						required : true
-					},
-					reasonsName : {
-						required : true
-					},
-					draftedName : {
-						required : true
-					}
-				},
-				messages : {
-					spouseName : {
+					},spouseName : {
 						required : "Spouse: Name is required!"
 					},
-					marriageCerName : {
+					marriageCertificateNo : {
 						required : "Marriage certificate No. is required!"
 					},
-					issuedMarriageName : {
+					issueOficeMarriage : {
 						required : "Issued office is required!"
 					},
-					addressName : {
+					marriageAddress : {
 						required : "Address is required!"
 					},
-					occupationName : {
+					occupationMarriage : {
 						required : "Occupation is required!"
 					},
-					militaryName : {
+					militaryStatus : {
 						required : "Military service is required!"
 					},
-					fromYearName : {
+					militaryFromYear : {
 						required : "From year is required!"
 					},
-					toYearName : {
+					militarytoYear : {
 						required : "To year is required!"
 					},
-					branchName : {
+					branchService : {
 						required : "Branch of service is required!"
 					},
-					placeName : {
+					militaryPlace : {
 						required : "Military place is required!"
 					},
-					serviceNoName : {
+					militaryServiceNo : {
 						required : "Service No. is required!"
 					},
-					reasonsName : {
+					militaryReason : {
 						required : "Reasons is required!"
 					},
-					draftedName : {
+					dateToBeDrafted : {
 						required : "Date to be drafted is required!"
+					},emergencyName : {
+						required : "Emergency Name is required!"
+					},
+					emergencyTelName : {
+						required : "Emergency Telephone is required!"
+					},
+					emergencyAddressName : {
+						required : "Emergency Address is required!"
+					},applyDateName : {
+						required : "Apply date is required!"
+					},
+					departmentName : {
+						required : "Department is required!"
+					},
+					positionFirstName : {
+						required : "Position 1 is required!"
+					},
+					positionSecondName : {
+						required : "Position 2 is required!"
+					},
+					positionThirdName : {
+						required : "Position 3 is required!"
+					},
+					salaryName : {
+						required : "Salary expected is required!"
+					},
+					knowEmployedName : {
+						required : "Do you know anyone now being employed by this company? is required!"
+					},
+					nameRelationName : {
+						required : "Name is required!"
+					},
+					positionRelationName : {
+						required : "Position is required!"
+					},
+					employedRelationName : {
+						required : "Relation is required!"
 					}
 					
 				}
 			});
-			 */
-			
-			
-			$('#previousEmployers').validate({
-				rules : {
-					previousEmployersName : {
-						required : true
-					},
-					giveReasonName : {
-						required : true,
-					}
-				},
-				messages : {
-					previousEmployersName : {
-						required : "Please choose is required!"
-					},
-					giveReasonName : {
-						required : "Please give the reason is required!"
-					}
-				}
-			});
-			
-			
-			
-			 $("#buttonUpload").on("click",function() {
-				 uplodFile();
-		 	 });
-			 
-			function uplodFile(){		
-				var file = $('#photograph')[0].files[0];
-				var formData = new FormData();
-
-			formData.append('file', file);
-			$.ajax({
-			     	dataType:"text", 
-					contentType: false,
-				    processData: false,
-					enctype: 'multipart/form-data',
-					type : "POST",
-					url : '${pageContext.request.contextPath}/upload',
-					data : formData,
-					success : function(data) {
-						alert(JSON.stringify(data));
-
-						
-					}
-				});
-			}
-					
+	
 						$('#buttonSave').on("click",function() {
 							if ($('#infoForm').valid()||$('#informationForm').valid()) {
 											 var insertData = "{";
-// 						$('#familyTable').DataTable({
-// 											ajax : {
-// 												url : '${pageContext.request.contextPath}/informations',
-// 												type : 'GET'
-// 											},
-// 											columns : [ {
-// 												data : "name"
-// 											}, {
-// 												data : "relation"
-// 											}, {
-// 												data : "occupation"
-// 											}, {
-// 												data : "address"
-// 											}, {
-// 												data : "positionFamily"
-// 											}],
-// 											searching : false
-						$('#familyTable').DataTable({
-											ajax : {
-												url : '${pageContext.request.contextPath}/informations',
-												type : 'GET'
-											},
-											columns : [ {data : "name"},
-											            {data : "relation"},
-											            {data : "occupation"},
-											            {data : "address"},
-											            {data : "positionFamily"}],
-											searching : false
-
-						});
-
-// 						$('#familySave').on("click", function() {
-// 							if($('#familyForm').valid()){
-// 							var table = $('#familyTable').DataTable();
-
-// 							table.row.add({
-// 								name : $('#nameFamilyId').val(),
-// 								relation : $('#relationFamilyId').val(),
-// 								occupation : $('#occupationFamilyId').val(),
-// 								address : $('#addressFamilyId').val(),
-// 								positionFamily : $('#positionFamilyId').val()}).draw();
-							
-// 							$('#familyModal').modal('hide');
-// 							};
-// 						})
- 	
-// // 	$('#buttonSave').on("click",function() {
-	
-// 	function saveInformation(){
-// // 		var inputData = {firstNameTH : $('#firstNameThId').val(),
-// // 						 firstNameEN : $('#firstNameEngId').val(),
-// // 						 lastNameTH : $('#lastnameThId').val(),
-// // 						 lastNameEN : $('#lastnameEngId').val(),
-// // 						 nickNameTH : $('#nickNameThId').val(),
-// // 						 nickNameEN : $('#nickNameEngId').val(),
-// // 						 birthDate : $('#birthdayId').val(),
-// // 						 placeBirth : $('#pBirthId').val(),
-// // 						 age : $('#ageId').val(),
-// // 						 height : $('#heightId').val(),
-// // 						 weight : $('#weightId').val(),
-// // 						 sex : $('#sexId').val(),
-// // 						 religion : $('#religionId').val(),
-// // 						 nationality : $('#nationalityId').val(),
-// // 						 tel : $('#telId').val(),
-// // 						 eMail : $('#eMailId').val(),
-// // 						 applyDate : $('#applyDateId').val(),
-// // 						 emergencyName : $('#emergencyNameId').val(),
-// // 						 emergencyTel : $('#emergencyTelId').val(),
-// // 						 emergencyAddress : $('#emergencyAddressId').val(),
-// // 						 noticeNewspaper : $('#newspaperId').val(),
-// // 						 noticeMagazine : $('#magazineId').val(),
-// // 						 noticeFriend : $('#friendId').val(),
-// // 						 noticeWebSite : $('#websiteId').val(),
-// // 						 noticeOther : $('#otherId').val(),
-// // 						 certificate : $('#certificateId').val(),
-// // 						 expectedSalary : $('#salaryId').val(),
-// // 						 cardId : $('#idCardId').val(),
-// // 						 cardIssuedOffice : $('#issuedCardId').val(),
-// // 						 cardExpiryDate : $('#expiryId').val(),
-// // 						 militaryFromYear : $('#fromYearId').val(),
-// // 						 militarytoYear : $('#toYearId').val(),
-// // 						 militaryPlace : $('#placeId').val(),
-// // 						 militaryServiceNo : $('#serviceNoId').val(),
-// // 						 militaryReason : $('#reasonsId').val(),
-// // 						 militaryStatus : $('#militaryId').val(),
-// // 						 marritalStatusName : $('#maritalId').val(),
-// // 						 numberOfChildren : $('#childrenId').val(),
-// // 						 spouseName : $('#spouseId').val(),
-// // 						 marriageCertificateNo : $('#marriageCerId').val(),
-// // 						 issueOficeMarriage : $('#issuedMarriageId').val(),
-// // 						 marriageAddress : $('#addressId').val(),
-// // 						 occupationMarriage : $('#occupationId').val(),
-// // 						 branchService : $('#branchId').val(),
-// // 						 family : [{applicant : {id : $('#applicantId').val()},
-// // 												 name : $('#nameFamilyId').val(),
-// // 												 relation : $('#relationFamilyId').val(),
-// // 												 occupation : $('#occupationFamilyId').val(),
-// // 												 address : $('#addressFamilyId').val(),
-// // 												 positionFamily : $('#positionFamilyId').val()
-// // 								  }]
-// // 						}
-// // 						$('#buttonSave').on("click",function() {
-// 											var insertData = "{";
 											insertData += "firstNameTH : '"+ $('#firstNameThId').val()+ "',";
 											insertData += "firstNameEN : '"+ $('#firstNameEngId').val() + "',";
 											insertData += "lastNameTH : '"+ $('#lastnameThId').val()+ "',";
@@ -684,7 +607,6 @@
 		}
 });
 
-
 </script>
 <jsp:include page="applicationMenu.jsp" />
 <!-- tab informations -->
@@ -692,16 +614,15 @@
 		modelAttribute="applicant" method="post" enctype="multipart/form-data" class="form-inline" >
 	<div class="row">
 			<div class="col-md-6">
-	<div class="form-group">
+	<%-- <div class="form-group">
 				<input type="hidden" id="applicant" name="applicant"
 					value="${id}">
-	</div>
-		<div class="form-group">
+	</div> --%>
+		  <div class="form-group">
 				PHOTOGRAPH 
-				<!-- <div id="imagePreview "></div> -->
-				<input type="file" name="photograph" id="photograph"><br><br>
-				<input type="button" id="buttonUpload" name="buttonUpload" value="Upload"/>
-		</div>
+				<div id="imagePreview "></div>
+				<input type="file" name="imageMultipartFile" id="imageMultipartFile"><br><br>
+		</div> 
 		<br>
 		<br>
 			<div class="form-group">
@@ -1004,14 +925,14 @@
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="position1">Position 1 </label> <select
-					id="position1" name="position1" class="form-control">
+				<label for="position1">Position 1 </label>
+				  <select id="position1" name="position1" class="form-control">
 					<option value="-1" label="please select data"/>
 					
 					<c:forEach var="positionList" items="${positions}">
 						<option value="${positionList.id}">${positionList.positionName}</option>
 					</c:forEach>
-				</select>
+				</select> 
 			</div>
 			<br>
 			<br>
@@ -1048,36 +969,35 @@
 				<label for="knowAugmentis">How do you know Augmentis?</label> <br>
 				 <div class="checkbox">
 			  		<label><input type="checkbox" 
-					id="newspaperId" name="newspaperName" value="newspaper">Newspaper</label>
+					id="noticeNewspaper" name="noticeNewspaper" value="" >Newspaper</label>
 					<input type="text" class="form-control" id="noticeNewspaper"
 						name="noticeNewspaper" placeholder="Enter newspaper">
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
-			 		 <label><input type="checkbox" id="magazineId" name="magazineName"
-					value="magazine">Magazine</label>
+			 		 <label><input type="checkbox" id="noticeMagazine" name="noticeMagazine" value="">Magazine</label>
 					<input type="text" class="form-control" id="noticeMagazine"
 						name="noticeMagazine" placeholder="Enter magazine">
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
-			  		<label><input type="checkbox" id="websiteId" name="websiteName" value="website">Website</label>
+			  		<label><input type="checkbox" id="noticeWebSite" name="noticeWebSite" value="">Website</label>
 			  		<input type="text" class="form-control" id="noticeWebSite"
 						name="noticeWebSite" placeholder="Enter website">
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
-			  		<label><input type="checkbox" id="friendId" name="friendName" value="friend">Friend</label>
+			  		<label><input type="checkbox" id="noticeFriend" name="noticeFriend" value="">Friend</label>
 			  		<input type="text" class="form-control" id="noticeFriend"
 						name="noticeFriend" placeholder="Enter friend">
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
-			  		<label><input type="checkbox" id="otherId" name="otherName" value="other">Other (please specify) </label>
+			  		<label><input type="checkbox" id="noticeOther" name="noticeOther" value="">Other (please specify) </label>
 			  		<input type="text" class="form-control" id="noticeOther"
 						name="noticeOther" placeholder="Enter other">
 				</div> 
@@ -1092,7 +1012,7 @@
 						id="nowEmployed" value="Yes">Yes</label>
 				</div>
 				<div class="radio">
-					<label><input type="radio" name="knowEmployedName"
+					<label><input type="radio" name="nowEmployed"
 						id="nowEmployed" value="No">No</label>
 				</div>
 				<br>
@@ -1103,9 +1023,13 @@
 					<lable for="employedName">Name </lable>
 					<input type="text" class="form-control" id="employedName"
 						name="employedName" placeholder="Enter name">
+						<br>
+						<br>
 					<lable for="employedPosition">Position </lable>
 					<input type="text" class="form-control" id="employedPosition"
 						name="employedPosition" placeholder="Enter position">
+						<br>
+						<br>
 					<lable for="employedRelation">Relation </lable>
 					<input type="text" class="form-control" id="employedRelation"
 						name="employedRelation" placeholder="Enter relation">
@@ -1144,10 +1068,6 @@
 			employment? </label>
 			<br>
 			<br>
-		<div class="form-group">
-			<input type="hidden" id="applicantId" name="applicantName"
-				value="${id}">
-		</div>
 		<div class="radio">
 			<label><input type="radio" name="previousEmployers"
 				id="previousEmployers" value="Yes">Yes</label>
@@ -1167,22 +1087,20 @@
 	</div>
 		<br>
 		<br>
-		<div class="form-group">
-			<label for="file">File</label> <input type="file" id="file" name="file">
+		  <div class="form-group">
+			<label for="file">Resume</label> <input type="file" id="resumeMultipartFile" name="resumeMultipartFile">
 				<p class="help-block">Block-level help text here.</p>
-			<label for="file">File</label> <input type="file" id="file" name="file">
+			<label for="file">Transcript</label> <input type="file" id="transcriptMultipartFile" name="transcriptMultipartFile">
 				<p class="help-block">Block-level help text here.</p>
 		</div>
-		<br>
-		<input type="button" id="buttonUpload" name="buttonUpload" value="Upload"/>
 			<br>
 			<br>
-			<button type="button" class="btn btn-success" id="buttonSave">
-				<span class="glyphicon glyphicon-off"></span> Save
-			</button>
+		<button type="submit"  id="buttonSave" class="btn btn-success"><span class="glyphicon glyphicon-off"></span> Save</button>
+			
  	</div>
  </div>
 </f:form>
+<<<<<<< HEAD
 <%-- <div id="informations">
 <div class="container">
 	<div class="row">
@@ -1576,3 +1494,5 @@
 	</div>
 	<button type="button" class="btn btn-success" id="buttonSave"> <span class="glyphicon glyphicon-off"></span> Save</button>
 >>>>>>> Create AddressDTO
+=======
+>>>>>>> save informations and delete insert table=false,update=false in position3

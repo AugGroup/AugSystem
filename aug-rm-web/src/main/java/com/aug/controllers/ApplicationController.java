@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,7 +67,8 @@ import com.aug.db.services.SkillService;
 @Controller
 public class ApplicationController {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(ApplicationController.class);
+	private static Logger LOGGER = LoggerFactory
+			.getLogger(ApplicationController.class);
 
 	@Autowired
 	private DepartmentService departmentService;
@@ -91,54 +94,79 @@ public class ApplicationController {
 	private CertificateService certificatedService;
 	@Autowired
 	private FamilyService familyService;
-	
-	@InitBinder 
-	public void initBinder(WebDataBinder binder){
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",Locale.ENGLISH);
-		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat,true));
-	  
-	  }
+	@Autowired
+	private PositionEditor positionEditor;
 
+	@InitBinder
+	public void InitBinder(WebDataBinder binder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy",
+				Locale.ENGLISH);
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(
+				dateFormat, true));
+		 binder.registerCustomEditor(Position.class,positionEditor);
+		
+	}
 	@RequestMapping(value = "/applicationMenu", method = { RequestMethod.GET })
 	public String applicationMenu(Model model) {
-        LOGGER.info("**** Welcome to Application Controller ****");
-		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		LOGGER.info("**** Welcome to Application Controller ****");
+		User user = (User) SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
 		String name = user.getUsername();
 		model.addAttribute("name", name);
-        return "applicationMenu";
+		return "applicationMenu";
 
 	}
-	@RequestMapping(value = "/upload")
-	public @ResponseBody String upload(MultipartHttpServletRequest request)throws Exception {
-	    Iterator<String> itrator = request.getFileNames();
-        MultipartFile multiFile = request.getFile(itrator.next());			
+
+
+	
+	//////////////////        SAVE METHOD        /////////////////////
+
+	@RequestMapping(value = "/informations", method = { RequestMethod.GET })
+	public String informations() {
+		LOGGER.info("**** Welcome to Application Controller ****");
+		return "informations";
+
+	}
+
+	@RequestMapping(value = "/saveInformations", method = { RequestMethod.POST })
+	public String saveInformations(
+			@ModelAttribute ApplicationDTO applicationDTO, Model model,MultipartFile multipartFile)
+			throws ParseException {
+		if(applicationDTO.getImageMultipartFile()!=null&&applicationDTO.getImageMultipartFile().getSize()>0){
 			try {
-				uploadService.upload("Appilcant", multiFile.getOriginalFilename(), multiFile);
+				applicationDTO.setImage(applicationDTO.getImageMultipartFile().getOriginalFilename());
+				uploadService.upload("Applicant",applicationDTO.getImageMultipartFile().getOriginalFilename(),applicationDTO.getImageMultipartFile());
 			} catch (RuntimeException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-	
-		return "SUCCESS";
-	}
-	
-	//////////////////        SAVE METHOD        /////////////////////
-	
-	@RequestMapping(value = "/informations", method = { RequestMethod.GET })
-	public String informations() {
-        LOGGER.info("**** Welcome to Application Controller ****");
-        return "informations";
-
-	}
-	@RequestMapping(value = "/saveInformations",method ={ RequestMethod.POST })
-	public String saveInformations(@ModelAttribute ApplicationDTO applicationDTO,Model model) throws ParseException{
-		
+		}
+		if(applicationDTO.getResumeMultipartFile()!=null&&applicationDTO.getResumeMultipartFile().getSize()>0){
+			try {
+				applicationDTO.setResume(applicationDTO.getResumeMultipartFile().getOriginalFilename());
+				uploadService.upload("Applicant",applicationDTO.getResumeMultipartFile().getOriginalFilename(),applicationDTO.getResumeMultipartFile());
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if(applicationDTO.getTranscriptMultipartFile()!=null&&applicationDTO.getTranscriptMultipartFile().getSize()>0){
+			try {
+				applicationDTO.setTranscript(applicationDTO.getTranscriptMultipartFile().getOriginalFilename());
+				uploadService.upload("Applicant",applicationDTO.getTranscriptMultipartFile().getOriginalFilename(),applicationDTO.getTranscriptMultipartFile());
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 		applicantService.saveInformations(applicationDTO);
-		model.addAttribute("id",applicationDTO.getId());
-		return "redirect:/informations";
+
+		model.addAttribute("id", applicationDTO.getId());
+		return "informations";
 	}
-	
 	//////////////////        LINK PAGE       ///////////////////////////
 	
 	@RequestMapping(value = "/address/{id}", method = { RequestMethod.GET })
@@ -465,11 +493,9 @@ public class ApplicationController {
 	
 	@RequestMapping(value = "/deleteEducation/{id}", method = RequestMethod.POST)
 	public @ResponseBody String delesteEducation(@PathVariable("id") Integer id) {
-
 		educationService.deleteById(id);
 		return "success";
 	}
-	
 	@RequestMapping(value = "/deleteSkill/{id}", method = RequestMethod.POST)
 	public @ResponseBody String delesteSkill(@PathVariable("id") Integer id) {
 
@@ -479,11 +505,9 @@ public class ApplicationController {
 	
 	@RequestMapping(value = "/deleteLanguages/{id}", method = RequestMethod.POST)
 	public @ResponseBody String delesteLanguages(@PathVariable("id") Integer id) {
-
 		languagesService.deleteById(id);
 		return "success";
 	}
-
 	@ModelAttribute("departments")
 	@Transactional
 	public List<Department> departmentList() {

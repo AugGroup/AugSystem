@@ -10,42 +10,42 @@
 		
 		$('#educationsForm').validate({
 			rules : {
-				universityName : {
+				university : {
 					required : true
 				},
-				degreeName : {
+				degree : {
 					required : true
 				},
-				facultyName : {
+				faculty : {
 					required : true
 				},
-				majorName : {
+				major : {
 					required : true
 				},
-				gpaName : {
+				gpa : {
 					required : true
 				},
-				graduateName : {
+				graduate : {
 					required : true
 				}
 			},
 			messages : {
-				universityName : {
+				university : {
 					required : "University is required!"
 				},
-				degreeName : {
+				degree : {
 					required : "Degree is required!"
 				},
-				facultyName : {
+				faculty : {
 					required : "Faculty is required!"
 				},
-				majorName : {
+				major : {
 					required : "Major is required!"
 				},
-				gpaName : {
+				gpa : {
 					required : "GPA is required!"
 				},
-				graduateName : {
+				graduate : {
 					required : "Years of graduate is required!"
 				}
 			}
@@ -90,12 +90,12 @@
 			var table = $('#educationTable').DataTable();
 
 			table.row.add({
-				schoolName : $('#universityId').val(),
-				degree : $('#degreeId').val(),
-				faculty : $('#facultyId').val(),
-				major : $('#majorId').val(),
-				gpa : $('#gpaId').val(),
-				yearsOfGraduate : $('#graduateId').val()
+				schoolName : $('#university').val(),
+				degree : $('#degree').val(),
+				faculty : $('#faculty').val(),
+				major : $('#major').val(),
+				gpa : $('#gpa').val(),
+				yearsOfGraduate : $('#graduate').val()
 			}).draw();
 			$('#educationModal').modal('hide');
 			};
@@ -110,7 +110,7 @@
 			
 			educationTable.rows().iterator( 'row', function ( context, index ) {
 			insertData+="{";
-			insertData+="applicant : {id :"+$('#applicantId').val()+"},";
+			insertData+="applicant : {id :"+$('#applicant').val()+"},";
 			insertData+="schoolName : '"+educationTable.cell( index,0 ).data()+"',";
 			insertData+="degree : '"+educationTable.cell( index,1 ).data()+"',";
 			insertData+="faculty : '"+educationTable.cell( index,2 ).data()+"',";

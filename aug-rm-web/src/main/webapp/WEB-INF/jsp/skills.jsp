@@ -10,12 +10,12 @@ $(document).ready(function() {
 	
 	$('#skillForm').validate({
 		rules : {
-			skillName : {
+			skill : {
 				required : true
 			}
 		},
 		messages : {
-			skillName : {
+			skill : {
 				required : "Skill Detail is required!"
 			}
 		}
@@ -76,7 +76,6 @@ $(document).ready(function() {
 	function updated(button){
 		var id = $(button).data("id");
 		var skillDetail = $("#skill").val();
-		
 		var json = {
 				"id" : id,
 				"skillDetail" : skillDetail,

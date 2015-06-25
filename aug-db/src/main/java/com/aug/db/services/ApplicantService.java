@@ -27,26 +27,8 @@ public interface ApplicantService {
 
 	public void deleteById(Integer id);
 	
-	public ApplicationDTO saveEducation(ApplicationDTO applicationDTO);
-	
 	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO);
 
-	public ApplicationDTO saveAddress(ApplicationDTO applicationDTO);
-	
-	public ApplicationDTO saveApplications(ApplicationDTO applicationDTO);
-
-	public ApplicationDTO saveExperiences(ApplicationDTO applicationDTO);
-	
-	public ApplicationDTO saveCertificate(ApplicationDTO applicationDTO);
-	
-	public ApplicationDTO saveLanguages(ApplicationDTO applicationDTO);
-	
-	public ApplicationDTO saveReferences(ApplicationDTO applicationDTO);
-
-	public ApplicationDTO saveSkills(ApplicationDTO applicationDTO);
-	
-	public ApplicationDTO saveFamily(ApplicationDTO applicationDTO);
-	
 	public List<ReportApplicantDTO> reportApplicant();
 
 	public ApplicationDTO findByIdApplicant(Integer id);
