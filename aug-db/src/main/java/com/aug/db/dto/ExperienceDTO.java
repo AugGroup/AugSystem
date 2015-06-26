@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 		
 	@NamedNativeQuery(name = "SEARCH_EXPERIENCE_ID", query = "SELECT e.ID, e.ADDRESS, e.DESCRIPTION, e.EMPLOYER_NAME, e.FROM_DATE,"
 			+ "e.POSITION, e.POSITION_OF_EMPLOYER, e.REASON, e.SALARY, e.SUPERVISOR, e.TO_DATE, e.TYPE_OF_BUSSINESS, e.APPLICANT_ID"
-			+ " FROM EXPERIENCE e WHERE e.APPLICANT_ID = :ID", resultClass = ExperienceDTO.class)
+			+ " FROM EXPERIENCE e WHERE e.ID = :ID", resultClass = ExperienceDTO.class)
 	})
 public class ExperienceDTO {
 	
