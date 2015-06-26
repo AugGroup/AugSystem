@@ -33,7 +33,7 @@ $(document).ready(function() {
 			type : 'POST'
 		},
 		columns : [ {
-			data : "certificate"
+			data : "certificateName"
 		} ,{ data : function(data) {
 			 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#certificateModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
 		}
@@ -46,7 +46,7 @@ $(document).ready(function() {
 	});
 	}
 
-	$('#certificateSave').on("click", function() {
+	$('#btn_save').on("click", function() {
 		if ($('#certificateForm').valid()) {
 		var table = $('#certificateTable').DataTable();
 
@@ -56,45 +56,6 @@ $(document).ready(function() {
 		$('#certificateModal').modal('hide');
 		};
 	})
-	
-	
-	
-	$('#certificateSave').on("click", function() {
-		
-			var insertData = "{";
-			insertData+="certificates : [ ";
-			var certificatesTable = $("#certificateTable").DataTable();
-			
-			certificatesTable.rows().iterator( 'row', function ( context, index ) {
-			insertData+="{";
-			insertData+="applicant : {id :"+$('#applicant').val()+"},";
-			insertData+="certificateName : '"+certificatesTable.cell( index,0 ).data()+"'},";
-			});
-				insertData=insertData.substring(0,insertData.length-1);
-				insertData+="]";
-			insertData+="}";
-	
-	 		$.ajax({
-				contentType : "application/json",
-				type : "POST",
-				url : '${pageContext.request.contextPath}/saveCertificates',
-				data : JSON.stringify(eval("(" + insertData + ")")),
-				success : function(data) {
-					alert(JSON.stringify(data));
-					new PNotify({
-				        title: 'Success',
-				        text: 'Successful Add Certificates!!!',
-				        type: 'success',
-				        nonblock: {
-				            nonblock: true,
-				            nonblock_opacity: .2
-				        }
-				    });
-					
-				
-				}
-			}); 
-	});
 	
 	//Update 
 	function findById(id){
@@ -134,7 +95,7 @@ $(document).ready(function() {
 			 	var rowData = table.row(button.closest('tr')).index(); 
 			 	var d = table.row(rowData).data();
 			 	
-				d.certificateName = data.certificateName,
+				d.certificateName = data.certificateName;
 			 		
 			 		table.row(rowData).data(d).draw();
 			 		
@@ -209,7 +170,7 @@ $(document).ready(function() {
 		<div class="col-md-6">
 			<h1>Certificate</h1>
 			<button class="btn btn-primary" id="certificateAdd"
-				data-toggle="modal" data-target="#certificateModal">
+				data-id="data.id" data-toggle="modal" data-target="#certificateModal">
 				<span class="glyphicon glyphicon-plus"></span> Certificate
 			</button>
 		</div>

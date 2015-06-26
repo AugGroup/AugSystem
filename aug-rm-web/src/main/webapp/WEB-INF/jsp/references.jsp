@@ -151,7 +151,7 @@
 			var id = $(button).data("id");
 			var fullName = $("#fullName").val();
 			var completeAddress = $("#completeAddress").val();
-			var tel= $("#telNo").val(data.tel);
+			var tel= $("#telNo").val();
 			var occupation = $("#occupationRef").val();
 			
 			var json = {
