@@ -93,49 +93,37 @@
 			}
 		});
 		
-			if(dtApplicant) {
+	if(dtApplicant) {
 		dtOrder.ajax.reload();
 	}
 	else {
-	
-	var id = '${id}';
+		var id = '${id}';
 		$('#experiencesTable').DataTable({
 			ajax : {
 				url : '${pageContext.request.contextPath}/findByIdExperience/' + id,
 				type : 'POST'
 			},
-			columns : [ {
-				data : "position"
-			}, {
-				data : "fromDate"
-			}, {
-				data : "toDate"
-			}, {
-				data : "employerName"
-			}, {
-				data : "address"
-			}, {
-				data : "typeOfBusiness"
-			}, {
-				data : "positionOfEmployer"
-			}, {
-				data : "supervisor"
-			}, {
-				data : "salary"
-			}, {
-				data : "description"
-			}, {
-				data : "reason"
-			},{ data : function(data) {
-				 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#experiencesModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
-			}
-			},{ data : function(data) {
-				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
-			}
-		} ],
+			columns : [ {data : "position"},
+			            {data : "fromDate"},
+			            {data : "toDate"},
+			            {data : "employerName"},
+			            {data : "address"},
+			            {data : "typeOfBusiness"},
+			            {data : "positionOfEmployer"},
+			            {data : "supervisor"},
+			            {data : "salary"},
+			            {data : "description"},
+			            {data : "reason"},
+			            {data : function(data) {
+				 			return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#experiencesModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+						}},
+						{data : function(data) {
+				 			return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+						}}],
 			searching : false
 
 		});
+	
 	}
 		$('#experiencesSave').on("click", function() {
  			if ($('#experiencesForm').valid()) { 
@@ -158,51 +146,51 @@
  			};
 		}) 
 		
-		$('#experiencesSave').on("click", function() {
-// >>>>>>> Edit AddressRepository.java, AddressRepositoryImpl.java, ExperienceRepository.java, /ExperienceRepositoryImpl.java, ReferenceRepository.java, ReferenceRepositoryImpl.java, ReferenceService.java, ReferenceServiceImpl.java, ApplicationController.java, address.jsp, applicationMenu.jsp, applications.jsp, experiences.jsp
-		var insertData = "{";
-			
-			insertData+="experiences : [ ";
-			var experiencesTable = $("#experiencesTable").DataTable();
-			
-			experiencesTable.rows().iterator( 'row', function ( context, index ) {
-			insertData+="{";
-			insertData+="applicant : {id :"+$('#applicant').val()+"},";
-			insertData+="position : '"+experiencesTable.cell( index,0 ).data()+"',";
-			insertData+="fromDate : '"+experiencesTable.cell( index,1 ).data()+"',";
-			insertData+="toDate : '"+experiencesTable.cell( index,2 ).data()+"',";
-			insertData+="employerName : '"+experiencesTable.cell( index,3 ).data()+"',";
-			insertData+="address : '"+experiencesTable.cell( index,4 ).data()+"',";
-			insertData+="typeOfBusiness : '"+experiencesTable.cell( index,5 ).data()+"',";
-			insertData+="positionOfEmployer : '"+experiencesTable.cell( index,6 ).data()+"',";
-			insertData+="supervisor : '"+experiencesTable.cell( index,7 ).data()+"',";
-			insertData+="salary : "+experiencesTable.cell( index,8 ).data()+",";
-			insertData+="description : '"+experiencesTable.cell( index,9 ).data()+"',";
-			insertData+="reason : '"+experiencesTable.cell( index,10 ).data()+"'},";
-			});
-				insertData=insertData.substring(0,insertData.length-1);
-				insertData+="]}";
-			
-			$.ajax({
-				contentType : "application/json",
-				type : "POST",
-				url : '${pageContext.request.contextPath}/saveExperiences',
-				data : JSON.stringify(eval("(" + insertData + ")")),
-				success : function(data) {
-					alert(JSON.stringify(data));
+// 		$('#experiencesSave').on("click", function() {
 
-					new PNotify({
-				        title: 'Success',
-				        text: 'Successful Add Experience!!!',
-				        type: 'success',
-				        nonblock: {
-				            nonblock: true,
-				            nonblock_opacity: .2
-				        }
-				    });
-				}
-			});
-		})
+// 		var insertData = "{";
+			
+// 			insertData+="experiences : [ ";
+// 			var experiencesTable = $("#experiencesTable").DataTable();
+			
+// 			experiencesTable.rows().iterator( 'row', function ( context, index ) {
+// 			insertData+="{";
+// 			insertData+="applicant : {id :"+$('#applicant').val()+"},";
+// 			insertData+="position : '"+experiencesTable.cell( index,0 ).data()+"',";
+// 			insertData+="fromDate : '"+experiencesTable.cell( index,1 ).data()+"',";
+// 			insertData+="toDate : '"+experiencesTable.cell( index,2 ).data()+"',";
+// 			insertData+="employerName : '"+experiencesTable.cell( index,3 ).data()+"',";
+// 			insertData+="address : '"+experiencesTable.cell( index,4 ).data()+"',";
+// 			insertData+="typeOfBusiness : '"+experiencesTable.cell( index,5 ).data()+"',";
+// 			insertData+="positionOfEmployer : '"+experiencesTable.cell( index,6 ).data()+"',";
+// 			insertData+="supervisor : '"+experiencesTable.cell( index,7 ).data()+"',";
+// 			insertData+="salary : "+experiencesTable.cell( index,8 ).data()+",";
+// 			insertData+="description : '"+experiencesTable.cell( index,9 ).data()+"',";
+// 			insertData+="reason : '"+experiencesTable.cell( index,10 ).data()+"'},";
+// 			});
+// 				insertData=insertData.substring(0,insertData.length-1);
+// 				insertData+="]}";
+			
+// 			$.ajax({
+// 				contentType : "application/json",
+// 				type : "POST",
+// 				url : '${pageContext.request.contextPath}/saveExperiences',
+// 				data : JSON.stringify(eval("(" + insertData + ")")),
+// 				success : function(data) {
+// 					alert(JSON.stringify(data));
+
+// 					new PNotify({
+// 				        title: 'Success',
+// 				        text: 'Successful Add Experience!!!',
+// 				        type: 'success',
+// 				        nonblock: {
+// 				            nonblock: true,
+// 				            nonblock_opacity: .2
+// 				        }
+// 				    });
+// 				}
+// 			});
+// 		})
 		
 		//Find by Id
 		function findById(id){
@@ -277,18 +265,18 @@
 				 	var rowData = table.row(button.closest('tr')).index(); 
 				 	var d = table.row(rowData).data();
 				 	
-					d.position = data.position,
-					d.fromDate = data.fromDate,
-					d.toDate = data.toDate,
-					d.employerName = data.employerName,
-					d.address = data.address,
-					d.fromDate = data.fromDate,
-					d.typeOfBusiness = data.typeOfBusiness,
-					d.positionOfEmployer = data.positionOfEmployer,
-					d.reason = data.reason,
-					d.supervisor = data.supervisor,
-					d.salary = data.salary,
-					d.description = data.description
+					d.position = data.position;
+					d.fromDate = data.fromDate;
+					d.toDate = data.toDate;
+					d.employerName = data.employerName;
+					d.address = data.address;
+					d.fromDate = data.fromDate;
+					d.typeOfBusiness = data.typeOfBusiness;
+					d.positionOfEmployer = data.positionOfEmployer;
+					d.reason = data.reason;
+					d.supervisor = data.supervisor;
+					d.salary = data.salary;
+					d.description = data.description;
 				 		
 				 		table.row(rowData).data(d).draw();
 				 		

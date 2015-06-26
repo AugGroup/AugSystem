@@ -85,46 +85,46 @@
 			});
 		}
 
-		$('#buttonSave').on("click", function() {
+// 		$('#buttonSave').on("click", function() {
 		
-			var insertData = "{";
+// 			var insertData = "{";
 			
-			insertData+="educations : [ ";
-			var educationTable = $("#educationTable").DataTable();
+// 			insertData+="educations : [ ";
+// 			var educationTable = $("#educationTable").DataTable();
 			
-			educationTable.rows().iterator( 'row', function ( context, index ) {
-			insertData+="{";
-			insertData+="applicant : {id :"+$('#applicant').val()+"},";
-			insertData+="schoolName : '"+educationTable.cell( index,0 ).data()+"',";
-			insertData+="degree : '"+educationTable.cell( index,1 ).data()+"',";
-			insertData+="faculty : '"+educationTable.cell( index,2 ).data()+"',";
-			insertData+="major : '"+educationTable.cell( index,3 ).data()+"',";
-			insertData+="gpa : "+educationTable.cell( index,4 ).data()+",";
-			insertData+="yearsOfGraduate : '"+educationTable.cell( index,5 ).data()+"'},";
-			});
-				insertData=insertData.substring(0,insertData.length-1);
-				insertData+="]}";
+// 			educationTable.rows().iterator( 'row', function ( context, index ) {
+// 			insertData+="{";
+// 			insertData+="applicant : {id :"+$('#applicant').val()+"},";
+// 			insertData+="schoolName : '"+educationTable.cell( index,0 ).data()+"',";
+// 			insertData+="degree : '"+educationTable.cell( index,1 ).data()+"',";
+// 			insertData+="faculty : '"+educationTable.cell( index,2 ).data()+"',";
+// 			insertData+="major : '"+educationTable.cell( index,3 ).data()+"',";
+// 			insertData+="gpa : "+educationTable.cell( index,4 ).data()+",";
+// 			insertData+="yearsOfGraduate : '"+educationTable.cell( index,5 ).data()+"'},";
+// 			});
+// 				insertData=insertData.substring(0,insertData.length-1);
+// 				insertData+="]}";
 			
- 		$.ajax({
-				contentType : "application/json",
-				type : "POST",
-				url : '${pageContext.request.contextPath}/saveEducations',
-				data : JSON.stringify(eval("(" + insertData + ")")),
-				success : function(data) {
-					alert(JSON.stringify(data));
-					new PNotify({
-				        title: 'Success',
-				        text: 'Successful Add Education!!!',
-				        type: 'success',
-				        nonblock: {
-				            nonblock: true,
-				            nonblock_opacity: .2
-				        }
-				    });
-				}
-			}); 
+//  		$.ajax({
+// 				contentType : "application/json",
+// 				type : "POST",
+// 				url : '${pageContext.request.contextPath}/saveEducations',
+// 				data : JSON.stringify(eval("(" + insertData + ")")),
+// 				success : function(data) {
+// 					alert(JSON.stringify(data));
+// 					new PNotify({
+// 				        title: 'Success',
+// 				        text: 'Successful Add Education!!!',
+// 				        type: 'success',
+// 				        nonblock: {
+// 				            nonblock: true,
+// 				            nonblock_opacity: .2
+// 				        }
+// 				    });
+// 				}
+// 			}); 
 
-		})
+// 		})
 		
 		//Find by Id
 		function findById(id){
@@ -181,11 +181,11 @@
 				 	var d = table.row(rowData).data();
 				 		console.log(data.houseNo);
 
-				 		d.university = data.schoolName;
+				 		d.schoolName = data.schoolName;
 				 		d.degree = data.degree;
 						d.faculty = data.faculty;
 				 		d.major = data.major;
-				 		d.graduate = data.yearsOfGraduate;
+				 		d.yearsOfGraduate = data.yearsOfGraduate;
 				 		d.gpa = data.gpa;
 				 		
 				 		table.row(rowData).data(d).draw();
