@@ -37,6 +37,12 @@
 	src='<c:url value ="/static/resources/js/jquery.validate.min.js"/>'></script>
 <script
 	src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
+	
+	<script
+	src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
+	<script
+	src='<c:url value ="/static/resources/js/jquery.maskedinput.min.js" />'></script>
+	
 </head>
 <style>
 .error {
@@ -50,9 +56,11 @@
     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
     display: inline-block;
 } */
+
+/* body {background-color:#efe0cb} */
 </style>
 
-<body  >
+<body>
 	<div class="headLogo" id="headId" >
 		<img
 			src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png"

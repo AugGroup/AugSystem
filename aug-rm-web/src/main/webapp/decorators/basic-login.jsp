@@ -38,6 +38,12 @@
 	src='<c:url value ="/static/resources/js/jquery.validate.min.js"/>'></script>
 <script
 	src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
+	
+<script
+	src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
+	<script
+	src='<c:url value ="/static/resources/js/jquery.maskedinput.min.js" />'></script>
+
 </head>
 <style>
 /* #bodyId{ */

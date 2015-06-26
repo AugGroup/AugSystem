@@ -10,7 +10,9 @@
  							format : "dd/mm/yyyy"
 
  						});
-			
+			 $("#tel").mask("(999) 999-9999");
+			 $("#emergencyTel").mask("(999) 999-9999");
+			 
 			 $('#informationApplicant').validate({
 				rules : {imageMultipartFile : {
 					required : true
@@ -133,7 +135,7 @@
  					},
  					applyDate : {
  						required : true
- 					},/* 
+ 					}, 
  					department : {
  						required : true
  					},
@@ -145,7 +147,7 @@
  					},
  					position3 : {
  						required : true
- 					}, */
+ 					}, 
  					expectedSalary : {
  						required : true
  					},
@@ -282,7 +284,7 @@
 						required : "Emergency Address is required!"
 					},applyDate : {
 						required : "Apply date is required!"
-					}/* ,
+					} ,
 					department : {
 						required : "Department is required!"
 					},
@@ -294,7 +296,7 @@
 					},
 					position3 : {
 						required : "Position 3 is required!"
-					} */,
+					} ,
 					expectedSalary : {
 						required : "Salary expected is required!"
 					},
@@ -326,221 +328,8 @@
 				}
 			});
 
-		/* //Find by Id
-		function findById(id){
-			$.ajax({
-				url : "${pageContext.request.contextPath}/findByIdApplication/" + id,
-				type : "POST",
-				success : function(data){
-					showFillData(data);
-				}
-			});
-		}
 		
-		//Show data on inputField
-		function showFillData(data){
-			$("#firstNameThId").val(data.firstNameTH);
-			$("#firstNameEngId").val(data.firstNameEN);
-			$("#lastnameThId").val(data.lastNameTH);
-			$("#lastnameEngId").val(data.lastNameEN);
-			$("#nickNameThId").val(data.nickNameTH);
 			
-			$("#nickNameEngId").val(data.nickNameEN);
-			$("#birthdayId").val(data.birthDate);
-			$("#pBirthId").val(data.placeBirth);
-			$("#ageId").val(data.age);
-			$("#heightId").val(data.height);
-			
-			$("#weightId").val(data.weight);
-			$("#sex").val(data.sex);
-			$("#religionId").val(data.religion);
-			$("#nationalityId").val(data.nationality);
-			$("#telId").val(data.tel);
-			
-			$("#eMailId").val(data.email);
-			$("#applyDateId").val(data.applyDate);
-			$("#emergencyNameId").val(data.emergencyName);
-			$("#emergencyTelId").val(data.emergencyTel);
-			$("#emergencyAddressId").val(data.emergencyAddress);
-			
-			$("#newspaperId").val(data.noticeNewspaper);
-			$("#magazineId").val(data.noticeMagazine);
-			$("#friendId").val(data.noticeFriend);
-			$("#websiteId").val(data.noticeWebSite);
-			$("#otherId").val(data.noticeOther);
-			
-			$("#certificateId").val(data.certificate);
-			$("#salaryId").val(data.expectedSalary);
-			$("#idCardId").val(data.cardId);
-			$("#issuedCardId").val(data.cardIssuedOffice);
-			$("#expiryId").val(data.cardExpiryDate);
-			
-			$("#fromYearId").val(data.militaryFromYear);
-			$("#toYearId").val(data.militarytoYear);
-			$("#placeId").val(data.militaryPlace);
-			$("#serviceNoId").val(data.militaryServiceNo);
-			$("#reasonsId").val(data.militaryReason);
-			
-			$("#militaryId").val(data.militaryStatus);
-			$("#maritalId").val(data.marritalStatusName);
-			$("#childrenId").val(data.numberOfChildren);
-			$("#spouseId").val(data.spouseName);
-			$("#marriageCerId").val(data.marriageCertificateNo);
-			
-			$("#issuedMarriageId").val(data.issueOficeMarriage);
-			$("#addressId").val(data.marriageAddress);
-			$("#occupationId").val(data.occupationMarriage);
-			$("#branchId").val(data.branchService);
-			$("#draftedId").val(data.dateToBeDrafted);
-		}
-		
-		//Update function
-		function updateUser(){
-// 			var id = $(button).data("id");
-			var id = '${id}';
-			var firstNameTh = $("#firstNameThId").val();
-			var firstNameEn = $('#firstNameEngId').val();
-			var lastNameTh = $("#lastnameThId").val();
-			var lastNameEn = $("#lastnameEngId").val();
-			var nickNameTh = $("#nickNameThId").val();
-			
-			var nickNameEn = $("#nickNameEngId").val();
-			var birthday = $('#birthdayId').val();
-			var pBirthday = $("#pBirthId").val();
-			var age = $("#ageId").val();
-			var height = $("#heightId").val();
-			
-			var weight = $("#weightId").val();
-			var sex = $('input[name="sex"]:checked').val();
-			var religion = $("#religionId").val();
-			var nationality = $("#nationalityId").val();
-			var tel = $("#telId").val();
-			
-			var eMail = $("#eMailId").val();
-			var applyDate = $('#applyDateId').val();
-			var emergencyName = $("#emergencyNameId").val();
-			var emergencyTel = $("#emergencyTelId").val();
-			var emergencyAddress = $("#emergencyAddressId").val();
-			
-			var newspaper = $("#newspaperId").val();
-			var magazine = $('#magazineId').val();
-			var friend = $("#friendId").val();
-			var website = $("#websiteId").val();
-			var other = $("#otherId").val();
-			
-			var certificate = $("#certificateId").val();
-			var salary = $('#salaryId').val();
-			var idCard = $("#idCardId").val();
-			var issuedCard = $("#issuedCardId").val();
-			var expiry = $("#expiryId").val();
-			
-			var militaryFromYear = $("#fromYearId").val();
-			var militaryToYear = $('#toYearId').val();
-			var place = $("#placeId").val();
-			var serviceNo = $("#serviceNoId").val();
-			var reason = $("#reasonsId").val();
-			
-			var military = $("#militaryId").val();
-			var marital = $('#maritalId').val();
-			var children = $("#childrenId").val();
-			var spouse = $("#spouseId").val();
-			var marriageCer = $("#marriageCerId").val();
-			
-			var issuedMarriage = $("#issuedMarriageId").val();
-			var address = $('#addressId').val();
-			var occupation = $("#occupationId").val();
-			var branch = $("#branchId").val();
-			var drafted = $('#draftedId').val();
-
-			var json = {
-					"id" : id,
-					"firstNameTH" : firstNameTh,
-					"firstNameEN" : firstNameEn,
-					"lastNameTH" : lastNameTh,
-					"lastNameEN" : lastNameEn,
-					"nickNameTH" : nickNameTh,
-					
-					"nickNameEN" : nickNameEn,
-					"birthDate" : birthday,
-					"placeBirth" : pBirthday,
-					"age" : age,
-					"height" : height,
-					
-					"weight" : weight,
-					"sex" : sex,
-					"religion" : religion,
-					"nationality" : nationality,
-					"tel" : tel,
-					
-					"email" : eMail,
-					"applyDate" : applyDate,
-					"emergencyName" : emergencyName,
-					"emergencyTel" : emergencyTel,
-					"emergencyAddress" : emergencyAddress,
-					
-					"noticeNewspaper" : newspaper,
-					"noticeMagazine" : magazine,
-					"noticeFriend" : friend,
-					"noticeWebSite" : website,
-					"noticeOther" : other,
-					
-					"certificate" : certificate,
-					"expectedSalary" : salary,
-					"cardId" : idCard,
-					"cardIssuedOffice" : issuedCard,
-					"cardExpiryDate" : expiry,
-					
-					"militaryFromYear" : militaryFromYear,
-					"militarytoYear" : militaryToYear,
-					"militaryPlace" : place,
-					"militaryServiceNo" : serviceNo,
-					"militaryReason" : reason,
-					
-					"militaryStatus" : military,
-					"marritalStatusName" : marital,
-					"numberOfChildren" : children,
-					"spouseName" : spouse,
-					"marriageCertificateNo" : marriageCer,
-					
-					"issueOficeMarriage" : issuedMarriage,
-					"marriageAddress" : address,
-					"occupationMarriage" : occupation,
-					"branchService" : branch,
-					"dateToBeDrafted" : drafted
-					};
-			
-			$.ajax({
-				url : "${pageContext.request.contextPath}/informations/"+id,
-				type : "POST",
-				contentType :"application/json; charset=utf-8",
-				data : JSON.stringify(json),
-				success : function(data){
-						new PNotify({
-						    title: 'Edit Success',
-						    text: 'You can edit data',
-						    type: 'success',
-						    nonblock: {
-						        nonblock: true,
-						        nonblock_opacity: .2
-						    }
-						});
-				 }
-			});
-		}
-		
-		var applicantId = '${id}';
-		if(applicantId != null){
-			findById('${id}');
-			$('#buttonSave').off('click').on('click', function(id){
-				updateUser();
-			});
-			
-		}else{
-			$('#informationForm')[0].reset();
-			$('#buttonSave').off('click').on('click', function(){
-				saveUser();
-			});
-		} */
 });
 
 </script>
@@ -553,63 +342,54 @@
 		  <div class="form-group">
 				PHOTOGRAPH 
 				<div id="imagePreview "></div>
-				<input type="file" name="imageMultipartFile" id="imageMultipartFile"><br><br>
+				<f:input path="imageMultipartFile" id="imageMultipartFile" name="imageMultipartFile" type="file" class="file"></f:input>
+				<br><br>
 		</div> 
 		<br>
 		<br>
 			<div class="form-group">
-				<label for="firstNameTh">Firstname (TH) </label> <input type="text"
-					class="form-control" id="firstNameTH" name="firstNameTH"
-					placeholder="Enter Firstname(TH)">
+				<label for="firstNameTh">Firstname (TH) </label>
+				<f:input path="firstNameTH" id="firstNameTH" name="firstNameTH" placeholder="Enter Firstname(TH)" class="form-control" ></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="lastnameTh">Lastname (TH) </label> <input type="text"
-					class="form-control" id="lastNameTH" name="lastNameTH"
-					placeholder="Enter lastname(TH)">
+				<label for="lastnameTh">Lastname (TH) </label>
+				<f:input path="lastNameTH" id="lastNameTH" name="lastNameTH" placeholder="Enter lastname(TH)" class="form-control" ></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="nickNameTh">Nickname (TH) </label> <input type="text"
-					class="form-control" id="nickNameTH" name="nickNameTH"
-					placeholder="Enter nickname(TH)">
+				<label for="nickNameTh">Nickname (TH) </label>
+				<f:input path="nickNameTH" id="nickNameTH" name="nickNameTH" placeholder="Enter nickname(TH)" class="form-control" ></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="firstNameEng">Firstname (ENG) </label> <input
-					type="text" class="form-control" id="firstNameEN"
-					name="firstNameEN" placeholder="Enter Firstname(ENG)">
+				<label for="firstNameEng">Firstname (ENG) </label>
+				 <f:input path="firstNameEN" id="firstNameEN" name="firstNameEN" placeholder="Enter Firstname(ENG)" class="form-control" ></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="lastnameEng">Lastname (ENG) </label> <input type="text"
-					class="form-control" id="lastNameEN" name="lastNameEN"
-					placeholder="Enter lastname(ENG)">
+				<label for="lastnameEng">Lastname (ENG) </label> 
+				<f:input path="lastNameEN" id="lastNameEN" name="lastNameEN" placeholder="Enter lastname(ENG)" class="form-control"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="nickNameEng">Nickname (Eng) </label> <input type="text"
-					class="form-control" id="nickNameEN" name="nickNameEN"
-					placeholder="Enter nickname(Eng)">
+				<label for="nickNameEng">Nickname (Eng) </label> 
+				<f:input path="nickNameEN" id="nickNameEN" name="nickNameEN" class="form-control" placeholder="Enter nickname(Eng)"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="tel">TELEPHONE NO. </label> <input type="text"
-					class="form-control" id="tel" name="tel"
-					placeholder="Enter tel">
+				<label for="tel">TELEPHONE NO. </label> <f:input path="tel" id="tel" name="tel" placeholder="Enter tel" class="form-control" ></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="eMail">E-Mail </label> <input type="email"
-					class="form-control" id="email" name="email"
-					placeholder="Enter E-Mail">
+				<label for="eMail">E-Mail </label> <f:input path="email" id="email" name="email" type="email" placeholder="Enter E-Mail" class="form-control" ></f:input>
 			</div>
 			<br>
 			<br>
@@ -617,8 +397,7 @@
 				<label for="birthday"><span
 					class="glyphicon glyphicon-calendar"></span> Birthday</label>
 				<div class="input-group date">
-					<input type="text" id="birthDate" name="birthDate"
-						class="form-control"><span class="input-group-addon"><i
+					<f:input path="birthDate" id="birthDate" name="birthDate" class="form-control"></f:input><span class="input-group-addon"><i
 						class="glyphicon glyphicon-th"></i></span>
 				</div>
 
@@ -626,44 +405,38 @@
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="pBirth">Place of birth </label> <input type="text"
-					class="form-control" id="placeBirth" name="placeBirth"
-					placeholder="Enter place of birth">
+				<label for="pBirth">Place of birth </label> <f:input path="placeBirth" id="placeBirth" name="placeBirth"
+					class="form-control" placeholder="Enter place of birth"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="age">Age </label> <input type="text"
-					class="form-control" id="age" name="age"
-					placeholder="Enter age">
+				<label for="age">Age </label> <f:input path="age" id="age" name="age" class="form-control"
+					placeholder="Enter age"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="religion">Religion </label> <input type="text"
-					class="form-control" id="religion" name="religion"
-					placeholder="Enter religion">
+				<label for="religion">Religion </label> <f:input path="religion" id="religion" name="religion"
+					class="form-control" placeholder="Enter religion"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="nationality">Nationality </label> <input type="text"
-					class="form-control" id="nationality" name="nationality"
-					placeholder="Enter nationality">
+				<label for="nationality">Nationality </label> <f:input path="nationality" id="nationality" name="nationality"
+					class="form-control" placeholder="Enter nationality"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="cardId">ID. Card no. </label> <input type="text"
-					class="form-control" id="cardId" name="cardId"
-					placeholder="Enter ID. Card no.">
+				<label for="cardId">ID. Card no. </label> <f:input path="cardId" id="cardId" name="cardId" class="form-control" 
+					placeholder="Enter ID. Card no."></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="cardIssuedOffice">Issued office </label> <input type="text"
-					class="form-control" id="cardIssuedOffice" name="cardIssuedOffice"
-					placeholder="Enter issued office">
+				<label for="cardIssuedOffice">Issued office </label> <f:input path="cardIssuedOffice" name="cardIssuedOffice" id="cardIssuedOffice" class="form-control" 
+					placeholder="Enter issued office"></f:input>
 			</div>
 			<br>
 			<br>
@@ -671,142 +444,114 @@
 				<label for="cardExpiryDate"><span
 					class="glyphicon glyphicon-calendar"></span>Expiry date </label>
 				<div class="input-group date">
-					<input type="text" id="cardExpiryDate" name="cardExpiryDate"
-						class="form-control"><span class="input-group-addon"><i
+					<f:input path="cardExpiryDate" id="cardExpiryDate" name="cardExpiryDate" class="form-control"></f:input><span class="input-group-addon"><i
 						class="glyphicon glyphicon-th"></i></span>
 				</div>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="height">Height (cms) </label> <input type="text"
-					class="form-control" id="height" name="height"
-					placeholder="Enter height (cms)">
+				<label for="height">Height (cms) </label> <f:input path="height" class="form-control" id="height" name="height" 
+					placeholder="Enter height (cms)"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="weight">Weight (kgs) </label> <input type="text"
-					class="form-control" id="weight" name="weight"
-					placeholder="Enter weight (kgs)">
+				<label for="weight">Weight (kgs) </label> <f:input path="weight" class="form-control" id="weight" name="weight" placeholder="Enter weight (kgs)"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label> Sex</label>
-				<f:radiobutton path="sex" value="Female"></f:radiobutton><label> Female</label>
-				<f:radiobutton path="sex" value="Male"></f:radiobutton><label> Male</label>
+				<f:radiobutton path="sex" value="Female" name="sex" id="sex"></f:radiobutton><label> Female</label>
+				<f:radiobutton path="sex" value="Male" name="sex" id="sex"></f:radiobutton><label> Male</label>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="applicantStatus">Marriage status </label>
-				<div class="radio">
-					<label><input type="radio" name="applicantStatus"
-						id="applicantStatus" value="Single">Single</label>
-				</div>
-				<div class="radio">
-					<label><input type="radio" name="applicantStatus"
-						id="applicantStatus" value="Married">Married</label>
-				</div>
-				<div class="radio">
-					<label><input type="radio" name="applicantStatus"
-						id="applicantStatus">Divorced</label>
-				</div>
-
+				<f:radiobutton path="applicantStatus" id="applicantStatus" name="applicantStatus" value="Single"></f:radiobutton><label> Single</label>
+				<f:radiobutton path="applicantStatus" id="applicantStatus" name="applicantStatus" value="Married"></f:radiobutton><label> Married</label>
+				<f:radiobutton path="applicantStatus" id="applicantStatus" name="applicantStatus" value="Divorced"></f:radiobutton><label> Divorced</label>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="children">Number of children </label> <input type="text"
-					class="form-control" id="numberOfChildren" name="numberOfChildren"
-					placeholder="Enter number of children">
+				<label for="children">Number of children </label> <f:input path="numberOfChildren" class="form-control" id="numberOfChildren" name="numberOfChildren" placeholder="Enter number of children"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="spouseName">Spouse: Name </label> <input type="text"
-					class="form-control" id="spouseName" name="spouseName"
-					placeholder="Enter spouse: name">
+				<label for="spouseName">Spouse: Name </label> <f:input path="spouseName" class="form-control" id="spouseName" name="spouseName" placeholder="Enter spouse: name"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="marriageCertificateNo">Marriage certificate No </label> <input
-					type="text" class="form-control" id="marriageCertificateNo"
-					name="marriageCertificateNo" placeholder="Enter marriage certificate No.">
+				<label for="marriageCertificateNo">Marriage certificate No </label> <f:input path="marriageCertificateNo" class="form-control" id="marriageCertificateNo"
+					name="marriageCertificateNo" placeholder="Enter marriage certificate No."></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="issueOficeMarriage">Issued office </label> <input
-					type="text" class="form-control" id="issueOficeMarriage"
-					name="issueOficeMarriage" placeholder="Enter Issued office">
+				<label for="issueOficeMarriage">Issued office </label> <f:input path="issueOficeMarriage" class="form-control" id="issueOficeMarriage"
+					name="issueOficeMarriage" placeholder="Enter Issued office"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="marriageAddress">Address </label> <input type="text"
-					class="form-control" rows="5" id="marriageAddress" name="marriageAddress"
-					placeholder="Enter address">
+				<label for="marriageAddress">Address </label> <f:textarea path="marriageAddress" class="form-control" rows="5" id="marriageAddress" name="marriageAddress"
+					placeholder="Enter address"></f:textarea>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="occupationMarriage">Occupation </label> <input type="text"
-					class="form-control" id="occupationMarriage" name="occupationMarriage"
-					placeholder="Enter occupation">
+				<label for="occupationMarriage">Occupation </label> <f:input path="occupationMarriage" class="form-control" id="occupationMarriage" name="occupationMarriage"
+					placeholder="Enter occupation"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="military">Have you ever served in the military
 					service? </label>
-				<f:radiobutton path="militaryStatus" value="Yes"></f:radiobutton><label> Yes</label>
-				<f:radiobutton path="militaryStatus" value="No"></f:radiobutton><label> No</label>
+				<f:radiobutton path="militaryStatus" id="militaryStatus" name="militaryStatus" value="Yes"></f:radiobutton><label> Yes</label>
+				<f:radiobutton path="militaryStatus" id="militaryStatus" name="militaryStatus" value="No"></f:radiobutton><label> No</label>
 				</div>
 			<br>
 			<br>
 				<div class="form-group">
 					<label for="militaryComplete">If yes, please complete the
-						blanks below </label> <label for="militaryFromYear">From year </label> <input
-						type="text" class="form-control" id="militaryFromYear"
-						name="militaryFromYear" placeholder="Enter from year">
+						blanks below </label> <label for="militaryFromYear">From year </label> <f:input path="militaryFromYear" class="form-control" id="militaryFromYear"
+						name="militaryFromYear" placeholder="Enter from year"></f:input>
 				</div>
 			<br>
 			<br>
 				<div class="form-group">
-					<label for="militarytoYear">To year </label> <input type="text"
-						class="form-control" id="militarytoYear" name="militarytoYear"
-						placeholder="Enter to year">
+					<label for="militarytoYear">To year </label> <f:input path="militarytoYear" class="form-control" id="militarytoYear" name="militarytoYear"
+						placeholder="Enter to year"></f:input>
 				</div>
 			<br>
 			<br>
 				<div class="form-group">
-					<label for="branchService">Branch of service </label> <input type="text"
-						class="form-control" id="branchService" name="branchService"
-						placeholder="Enter branch of service">
+					<label for="branchService">Branch of service </label> <f:input path="branchService" class="form-control" id="branchService" name="branchService"
+						placeholder="Enter branch of service"></f:input>
 				</div>
 			<br>
 			<br>
 				<div class="form-group">
-					<label for="militaryPlace">Military place </label> <input type="text"
-						class="form-control" id="militaryPlace" name="militaryPlace"
-						placeholder="Enter military place">
+					<label for="militaryPlace">Military place </label> <f:input path="militaryPlace" class="form-control" id="militaryPlace" name="militaryPlace"
+						placeholder="Enter military place"></f:input>
 				</div>
 			<br>
 			<br>
 				<div class="form-group">
-					<label for="serviceNo">Service no </label> <input type="text"
-						class="form-control" id="militaryServiceNo" name="militaryServiceNo"
-						placeholder="Enter Service no">
+					<label for="serviceNo">Service no </label> <f:input path="militaryServiceNo" class="form-control" id="militaryServiceNo" name="militaryServiceNo"
+						placeholder="Enter Service no"></f:input>
 				</div>
 			<br>
 			<br>
 				<div class="form-group">
-					<label for="reasons">If not, please state the reasons </label> <input
-						type="text" class="form-control" id="militaryReason" name="militaryReason"
-						placeholder="Enter If not, please state the reasons">
+					<label for="reasons">If not, please state the reasons </label> <f:input path="militaryReason" class="form-control" id="militaryReason" name="militaryReason"
+						placeholder="Enter If not, please state the reasons"></f:input>
 				</div>
 			<br>
 			<br>
@@ -814,8 +559,7 @@
 					<label for="dateToBeDrafted"><span
 						class="glyphicon glyphicon-calendar"></span>Date to be drafted</label>
 					<div class="input-group date">
-						<input type="text" id="dateToBeDrafted" name="dateToBeDrafted"
-							class="form-control"><span class="input-group-addon"><i
+						<f:input path="dateToBeDrafted" id="dateToBeDrafted" name="dateToBeDrafted" class="form-control"></f:input><span class="input-group-addon"><i
 							class="glyphicon glyphicon-th"></i></span>
 					</div>
 				</div>
@@ -828,99 +572,117 @@
 		<div class="col-md-6">
 			<label for="applyDate"><span class="glyphicon glyphicon-calendar"></span>Apply date</label>
 			<div class="input-group date">
-				<input type="text" id="applyDate" name="applyDate"
-					class="form-control"><span class="input-group-addon"><i
+				<f:input path="applyDate" id="applyDate" name="applyDate"
+					class="form-control"></f:input><span class="input-group-addon"><i
 					class="glyphicon glyphicon-th"></i></span>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="department">Department </label> 
-			<select id="department" class="form-control" name="department">
+				<%-- <label for="department">Department </label> 
+				<select id="department" class="form-control" name="department">
 					<option value="-1" label="please select data"/>
 					<c:forEach var="departmentList" items="${departments}" >
 						<option value="${departmentList.id}">${departmentList.departmentName}</option>
 					</c:forEach>
 				</select> 
-			</div>
+				<f:select  path="department.id"  class="form-control">
+    						
+	    						<f:option  value="-1" label="--Select Division--" />
+	  							<f:options items="${ departments }"  itemValue="id" itemLabel="departmentName" />
+	    						
+								
+							</f:select> 
+			</div>--%>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="position1">Position 1 </label>
-				  <select id="position1" name="position1" class="form-control">
-					<option value="-1" label="please select data"/>
-					
+				    <f:select path="position1" id="position1" name="position1" class="form-control">
+					<f:option value="-1" label="please select data"/>
 					<c:forEach var="positionList" items="${positions}">
-						<option value="${positionList.id}">${positionList.positionName}</option>
-					</c:forEach>
-				</select> 
+						<f:option value="${positionList.id}">${positionList.positionName}</f:option>
+					</c:forEach> 
+				</f:select>
+				<%-- <f:select path="position1">
+  					 <f:option value="${positionList.positionName}" label="--- Select ---"></f:option>
+  					 <f:options items="${positions}" />
+				</f:select> --%>
+				
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="position2">Position 2 </label> <select
-					id="position2" name="position2" class="form-control">
-					<option value="-1" label="please select data"/>
+				<label for="position2">Position 2 </label> 
+				<f:select path="position2" id="position2" name="position2" class="form-control">
+					<f:option value="-1" label="please select data"/>
 					<c:forEach var="positionList" items="${positions}">
-						<option value="${positionList.id}">${positionList.positionName}</option>
-					</c:forEach>
-				</select>
+						<f:option value="${positionList.id}">${positionList.positionName}</f:option>
+					</c:forEach> 
+				</f:select>
+				<%-- <f:select path="position2">
+  					 <f:option value="${positionList.positionName}" label="--- Select ---"></f:option>
+  					 <f:options items="${positions}" />
+				</f:select> --%>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="position3">Position 3 </label> <select
-					id="position3" name="position3" class="form-control">
-					<option value="-1" label="please select data"/>
+				<label for="position3">Position 3 </label>
+				<f:select path="position3" id="position3" name="position3" class="form-control">
+					<f:option value="-1" label="please select data"/>
 					<c:forEach var="positionList" items="${positions}">
-						<option value="${positionList.id}">${positionList.positionName}</option>
-					</c:forEach>
-				</select>
+						<f:option value="${positionList.id}">${positionList.positionName}</f:option>
+					</c:forEach> 
+				</f:select>
+				<%-- <f:select path="position3">
+  					 <f:option value="${positionList.positionName}" label="--- Select ---"></f:option>
+  					 <f:options items="${positions}" />
+				</f:select> --%>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="salary">Salary expected </label> <input type="text"
+				<label for="salary">Salary expected </label> <f:input path="expectedSalary"
 					class="form-control" id="expectedSalary" name="expectedSalary"
-					placeholder="Enter salary">
+					placeholder="Enter salary"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="knowAugmentis">How do you know Augmentis?</label> <br>
 				 <div class="checkbox">
-			  		<label><input type="checkbox" 
-					id="noticeNewspaper" name="noticeNewspaper" value="Newspaper" >Newspaper</label>
-					<input type="text" class="form-control" id="noticeNewspaper"
-						name="noticeNewspaper" placeholder="Enter newspaper">
+			  		<label><f:checkbox path="noticeNewspaper" 
+					id="noticeNewspaper" name="noticeNewspaper" value="Newspaper" ></f:checkbox>Newspaper</label>
+					<f:input path="noticeNewspaper" class="form-control" id="noticeNewspaper"
+						name="noticeNewspaper" placeholder="Enter newspaper"></f:input>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
-			 		 <label><input type="checkbox" id="noticeMagazine" name="noticeMagazine" value="Magazine">Magazine</label>
-					<input type="text" class="form-control" id="noticeMagazine"
-						name="noticeMagazine" placeholder="Enter magazine">
+			 		 <label><f:checkbox path="noticeMagazine" id="noticeMagazine" name="noticeMagazine" value="Magazine"></f:checkbox>Magazine</label>
+					<f:input path="noticeMagazine" class="form-control" id="noticeMagazine"
+						name="noticeMagazine" placeholder="Enter magazine"></f:input>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
-			  		<label><input type="checkbox" id="noticeWebSite" name="noticeWebSite" value="Website">Website</label>
-			  		<input type="text" class="form-control" id="noticeWebSite"
-						name="noticeWebSite" placeholder="Enter website">
+			  		<label><f:checkbox path="noticeWebSite" id="noticeWebSite" name="noticeWebSite" value="Website"></f:checkbox>Website</label>
+			  		<f:input path="noticeWebSite" class="form-control" id="noticeWebSite"
+						name="noticeWebSite" placeholder="Enter website"></f:input>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
-			  		<label><input type="checkbox" id="noticeFriend" name="noticeFriend" value="Friend">Friend</label>
-			  		<input type="text" class="form-control" id="noticeFriend"
-						name="noticeFriend" placeholder="Enter friend">
+			  		<label><f:checkbox path="noticeFriend" id="noticeFriend" name="noticeFriend" value="Friend"></f:checkbox>Friend</label>
+			  		<f:input path="noticeFriend" class="form-control" id="noticeFriend"
+						name="noticeFriend" placeholder="Enter friend"></f:input>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
-			  		<label><input type="checkbox" id="noticeOther" name="noticeOther" value="Other">Other (please specify) </label>
-			  		<input type="text" class="form-control" id="noticeOther"
-						name="noticeOther" placeholder="Enter other">
+			  		<label><f:checkbox path="noticeOther" id="noticeOther" name="noticeOther" value="Other"></f:checkbox>Other (please specify) </label>
+			  		<f:input path="noticeOther" class="form-control" id="noticeOther" name="noticeOther" placeholder="Enter other"></f:input>
 				</div> 
 			</div>
 			<br>
@@ -928,26 +690,24 @@
 			<div class="form-group">
 				<label for="nowEmployed">Do you know anyone now being employed
 					by this company? </label><br><br>
-				<f:radiobutton path="nowEmployed" value="Yes"></f:radiobutton><label> Yes</label>
-				<f:radiobutton path="nowEmployed" value="No"></f:radiobutton><label> No</label>
+				<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="Yes"></f:radiobutton><label> Yes</label>
+				<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="No"></f:radiobutton><label> No</label>
 				<br> 
 				<br>
 				<div class="form-group">
 					<label for="nameRelation">If yes, please write name, position
 						and relation </label><br><br>
 					<label for="employedName">Name </label>
-					<input type="text" class="form-control" id="employedName"
-						name="employedName" placeholder="Enter name">
+					<f:input path="employedName" class="form-control" id="employedName"
+						name="employedName" placeholder="Enter name"></f:input>
 						<br>
 						<br>
 					<label for="employedPosition">Position </label>
-					<input type="text" class="form-control" id="employedPosition"
-						name="employedPosition" placeholder="Enter position">
+					<f:input path="employedPosition" class="form-control" id="employedPosition" name="employedPosition" placeholder="Enter position"></f:input>
 						<br>
 						<br>
 					<label for="employedRelation">Relation </label>
-					<input type="text" class="form-control" id="employedRelation"
-						name="employedRelation" placeholder="Enter relation">
+					<f:input path="employedRelation" class="form-control" id="employedRelation" name="employedRelation" placeholder="Enter relation"></f:input>
 				</div>
 			</div>
 				<br>
@@ -956,23 +716,21 @@
 				<br>
 				<br>
 			<div class="form-group">
-				<label for="emergencyOfName">Emergency Name </label> <input
-					type="text" class="form-control" id="emergencyName"
-					name="emergencyName" placeholder="Enter emergency name">
+				<label for="emergencyOfName">Emergency Name </label> <f:input path="emergencyName" class="form-control" id="emergencyName"
+					name="emergencyName" placeholder="Enter emergency name"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="emergencyTel">Emergency Telephone </label> <input
-					type="text" class="form-control" id="emergencyTel"
-					name="emergencyTel" placeholder="Enter emergency tel">
+				<label for="emergencyTel">Emergency Telephone </label> <f:input path="emergencyTel" class="form-control" id="emergencyTel"
+					name="emergencyTel" placeholder="Enter emergency tel"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="emergencyAddress">Emergency Address </label>
-					<textarea class="form-control" rows="5" id="emergencyAddress"
-					name="emergencyAddress" placeholder="Enter emergency address"></textarea>
+					<f:textarea path="emergencyTel" class="form-control" rows="5" id="emergencyAddress"
+					name="emergencyAddress" placeholder="Enter emergency address"></f:textarea>
 					
 			</div>
 		<br>
@@ -983,24 +741,22 @@
 			employment? </label>
 			<br>
 			<br>
-		<f:radiobutton path="previousEmployers" value="Yes"></f:radiobutton><label> Yes</label>
-		<f:radiobutton path="previousEmployers" value="No"></f:radiobutton><label> No</label>
+		<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> Yes</label>
+		<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> No</label>
 		
 		<br>
 		<br>
 		<div class="form-group">
-			<label for="previousEmployersReason">If not, please give the reason </label> <input
-				type="text" class="form-control" id="previousEmployersReason"
-				name="previousEmployersReason"
-				placeholder="Enter If not, please give the reason">
+			<label for="previousEmployersReason">If not, please give the reason </label> <f:input path="previousEmployersReason" class="form-control" id="previousEmployersReason"
+				name="previousEmployersReason" placeholder="Enter If not, please give the reason"></f:input>
 		</div>
 	</div>
 		<br>
 		<br>
 		  <div class="form-group">
-			<label for="file">Resume</label> <input type="file" id="resumeMultipartFile" name="resumeMultipartFile">
+			<label for="file">Resume</label> <f:input path="resumeMultipartFile" type="file" id="resumeMultipartFile" name="resumeMultipartFile" class="file"></f:input>
 				<p class="help-block">Block-level help text here.</p>
-			<label for="file">Transcript</label> <input type="file" id="transcriptMultipartFile" name="transcriptMultipartFile">
+			<label for="file">Transcript</label> <f:input path="transcriptMultipartFile" type="file" id="transcriptMultipartFile" name="transcriptMultipartFile" class="file"></f:input>
 				<p class="help-block">Block-level help text here.</p>
 		</div>
 			<br>

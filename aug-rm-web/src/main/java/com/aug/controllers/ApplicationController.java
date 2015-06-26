@@ -10,6 +10,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -115,8 +116,6 @@ public class ApplicationController {
 		return "applicationMenu";
 
 	}
-
-
 	
 	//////////////////        SAVE METHOD        /////////////////////
 
@@ -164,6 +163,7 @@ public class ApplicationController {
 		applicantService.saveInformations(applicationDTO);
 
 		model.addAttribute("id", applicationDTO.getId());
+		model.addAttribute("applicant", applicationDTO);
 		return "informations";
 	}
 	//////////////////        LINK PAGE       ///////////////////////////

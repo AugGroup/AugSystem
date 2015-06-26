@@ -908,6 +908,8 @@ public class Applicant {
 		applicant.setImage(applicationDTO.getImage());
 		applicant.setTranscript(applicationDTO.getTranscript());
 		applicant.setResume(applicationDTO.getResume());
+		applicant.setSex(applicationDTO.getSex());
+		applicant.setMilitaryStatus(applicationDTO.getMilitaryStatus());
 		return applicant;
 
 	}
