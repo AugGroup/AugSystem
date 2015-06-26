@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -29,12 +28,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.aug.db.dto.AddressDTO;
 import com.aug.db.dto.ApplicationDTO;
-import com.aug.db.entities.Applicant;
-import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.CertificatedDTO;
 import com.aug.db.dto.EducationDTO;
 import com.aug.db.dto.ExperienceDTO;
@@ -166,6 +162,17 @@ public class ApplicationController {
 		model.addAttribute("applicant", applicationDTO);
 		return "informations";
 	}
+	
+	@RequestMapping(value = "/address/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Address saveAddress(@RequestBody Address address,@PathVariable Integer id,Model model) {
+		model.addAttribute("id",id);
+		addressService.create(address);
+		Address addr = addressService.findById(id);
+		
+        return addr;
+
+	}
+	
 	//////////////////        LINK PAGE       ///////////////////////////
 	
 	@RequestMapping(value = "/address/{id}", method = { RequestMethod.GET })

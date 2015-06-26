@@ -88,6 +88,44 @@
 			});
 		}
 		
+		$('#btn_save').on("click", function() {
+			
+			var addressType = $('#inputAddress').val();
+			var houseNo = $('#houseNo').val();
+			var district = $('#district').val();
+			var subDistrict = $('#subDistrict').val();
+			var road = $('#road').val();
+			var province = $('#province').val();
+			var zipcode = $('#zipcode').val();
+			
+			var json = {"addressType" : addressType,
+						"houseNo" : houseNo,
+						"district" : district,
+						"subDistrict" : subDistrict,
+						"province":province,
+						"zipcode":zipcode};
+		
+			var id = '${id}';
+			$.ajax({
+				url : '${pageContext.request.contextPath}/address/'+id,
+				contentType : "application/json",
+				type : "POST",
+				data : JSON.stringify(json),
+				success : function(data) {
+					new PNotify({
+				        title: 'Success',
+				        text: 'Successful Add Education!!!',
+				        type: 'success',
+				        nonblock: {
+				            nonblock: true,
+				            nonblock_opacity: .2
+				        }
+				    });
+				}
+			}); 
+
+		})
+		
 		//Find by Id
 		function findById(id){
 			$.ajax({
