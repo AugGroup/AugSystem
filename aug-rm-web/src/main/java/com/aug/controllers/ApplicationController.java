@@ -67,8 +67,7 @@ import com.aug.db.services.SkillService;
 @Controller
 public class ApplicationController {
 
-	private static Logger LOGGER = LoggerFactory
-			.getLogger(ApplicationController.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(ApplicationController.class);
 
 	@Autowired
 	private DepartmentService departmentService;
@@ -292,8 +291,12 @@ public class ApplicationController {
 	}
 	
 	@RequestMapping(value = "/findByIdFamily/{id}", method = { RequestMethod.POST })
-	public @ResponseBody Object findByIdFamily(@RequestBody FamilyDTO familyDTO,@PathVariable Integer id) {
+	public @ResponseBody Object findByIdFamily(@PathVariable Integer id) {
 		final List<FamilyDTO> list= familyService.findFamilyById(id);
+		for(FamilyDTO fa : list){
+			System.out.println(fa.getName());
+			System.out.println(fa.getRelation());
+		}
 		 
 		return new Object() {
 			public List<FamilyDTO> getData() {
@@ -315,7 +318,10 @@ public class ApplicationController {
 	
 	@RequestMapping(value = "/findByIdCertificate/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Object findByIdCertificaten(@PathVariable Integer id) {
-		 final List<CertificatedDTO> list = certificatedService.findCertificateById(id);
+		final List<CertificatedDTO> list = certificatedService.findCertificateById(id);
+		for(CertificatedDTO cer : list){
+			System.out.println(cer.getCertificateName());
+		}
 		 
 		return new Object() {
 			public List<CertificatedDTO> getData() {
@@ -358,8 +364,22 @@ public class ApplicationController {
 	}
 	
 	@RequestMapping(value = "/findByIdExperience/{id}", method = { RequestMethod.POST })
-	public @ResponseBody Object findByIdExperience(@RequestBody ExperienceDTO experienceDTO,@PathVariable Integer id) {
-		 final List<ExperienceDTO> list= experienceService.findExperienceById(id);
+	public @ResponseBody Object findByIdExperience(@PathVariable Integer id) {
+		final List<ExperienceDTO> list= experienceService.findExperienceById(id);
+		 
+			for(ExperienceDTO fa : list){
+				System.out.println(fa.getAddress());
+				System.out.println(fa.getDescription());
+				System.out.println(fa.getEmployerName());
+				System.out.println(fa.getPosition());
+				System.out.println(fa.getPositionOfEmployer());
+				System.out.println(fa.getReason());
+				System.out.println(fa.getSalary());
+				System.out.println(fa.getSupervisor());
+				System.out.println(fa.getTypeOfBusiness());
+				System.out.println(fa.getFromDate());
+				System.out.println(fa.getToDate());
+			}
 		 
 		return new Object() {
 			public List<ExperienceDTO> getData() {
