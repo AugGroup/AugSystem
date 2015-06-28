@@ -75,7 +75,7 @@
 				            {data : "gpa"},
 				            {data : "yearsOfGraduate"},
 				            {data : function(data) {
-								return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#educationModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+								return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#educationModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
 							}},
 							{data : function(data) {
 								return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
@@ -85,46 +85,49 @@
 			});
 		}
 
-// 		$('#buttonSave').on("click", function() {
-		
-// 			var insertData = "{";
-			
-// 			insertData+="educations : [ ";
-// 			var educationTable = $("#educationTable").DataTable();
-			
-// 			educationTable.rows().iterator( 'row', function ( context, index ) {
-// 			insertData+="{";
-// 			insertData+="applicant : {id :"+$('#applicant').val()+"},";
-// 			insertData+="schoolName : '"+educationTable.cell( index,0 ).data()+"',";
-// 			insertData+="degree : '"+educationTable.cell( index,1 ).data()+"',";
-// 			insertData+="faculty : '"+educationTable.cell( index,2 ).data()+"',";
-// 			insertData+="major : '"+educationTable.cell( index,3 ).data()+"',";
-// 			insertData+="gpa : "+educationTable.cell( index,4 ).data()+",";
-// 			insertData+="yearsOfGraduate : '"+educationTable.cell( index,5 ).data()+"'},";
-// 			});
-// 				insertData=insertData.substring(0,insertData.length-1);
-// 				insertData+="]}";
-			
-//  		$.ajax({
-// 				contentType : "application/json",
-// 				type : "POST",
-// 				url : '${pageContext.request.contextPath}/saveEducations',
-// 				data : JSON.stringify(eval("(" + insertData + ")")),
-// 				success : function(data) {
-// 					alert(JSON.stringify(data));
-// 					new PNotify({
-// 				        title: 'Success',
-// 				        text: 'Successful Add Education!!!',
-// 				        type: 'success',
-// 				        nonblock: {
-// 				            nonblock: true,
-// 				            nonblock_opacity: .2
-// 				        }
-// 				    });
-// 				}
-// 			}); 
+		function saveEducation(){
+			$('#btn_save').on("click", function() {
+				var id = '${id}'
+				var schoolName = $("#university").val();
+				var degree = $("#degree").val();
+				var faculty = $("#faculty").val();
+				var major = $("#major").val();
+				var yearsOfGraduate = $("#graduate").val();
+				var gpa = $("#gpa").val();
+				console.log(id);
+				
+				var json = {
+						"applicant" : {"id" : id},
+						"schoolName" : schoolName,
+						"degree" : degree,
+						"faculty" : faculty,
+						"major" : major,
+						"yearsOfGraduate" : yearsOfGraduate,
+						"gpa" : gpa,
+						};
+				
+	 			$.ajax({
+					contentType : "application/json",
+					type : "POST",
+					url : '${pageContext.request.contextPath}/educations/' + id,
+					data : JSON.stringify(json),
+					success : function(data) {
+						$('#educationModal').modal('hide');
+						new PNotify({
+					        title: 'Success',
+					        text: 'Successful Add Education!!!',
+					        type: 'success',
+					        nonblock: {
+					            nonblock: true,
+					            nonblock_opacity: .2
+					        }
+					    });
+					}
+				}); 
 
-// 		})
+			})
+		}
+		
 		
 		//Find by Id
 		function findById(id){
@@ -213,44 +216,50 @@
                 });
             }
         });
-	        
-	        //delete function 
-	        function deleted(button) {
-	            var dtApplicant = $('#educationTable').DataTable();
-	            var id = $(button).data("id");
-	            var index = dtApplicant.row(button.closest("tr")).index();
-	            $.ajax({
-	                url: "${pageContext.request.contextPath}/deleteEducation/" + id,
-	                type: "POST",
-	                success: function () {
-	                	dtApplicant.row(index).remove().draw();
-						new PNotify({
-						    title: 'Delete Success',
-						    text: 'You can delete data',
-						    type: 'success',
-						    nonblock: {
-						        nonblock: true,
-						        nonblock_opacity: .2
-						    }
-						});
-	                }
-	            });
-	        }
-
-	        $('#educationModal').on('shown.bs.modal', function (e) {
-	        	var button = e.relatedTarget;
-				if(button != null){
-					var id = $(button).data("id");
-					if(id != null){
-						console.log(id);
-						findById(id);
-						$('#btn_save').off('click').on('click', function(id){
-							updated(button);
-						});
-					}
-
+	    
+        //delete function 
+        function deleted(button) {
+            var dtApplicant = $('#educationTable').DataTable();
+            var id = $(button).data("id");
+            var index = dtApplicant.row(button.closest("tr")).index();
+            $.ajax({
+                url: "${pageContext.request.contextPath}/deleteEducation/" + id,
+                type: "POST",
+                success: function () {
+                	dtApplicant.row(index).remove().draw();
+					new PNotify({
+					    title: 'Delete Success',
+					    text: 'You can delete data',
+					    type: 'success',
+					    nonblock: {
+					        nonblock: true,
+					        nonblock_opacity: .2
+					    }
+					});
+                }
+            });
+        }
+        
+        $('#educationModal').on('shown.bs.modal', function (e) {
+        	var button = e.relatedTarget;
+			if(button != null){
+				var id = $(button).data("id");
+				var str = $(button).data("type");
+				if(str == "edit"){
+					console.log(id);
+					findById(id);
+					$('#btn_save').off('click').on('click', function(id){
+						updated(button);
+					});
+				}else{
+					$('#educationsForm')[0].reset();
+					$('#btn_save').off('click').on('click', function(id){
+						saveEducation();
+					});
 				}
-	       });
+
+			}
+       });
 });
 </script>
 <jsp:include page="applicationMenu.jsp" />

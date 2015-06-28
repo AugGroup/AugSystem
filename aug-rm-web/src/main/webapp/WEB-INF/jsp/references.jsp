@@ -40,92 +40,72 @@
 		});
 		
 		if(dtApplicant) {
-			dtOrder.ajax.reload();
+			dtApplicant.ajax.reload();
 		}
 		else {
-		
-		var id = '${id}';
-		$('#referenceTable').DataTable({
-			ajax : {
-				url : '${pageContext.request.contextPath}/findByIdReference/'+id,
-				type : 'POST'
-			},
-			columns : [ {
-				data : "fullName"
-			}, {
-				data : "tel"
-			}, {
-				data : "occupation"
-			}, {
-				data : "completeAddress"
-			}, { data : function(data) {
-				 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#referenceModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
-			}
-			}, { data : function(data) {
-				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
-			}
-		}],
-			searching : false
+			var id = '${id}';
+			$('#referenceTable').DataTable({
+				ajax : {
+					url : '${pageContext.request.contextPath}/findByIdReference/'+id,
+					type : 'POST'
+				},
+				columns : [ {
+					data : "fullName"
+				}, {
+					data : "tel"
+				}, {
+					data : "occupation"
+				}, {
+					data : "completeAddress"
+				}, { data : function(data) {
+					 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#referenceModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+				}
+				}, { data : function(data) {
+					 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+				}}],
+				searching : false
 
+			});
+		}
+
+		function saveReference(){
+			$('#btn_save').on("click", function() {
+				var id = '${id}'
+				var fullName = $("#fullName").val();
+				var completeAddress = $("#completeAddress").val();
+				var tel= $("#telNo").val();
+				var occupation = $("#occupationRef").val();
+				
+				var json = {
+						"applicant" : {"id" : id},
+						"fullName" : fullName,
+						"completeAddress" : completeAddress,
+						"tel" : tel,
+						"occupation" : occupation,
+						};
+		
+		 		$.ajax({
+					contentType : "application/json",
+					type : "POST",
+					url : '${pageContext.request.contextPath}/references/'+id,
+					data : JSON.stringify(json),
+					success : function(data) {
+						$('#referenceModal').modal('hide');
+						new PNotify({
+					        title: 'Success',
+					        text: 'Successful Add References!!!',
+					        type: 'success',
+					        nonblock: {
+					            nonblock: true,
+					            nonblock_opacity: .2
+					        }
+					    });
+						
+					
+					}
+				}); 
 		});
 		}
-		$('#referenceSave').on("click", function() {
-
-			if ($('#referenceForm').valid()) { 
-			var table = $('#referenceTable').DataTable();
-
-			table.row.add({
-				fullName : $('#fullName').val(),
-				tel : $('#telNo').val(),
-				occupation : $('#occupationRef').val(),
-				completeAddress : $('#completeAddress').val()
-			}).draw();
-			$('#referenceModal').modal('hide');
-			};
-		})
-
-		$('#referenceSave').on("click", function() {
-			
-			var insertData = "{";
-			insertData+="references : [ ";
-			
-			var referenceTable = $("#referenceTable").DataTable();
-			referenceTable.rows().iterator( 'row', function ( context, index ) {
-			  
-				insertData+="{";
-				insertData+="applicant : {id :"+$('#applicant').val()+"},";
-				insertData+="fullName : '"+referenceTable.cell( index,0 ).data()+"',";
-				insertData+="tel : '"+referenceTable.cell( index,1 ).data()+"',";
-				insertData+="occupation : '"+referenceTable.cell( index,2 ).data()+"',";
-				insertData+="completeAddress : '"+referenceTable.cell( index,3 ).data()+"'},";
-			});
-
-			insertData=insertData.substring(0,insertData.length-1);
-			
-			insertData+="]";
-			insertData+="}";
-	
-	 		$.ajax({
-				contentType : "application/json",
-				type : "POST",
-				url : '${pageContext.request.contextPath}/saveReferences',
-				data : JSON.stringify(eval("(" + insertData + ")")),
-				success : function(data) {
-					alert(JSON.stringify(data));
-					new PNotify({
-				        title: 'Success',
-				        text: 'Successful Add References!!!',
-				        type: 'success',
-				        nonblock: {
-				            nonblock: true,
-				            nonblock_opacity: .2
-				        }
-				    });
-					
-				
-				}
-			}); 
-	});
 		
 		//Update 
 		function findById(id){
@@ -231,11 +211,17 @@
 	    	var button = e.relatedTarget;
 			if(button != null){
 				var id = $(button).data("id");
-				if(id != null){
+				var str = $(button).data("type");
+				if(str == "edit"){
 					console.log(id);
 					findById(id);
 					$('#btn_save').off('click').on('click', function(id){
 						updated(button);
+					});
+				}else{
+					$('#referenceForm')[0].reset();
+					$('#btn_save').off('click').on('click', function(id){
+						saveReference();
 					});
 				}
 

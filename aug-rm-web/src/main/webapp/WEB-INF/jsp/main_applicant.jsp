@@ -71,7 +71,7 @@
 						        	 return '<a href="#EditStatusModal" id="btn_edit_score" data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="edit.button.edit.score"/></b>'
 						        	}},
 						         { data : function(data){
-						        	 return '<a href="${pageContext.request.contextPath}/informations/'+data.id+'" id="btn_edit_info"  data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></b>'
+						        	 return '<a href="${pageContext.request.contextPath}/informationsave/' + data.id + '" id="btn_edit_info"  data-id="'+data.id+'" data-toggle="modal" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></b>'
 						        	 }},
 						         {data: function (data) {
 						        	 return '<a href="#deleteModal" id="btn_delete" data-id="' + data.id + '" data-toggle="modal" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></b>'
@@ -256,16 +256,14 @@
 			
 		
 		</sec:authorize>
-		<form class="form-inline" id="applicantForm" action="${pageContext.request.contextPath}/informations" method="get">
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<div class="row">
 			<div class="col-md-6"></div>
 			<div class="col-md-6">
-				<button type="submit" id="btn_add" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></button>
+				<a type="submit" id="btn_add" class="btn btn-primary" href="${pageContext.request.contextPath}/informations" ><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></a>
 			</div>
 		</div>
 		</sec:authorize>
-		</form>
 		
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<!-- Modal of Edit Status and Score-->	

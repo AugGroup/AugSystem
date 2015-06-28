@@ -22,40 +22,60 @@ $(document).ready(function() {
 	});
 	
 	if(dtApplicant) {
-		dtOrder.ajax.reload();
+		dtApplicant.ajax.reload();
 	}
 	else {
-	
-	var id = '${id}';
-	$('#certificateTable').DataTable({
-		ajax : {
-			url : '${pageContext.request.contextPath}/findByIdCertificate/'+id,
-			type : 'POST'
-		},
-		columns : [ {
-			data : "certificateName"
-		} ,{ data : function(data) {
-			 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#certificateModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
-		}
-		},{ data : function(data) {
-			 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
-		}
-	}],
-		searching : false
+		var id = '${id}';
+		$('#certificateTable').DataTable({
+			ajax : {
+				url : '${pageContext.request.contextPath}/findByIdCertificate/'+id,
+				type : 'POST'
+			},
+			columns : [ {
+				data : "certificateName"
+			} ,{ data : function(data) {
+				 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#certificateModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+			}
+			},{ data : function(data) {
+				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+			}
+		}],
+			searching : false
 
-	});
+		});
+	
 	}
 
-	$('#btn_save').on("click", function() {
-		if ($('#certificateForm').valid()) {
-		var table = $('#certificateTable').DataTable();
+	function saveCertificate(){
+		$('#btn_save').on("click", function() {
+			var id = '${id}'
+			var certificateName = $("#certificate").val();
+			var json = {
+					"applicant" : {"id" : id},
+					"certificateName" : certificateName,
+					};
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/certificates/"+id,
+				type : "POST",
+				contentType :"application/json; charset=utf-8",
+				data : JSON.stringify(json),
+				success : function(data){
+					$('#certificateModal').modal('hide');
+					new PNotify({
+					    title: 'Edit Family Success!!',
+					    text: 'You can edit data',
+					    type: 'success',
+					    nonblock: {
+					        nonblock: true,
+					        nonblock_opacity: .2
+					    }
+					});
+				 }
+			});
+		})
+	}
 
-		table.row.add({
-			certificate : $('#certificate').val()
-		}).draw();
-		$('#certificateModal').modal('hide');
-		};
-	})
 	
 	//Update 
 	function findById(id){
@@ -149,11 +169,17 @@ $(document).ready(function() {
     	var button = e.relatedTarget;
 		if(button != null){
 			var id = $(button).data("id");
-			if(id != null){
+			var str = $(button).data("type");
+			if(str == "edit"){
 				console.log(id);
 				findById(id);
 				$('#btn_save').off('click').on('click', function(id){
 					updated(button);
+				});
+			}else{
+				$('#certificateForm')[0].reset();
+				$('#btn_save').off('click').on('click', function(id){
+					saveCertificate();
 				});
 			}
 

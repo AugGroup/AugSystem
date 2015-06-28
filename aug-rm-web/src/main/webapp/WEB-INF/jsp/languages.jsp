@@ -25,78 +25,69 @@ $(document).ready(function() {
 		});
 
 		if(dtApplicant) {
-			dtOrder.ajax.reload();
+			dtApplicant.ajax.reload();
 		}
 		else {
-		var id = '${id}';
-	$('#languagesTable').DataTable({
-		ajax : {
-			url : '${pageContext.request.contextPath}/findByIdLanguages/' +id,
-			type : 'POST'
-		},
-		columns : [ {
-			data : "languagesName"
-		}, {
-			data : "speaking"
-		}, {
-			data : "reading"
-		}, {
-			data : "understanding"
-		}, {
-			data : "writing"
-		},{ data : function(data) {
-			 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#languagesModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
-		}
-		},{ data : function(data) {
-			 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
-		}
-	}],
-		searching : false
+			var id = '${id}';
+			$('#languagesTable').DataTable({
+				ajax : {
+					url : '${pageContext.request.contextPath}/findByIdLanguages/' +id,
+					type : 'POST'
+				},
+				columns : [ {
+					data : "languagesName"
+				}, {
+					data : "speaking"
+				}, {
+					data : "reading"
+				}, {
+					data : "understanding"
+				}, {
+					data : "writing"
+				},{ data : function(data) {
+					 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#languagesModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+				}
+				},{ data : function(data) {
+					 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+				}}],
+				searching : false
 
-	});
+			});
+
 		}
 	
-	
-	$('#languagesSave').on("click", function() {
-		var insertData = "{";
-		insertData+="languages : [ ";
-		var languagesTable = $("#languagesTable").DataTable();
-		
-		languagesTable.rows().iterator( 'row', function ( context, index ) {
-		insertData+="{";
-		insertData+="applicant : {id :"+$('#applicant').val()+"},";
-		insertData+="languagesName : '"+languagesTable.cell( index,0 ).data()+"',";
-		insertData+="speaking : '"+languagesTable.cell( index,1 ).data()+"',";
-		insertData+="reading : '"+languagesTable.cell( index,2 ).data()+"',";
-		insertData+="understanding : '"+languagesTable.cell( index,3 ).data()+"',";
-		insertData+="writing : '"+languagesTable.cell( index,4 ).data()+"'},";
-		
-		});
-			insertData=insertData.substring(0,insertData.length-1);
-			insertData+="]}";
-		
-
- 		$.ajax({
-			contentType : "application/json",
-			type : "POST",
-			url : '${pageContext.request.contextPath}/saveLanguages',
-			data : JSON.stringify(eval("(" + insertData + ")")),
-			success : function(data) {
-				alert(JSON.stringify(data));
-				new PNotify({
-			        title: 'Success',
-			        text: 'Successful Add Languages!!!',
-			        type: 'success',
-			        nonblock: {
-			            nonblock: true,
-			            nonblock_opacity: .2
-			        }
-			    });
-				
+	function saveLanguages(){
+		$('#btn_save').on("click", function() {
+			var id = '${id}'
+			var languagesName = $("#languages").val();
 			
-			}
-		}); 
-});
+			var json = {
+					"applicant" : {"id" : id},
+					"languagesName" : languagesName,
+					};
+
+	 		$.ajax({
+				contentType : "application/json",
+				type : "POST",
+				url : '${pageContext.request.contextPath}/languages/'+id,
+				data : JSON.stringify(json),
+				success : function(data) {
+					$('#languagesModal').modal('hide');
+					new PNotify({
+				        title: 'Success',
+				        text: 'Successful Add Languages!!!',
+				        type: 'success',
+				        nonblock: {
+				            nonblock: true,
+				            nonblock_opacity: .2
+				        }
+				    });
+					
+				
+				}
+			}); 
+		});
+	}
 	
 	//Update 
 	function findById(id){
@@ -190,11 +181,17 @@ $(document).ready(function() {
     	var button = e.relatedTarget;
 		if(button != null){
 			var id = $(button).data("id");
-			if(id != null){
+			var str = $(button).data("type");
+			if(str == "edit"){
 				console.log(id);
 				findById(id);
 				$('#btn_save').off('click').on('click', function(id){
 					updated(button);
+				});
+			}else{
+				$('#languagesForm')[0].reset();
+				$('#btn_save').off('click').on('click', function(id){
+					saveLanguages();
 				});
 			}
 

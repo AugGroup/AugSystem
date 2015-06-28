@@ -13,6 +13,7 @@ color:red;
 
 <script type="text/javascript">
 $(document).ready(function() {
+	${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 	$('#loginForm').validate({
         rules: {
             j_username: "required",

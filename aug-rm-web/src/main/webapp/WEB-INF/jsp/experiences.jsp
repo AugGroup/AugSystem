@@ -125,72 +125,59 @@
 		});
 	
 	}
-		$('#experiencesSave').on("click", function() {
- 			if ($('#experiencesForm').valid()) { 
-			var table = $('#experiencesTable').DataTable();
-
-			table.row.add({
-				position : $('#workBackground').val(),
-				fromDate : $('#fromWorkYear').val(),
-				toDate : $('#toWorkYear').val(),
-				employerName : $('#emp').val(),
-				address : $('#addressBackground').val(),
-				typeOfBusiness : $('#business').val(),
-				positionOfEmployer : $('#positionBackground').val(),
-				supervisor : $('#supervisorBackground').val(),
-				salary : $('#salaryBackground').val(),
-				description : $('#descriptionBackground').val(),
-				reason : $('#reasonLeaving').val()
-			}).draw();
-			$('#experiencesModal').modal('hide');
- 			};
-		}) 
 		
-// 		$('#experiencesSave').on("click", function() {
+	function saveExperience(){
+		$('#btn_save').on("click", function() {
+			var id = '${id}';
+			var position = $("#workBackground").val();
+			var fromDate = $("#fromWorkYear").val();
+			var toDate = $("#toWorkYear").val();
+			var employerName = $("#emp").val();
+			var address = $("#addressBackground").val();
 
-// 		var insertData = "{";
+			var typeOfBusiness = $("#business").val();
+			var positionOfEmployer = $("#positionBackground").val();
+			var reason = $("#reasonLeaving").val();
+			var supervisor = $("#supervisorBackground").val();
+			var salary = $("#salaryBackground").val();
 			
-// 			insertData+="experiences : [ ";
-// 			var experiencesTable = $("#experiencesTable").DataTable();
+			var description = $("#descriptionBackground").val();
 			
-// 			experiencesTable.rows().iterator( 'row', function ( context, index ) {
-// 			insertData+="{";
-// 			insertData+="applicant : {id :"+$('#applicant').val()+"},";
-// 			insertData+="position : '"+experiencesTable.cell( index,0 ).data()+"',";
-// 			insertData+="fromDate : '"+experiencesTable.cell( index,1 ).data()+"',";
-// 			insertData+="toDate : '"+experiencesTable.cell( index,2 ).data()+"',";
-// 			insertData+="employerName : '"+experiencesTable.cell( index,3 ).data()+"',";
-// 			insertData+="address : '"+experiencesTable.cell( index,4 ).data()+"',";
-// 			insertData+="typeOfBusiness : '"+experiencesTable.cell( index,5 ).data()+"',";
-// 			insertData+="positionOfEmployer : '"+experiencesTable.cell( index,6 ).data()+"',";
-// 			insertData+="supervisor : '"+experiencesTable.cell( index,7 ).data()+"',";
-// 			insertData+="salary : "+experiencesTable.cell( index,8 ).data()+",";
-// 			insertData+="description : '"+experiencesTable.cell( index,9 ).data()+"',";
-// 			insertData+="reason : '"+experiencesTable.cell( index,10 ).data()+"'},";
-// 			});
-// 				insertData=insertData.substring(0,insertData.length-1);
-// 				insertData+="]}";
-			
-// 			$.ajax({
-// 				contentType : "application/json",
-// 				type : "POST",
-// 				url : '${pageContext.request.contextPath}/saveExperiences',
-// 				data : JSON.stringify(eval("(" + insertData + ")")),
-// 				success : function(data) {
-// 					alert(JSON.stringify(data));
-
-// 					new PNotify({
-// 				        title: 'Success',
-// 				        text: 'Successful Add Experience!!!',
-// 				        type: 'success',
-// 				        nonblock: {
-// 				            nonblock: true,
-// 				            nonblock_opacity: .2
-// 				        }
-// 				    });
-// 				}
-// 			});
-// 		})
+			var json = {
+					"applicant" : {"id" : id},
+					"position" : position,
+					"fromDate" : fromDate,
+					"toDate" : toDate,
+					"employerName" : employerName,
+					"address" : address,
+					"fromDate" : fromDate,
+					"typeOfBusiness" : typeOfBusiness,
+					"positionOfEmployer" : positionOfEmployer,
+					"reason" : reason,
+					"supervisor" : supervisor,
+					"salary" : salary,
+					"description" : description
+					};
+			$.ajax({
+				contentType : "application/json",
+				type : "POST",
+				url : '${pageContext.request.contextPath}/experiences/'+id,
+				data : JSON.stringify(json),
+				success : function(data) {
+					$('#referenceModal').modal('hide');
+					new PNotify({
+				        title: 'Success',
+				        text: 'Successful Add Experience!!!',
+				        type: 'success',
+				        nonblock: {
+				            nonblock: true,
+				            nonblock_opacity: .2
+				        }
+				    });
+				}
+			});
+		})
+	}
 		
 		//Find by Id
 		function findById(id){
@@ -330,11 +317,17 @@
 	    	var button = e.relatedTarget;
 			if(button != null){
 				var id = $(button).data("id");
-				if(id != null){
+				var str = $(button).data("type");
+				if(str == "edit"){
 					console.log(id);
 					findById(id);
 					$('#btn_save').off('click').on('click', function(id){
 						updated(button);
+					});
+				}else{
+					$('#experiencesForm')[0].reset();
+					$('#btn_save').off('click').on('click', function(id){
+						saveExoerience();
 					});
 				}
 

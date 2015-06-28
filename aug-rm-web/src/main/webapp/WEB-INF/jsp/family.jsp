@@ -54,7 +54,7 @@
 		});
 		
 		if(dtApplicant) {
-			dtOrder.ajax.reload();
+			dtApplicant.ajax.reload();
 		}
 		else {
 			var id = '${id}';
@@ -69,7 +69,7 @@
 							{data : "address"},
 							{data : "positionFamily"},
 							{data : function(data) {
-					 			return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#familyModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+					 			return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#familyModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
 							}},
 							{data : function(data) {
 					 			return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
@@ -93,46 +93,83 @@
 				$('#familyModal').modal('hide');
 				};
 			})
-			$('#familySave').on("click", function() {
-			var insertData = "{";
 			
-			insertData+="families : [ ";
-			
-			var familyTable = $("#familyTable").DataTable();
-			familyTable.rows().iterator( 'row', function ( context, index ) {
-			  
-				insertData+="{";
-				insertData+="applicant : {id :'"+$('#applicant').val()+"'},";
-				insertData+="name : '"+familyTable.cell( index,0 ).data()+"',";
-				insertData+="relation : '"+familyTable.cell( index,1 ).data()+"',";
-				insertData+="occupation : '"+familyTable.cell( index,2 ).data()+"',";
-				insertData+="address : '"+familyTable.cell( index,3 ).data()+"',";
-				insertData+="positionFamily : '"+familyTable.cell( index,4 ).data()+"'},";
-			});
-			
-			insertData=insertData.substring(0,insertData.length-1);
-			insertData+="]}";
-			
-			$.ajax({
-				contentType : "application/json",
-				type : "POST",
-				url : '${pageContext.request.contextPath}/saveFamily',
-				data : JSON.stringify(eval("(" + insertData + ")")),
-				success : function(data) {
-					alert(JSON.stringify(data));
+				$('#btn_save').on("click", function() {
+					var id = '${id}';
+					var addressType = $('#inputAddress').val();
+					var houseNo = $('#houseNo').val();
+					var district = $('#district').val();
+					var subDistrict = $('#subDistrict').val();
+					var road = $('#road').val();
+					var province = $('#province').val();
+					var zipcode = $('#zipcode').val();
+					
+					var json = {"applicant" : {"id" : id},
+								"addressType" : addressType,
+								"houseNo" : houseNo,
+								"district" : district,
+								"subDistrict" : subDistrict,
+								"province":province,
+								"zipcode":zipcode};
+				
+					$.ajax({
+						url : '${pageContext.request.contextPath}/address/'+id,
+						contentType : "application/json",
+						type : "POST",
+						data : JSON.stringify(json),
+						success : function(data) {
+							$('#addressModal').modal('hide');
+							new PNotify({
+						        title: 'Success',
+						        text: 'Successful Add Education!!!',
+						        type: 'success',
+						        nonblock: {
+						            nonblock: true,
+						            nonblock_opacity: .2
+						        }
+						    });
+						}
+					}); 
 
-					new PNotify({
-				        title: 'Success',
-				        text: 'Successful Add Family!!!',
-				        type: 'success',
-				        nonblock: {
-				            nonblock: true,
-				            nonblock_opacity: .2
-				        }
-				    });
-				}
-			});
-		})
+				})
+			
+			
+		function saveFamily(){
+			$('#btn_save').on("click", function() {
+				var id = '${id}';
+				var name = $("#nameFamily").val();
+				var relation = $("#relationFamily").val();
+				var occupation = $("#occupationFamily").val();
+				var address = $("#addressFamily").val();
+				var positionFamily = $("#positionFamily").val();
+				
+				var json = {"applicant" : {"id" : id},
+							"name" : name,
+							"relation" : relation,
+							"occupation" : occupation,
+							"address" : address,
+							"positionFamily" : positionFamily,
+							};
+				$.ajax({
+					contentType : "application/json",
+					type : "POST",
+					url : '${pageContext.request.contextPath}/family/'+id,
+					data : JSON.stringify(json),
+					success : function(data) {
+						$('#familyModal').modal('hide');
+						new PNotify({
+					        title: 'Success',
+					        text: 'Successful Add Family!!!',
+					        type: 'success',
+					        nonblock: {
+					            nonblock: true,
+					            nonblock_opacity: .2
+					        }
+					    });
+					}
+				});
+			})
+		}
 		
 		//Update 
 		function findById(id){
@@ -242,11 +279,17 @@
 	    	var button = e.relatedTarget;
 			if(button != null){
 				var id = $(button).data("id");
-				if(id != null){
+				var str = $(button).data("type");
+				if(str == "edit"){
 					console.log(id);
 					findById(id);
 					$('#btn_save').off('click').on('click', function(id){
 						updated(button);
+					});
+				}else{
+					$('#familyForm')[0].reset();
+					$('#btn_save').off('click').on('click', function(){
+						saveFamily();
 					});
 				}
 

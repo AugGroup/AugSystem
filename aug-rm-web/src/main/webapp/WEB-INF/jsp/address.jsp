@@ -78,7 +78,7 @@
 							{data : "zipcode"},
 							{data : "province"},
 							{data : function(data) {
-						 		return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#addressModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+						 		return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#addressModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
 							}},
 							{ data : function(data) {
 						 		return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
@@ -88,43 +88,47 @@
 			});
 		}
 		
-		$('#btn_save').on("click", function() {
+		function saveAddress(){
+			$('#btn_save').on("click", function() {
+				var id = '${id}';
+				var addressType = $('#inputAddress').val();
+				var houseNo = $('#houseNo').val();
+				var district = $('#district').val();
+				var subDistrict = $('#subDistrict').val();
+				var road = $('#road').val();
+				var province = $('#province').val();
+				var zipcode = $('#zipcode').val();
+				
+				var json = {"applicant" : {"id" : id},
+							"addressType" : addressType,
+							"houseNo" : houseNo,
+							"district" : district,
+							"subDistrict" : subDistrict,
+							"province":province,
+							"zipcode":zipcode};
 			
-			var addressType = $('#inputAddress').val();
-			var houseNo = $('#houseNo').val();
-			var district = $('#district').val();
-			var subDistrict = $('#subDistrict').val();
-			var road = $('#road').val();
-			var province = $('#province').val();
-			var zipcode = $('#zipcode').val();
-			
-			var json = {"addressType" : addressType,
-						"houseNo" : houseNo,
-						"district" : district,
-						"subDistrict" : subDistrict,
-						"province":province,
-						"zipcode":zipcode};
-		
-			var id = '${id}';
-			$.ajax({
-				url : '${pageContext.request.contextPath}/address/'+id,
-				contentType : "application/json",
-				type : "POST",
-				data : JSON.stringify(json),
-				success : function(data) {
-					new PNotify({
-				        title: 'Success',
-				        text: 'Successful Add Education!!!',
-				        type: 'success',
-				        nonblock: {
-				            nonblock: true,
-				            nonblock_opacity: .2
-				        }
-				    });
-				}
-			}); 
+				$.ajax({
+					url : '${pageContext.request.contextPath}/address/'+id,
+					contentType : "application/json",
+					type : "POST",
+					data : JSON.stringify(json),
+					success : function(data) {
+						$('#addressModal').modal('hide');
+						new PNotify({
+					        title: 'Success',
+					        text: 'Successful Add Education!!!',
+					        type: 'success',
+					        nonblock: {
+					            nonblock: true,
+					            nonblock_opacity: .2
+					        }
+					    });
+					}
+				}); 
 
-		})
+			})
+		}
+		
 		
 		//Find by Id
 		function findById(id){
@@ -213,7 +217,7 @@
         $('#deleteModal').on('shown.bs.modal', function (e) {
             var button = e.relatedTarget;
             var id = $(button).data("id");
-            if (id !== null) {
+            if (id != null) {
                 $('#btn_delete_submit').off('click').on('click', function () {
                     deleted(button);
                 });
@@ -226,7 +230,7 @@
             var id = $(button).data("id");
             var index = dtApplicant.row(button.closest("tr")).index();
             $.ajax({
-                url: "${pageContext.request.contextPath}/delete/" + id,
+                url: "${pageContext.request.contextPath}/deleteAddress/" + id,
                 type: "POST",
                 success: function () {
                 	dtApplicant.row(index).remove().draw();
@@ -247,11 +251,17 @@
         	var button = e.relatedTarget;
 			if(button != null){
 				var id = $(button).data("id");
-				if(id != null){
+				var str = $(button).data("type");
+				if(str == "edit"){
 					console.log(id);
 					findById(id);
 					$('#btn_save').off('click').on('click', function(id){
 						updateAddress(button);
+					});
+				}else{
+					$('#addressForm')[0].reset();
+					$('#btn_save').off('click').on('click', function(){
+						saveAddress();
 					});
 				}
 

@@ -22,28 +22,57 @@ $(document).ready(function() {
 	});
 	
 	if(dtApplicant) {
-		dtOrder.ajax.reload();
+		dtApplicant.ajax.reload();
 	}
 	else {
-	
-	var id = '${id}';
-	$('#skillTable').DataTable({
-		ajax : {
-			url : '${pageContext.request.contextPath}/findByIdSkill/'+id,
-			type : 'POST'
-		},
-		columns : [ {
-			data : "skillDetail"
-		},{ data : function(data) {
-			 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#skillModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
-		}
-		},{ data : function(data) {
-			 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
-		}
-	}],
-		searching : false
+		var id = '${id}';
+		$('#skillTable').DataTable({
+			ajax : {
+				url : '${pageContext.request.contextPath}/findByIdSkill/'+id,
+				type : 'POST'
+			},
+			columns : [ {
+				data : "skillDetail"
+			},{ data : function(data) {
+				 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#skillModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+			}
+			},{ data : function(data) {
+				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+			}
+		}],
+			searching : false
 
-	});
+		});
+	}
+	
+	function saveSkill(){
+		$('#btn_save').on("click", function() {
+			var id = '${id}'
+			var skillDetail = $("#skill").val();
+			var json = {
+					"applicant" : {"id" : id},
+					"skillDetail" : skillDetail,
+					};
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/skills/"+id,
+				type : "POST",
+				contentType :"application/json; charset=utf-8",
+				data : JSON.stringify(json),
+				success : function(data){
+					$('#skillModal').modal('hide');
+						new PNotify({
+						    title: 'Edit Skill Success!!',
+						    text: 'You can edit data',
+						    type: 'success',
+						    nonblock: {
+						        nonblock: true,
+						        nonblock_opacity: .2
+						    }
+						});
+				 }
+			});
+		});
 	}
 
 	//Update 
@@ -65,40 +94,41 @@ $(document).ready(function() {
 	//Update function
 	function updated(button){
 		if ($('#skillForm').valid()) {
-		var id = $(button).data("id");
-		var skillDetail = $("#skill").val();
-		var json = {
-				"id" : id,
-				"skillDetail" : skillDetail,
-				};
-		
-		$.ajax({
-			url : "${pageContext.request.contextPath}/updateSkills/"+id,
-			type : "POST",
-			contentType :"application/json; charset=utf-8",
-			data : JSON.stringify(json),
-			success : function(data){
-				$('#skillModal').modal('hide');
-				
-				var table = $('#skillTable').DataTable();	
-			 	var rowData = table.row(button.closest('tr')).index(); 
-			 	var d = table.row(rowData).data();
-			 	
-			 		d.skillDetail = data.skillDetail;
-			 		
-			 		table.row(rowData).data(d).draw();
-			 		
-					new PNotify({
-					    title: 'Edit Skill Success!!',
-					    text: 'You can edit data',
-					    type: 'success',
-					    nonblock: {
-					        nonblock: true,
-					        nonblock_opacity: .2
-					    }
-					});
-			 }
-		});
+			var id = $(button).data("id");
+			var skillDetail = $("#skill").val();
+			var json = {
+					"id" : id,
+					"skillDetail" : skillDetail,
+					};
+			
+			$.ajax({
+				url : "${pageContext.request.contextPath}/updateSkills/"+id,
+				type : "POST",
+				contentType :"application/json; charset=utf-8",
+				data : JSON.stringify(json),
+				success : function(data){
+					$('#skillModal').modal('hide');
+					
+					var table = $('#skillTable').DataTable();	
+				 	var rowData = table.row(button.closest('tr')).index(); 
+				 	var d = table.row(rowData).data();
+				 	
+				 		d.skillDetail = data.skillDetail;
+				 		
+				 		table.row(rowData).data(d).draw();
+				 		
+						new PNotify({
+						    title: 'Edit Skill Success!!',
+						    text: 'You can edit data',
+						    type: 'success',
+						    nonblock: {
+						        nonblock: true,
+						        nonblock_opacity: .2
+						    }
+						});
+				 }
+			});
+
 		};
 	}
 	
@@ -139,11 +169,17 @@ $(document).ready(function() {
     	var button = e.relatedTarget;
 		if(button != null){
 			var id = $(button).data("id");
-			if(id != null){
+			var str = $(button).data("type");
+			if(str == "edit"){
 				console.log(id);
 				findById(id);
 				$('#btn_save').off('click').on('click', function(id){
 					updated(button);
+				});
+			}else{
+				$('#skillForm')[0].reset();
+				$('#btn_save').off('click').on('click', function(id){
+					saveSkill();
 				});
 			}
 
