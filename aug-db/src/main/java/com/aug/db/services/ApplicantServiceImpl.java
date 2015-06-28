@@ -10,8 +10,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.dto.ReportApplicantDTO;
+import com.aug.db.entities.Address;
 import com.aug.db.entities.Applicant;
 import com.aug.db.entities.Position;
+import com.aug.db.repositories.AddressRepository;
 import com.aug.db.repositories.ApplicantRepository;
 import com.aug.db.repositories.PositionRepository;
 
@@ -24,6 +26,9 @@ public class ApplicantServiceImpl implements ApplicantService {
 	
 	@Autowired
 	private PositionRepository positionRepository;
+	
+	@Autowired
+	private AddressRepository addressRepository;
 
 	@Override
 	public Applicant findById(Integer id) {
@@ -121,6 +126,16 @@ public class ApplicantServiceImpl implements ApplicantService {
 		
 	
 		applicationDTO.setId(applicant.getId());
+		return applicationDTO;
+	}
+
+	@Override
+	public ApplicationDTO saveAddress(ApplicationDTO applicationDTO) {
+		List<Address> address = applicationDTO.getAddress();
+		for (Address add : address) {
+			add.setId(applicationDTO.getId());
+			addressRepository.insert(add);
+		}
 		return applicationDTO;
 	}
 

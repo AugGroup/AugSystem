@@ -29,6 +29,8 @@ public interface ApplicantService {
 	
 	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO);
 	
+	public ApplicationDTO saveAddress(ApplicationDTO applicationDTO);
+	
 	public List<ReportApplicantDTO> reportApplicant();
 
 	public ApplicationDTO findByIdApplicant(Integer id);
