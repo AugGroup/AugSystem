@@ -7,9 +7,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +16,8 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -38,6 +37,7 @@ import com.aug.db.dto.FamilyDTO;
 import com.aug.db.dto.LanguagesDTO;
 import com.aug.db.dto.ReferenceDTO;
 import com.aug.db.entities.Address;
+import com.aug.db.entities.Applicant;
 import com.aug.db.entities.Certificate;
 import com.aug.db.entities.Department;
 import com.aug.db.entities.Education;
@@ -121,6 +121,13 @@ public class ApplicationController {
 		return "informations";
 
 	}
+	
+	@RequestMapping(value = "/informationsave/{id}", method = { RequestMethod.GET })
+	public String informationsId(@PathVariable Integer id, Model model) {
+		model.addAttribute("applicant",applicantService.findById(id));
+		return "informations";
+
+	}
 
 	@RequestMapping(value = "/saveInformations", method = { RequestMethod.POST })
 	public String saveInformations(
@@ -170,6 +177,68 @@ public class ApplicationController {
 		Address addr = addressService.findById(id);
 		
         return addr;
+	}
+	
+	@RequestMapping(value = "/family/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Family saveFamily(@RequestBody Family family,@PathVariable Integer id,Model model) {
+		model.addAttribute("id",id);
+		familyService.create(family);
+		Family fam = familyService.findById(id);
+		
+        return fam;
+	}
+	
+	@RequestMapping(value = "/educations/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Education educations(@RequestBody Education education,@PathVariable Integer id,Model model) {
+		model.addAttribute("id",id);
+		educationService.create(education);
+		Education ed = educationService.findById(id);
+        return ed;
+
+	}
+	
+	@RequestMapping(value = "/certificates/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Certificate certificate(@RequestBody Certificate certificate,@PathVariable Integer id,Model model) {
+		model.addAttribute("id",id);
+		certificatedService.create(certificate);
+		Certificate cer = certificatedService.findById(id);
+        return cer;
+
+	}
+	
+	@RequestMapping(value = "/skills/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Skill skills(@RequestBody Skill skill,@PathVariable Integer id,Model model) {
+		model.addAttribute("id",id);
+		skillService.create(skill);
+		Skill skills = skillService.findById(id);
+        return skills;
+
+	}
+	
+	@RequestMapping(value = "/languages/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Languages languages(@RequestBody Languages languages,@PathVariable Integer id,Model model) {
+		model.addAttribute("id",id);
+		languagesService.create(languages);
+		Languages lang = languagesService.findById(id);
+        return lang;
+
+	}
+	
+	@RequestMapping(value = "/references/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Reference references(@RequestBody Reference reference,@PathVariable Integer id,Model model) {
+		model.addAttribute("id",id);
+		referenceService.create(reference);
+		Reference ref = referenceService.findById(id);
+        return ref;
+
+	}
+	
+	@RequestMapping(value = "/experiences/{id}", method = { RequestMethod.POST })
+	public @ResponseBody Experience experiences(@RequestBody Experience experience,@PathVariable Integer id,Model model) {
+		model.addAttribute("id",id);
+		experienceService.create(experience);
+		Experience exper = experienceService.findById(id);
+        return exper;
 
 	}
 	
@@ -234,6 +303,13 @@ public class ApplicationController {
     //////////////////        UPDATE METHOD        /////////////////////
 	
 	// Search Every Class By Id For Show In Text Box
+	
+	@RequestMapping(value = "/update/informations/{id}", method= {RequestMethod.POST})
+	public String updatePost(@ModelAttribute Applicant applicant,BindingResult result,@PathVariable Integer id,ModelMap model) {
+		System.out.println("userUpdatePost");
+		applicantService.update(applicant);
+		return "redirect:/informations";
+	}
 	
 	@RequestMapping(value = "/findByIdApplicants/{id}", method = { RequestMethod.POST })
 	public @ResponseBody ApplicationDTO findByIdApplications(@RequestBody ApplicationDTO applicationDTO,@PathVariable Integer id) {
@@ -518,14 +594,32 @@ public class ApplicationController {
 	
 	////////////////// DELETE METHOD /////////////////////
 	
+	@RequestMapping(value = "/deleteAddress/{id}", method = RequestMethod.POST)
+	public @ResponseBody String deleteAddress(@PathVariable("id") Integer id) {
+		addressService.deleteById(id);
+		return "success";
+	}
+	
+	@RequestMapping(value = "/deleteFamily/{id}", method = RequestMethod.POST)
+	public @ResponseBody String deleteFamily(@PathVariable("id") Integer id) {
+		familyService.deleteById(id);
+		return "success";
+	}
+	
 	@RequestMapping(value = "/deleteEducation/{id}", method = RequestMethod.POST)
-	public @ResponseBody String delesteEducation(@PathVariable("id") Integer id) {
+	public @ResponseBody String deleteEducation(@PathVariable("id") Integer id) {
 		educationService.deleteById(id);
 		return "success";
 	}
+	
+	@RequestMapping(value = "/deleteCertificate/{id}", method = RequestMethod.POST)
+	public @ResponseBody String deleteCertificate(@PathVariable("id") Integer id) {
+		certificatedService.deleteById(id);
+		return "success";
+	}
+	
 	@RequestMapping(value = "/deleteSkill/{id}", method = RequestMethod.POST)
-	public @ResponseBody String delesteSkill(@PathVariable("id") Integer id) {
-
+	public @ResponseBody String deleteSkill(@PathVariable("id") Integer id) {
 		skillService.deleteById(id);
 		return "success";
 	}
@@ -535,6 +629,19 @@ public class ApplicationController {
 		languagesService.deleteById(id);
 		return "success";
 	}
+	
+	@RequestMapping(value = "/deleteReference/{id}", method = RequestMethod.POST)
+	public @ResponseBody String deleteReference(@PathVariable("id") Integer id) {
+		referenceService.deleteById(id);
+		return "success";
+	}
+	
+	@RequestMapping(value = "/deleteExperience/{id}", method = RequestMethod.POST)
+	public @ResponseBody String deleteExperience(@PathVariable("id") Integer id) {
+		experienceService.deleteById(id);
+		return "success";
+	}
+	
 	@ModelAttribute("departments")
 	@Transactional
 	public List<Department> departmentList() {
