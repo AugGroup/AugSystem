@@ -12,6 +12,7 @@
  						});
 			 $("#tel").mask("(999) 999-9999");
 			 $("#emergencyTel").mask("(999) 999-9999");
+			 $("#cardId").mask("9999-9999-9999-9");
 			 
 			 $('#informationApplicant').validate({
 				rules : {imageMultipartFile : {
@@ -39,7 +40,8 @@
 						required : true
 						},
 					email : {
-						required : true
+						required : true,
+						email : true
 						},
 					birthDate : {
 						required : true
@@ -196,7 +198,7 @@
 						required : "Tel. is required!"
 					},
 					email : {
-						required : "E-Mail is required!"
+						required : "E-Mail is required!",      
 					},
 					birthDate : {
 						required : "Birthday is required!"
@@ -328,24 +330,33 @@
 				}
 			});
 
-		
+			
 			
 });
 
 </script>
 <jsp:include page="applicationMenu.jsp" />
 <!-- tab informations -->
-<f:form id="informationApplicant" name="informationApplicant" action="${pageContext.request.contextPath}/saveInformations"
+<c:choose>
+		<c:when test="${applicant.id ne null}">
+			<c:set var="actionName">updateInformations/${applicant.id}</c:set>
+		</c:when>
+		<c:otherwise>
+			<c:set var="actionName">saveInformations</c:set>
+		</c:otherwise>
+	</c:choose>
+
+<f:form id="informationApplicant" name="informationApplicant" action="${pageContext.request.contextPath}/${actionName}"
 		modelAttribute="applicant" method="post" enctype="multipart/form-data" class="form-inline" >
 	<div class="row">
 			<div class="col-md-6">
 		  <div class="form-group">
 				<spring:message code="info.photograph"/> 
 				<div id="imagePreview "></div>
-<%-- 				<f:input path="imageMultipartFile" id="imageMultipartFile" name="imageMultipartFile" type="file" class="file"></f:input> --%>
-					<input id="imageMultipartFile" name="imageMultipartFile" type="file" class="file"/>
+				<input id="imageMultipartFile" name="imageMultipartFile" type="file" class="file" accept="image/gif,image/jpeg,image/png"></input>
 				<br><br>
 		</div> 
+		
 		<br>
 		<br>
 			<div class="form-group">
@@ -586,29 +597,24 @@
 					<c:forEach var="departmentList" items="${departments}" >
 						<option value="${departmentList.id}">${departmentList.departmentName}</option>
 					</c:forEach>
-				</select> 
-				<f:select  path="department.id"  class="form-control">
-    						
-	    						<f:option  value="-1" label="--Select Division--" />
-	  							<f:options items="${ departments }"  itemValue="id" itemLabel="departmentName" />
-	    						
-								
-							</f:select> 
-			</div>--%>
+				</select> --%>
+				
+			</div>
 			<br>
 			<br>
 			<div class="form-group">
+
 				<label for="position1"><spring:message code="main.position1"/> </label>
 				    <f:select path="position1" id="position1" name="position1" class="form-control">
 					<f:option value="-1" label="please select data"/>
 					<c:forEach var="positionList" items="${positions}">
 						<f:option value="${positionList.id}">${positionList.positionName}</f:option>
 					</c:forEach> 
-				</f:select>
-				<%-- <f:select path="position1">
+				</f:select> 
+				 <%--  <f:select path="position1">
   					 <f:option value="${positionList.positionName}" label="--- Select ---"></f:option>
   					 <f:options items="${positions}" />
-				</f:select> --%>
+				</f:select>  --%>
 				
 			</div>
 			<br>
@@ -636,6 +642,7 @@
 						<f:option value="${positionList.id}">${positionList.positionName}</f:option>
 					</c:forEach> 
 				</f:select>
+				
 				<%-- <f:select path="position3">
   					 <f:option value="${positionList.positionName}" label="--- Select ---"></f:option>
   					 <f:options items="${positions}" />
@@ -655,29 +662,32 @@
 				 <div class="checkbox">
 			  		<label><f:checkbox path="noticeNewspaper" 
 					id="noticeNewspaper" name="noticeNewspaper" value="Newspaper" ></f:checkbox><spring:message code="info.newspaper"/></label>
+
 					<f:input path="noticeNewspaper" class="form-control" id="noticeNewspaper"
-						name="noticeNewspaper" placeholder="Enter newspaper"></f:input>
+						name="notice" placeholder="Enter newspaper"></f:input>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
 			 		 <label><f:checkbox path="noticeMagazine" id="noticeMagazine" name="noticeMagazine" value="Magazine"></f:checkbox><spring:message code="info.magazine"/></label>
+
 					<f:input path="noticeMagazine" class="form-control" id="noticeMagazine"
-						name="noticeMagazine" placeholder="Enter magazine"></f:input>
+						name="notice" placeholder="Enter magazine"></f:input>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
 			  		<label><f:checkbox path="noticeWebSite" id="noticeWebSite" name="noticeWebSite" value="Website"></f:checkbox><spring:message code="info.website"/></label>
 			  		<f:input path="noticeWebSite" class="form-control" id="noticeWebSite"
-						name="noticeWebSite" placeholder="Enter website"></f:input>
+						name="notice" placeholder="Enter website"></f:input>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
 			  		<label><f:checkbox path="noticeFriend" id="noticeFriend" name="noticeFriend" value="Friend"></f:checkbox><spring:message code="info.friend"/></label>
+
 			  		<f:input path="noticeFriend" class="form-control" id="noticeFriend"
-						name="noticeFriend" placeholder="Enter friend"></f:input>
+						name="notice" placeholder="Enter friend"></f:input>
 				</div>
 				<br>
 				<br>
@@ -744,19 +754,19 @@
 		<br>
 		<br>
 		<div class="form-group">
-			<label for="previousEmployersReason"><spring:message code="info.reason.no"/> </label> <f:input path="previousEmployersReason" class="form-control" id="previousEmployersReason"
-				name="previousEmployersReason" placeholder="Enter If not, please give the reason"></f:input>
+
+			<label for="previousEmployersReason">If not, please give the reason </label>
+				<f:textarea path="previousEmployersReason" class="form-control" rows="5" id="previousEmployersReason"
+					name="previousEmployersReason" placeholder="Enter If not, please give the reason"></f:textarea>
 		</div>
 	</div>
 		<br>
 		<br>
 		  <div class="form-group">
 			<label for="file"><spring:message code="info.resume"/></label> 
-<%-- 			<f:input path="resumeMultipartFile" type="file" id="resumeMultipartFile" name="resumeMultipartFile" class="file"></f:input> --%>
 			<input type="file" id="resumeMultipartFile" name="resumeMultipartFile" class="file"/>
 				<p class="help-block"><spring:message code="info.block"/></p>
 			<label for="file"><spring:message code="info.transcript"/></label> 
-<%-- 			<f:input path="transcriptMultipartFile" type="file" id="transcriptMultipartFile" name="transcriptMultipartFile" class="file"></f:input> --%>
 				<input type="file" id="transcriptMultipartFile" name="transcriptMultipartFile" class="file"/>
 				<p class="help-block"><spring:message code="info.block"/></p>
 		</div>

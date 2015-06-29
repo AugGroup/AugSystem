@@ -133,8 +133,6 @@ public class ApplicantServiceImpl implements ApplicantService {
 		return applicationDTO;
 	}
    
-
-	
 	  /*-------------------- Report --------------------*/
 		//findAll
 		public List<ReportApplicantDTO> reportApplicant() {
@@ -146,7 +144,9 @@ public class ApplicantServiceImpl implements ApplicantService {
 			return applicantRepository.findReportByCriteria(position, degree, major, schoolName, gpa);
 		}
 
-		
-
-	
+		@Override
+		public void update(ApplicationDTO applicationDTO) {
+			applicantRepository.update(applicationDTO);
+			
+		}
 }

@@ -511,15 +511,7 @@ public class Applicant {
 	public void setTrackingStatus(String trackingStatus) {
 		this.trackingStatus = trackingStatus;
 	}
-
-//	public String getCertificate() {
-//		return certificate;
-//	}
-//
-//	public void setCertificate(String certificate) {
-//		this.certificate = certificate;
-//	}
-
+	
 	public String getExpectedSalary() {
 		return expectedSalary;
 	}

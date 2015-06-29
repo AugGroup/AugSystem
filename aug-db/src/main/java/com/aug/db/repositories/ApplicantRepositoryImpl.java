@@ -70,4 +70,10 @@ public class ApplicantRepositoryImpl extends
 		ApplicationDTO app = result.get(0);
 		return app;
 	}
+
+	@Override
+	public void update(ApplicationDTO applicationDTO) {
+		getCurrentSession().update(applicationDTO);
+	}
+
 }

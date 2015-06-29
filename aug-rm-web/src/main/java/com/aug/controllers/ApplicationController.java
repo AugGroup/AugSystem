@@ -167,9 +167,10 @@ public class ApplicationController {
 
 		model.addAttribute("id", applicationDTO.getId());
 		model.addAttribute("applicant", applicationDTO);
+		System.out.println(applicationDTO.getPosition1());
 		return "informations";
 	}
-	
+
 	@RequestMapping(value = "/address/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Address saveAddress(@RequestBody Address address,@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
@@ -241,7 +242,7 @@ public class ApplicationController {
         return exper;
 
 	}
-	
+
 	//////////////////        LINK PAGE       ///////////////////////////
 	
 	@RequestMapping(value = "/address/{id}", method = { RequestMethod.GET })
@@ -303,6 +304,21 @@ public class ApplicationController {
     //////////////////        UPDATE METHOD        /////////////////////
 	
 	// Search Every Class By Id For Show In Text Box
+	
+	@RequestMapping(value = "/info/{id}", method = { RequestMethod.GET })
+	public String updateInfo(@ModelAttribute ApplicationDTO applicationDTO,
+			@PathVariable Integer id, ModelMap model) {
+		applicationDTO = applicantService.findByIdApplicant(id);
+		model.addAttribute("applicant",applicationDTO);
+
+		return "informations";
+	}
+
+	@RequestMapping(value = "/infoEdit/{id}", method = { RequestMethod.POST })
+	public String updateInformations(@ModelAttribute ApplicationDTO applicationDTO,@PathVariable Integer id,ModelMap model) {
+		applicantService.update(applicationDTO);
+		return "redirect:informations";
+	}
 	
 	@RequestMapping(value = "/update/informations/{id}", method= {RequestMethod.POST})
 	public String updatePost(@ModelAttribute Applicant applicant,BindingResult result,@PathVariable Integer id,ModelMap model) {
@@ -652,7 +668,7 @@ public class ApplicationController {
 	@ModelAttribute("positions")
 	@Transactional
 	public List<Position> positionList() {
-		System.out.println(positionService.findAll());
+		//System.out.println(positionService.findAll());
 		return positionService.findAll();
 	}
 	@ModelAttribute("applicant")
