@@ -15,8 +15,7 @@ $(document).ready(function() {
 				understanding : {required : true},
 				reading : {required : true},
 				writing : {required : true}},
-			messages : {languages : {
-					required : "Languages is required!"},
+				messages : {languages : {required : "Languages is required!"},
 				speaking : {required : "Speaking is required!"},
 				understanding : {required : "Understanding is required!"},
 				reading : {required : "Reading is required!"},
@@ -34,22 +33,17 @@ $(document).ready(function() {
 					url : '${pageContext.request.contextPath}/findByIdLanguages/' +id,
 					type : 'POST'
 				},
-				columns : [ {
-					data : "languagesName"
-				}, {
-					data : "speaking"
-				}, {
-					data : "reading"
-				}, {
-					data : "understanding"
-				}, {
-					data : "writing"
-				},{ data : function(data) {
-					 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#languagesModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
-				}
-				},{ data : function(data) {
-					 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
-				}}],
+				columns : [ {data : "languagesName"},
+				            {data : "speaking"},
+				            {data : "reading"},
+				            {data : "understanding"},
+				            {data : "writing"},
+				            { data : function(data) {
+					 			return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#languagesModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+							}
+							},{ data : function(data) {
+								return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+							}}],
 				searching : false
 
 			});
@@ -60,10 +54,18 @@ $(document).ready(function() {
 		$('#btn_save').on("click", function() {
 			var id = '${id}'
 			var languagesName = $("#languages").val();
+			var speaking = $("speaking").val();
+			var understanding = $("understanding").val();
+			var reading = $("reading").val();
+			var writing = $("writing").val();
 			
 			var json = {
 					"applicant" : {"id" : id},
 					"languagesName" : languagesName,
+					"speaking" : speaking,
+					"reaing" : reading,
+					"understanding" : understanding,
+					"writing" : writing
 					};
 
 	 		$.ajax({
