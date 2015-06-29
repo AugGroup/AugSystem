@@ -1,12 +1,5 @@
 package com.aug.db.entities;
 
-import java.text.ParseException;
-
-import org.hibernate.annotations.Index;
-
-import com.aug.db.dto.AddressDTO;
-import com.aug.db.dto.ApplicationDTO;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

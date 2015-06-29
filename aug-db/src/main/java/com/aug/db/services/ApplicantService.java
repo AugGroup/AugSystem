@@ -28,12 +28,14 @@ public interface ApplicantService {
 	public void deleteById(Integer id);
 	
 	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO);
-	
-	public ApplicationDTO saveAddress(ApplicationDTO applicationDTO);
-	
-	public List<ReportApplicantDTO> reportApplicant();
 
 	public ApplicationDTO findByIdApplicant(Integer id);
 	
 	public ApplicationDTO findApplicationById(Integer id);
+	
+	/*-------------------- report search --------------------*/
+	public List<ReportApplicantDTO> reportApplicant();
+	
+	public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, String gpa);
+
 }

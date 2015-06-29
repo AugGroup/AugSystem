@@ -3,7 +3,7 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="header" class="java.lang.String"/>
+	<parameter name="parameter1" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT applicant.APPLICANT_ID AS id ,
 		applicant.AGE AS age,
@@ -85,15 +85,9 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 	<group name="pos1" isStartNewPage="true">
 		<groupExpression><![CDATA[$F{pos1Id}]]></groupExpression>
 		<groupHeader>
-			<band height="110">
-				<line>
-					<reportElement x="2" y="71" width="555" height="1" uuid="2e3f1944-422b-4c13-b7e0-5064c90e9cae"/>
-					<graphicElement>
-						<pen lineWidth="2.5" lineStyle="Double"/>
-					</graphicElement>
-				</line>
+			<band height="100">
 				<rectangle>
-					<reportElement x="0" y="0" width="555" height="40" backcolor="#CCCCFF" uuid="f6514d67-f475-45e5-9587-b07256900e60"/>
+					<reportElement x="131" y="0" width="282" height="41" backcolor="#CCCCCC" uuid="f6514d67-f475-45e5-9587-b07256900e60"/>
 				</rectangle>
 				<textField>
 					<reportElement x="230" y="10" width="61" height="20" uuid="d4c0a3d0-6033-4626-a7f6-70c118dfc6a0"/>
@@ -103,52 +97,49 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 					<textFieldExpression><![CDATA[$F{positionCode1}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="272" y="10" width="103" height="20" uuid="5a8a2573-483f-4ecd-8f54-cad81103472e"/>
+					<reportElement x="292" y="10" width="103" height="20" uuid="5a8a2573-483f-4ecd-8f54-cad81103472e"/>
 					<textElement textAlignment="Justified">
 						<font size="14"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{positionName1}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="136" y="10" width="95" height="20" uuid="628b140a-7204-4859-8ade-04caced9cb58"/>
+					<reportElement x="150" y="10" width="81" height="20" uuid="628b140a-7204-4859-8ade-04caced9cb58"/>
 					<textElement textAlignment="Justified">
 						<font size="14"/>
 					</textElement>
 					<text><![CDATA[POSITION1  :]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="18" y="78" width="46" height="20" uuid="d43dc06f-d887-4961-8508-336a3ca0ee93"/>
+					<reportElement x="18" y="80" width="46" height="20" uuid="d43dc06f-d887-4961-8508-336a3ca0ee93"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[ID CODE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="66" y="78" width="70" height="20" uuid="00d2f572-2c7d-4f80-82fa-973af7187cd7"/>
+					<reportElement x="66" y="80" width="70" height="20" uuid="00d2f572-2c7d-4f80-82fa-973af7187cd7"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[APPLY DATE]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="136" y="78" width="128" height="20" uuid="2f3ca3ee-28c8-4d69-a92d-d49fd376a575"/>
+					<reportElement x="136" y="80" width="128" height="20" uuid="2f3ca3ee-28c8-4d69-a92d-d49fd376a575"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[NAME]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="264" y="78" width="90" height="20" uuid="d988de42-b394-40fa-a23b-4fa883a9e378"/>
+					<reportElement x="264" y="80" width="90" height="20" uuid="d988de42-b394-40fa-a23b-4fa883a9e378"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[POSITION1]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="354" y="78" width="87" height="20" uuid="f2a0a8b2-975e-4600-8c2d-0fd88bbf4f0c"/>
+					<reportElement x="354" y="80" width="87" height="20" uuid="f2a0a8b2-975e-4600-8c2d-0fd88bbf4f0c"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[POSITION2]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="441" y="78" width="91" height="20" uuid="2a6c7f4f-cd26-46fc-8e9d-0beadfc089c4"/>
+					<reportElement x="441" y="80" width="91" height="20" uuid="2a6c7f4f-cd26-46fc-8e9d-0beadfc089c4"/>
 					<textElement textAlignment="Center"/>
 					<text><![CDATA[POSITION3]]></text>
 				</staticText>
-				<line>
-					<reportElement x="0" y="104" width="555" height="1" uuid="419cfa3d-5fdf-43aa-83aa-dd2a92991930"/>
-				</line>
 			</band>
 		</groupHeader>
 		<groupFooter>
@@ -184,13 +175,20 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 			<rectangle>
 				<reportElement x="35" y="10" width="485" height="69" backcolor="#FFCC00" uuid="1cb1ad47-e86b-414e-97de-aab39348ed24"/>
 			</rectangle>
+			<staticText>
+				<reportElement x="35" y="28" width="485" height="51" uuid="8c42132f-ed85-4d90-90e9-1c45ea3710d6"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[POSITION SUMMARY]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="35" splitType="Stretch"/>
 	</pageHeader>
 	<detail>
-		<band height="34" splitType="Stretch">
+		<band height="40" splitType="Stretch">
 			<textField>
 				<reportElement x="18" y="7" width="48" height="20" uuid="5fcc064d-41b0-4e97-9a8a-b232b5b1694e"/>
 				<textFieldExpression><![CDATA[$F{code}]]></textFieldExpression>
@@ -215,6 +213,12 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 				<reportElement x="441" y="7" width="91" height="20" uuid="6ef8fa27-f2fd-46ba-966a-2ef03beda27d"/>
 				<textFieldExpression><![CDATA[$F{positionName3}]]></textFieldExpression>
 			</textField>
+			<line>
+				<reportElement x="0" y="100" width="555" height="1" uuid="2e3f1944-422b-4c13-b7e0-5064c90e9cae"/>
+				<graphicElement>
+					<pen lineWidth="2.5" lineStyle="Double"/>
+				</graphicElement>
+			</line>
 		</band>
 	</detail>
 	<pageFooter>

@@ -10,9 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.aug.db.dto.ApplicantDTO;
 import com.aug.db.dto.ApplicationDTO;
 import com.aug.db.dto.ReportApplicantDTO;
-import com.aug.db.entities.Address;
 import com.aug.db.entities.Applicant;
-import com.aug.db.entities.Position;
 import com.aug.db.repositories.AddressRepository;
 import com.aug.db.repositories.ApplicantRepository;
 import com.aug.db.repositories.PositionRepository;
@@ -106,45 +104,49 @@ public class ApplicantServiceImpl implements ApplicantService {
 		return applicants;
 	}
 
+	
 	@Override
 	public ApplicationDTO findApplicationById(Integer id) {
 		ApplicationDTO applicants = applicantRepository.findApplicationById(id);
 
 		return applicants;
 	}
+	
+	@Override
+	public ApplicationDTO findByIdApplicant(Integer id) {
+		return applicantRepository.findApplicationById(id);
+		
+	}
 
 	@Override
 	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO) {
-			Applicant applicant = new Applicant();
-			applicant.setTrackingStatus("Waiting for consider");
-		
-			try {
-				applicantRepository.insert(applicant.fromApplicationDTO(applicant, applicationDTO));			
-			} catch (ParseException e) {
-				e.printStackTrace();
-			}
-		
-	
+		Applicant applicant = new Applicant();
+		applicant.setTrackingStatus("Waiting for consider");
+		try {
+			applicantRepository.insert(applicant.fromApplicationDTO(applicant,
+					applicationDTO));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
 		applicationDTO.setId(applicant.getId());
 		return applicationDTO;
 	}
+   
 
-	@Override
-	public ApplicationDTO saveAddress(ApplicationDTO applicationDTO) {
-		List<Address> address = applicationDTO.getAddress();
-		for (Address add : address) {
-			add.setId(applicationDTO.getId());
-			addressRepository.insert(add);
+	
+	  /*-------------------- Report --------------------*/
+		//findAll
+		public List<ReportApplicantDTO> reportApplicant() {
+			return applicantRepository.reportApplicant();
 		}
-		return applicationDTO;
-	}
+		//find by criteria
+		@Override
+		public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, String gpa) {
+			return applicantRepository.findReportByCriteria(position, degree, major, schoolName, gpa);
+		}
 
-	@Override
-	public List<ReportApplicantDTO> reportApplicant() {
-		return applicantRepository.reportApplicant();
-	}
+		
 
-	public ApplicationDTO findByIdApplicant(Integer id) {
-		return applicantRepository.findApplicationById(id);
-	}
+	
 }

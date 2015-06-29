@@ -41,10 +41,23 @@ public class ApplicantRepositoryImpl extends
 		ApplicantDTO app = result.get(0);
 		return app;
 	}
-
+/*-------------------- report --------------------*/
 	@Override
 	public List<ReportApplicantDTO> reportApplicant() {
 		Query query = getCurrentSession().getNamedQuery("REPORT_APPLICANT");
+		List<ReportApplicantDTO> results = query.list();
+		return results;
+	}
+
+	@Override
+	public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, String gpa) {
+		Query query = getCurrentSession().getNamedQuery("REPORT_SEARCH_BY_CRITERIA"); 
+		query.setParameter("POSITION", "%" + position + "%");
+		query.setParameter("DEGREE", "%" + degree + "%");
+		query.setParameter("MAJOR", "%" + major + "%");
+		query.setParameter("SCHOOL_NAME", "%"+ schoolName +"%");
+		query.setParameter("GPA", gpa);
+		
 		List<ReportApplicantDTO> results = query.list();
 		return results;
 	}

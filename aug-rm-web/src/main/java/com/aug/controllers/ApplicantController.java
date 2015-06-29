@@ -49,6 +49,8 @@ public class ApplicantController implements Serializable {
 	@Autowired private ApplicantService applicantService;
 	@Autowired private PositionService positionService;
 	@Autowired private ReportService reportService;
+	
+	private List<ReportApplicantDTO> dt;
 
 	@RequestMapping(value = "/applicant", method = { RequestMethod.GET })
 	public String helloPage(Model model) {
@@ -199,7 +201,7 @@ public class ApplicantController implements Serializable {
 		return "/main_report";
 	}
 	//Report search all Don't use
-	@RequestMapping(value = "/report/search", method = { RequestMethod.GET })
+	/*@RequestMapping(value = "/report/search", method = { RequestMethod.GET })
 	public @ResponseBody Object searchAllApplicantForReport() {
 		final List<ReportApplicantDTO> data = applicantService.reportApplicant();
 		return new Object() {
@@ -207,24 +209,33 @@ public class ApplicantController implements Serializable {
 				return data;
 			}
 		};
-	}
+	}*/
 	
 	/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
-/*	@RequestMapping(value = "/report/search", method = { RequestMethod.POST })
-	public @ResponseBody Object searchAllApplicantForReport(
-			@RequestParam final String position, String degree, String major, double gpa,String schoolName) {
-		final List<ReportApplicantDTO> data = applicantService.reportApplicant();
-		if (StringUtils.isEmpty(major)) {
+	@RequestMapping(value = "/report/search", method = { RequestMethod.POST })
+	public @ResponseBody Object searchReportBy(
+			@RequestParam Integer position, String degree, String major, String schoolName, String gpa) {
+		List<ReportApplicantDTO> data;
+		if (position == -1 && degree.isEmpty() && major.isEmpty() && schoolName.isEmpty() && gpa.isEmpty()){ 
 			data = applicantService.reportApplicant();
+		} else {
+			String positionName ="";
+			if (position != -1) {
+				positionName = positionService.findById(position).getPositionName();
+			}
+			if(gpa.isEmpty()){
+				gpa ="";
+			}
+			data = applicantService.findReportByCriteria(positionName, degree, major, schoolName, gpa);// search by
 		}
 		final List<ReportApplicantDTO> datas = data;
 		return new Object() {
 			public List<ReportApplicantDTO> getData() {
-				return data;
+				return datas;
 			}
 		};
 	}
-	*/
+	
 	
 	
 /*
@@ -324,6 +335,36 @@ public class ApplicantController implements Serializable {
 		return mv;
 	}
 */
+	
+	
+	/*-------------------- preview reports function--------------------*/
+	/*@RequestMapping(value = "/report/preview", method = { RequestMethod.POST })
+	public ModelAndView previewReport(
+			@ModelAttribute(value = "applicant") Applicant applicant,
+			ModelMap map, HttpSession session, Locale locale) {
+		List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
+		Map<String, Object> parameterMap = new HashMap<String, Object>();
+		parameterMap.put("date", new java.util.Date());
+		parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
+		ModelAndView mv = reportService.getReport(reportApplicantList,
+				"Report_AugRmSystem", "pdf", parameterMap);
+		return mv;
+	}*/
+	
+	
+	/*-------------------- download report--------------------*/
+/*	@RequestMapping(value = "/report/preview", method = { RequestMethod.POST })
+	public ModelAndView downloadReport(
+			@ModelAttribute(value = "applicant") Applicant applicant,
+			ModelMap map, HttpSession session, Locale locale) {
+		List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
+		Map<String, Object> parameterMap = new HashMap<String, Object>();
+		parameterMap.put("date", new java.util.Date());
+		parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
+		ModelAndView mv = reportService.getReport(reportApplicantList,
+				"Report_AugRmSystem", applicant.getReportType(), parameterMap);
+		return mv;
+	}*/
 	
 	/*-------------------- Position List--------------------*/
 	@ModelAttribute("positionRequest")

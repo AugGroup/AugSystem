@@ -151,7 +151,7 @@
                 		edit(button);
                 		});
                 } else {
-                	// $('#requestForm')[0].reset();
+                	$('#requestForm')[0].reset();
                 	$('#btn_save_req').off('click').on('click', function () {
                 		save();
                 		});

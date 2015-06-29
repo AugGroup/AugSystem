@@ -81,7 +81,20 @@
 				}
 			});
 			 
-			
+			//EditStatusModal
+		 	$('#EditStatusModal').on('show.bs.modal',function(e){
+				var button = e.relatedTarget;
+				if (button != null){
+					var applicantId = $(button).data("id");
+					if(applicantId != null){
+						findById(applicantId);
+						console.log(applicantId);
+						$("#btn_submit").off("click").on("click", function(){
+							updateUser(button);
+							});
+					}
+				}
+			});
 			
 			//Find by Id
 			function findById(id){
@@ -97,16 +110,13 @@
 			
 			//Show data on inputField
 			function showFillData(data){
-				$("#inputScore").val(data.score);
-				var tscr = $("#inputTechScore").val(data.techScore);
-				if(tscr == "Pass"){
-					$("input[name=inputTechScore][value=" + data.techScore + "]").prop('checked', true);
-				}else if(tscr == "Not pass"){
-					$("input[name=inputTechScore][value=" + data.techScore + "]").prop('checked', true);
-				}
-				$("#inputAttitudeHome").val(data.attitudeHome);
-				$("#inputAttitudeOffice").val(data.attitudeOffice);
-				$("#inputStatus").val(data.trackingStatus);
+				$('#EditStatusForm')[0].reset();
+				$('#inputScore').val(data.score);
+				$('input[name="inputTechScore"][value='+data.techScore+']').prop('checked', true);			
+				console.log(data.techScore);
+				$('#inputAttitudeHome').val(data.attitudeHome);
+				$('#inputAttitudeOffice').val(data.attitudeOffice);
+				$('#inputStatus').val(data.trackingStatus);
 				
 			}
 			//Update Score Fuction
@@ -143,8 +153,8 @@
 					 			d.attitudeHome = data.attitudeHome;
 					 			d.attitudeOffice = data.attitudeOffice;
 					 			d.trackingStatus = data.trackingStatus;
-					 		
 					 			table.row(rowData).data(d).draw();
+					 			
 					 		
 								new PNotify({
 							    	title: 'Edit score is successful',
@@ -160,21 +170,7 @@
 				}
 			}
 			
-			//EditStatusModal
-		 	$('#EditStatusModal').on( 'show.bs.modal',function(e){
-				var button = e.relatedTarget;
-				if (button != null){
-					var applicantId = $(button).data("id");
-					if(applicantId != null){
-						findById(applicantId);
-						console.log(applicantId);
-						
-						$("#btn_submit").off("click").on("click", function(){
-							updateUser(button);
-							});
-					}
-				}
-			});
+			
 		 	
 	        //delete Modal
 	        $('#deleteModal').on('shown.bs.modal', function (e) {
@@ -288,6 +284,7 @@
 								</label>
 								<label class="radio-inline">
 								    <input type="radio" value="Not pass" id="inputTechScore" name="inputTechScore"><spring:message code="edit.radio.notPass"/>
+
 								</label>
     						</div>
 							<div class="form-group">
@@ -320,7 +317,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="alert"><spring:message code="edit.button.save"/></button>
-    					<button type="button"  class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
+    					<button type="button" id="btn_close" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
     				</div>
 				</div>
 			</div>

@@ -45,15 +45,27 @@
 				});
 		
 		/*------------------- Approve Modal Function------------------- */
-		$('#approveModal').off("click").on('shown.bs.modal', function (e) {
+		$('#approveModal').on('shown.bs.modal', function (e) {
 			var button = e.relatedTarget;
 			var id = $(button).data("id");
 			if (id !== null) {
+				editSearch(id);
 				$('#btn_approve_submit').off('click').on('click', function () {
 					approve(button);
 					});
 				}
 			});
+		/*------------------- Edit Function (Search id and fill)------------------- */
+		function editSearch(id) {
+        	$.ajax({
+        		url: "${pageContext.request.contextPath}/request/search/" + id,
+        		type: "POST",
+        		success: function (data) {
+        			 $('#inputStatus').val(data.status);
+        			 console.log(data.status);
+        		}
+        	});
+        }
 /*------------------- Approve Function------------------- */
 		function approve(button) {
 			var id = $(button).data("id");

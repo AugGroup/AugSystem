@@ -10,11 +10,10 @@
 		applicant.APPLY_DATE AS applyDate,
 		applicant.ATTITUDE_HOME AS attitudeHome,
 		applicant.ATTITUDE_OFFICE AS attitudeOffice,
-		applicant.CERTIFICATE AS certificate,
 		applicant.APPLICANT_CODE AS code,
 		applicant.EMAIL AS email,
-		applicant.FIRSTNAME_EN AS firstNameEn,
-		applicant.LASTNAME_EN AS lastNameEn,
+		applicant.FIRSTNAME_EN AS firstNameEN,
+		applicant.LASTNAME_EN AS lastNameEN,
 		applicant.SCORE AS score,
 		applicant.SEX AS sex,
 		applicant.TECH_SCORE AS techScore,
@@ -52,15 +51,12 @@
 	<field name="applyDate" class="java.sql.Timestamp"/>
 	<field name="attitudeHome" class="java.lang.String"/>
 	<field name="attitudeOffice" class="java.lang.String"/>
-	<field name="certificate" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="code" class="java.lang.String"/>
 	<field name="email" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="firstNameEn" class="java.lang.String"/>
-	<field name="lastNameEn" class="java.lang.String"/>
+	<field name="firstNameEN" class="java.lang.String"/>
+	<field name="lastNameEN" class="java.lang.String"/>
 	<field name="score" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
@@ -99,7 +95,7 @@
 	<field name="positionCode3" class="java.lang.String"/>
 	<field name="positionName3" class="java.lang.String"/>
 	<variable name="fullname" class="java.lang.String">
-		<variableExpression><![CDATA[$F{firstNameEn}+" "+$F{lastNameEn}]]></variableExpression>
+		<variableExpression><![CDATA[$F{firstNameEN}+" "+$F{lastNameEN}]]></variableExpression>
 	</variable>
 	<background>
 		<band splitType="Stretch"/>
