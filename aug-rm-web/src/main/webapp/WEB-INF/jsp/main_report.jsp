@@ -44,15 +44,47 @@ $(document).ready(function () {
 		});
 	$('#btn_search').trigger("click");
 	
-	
-/* 	$(".submit").click(function() {
-		$("form[name='reportForm']").submit();
-		$("#previewReportModal").modal("hide");
-		previewReport();
+	 $('#previewReportModal').on('show.bs.modal',function(){
+		var reportType = $('input[name="inputReportType"]:checked').val();
+		//debugger
+		$("#btn_submit").off("click").on("click", function(){
+			previewReport(reportType);
+		});
+			
 	});
-	 */
+	
+	function previewReport(reportType){
+		var position = $('#inputPosition').val();
+		var degree = $('#inputDegree').val();
+		var major = $('#inputMajor').val();
+		var schoolName = $('#inputSchoolName').val();
+		var gpa = $('#inputGPA').val(); 
+		var json = {
+				"position" : position,
+				"degree" : degree,
+				"major" : major,
+				"schoolName" : schoolName,
+				"gpa" : gpa,
+				//"reportType" : reportType
+				};
+			$.ajax({
+				url : "${pageContext.request.contextPath}/report/preview",
+				type : "POST",
+				contentType :"application/json; charset=utf-8", 
+				data : JSON.stringify(json),
+				success : function(data){
+					$('#previewReportModal').modal('hide');
+				}
+			}); 
+	
+	}
 	
 	
+ 	/* $(".submit").click(function() {
+		$("form[name='reportForm']").submit();
+		//$("#previewReportModal").modal("hide");
+	}); */
+	 	
 });
 	
 </script>
@@ -89,8 +121,8 @@ $(document).ready(function () {
     	</div>
    		<div class="col-md-1">
    			<div class="form-group" style="width:93px">
-    			<label for="inputGPA">GPA</label> 
-				<input type="text" class="form-control" id="inputGPA" name="inputGPA" placeholder="Enter GPA">
+    			<label for="inputGPA">GPA</label> <!-- step="0.1" -->
+				<input type="text"  class="form-control" id="inputGPA" name="inputGPA" placeholder="Enter GPA">
     		</div>
    		</div>
    		<div class="col-md-2">
@@ -99,20 +131,24 @@ $(document).ready(function () {
 				<input type="text" class="form-control" id="inputSchoolName" name="inputSchoolName" placeholder="Enter School Name">
 			</div>
    		</div>
-   		 <div class="col-md-1" align="bottom">
-   		 	<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> Search </button>				
+   		</div>
+   		<div class="row">
+   			<!-- <div class="col-md-7" align="right">
+   				<div class="form-group">
+   					<label for="inputReportType">Report Type </label>
+						<input type="radio" value="pass" id="inputReportType" name="inputReportType"> PDF 
+						<input type="radio" value="Not pass" id="inputReportType" name="inputReportType"> XLS 
+    			</div>
+    		</div> -->
+   		 	<div class="col-md-3" align="right">
+   		 		<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> Search </button>				
+   		 	</div>
+   			 <div class="col-md-1" align="left">	
+   			 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#previewReportModal" id="btn_preview"><span class="glyphicon glyphicon-search"></span> Preview </button>
+   			 				
+		 	</div>
 		 </div>
-    </div>
-	<!------------------- Report preview and download --------------------> 
-	<div class="row" >
-		 <div class="col-md-8"></div>
-		 <div class="col-md-1">
-   		 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#previewReportModal" id="btn_preview"> Preview </button>				
-		 </div>
-		 <div class="col-md-1">
-   		 	<button type="button" class="btn btn-default" id="btn_download"> Download </button>				
-		 </div>
-	</div>
+
 	
 	<!------------------- Report Modal preview and download -------------------->
 	<div class="modal fade" id="previewReportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -122,23 +158,20 @@ $(document).ready(function () {
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					<h4 class="modal-title"> Report</h4>
 				</div>
-				<f:form method="post" name="reportForm" target="_blank" commandName="applicant" action="${pageContext.request.contextPath}/report/preview" cssClass="form-horizontal">
-					<div class="modal-body">
-						  Report
-					</div><%-- 
-					<div class="form-group form-group-sm">
-						<div class="col-sm-3"> Document Type </div>
-						 <div class="col-sm-6">
-							 <label class="radio-inline"><f:radiobutton  path="reportType" value="pdf"/>Pdf</label>
-							 <label class="radio-inline"><f:radiobutton path="reportType" value="xls"/>Xls</label>
-						 </div>
-					 </div> --%>
-		
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default submit" value="preview" id="btn_submit">Preview</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				</div>
-				</f:form>
+<%-- 				<f:form method="post" name="reportForm" target="_blank" commandName="applicant" action="${pageContext.request.contextPath}/report/preview" cssClass="form-horizontal">--%>					<div class="modal-body"> Report	
+						<div class="col-md-7" align="right">
+   							<div class="form-group">
+   								<label for="inputReportType">Report Type </label>
+								<input type="radio" value="pass" id="inputReportType" name="inputReportType"> PDF 
+								<input type="radio" value="Not pass" id="inputReportType" name="inputReportType"> XLS 
+					        </div>
+    	                </div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default submit" value="preview" id="btn_submit">Preview</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				<%-- </f:form> --%>
 			</div>
 		</div>
 	</div>

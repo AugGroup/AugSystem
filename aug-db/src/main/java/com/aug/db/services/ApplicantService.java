@@ -36,8 +36,8 @@ public interface ApplicantService {
 	/*-------------------- report search --------------------*/
 	public List<ReportApplicantDTO> reportApplicant();
 	
-	public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, String gpa);
+	public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, Double gpa);
+
 	
 	public void update(ApplicationDTO applicationDTO);
-
 }

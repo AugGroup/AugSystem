@@ -105,6 +105,13 @@
 			<rectangle>
 				<reportElement x="61" y="9" width="432" height="61" backcolor="#FFCC00" uuid="9c9a1f06-2f7e-4c51-be58-3d6985e7e709"/>
 			</rectangle>
+			<staticText>
+				<reportElement x="99" y="19" width="345" height="40" uuid="8bd555c3-a185-4252-97de-93cbde024360"/>
+				<textElement textAlignment="Center">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Report]]></text>
+			</staticText>
 		</band>
 	</title>
 	<columnHeader>

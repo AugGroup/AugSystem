@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -159,7 +160,7 @@ public class ReportApplicantDTO {
 	private String faculty;
 
 	@Column(name = "gpa")
-	private double gpa;
+	private Double gpa;
 
 	@Column(name = "major")
 	private String major;
@@ -193,6 +194,9 @@ public class ReportApplicantDTO {
 	private String positionName2;
 	@Column(name = "positionName3")
 	private String positionName3;
+	
+	@Transient
+	private String reportType;
 	
 	
 	public Integer getId() {
@@ -316,10 +320,10 @@ public class ReportApplicantDTO {
 	public void setFaculty(String faculty) {
 		this.faculty = faculty;
 	}
-	public double getGpa() {
+	public Double getGpa() {
 		return gpa;
 	}
-	public void setGpa(double gpa) {
+	public void setGpa(Double gpa) {
 		this.gpa = gpa;
 	}
 	public String getMajor() {
@@ -395,5 +399,15 @@ public class ReportApplicantDTO {
 	public void setPositionName3(String positionName3) {
 		this.positionName3 = positionName3;
 	}
+	public String getReportType() {
+		return reportType;
+	}
+	public void setReportType(String reportType) {
+		this.reportType = reportType;
+	}
+	
+	
+	
+	
 
 }

@@ -140,7 +140,7 @@ public class ApplicantServiceImpl implements ApplicantService {
 		}
 		//find by criteria
 		@Override
-		public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, String gpa) {
+		public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, Double gpa) {
 			return applicantRepository.findReportByCriteria(position, degree, major, schoolName, gpa);
 		}
 

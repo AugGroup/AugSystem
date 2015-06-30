@@ -52,13 +52,13 @@ public class ApplicantRepositoryImpl extends
 	}
 
 	@Override
-	public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, String gpa) {
+	public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, Double gpa) {
 		Query query = getCurrentSession().getNamedQuery("REPORT_SEARCH_BY_CRITERIA"); 
 		query.setParameter("POSITION", "%" + position + "%");
 		query.setParameter("DEGREE", "%" + degree + "%");
 		query.setParameter("MAJOR", "%" + major + "%");
 		query.setParameter("SCHOOL_NAME", "%"+ schoolName +"%");
-		query.setParameter("GPA", gpa);
+		query.setParameter("GPA",gpa);
 		
 		List<ReportApplicantDTO> results = query.list();
 		return results;

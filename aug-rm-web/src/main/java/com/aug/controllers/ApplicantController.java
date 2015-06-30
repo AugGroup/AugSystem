@@ -200,32 +200,21 @@ public class ApplicantController implements Serializable {
 	public String mainReport(){
 		return "/main_report";
 	}
-	//Report search all Don't use
-	/*@RequestMapping(value = "/report/search", method = { RequestMethod.GET })
-	public @ResponseBody Object searchAllApplicantForReport() {
-		final List<ReportApplicantDTO> data = applicantService.reportApplicant();
-		return new Object() {
-			public List<ReportApplicantDTO> getData() {
-				return data;
-			}
-		};
-	}*/
 	
 	/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
 	@RequestMapping(value = "/report/search", method = { RequestMethod.POST })
 	public @ResponseBody Object searchReportBy(
-			@RequestParam Integer position, String degree, String major, String schoolName, String gpa) {
+			@RequestParam Integer position, String degree, String major, String schoolName, Double gpa) {
 		List<ReportApplicantDTO> data;
-		if (position == -1 && degree.isEmpty() && major.isEmpty() && schoolName.isEmpty() && gpa.isEmpty()){ 
+		if (position == -1 && degree.isEmpty() && major.isEmpty() && schoolName.isEmpty() && gpa==null){ 			
 			data = applicantService.reportApplicant();
 		} else {
 			String positionName ="";
+			
 			if (position != -1) {
 				positionName = positionService.findById(position).getPositionName();
 			}
-			if(gpa.isEmpty()){
-				gpa ="";
-			}
+			System.out.println("positionName "+positionName+"  GPA: "+gpa);
 			data = applicantService.findReportByCriteria(positionName, degree, major, schoolName, gpa);// search by
 		}
 		final List<ReportApplicantDTO> datas = data;
@@ -338,9 +327,8 @@ public class ApplicantController implements Serializable {
 	
 	
 	/*-------------------- preview reports function--------------------*/
-	/*@RequestMapping(value = "/report/preview", method = { RequestMethod.POST })
-	public ModelAndView previewReport(
-			@ModelAttribute(value = "applicant") Applicant applicant,
+	@RequestMapping(value = "/report/preview", method = { RequestMethod.POST })
+	public ModelAndView previewReport(@ModelAttribute(value = "applicant") Applicant applicant,
 			ModelMap map, HttpSession session, Locale locale) {
 		List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
 		Map<String, Object> parameterMap = new HashMap<String, Object>();
@@ -349,7 +337,7 @@ public class ApplicantController implements Serializable {
 		ModelAndView mv = reportService.getReport(reportApplicantList,
 				"Report_AugRmSystem", "pdf", parameterMap);
 		return mv;
-	}*/
+	}
 	
 	
 	/*-------------------- download report--------------------*/

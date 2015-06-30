@@ -30,7 +30,7 @@ public class Education {
 	private String major;
 
 	@Column(name = "GPA")
-	private double gpa;
+	private Double gpa;
 
 	@Column(name = "YEAR_OF_GRADUATE")
 	private String yearsOfGraduate;
