@@ -21,6 +21,7 @@
 	<http use-expressions="true" auto-config='true'>
 
 		<intercept-url pattern="/login" access="permitAll" />
+		<intercept-url pattern="/accessdenied" access="permitAll" />
 		<intercept-url pattern="/applicant" access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF','ROLE_MANAGER')" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
 		<logout logout-success-url="/login" delete-cookies="JSESSIONID" invalidate-session="true"/>
