@@ -58,7 +58,12 @@ public class ApplicantRepositoryImpl extends
 		query.setParameter("DEGREE", "%" + degree + "%");
 		query.setParameter("MAJOR", "%" + major + "%");
 		query.setParameter("SCHOOL_NAME", "%"+ schoolName +"%");
-		query.setParameter("GPA",gpa);
+		if(gpa!=null){
+			String queryStr = query.getQueryString();
+			queryStr += " AND education.GPA = :GPA " ;
+			getCurrentSession().createSQLQuery(queryStr);
+			query.setParameter("GPA",gpa);
+		}
 		
 		List<ReportApplicantDTO> results = query.list();
 		return results;

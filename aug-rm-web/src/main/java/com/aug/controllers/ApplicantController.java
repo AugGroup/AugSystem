@@ -19,7 +19,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -33,8 +32,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.aug.db.dto.ApplicantDTO;
-import com.aug.db.dto.ReportApplicantDTO;
 import com.aug.db.dto.ApplicationDTO;
+import com.aug.db.dto.ReportApplicantDTO;
+import com.aug.db.dto.SearchReportDTO;
 import com.aug.db.entities.Applicant;
 import com.aug.db.entities.Position;
 import com.aug.db.services.ApplicantService;
@@ -210,7 +210,6 @@ public class ApplicantController implements Serializable {
 			data = applicantService.reportApplicant();
 		} else {
 			String positionName ="";
-			
 			if (position != -1) {
 				positionName = positionService.findById(position).getPositionName();
 			}
@@ -327,15 +326,34 @@ public class ApplicantController implements Serializable {
 	
 	
 	/*-------------------- preview reports function--------------------*/
-	@RequestMapping(value = "/report/preview", method = { RequestMethod.POST })
-	public ModelAndView previewReport(@ModelAttribute(value = "applicant") Applicant applicant,
-			ModelMap map, HttpSession session, Locale locale) {
-		List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
+	@RequestMapping(value = "/report/preview", method = { RequestMethod.POST,RequestMethod.GET  })
+	public ModelAndView previewReport(@ModelAttribute SearchReportDTO searchReportDTO,
+			HttpSession session, Locale locale) {
+		List<ReportApplicantDTO> reportApplicantList =null;
+		Integer position = searchReportDTO.getPosition();
+		String degree = searchReportDTO.getDegree();
+		String major = searchReportDTO.getMajor();
+		String schoolName = searchReportDTO.getSchoolName();
+		Double gpa = searchReportDTO.getGpa();
+		String reportType = searchReportDTO.getReportType();
+		System.out.println(position);
+		if (position == -1 && degree.isEmpty() && major.isEmpty() && schoolName.isEmpty() && gpa==null){ 			
+			reportApplicantList = applicantService.reportApplicant();
+			System.out.println(position);
+		}else {
+			String positionName ="";
+			if (position != -1) {
+				positionName = positionService.findById(searchReportDTO.getPosition()).getPositionName();
+			}
+			System.out.println("positionName "+positionName+"  GPA: "+gpa);
+			reportApplicantList = applicantService.findReportByCriteria(positionName, degree, major, schoolName, gpa);// search by
+		}
+		
 		Map<String, Object> parameterMap = new HashMap<String, Object>();
 		parameterMap.put("date", new java.util.Date());
 		parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
 		ModelAndView mv = reportService.getReport(reportApplicantList,
-				"Report_AugRmSystem", "pdf", parameterMap);
+				"Report_AugRmSystem", reportType, parameterMap);
 		return mv;
 	}
 	
@@ -358,6 +376,12 @@ public class ApplicantController implements Serializable {
 	@ModelAttribute("positionRequest")
 	public List<Position> getPosition() {
 		return positionService.findAll();
+
+	}
+	
+	@ModelAttribute("searchReportDTO")
+	public SearchReportDTO getsearchReport() {
+		return new SearchReportDTO();
 
 	}
 }
