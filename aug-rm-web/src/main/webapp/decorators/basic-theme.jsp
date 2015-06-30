@@ -89,10 +89,10 @@
         				</li> --%>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="${pageContext.request.contextPath}/login?locale=en"><spring:message code="sitemesh.en"/></a></li>
-						<li><a href="${pageContext.request.contextPath}/login?locale=th"><spring:message code="sitemesh.th"/></a></li>
+						<li><a href="${request.getRequestURL}?locale=en"><spring:message code="sitemesh.en"/></a></li>
+						<li><a href="${request.getRequestURL}?locale=th"><spring:message code="sitemesh.th"/></a></li>
 						<li><a href=""><span class="glyphicon glyphicon-user"></span> ${name}</a></li>
-						<li><a href="<c:url value="j_spring_security_logout" />"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a></li>
+						<li><a href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a></li>
 					</ul>
 				</div>
 			</div>
