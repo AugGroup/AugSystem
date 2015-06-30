@@ -17,6 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.Index;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.aug.db.dto.ApplicationDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -112,7 +113,7 @@ public class Applicant {
 
 	@Column(name = "NOTICE_OTHER")
 	private String noticeOther;
-
+	
 	@ManyToOne
 	@Index(name = "position1Index")
 	@JoinColumn(name = "POSITION1_ID", referencedColumnName = "id")
@@ -840,7 +841,7 @@ public class Applicant {
 	public void setMilitaryStatus(String militaryStatus) {
 		this.militaryStatus = militaryStatus;
 	}
-
+	
 	public Applicant fromApplicationDTO(Applicant applicant,ApplicationDTO applicationDTO) throws ParseException {
 		applicant.setId(applicationDTO.getId());
 		applicant.setFirstNameTH(applicationDTO.getFirstNameTH());

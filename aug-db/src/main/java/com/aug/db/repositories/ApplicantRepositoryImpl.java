@@ -1,8 +1,10 @@
 package com.aug.db.repositories;
 
 import java.io.Serializable;
+import java.text.ParseException;
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -73,7 +75,16 @@ public class ApplicantRepositoryImpl extends
 
 	@Override
 	public void update(ApplicationDTO applicationDTO) {
-		getCurrentSession().update(applicationDTO);
+		Applicant applicant= new Applicant();
+		try {
+			getCurrentSession().saveOrUpdate(applicant.fromApplicationDTO(applicant, applicationDTO));
+		} catch (HibernateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }

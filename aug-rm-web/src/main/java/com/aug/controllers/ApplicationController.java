@@ -121,17 +121,8 @@ public class ApplicationController {
 		return "informations";
 
 	}
-	
-	@RequestMapping(value = "/informationsave/{id}", method = { RequestMethod.GET })
-	public String informationsId(@PathVariable Integer id, Model model) {
-		model.addAttribute("applicant",applicantService.findById(id));
-		return "informations";
-
-	}
-
 	@RequestMapping(value = "/saveInformations", method = { RequestMethod.POST })
-	public String saveInformations(
-			@ModelAttribute ApplicationDTO applicationDTO, Model model,MultipartFile multipartFile)
+	public String saveInformations(@ModelAttribute ApplicationDTO applicationDTO, Model model,MultipartFile multipartFile)
 			throws ParseException {
 		if(applicationDTO.getImageMultipartFile()!=null&&applicationDTO.getImageMultipartFile().getSize()>0){
 			try {
@@ -167,7 +158,6 @@ public class ApplicationController {
 
 		model.addAttribute("id", applicationDTO.getId());
 		model.addAttribute("applicant", applicationDTO);
-		System.out.println(applicationDTO.getPosition1());
 		return "informations";
 	}
 
@@ -307,24 +297,53 @@ public class ApplicationController {
 	
 	@RequestMapping(value = "/info/{id}", method = { RequestMethod.GET })
 	public String updateInfo(@ModelAttribute ApplicationDTO applicationDTO,
-			@PathVariable Integer id, ModelMap model) {
+			@PathVariable Integer id, Model  model) {
 		applicationDTO = applicantService.findByIdApplicant(id);
 		model.addAttribute("applicant",applicationDTO);
+		/*model.addAttribute("image", applicationDTO.getImage());
+		model.addAttribute("resume", applicationDTO.getResume());
+		model.addAttribute("transcript", applicationDTO.getTranscript());*/
 
 		return "informations";
 	}
 
 	@RequestMapping(value = "/infoEdit/{id}", method = { RequestMethod.POST })
-	public String updateInformations(@ModelAttribute ApplicationDTO applicationDTO,@PathVariable Integer id,ModelMap model) {
-		applicantService.update(applicationDTO);
-		return "redirect:informations";
-	}
+	public String updateInformations(@ModelAttribute ApplicationDTO applicationDTO,@PathVariable Integer id,Model  model,MultipartFile multipartFile) {
+		if(applicationDTO.getImageMultipartFile()!=null&&applicationDTO.getImageMultipartFile().getSize()>0){
+			try {
+				applicationDTO.setImage(applicationDTO.getImageMultipartFile().getOriginalFilename());
+				uploadService.upload("Applicant",applicationDTO.getImageMultipartFile().getOriginalFilename(),applicationDTO.getImageMultipartFile());
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if(applicationDTO.getResumeMultipartFile()!=null&&applicationDTO.getResumeMultipartFile().getSize()>0){
+			try {
+				applicationDTO.setResume(applicationDTO.getResumeMultipartFile().getOriginalFilename());
+				uploadService.upload("Applicant",applicationDTO.getResumeMultipartFile().getOriginalFilename(),applicationDTO.getResumeMultipartFile());
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		if(applicationDTO.getTranscriptMultipartFile()!=null&&applicationDTO.getTranscriptMultipartFile().getSize()>0){
+			try {
+				applicationDTO.setTranscript(applicationDTO.getTranscriptMultipartFile().getOriginalFilename());
+				uploadService.upload("Applicant",applicationDTO.getTranscriptMultipartFile().getOriginalFilename(),applicationDTO.getTranscriptMultipartFile());
+			} catch (RuntimeException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	
-	@RequestMapping(value = "/update/informations/{id}", method= {RequestMethod.POST})
-	public String updatePost(@ModelAttribute Applicant applicant,BindingResult result,@PathVariable Integer id,ModelMap model) {
-		System.out.println("userUpdatePost");
-		applicantService.update(applicant);
-		return "redirect:/informations";
+		applicantService.update(applicationDTO);
+		model.addAttribute("applicant", applicationDTO);
+
+		return "informations";
 	}
 	
 	@RequestMapping(value = "/findByIdApplicants/{id}", method = { RequestMethod.POST })
@@ -675,5 +694,4 @@ public class ApplicationController {
 	public ApplicationDTO applicant() {
 		return new ApplicationDTO();
 	}
-
 }

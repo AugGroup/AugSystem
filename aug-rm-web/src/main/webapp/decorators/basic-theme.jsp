@@ -28,35 +28,32 @@
 	href="<c:url value ="/static/resources/css/jquery.dataTables.min.css"/>" />
 
 
-<script
-	src='<c:url value ="/static/resources/js/pnotify.custom.min.js"/>'></script>
+<script src='<c:url value ="/static/resources/js/pnotify.custom.min.js"/>'></script>
 <link rel="stylesheet" type="text/css" media="all"
 	href="<c:url value ="/static/resources/css/pnotify.custom.min.css"/>" />
 
-<script
-	src='<c:url value ="/static/resources/js/jquery.validate.min.js"/>'></script>
-<script
-	src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
+<script src='<c:url value ="/static/resources/js/jquery.validate.min.js"/>'></script>
+<script src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
 	
-	<script
-	src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
+	<script src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
 	<script
 	src='<c:url value ="/static/resources/js/jquery.maskedinput.min.js" />'></script>
 	
+	<%-- <script src='<c:url value ="/static/resources/js/fileinput.min.js"/>'></script>
+	<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/fileinput.min.css"/>" /> --%>
 </head>
 <style>
 .error {
 	color: #ff0000;
 }
-/* #imagePreview {
-    width: 180px;
-    height: 180px;
-    background-position: center center;
+#imagePreview{
+    width: 150px;
+    height: 188px;
+    background-position: center;
     background-size: cover;
     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
     display: inline-block;
-} */
-
+}
 /* body {background-color:#efe0cb} */
 </style>
 

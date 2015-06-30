@@ -13,7 +13,63 @@
 			 $("#tel").mask("(999) 999-9999");
 			 $("#emergencyTel").mask("(999) 999-9999");
 			 $("#cardId").mask("9999-9999-9999-9");
+			 $("#imageMultipartFile").on("change", function()
+					    {
+					        var files = !!this.files ? this.files : [];
+					        if (!files.length || !window.FileReader) return; // no file selected, or no FileReader support
+					        if (/^image/.test( files[0].type)){ // only image file
+					            var reader = new FileReader(); // instance of the FileReader
+					            reader.readAsDataURL(files[0]); // read the local file
+					            reader.onloadend = function(){ // set image data as background of div
+					            	
+					                $("#imagePreview").css("background-image", "url("+this.result+")");
+			   	              }
+					        }
+					        
+					    });
 			 
+			/*  $("#imageMultipartFile").fileinput({
+					showUpload: false,
+					layoutTemplates: {
+				        main1: "{preview}\n" +
+				        "<div class=\'input-group {class}\'>\n" +
+				        "   <div class=\'input-group-btn\'>\n" +
+				        "       {browse}\n" +
+				        "       {upload}\n" +
+				        "       {remove}\n" +
+				        "   </div>\n" +
+				        "   {caption}\n" +
+				        "</div>"
+				    }
+				});
+			 $("#resumeMultipartFile").fileinput({
+					showUpload: false,
+					layoutTemplates: {
+				        main1: "{preview}\n" +
+				        "<div class=\'input-group {class}\'>\n" +
+				        "   <div class=\'input-group-btn\'>\n" +
+				        "       {browse}\n" +
+				        "       {upload}\n" +
+				        "       {remove}\n" +
+				        "   </div>\n" +
+				        "   {caption}\n" +
+				        "</div>"
+				    }
+				});
+			 $("#transcriptMultipartFile").fileinput({
+					showUpload: false,
+					layoutTemplates: {
+				        main1: "{preview}\n" +
+				        "<div class=\'input-group {class}\'>\n" +
+				        "   <div class=\'input-group-btn\'>\n" +
+				        "       {browse}\n" +
+				        "       {upload}\n" +
+				        "       {remove}\n" +
+				        "   </div>\n" +
+				        "   {caption}\n" +
+				        "</div>"
+				    }
+				}); */
 			 $('#informationApplicant').validate({
 				rules : {imageMultipartFile : {
 					required : true
@@ -339,7 +395,7 @@
 <!-- tab informations -->
 <c:choose>
 		<c:when test="${applicant.id ne null}">
-			<c:set var="actionName">updateInformations/${applicant.id}</c:set>
+			<c:set var="actionName">infoEdit/${applicant.id}</c:set>
 		</c:when>
 		<c:otherwise>
 			<c:set var="actionName">saveInformations</c:set>
@@ -348,15 +404,28 @@
 
 <f:form id="informationApplicant" name="informationApplicant" action="${pageContext.request.contextPath}/${actionName}"
 		modelAttribute="applicant" method="post" enctype="multipart/form-data" class="form-inline" >
+		<f:hidden path="id" />
 	<div class="row">
-			<div class="col-md-6">
-		  <div class="form-group">
+		<div class="col-md-6">
+			 <div class="form-group">
+			 	<spring:message code="info.photograph"/><br><br>
+	<c:choose>
+		<c:when test="${empty applicant.image}">
+						<div  id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/static/decorators/noPhotoAvailable-resize.jpg')"></div>
+ 		</c:when>
+ 		<c:when test="${not empty applicant.image}">
+ 						<div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=APPLICANT&fileName=${applicant.image}');"></div>
+	</c:when>
+	</c:choose>
+			 	<br><br>
+				<input id="imageMultipartFile" name="imageMultipartFile" type="file" accept="image/*" >
+			</div>
+	
+ 		<%--  <div class="form-group">
 				<spring:message code="info.photograph"/> 
-				<div id="imagePreview "></div>
 				<input id="imageMultipartFile" name="imageMultipartFile" type="file" class="file" accept="image/gif,image/jpeg,image/png"></input>
 				<br><br>
-		</div> 
-		
+		</div>  --%>
 		<br>
 		<br>
 			<div class="form-group">
@@ -738,7 +807,7 @@
 			<br>
 			<div class="form-group">
 				<label for="emergencyAddress"><spring:message code="info.emergency.address"/> </label>
-					<f:textarea path="emergencyTel" class="form-control" rows="5" id="emergencyAddress"
+					<f:textarea path="emergencyAddress" class="form-control" rows="5" id="emergencyAddress"
 					name="emergencyAddress" placeholder="Enter emergency address"></f:textarea>
 					
 			</div>
