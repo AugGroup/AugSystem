@@ -471,8 +471,8 @@
 			<br>
 			<div class="form-group">
 				<label for="applicantStatus"><spring:message code="info.marriage.status"/> </label>  
-				<f:radiobutton path="applicantStatus" id="applicantStatus" name="applicantStatus" value="Single"></f:radiobutton><label> <spring:message code="info.married"/></label>
-				<f:radiobutton path="applicantStatus" id="applicantStatus" name="applicantStatus" value="Married"></f:radiobutton><label> <spring:message code="info.divorced"/></label>
+				<f:radiobutton path="applicantStatus" id="applicantStatus" name="applicantStatus" value="Single"></f:radiobutton><label> <spring:message code="info.single"/></label>
+				<f:radiobutton path="applicantStatus" id="applicantStatus" name="applicantStatus" value="Married"></f:radiobutton><label> <spring:message code="info.married"/></label>
 				<f:radiobutton path="applicantStatus" id="applicantStatus" name="applicantStatus" value="Divorced"></f:radiobutton><label> <spring:message code="info.divorced"/></label>
 			</div>
 			<br>
@@ -651,7 +651,7 @@
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="knowAugmentis"><spring:message code="info.know.aug"/>?</label> <br>
+				<label for="knowAugmentis"><spring:message code="info.know.aug"/></label> <br>
 				 <div class="checkbox">
 			  		<label><f:checkbox path="noticeNewspaper" 
 					id="noticeNewspaper" name="noticeNewspaper" value="Newspaper" ></f:checkbox><spring:message code="info.newspaper"/></label>
@@ -667,14 +667,14 @@
 				</div>
 				<br>
 				<br>
-				<div class="checkbox"><spring:message code="info.salary"/>
+				<div class="checkbox">
 			  		<label><f:checkbox path="noticeWebSite" id="noticeWebSite" name="noticeWebSite" value="Website"></f:checkbox><spring:message code="info.website"/></label>
 			  		<f:input path="noticeWebSite" class="form-control" id="noticeWebSite"
 						name="noticeWebSite" placeholder="Enter website"></f:input>
 				</div>
 				<br>
 				<br>
-				<div class="checkbox"><spring:message code="info.salary"/>
+				<div class="checkbox">
 			  		<label><f:checkbox path="noticeFriend" id="noticeFriend" name="noticeFriend" value="Friend"></f:checkbox><spring:message code="info.friend"/></label>
 			  		<f:input path="noticeFriend" class="form-control" id="noticeFriend"
 						name="noticeFriend" placeholder="Enter friend"></f:input>

@@ -58,10 +58,10 @@
 				}, {
 					data : "completeAddress"
 				}, { data : function(data) {
-					 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#referenceModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+					 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#referenceModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
 				}
 				}, { data : function(data) {
-					 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+					 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
 				}}],
 				searching : false
 
@@ -234,17 +234,15 @@
 </script>
 <jsp:include page="applicationMenu.jsp" />
 	<div class="form-group">
-		<label for="reference">REFERENCE: List three persons OTHER
-			THAN YOUR RELATIVE OR FORMER EMPLOYER who have definite knowledge of
-			your qualifications and your conducts. </label>
+		<label for="reference"><spring:message code="ref.text"/> </label>
 	</div>
 	<br>
 		<div class="row">
 			<div class="col-md-6">
-				<h1>REFERENCE</h1>
+				<h1><spring:message code="ref.name"/></h1>
 				<button class="btn btn-primary" id="referenceAdd"
 					data-toggle="modal" data-target="#referenceModal">
-					<span class="glyphicon glyphicon-plus"></span> REFERENCE
+					<span class="glyphicon glyphicon-plus"></span> <spring:message code="ref.name.add"/>
 				</button>
 			</div>
 		</div>
@@ -255,7 +253,7 @@
 					<div class="modal-header" style="padding: 35px 50px;">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4>
-							<span class="glyphicon glyphicon-lock"></span> REFERENCE
+							<span class="glyphicon glyphicon-lock"></span> <spring:message code="ref.name"/>
 						</h4>
 					</div>
 					<div class="modal-body" style="padding: 40px 50px;">
@@ -265,32 +263,32 @@
 									value="${id}">
 							</div>
 							<div class="form-group">
-								<label for="fullNameRef">FULL NAME </label> <input type="text"
+								<label for="fullNameRef"><spring:message code="ref.fullName"/> </label> <input type="text"
 									class="form-control" id="fullName" name="fullName"
-									placeholder="Enter FULL NAME">
+									placeholder="<spring:message code="ref.text.fullname"/>">
 							</div>
 							<div class="form-group">
-								<label for="completeAddress">COMPLETE ADDRESS. </label> <input
+								<label for="completeAddress"><spring:message code="ref.address"/> </label> <input
 									type="text" class="form-control" id="completeAddress"
 									name="completeAddress"
-									placeholder="Enter COMPLETE ADDRESS.">
+									placeholder="<spring:message code="ref.text.address"/>">
 							</div>
 							<div class="form-group">
-								<label for="telNo">TELEPHONE NO. </label> <input type="text"
+								<label for="telNo"><spring:message code="ref.tel"/> </label> <input type="text"
 									class="form-control" id="telNo" name="telNo"
-									placeholder="Enter TELEPHONE NO.">
+									placeholder="<spring:message code="ref.text.tel"/>">
 							</div>
 							<div class="form-group">
-								<label for="occupationRef">OCCUPATION </label> <input
+								<label for="occupationRef"><spring:message code="family.occupation"/> </label> <input
 									type="text" class="form-control" id="occupationRef"
-									name="occupationRef" placeholder="Enter occupation">
+									name="occupationRef" placeholder="<spring:message code="info.text.occupation"/>">
 							</div>
 							<br> <br>
 							<button type="button" class="btn btn-success" id="btn_save">
-								<span class="glyphicon glyphicon-off"></span> Save
+								<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
 							</button>
 							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
+								data-dismiss="modal"><spring:message code="button.cancel"/></button>
 						</form>
 					</div>
 				</div>
@@ -323,12 +321,12 @@
 		<table id="referenceTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<th>FULLNAME</th>
-					<th>TEL</th>
-					<th>OCCUPATION</th>
-					<th>COMPLETE_ADDRESS</th>
-					<th>Edit</th>
-                	<th>Delete</th>
+					<th><spring:message code="ref.data"/></th>
+					<th><spring:message code="ref.data.tel"/></th>
+					<th><spring:message code="family.data.occupation"/></th>
+					<th><spring:message code="ref.data.address"/></th>
+					<th><spring:message code="main.edit.info"/></th>
+                	<th><spring:message code="main.delete"/></th>
 				</tr>
 			</thead>
 

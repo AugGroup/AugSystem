@@ -75,10 +75,10 @@
 				            {data : "gpa"},
 				            {data : "yearsOfGraduate"},
 				            {data : function(data) {
-								return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#educationModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+								return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#educationModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
 							}},
 							{data : function(data) {
-								return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+								return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
 							}}],
 				searching : false
 
@@ -266,9 +266,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-6">
-			<h1>Education</h1>
+			<h1><spring:message code="education.name"/></h1>
 			<button class="btn btn-primary" id="educationAdd" data-toggle="modal" data-target="#educationModal">
-				<span class="glyphicon glyphicon-plus"></span> Education
+				<span class="glyphicon glyphicon-plus"></span> <spring:message code="education.name.add"/>
 			</button>
 		</div>
 	</div>
@@ -280,7 +280,7 @@
 				<div class="modal-header" style="padding: 35px 50px;">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4>
-						<span class="glyphicon glyphicon-lock"></span> Education
+						<span class="glyphicon glyphicon-lock"></span> <spring:message code="education.name"/>
 					</h4>
 				</div>
 				<div class="modal-body" style="padding: 40px 50px;">
@@ -292,43 +292,43 @@
 							</div>
 
 							<div class="form-group">
-								<label for="university">University </label> <input type="text"
+								<label for="university"><spring:message code="education.university"/> </label> <input type="text"
 									class="form-control" id="university" name="university"
-									placeholder="Enter university">
+									placeholder="<spring:message code="education.text.university"/>">
 							</div>
 
 							<div class="form-group">
-								<label for="degree">Degree </label> <input type="text"
+								<label for="degree"><spring:message code="education.degree"/> </label> <input type="text"
 									class="form-control" id="degree" name="degree"
-									placeholder="Enter degree">
+									placeholder="<spring:message code="education.text.degree"/>">
 							</div>
 
 							<div class="form-group">
-								<label for="faculty">Faculty </label> <input type="text"
+								<label for="faculty"><spring:message code="education.faculty"/> </label> <input type="text"
 									class="form-control" id="faculty" name="faculty"
-									placeholder="Enter faculty">
+									placeholder="<spring:message code="education.text.faculty"/>">
 							</div>
 							<div class="form-group">
-								<label for="major">Major </label> <input type="text"
+								<label for="major"><spring:message code="education.major"/> </label> <input type="text"
 									class="form-control" id="major" name="major"
-									placeholder="Enter major">
+									placeholder="<spring:message code="education.text.major"/>">
 							</div>
 							<div class="form-group">
-								<label for="gpa">GPA </label> <input type="text"
+								<label for="gpa"><spring:message code="education.gpa"/> </label> <input type="text"
 									class="form-control" id="gpa" name="gpa"
-									placeholder="Enter GPA">
+									placeholder="<spring:message code="education.text.gpa"/>">
 							</div>
 
 							<div class="form-group">
-								<label for="graduate">Years of graduate </label> <input
+								<label for="graduate"><spring:message code="education.graduate"/> </label> <input
 									type="text" class="form-control" id="graduate"
-									name="graduate" placeholder="Enter years of graduate">
+									name="graduate" placeholder="<spring:message code="education.text.graduate"/>">
 							</div>
 							<br> <br>
 							<button type="button" class="btn btn-success" id="btn_save">
-								<span class="glyphicon glyphicon-off"></span> Save
+								<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
 							</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
 						</div>
 					</form>
 				</div>
@@ -336,19 +336,39 @@
 
 		</div>
 	</div>
+	
+					<!-- Delete Model -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    		<div class="modal-dialog">
+        		<div class="modal-content">
+            		<div class="modal-header">
+                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.title"/></h4>
+            		</div>
+            		<div class="modal-body">
+                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.confirm.title"/></h4>
+                		<br>
+                		<div align="right">
+                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>
+                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
+                		</div>
+	            	</div>
+        		</div>
+    		</div>  
+		</div>
 	<br> <br>
 	<div>
 		<table id="educationTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<th>SCHOOL_NAME</th>
-					<th>DEGREE</th>
-					<th>FACULTY</th>
-					<th>MAJOR</th>
-					<th>GPA</th>
-					<th>YEAR_OF_GRADUATE</th>
-					<th>EDIT</th>
-					<th>DELETE</th>
+					<th><spring:message code="education.data"/></th>
+					<th><spring:message code="education.data.degree"/></th>
+					<th><spring:message code="education.data.faculty"/></th>
+					<th><spring:message code="education.data.major"/></th>
+					<th><spring:message code="education.data.gpa"/></th>
+					<th><spring:message code="education.data.graduate"/></th>
+					<th><spring:message code="main.edit.info"/></th>
+                	<th><spring:message code="main.delete"/></th>
 
 				</tr>
 			</thead>

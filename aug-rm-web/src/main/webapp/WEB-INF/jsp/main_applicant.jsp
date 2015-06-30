@@ -117,7 +117,6 @@
 				$('#inputAttitudeHome').val(data.attitudeHome);
 				$('#inputAttitudeOffice').val(data.attitudeOffice);
 				$('#inputStatus').val(data.trackingStatus);
-				
 			}
 			//Update Score Fuction
 			function updateUser(button){

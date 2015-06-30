@@ -69,10 +69,10 @@
 							{data : "address"},
 							{data : "positionFamily"},
 							{data : function(data) {
-					 			return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#familyModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+					 			return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#familyModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
 							}},
 							{data : function(data) {
-					 			return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+					 			return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
 							}}],
 				searching : false
 
@@ -300,14 +300,13 @@
 </script>
 <jsp:include page="applicationMenu.jsp" />
  <div class="form-group">
-					<label for="informationFamily">Information regarding family
-						(Including Parents Brothers and Sisters) </label>
+					<label for="informationFamily"><spring:message code="info.parent.number"/> </label>
 				</div>
 					<div class="row">
 						<div class="col-md-6">
-							<h1>Family</h1>
+							<h1><spring:message code="family.name"/></h1>
 							<button class="btn btn-primary" id="familyAdd" data-toggle="modal" data-target="#familyModal">
-								<span class="glyphicon glyphicon-plus"></span> Family
+								<span class="glyphicon glyphicon-plus"></span> <spring:message code="family.name.add"/>
 							</button>
 						</div>
 					</div>
@@ -318,7 +317,7 @@
 							<div class="modal-header" style="padding: 35px 50px;">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
 								<h4>
-									<span class="glyphicon glyphicon-lock"></span> Family
+									<span class="glyphicon glyphicon-lock"></span> <spring:message code="family.name"/>
 								</h4>
 							</div>
 							<div class="modal-body" style="padding: 40px 50px;">
@@ -327,33 +326,33 @@
 									<input type="hidden" id="applicant" name="applicant" value="${id}">
 								</div>
 									<div class="form-group">
-										<label for="nameFamily">Name </label> 
-										<input type="text" class="form-control" id="nameFamily" name="nameFamily" placeholder="Enter name">
+										<label for="nameFamily"><spring:message code="family.fname"/> </label> 
+										<input type="text" class="form-control" id="nameFamily" name="nameFamily" placeholder="<spring:message code="family.text.name"/>">
 									</div>
 
 									<div class="form-group">
-										<label for="relationFamily">Relation </label> 
-										<input type="text" class="form-control" id="relationFamily" name="relationFamily" placeholder="Enter relation">
+										<label for="relationFamily"><spring:message code="family.relation"/> </label> 
+										<input type="text" class="form-control" id="relationFamily" name="relationFamily" placeholder="<spring:message code="family.text.relation"/>">
 									</div>
 									<div class="form-group">
-										<label for="occupationFamily">Occupation </label> 
-										<input type="text" class="form-control" id="occupationFamily" name="occupationFamily" placeholder="Enter occupation ">
-									</div>
-
-									<div class="form-group">
-										<label for="addressFamily">Address </label> 
-										<textarea class="form-control" rows="5" id="addressFamily" name="addressFamily" placeholder="Enter address"></textarea>
+										<label for="occupationFamily"><spring:message code="family.occupation"/> </label> 
+										<input type="text" class="form-control" id="occupationFamily" name="occupationFamily" placeholder="<spring:message code="info.text.occupation"/> ">
 									</div>
 
 									<div class="form-group">
-										<label for="positionFamily">Position </label> 
-										<input type="text" class="form-control" id="positionFamily" name="positionFamily" placeholder="Enter position">
+										<label for="addressFamily"><spring:message code="address.name"/> </label> 
+										<textarea class="form-control" rows="5" id="addressFamily" name="addressFamily" placeholder="<spring:message code="info.text.address"/>"></textarea>
+									</div>
+
+									<div class="form-group">
+										<label for="positionFamily"><spring:message code="info.position"/> </label> 
+										<input type="text" class="form-control" id="positionFamily" name="positionFamily" placeholder="<spring:message code="exp.text.position"/>">
 									</div>
 									<br> <br>
 									<button type="button" class="btn btn-success" id="btn_save">
-										<span class="glyphicon glyphicon-off"></span> Save
+										<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
 									</button>
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
 								</form>
 							</div>
 						</div>
@@ -386,13 +385,13 @@
 						width="100%">
 						<thead>
 							<tr>
-								<th>NAME</th>
-								<th>RELATION</th>
-								<th>OCCUPATION</th>
-								<th>ADDRESS</th>
-								<th>POSITION_FAMILY</th>
-								<th>Edit</th>
-                				<th>Delete</th>
+								<th><spring:message code="family.data"/></th>
+								<th><spring:message code="family.data.relation"/></th>
+								<th><spring:message code="family.data.occupation"/></th>
+								<th><spring:message code="family.data.address"/></th>
+								<th><spring:message code="family.data.position"/></th>
+								<th><spring:message code="main.edit.info"/></th>
+                				<th><spring:message code="main.delete"/></th>
 
 							</tr>
 						</thead>

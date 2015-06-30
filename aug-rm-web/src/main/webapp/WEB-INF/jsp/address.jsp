@@ -78,10 +78,10 @@
 							{data : "zipcode"},
 							{data : "province"},
 							{data : function(data) {
-						 		return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#addressModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+						 		return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#addressModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
 							}},
 							{ data : function(data) {
-						 		return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+						 		return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
 							}}],
 				searching : false
 
@@ -274,10 +274,10 @@
 <div id="address">
 		<div class="row">
 			<div class="col-md-6">
-				<h1>Address</h1>
+				<h1><spring:message code="address.name"/></h1>
 				<button class="btn btn-primary" id="addressAdd" data-toggle="modal"
 					data-target="#addressModal">
-					<span class="glyphicon glyphicon-plus"></span> Address
+					<span class="glyphicon glyphicon-plus"></span> <spring:message code="address.name.add"/>
 				</button>
 			</div>
 		</div>
@@ -290,7 +290,7 @@
 					<div class="modal-header" style="padding: 35px 50px;">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4>
-							<span class="glyphicon glyphicon-lock"></span> Address
+							<span class="glyphicon glyphicon-lock"></span> <spring:message code="address.name"/>
 						</h4>
 					</div>
 					<div class="modal-body" style="padding: 40px 50px;">
@@ -299,47 +299,47 @@
 								<input type="hidden" id="applicant" name="applicant"
 									value="${id}">
 							</div>
-							<label for="address">Address </label><select class="form-control" id="inputAddress" name="inputAddress">
-								<option value="Present">Present</option>
-								<option value="Permanent">Permanent</option>
+							<label for="address"><spring:message code="address.name"/> </label><select class="form-control" id="inputAddress" name="inputAddress">
+								<option value="Present"><spring:message code="address.present"/></option>
+								<option value="Permanent"><spring:message code="address.permanent"/></option>
 							</select>
 							<div class="form-group">
-								<label for="houseNo">House No. </label> <input type="text"
+								<label for="houseNo"><spring:message code="address.houseNo"/> </label> <input type="text"
 									class="form-control" id="houseNo"
-									name="houseNo" placeholder="Enter House No">
+									name="houseNo" placeholder="<spring:message code="address.text.houseNo"/>">
 							</div>
 							<div class="form-group">
-								<label for="road">Road </label> <input type="text"
+								<label for="road"><spring:message code="address.road"/> </label> <input type="text"
 									class="form-control" id="road" name="road"
-									placeholder="Enter road">
+									placeholder="<spring:message code="address.text.road"/>">
 							</div>
 							<div class="form-group">
-								<label for="district">District </label> <input
+								<label for="district"><spring:message code="address.district"/> </label> <input
 									type="text" class="form-control" id="district"
-									name="district" placeholder="Enter district">
+									name="district" placeholder="<spring:message code="address.text.district"/>">
 							</div>
 							<div class="form-group">
-								<label for="subDistrict">Sub District </label> <input
+								<label for="subDistrict"><spring:message code="address.sub.district"/> </label> <input
 									type="text" class="form-control" id="subDistrict"
-									name="subDistrict" placeholder="Enter sub district">
+									name="subDistrict" placeholder="<spring:message code="address.text.sub.district"/>">
 							</div>
 							<div class="form-group">
-								<label for="zipcode">Zipcode </label> <input type="text"
+								<label for="zipcode"><spring:message code="address.zipcode"/> </label> <input type="text"
 									class="form-control" id="zipcode"
-									name="zipcode" placeholder="Enter zipcode">
+									name="zipcode" placeholder="<spring:message code="address.text.zipcode"/>">
 							</div>
 							<div class="form-group">
-								<label for="province">Province </label> <input
+								<label for="province"><spring:message code="address.province"/> </label> <input
 									type="text" class="form-control" id="province"
-									name="province" placeholder="Enter province">
+									name="province" placeholder="<spring:message code="address.text.province"/>">
 							</div>
 
 							<br> <br>
 							<button type="button" class="btn btn-success" id="btn_save">
-								<span class="glyphicon glyphicon-off"></span> Save
+								<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
 							</button>
 							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
+								data-dismiss="modal"><spring:message code="button.cancel"/></button>
 						</form>
 					</div>
 				</div>
@@ -372,15 +372,15 @@
 		<table id="addressTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<th>ADDRESS_TYPE</th>
-					<th>HOUSE_NO</th>
-					<th>ROAD</th>
-					<th>DISTRICT</th>
-					<th>SUB_DISTRICT</th>
-					<th>ZIPCODE</th>
-					<th>PROVINCE</th>
-					<th>Edit</th>
-                	<th>Delete</th>
+					<th><spring:message code="address.data"/></th>
+					<th><spring:message code="address.data.house"/></th>
+					<th><spring:message code="address.data.road"/></th>
+					<th><spring:message code="address.data.district"/></th>
+					<th><spring:message code="address.data.sub.district"/></th>
+					<th><spring:message code="address.data.zipcode"/></th>
+					<th><spring:message code="address.data.provice"/></th>
+					<th><spring:message code="main.edit.info"/></th>
+                	<th><spring:message code="main.delete"/></th>
 				</tr>
 			</thead>
 

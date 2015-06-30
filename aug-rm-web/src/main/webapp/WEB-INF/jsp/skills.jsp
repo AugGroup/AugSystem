@@ -34,10 +34,10 @@ $(document).ready(function() {
 			columns : [ {
 				data : "skillDetail"
 			},{ data : function(data) {
-				 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#skillModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+				 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#skillModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
 			}
 			},{ data : function(data) {
-				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
 			}
 		}],
 			searching : false
@@ -197,10 +197,10 @@ $(document).ready(function() {
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
-					<h1>Skill</h1>
+					<h1><spring:message code="skill.name"/></h1>
 					<button class="btn btn-primary" id="skillAdd" data-toggle="modal"
 						data-target="#skillModal">
-						<span class="glyphicon glyphicon-plus"></span> Skill
+						<span class="glyphicon glyphicon-plus"></span> <spring:message code="skill.name.add"/>
 					</button>
 				</div>
 			</div>
@@ -212,7 +212,7 @@ $(document).ready(function() {
 						<div class="modal-header" style="padding: 35px 50px;">
 							<button type="button" class="close" data-dismiss="modal">&times;</button>
 							<h4>
-								<span class="glyphicon glyphicon-lock"></span> Skill
+								<span class="glyphicon glyphicon-lock"></span> <spring:message code="skill.name"/>
 							</h4>
 						</div>
 						<div class="modal-body" style="padding: 40px 50px;">
@@ -222,15 +222,15 @@ $(document).ready(function() {
 										value="${id}">
 								</div>
 								<div class="form-group">
-									<label for="skill">Skill Detail </label> <input type="text"
+									<label for="skill"><spring:message code="skill.detail"/> </label> <input type="text"
 										class="form-control" id="skill" name="skill"
-										placeholder="Enter skill detail">
+										placeholder="<spring:message code="skill.text.detail"/>">
 								</div>
 								<br> <br>
 								<button type="button" class="btn btn-success" id="btn_save">
-									<span class="glyphicon glyphicon-off"></span> Save
+									<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
 								</button>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
 							</form>
 						</div>
 					</div>
@@ -263,18 +263,13 @@ $(document).ready(function() {
 				<table id="skillTable" class="display" cellspacing="0" width="100%">
 					<thead>
 						<tr>
-							<th>SKILL_DETAIL</th>
-							<th>Edit</th>
-                			<th>Delete</th>
+							<th><spring:message code="skill.data"/></th>
+							<th><spring:message code="main.edit.info"/></th>
+                			<th><spring:message code="main.delete"/></th>
 		
 						</tr>
 					</thead>
-		
-		
 					<tbody></tbody>
 				</table>
-		
 			</div>
-		
-		
 		</div>

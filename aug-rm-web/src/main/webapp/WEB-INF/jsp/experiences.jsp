@@ -115,10 +115,10 @@
 			            {data : "description"},
 			            {data : "reason"},
 			            {data : function(data) {
-				 			return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#experiencesModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+				 			return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#experiencesModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
 						}},
 						{data : function(data) {
-				 			return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+				 			return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
 						}}],
 			searching : false
 
@@ -338,17 +338,16 @@
 </script>
 <jsp:include page = "applicationMenu.jsp"/>
 	<div class="form-group">
-		<label for="experiences">Experiences (start with your present
-			or last position of work background) </label>
+		<label for="experiences"><spring:message code="exp.text"/> </label>
 	</div>
 	<br>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<h1>Experiences</h1>
+				<h1><spring:message code="exp.name"/></h1>
 				<button class="btn btn-primary" id="experiencesAdd"
 					data-toggle="modal" data-target="#experiencesModal">
-					<span class="glyphicon glyphicon-plus"></span> Experiences
+					<span class="glyphicon glyphicon-plus"></span> <spring:message code="exp.name.add"/>
 				</button>
 			</div>
 		</div>
@@ -359,7 +358,7 @@
 					<div class="modal-header" style="padding: 35px 50px;">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4>
-							<span class="glyphicon glyphicon-lock"></span> Experiences
+							<span class="glyphicon glyphicon-lock"></span> <spring:message code="exp.name"/>
 						</h4>
 					</div>
 					<div class="modal-body" style="padding: 40px 50px;">
@@ -370,15 +369,15 @@
 							</div>
 
 							<div class="form-group">
-								<label for="workBackground">Present or last position </label> <input
+								<label for="workBackground"><spring:message code="exp.position"/> </label> <input
 									type="text" class="form-control" id="workBackground"
 									name="workBackground"
-									placeholder="Enter present or last position ">
+									placeholder="<spring:message code="exp.text.Pposition"/> ">
 							</div>
 
 							<div class="form-group">
 								<label for="fromWorkYear"><span
-									class="glyphicon glyphicon-calendar"></span>From (month, year)
+									class="glyphicon glyphicon-calendar"></span><spring:message code="exp.from"/>
 								</label>
 								<div class="input-group date">
 									<input type="text" id="fromWorkYear" name="fromWorkYear"
@@ -390,7 +389,7 @@
 
 							<div class="form-group">
 								<label for="toWorkYear"><span
-									class="glyphicon glyphicon-calendar"></span>To (month, year) </label>
+									class="glyphicon glyphicon-calendar"></span><spring:message code="exp.to"/> </label>
 								<div class="input-group date">
 									<input type="text" id="toWorkYear" name="toWorkYear"
 										class="form-control"><span class="input-group-addon"><i
@@ -400,63 +399,62 @@
 
 							</div>
 							<div class="form-group">
-								<label for="emp">Employer Name </label> <input type="text"
+								<label for="emp"><spring:message code="exp.emp"/> </label> <input type="text"
 									class="form-control" id="emp" name="emp"
-									placeholder="Enter employer name ">
+									placeholder="<spring:message code="exp.text.emp"/> ">
 							</div>
 
 							<div class="form-group">
-								<label for="addressBackground">Address </label>
+								<label for="addressBackground"><spring:message code="address.name"/> </label>
 								<textarea class="form-control" rows="5" id="addressBackground"
-									name="addressBackground" placeholder="Enter address"></textarea>
+									name="addressBackground" placeholder="<spring:message code="exp.text.address"/>"></textarea>
 
 							</div>
 
 							<div class="form-group">
-								<label for="business">Type of business </label> <input
+								<label for="business"><spring:message code="exp.business"/> </label> <input
 									type="text" class="form-control" id="business"
-									name="business" placeholder="Enter type of business ">
+									name="business" placeholder="<spring:message code="exp.text.business"/> ">
 							</div>
 
 							<div class="form-group">
-								<label for="positionBackground">Position </label> <input
+								<label for="positionBackground"><spring:message code="info.position"/> </label> <input
 									type="text" class="form-control" id="positionBackground"
-									name="positionBackground" placeholder="Enter position ">
+									name="positionBackground" placeholder="<spring:message code="exp.text.position"/> ">
 							</div>
 
 							<div class="form-group">
-								<label for="supervisorBackground">Supervisor </label> <input
+								<label for="supervisorBackground"><spring:message code="exp.supervisor"/> </label> <input
 									type="text" class="form-control" id="supervisorBackground"
-									name="supervisorBackground" placeholder="Enter supervisor">
+									name="supervisorBackground" placeholder="<spring:message code="exp.text.supervisor"/>">
 							</div>
 
 							<div class="form-group">
-								<label for="salaryBackground">Salary ,Wages </label> <input
+								<label for="salaryBackground"><spring:message code="exp.salary"/> </label> <input
 									type="text" class="form-control" id="salaryBackground"
-									name="salaryBackground" placeholder="Enter salary ,wages ">
+									name="salaryBackground" placeholder="<spring:message code="exp.text.salary"/> ">
 							</div>
 
 							<div class="form-group">
-								<label for="descriptionBackground">Description of duties
-									and responsibilities </label>
+								<label for="descriptionBackground"><spring:message code="exp.desc"/> </label>
 								<textarea class="form-control" rows="5"
 									id="descriptionBackground" name="descriptionBackground"
-									placeholder="Enter description of duties and responsibilities"></textarea>
+									placeholder="<spring:message code="exp.text.desc"/>"></textarea>
 							</div>
 
 							<div class="form-group">
-								<label for="reasonLeaving">Reason for leaving </label>
+								<label for="reasonLeaving"><spring:message code="exp.reason"/> </label>
 								<textarea class="form-control" rows="5" id="reasonLeaving"
-									name="reasonLeaving" placeholder="Enter reason for leaving"></textarea>
+									name="reasonLeaving" placeholder="<spring:message code="exp.text.reason"/>"></textarea>
 
 							</div>
 							<br> <br>
 							<button type="button" class="btn btn-success"
 								id="btn_save">
-								<span class="glyphicon glyphicon-off"></span> Save
+								<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
 							</button>
 							<button type="button" class="btn btn-default"
-								data-dismiss="modal">Close</button>
+								data-dismiss="modal"><spring:message code="button.cancel"/></button>
 						</form>
 					</div>
 				</div>
@@ -490,19 +488,19 @@
 			width="100%">
 			<thead>
 				<tr>
-					<th>POSITION</th>
-					<th>FROM_DATE</th>
-					<th>TO_DATE</th>
-					<th>EMPLOYER_NAME</th>
-					<th>ADDRESS</th>
-					<th>TYPE_OF_BUSSINESS</th>
-					<th>POSITION_OF_EMPLOYER</th>
-					<th>SUPERVISOR</th>
-					<th>SALARY</th>
-					<th>DESCRIPTION</th>
-					<th>REASON</th>
-					<th>Edit</th>
-                	<th>Delete</th>
+					<th><spring:message code="exp.data.position"/></th>
+					<th><spring:message code="exp.data.from"/></th>
+					<th><spring:message code="exp.data.to"/></th>
+					<th><spring:message code="exp.data.emp"/></th>
+					<th><spring:message code="family.data.address"/></th>
+					<th><spring:message code="exp.data.business"/></th>
+					<th><spring:message code="exp.data.position.emp"/></th>
+					<th><spring:message code="exp.data.super"/></th>
+					<th><spring:message code="exp.data.salary"/></th>
+					<th><spring:message code="exp.data.desc"/></th>
+					<th><spring:message code="exp.data.reason"/></th>
+					<th><spring:message code="main.edit.info"/></th>
+                	<th><spring:message code="main.delete"/></th>
 				</tr>
 			</thead>
 

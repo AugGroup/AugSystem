@@ -13,7 +13,6 @@ color:red;
 
 <script type="text/javascript">
 $(document).ready(function() {
-	${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
 	$('#loginForm').validate({
         rules: {
             j_username: "required",
@@ -46,5 +45,8 @@ $(document).ready(function() {
 			</div>
 			
 			<button type="submit" id="btnSubmit" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-log-in"></span> <spring:message code="applicant.submit.login"/></button>
+    		<div style="color:red">
+        		${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+    		</div>
 		</form>
 	</div>

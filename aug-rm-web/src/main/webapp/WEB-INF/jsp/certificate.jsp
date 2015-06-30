@@ -34,10 +34,10 @@ $(document).ready(function() {
 			columns : [ {
 				data : "certificateName"
 			} ,{ data : function(data) {
-				 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#certificateModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
+				 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#certificateModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
 			}
 			},{ data : function(data) {
-				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
 			}
 		}],
 			searching : false
@@ -194,10 +194,10 @@ $(document).ready(function() {
 <jsp:include page="applicationMenu.jsp" />
 	<div class="row">
 		<div class="col-md-6">
-			<h1>Certificate</h1>
+			<h1><spring:message code="cer.name"/></h1>
 			<button class="btn btn-primary" id="certificateAdd"
 				data-id="data.id" data-toggle="modal" data-target="#certificateModal">
-				<span class="glyphicon glyphicon-plus"></span> Certificate
+				<span class="glyphicon glyphicon-plus"></span> <spring:message code="cer.name.add"/>
 			</button>
 		</div>
 	</div>
@@ -209,7 +209,7 @@ $(document).ready(function() {
 				<div class="modal-header" style="padding: 35px 50px;">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4>
-						<span class="glyphicon glyphicon-lock"></span> Certificate
+						<span class="glyphicon glyphicon-lock"></span> <spring:message code="cer.name"/>
 					</h4>
 				</div>
 				<div class="modal-body" style="padding: 40px 50px;">
@@ -219,19 +219,19 @@ $(document).ready(function() {
 								value="${id}">
 						</div>
 						<div class="form-group">
-							<label for="certificate">Certificate </label> <input type="text"
+							<label for="certificate"><spring:message code="cer.name"/> </label> <input type="text"
 								class="form-control" id="certificate" name="certificate"
-								placeholder="Enter certificate">
+								placeholder="<spring:message code="cer.text.name"/>">
 						</div>
 						<br> <br>
 						<button type="button" class="btn btn-success" id="btn_save">
-							<span class="glyphicon glyphicon-off"></span> Save
+							<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
 						</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<p>Please fill your information</p>
+					<p><spring:message code="cer.ask"/></p>
 				</div>
 			</div>
 
@@ -259,13 +259,12 @@ $(document).ready(function() {
 		</div>
 	<br> <br>
 	<div>
-		<table id="certificateTable" class="display" cellspacing="0"
-			width="100%">
+		<table id="certificateTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<th>CERTIFICATE</th>
-					<th>Edit</th>
-                	<th>Delete</th>
+					<th><spring:message code="cer.data"/></th>
+					<th><spring:message code="main.edit.info"/></th>
+                	<th><spring:message code="main.delete"/></th>
 
 				</tr>
 			</thead>

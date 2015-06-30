@@ -38,11 +38,11 @@ $(document).ready(function() {
 				            {data : "reading"},
 				            {data : "understanding"},
 				            {data : "writing"},
-				            { data : function(data) {
-					 			return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#languagesModal" class="btn btn-warning btn-mini">' + 'Edit' + '</button>';
-							}
-							},{ data : function(data) {
-								return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini">' + 'Delete' + '</button>';
+				            {data : function(data) {
+					 			return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#languagesModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
+							}},
+							{data : function(data) {
+								return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/> </button>';
 							}}],
 				searching : false
 
@@ -105,16 +105,28 @@ $(document).ready(function() {
 	//Show data on inputField
 	function showFillData(data){
 		$("#languages").val(data.languagesName);
+		$("input[name=speaking]:radio[value=" + data.speaking +"]").prop('checked', true);
+		$("input[name=reading]:radio[value=" + data.reading +"]").prop('checked', true);
+		$("input[name=understanding]:radio[value=" + data.understanding +"]").prop('checked', true);
+		$("input[name=writing]:radio[value=" + data.writing +"]").prop('checked', true);
  	}
 	
 	//Update function
 	function updated(button){
 		var id = $(button).data("id");
 		var languagesName = $("#languages").val();
+		var speaking = $('input[name="speaking"]:checked').val();
+		var reading = $('input[name="reading"]:checked').val();
+		var understanding = $('input[name="understanding"]:checked').val();
+		var writing = $('input[name="writing"]:checked').val();
 		
 		var json = {
 				"id" : id,
 				"languagesName" : languagesName,
+				"speaking" : speaking,
+				"reading" : reading,
+				"understanding" : understanding,
+				"writing" : writing
 				};
 		
 		$.ajax({
@@ -206,10 +218,10 @@ $(document).ready(function() {
 <jsp:include page="applicationMenu.jsp" />
 <div class="row">
 		<div class="col-md-6">
-			<h1>Languages</h1>
+			<h1><spring:message code="languages.name.less"/></h1>
 			<button class="btn btn-primary" id="languagesAdd" data-toggle="modal"
 				data-target="#languagesModal">
-				<span class="glyphicon glyphicon-plus"></span> Languages
+				<span class="glyphicon glyphicon-plus"></span> <spring:message code="languages.name.add"/>
 			</button>
 		</div>
 	</div>
@@ -221,7 +233,7 @@ $(document).ready(function() {
 				<div class="modal-header" style="padding: 35px 50px;">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4>
-						<span class="glyphicon glyphicon-lock"></span> Languages
+						<span class="glyphicon glyphicon-lock"></span> <spring:message code="languages.name.less"/>
 					</h4>
 				</div>
 				<div class="modal-body" style="padding: 40px 50px;">
@@ -232,75 +244,74 @@ $(document).ready(function() {
 						</div>
 						<div class="form-group">
 
-							<label for="languages">Languages </label> <input type="text"
+							<label for="languages"><spring:message code="languages.name.less"/> </label> <input type="text"
 								class="form-control" id="languages" name="languages"
-								placeholder="Enter languages">
+								placeholder="<spring:message code="languages.text.name"/>">
 								
-							<label for="speaking">Speaking
-							</label>
+							<label for="speaking"><spring:message code="languages.speak.less"/></label>
 							<div class="radio-inline">
 								<label><input type="radio" name="speaking"
-									id="speaking" value="Excellent">Excellent</label>
-							</div>
-							<div class="radio-inline">
-								<label><input type="radio" name="speaking"
-									id="speaking" value="Good">Good</label>
+									id="speaking" value="Excellent"><spring:message code="languages.excellent"/></label>
 							</div>
 							<div class="radio-inline">
 								<label><input type="radio" name="speaking"
-									id="speaking" value="Fair">Fair</label>
+									id="speaking" value="Good"><spring:message code="languages.good"/></label>
+							</div>
+							<div class="radio-inline">
+								<label><input type="radio" name="speaking"
+									id="speaking" value="Fair"><spring:message code="languages.fair"/></label>
 							</div>
 							
 							
-							<br> <label for="understanding">Understanding </label>
+							<br> <label for="understanding"><spring:message code="languages.understand.less"/> </label>
 							<div class="radio-inline">
 								<label><input type="radio" name="understanding"
-									id="understanding" value="Excellent">Excellent</label>
+									id="understanding" value="Excellent"><spring:message code="languages.excellent"/></label>
 							</div>
 							<div class="radio-inline">
 								<label><input type="radio" name="understanding"
-									id="understanding" value="Good">Good</label>
+									id="understanding" value="Good"><spring:message code="languages.good"/></label>
 							</div>
 							<div class="radio-inline">
 								<label><input type="radio" name="understanding"
-									id="understanding" value="Fair">Fair</label>
+									id="understanding" value="Fair"><spring:message code="languages.fair"/></label>
 							</div>
 							
 							
-							<br> <label for="reading">Reading </label>
+							<br> <label for="reading"><spring:message code="languages.read.less"/> </label>
 							<div class="radio-inline">
 								<label><input type="radio" name="reading"
-									id="reading" value="Excellent">Excellent</label>
-							</div>
-							<div class="radio-inline">
-								<label><input type="radio" name="reading"
-									id="reading" value="Good">Good</label>
+									id="reading" value="Excellent"><spring:message code="languages.excellent"/></label>
 							</div>
 							<div class="radio-inline">
 								<label><input type="radio" name="reading"
-									id="reading" value="Fair">Fair</label>
+									id="reading" value="Good"><spring:message code="languages.good"/></label>
+							</div>
+							<div class="radio-inline">
+								<label><input type="radio" name="reading"
+									id="reading" value="Fair"><spring:message code="languages.fair"/></label>
 							</div>
 							
 							
-							<br> <label for="writing">Writing </label>
+							<br> <label for="writing"><spring:message code="languages.write.less"/> </label>
 							<div class="radio-inline">
 								<label><input type="radio" name="writing"
-									id="writing" value="Excellent">Excellent</label>
+									id="writing" value="Excellent"><spring:message code="languages.excellent"/></label>
 							</div>
 							<div class="radio-inline">
 								<label><input type="radio" name="writing"
-									id="writing" value="Good">Good</label>
+									id="writing" value="Good"><spring:message code="languages.good"/></label>
 							</div>
 							<div class="radio-inline">
 								<label><input type="radio" name="writing"
-									id="writing" value="Fair">Fair</label>
+									id="writing" value="Fair"><spring:message code="languages.fair"/></label>
 							</div>
 						</div>
 						<br> <br>
 						<button type="button" class="btn btn-success" id="btn_save">
-							<span class="glyphicon glyphicon-off"></span> Save
+							<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
 						</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
 					</form>
 				</div>
 			</div>
@@ -334,13 +345,13 @@ $(document).ready(function() {
 			width="100%">
 			<thead>
 				<tr>
-					<th>LANGUAGES_NAME</th>
-					<th>SPEAKING</th>
-					<th>READING</th>
-					<th>UNDERSTANDING</th>
-					<th>WRITING</th>
-					<th>Edit</th>
-                	<th>Delete</th>
+					<th><spring:message code="languages.name"/></th>
+					<th><spring:message code="languages.speak"/></th>
+					<th><spring:message code="languages.read"/></th>
+					<th><spring:message code="languages.understand"/></th>
+					<th><spring:message code="languages.write"/></th>
+					<th><spring:message code="main.edit.info"/></th>
+                	<th><spring:message code="main.delete"/></th>
 
 				</tr>
 			</thead>
