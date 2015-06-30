@@ -19,6 +19,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -194,35 +195,7 @@ public class ApplicantController implements Serializable {
 		// return augRequestService.findById(id);
 	}
 
-	/*-------------------- Report Method --------------------*/
-	//Main report
-	@RequestMapping(value="/report", method = RequestMethod.GET)
-	public String mainReport(){
-		return "/main_report";
-	}
 	
-	/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
-	@RequestMapping(value = "/report/search", method = { RequestMethod.POST })
-	public @ResponseBody Object searchReportBy(
-			@RequestParam Integer position, String degree, String major, String schoolName, Double gpa) {
-		List<ReportApplicantDTO> data;
-		if (position == -1 && degree.isEmpty() && major.isEmpty() && schoolName.isEmpty() && gpa==null){ 			
-			data = applicantService.reportApplicant();
-		} else {
-			String positionName ="";
-			if (position != -1) {
-				positionName = positionService.findById(position).getPositionName();
-			}
-			System.out.println("positionName "+positionName+"  GPA: "+gpa);
-			data = applicantService.findReportByCriteria(positionName, degree, major, schoolName, gpa);// search by
-		}
-		final List<ReportApplicantDTO> datas = data;
-		return new Object() {
-			public List<ReportApplicantDTO> getData() {
-				return datas;
-			}
-		};
-	}
 	
 	
 	
@@ -279,27 +252,7 @@ public class ApplicantController implements Serializable {
 		}
 
 
-	// Monthly report
-	@RequestMapping(value = "/modalMonthlyReport", method = RequestMethod.GET)
-	public String modalMonthlyReport(ModelMap map) {
-		return "/modalMonthlyReport";
-	}
-
-	@RequestMapping(value = "/searchMonthlyReport", method = { RequestMethod.POST })
-	public ModelAndView searchMonthlyReport(
-			@ModelAttribute(value = "applicant") Applicant applicant,
-			ModelMap map, HttpSession session, Locale locale) {
-		//List<Applicant> reportApplicantList = applicantService.findAll();	
-		List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
-		Map<String, Object> parameterMap = new HashMap<String, Object>();
-		// ResourceBundle bundle = ResourceBundle.getBundle("messages",locale);
-		// parameterMap.put(JRParameter.REPORT_RESOURCE_BUNDLE, bundle);
-		parameterMap.put("date", new java.util.Date());
-		parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
-		ModelAndView mv = reportService.getReport(reportApplicantList,
-				"applicantSummaryMonthly", "pdf", parameterMap);
-		return mv;
-	}
+	
 	
 	// position EE report
 	@RequestMapping(value = "/modalEEReport", method = RequestMethod.GET)
@@ -323,7 +276,35 @@ public class ApplicantController implements Serializable {
 		return mv;
 	}
 */
+	/*-------------------- Report Method --------------------*/
+	//Main report
+	@RequestMapping(value="/report", method = RequestMethod.GET)
+	public String mainReport(){
+		return "/main_report";
+	}
 	
+	/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
+	@RequestMapping(value = "/report/search", method = { RequestMethod.POST })
+	public @ResponseBody Object searchReportBy(
+			@RequestParam Integer position, String degree, String major, String schoolName, Double gpa) {
+		List<ReportApplicantDTO> data;
+		if (position == -1 && degree.isEmpty() && major.isEmpty() && schoolName.isEmpty() && gpa==null){ 			
+			data = applicantService.reportApplicant();
+		} else {
+			String positionName ="";
+			if (position != -1) {
+				positionName = positionService.findById(position).getPositionName();
+			}
+			System.out.println("positionName "+positionName+"  GPA: "+gpa);
+			data = applicantService.findReportByCriteria(positionName, degree, major, schoolName, gpa);// search by
+		}
+		final List<ReportApplicantDTO> datas = data;
+		return new Object() {
+			public List<ReportApplicantDTO> getData() {
+				return datas;
+			}
+		};
+	}
 	
 	/*-------------------- preview reports function--------------------*/
 	@RequestMapping(value = "/report/preview", method = { RequestMethod.POST,RequestMethod.GET  })
@@ -358,19 +339,24 @@ public class ApplicantController implements Serializable {
 	}
 	
 	
-	/*-------------------- download report--------------------*/
-/*	@RequestMapping(value = "/report/preview", method = { RequestMethod.POST })
-	public ModelAndView downloadReport(
-			@ModelAttribute(value = "applicant") Applicant applicant,
-			ModelMap map, HttpSession session, Locale locale) {
-		List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
-		Map<String, Object> parameterMap = new HashMap<String, Object>();
-		parameterMap.put("date", new java.util.Date());
-		parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
-		ModelAndView mv = reportService.getReport(reportApplicantList,
-				"Report_AugRmSystem", applicant.getReportType(), parameterMap);
-		return mv;
-	}*/
+	// Monthly report
+		@RequestMapping(value = "/modalMonthlyReport", method = RequestMethod.GET)
+		public String modalMonthlyReport() {
+			return "/modalMonthlyReport";
+		}
+
+		@RequestMapping(value = "/searchMonthlyReport", method = { RequestMethod.POST })
+		public ModelAndView searchMonthlyReport(
+				@ModelAttribute ReportApplicantDTO reportApplicantDTO,
+				ModelMap map, HttpSession session, Locale locale) {
+			List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
+			Map<String, Object> parameterMap = new HashMap<String, Object>();
+			parameterMap.put("date", new java.util.Date());
+			parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
+			ModelAndView mv = reportService.getReport(reportApplicantList,
+					"applicantSummaryMonthly", reportApplicantDTO.getReportType(), parameterMap);
+			return mv;
+		}
 	
 	/*-------------------- Position List--------------------*/
 	@ModelAttribute("positionRequest")

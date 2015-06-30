@@ -134,19 +134,18 @@ $(document).ready(function () {
    		</div>
    		</div>
    		<div class="row">
-   			 <div class="col-md-9" align="right">
+   			 <div class="col-md-8" align="right">
    				<div class="form-group">
    					<label for="reportType">Report Type </label>
 						<input type="radio" value="pdf" id="reportType" name="reportType" checked="checked"> PDF 
 						<input type="radio" value="xls" id="reportType" name="reportType"> XLS 
     			</div>
     		</div>
-   		 	<div class="col-md-1" align="left">
+   		 	<div class="col-md-2" align="left">
    		 		<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> Search </button>				
    		 	</div>
    			 <div class="col-md-1" align="left">	
-   			 	<button type="button" class="btn btn-primary submit" data-toggle="modal" data-target="#previewReportModal" id="btn_preview"><span class="glyphicon glyphicon-search"></span> Preview </button>
-   			 				
+   			 	<button type="button" class="btn btn-primary submit" data-toggle="modal" data-target="#previewReportModal" id="btn_preview"><span class="glyphicon glyphicon-search"></span> Preview </button>			 				
 		 	</div>
 		 </div>
 
