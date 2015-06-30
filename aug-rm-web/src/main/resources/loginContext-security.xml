@@ -21,10 +21,11 @@
 	<http use-expressions="true" auto-config='true'>
 
 		<intercept-url pattern="/login" access="permitAll" />
+		<intercept-url pattern="/logout" access="permitAll" />
 		<intercept-url pattern="/accessdenied" access="permitAll" />
 		<intercept-url pattern="/applicant" access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF','ROLE_MANAGER')" />
 		<intercept-url pattern="/**" access="isAuthenticated()" />
-		<logout logout-success-url="/login" delete-cookies="JSESSIONID" invalidate-session="true"/>
+		<logout logout-success-url="/logout" delete-cookies="JSESSIONID" invalidate-session="true"/>
 		<form-login login-page="/login" default-target-url="/applicant"
 			authentication-failure-url="/login" username-parameter="j_username"
 			password-parameter="j_password" always-use-default-target="true" /> 
