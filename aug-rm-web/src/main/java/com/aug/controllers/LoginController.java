@@ -2,6 +2,8 @@ package com.aug.controllers;
 
 import java.io.Serializable;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -31,6 +33,13 @@ public class LoginController implements Serializable {
 	public String loginSpringPost(Model model) {
 
 		return "main_applicant";
+	}
+	
+	@RequestMapping(value = "/logout", method = { RequestMethod.GET })
+	public String logoutSpring(HttpSession session) {
+		session.invalidate();
+		return "redirect:/login";
+
 	}
 
 }
