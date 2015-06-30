@@ -21,7 +21,8 @@ public class LoginController implements Serializable {
 	private LoginService loginService;
 
 	@RequestMapping(value = "/login", method = { RequestMethod.GET })
-	public String loginSpring() {
+	public String loginSpring(Model model) {
+		model.addAttribute("error", "true");
 		return "login";
 
 	}
