@@ -8,7 +8,7 @@
 
 <!-- <input type="hidden" value="id"> -->
 			<ul class="nav nav-tabs" role="navigation">
-				<li ><a href="${pageContext.request.contextPath}/informations/${id}" ><span
+				<li ><a href="${pageContext.request.contextPath}/info/${id}" ><span
 						class="glyphicon glyphicon-user"></span> <spring:message code="tab.info"/></a></li>
 				<li><a  href="${pageContext.request.contextPath}/address/${id}"><span
 						class="glyphicon glyphicon-home"></span> <spring:message code="tab.address"/></a></li>

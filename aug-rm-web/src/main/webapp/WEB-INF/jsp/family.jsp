@@ -78,97 +78,41 @@
 
 			});
 		}
-
-			$('#familySave').on("click", function() {
- 				if($('#familyForm').valid()){
-				var table = $('#familyTable').DataTable();
-				
-				table.row.add({
-				name : $('#nameFamily').val(),
-				relation : $('#relationFamily').val(),
-				occupation : $('#occupationFamily').val(),
-				address : $('#addressFamily').val(),
-				positionFamily : $('#positionFamily').val()}).draw();
-			
-				$('#familyModal').modal('hide');
-				};
-			})
-			
-				$('#btn_save').on("click", function() {
-					var id = '${id}';
-					var addressType = $('#inputAddress').val();
-					var houseNo = $('#houseNo').val();
-					var district = $('#district').val();
-					var subDistrict = $('#subDistrict').val();
-					var road = $('#road').val();
-					var province = $('#province').val();
-					var zipcode = $('#zipcode').val();
-					
-					var json = {"applicant" : {"id" : id},
-								"addressType" : addressType,
-								"houseNo" : houseNo,
-								"district" : district,
-								"subDistrict" : subDistrict,
-								"province":province,
-								"zipcode":zipcode};
-				
-					$.ajax({
-						url : '${pageContext.request.contextPath}/address/'+id,
-						contentType : "application/json",
-						type : "POST",
-						data : JSON.stringify(json),
-						success : function(data) {
-							$('#addressModal').modal('hide');
-							new PNotify({
-						        title: 'Success',
-						        text: 'Successful Add Education!!!',
-						        type: 'success',
-						        nonblock: {
-						            nonblock: true,
-						            nonblock_opacity: .2
-						        }
-						    });
-						}
-					}); 
-
-				})
-			
 			
 		function saveFamily(){
-			$('#btn_save').on("click", function() {
-				var id = '${id}';
-				var name = $("#nameFamily").val();
-				var relation = $("#relationFamily").val();
-				var occupation = $("#occupationFamily").val();
-				var address = $("#addressFamily").val();
-				var positionFamily = $("#positionFamily").val();
-				
-				var json = {"applicant" : {"id" : id},
-							"name" : name,
-							"relation" : relation,
-							"occupation" : occupation,
-							"address" : address,
-							"positionFamily" : positionFamily,
-							};
-				$.ajax({
-					contentType : "application/json",
-					type : "POST",
-					url : '${pageContext.request.contextPath}/family/'+id,
-					data : JSON.stringify(json),
-					success : function(data) {
-						$('#familyModal').modal('hide');
-						new PNotify({
-					        title: 'Success',
-					        text: 'Successful Add Family!!!',
-					        type: 'success',
-					        nonblock: {
-					            nonblock: true,
-					            nonblock_opacity: .2
-					        }
-					    });
-					}
-				});
-			})
+			var id = '${id}';
+			var name = $("#nameFamily").val();
+			var relation = $("#relationFamily").val();
+			var occupation = $("#occupationFamily").val();
+			var address = $("#addressFamily").val();
+			var positionFamily = $("#positionFamily").val();
+			
+			var json = {"applicant" : {"id" : id},
+						"name" : name,
+						"relation" : relation,
+						"occupation" : occupation,
+						"address" : address,
+						"positionFamily" : positionFamily,
+						};
+			$.ajax({
+				contentType : "application/json",
+				type : "POST",
+				url : '${pageContext.request.contextPath}/family/'+id,
+				data : JSON.stringify(json),
+				success : function(data) {
+					$('#familyModal').modal('hide');
+					new PNotify({
+				        title: 'Success',
+				        text: 'Successful Add Family!!!',
+				        type: 'success',
+				        nonblock: {
+				            nonblock: true,
+				            nonblock_opacity: .2
+				        }
+				    });
+				}
+			});
+
 		}
 		
 		//Update 

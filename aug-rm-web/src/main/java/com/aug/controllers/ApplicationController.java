@@ -111,10 +111,6 @@ public class ApplicationController {
 	@RequestMapping(value = "/applicationMenu", method = { RequestMethod.GET })
 	public String applicationMenu(Model model) {
 		LOGGER.info("**** Welcome to Application Controller ****");
-		User user = (User) SecurityContextHolder.getContext()
-				.getAuthentication().getPrincipal();
-		String name = user.getUsername();
-		model.addAttribute("name", name);
 		return "applicationMenu";
 
 	}
@@ -122,7 +118,7 @@ public class ApplicationController {
 	//////////////////        SAVE METHOD        /////////////////////
 
 	@RequestMapping(value = "/informations", method = { RequestMethod.GET })
-	public String informations() {
+	public String informations(Model model) {
 		LOGGER.info("**** Welcome to Application Controller ****");
 		return "informations";
 
@@ -169,6 +165,7 @@ public class ApplicationController {
 
 		model.addAttribute("id", applicationDTO.getId());
 		model.addAttribute("applicant", applicationDTO);
+		
 		return "informations";
 	}
 

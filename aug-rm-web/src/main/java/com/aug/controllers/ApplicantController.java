@@ -99,6 +99,9 @@ public class ApplicantController implements Serializable {
 	
 	@RequestMapping(value = "/informations/{id}", method = { RequestMethod.GET })
 	public String informations(@PathVariable Integer id,Model model) {
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String name = user.getUsername();
+		model.addAttribute("name", name);
 		System.out.println("APPLICANT_ID : " + id);
 		model.addAttribute("id",id);
 //		applicantService.findById(id);

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="org.springframework.security.core.userdetails.User"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
@@ -59,6 +61,10 @@
 
 /* body {background-color:#efe0cb} */
 </style>
+<%
+	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	String name = user.getUsername();
+%>
 
 <body>
 	<div class="headLogo" id="headId" >
@@ -95,7 +101,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="${request.getRequestURL}?locale=en"><spring:message code="sitemesh.en"/></a></li>
 						<li><a href="${request.getRequestURL}?locale=th"><spring:message code="sitemesh.th"/></a></li>
-						<li><a href=""><span class="glyphicon glyphicon-user"></span> ${name}</a></li>
+						<li><a href=""><span class="glyphicon glyphicon-user"></span> <%=name %></a></li>
 						<li><a href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a></li>
 					</ul>
 				</div>

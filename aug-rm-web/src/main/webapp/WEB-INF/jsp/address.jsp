@@ -89,44 +89,41 @@
 		}
 		
 		function saveAddress(){
-			$('#btn_save').on("click", function() {
-				var id = '${id}';
-				var addressType = $('#inputAddress').val();
-				var houseNo = $('#houseNo').val();
-				var district = $('#district').val();
-				var subDistrict = $('#subDistrict').val();
-				var road = $('#road').val();
-				var province = $('#province').val();
-				var zipcode = $('#zipcode').val();
-				
-				var json = {"applicant" : {"id" : id},
-							"addressType" : addressType,
-							"houseNo" : houseNo,
-							"district" : district,
-							"subDistrict" : subDistrict,
-							"province":province,
-							"zipcode":zipcode};
+			var id = '${id}';
+			var addressType = $('#inputAddress').val();
+			var houseNo = $('#houseNo').val();
+			var district = $('#district').val();
+			var subDistrict = $('#subDistrict').val();
+			var road = $('#road').val();
+			var province = $('#province').val();
+			var zipcode = $('#zipcode').val();
 			
-				$.ajax({
-					url : '${pageContext.request.contextPath}/address/'+id,
-					contentType : "application/json",
-					type : "POST",
-					data : JSON.stringify(json),
-					success : function(data) {
-						$('#addressModal').modal('hide');
-						new PNotify({
-					        title: 'Success',
-					        text: 'Successful Add Education!!!',
-					        type: 'success',
-					        nonblock: {
-					            nonblock: true,
-					            nonblock_opacity: .2
-					        }
-					    });
-					}
-				}); 
-
-			})
+			var json = {"applicant" : {"id" : id},
+						"addressType" : addressType,
+						"houseNo" : houseNo,
+						"district" : district,
+						"subDistrict" : subDistrict,
+						"province":province,
+						"zipcode":zipcode};
+		
+			$.ajax({
+				url : '${pageContext.request.contextPath}/address/'+id,
+				contentType : "application/json",
+				type : "POST",
+				data : JSON.stringify(json),
+				success : function(data) {
+					$('#addressModal').modal('hide');
+					new PNotify({
+				        title: 'Success',
+				        text: 'Successful Add Education!!!',
+				        type: 'success',
+				        nonblock: {
+				            nonblock: true,
+				            nonblock_opacity: .2
+				        }
+				    });
+				}
+			}); 
 		}
 		
 		
@@ -299,10 +296,13 @@
 								<input type="hidden" id="applicant" name="applicant"
 									value="${id}">
 							</div>
-							<label for="address"><spring:message code="address.name"/> </label><select class="form-control" id="inputAddress" name="inputAddress">
-								<option value="Present"><spring:message code="address.present"/></option>
-								<option value="Permanent"><spring:message code="address.permanent"/></option>
-							</select>
+							<div class="form-group">
+								<label for="inputAddress"><spring:message code="address.name"/> </label>
+								<select class="form-control" id="inputAddress" name="inputAddress">
+									<option value="Present"><spring:message code="address.present"/></option>
+									<option value="Permanent"><spring:message code="address.permanent"/></option>
+								</select>
+							</div>
 							<div class="form-group">
 								<label for="houseNo"><spring:message code="address.houseNo"/> </label> <input type="text"
 									class="form-control" id="houseNo"
