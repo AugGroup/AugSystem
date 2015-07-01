@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Applicant Summary" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b968d69-3c09-4dfe-882d-8ba0698d535c">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="192"/>
 	<queryString>
 		<![CDATA[SELECT applicant.APPLICANT_ID AS id ,
 		applicant.AGE AS age,
@@ -149,6 +149,12 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 					</textElement>
 					<textFieldExpression><![CDATA[$V{By_Date_COUNT}]]></textFieldExpression>
 				</textField>
+				<line>
+					<reportElement x="0" y="20" width="555" height="1" uuid="81e49930-bdfa-4ad5-be39-6fee1c08b348"/>
+					<graphicElement>
+						<pen lineWidth="2.0" lineStyle="Double"/>
+					</graphicElement>
+				</line>
 			</band>
 		</groupFooter>
 	</group>
@@ -225,7 +231,7 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 					<text><![CDATA[MAJOR SUMMARY :]]></text>
 				</staticText>
 				<line>
-					<reportElement x="26" y="6" width="490" height="1" uuid="5792b01f-6f10-46c8-9181-d8f446a9046b"/>
+					<reportElement x="26" y="9" width="490" height="1" uuid="5792b01f-6f10-46c8-9181-d8f446a9046b"/>
 				</line>
 				<textField>
 					<reportElement x="472" y="13" width="61" height="20" uuid="e8ad503d-d470-4142-bbfc-17111e0c2cf9"/>
@@ -235,7 +241,7 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 					<textFieldExpression><![CDATA[$V{By_Major_COUNT}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement x="26" y="36" width="490" height="1" uuid="458b6281-ddc8-4945-bae0-579b374805cc"/>
+					<reportElement x="26" y="31" width="490" height="1" uuid="458b6281-ddc8-4945-bae0-579b374805cc"/>
 				</line>
 			</band>
 		</groupFooter>

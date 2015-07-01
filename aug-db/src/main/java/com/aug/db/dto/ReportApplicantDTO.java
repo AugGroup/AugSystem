@@ -171,6 +171,8 @@ public class ReportApplicantDTO {
 	@Column(name = "lastNameEN")
 	private String lastNameEN;
 	
+	@Transient
+	private String fullNameEN;
 
 	@Column(name = "sex")
 	private String sex;
@@ -195,7 +197,6 @@ public class ReportApplicantDTO {
 	
 	@Column(name = "position3")
 	private Integer position3;
-	
 
 	@Column(name = "degree")
 	private String degree;
@@ -303,6 +304,13 @@ public class ReportApplicantDTO {
 	}
 	public void setLastNameEN(String lastNameEN) {
 		this.lastNameEN = lastNameEN;
+	}
+	
+	public String getFullNameEN() {
+		return firstNameEN+"  "+lastNameEN;
+	}
+	public void setFullNameEN(String fullNameEN) {
+		this.fullNameEN = fullNameEN;
 	}
 	public String getSex() {
 		return sex;

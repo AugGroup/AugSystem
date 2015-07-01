@@ -30,7 +30,7 @@ $(document).ready(function () {
 			columns : [
 			           {"data": "code"},
 				       {"data": "applyDate"},
-				       {"data": "firstNameEN"},
+				       {"data": "fullNameEN"},
 				       {"data": "positionName1"},
 				       {"data": "positionName2"},
 				       {"data": "positionName3"},
