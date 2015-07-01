@@ -15,7 +15,7 @@ $(document).ready(function () {
 		}else{
 			dtReport = $('#reportTable').DataTable({
 				searching : false,
-				paging: false,
+				paging: true,
 				ajax : {
 					type:'POST',
 					url: '${pageContext.request.contextPath}/report/search',

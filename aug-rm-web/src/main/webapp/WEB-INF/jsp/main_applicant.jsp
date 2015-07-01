@@ -49,9 +49,9 @@
 					dtApplicant.ajax.reload();
 				}else{
 					dtApplicant = $('#dataTable').DataTable({
-						lengthChange : false,
 						searching : true,
-						paging: false,
+						paging: true,
+						
 						ajax : {
 							url : '${pageContext.request.contextPath}/applicant/search',
 							type : 'POST',
@@ -279,7 +279,7 @@
 							<div class="form-group">
 								<label for="nameTechScore"><spring:message code="edit.tech.score"/> </label>
 								<label class="radio-inline">
-								    <input type="radio" value="pass" id="inputTechScore" name="inputTechScore"><spring:message code="edit.radio.pass"/>
+								    <input type="radio" value="Pass" id="inputTechScore" name="inputTechScore"><spring:message code="edit.radio.pass"/>
 								</label>
 								<label class="radio-inline">
 								    <input type="radio" value="Not pass" id="inputTechScore" name="inputTechScore"><spring:message code="edit.radio.notPass"/>
