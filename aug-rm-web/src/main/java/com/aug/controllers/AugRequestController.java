@@ -1,5 +1,6 @@
 package com.aug.controllers;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.util.List;
@@ -31,9 +32,21 @@ public class AugRequestController implements Serializable {
 	@Autowired private PositionService positionService;
 
 	@RequestMapping(value = "/request", method = { RequestMethod.GET })
-	public String listRequest() {
+	public String listRequest() throws IOException {
 		return "augRequest";
 	}
+	
+	/*-------------------- Test Exception Handle IOException  --------------------*/
+	@RequestMapping(value = "/test.htm")
+    public String test() throws IOException {
+        //just throw exception to test the exception handler mapping
+        if(true) {
+            throw new IOException("this is io exception");
+        }
+        // render hello.jsp page
+        return "augRequest";
+    }
+
 
 	/*-------------------- Search All Request --------------------*/
 	@RequestMapping(value = "/request/search", method = { RequestMethod.GET })
