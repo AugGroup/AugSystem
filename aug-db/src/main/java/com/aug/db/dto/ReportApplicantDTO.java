@@ -131,9 +131,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 		+ "FROM APPLICANT applicant "
 		+ "LEFT JOIN EDUCATION education ON applicant.APPLICANT_ID = education.APPLICANT_ID "
 		+ "LEFT JOIN POSITION position1 ON applicant.POSITION1_ID = position1.ID "
-		+ "LEFT JOIN POSITION position2 ON applicant.POSITION2_ID = position2.ID " //WHERE education.DEGREE= :DEGREE AND education.MAJOR =:MAJOR
+		+ "LEFT JOIN POSITION position2 ON applicant.POSITION2_ID = position2.ID " 
 		+ "LEFT JOIN POSITION position3 ON applicant.POSITION3_ID = position3.ID "
-		+ "WHERE MONTH(applicant.APPLY_DATE) = :APPLY_DATE ) ", resultClass = ReportApplicantDTO.class)
+		+ "WHERE MONTH(applicant.APPLY_DATE) = :APPLY_DATE ", resultClass = ReportApplicantDTO.class)
 		
 })
 @Entity

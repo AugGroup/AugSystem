@@ -10,7 +10,6 @@
 		applicant.APPLY_DATE AS applyDate,
 		applicant.ATTITUDE_HOME AS attitudeHome,
 		applicant.ATTITUDE_OFFICE AS attitudeOffice,
-		applicant.CERTIFICATE AS certificate,
 		applicant.APPLICANT_CODE AS code,
 		applicant.EMAIL AS email,
 		applicant.FIRSTNAME_EN AS firstNameEN,
@@ -55,9 +54,6 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 	<field name="applyDate" class="java.sql.Timestamp"/>
 	<field name="attitudeHome" class="java.lang.String"/>
 	<field name="attitudeOffice" class="java.lang.String"/>
-	<field name="certificate" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="code" class="java.lang.String"/>
 	<field name="email" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>

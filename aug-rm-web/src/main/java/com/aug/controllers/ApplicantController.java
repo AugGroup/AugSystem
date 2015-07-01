@@ -50,7 +50,6 @@ public class ApplicantController implements Serializable {
 	@Autowired private PositionService positionService;
 	@Autowired private ReportService reportService;
 	
-	private List<ReportApplicantDTO> dt;
 
 	@RequestMapping(value = "/applicant", method = { RequestMethod.GET })
 	public String helloPage(Model model) {
@@ -362,29 +361,26 @@ public class ApplicantController implements Serializable {
 			};
 		}
 
-		/*@RequestMapping(value = "/reportMonthly/preview", method = { RequestMethod.POST })
+		@RequestMapping(value = "/reportMonthly/preview", method = { RequestMethod.POST })
 		public ModelAndView searchMonthlyReport(@ModelAttribute SearchReportDTO searchReportDTO,
 				HttpSession session, Locale locale) {
 			List<ReportApplicantDTO> reportApplicantList;
-			if (searchReportDTO.getApplyDate()){ 			
+			Integer applyDate = searchReportDTO.getApplyDate();
+			String reportType = searchReportDTO.getReportType();
+			if (applyDate==-1){ 			
 				reportApplicantList = applicantService.reportApplicant();
-				System.out.println(position);
+				System.out.println(applyDate);
 			}else {
-				String positionName ="";
-				if (position != -1) {
-					positionName = positionService.findById(searchReportDTO.getPosition()).getPositionName();
-				}
-				System.out.println("positionName "+positionName+"  GPA: "+gpa);
-				reportApplicantList = applicantService.findReportByCriteria(positionName, degree, major, schoolName, gpa);// search by
+				reportApplicantList = applicantService.findReportByMonth(applyDate);
 			}
 			
 			Map<String, Object> parameterMap = new HashMap<String, Object>();
 			parameterMap.put("date", new java.util.Date());
 			parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
 			ModelAndView mv = reportService.getReport(reportApplicantList,
-					"Report_AugRmSystem", reportType, parameterMap);
+					"applicantSummaryMonthly", reportType, parameterMap);
 			return mv;
-		}*/
+		}
 	
 	/*-------------------- Position List--------------------*/
 	@ModelAttribute("positionRequest")
