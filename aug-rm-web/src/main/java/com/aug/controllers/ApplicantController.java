@@ -19,7 +19,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -340,23 +339,52 @@ public class ApplicantController implements Serializable {
 	
 	
 	// Monthly report
-		@RequestMapping(value = "/modalMonthlyReport", method = RequestMethod.GET)
+		@RequestMapping(value = "/monthlyReport", method = RequestMethod.GET)
 		public String modalMonthlyReport() {
-			return "/modalMonthlyReport";
+			return "/monthly_report";
+		}
+		/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
+		@RequestMapping(value = "/report/searchMonth", method = { RequestMethod.POST })
+		public @ResponseBody Object searchReportByMonth(
+				@RequestParam Integer applyDate) {
+			List<ReportApplicantDTO> data;
+			System.out.println("applyDate :" + applyDate);
+			if (applyDate == -1){ 			
+				data = applicantService.reportApplicant();
+			} else {
+				data = applicantService.findReportByMonth(applyDate);// search by
+			}
+			final List<ReportApplicantDTO> datas = data;
+			return new Object() {
+				public List<ReportApplicantDTO> getData() {
+					return datas;
+				}
+			};
 		}
 
-		@RequestMapping(value = "/searchMonthlyReport", method = { RequestMethod.POST })
-		public ModelAndView searchMonthlyReport(
-				@ModelAttribute ReportApplicantDTO reportApplicantDTO,
-				ModelMap map, HttpSession session, Locale locale) {
-			List<ReportApplicantDTO> reportApplicantList = applicantService.reportApplicant();
+		/*@RequestMapping(value = "/reportMonthly/preview", method = { RequestMethod.POST })
+		public ModelAndView searchMonthlyReport(@ModelAttribute SearchReportDTO searchReportDTO,
+				HttpSession session, Locale locale) {
+			List<ReportApplicantDTO> reportApplicantList;
+			if (searchReportDTO.getApplyDate()){ 			
+				reportApplicantList = applicantService.reportApplicant();
+				System.out.println(position);
+			}else {
+				String positionName ="";
+				if (position != -1) {
+					positionName = positionService.findById(searchReportDTO.getPosition()).getPositionName();
+				}
+				System.out.println("positionName "+positionName+"  GPA: "+gpa);
+				reportApplicantList = applicantService.findReportByCriteria(positionName, degree, major, schoolName, gpa);// search by
+			}
+			
 			Map<String, Object> parameterMap = new HashMap<String, Object>();
 			parameterMap.put("date", new java.util.Date());
 			parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
 			ModelAndView mv = reportService.getReport(reportApplicantList,
-					"applicantSummaryMonthly", reportApplicantDTO.getReportType(), parameterMap);
+					"Report_AugRmSystem", reportType, parameterMap);
 			return mv;
-		}
+		}*/
 	
 	/*-------------------- Position List--------------------*/
 	@ModelAttribute("positionRequest")

@@ -64,7 +64,15 @@ public class ApplicantRepositoryImpl extends
 			getCurrentSession().createSQLQuery(queryStr);
 			query.setParameter("GPA",gpa);
 		}
-		
+		List<ReportApplicantDTO> results = query.list();
+		return results;
+	}
+	
+	
+	/*-------------------- Monthly report --------------------*/
+	public List<ReportApplicantDTO> findReportByMonth(Integer applyDate){
+		Query query = getCurrentSession().getNamedQuery("REPORT_SEARCH_BY_MONTH"); 
+		query.setParameter("APPLY_DATE", applyDate);
 		List<ReportApplicantDTO> results = query.list();
 		return results;
 	}

@@ -143,6 +143,12 @@ public class ApplicantServiceImpl implements ApplicantService {
 		public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, Double gpa) {
 			return applicantRepository.findReportByCriteria(position, degree, major, schoolName, gpa);
 		}
+		
+		/*-------------------- Monthly report --------------------*/
+		@Override
+		public List<ReportApplicantDTO> findReportByMonth(Integer applyDate) {
+			return applicantRepository.findReportByMonth(applyDate);
+		}
 
 		@Override
 		public void update(ApplicationDTO applicationDTO) {

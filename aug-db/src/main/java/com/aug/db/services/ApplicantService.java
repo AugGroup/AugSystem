@@ -38,6 +38,10 @@ public interface ApplicantService {
 	
 	public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, Double gpa);
 
+	/*-------------------- Monthly report --------------------*/
+	public List<ReportApplicantDTO> findReportByMonth(Integer appyDate);
+	
 	
 	public void update(ApplicationDTO applicationDTO);
+	
 }

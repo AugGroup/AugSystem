@@ -9,6 +9,7 @@ public class SearchReportDTO {
 	private String major;
 	private String schoolName;
 	private Double gpa;
+	private Integer applyDate;
 	private String reportType;
 	
 	public Integer getPosition() {
@@ -46,6 +47,12 @@ public class SearchReportDTO {
 	}
 	public void setReportType(String reportType) {
 		this.reportType = reportType;
+	}
+	public Integer getApplyDate() {
+		return applyDate;
+	}
+	public void setApplyDate(Integer applyDate) {
+		this.applyDate = applyDate;
 	}
 	
 

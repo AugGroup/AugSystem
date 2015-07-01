@@ -7,7 +7,6 @@
 <script type="text/javascript">
 $(document).ready(function () {
 	var dtReport;
-
 	
 	//Search By Position and Show function 
 	$('#btn_search').off('click').on('click', function(){
@@ -44,45 +43,9 @@ $(document).ready(function () {
 		});
 	$('#btn_search').trigger("click");
 	
-	/*  $('#previewReportModal').on('show.bs.modal',function(){
-		var reportType = $('input[name="inputReportType"]:checked').val();
-		//debugger
-		$("#btn_submit").off("click").on("click", function(){
-			previewReport(reportType);
-		});
-			
-	});
-	
-	function previewReport(reportType){
-		var position = $('#inputPosition').val();
-		var degree = $('#inputDegree').val();
-		var major = $('#inputMajor').val();
-		var schoolName = $('#inputSchoolName').val();
-		var gpa = $('#inputGPA').val(); 
-		var json = {
-				"position" : position,
-				"degree" : degree,
-				"major" : major,
-				"schoolName" : schoolName,
-				"gpa" : gpa,
-				"reportType" : reportType
-				};
-			$.ajax({
-				url : "${pageContext.request.contextPath}/report/preview",
-				type : "POST",
-				contentType :"application/json; charset=utf-8", 
-				data : JSON.stringify(json),
-				success : function(data){
-					$('#previewReportModal').modal('hide');
-				}
-			}); 
-	
-	} */
-	
 	
  	 $(".submit").click(function() {
 		$("form[name='reportForm']").submit();
-		$("#previewReportModal").modal("hide");
 	});
 	 	
 });
