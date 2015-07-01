@@ -28,4 +28,7 @@ public interface ApplicantRepository extends GenericRepository<Applicant, Serial
 	
 	
 	public void update(ApplicationDTO applicationDTO);
+	
+	public ApplicationDTO getMaxApplicantId();
+	
 }

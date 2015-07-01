@@ -27,53 +27,11 @@
 					        }
 					        
 					    });
-			 
-			/*  $("#imageMultipartFile").fileinput({
-					showUpload: false,
-					layoutTemplates: {
-				        main1: "{preview}\n" +
-				        "<div class=\'input-group {class}\'>\n" +
-				        "   <div class=\'input-group-btn\'>\n" +
-				        "       {browse}\n" +
-				        "       {upload}\n" +
-				        "       {remove}\n" +
-				        "   </div>\n" +
-				        "   {caption}\n" +
-				        "</div>"
-				    }
-				});
-			 $("#resumeMultipartFile").fileinput({
-					showUpload: false,
-					layoutTemplates: {
-				        main1: "{preview}\n" +
-				        "<div class=\'input-group {class}\'>\n" +
-				        "   <div class=\'input-group-btn\'>\n" +
-				        "       {browse}\n" +
-				        "       {upload}\n" +
-				        "       {remove}\n" +
-				        "   </div>\n" +
-				        "   {caption}\n" +
-				        "</div>"
-				    }
-				});
-			 $("#transcriptMultipartFile").fileinput({
-					showUpload: false,
-					layoutTemplates: {
-				        main1: "{preview}\n" +
-				        "<div class=\'input-group {class}\'>\n" +
-				        "   <div class=\'input-group-btn\'>\n" +
-				        "       {browse}\n" +
-				        "       {upload}\n" +
-				        "       {remove}\n" +
-				        "   </div>\n" +
-				        "   {caption}\n" +
-				        "</div>"
-				    }
-				}); */
+			/*  $("#imageMultipartFile").fileinput({showUpload: false, maxFileCount: 10, mainClass: "input-group-sm"});
+			 $("#resumeMultipartFile").fileinput({showUpload: false, maxFileCount: 10, mainClass: "input-group-sm"});
+			 $("#transcriptMultipartFile").fileinput({showUpload: false, maxFileCount: 10, mainClass: "input-group-sm"}); */
 			 $('#informationApplicant').validate({
-				rules : {imageMultipartFile : {
-					required : true
-					},
+				rules : {
 					firstNameTH : {
 						required : true
 						},
@@ -220,18 +178,9 @@
  					},
  					employedRelation : {
  						required : true
- 					},
- 					resumeMultipartFile : {
- 						required : true
- 					},
- 					transcriptMultipartFile : {
- 						required : true
  					}
 				},
 				messages : {
-					imageMultipartFile : {
-						required : "Photograph is required!"
-					},
 					firstNameTH : {
 						required : "Firstname Thai is required!"
 					},
@@ -375,12 +324,6 @@
  					},
  					previousEmployersReason : {
  						required :  "Reason is required!"
- 					},
- 					resumeMultipartFile : {
- 						required : "Resume is required!"
- 					},
- 					transcriptMultipartFile : {
- 						required :  "Transcript is required!"
  					}
 					
 				}
@@ -418,9 +361,10 @@
 	</c:when>
 	</c:choose>
 			 	<br><br>
-				<input id="imageMultipartFile" name="imageMultipartFile" type="file" accept="image/*" >
+				<input id="imageMultipartFile" name="imageMultipartFile"  type="file" accept="image/*" />
+				<f:hidden path="image" />
 			</div>
-	
+	<f:hidden path="trackingStatus" />
  		<%--  <div class="form-group">
 				<spring:message code="info.photograph"/> 
 				<input id="imageMultipartFile" name="imageMultipartFile" type="file" class="file" accept="image/gif,image/jpeg,image/png"></input>
@@ -831,13 +775,27 @@
 	</div>
 		<br>
 		<br>
+		
 		  <div class="form-group">
 			<label for="file"><spring:message code="info.resume"/></label> 
 			<input type="file" id="resumeMultipartFile" name="resumeMultipartFile" class="file"/>
-				<p class="help-block"><spring:message code="info.block"/></p>
+			<f:hidden path="resume" />
+			<br>
+		<c:choose>
+ 			<c:when test="${not empty applicant.resume}">
+ 					<a href="">Click and download ${applicant.resume} here</a>
+	    	</c:when>
+	    </c:choose>
+	   		 <br>
 			<label for="file"><spring:message code="info.transcript"/></label> 
 				<input type="file" id="transcriptMultipartFile" name="transcriptMultipartFile" class="file"/>
-				<p class="help-block"><spring:message code="info.block"/></p>
+				<f:hidden path="transcript" />
+			<br>
+		<c:choose>
+			<c:when test="${not empty applicant.transcript}">
+ 					<a href="">Click and transcript ${applicant.transcript} here</a>
+	    	</c:when>
+	      </c:choose>
 		</div>
 			<br>
 			<br>

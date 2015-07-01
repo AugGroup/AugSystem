@@ -41,7 +41,8 @@ public interface ApplicantService {
 	/*-------------------- Monthly report --------------------*/
 	public List<ReportApplicantDTO> findReportByMonth(Integer appyDate);
 	
-	
 	public void update(ApplicationDTO applicationDTO);
+
+	public ApplicationDTO getMaxApplicantId();
 	
 }

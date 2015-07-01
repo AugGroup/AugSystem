@@ -903,6 +903,7 @@ public class Applicant {
 		applicant.setResume(applicationDTO.getResume());
 		applicant.setSex(applicationDTO.getSex());
 		applicant.setMilitaryStatus(applicationDTO.getMilitaryStatus());
+		applicant.setCode(applicationDTO.getCode());
 		return applicant;
 
 	}

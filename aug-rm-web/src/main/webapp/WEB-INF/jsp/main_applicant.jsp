@@ -51,7 +51,6 @@
 					dtApplicant = $('#dataTable').DataTable({
 						searching : true,
 						paging: true,
-						
 						ajax : {
 							url : '${pageContext.request.contextPath}/applicant/search',
 							type : 'POST',

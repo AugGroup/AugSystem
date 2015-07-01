@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator"
 	prefix="decorator"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
@@ -38,8 +40,8 @@
 	<script src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
 	<script
 	src='<c:url value ="/static/resources/js/jquery.maskedinput.min.js" />'></script>
-	
-	<%-- <script src='<c:url value ="/static/resources/js/fileinput.min.js"/>'></script>
+	<%-- 
+ 	<script src='<c:url value ="/static/resources/js/fileinput.min.js"/>'></script>
 	<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/fileinput.min.css"/>" /> --%>
 </head>
 <style>
@@ -54,6 +56,7 @@
     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
     display: inline-block;
 }
+
 /* body {background-color:#efe0cb} */
 </style>
 

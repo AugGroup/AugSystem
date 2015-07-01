@@ -1,6 +1,8 @@
 package com.aug.db.services;
 
 import java.text.ParseException;
+import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,9 +124,10 @@ public class ApplicantServiceImpl implements ApplicantService {
 	public ApplicationDTO saveInformations(ApplicationDTO applicationDTO) {
 		Applicant applicant = new Applicant();
 		applicant.setTrackingStatus("Waiting for consider");
+		
 		try {
-			applicantRepository.insert(applicant.fromApplicationDTO(applicant,
-					applicationDTO));
+			applicantRepository.insert(applicant.fromApplicationDTO(applicant,applicationDTO));
+			
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
@@ -132,6 +135,8 @@ public class ApplicantServiceImpl implements ApplicantService {
 		applicationDTO.setId(applicant.getId());
 		return applicationDTO;
 	}
+	
+
    
 	  /*-------------------- Report --------------------*/
 		//findAll
@@ -154,5 +159,10 @@ public class ApplicantServiceImpl implements ApplicantService {
 		public void update(ApplicationDTO applicationDTO) {
 			applicantRepository.update(applicationDTO);
 			
+		}
+
+		@Override
+		public ApplicationDTO getMaxApplicantId() {
+			return applicantRepository.getMaxApplicantId();
 		}
 }

@@ -2,6 +2,7 @@ package com.aug.db.repositories;
 
 import java.io.Serializable;
 import java.text.ParseException;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -92,12 +93,19 @@ public class ApplicantRepositoryImpl extends
 		try {
 			getCurrentSession().saveOrUpdate(applicant.fromApplicationDTO(applicant, applicationDTO));
 		} catch (HibernateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
+
+	@Override
+	public ApplicationDTO getMaxApplicantId() {
+		Query query = getCurrentSession().getNamedQuery("MAX_ID_APPLICANT");
+		List<ApplicationDTO> result = query.list();
+		ApplicationDTO app = result.get(0);
+		return app;
+	}
+	
 
 }

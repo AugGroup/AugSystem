@@ -3,6 +3,7 @@ package com.aug.controllers;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -124,6 +125,11 @@ public class ApplicationController {
 	@RequestMapping(value = "/saveInformations", method = { RequestMethod.POST })
 	public String saveInformations(@ModelAttribute ApplicationDTO applicationDTO, Model model,MultipartFile multipartFile)
 			throws ParseException {
+		
+		int year = Calendar.getInstance().get(Calendar.YEAR);
+		
+		applicationDTO.setCode("C"+year+(applicantService.getMaxApplicantId().getId()+1));
+		
 		if(applicationDTO.getImageMultipartFile()!=null&&applicationDTO.getImageMultipartFile().getSize()>0){
 			try {
 				applicationDTO.setImage(applicationDTO.getImageMultipartFile().getOriginalFilename());
@@ -300,9 +306,6 @@ public class ApplicationController {
 			@PathVariable Integer id, Model  model) {
 		applicationDTO = applicantService.findByIdApplicant(id);
 		model.addAttribute("applicant",applicationDTO);
-		/*model.addAttribute("image", applicationDTO.getImage());
-		model.addAttribute("resume", applicationDTO.getResume());
-		model.addAttribute("transcript", applicationDTO.getTranscript());*/
 
 		return "informations";
 	}
