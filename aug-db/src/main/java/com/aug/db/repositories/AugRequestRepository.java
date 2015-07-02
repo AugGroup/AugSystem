@@ -21,4 +21,7 @@ public interface AugRequestRepository extends GenericRepository<AugRequest, Seri
 	
 	public AugRequestDTO findAugRequestById(Integer id);
 
+	/*--------------------For test SQLGrammaEception----------------------*/
+	public AugRequestDTO findAugRequestByIdTest(Integer id);
+
 }

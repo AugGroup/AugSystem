@@ -39,4 +39,13 @@ public class AugRequestRepositoryImpl extends
 		return app;
 	}
 
+	@Override
+	public AugRequestDTO findAugRequestByIdTest(Integer id) {
+		Query query = getCurrentSession().getNamedQuery("SEARCH_REQUEST_BY_ID_TEST");
+		query.setParameter("ID", id);
+		List<AugRequestDTO> result = query.list();
+		AugRequestDTO app = result.get(0);
+		return app;
+	}
+
 }

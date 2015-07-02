@@ -32,4 +32,7 @@ public interface AugRequestService {
     
     public AugRequestDTO findAugRequestById(Integer id);
     
+    /*---------------For Test SQLGrammaException---------------*/
+    public AugRequestDTO findAugRequestByIdTest(Integer id);
+    
 }

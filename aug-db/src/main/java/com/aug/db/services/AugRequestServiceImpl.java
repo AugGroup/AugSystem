@@ -83,4 +83,13 @@ public class AugRequestServiceImpl implements AugRequestService {
 		return augRequest;
 	}
 
+	@Override
+	public AugRequestDTO findAugRequestByIdTest(Integer id) {
+		AugRequestDTO augRequest = augRequestRepository.findAugRequestByIdTest(id);
+		String positionStr = positionRepository.findById(id).getPositionName();
+		augRequest.setPositionStr(positionStr);
+
+		return augRequest;
+	}
+
 }
