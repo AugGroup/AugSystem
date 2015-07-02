@@ -59,8 +59,8 @@ VALUES ('1','JAVAJS'),('2','JAVAPHP'),('3','-');
 
 
 insert INTO AUG_REQUEST (REQUEST_DATE,REQUESTER_NAME,STATUS,APPROVAL_NAME,APPROVE_DATE,REQUEST_POSITION,NUMBER_APPLICANT,SPECIFIC_SKILL,YEAR_EXPERIENCE)
-VALUES (STR_TO_DATE('26/05/2015','%d/%m/%Y'),'SamSmith','NEW','ChrisBrown',STR_TO_DATE('27/05/2015','%d/%m/%Y'),'1','2','HibernateSping','3'),
-(STR_TO_DATE('26/05/2015','%d/%m/%Y'),'SamSmith','NEW','ChrisBrown',STR_TO_DATE('27/05/2015','%d/%m/%Y'),'2','2','HibernateSping','3');
+VALUES (STR_TO_DATE('26/05/2015','%d/%m/%Y'),'SamSmith','NEW Request','ChrisBrown',STR_TO_DATE('27/05/2015','%d/%m/%Y'),'1','2','HibernateSping','3'),
+(STR_TO_DATE('26/05/2015','%d/%m/%Y'),'SamSmith','NEW Request','ChrisBrown',STR_TO_DATE('27/05/2015','%d/%m/%Y'),'2','2','HibernateSping','3');
 
 insert INTO LOGIN(USERNAME,PASSWORD)
 VALUES ('admin','admin'),('staff','staff'),('manager','manager');
