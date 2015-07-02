@@ -54,17 +54,17 @@ $(document).ready(function () {
 
 <div class="container">
 <!------------------- Report header-------------------> 
- 	<div class="row"><h1 align="center">Report</h1></div>
+ 	<div class="row"><h1 align="center"><spring:message code="report.text"/></h1></div>
  	
 <!------------------- Report search-------------------> 
 <f:form method="post" name="reportForm" target="_blank" commandName="searchReportDTO" action="${pageContext.request.contextPath}/report/preview" cssClass="form-horizontal">
-<h3> Search By : </h3>
+<h3> <spring:message code="report.text.search"/> </h3>
 	<div class="row">
 		<div class="col-md-2">
 			<div class="form-group" style="width:180px">
-				<label for="position">Position</label>
+				<label for="position"><spring:message code="info.position"/></label>
 				<select name="position" id="position" class="form-control">
-					<option value="-1">please select</option>
+					<option value="-1"><spring:message code="report.text.select"/></option>
 					<c:forEach items="${positionRequest}" var="items">
 						<option value="${items.id}">${items.positionName }</option>
                 	</c:forEach>
@@ -73,25 +73,25 @@ $(document).ready(function () {
        </div>
        <div class="col-md-2">
        		<div class="form-group" style="width:180px">
-       			<label for="degree">Degree</label>
+       			<label for="degree"><spring:message code="education.degree"/></label>
        			<input type="text" class="form-control" id="degree" name="degree" placeholder="Enter Degree">
        		</div>
        	</div>
        	<div class="col-md-2">
        		<div class="form-group" style="width:180px">
-       			<label for="major">Major</label> 
+       			<label for="major"><spring:message code="education.major"/></label> 
 				<input type="text" class="form-control" id="major" name="major" placeholder="Enter Major">
     		</div>
     	</div>
    		<div class="col-md-1">
    			<div class="form-group" style="width:93px">
-    			<label for="gpa">GPA</label> <!-- step="0.1" -->
+    			<label for="gpa"><spring:message code="education.gpa"/></label> <!-- step="0.1" -->
 				<input type="text"  class="form-control" id="gpa" name="gpa" placeholder="Enter GPA">
     		</div>
    		</div>
    		<div class="col-md-2">
    			<div class="form-group" style="width:180px">
-    			<label for="schoolName">School Name</label> 
+    			<label for="schoolName"><spring:message code="report.text.school"/></label> 
 				<input type="text" class="form-control" id="schoolName" name="schoolName" placeholder="Enter School Name">
 			</div>
    		</div>
@@ -99,16 +99,16 @@ $(document).ready(function () {
    		<div class="row">
    			 <div class="col-md-8" align="right">
    				<div class="form-group">
-   					<label for="reportType">Report Type </label>
-						<input type="radio" value="pdf" id="reportType" name="reportType" checked="checked"> PDF 
-						<input type="radio" value="xls" id="reportType" name="reportType"> XLS 
+   					<label for="reportType"><spring:message code="report.text.type"/> </label>
+						<input type="radio" value="pdf" id="reportType" name="reportType" checked="checked"> <spring:message code="report.text.pdf"/> 
+						<input type="radio" value="xls" id="reportType" name="reportType"> <spring:message code="report.text.xls"/> 
     			</div>
     		</div>
    		 	<div class="col-md-2" align="left">
-   		 		<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> Search </button>				
+   		 		<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> <spring:message code="main.button.search"/> </button>		
    		 	</div>
    			 <div class="col-md-1" align="left">	
-   			 	<button type="button" class="btn btn-primary submit" data-toggle="modal" data-target="#previewReportModal" id="btn_preview"><span class="glyphicon glyphicon-search"></span> Preview </button>			 				
+   			 	<button type="button" class="btn btn-primary submit" data-toggle="modal" data-target="#previewReportModal" id="btn_preview"><span class="glyphicon glyphicon-search"></span> <spring:message code="request.preview"/> </button>		 				
 		 	</div>
 		 </div>
 
@@ -147,15 +147,15 @@ $(document).ready(function () {
     	<table id="reportTable" class="cell-border" style="width: 100%">
             <thead>
                 <tr>
-                    <th>ID Code</th>
-                    <th>Apply Date</th>
-                    <th>Name</th>
-                    <th>Position1</th>
-                    <th>Position2</th>
-                    <th>Position3</th>
-                    <th>School Name</th>
-                    <th>Degree</th>
-                    <th>GPA</th>
+                    <th><spring:message code="main.code"/></th>
+                    <th><spring:message code="info.apply.date"/></th>
+                    <th><spring:message code="main.name"/></th>
+                    <th><spring:message code="main.position1"/></th>
+                    <th><spring:message code="main.position2"/></th>
+                    <th><spring:message code="main.position3"/></th>
+                    <th><spring:message code="report.data.school"/></th>
+                    <th><spring:message code="education.data.degree"/></th>
+                    <th><spring:message code="education.data.gpa"/></th>
                 </tr>
             </thead>
          </table>

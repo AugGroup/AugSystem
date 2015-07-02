@@ -44,7 +44,7 @@
 		}
 		else {
 			var id = '${id}';
-			$('#referenceTable').DataTable({
+			dtApplicant = $('#referenceTable').DataTable({
 				ajax : {
 					url : '${pageContext.request.contextPath}/findByIdReference/'+id,
 					type : 'POST'
@@ -91,6 +91,8 @@
 					data : JSON.stringify(json),
 					success : function(data) {
 						$('#referenceModal').modal('hide');
+						dtApplicant.ajax.reload();
+						
 						new PNotify({
 					        title: 'Success',
 					        text: 'Successful Add References!!!',
@@ -211,8 +213,7 @@
 	    	var button = e.relatedTarget;
 			if(button != null){
 				var id = $(button).data("id");
-				var str = $(button).data("type");
-				if(str == "edit"){
+				if(id != null){
 					console.log(id);
 					findById(id);
 					$('#btn_save').off('click').on('click', function(id){

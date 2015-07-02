@@ -98,7 +98,7 @@
 	}
 	else {
 		var id = '${id}';
-		$('#experiencesTable').DataTable({
+		dtApplicant = $('#experiencesTable').DataTable({
 			ajax : {
 				url : '${pageContext.request.contextPath}/findByIdExperience/' + id,
 				type : 'POST'
@@ -165,6 +165,8 @@
 				data : JSON.stringify(json),
 				success : function(data) {
 					$('#referenceModal').modal('hide');
+					dtApplicant.ajax.reload();
+					
 					new PNotify({
 				        title: 'Success',
 				        text: 'Successful Add Experience!!!',
@@ -317,8 +319,7 @@
 	    	var button = e.relatedTarget;
 			if(button != null){
 				var id = $(button).data("id");
-				var str = $(button).data("type");
-				if(str == "edit"){
+				if(id != null){
 					console.log(id);
 					findById(id);
 					$('#btn_save').off('click').on('click', function(id){

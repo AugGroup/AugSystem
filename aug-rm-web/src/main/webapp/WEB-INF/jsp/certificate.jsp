@@ -26,7 +26,7 @@ $(document).ready(function() {
 	}
 	else {
 		var id = '${id}';
-		$('#certificateTable').DataTable({
+		dtApplicant = $('#certificateTable').DataTable({
 			ajax : {
 				url : '${pageContext.request.contextPath}/findByIdCertificate/'+id,
 				type : 'POST'
@@ -62,6 +62,8 @@ $(document).ready(function() {
 				data : JSON.stringify(json),
 				success : function(data){
 					$('#certificateModal').modal('hide');
+					dtApplicant.ajax.reload();
+					
 					new PNotify({
 					    title: 'Edit Family Success!!',
 					    text: 'You can edit data',

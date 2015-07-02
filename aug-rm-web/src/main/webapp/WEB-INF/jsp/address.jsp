@@ -65,10 +65,10 @@
 		}
 		else {
 			var id = '${id}';
-			$('#addressTable').DataTable({
+			dtApplicant = $('#addressTable').DataTable({
 				ajax : {
 					url : '${pageContext.request.contextPath}/findByIdAddress/'+id,
-					type : 'POST'
+					type : 'GET'
 				},
 				columns : [ {data : "addressType"},
 							{data : "houseNo"},
@@ -78,7 +78,7 @@
 							{data : "zipcode"},
 							{data : "province"},
 							{data : function(data) {
-						 		return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#addressModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
+						 		return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#addressModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
 							}},
 							{ data : function(data) {
 						 		return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
@@ -103,6 +103,7 @@
 						"houseNo" : houseNo,
 						"district" : district,
 						"subDistrict" : subDistrict,
+						"road" : road,
 						"province":province,
 						"zipcode":zipcode};
 		
@@ -113,6 +114,8 @@
 				data : JSON.stringify(json),
 				success : function(data) {
 					$('#addressModal').modal('hide');
+					dtApplicant.ajax.reload();
+					
 					new PNotify({
 				        title: 'Success',
 				        text: 'Successful Add Education!!!',
@@ -244,12 +247,11 @@
             });
         }
 		
-        $('#addressModal').on('shown.bs.modal', function (e) {
+        $('#addressModal').off("click").on('shown.bs.modal', function (e) {
         	var button = e.relatedTarget;
 			if(button != null){
 				var id = $(button).data("id");
-				var str = $(button).data("type");
-				if(str == "edit"){
+				if(id != null){
 					console.log(id);
 					findById(id);
 					$('#btn_save').off('click').on('click', function(id){

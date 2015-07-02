@@ -28,7 +28,7 @@ $(document).ready(function() {
 		}
 		else {
 			var id = '${id}';
-			$('#languagesTable').DataTable({
+			dtApplicant = $('#languagesTable').DataTable({
 				ajax : {
 					url : '${pageContext.request.contextPath}/findByIdLanguages/' +id,
 					type : 'POST'
@@ -39,7 +39,7 @@ $(document).ready(function() {
 				            {data : "understanding"},
 				            {data : "writing"},
 				            {data : function(data) {
-					 			return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#languagesModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
+					 			return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#languagesModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
 							}},
 							{data : function(data) {
 								return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/> </button>';
@@ -75,6 +75,8 @@ $(document).ready(function() {
 				data : JSON.stringify(json),
 				success : function(data) {
 					$('#languagesModal').modal('hide');
+					dtApplicant.ajax.reload();
+					
 					new PNotify({
 				        title: 'Success',
 				        text: 'Successful Add Languages!!!',
@@ -195,8 +197,7 @@ $(document).ready(function() {
     	var button = e.relatedTarget;
 		if(button != null){
 			var id = $(button).data("id");
-			var str = $(button).data("type");
-			if(str == "edit"){
+			if(id != null){
 				console.log(id);
 				findById(id);
 				$('#btn_save').off('click').on('click', function(id){

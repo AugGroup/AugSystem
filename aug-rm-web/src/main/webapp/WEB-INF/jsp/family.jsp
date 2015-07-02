@@ -6,8 +6,6 @@
 <script>
 	$(document).ready(function() {
 		
-		var dtApplicant;
-		
 		$('#familyForm').validate({
 			rules : {
 				nameFamily : {
@@ -53,12 +51,12 @@
 			
 		});
 		
+		var dtApplicant;
 		if(dtApplicant) {
 			dtApplicant.ajax.reload();
-		}
-		else {
+		}else {
 			var id = '${id}';
-			$('#familyTable').DataTable({
+			dtApplicant = $('#familyTable').DataTable({
 				ajax : {
 					url : '${pageContext.request.contextPath}/findByIdFamily/'+id,
 					type : 'POST'
@@ -69,7 +67,7 @@
 							{data : "address"},
 							{data : "positionFamily"},
 							{data : function(data) {
-					 			return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#familyModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
+					 			return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#familyModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
 							}},
 							{data : function(data) {
 					 			return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
@@ -101,6 +99,8 @@
 				data : JSON.stringify(json),
 				success : function(data) {
 					$('#familyModal').modal('hide');
+					dtApplicant.ajax.reload();
+					
 					new PNotify({
 				        title: 'Success',
 				        text: 'Successful Add Family!!!',
@@ -223,8 +223,7 @@
 	    	var button = e.relatedTarget;
 			if(button != null){
 				var id = $(button).data("id");
-				var str = $(button).data("type");
-				if(str == "edit"){
+				if(id != null){
 					console.log(id);
 					findById(id);
 					$('#btn_save').off('click').on('click', function(id){

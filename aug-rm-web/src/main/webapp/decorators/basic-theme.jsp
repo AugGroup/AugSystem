@@ -88,7 +88,7 @@
 						<li><a href="${pageContext.request.contextPath}/request"><spring:message code="request.button"/></a></li>
 						<li><a href="${pageContext.request.contextPath}/approve"><spring:message code="request.approve"/></a></li>
 						<li><a href="${pageContext.request.contextPath}/report"><spring:message code="report.text"/></a></li>
-						<li><a href="${pageContext.request.contextPath}/monthlyReport">Monthly Report</a></li>
+						<li><a href="${pageContext.request.contextPath}/monthlyReport"><spring:message code="report.text.monthly"/></a></li>
 						<%-- <li class="dropdown">
          					 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
          					 <ul class="dropdown-menu">
