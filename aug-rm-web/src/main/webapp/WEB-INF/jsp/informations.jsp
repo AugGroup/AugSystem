@@ -783,7 +783,7 @@
 			<br>
 		<c:choose>
  			<c:when test="${not empty applicant.resume}">
- 					<a href="">Click and download ${applicant.resume} here</a>
+ 					<a href="${pageContext.request.contextPath}/dowloadResume/${applicant.id}">Click and download ${applicant.resume} here</a>
 	    	</c:when>
 	    </c:choose>
 	   		 <br>
@@ -793,7 +793,7 @@
 			<br>
 		<c:choose>
 			<c:when test="${not empty applicant.transcript}">
- 					<a href="">Click and transcript ${applicant.transcript} here</a>
+ 					<a href="${pageContext.request.contextPath}/dowloadTranscript/${applicant.id}">Click and transcript ${applicant.transcript} here</a>
 	    	</c:when>
 	      </c:choose>
 		</div>
