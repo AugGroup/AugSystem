@@ -173,8 +173,7 @@ public class ApplicationController {
 	public @ResponseBody Address saveAddress(@RequestBody Address address,@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
 		addressService.create(address);
-		System.out.println(id+","+address.getId());
-		Address addr = addressService.findById(address.getId());
+		Address addr = addressService.findById(id);
 		
         return addr;
 	}
