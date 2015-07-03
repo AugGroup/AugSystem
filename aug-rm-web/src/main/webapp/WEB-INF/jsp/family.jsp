@@ -93,7 +93,7 @@
 						"positionFamily" : positionFamily,
 						};
 			$.ajax({
-				contentType : "application/json",
+				contentType : "application/json; charset=utf-8",
 				type : "POST",
 				url : '${pageContext.request.contextPath}/family/'+id,
 				data : JSON.stringify(json),
@@ -170,18 +170,18 @@
 					d.occupation = data.occupation,
 					d.address = data.address,
 					d.positionFamily = data.positionFamily,
-				 		
-				 		table.row(rowData).data(d).draw();
-				 		
-						new PNotify({
-						    title: 'Edit Family Success!!',
-						    text: 'You can edit data',
-						    type: 'success',
-						    nonblock: {
-						        nonblock: true,
-						        nonblock_opacity: .2
-						    }
-						});
+				 	
+			 		table.row(rowData).data(d).draw();
+			 		
+					new PNotify({
+					    title: 'Edit Family Success!!',
+					    text: 'You can edit data',
+					    type: 'success',
+					    nonblock: {
+					        nonblock: true,
+					        nonblock_opacity: .2
+					    }
+					});
 				 }
 			});
 		}

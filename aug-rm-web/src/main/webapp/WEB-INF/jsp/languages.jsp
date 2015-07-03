@@ -51,46 +51,42 @@ $(document).ready(function() {
 		}
 	
 	function saveLanguages(){
-		$('#btn_save').on("click", function() {
-			var id = '${id}'
-			var languagesName = $("#languages").val();
-			var speaking = $("speaking").val();
-			var understanding = $("understanding").val();
-			var reading = $("reading").val();
-			var writing = $("writing").val();
-			
-			var json = {
-					"applicant" : {"id" : id},
-					"languagesName" : languagesName,
-					"speaking" : speaking,
-					"reaing" : reading,
-					"understanding" : understanding,
-					"writing" : writing
-					};
+		var id = '${id}'
+		var languagesName = $("#languages").val();
+		var speaking = $('input[name="speaking"]:checked').val();
+		var reading = $('input[name="reading"]:checked').val();
+		var understanding = $('input[name="understanding"]:checked').val();
+		var writing = $('input[name="writing"]:checked').val();
+		
+		var json = {
+				"applicant" : {"id" : id},
+				"languagesName" : languagesName,
+				"speaking" : speaking,
+				"reaing" : reading,
+				"understanding" : understanding,
+				"writing" : writing
+				};
 
-	 		$.ajax({
-				contentType : "application/json",
-				type : "POST",
-				url : '${pageContext.request.contextPath}/languages/'+id,
-				data : JSON.stringify(json),
-				success : function(data) {
-					$('#languagesModal').modal('hide');
-					dtApplicant.ajax.reload();
-					
-					new PNotify({
-				        title: 'Success',
-				        text: 'Successful Add Languages!!!',
-				        type: 'success',
-				        nonblock: {
-				            nonblock: true,
-				            nonblock_opacity: .2
-				        }
-				    });
-					
+ 		$.ajax({
+			contentType : "application/json",
+			type : "POST",
+			url : '${pageContext.request.contextPath}/languages/'+id,
+			data : JSON.stringify(json),
+			success : function(data) {
+				$('#languagesModal').modal('hide');
+				dtApplicant.ajax.reload();
 				
-				}
-			}); 
-		});
+				new PNotify({
+			        title: 'Success',
+			        text: 'Successful Add Languages!!!',
+			        type: 'success',
+			        nonblock: {
+			            nonblock: true,
+			            nonblock_opacity: .2
+			        }
+			    });
+			}
+		}); 
 	}
 	
 	//Update 
@@ -144,6 +140,10 @@ $(document).ready(function() {
 			 	var d = table.row(rowData).data();
 			 	
 			 		d.languagesName = data.languagesName;
+			 		d.speaking = data.speaking;
+			 		d.reading = data.reading;
+			 		d.understanding = data.understanding;
+			 		d.writing = data.writing;
 			 		
 			 		table.row(rowData).data(d).draw();
 			 		
@@ -171,7 +171,7 @@ $(document).ready(function() {
         }
     });
 	
-    function deleteLanguages(button) {
+    function deleted(button) {
         var dtApplicant = $('#languagesTable').DataTable();
         var id = $(button).data("id");
         var index = dtApplicant.row(button.closest("tr")).index();

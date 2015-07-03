@@ -68,7 +68,7 @@
 			dtApplicant = $('#addressTable').DataTable({
 				ajax : {
 					url : '${pageContext.request.contextPath}/findByIdAddress/'+id,
-					type : 'GET'
+					type : 'POST'
 				},
 				columns : [ {data : "addressType"},
 							{data : "houseNo"},

@@ -127,58 +127,56 @@
 	}
 		
 	function saveExperience(){
-		$('#btn_save').on("click", function() {
-			var id = '${id}';
-			var position = $("#workBackground").val();
-			var fromDate = $("#fromWorkYear").val();
-			var toDate = $("#toWorkYear").val();
-			var employerName = $("#emp").val();
-			var address = $("#addressBackground").val();
+		var id = '${id}';
+		var position = $("#workBackground").val();
+		var fromDate = $("#fromWorkYear").val();
+		var toDate = $("#toWorkYear").val();
+		var employerName = $("#emp").val();
+		var address = $("#addressBackground").val();
 
-			var typeOfBusiness = $("#business").val();
-			var positionOfEmployer = $("#positionBackground").val();
-			var reason = $("#reasonLeaving").val();
-			var supervisor = $("#supervisorBackground").val();
-			var salary = $("#salaryBackground").val();
-			
-			var description = $("#descriptionBackground").val();
-			
-			var json = {
-					"applicant" : {"id" : id},
-					"position" : position,
-					"fromDate" : fromDate,
-					"toDate" : toDate,
-					"employerName" : employerName,
-					"address" : address,
-					"fromDate" : fromDate,
-					"typeOfBusiness" : typeOfBusiness,
-					"positionOfEmployer" : positionOfEmployer,
-					"reason" : reason,
-					"supervisor" : supervisor,
-					"salary" : salary,
-					"description" : description
-					};
-			$.ajax({
-				contentType : "application/json",
-				type : "POST",
-				url : '${pageContext.request.contextPath}/experiences/'+id,
-				data : JSON.stringify(json),
-				success : function(data) {
-					$('#referenceModal').modal('hide');
-					dtApplicant.ajax.reload();
-					
-					new PNotify({
-				        title: 'Success',
-				        text: 'Successful Add Experience!!!',
-				        type: 'success',
-				        nonblock: {
-				            nonblock: true,
-				            nonblock_opacity: .2
-				        }
-				    });
-				}
-			});
-		})
+		var typeOfBusiness = $("#business").val();
+		var positionOfEmployer = $("#positionBackground").val();
+		var reason = $("#reasonLeaving").val();
+		var supervisor = $("#supervisorBackground").val();
+		var salary = $("#salaryBackground").val();
+		
+		var description = $("#descriptionBackground").val();
+		
+		var json = {
+				"applicant" : {"id" : id},
+				"position" : position,
+				"fromDate" : fromDate,
+				"toDate" : toDate,
+				"employerName" : employerName,
+				"address" : address,
+				"fromDate" : fromDate,
+				"typeOfBusiness" : typeOfBusiness,
+				"positionOfEmployer" : positionOfEmployer,
+				"reason" : reason,
+				"supervisor" : supervisor,
+				"salary" : salary,
+				"description" : description
+				};
+		$.ajax({
+			contentType : "application/json",
+			type : "POST",
+			url : '${pageContext.request.contextPath}/experiences/'+id,
+			data : JSON.stringify(json),
+			success : function(data) {
+				$('#referenceModal').modal('hide');
+				dtApplicant.ajax.reload();
+				
+				new PNotify({
+			        title: 'Success',
+			        text: 'Successful Add Experience!!!',
+			        type: 'success',
+			        nonblock: {
+			            nonblock: true,
+			            nonblock_opacity: .2
+			        }
+			    });
+			}
+		});
 	}
 		
 		//Find by Id

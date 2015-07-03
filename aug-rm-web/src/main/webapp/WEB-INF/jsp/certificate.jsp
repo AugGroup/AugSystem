@@ -34,7 +34,7 @@ $(document).ready(function() {
 			columns : [ {
 				data : "certificateName"
 			} ,{ data : function(data) {
-				 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#certificateModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
+				 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#certificateModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
 			}
 			},{ data : function(data) {
 				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
@@ -47,35 +47,33 @@ $(document).ready(function() {
 	}
 
 	function saveCertificate(){
-		$('#btn_save').on("click", function() {
-			var id = '${id}'
-			var certificateName = $("#certificate").val();
-			var json = {
-					"applicant" : {"id" : id},
-					"certificateName" : certificateName,
-					};
-			
-			$.ajax({
-				url : "${pageContext.request.contextPath}/certificates/"+id,
-				type : "POST",
-				contentType :"application/json; charset=utf-8",
-				data : JSON.stringify(json),
-				success : function(data){
-					$('#certificateModal').modal('hide');
-					dtApplicant.ajax.reload();
-					
-					new PNotify({
-					    title: 'Edit Family Success!!',
-					    text: 'You can edit data',
-					    type: 'success',
-					    nonblock: {
-					        nonblock: true,
-					        nonblock_opacity: .2
-					    }
-					});
-				 }
-			});
-		})
+		var id = '${id}'
+		var certificateName = $("#certificate").val();
+		var json = {
+				"applicant" : {"id" : id},
+				"certificateName" : certificateName,
+				};
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/certificates/"+id,
+			type : "POST",
+			contentType :"application/json; charset=utf-8",
+			data : JSON.stringify(json),
+			success : function(data){
+				$('#certificateModal').modal('hide');
+				dtApplicant.ajax.reload();
+				
+				new PNotify({
+				    title: 'Edit Family Success!!',
+				    text: 'You can edit data',
+				    type: 'success',
+				    nonblock: {
+				        nonblock: true,
+				        nonblock_opacity: .2
+				    }
+				});
+			 }
+		});
 	}
 
 	
@@ -118,18 +116,18 @@ $(document).ready(function() {
 			 	var d = table.row(rowData).data();
 			 	
 				d.certificateName = data.certificateName;
-			 		
-			 		table.row(rowData).data(d).draw();
-			 		
-					new PNotify({
-					    title: 'Edit Family Success!!',
-					    text: 'You can edit data',
-					    type: 'success',
-					    nonblock: {
-					        nonblock: true,
-					        nonblock_opacity: .2
-					    }
-					});
+			 	
+		 		table.row(rowData).data(d).draw();
+		 		
+				new PNotify({
+				    title: 'Edit Family Success!!',
+				    text: 'You can edit data',
+				    type: 'success',
+				    nonblock: {
+				        nonblock: true,
+				        nonblock_opacity: .2
+				    }
+				});
 			 }
 		});
 	}
@@ -171,8 +169,7 @@ $(document).ready(function() {
     	var button = e.relatedTarget;
 		if(button != null){
 			var id = $(button).data("id");
-			var str = $(button).data("type");
-			if(str == "edit"){
+			if(id != null){
 				console.log(id);
 				findById(id);
 				$('#btn_save').off('click').on('click', function(id){
@@ -240,7 +237,7 @@ $(document).ready(function() {
 		</div>
 	</div>
 	
-			<!-- Delete Model -->
+		<!-- Delete Model -->
 		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     		<div class="modal-dialog">
         		<div class="modal-content">

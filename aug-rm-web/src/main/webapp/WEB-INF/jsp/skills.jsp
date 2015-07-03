@@ -46,34 +46,32 @@ $(document).ready(function() {
 	}
 	
 	function saveSkill(){
-		$('#btn_save').on("click", function() {
-			var id = '${id}'
-			var skillDetail = $("#skill").val();
-			var json = {
-					"applicant" : {"id" : id},
-					"skillDetail" : skillDetail,
-					};
-			
-			$.ajax({
-				url : "${pageContext.request.contextPath}/skills/"+id,
-				type : "POST",
-				contentType :"application/json; charset=utf-8",
-				data : JSON.stringify(json),
-				success : function(data){
-					$('#skillModal').modal('hide');
-					dtApplicant.ajax.reload();
-					
-					new PNotify({
-					    title: 'Edit Skill Success!!',
-					    text: 'You can edit data',
-					    type: 'success',
-					    nonblock: {
-					        nonblock: true,
-					        nonblock_opacity: .2
-					    }
-					});
-				 }
-			});
+		var id = '${id}'
+		var skillDetail = $("#skill").val();
+		var json = {
+				"applicant" : {"id" : id},
+				"skillDetail" : skillDetail,
+				};
+		
+		$.ajax({
+			url : "${pageContext.request.contextPath}/skills/"+id,
+			type : "POST",
+			contentType :"application/json; charset=utf-8",
+			data : JSON.stringify(json),
+			success : function(data){
+				$('#skillModal').modal('hide');
+				dtApplicant.ajax.reload();
+				
+				new PNotify({
+				    title: 'Edit Skill Success!!',
+				    text: 'You can edit data',
+				    type: 'success',
+				    nonblock: {
+				        nonblock: true,
+				        nonblock_opacity: .2
+				    }
+				});
+			 }
 		});
 	}
 
@@ -115,19 +113,19 @@ $(document).ready(function() {
 				 	var rowData = table.row(button.closest('tr')).index(); 
 				 	var d = table.row(rowData).data();
 				 	
-				 		d.skillDetail = data.skillDetail;
-				 		
-				 		table.row(rowData).data(d).draw();
-				 		
-						new PNotify({
-						    title: 'Edit Skill Success!!',
-						    text: 'You can edit data',
-						    type: 'success',
-						    nonblock: {
-						        nonblock: true,
-						        nonblock_opacity: .2
-						    }
-						});
+			 		d.skillDetail = data.skillDetail;
+			 		
+			 		table.row(rowData).data(d).draw();
+			 		
+					new PNotify({
+					    title: 'Edit Skill Success!!',
+					    text: 'You can edit data',
+					    type: 'success',
+					    nonblock: {
+					        nonblock: true,
+					        nonblock_opacity: .2
+					    }
+					});
 				 }
 			});
 

@@ -155,23 +155,22 @@
 					var table = $('#referenceTable').DataTable();	
 				 	var rowData = table.row(button.closest('tr')).index(); 
 				 	var d = table.row(rowData).data();
-				 	
-				 		d.fullName = data.fullName;
-				 		d.completeAddress = data.completeAddress;
-				 		d.tel = data.tel;
-				 		d.occupation = data.occupation;
-				 		
-				 		table.row(rowData).data(d).draw();
-				 		
-						new PNotify({
-						    title: 'Edit Reference Success!!',
-						    text: 'You can edit data',
-						    type: 'success',
-						    nonblock: {
-						        nonblock: true,
-						        nonblock_opacity: .2
-						    }
-						});
+			 		d.fullName = data.fullName;
+			 		d.completeAddress = data.completeAddress;
+			 		d.tel = data.tel;
+			 		d.occupation = data.occupation;
+			 		
+			 		table.row(rowData).data(d).draw();
+			 		
+					new PNotify({
+					    title: 'Edit Reference Success!!',
+					    text: 'You can edit data',
+					    type: 'success',
+					    nonblock: {
+					        nonblock: true,
+					        nonblock_opacity: .2
+					    }
+					});
 				 }
 			});
 		}
@@ -225,12 +224,8 @@
 						saveReference();
 					});
 				}
-
 			}
 	   });
-		
-		
-		
 	});
 </script>
 <jsp:include page="applicationMenu.jsp" />
