@@ -23,7 +23,7 @@ public class SkillRepositoryImpl extends HibernateRepositoryImpl<Skill, Serializ
 	}
 	
 	@Override
-	public SkillDTO findBySkillId(Integer id) {
+	public SkillDTO findSkill(Integer id) {
 		Query query = getCurrentSession().getNamedQuery("SEARCH_SKILL_ID");
 		query.setParameter("ID", id);
 		List<SkillDTO> result = query.list();

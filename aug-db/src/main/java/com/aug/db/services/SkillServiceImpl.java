@@ -61,7 +61,7 @@ public class SkillServiceImpl implements SkillService{
 
 	@Override
 	public SkillDTO findSkill(Integer id) {
-		SkillDTO skill = skillRepository.findBySkillId(id);
+		SkillDTO skill = skillRepository.findSkill(id);
 		return skill;
 	}
 	

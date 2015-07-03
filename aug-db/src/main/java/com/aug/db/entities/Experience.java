@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "EXPERIENCE")
 public class Experience {
@@ -34,9 +36,11 @@ public class Experience {
 	@Column(name = "POSITION") // position of applicant
 	private String position;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
 	@Column(name = "FROM_DATE")
 	private Date fromDate;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy", locale = "en", timezone = "GMT")
 	@Column(name = "TO_DATE")
 	private Date toDate;
 

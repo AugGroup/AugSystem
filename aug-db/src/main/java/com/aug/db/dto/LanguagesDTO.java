@@ -14,7 +14,7 @@ import javax.persistence.NamedNativeQuery;
 		
 	@NamedNativeQuery(name = "SEARCH_LANGUAGES_ID", query = "SELECT l.ID, l.LANGUAGES_NAME, l.SPEAKING, l.READING, l.UNDERSTANDING,"
 			+ "l.WRITING"
-			+ " FROM LANGUAGES l WHERE l.APPLICANT_ID = :ID", resultClass = LanguagesDTO.class)
+			+ " FROM LANGUAGES l WHERE l.ID = :ID", resultClass = LanguagesDTO.class)
 	})
 public class LanguagesDTO {
 	

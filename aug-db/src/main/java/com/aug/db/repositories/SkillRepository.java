@@ -10,6 +10,6 @@ public interface SkillRepository extends GenericRepository<Skill, Serializable> 
 	
 	public List<SkillDTO> findSkillById(Integer id);
 
-	public SkillDTO findBySkillId(Integer id);
+	public SkillDTO findSkill(Integer id);
 
 }

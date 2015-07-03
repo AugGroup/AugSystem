@@ -12,7 +12,7 @@ import javax.persistence.NamedNativeQuery;
 		+ " FROM SKILL s LEFT JOIN APPLICANT a on s.APPLICANT_ID = a.APPLICANT_ID WHERE s.APPLICANT_ID = :ID", resultClass = SkillDTO.class),
 		
 	@NamedNativeQuery(name = "SEARCH_SKILL_ID", query = "SELECT s.ID, s.SKILL_DETAIL"
-			+ " FROM SKILL s WHERE s.APPLICANT_ID = :ID", resultClass = SkillDTO.class)
+			+ " FROM SKILL s WHERE s.ID = :ID", resultClass = SkillDTO.class)
 	})
 public class SkillDTO {
 	

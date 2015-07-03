@@ -12,7 +12,7 @@ import javax.persistence.NamedNativeQuery;
 			+ " FROM REFERENCE r LEFT JOIN APPLICANT a on r.APPLICANT_ID = a.APPLICANT_ID WHERE r.APPLICANT_ID = :ID", resultClass = ReferenceDTO.class),
 			
 	@NamedNativeQuery(name = "SEARCH_REFERENCE_ID", query = "SELECT r.ID, r.COMPLETE_ADDRESS, r.FULLNAME, r.OCCUPATION, r.TEL, r.APPLICANT_ID"
-			+ " FROM REFERENCE r WHERE r.APPLICANT_ID = :ID", resultClass = ReferenceDTO.class)
+			+ " FROM REFERENCE r WHERE r.ID = :ID", resultClass = ReferenceDTO.class)
 	})
 public class ReferenceDTO {
 	
