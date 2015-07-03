@@ -9,92 +9,92 @@
 }
 </style>
 <script>
-	$(document).ready(function() {
-		
-		var dtApplicant;
-		
-		$('.input-group.date').datepicker({
-			startView : 2,
-			todayBtn : "linked",
-			format : "dd/mm/yyyy"
+$(document).ready(function() {
+	
+	$('.input-group.date').datepicker({
+		startView : 2,
+		todayBtn : "linked",
+		format : "dd/mm/yyyy"
 
-		});
-		
-	 	$('#experiencesForm').validate({
-			rules : {
-				workBackground : {
-					required : true,
-				},
-				fromWorkYear : {
-					required : true,
-				},
-				toWorkYear : {
-					required : true,
-				},
-				emp : {
-					required : true,
-				},
-				addressBackground : {
-					required : true,
-				},
-				business : {
-					required : true,
-				},
-				positionBackground : {
-					required : true,
-				},
-				supervisorBackground : {
-					required : true,
-				},
-				salaryBackground : {
-					required : true,
-				},
-				descriptionBackground : {
-					required : true,
-				},
-				reasonLeaving : {
-					required : true,
-				}
+	});
+	
+ 	$('#experiencesForm').validate({
+		rules : {
+			workBackground : {
+				required : true,
 			},
-			messages : {
-				workBackground : {
-					required : "Present or last position is required!"
-				},
-				fromWorkYear : {
-					required : "From (month, year) is required!"
-				},
-				toWorkYear : {
-					required : "To (month, year) is required!"
-				},
-				emp : {
-					required : "Employer Name is required!"
-				},
-				addressBackground : {
-					required : "Address is required!"
-				},
-				business : {
-					required : "Type of business is required!"
-				},
-				positionBackground : {
-					required : "Position is required!"
-				},
-				supervisorBackground : {
-					required : "Supervisor is required!"
-				},
-				salaryBackground : {
-					required : "Salary ,Wages is required!"
-				},
-				descriptionBackground : {
-					required : "Description of duties and responsibilities is required!"
-				},
-				reasonLeaving : {
-					required : "Reason for leaving is required!"
-				}
+			fromWorkYear : {
+				required : true,
+			},
+			toWorkYear : {
+				required : true,
+			},
+			emp : {
+				required : true,
+			},
+			addressBackground : {
+				required : true,
+			},
+			business : {
+				required : true,
+			},
+			positionBackground : {
+				required : true,
+			},
+			supervisorBackground : {
+				required : true,
+			},
+			salaryBackground : {
+				required : true,
+			},
+			descriptionBackground : {
+				required : true,
+			},
+			reasonLeaving : {
+				required : true,
 			}
-		});
+		},
+		messages : {
+			workBackground : {
+				required : "Present or last position is required!"
+			},
+			fromWorkYear : {
+				required : "From (month, year) is required!"
+			},
+			toWorkYear : {
+				required : "To (month, year) is required!"
+			},
+			emp : {
+				required : "Employer Name is required!"
+			},
+			addressBackground : {
+				required : "Address is required!"
+			},
+			business : {
+				required : "Type of business is required!"
+			},
+			positionBackground : {
+				required : "Position is required!"
+			},
+			supervisorBackground : {
+				required : "Supervisor is required!"
+			},
+			salaryBackground : {
+				required : "Salary ,Wages is required!"
+			},
+			descriptionBackground : {
+				required : "Description of duties and responsibilities is required!"
+			},
+			reasonLeaving : {
+				required : "Reason for leaving is required!"
+			}
+		}
+	});
+		
+	var dtApplicant;
 		
 	if(dtApplicant) {
-		dtOrder.ajax.reload();
+		dtApplicant.ajax.reload();
 	}
 	else {
 		var id = '${id}';
@@ -149,21 +149,20 @@
 				"toDate" : toDate,
 				"employerName" : employerName,
 				"address" : address,
-				"fromDate" : fromDate,
 				"typeOfBusiness" : typeOfBusiness,
 				"positionOfEmployer" : positionOfEmployer,
-				"reason" : reason,
 				"supervisor" : supervisor,
 				"salary" : salary,
-				"description" : description
+				"description" : description,
+				"reason" : reason
 				};
 		$.ajax({
 			contentType : "application/json",
 			type : "POST",
-			url : '${pageContext.request.contextPath}/experiences/'+id,
+			url : '${pageContext.request.contextPath}/experiences/' +id,
 			data : JSON.stringify(json),
 			success : function(data) {
-				$('#referenceModal').modal('hide');
+				$('#experiencesModal').modal('hide');
 				dtApplicant.ajax.reload();
 				
 				new PNotify({
@@ -264,18 +263,18 @@
 					d.supervisor = data.supervisor;
 					d.salary = data.salary;
 					d.description = data.description;
-				 		
-				 		table.row(rowData).data(d).draw();
-				 		
-						new PNotify({
-						    title: 'Edit Reference Success!!',
-						    text: 'You can edit data',
-						    type: 'success',
-						    nonblock: {
-						        nonblock: true,
-						        nonblock_opacity: .2
-						    }
-						});
+				 	
+			 		table.row(rowData).data(d).draw();
+			 		
+					new PNotify({
+					    title: 'Edit Reference Success!!',
+					    text: 'You can edit data',
+					    type: 'success',
+					    nonblock: {
+					        nonblock: true,
+					        nonblock_opacity: .2
+					    }
+					});
 				 }
 			});
 		}
@@ -326,7 +325,7 @@
 				}else{
 					$('#experiencesForm')[0].reset();
 					$('#btn_save').off('click').on('click', function(id){
-						saveExoerience();
+						saveExperience();
 					});
 				}
 

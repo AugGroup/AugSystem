@@ -7,48 +7,48 @@
 <script>
 $(document).ready(function() {
 	
-	var dtApplicant;
+	$('#languagesForm').validate({
+		rules : {languages : {required : true},
+			speaking : {required : true},
+			understanding : {required : true},
+			reading : {required : true},
+			writing : {required : true}},
+			messages : {languages : {required : "Languages is required!"},
+			speaking : {required : "Speaking is required!"},
+			understanding : {required : "Understanding is required!"},
+			reading : {required : "Reading is required!"},
+			writing : {required : "Writing is required!"}
+			}
+	});
 	
-		$('#languagesForm').validate({
-			rules : {languages : {required : true},
-				speaking : {required : true},
-				understanding : {required : true},
-				reading : {required : true},
-				writing : {required : true}},
-				messages : {languages : {required : "Languages is required!"},
-				speaking : {required : "Speaking is required!"},
-				understanding : {required : "Understanding is required!"},
-				reading : {required : "Reading is required!"},
-				writing : {required : "Writing is required!"}
-				}
+	var dtApplicant;
+
+	if(dtApplicant) {
+		dtApplicant.ajax.reload();
+	}
+	else {
+		var id = '${id}';
+		dtApplicant = $('#languagesTable').DataTable({
+			ajax : {
+				url : '${pageContext.request.contextPath}/findByIdLanguages/' +id,
+				type : 'POST'
+			},
+			columns : [ {data : "languagesName"},
+			            {data : "speaking"},
+			            {data : "reading"},
+			            {data : "understanding"},
+			            {data : "writing"},
+			            {data : function(data) {
+				 			return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#languagesModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
+						}},
+						{data : function(data) {
+							return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/> </button>';
+						}}],
+			searching : false
+
 		});
 
-		if(dtApplicant) {
-			dtApplicant.ajax.reload();
-		}
-		else {
-			var id = '${id}';
-			dtApplicant = $('#languagesTable').DataTable({
-				ajax : {
-					url : '${pageContext.request.contextPath}/findByIdLanguages/' +id,
-					type : 'POST'
-				},
-				columns : [ {data : "languagesName"},
-				            {data : "speaking"},
-				            {data : "reading"},
-				            {data : "understanding"},
-				            {data : "writing"},
-				            {data : function(data) {
-					 			return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#languagesModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
-							}},
-							{data : function(data) {
-								return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/> </button>';
-							}}],
-				searching : false
-
-			});
-
-		}
+	}
 	
 	function saveLanguages(){
 		var id = '${id}'
@@ -62,7 +62,7 @@ $(document).ready(function() {
 				"applicant" : {"id" : id},
 				"languagesName" : languagesName,
 				"speaking" : speaking,
-				"reaing" : reading,
+				"reading" : reading,
 				"understanding" : understanding,
 				"writing" : writing
 				};

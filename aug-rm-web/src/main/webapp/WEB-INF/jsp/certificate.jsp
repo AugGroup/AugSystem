@@ -6,8 +6,6 @@
 <script>
 $(document).ready(function() {
 	
-	var dtApplicant;
-	
 	$('#certificateForm').validate({
 		rules : {
 			certificate : {
@@ -21,6 +19,8 @@ $(document).ready(function() {
 		}
 	});
 	
+	var dtApplicant;
+	
 	if(dtApplicant) {
 		dtApplicant.ajax.reload();
 	}
@@ -31,15 +31,13 @@ $(document).ready(function() {
 				url : '${pageContext.request.contextPath}/findByIdCertificate/'+id,
 				type : 'POST'
 			},
-			columns : [ {
-				data : "certificateName"
-			} ,{ data : function(data) {
-				 return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#certificateModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
-			}
-			},{ data : function(data) {
-				 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
-			}
-		}],
+			columns : [ {data : "certificateName"},
+			            { data : function(data) {
+				 			return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#certificateModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
+						}},
+						{ data : function(data) {
+							 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
+						}}],
 			searching : false
 
 		});
@@ -148,7 +146,7 @@ $(document).ready(function() {
         var id = $(button).data("id");
         var index = dtApplicant.row(button.closest("tr")).index();
         $.ajax({
-            url: "${pageContext.request.contextPath}/deleteSkill/" + id,
+            url: "${pageContext.request.contextPath}/deleteCertificate/" + id,
             type: "POST",
             success: function () {
             	dtApplicant.row(index).remove().draw();

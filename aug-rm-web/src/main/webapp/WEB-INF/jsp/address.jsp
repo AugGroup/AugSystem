@@ -51,14 +51,14 @@
 			}
 		});
 
-		var dtApplicant	
-
 		$('.input-group.date').datepicker({
 			startView : 2,
 			todayBtn : "linked",
 			format : "dd/mm/yyyy"
 
 		});
+		
+		var dtApplicant;
 		
 		if(dtApplicant) {
 			dtApplicant.ajax.reload();

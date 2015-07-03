@@ -6,8 +6,6 @@
 <script>
 	$(document).ready(function() {
 		
-		var dtApplicant;
-		
 		$('#referenceForm').validate({
 			rules : {
 				fullName : {
@@ -39,6 +37,8 @@
 			}
 		});
 		
+		var dtApplicant;
+		
 		if(dtApplicant) {
 			dtApplicant.ajax.reload();
 		}
@@ -50,63 +50,58 @@
 					type : 'POST'
 				},
 				columns : [ {
-					data : "fullName"
-				}, {
-					data : "tel"
-				}, {
-					data : "occupation"
-				}, {
-					data : "completeAddress"
-				}, { data : function(data) {
-					 return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#referenceModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
-				}
-				}, { data : function(data) {
-					 return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#modalDelete" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
-				}}],
+					data : "fullName"}, 
+					{data : "tel"}, 
+					{data : "occupation"},
+					{data : "completeAddress"},
+					{data : function(data) {
+						return '<button id="buttonEdit" data-type="edit" data-id="'+data.id+'" data-toggle="modal" data-target="#referenceModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
+					}},
+					{data : function(data) {
+						return '<button id="buttonDelete" data-id="'+data.id+'" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-mini"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>';
+					}}],
 				searching : false
 
 			});
 		}
 
 		function saveReference(){
-			$('#btn_save').on("click", function() {
-				var id = '${id}'
-				var fullName = $("#fullName").val();
-				var completeAddress = $("#completeAddress").val();
-				var tel= $("#telNo").val();
-				var occupation = $("#occupationRef").val();
-				
-				var json = {
-						"applicant" : {"id" : id},
-						"fullName" : fullName,
-						"completeAddress" : completeAddress,
-						"tel" : tel,
-						"occupation" : occupation,
-						};
-		
-		 		$.ajax({
-					contentType : "application/json",
-					type : "POST",
-					url : '${pageContext.request.contextPath}/references/'+id,
-					data : JSON.stringify(json),
-					success : function(data) {
-						$('#referenceModal').modal('hide');
-						dtApplicant.ajax.reload();
-						
-						new PNotify({
-					        title: 'Success',
-					        text: 'Successful Add References!!!',
-					        type: 'success',
-					        nonblock: {
-					            nonblock: true,
-					            nonblock_opacity: .2
-					        }
-					    });
-						
+			var id = '${id}';
+			var fullName = $("#fullName").val();
+			var completeAddress = $("#completeAddress").val();
+			var tel= $("#telNo").val();
+			var occupation = $("#occupationRef").val();
+			
+			var json = {
+					"applicant" : {"id" : id},
+					"fullName" : fullName,
+					"completeAddress" : completeAddress,
+					"tel" : tel,
+					"occupation" : occupation,
+					};
+	
+	 		$.ajax({
+				contentType : "application/json",
+				type : "POST",
+				url : '${pageContext.request.contextPath}/references/'+id,
+				data : JSON.stringify(json),
+				success : function(data) {
+					$('#referenceModal').modal('hide');
+					dtApplicant.ajax.reload();
 					
-					}
-				}); 
-		});
+					new PNotify({
+				        title: 'Success',
+				        text: 'Successful Add References!!!',
+				        type: 'success',
+				        nonblock: {
+				            nonblock: true,
+				            nonblock_opacity: .2
+				        }
+				    });
+					
+				
+				}
+			}); 
 		}
 		
 		//Update 
@@ -187,11 +182,11 @@
 	    });
 		  
 	    function deleted(button) {
-	        var dtApplicant = $('#skillTable').DataTable();
+	        var dtApplicant = $('#referenceTable').DataTable();
 	        var id = $(button).data("id");
 	        var index = dtApplicant.row(button.closest("tr")).index();
 	        $.ajax({
-	            url: "${pageContext.request.contextPath}/deleteSkill/" + id,
+	            url: "${pageContext.request.contextPath}/deleteReference/" + id,
 	            type: "POST",
 	            success: function () {
 	            	dtApplicant.row(index).remove().draw();

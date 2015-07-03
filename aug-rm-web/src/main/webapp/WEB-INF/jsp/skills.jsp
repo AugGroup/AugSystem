@@ -6,8 +6,6 @@
 <script>
 $(document).ready(function() {
 	
-	var dtApplicant;
-	
 	$('#skillForm').validate({
 		rules : {
 			skill : {
@@ -45,6 +43,8 @@ $(document).ready(function() {
 		});
 	}
 	
+	var dtApplicant;
+	
 	function saveSkill(){
 		var id = '${id}'
 		var skillDetail = $("#skill").val();
@@ -81,6 +81,7 @@ $(document).ready(function() {
 			url : "${pageContext.request.contextPath}/findSkillId/" + id,
 			type : "POST",
 			success : function(data){
+				console.log(id);
 				showFillData(data);
 			}
 		});

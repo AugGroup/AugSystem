@@ -6,8 +6,6 @@
 <script>
 	$(document).ready(function() {
 		
-		var dtApplicant;
-		
 		$('#educationsForm').validate({
 			rules : {
 				university : {
@@ -58,6 +56,8 @@
 
 		});
 
+		var dtApplicant;
+		
 		if(dtApplicant){
 			dtApplicant.ajax.reload();
 		}else{
