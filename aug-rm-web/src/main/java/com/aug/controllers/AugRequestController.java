@@ -158,6 +158,59 @@ public class AugRequestController implements Serializable {
 		}
 		return data;
 		
+	}
+	
+	------------
+	------------
+	------------
+	*/
+	/*-------------------- Test Exception 'DataFormatException' 404  --------------------
+	@RequestMapping(value = "/request/testDataFormatException", method = { RequestMethod.GET })
+	public String testHandlerDataFormatException() throws DataFormatException { //IOException for IOExceptio
+		boolean throwException = true;
+		if (throwException) {
+		      throw new DataFormatException("This is my DataFormatException");
+		    }
+		return "augRequest";
+	}
+	
+	-------------------- Test Exception Handle 'IOException' ? --------------------
+	@RequestMapping(value = "/request/search/testIOException/{id}")
+    public String testHandlerIOException() throws IOException {
+        //just throw exception to test the exception handler mapping
+        if(true) {
+            throw new IOException("this is io exception");
+        }
+        return "augRequest";
+    }
+	
+	-------------------- Test Exception Handle 'SQLGrammarException'-------------------- //NameNativeQuery is wrong
+	@RequestMapping(value = "/request/search/testSQLGrammarException/{id}", method = { RequestMethod.POST, RequestMethod.GET })
+	public @ResponseBody AugRequestDTO testHandlerException(
+			@PathVariable Integer id, Model model) throws SQLGrammarException {
+		AugRequestDTO augRequest = augRequestService.findAugRequestByIdTest(id);
+		return augRequest;
+	}
+	
+	-------------------- Test Exception Handle 'IndexOutOfBoundsException'--------------------
+	@RequestMapping(value = "/request/search/testException/{id}", method = { RequestMethod.POST, RequestMethod.GET })
+	public @ResponseBody AugRequestDTO testHandlerIndexOutOfBoundsException(Model model) throws Exception {
+		int id=500;
+		AugRequestDTO augRequest = augRequestService.findAugRequestById(id);
+		if(augRequest==null) throw new SQLException("this is sql exception");
+		return augRequest;
+	}
+	
+	-------------------- Search All Request Test ajax--------------------
+	@RequestMapping(value = "/request/search/test", method = { RequestMethod.GET })
+	public @ResponseBody Object findAllRequestTest(HttpSession session){
+		final List<AugRequestDTO> data = null;// augRequestService.findAllAugRequest();
+		if(data==null){
+			throw new IllegalArgumentException("Test exception 5 with ExceptionVO as JSON data");
+		}
+		return data;
+		
 	}*/
+	
 
 }
