@@ -7,6 +7,8 @@ import java.text.ParseException;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
+import javax.servlet.http.HttpSession;
+
 import org.hibernate.exception.SQLGrammarException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,49 +43,16 @@ public class AugRequestController implements Serializable {
 		return "augRequest";
 	}
 	
-	/*-------------------- Test Exception 'DataFormatException' 404  --------------------*/
-	@RequestMapping(value = "/request/test", method = { RequestMethod.GET })
-	public String testHandlerDataFormatException() throws DataFormatException { //IOException for IOExceptio
-		boolean throwException = true;
-		if (throwException) {
-		      throw new DataFormatException("This is my DataFormatException");
-		    }
-		return "augRequest";
-	}
-	
-	/*-------------------- Test Exception Handle 'IOException'  --------------------*/
-	@RequestMapping(value = "/test.htm")
-    public String testHandlerIOException() throws IOException {
-        //just throw exception to test the exception handler mapping
-        if(true) {
-            throw new IOException("this is io exception");
-        }
-        return "augRequest";
-    }
-	
-	/*-------------------- Test Exception Handle 'SQLGrammarException'--------------------*/ //NameNativeQuery is wrong
-	@RequestMapping(value = "/request/search/test/{id}", method = { RequestMethod.POST, RequestMethod.GET })
-	public @ResponseBody AugRequestDTO testHandlerException(
-			@PathVariable Integer id, Model model) throws SQLGrammarException {
-		AugRequestDTO augRequest = augRequestService.findAugRequestByIdTest(id);
-		return augRequest;
-	}
-	
-	/*-------------------- Test Exception Handle 'IndexOutOfBoundsException'--------------------*/
-	@RequestMapping(value = "/request/search/test", method = { RequestMethod.POST, RequestMethod.GET })
-	public @ResponseBody AugRequestDTO testHandlerIndexOutOfBoundsException(Model model) throws Exception {
-		int id=500;
-		AugRequestDTO augRequest = augRequestService.findAugRequestById(id);
-		if(augRequest==null) throw new SQLException("this is sql exception");
-		return augRequest;
-	}
 
+	
 
-	/*-------------------- Search All Request --------------------*/
+	/*-------------------- Search All Request ----Exception handler-------------*/
 	@RequestMapping(value = "/request/search", method = { RequestMethod.GET })
-	public @ResponseBody Object findAllRequest() throws DataFormatException{
-		final List<AugRequestDTO> data = augRequestService.findAllAugRequest();
-
+	public @ResponseBody Object findAllRequest() throws Exception{
+		final List<AugRequestDTO> data = augRequestService.findAllAugRequest();	
+		if(data == null){
+			throw new IllegalArgumentException("Exception as JSON data (request not found)");
+		}
 		return new Object() {
 			public List<AugRequestDTO> getData() {
 				return data;
@@ -93,25 +62,22 @@ public class AugRequestController implements Serializable {
 	
 	
 	/*-------------------- Search Request By Id--------------------*/
-	@RequestMapping(value = "/request/search/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "/request/search/{id}", method = { RequestMethod.POST, RequestMethod.GET  })
 	public @ResponseBody AugRequestDTO searchRequestById(
 			@PathVariable Integer id, Model model) throws Exception {
 		AugRequestDTO augRequest = augRequestService.findAugRequestById(id);
+		if(augRequest == null){
+			throw new IndexOutOfBoundsException("Exception as JSON data (request not found) IndexOutOfBoundsException");
+		}
 		return augRequest;
 	}
 
-	/*-------------------- Search Request By Id--------------------*/
-	@RequestMapping(value = "/request/search/{id}", method = { RequestMethod.GET })
-	public @ResponseBody AugRequestDTO searchRequestByIdGet(
-			@PathVariable Integer id) {
-		return augRequestService.findAugRequestById(id);
-
-	}
+	
 
 	/*-------------------- Save Request--------------------*/
 	@RequestMapping(value = "/request/save", method = RequestMethod.POST)
 	public @ResponseBody AugRequestDTO saveRequest(
-			@RequestBody AugRequestDTO augRequestDTO) throws ParseException {
+			@RequestBody AugRequestDTO augRequestDTO) {
 		
 		AugRequest augRequest = new AugRequest();
 		augRequest.setId(augRequestDTO.getId());
@@ -125,7 +91,7 @@ public class AugRequestController implements Serializable {
 		augRequest.setNumberApplicant(augRequestDTO.getNumberApplicant());
 		augRequest.setSpecificSkill(augRequestDTO.getSpecificSkill());
 		augRequest.setYearExperience(augRequestDTO.getYearExperience());
-
+       //BAD_REQUEST
 		augRequestService.create(augRequest);
 
 		return augRequestDTO;
@@ -175,5 +141,23 @@ public class AugRequestController implements Serializable {
 
 	}
 	
+	/*-------------------- Search Request By Id Test------??--------------*/
+	/*@RequestMapping(value = "/request/search/{id}", method = { RequestMethod.POST, RequestMethod.GET  })
+	public @ResponseBody AugRequestDTO searchRequestByIdTest(
+			@PathVariable Integer id, Model model) throws Exception {
+		AugRequestDTO augRequest =null;
+		if(augRequest==null) throw new RequestNotFoundException();
+		return augRequest;
+	}*/
+	/*-------------------- Search All Request Test ajax--------------------*/
+	/*@RequestMapping(value = "/request/search", method = { RequestMethod.GET })
+	public @ResponseBody Object findAllRequestTest(HttpSession session){
+		final List<AugRequestDTO> data = null;// augRequestService.findAllAugRequest();
+		if(data==null){
+			throw new IllegalArgumentException("Test exception 5 with ExceptionVO as JSON data");
+		}
+		return data;
+		
+	}*/
 
 }

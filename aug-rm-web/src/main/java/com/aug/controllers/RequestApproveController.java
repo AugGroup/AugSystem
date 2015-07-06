@@ -45,7 +45,7 @@ public class RequestApproveController implements Serializable {
 	@RequestMapping(value = "/approve/update/{id}", method = { RequestMethod.POST })
 	public @ResponseBody AugRequestDTO editApprove(
 			@RequestBody AugRequestDTO augRequestDTO, @PathVariable Integer id)
-			throws ParseException {
+			throws ParseException{
 
 		AugRequest augRequest = augRequestService.findById(augRequestDTO.getId());
 		augRequest.setStatus(augRequestDTO.getStatus());
@@ -53,5 +53,18 @@ public class RequestApproveController implements Serializable {
 		
 		return augRequestService.findAugRequestById(id);
 	}
+	
+	/*--------------------Update Approve Status TEST------------------*/
+	/*@RequestMapping(value = "/approve/update/{id}", method = { RequestMethod.POST })
+	public @ResponseBody AugRequestDTO editApproveTest(
+			@RequestBody AugRequestDTO augRequestDTO, @PathVariable Integer id)
+			throws ParseException{
+
+		AugRequest augRequest = augRequestService.findById(augRequestDTO.getId());
+		augRequest.setStatus(augRequestDTO.getStatus());
+		augRequestService.update(augRequest);
+		
+		return augRequestService.findAugRequestById(id);
+	}*/
 
 }

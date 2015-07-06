@@ -199,14 +199,6 @@ public class ApplicantDTO {
 	@Column(name = "POSITION1_ID")
 	private Integer position1;
 
-	public String getAttitudeOffice() {
-		return attitudeOffice;
-	}
-
-	public void setAttitudeOffice(String attitudeOffice) {
-		this.attitudeOffice = attitudeOffice;
-	}
-
 	@Column(name = "POSITION2_ID")
 	private Integer position2;
 
@@ -221,6 +213,16 @@ public class ApplicantDTO {
 
 	@Transient
 	private String position3Str;
+	
+	
+	
+	public String getAttitudeOffice() {
+		return attitudeOffice;
+	}
+
+	public void setAttitudeOffice(String attitudeOffice) {
+		this.attitudeOffice = attitudeOffice;
+	}
 
 	public Integer getPosition1() {
 		return position1;

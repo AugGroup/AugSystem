@@ -91,7 +91,19 @@
         	 sort : false,
         	 ajax: {
         		 type: "GET",
-        		 url: '${pageContext.request.contextPath}/request/search'
+        		 url: '${pageContext.request.contextPath}/request/search',
+        		  error: function(jqXHR, textStatus, errorThrown) 
+        	        {
+        	            var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
+        	            console.log(exceptionVO);
+        	            $('#exceptionModal')
+        	            .find('.modal-header h3').html(jqXHR.status+' error').end()
+        	            .find('.modal-body p>strong').html(exceptionVO.clazz).end()
+        	            .find('.modal-body p>em').html(exceptionVO.method).end()
+        	            .find('.modal-body p>span').html(exceptionVO.message).end()
+        	            .modal('show');
+        	            
+        	        } 
         		 },
         	columns: [
         	          {"data": "id"},
@@ -206,7 +218,20 @@
         		type: "POST",
         		success: function (data) {
         			editShowData(data);
-        		}
+        		},
+        		 error: function(jqXHR, textStatus, errorThrown){
+     	            var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
+     	            console.log(exceptionVO);
+     	            $('#addRequestModal').modal('hide');
+     	            $('#exceptionModal')
+     	            .find('.modal-header h3').html(jqXHR.status+' error').end()
+     	            .find('.modal-body p>strong').html(exceptionVO.clazz).end()
+     	            .find('.modal-body p>em').html(exceptionVO.method).end()
+     	            .find('.modal-body p>span').html(exceptionVO.message).end()
+     	            .modal('show');
+     	            
+     	        } 
+        		
         	});
         }
         
@@ -499,4 +524,33 @@
         </div>
     </div>  
 </div>
+
+<!-------------------- Exception Model -------------------->
+<div class="modal fade" id="exceptionModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="ModalLabel">Exception Handler</h3>
+            </div>
+            <div class="modal-body">
+            	<div class="container">
+            		<div class="row">
+               	 		<p><em></em><span></span></p>
+            		</div>
+            		<div class="row">
+               	 		<h4>Contact me +22003455!!!</h4>
+            		</div>
+                	<div class="row">
+                		<div class="col-md-4"></div>
+                		<div class="col-md-2">
+							<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            			</div>
+            		</div>
+            	</div>
+        	</div>
+    	</div>  
+	</div>
+</div>
+
 </div>

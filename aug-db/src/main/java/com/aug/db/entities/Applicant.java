@@ -17,7 +17,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import org.hibernate.annotations.Index;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.aug.db.dto.ApplicationDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;

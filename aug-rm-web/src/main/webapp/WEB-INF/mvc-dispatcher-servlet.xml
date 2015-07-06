@@ -104,5 +104,15 @@
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
+	
+	<!-- SimpleMappingExceptionResolver --> <!-- use anotation java config -->
+ 	<!-- <bean id="simpleMappingExceptionResolver" class="com.journaldev.spring.resolver.MySimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <map>
+                <entry key="Exception" value="generic_error"></entry>
+            </map>
+        </property>
+        <property name="defaultErrorView" value="generic_error"/>
+    </bean> -->
 
 </beans>

@@ -1,5 +1,7 @@
 package com.aug.controllers;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.zip.DataFormatException;
 
 import javax.servlet.http.HttpServletResponse;
@@ -8,26 +10,36 @@ import org.hibernate.exception.SQLGrammarException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 @ControllerAdvice
 public class ExceptionControllerAdvice {
+	//BAD_REQUEST(400, "Bad Request")
+	//NOT_FOUND(404, "Not Found")
+	//UNSUPPORTED_MEDIA_TYPE(415, "Unsupported Media Type")
+	//INTERNAL_SERVER_ERROR(500, "Internal Server Error")
 	
+
+	
+	/*
 	//IOException
-	/*@ExceptionHandler(IOException.class)
+	@ExceptionHandler(IOException.class)
 	public ModelAndView exception(IOException e){
 		ModelAndView mav = new ModelAndView("exception");
 		mav.addObject("nameException", e.getClass().getSimpleName());
 		mav.addObject("message", e.getMessage());
 		return mav;
-	}*/
+	}
 	
-	//Exception (all)
+	//Exception (all) 500
 	@ExceptionHandler(Exception.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseBody
 	public ModelAndView exception(Exception e){
 		ModelAndView mav = new ModelAndView("exception");
-		mav.addObject("nameException", e.getClass().getSimpleName()+"eie");
+		mav.addObject("nameException", e.getClass().getSimpleName()+" eie");
 		mav.addObject("message", e.getMessage());
 		return mav;
 	}
@@ -46,12 +58,55 @@ public class ExceptionControllerAdvice {
 
 		  }
 	
-	  @ExceptionHandler(SQLGrammarException.class)//({SQLException.class,DataAccessException.class}
+	//SQLGrammarException
+	  @ExceptionHandler(SQLGrammarException.class)//{SQLGrammarException.class,DataAccessException.class}
 	  public ModelAndView databaseError(SQLGrammarException e) {
 		  ModelAndView mav = new ModelAndView("exception");
 			mav.addObject("nameException", e.getClass().getSimpleName());
 			mav.addObject("message", e.getMessage());
 			return mav;
 	  }
+	  
+	//NullPointerException 400
+	  @ExceptionHandler(NullPointerException.class)
+	  public ModelAndView handleNullPointerException(NullPointerException e) {
+		  ModelAndView mav = new ModelAndView("exception");
+			mav.addObject("nameException", e.getClass().getSimpleName());
+			mav.addObject("message", e.getMessage());
+			return mav;
+	  }
+	  
+	//ParseException
+	  @ExceptionHandler(ParseException.class)
+	  public ModelAndView handleParseException(ParseException e) {
+		  ModelAndView mav = new ModelAndView("exception");
+			mav.addObject("nameException", e.getClass().getSimpleName());
+			mav.addObject("message", e.getMessage());
+			return mav;
+	  }
+	  */
+	
+	  //IllegalArgumentException with ajax //INTERNAL_SERVER_ERROR(500, "Internal Server Error"),
+	    @ExceptionHandler(IllegalArgumentException.class)
+		@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+		@ResponseBody 
+		public ExceptionVO handleException5(IllegalArgumentException ex, HttpServletResponse response) throws IOException{
+	    	ExceptionVO exceptionVO = new ExceptionVO(ex.getMessage());
+	    	 
+	        return exceptionVO;
+		}
+	    
+	  //IndexOutOfBoundsException with ajax //INTERNAL_SERVER_ERROR(500, "Internal Server Error"),
+	    @ExceptionHandler(IndexOutOfBoundsException.class)
+		@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+		@ResponseBody 
+		public ExceptionVO handleException5(IndexOutOfBoundsException ex, HttpServletResponse response) throws IOException{
+	    	ExceptionVO exceptionVO = new ExceptionVO("Exception as JSON data (request not found) IndexOutOfBoundsException");
+	    	 System.out.println(ex.getMessage());
+	        return exceptionVO;
+		}
+	    
+	    
+	    
 }
-
+//Exception>RuntimeException>IllegalArgumentException>DataformatException
