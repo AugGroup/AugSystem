@@ -7,9 +7,11 @@
  	$(document).ready(function() {
 			$('.input-group.date').datepicker({startView : 2,
  							todayBtn : "linked",
- 							format : "dd/mm/yyyy"
+ 							format : "dd/mm/yyyy",
+ 							autoclose: true 
 
  						});
+			
 			 $("#tel").mask("(999) 999-9999");
 			 $("#emergencyTel").mask("(999) 999-9999");
 			 $("#cardId").mask("9999-9999-9999-9");
@@ -27,9 +29,71 @@
 					        }
 					        
 					    });
-			/*  $("#imageMultipartFile").fileinput({showUpload: false, maxFileCount: 10, mainClass: "input-group-sm"});
-			 $("#resumeMultipartFile").fileinput({showUpload: false, maxFileCount: 10, mainClass: "input-group-sm"});
-			 $("#transcriptMultipartFile").fileinput({showUpload: false, maxFileCount: 10, mainClass: "input-group-sm"}); */
+			 
+			 $("#previousEmployersReason").hide();
+			  
+			    $("input:radio[name='previousEmployers']").change(function(){  
+
+			            if(this.value == 'No' && this.checked){
+			              $("#previousEmployersReason").show();
+			            }else{
+			              $("#previousEmployersReason").hide();
+			            }
+
+			    });
+			   
+			    $('#newspaper').hide();
+
+			    //show it when the checkbox is clicked
+			    $('input[name="noticeNewspaper"]').change(function () {
+			    	if ($('input[name="noticeNewspaper"]').is(':checked')) {
+			            $('#newspaper').show();
+			        } else {
+			            $('#newspaper').hide();
+			        }
+			    });
+			    $('#magazine').hide();
+
+			    //show it when the checkbox is clicked
+			    $('input[name="noticeMagazine"]').change(function () {
+			    	if ($('input[name="noticeMagazine"]').is(':checked')) {
+			            $('#magazine').show();
+			        } else {
+			            $('#magazine').hide();
+			        }
+			    });
+			    $('#webSite').hide();
+
+			    //show it when the checkbox is clicked
+			    $('input[name="noticeWebSite"]').change(function () {
+			    	if ($('input[name="noticeWebSite"]').is(':checked')) {
+			            $('#webSite').show();
+			        } else {
+			            $('#webSite').hide();
+			        }
+			    });
+			    $('#friend').hide();
+
+			    //show it when the checkbox is clicked
+			    $('input[name="noticeFriend"]').change(function () {
+			    	if ($('input[name="noticeFriend"]').is(':checked')) {
+			            $('#friend').show();
+			        } else {
+			            $('#friend').hide();
+			        }
+			    });
+			    $('#other').hide();
+
+			    //show it when the checkbox is clicked
+			    $('input[name="noticeOther"]').change(function () {
+			    	if ($('input[name="noticeOther"]').is(':checked')) {
+			            $('#other').show();
+			        } else {
+			            $('#other').hide();
+			        }
+			    });
+			
+			 
 			 $('#informationApplicant').validate({
 				rules : {
 					firstNameTH : {
@@ -51,7 +115,10 @@
 						required : true
 						},
 					tel : {
-						required : true
+						required : true/* ,
+						minlength: 10,
+					    maxlength: 10,
+				        digits: true */
 						},
 					email : {
 						required : true,
@@ -200,11 +267,15 @@
 						required : "Nickname English is required!"
 					},
 					tel : {
-						required : "Tel. is required!"
+						required : "Tel. is required!"/* ,
+						minlength: "this field must contain at least {0} characters",
+						maxlength: "this field must contain at least {0} characters",
+						digits: "this field can only contain numbers" */
 					},
-					email : {
-						required : "E-Mail is required!",      
-					},
+					email :{
+					      required: "We need your email address to contact you",
+					      email: "Your email address must be in the format of name@domain.com"
+					    },
 					birthDate : {
 						required : "Birthday is required!"
 					},
@@ -364,12 +435,7 @@
 				<input id="imageMultipartFile" name="imageMultipartFile"  type="file" accept="image/*" />
 				<f:hidden path="image" />
 			</div>
-	<f:hidden path="trackingStatus" />
- 		<%--  <div class="form-group">
-				<spring:message code="info.photograph"/> 
-				<input id="imageMultipartFile" name="imageMultipartFile" type="file" class="file" accept="image/gif,image/jpeg,image/png"></input>
-				<br><br>
-		</div>  --%>
+ 		
 		<br>
 		<br>
 			<div class="form-group">
@@ -652,31 +718,31 @@
 			<div class="form-group">
 
 				<label for="position1"><spring:message code="main.position1"/> </label>
-				<spring:message code="info.select.data" var="select"/>
-				    <f:select path="position1" id="position1" name="position1" class="form-control">
-					<f:option value="-1" label="${select}"/>
+				 <f:select path="position1.id" id="position1" name="position1" class="form-control">
+					<f:option value="-1" label="please select data"/>
 					<c:forEach var="positionList" items="${positions}">
 						<f:option value="${positionList.id}">${positionList.positionName}</f:option>
 					</c:forEach> 
-				</f:select> 
+				</f:select>  
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="position2"><spring:message code="main.position2"/> </label> 
-				<f:select path="position2" id="position2" name="position2" class="form-control">
-					<f:option value="-1" label="${select}"/>
+				 <f:select path="position2.id" id="position2" name="position2" class="form-control">
+					<f:option value="-1" label="please select data"/>
 					<c:forEach var="positionList" items="${positions}">
 						<f:option value="${positionList.id}">${positionList.positionName}</f:option>
 					</c:forEach> 
-				</f:select>
+				</f:select> 
+				
 			</div>
 			<br>
 			<br>
-			<div class="form-group">
+			 <div class="form-group">
 				<label for="position3"><spring:message code="main.position3"/> </label>
-				<f:select path="position3" id="position3" name="position3" class="form-control">
-					<f:option value="-1" label="${select}"/>
+				<f:select path="position3.id" id="position3" name="position3" class="form-control">
+					<f:option value="-1" label="please select data"/>
 					<c:forEach var="positionList" items="${positions}">
 						<f:option value="${positionList.id}">${positionList.positionName}</f:option>
 					</c:forEach> 
@@ -696,50 +762,115 @@
 			<div class="form-group">
 				<label for="knowAugmentis"><spring:message code="info.know.aug"/></label> <br>
 				 <div class="checkbox">
-			  		<label><f:checkbox path="noticeNewspaper" 
-					id="noticeNewspaper" name="noticeNewspaper" value="Newspaper" ></f:checkbox><spring:message code="info.newspaper"/></label>
-					<spring:message code="info.text.newspaper" var="newspaper"/>
-					<f:input path="noticeNewspaper" class="form-control" id="noticeNewspaper"
-						name="notice" placeholder="${newspaper}"></f:input>
+				 <c:choose>
+					 <c:when test="${empty applicant.noticeNewspaper}">
+						 <label><f:checkbox path="noticeNewspaper" id="noticeNewspaper" name="noticeNewspaper" value="Newspaper" ></f:checkbox><spring:message code="info.newspaper"/></label>
+						<div id="newspaper">
+							<f:input path="noticeNewspaper" class="form-control" id="noticeNewspaper" name="noticeNewspaper" placeholder="Enter newspaper"></f:input>
+						 </div>
+					 </c:when>
+					 <c:when test="${not empty applicant.noticeNewspaper}">
+				  		<label><f:checkbox path="noticeNewspaper" id="noticeNewspaper" name="noticeNewspaper" value="Newspaper" checked="checked" ></f:checkbox><spring:message code="info.newspaper"/></label>
+						<div id="newspaper">
+							<f:input path="noticeNewspaper" class="form-control" id="noticeNewspaper" name="noticeNewspaper" placeholder="Enter newspaper"></f:input>
+						</div>
+					</c:when>
+					
+				</c:choose>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
-			 		 <label><f:checkbox path="noticeMagazine" id="noticeMagazine" name="noticeMagazine" value="Magazine"></f:checkbox><spring:message code="info.magazine"/></label>
-					<spring:message code="info.text.magazine" var="magazine"/>
-					<f:input path="noticeMagazine" class="form-control" id="noticeMagazine"
-						name="notice" placeholder="${magazine}"></f:input>
+				 <c:choose>
+					 <c:when test="${empty applicant.noticeMagazine}">
+				 		 <label><f:checkbox path="noticeMagazine" id="noticeMagazine" name="noticeMagazine" value="Magazine"></f:checkbox><spring:message code="info.magazine"/></label>
+						<div id="magazine">
+							 <f:input path="noticeMagazine" class="form-control" id="noticeMagazine" name="noticeMagazine" placeholder="Enter magazine"></f:input>
+						</div>
+					</c:when>
+					 <c:when test="${not empty applicant.noticeMagazine}">
+					 <label><f:checkbox path="noticeMagazine" id="noticeMagazine" name="noticeMagazine" value="Magazine" checked="checked"></f:checkbox><spring:message code="info.magazine"/></label>
+						<div id="magazine">
+							 <f:input path="noticeMagazine" class="form-control" id="noticeMagazine" name="noticeMagazine" placeholder="Enter magazine"></f:input>
+						</div>
+					</c:when>
+				</c:choose>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
+				 <c:choose>
+					 <c:when test="${empty applicant.noticeWebSite}">
 			  		<label><f:checkbox path="noticeWebSite" id="noticeWebSite" name="noticeWebSite" value="Website"></f:checkbox><spring:message code="info.website"/></label>
-			  		<spring:message code="info.text.website" var="website"/>
-			  		<f:input path="noticeWebSite" class="form-control" id="noticeWebSite"
-						name="notice" placeholder="${website}"></f:input>
+			  		<div id="webSite">
+			  			<f:input path="noticeWebSite" class="form-control" id="noticeWebSite" name="noticeWebSite" placeholder="Enter website"></f:input>
+					</div>
+				</c:when>
+				 <c:when test="${not empty applicant.noticeWebSite}">
+				 <label><f:checkbox path="noticeWebSite" id="noticeWebSite" name="noticeWebSite" value="Website" checked="checked"></f:checkbox><spring:message code="info.website"/></label>
+			  		<div id="webSite">
+			  			<f:input path="noticeWebSite" class="form-control" id="noticeWebSite" name="noticeWebSite" placeholder="Enter website"></f:input>
+					</div>
+				</c:when>
+				</c:choose>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
+				<c:choose>
+					 <c:when test="${empty applicant.noticeFriend}">
 			  		<label><f:checkbox path="noticeFriend" id="noticeFriend" name="noticeFriend" value="Friend"></f:checkbox><spring:message code="info.friend"/></label>
-					<spring:message code="info.text.friend" var="friend"/>
-			  		<f:input path="noticeFriend" class="form-control" id="noticeFriend"
-						name="notice" placeholder="${friend}"></f:input>
+			  		<div id="friend">
+			  			<f:input path="noticeFriend" class="form-control" id="noticeFriend" name="noticeFriend" placeholder="Enter friend"></f:input>
+					</div>
+				</c:when>
+				 <c:when test="${not empty applicant.noticeFriend}">
+				 	<label><f:checkbox path="noticeFriend" id="noticeFriend" name="noticeFriend" value="Friend" checked="checked"></f:checkbox><spring:message code="info.friend"/></label>
+			  			<div id="friend">
+			  			<f:input path="noticeFriend" class="form-control" id="noticeFriend" name="noticeFriend" placeholder="Enter friend"></f:input>
+						</div>
+					</c:when>
+				</c:choose>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
-			  		<label><f:checkbox path="noticeOther" id="noticeOther" name="noticeOther" value="Other"></f:checkbox><spring:message code="info.other"/> </label>
-			  		<spring:message code="info.text.other" var="other"/>
-			  		<f:input path="noticeOther" class="form-control" id="noticeOther" name="noticeOther" placeholder="${other}"></f:input>
+				<c:choose>
+					 <c:when test="${empty applicant.noticeOther}">
+				  		<label><f:checkbox path="noticeOther" id="noticeOther" name="noticeOther" value="Other"></f:checkbox><spring:message code="info.other"/> </label>
+				  		<div id="other">
+				  			<f:input path="noticeOther" class="form-control" id="noticeOther" name="noticeOther" placeholder="Enter other"></f:input>
+						</div>
+					</c:when>
+					<c:when test="${not empty applicant.noticeOther}">
+						<label><f:checkbox path="noticeOther" id="noticeOther" name="noticeOther" value="Other" checked="checked"></f:checkbox><spring:message code="info.other"/> </label>
+				  		<div id="other">
+				  			<f:input path="noticeOther" class="form-control" id="noticeOther" name="noticeOther" placeholder="Enter other"></f:input>
+						</div>
+					</c:when>
+				</c:choose>
 				</div> 
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="nowEmployed"><spring:message code="info.ask.company"/> </label><br><br>
-				<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
-				<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
+				<%-- <c:choose>
+ 					<c:when test="${empty applicant.nowEmployed}"> --%>
+						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
+						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
+					<%-- </c:when>
+					<c:when test="${not empty applicant.nowEmployed}">
+					<c:if test="${applicant.nowEmployed eq 'Yes'}">
+						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="Yes" checked="checked"></f:radiobutton><label> <spring:message code="info.yes"/></label>
+						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
+					</c:if>
+					<c:if test="${applicant.nowEmployed eq 'No'}">
+						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
+						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="No" checked="checked"></f:radiobutton><label> <spring:message code="info.no"/></label>
+					</c:if>
+					</c:when>
+			</c:choose>	 --%>
 				<br> 
 				<br>
 				<div class="form-group">
@@ -790,23 +921,39 @@
 			</div>
 		<br>
 		<br>			
-		<div class="form-group">
+		<div class="form-group" id="previousEmployers">
 		<label for="previousEmployers"><spring:message code="info.ask.inquiry"/> </label>
 			<br>
 			<br>
-		<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
-		<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
-		
+				<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
+				<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
+		<%-- <c:choose>
+ 			<c:when test="${empty applicant.previousEmployers}">
+				<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
+				<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
+			</c:when>
+			<c:when test="${not empty applicant.previousEmployers}">
+				<c:if test="${applicant.previousEmployers eq 'Yes'}">
+					<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes" checked="checked"></f:radiobutton><label> <spring:message code="info.yes"/></label>
+					<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
+				</c:if>
+				<c:if test="${applicant.previousEmployers eq 'No'}">
+					<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes" ></f:radiobutton><label> <spring:message code="info.yes"/></label>
+					<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No" checked="checked"></f:radiobutton><label> <spring:message code="info.no"/></label>
+							<div class="form-group" id="previousEmployersReason">
+								<label for="previousEmployersReason">If not, please give the reason </label>
+									<f:textarea path="previousEmployersReason" class="form-control" rows="5" id="previousEmployersReason" name="previousEmployersReason" placeholder="Enter If not, please give the reason"></f:textarea>
+							</div>
+				</c:if>
+			</c:when>
+		</c:choose> --%>
 		<br>
 		<br>
-		<div class="form-group">
-
-			<label for="previousEmployersReason"><spring:message code="info.reason.no"/> </label>
-			<spring:message code="info.text.ask.not" var="askNot"/>
-				<f:textarea path="previousEmployersReason" class="form-control" rows="5" id="previousEmployersReason"
-					name="previousEmployersReason" placeholder="${askNot}"></f:textarea>
+		<div class="form-group" id="previousEmployersReason">
+					<label for="previousEmployersReason">If not, please give the reason </label>
+					<f:textarea path="previousEmployersReason" class="form-control" rows="5" id="previousEmployersReason" name="previousEmployersReason" placeholder="Enter If not, please give the reason"></f:textarea>
 		</div>
-	</div>
+		</div>
 		<br>
 		<br>
 		

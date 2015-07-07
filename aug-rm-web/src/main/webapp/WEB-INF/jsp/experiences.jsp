@@ -9,13 +9,16 @@
 }
 </style>
 <script>
-$(document).ready(function() {
-	
-	$('.input-group.date').datepicker({
-		startView : 2,
-		todayBtn : "linked",
-		format : "dd/mm/yyyy"
 
+	$(document).ready(function() {
+		
+		var dtApplicant;
+		
+		$('.input-group.date').datepicker({
+			startView : 2,
+			todayBtn : "linked",
+			format : "dd/mm/yyyy",
+			autoclose: true 
 	});
 	
  	$('#experiencesForm').validate({

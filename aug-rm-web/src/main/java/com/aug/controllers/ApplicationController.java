@@ -63,6 +63,7 @@ import com.aug.db.services.ExperienceService;
 import com.aug.db.services.FamilyService;
 import com.aug.db.services.LanguagesService;
 import com.aug.db.services.PositionService;
+import com.aug.services.DownloadService;
 import com.aug.services.UploadService;
 import com.aug.db.services.ReferenceService;
 import com.aug.db.services.SkillService;
@@ -98,6 +99,8 @@ public class ApplicationController {
 	private FamilyService familyService;
 	@Autowired
 	private PositionEditor positionEditor;
+	@Autowired
+	private DownloadService downloadService;
 
 	@InitBinder
 	public void InitBinder(WebDataBinder binder) {
@@ -165,7 +168,7 @@ public class ApplicationController {
 
 		model.addAttribute("id", applicationDTO.getId());
 		model.addAttribute("applicant", applicationDTO);
-		
+
 		return "informations";
 	}
 
@@ -303,94 +306,34 @@ public class ApplicationController {
 	
 	// Search Every Class By Id For Show In Text Box
 	
+	@RequestMapping(value = "/dowloadResume/{id}", method = RequestMethod.GET)
+	public String dowloadResume(@PathVariable Integer id,HttpServletRequest request,HttpServletResponse response) {
+ 
+		String filename = applicantService.findApplicationById(id).getResume();
+		downloadService.download(request,response,"Applicant", filename);		
+		return "informations";
+	}
+
+	@RequestMapping(value = "/dowloadTranscript/{id}", method = RequestMethod.GET)
+	public  String dowloadTranscript(@PathVariable Integer id,HttpServletRequest request,HttpServletResponse response) {
+ 
+		String filename = applicantService.findApplicationById(id).getTranscript();
+		downloadService.download(request,response,"Applicant", filename);
+		return "informations";
+	}
 	@RequestMapping(value = "/info/{id}", method = { RequestMethod.GET })
 	public String updateInfo(@ModelAttribute ApplicationDTO applicationDTO,
 			@PathVariable Integer id, Model  model) {
 		applicationDTO = applicantService.findByIdApplicant(id);
-		model.addAttribute("applicant",applicationDTO);
-
+		
+		model.addAttribute("applicant", applicationDTO);
+		
+		/*System.out.println("POSITION 1 : "+applicationDTO.getPositionId1());
+		System.out.println("POSITION 2 : "+applicationDTO.getPositionId2());
+		System.out.println("POSITION 3 : "+applicationDTO.getPositionId3());*/
 		return "informations";
 	}
 	
-	@RequestMapping(value = "/dowloadResume/{id}", method = RequestMethod.GET)
-	public @ResponseBody void dowloadResume(HttpServletRequest request,HttpServletResponse response,@ModelAttribute ApplicationDTO applicationDTO,@PathVariable Integer id) {
- 
-		ServletContext context = request.getServletContext();
-		String partResume = applicantService.findApplicationById(id).getResume();
-		File downloadFile = new File("C:/UPLOAD/FILE/Applicant/"+partResume);
-		FileInputStream inputStream = null;
-		OutputStream outStream = null;
-		
-		try {
-			inputStream = new FileInputStream(downloadFile);
- 
-			response.setContentLength((int) downloadFile.length());
-			response.setContentType(context.getMimeType("text/plain; charset=utf-8"));		
- 
-			// response header
-			String headerKey = "Content-Disposition";
-			String headerValue = String.format("attachment;filename=" + partResume);
-			response.setHeader(headerKey, headerValue);
- 
-			// Write response
-			outStream = response.getOutputStream();
-			IOUtils.copy(inputStream, outStream);
- 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (null != inputStream)
-					inputStream.close();
-				if (null != inputStream)
-					outStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
- 
-		}
- 
-	}
-
-	@RequestMapping(value = "/dowloadTranscript/{id}", method = RequestMethod.GET)
-	public @ResponseBody void dowloadTranscript(HttpServletRequest request,HttpServletResponse response,@ModelAttribute ApplicationDTO applicationDTO,@PathVariable Integer id) {
- 
-		ServletContext context = request.getServletContext();
-		String partTranscript = applicantService.findApplicationById(id).getTranscript();
-		File downloadFile = new File("C:/UPLOAD/FILE/Applicant/"+partTranscript);
-		FileInputStream inputStream = null;
-		OutputStream outStream = null;
-		
-		try {
-			inputStream = new FileInputStream(downloadFile);
- 
-			response.setContentLength((int) downloadFile.length());
-			response.setContentType(context.getMimeType("text/plain; charset=utf-8"));		
-			
-			// response header
-			String headerKey = "Content-Disposition";
-			String headerValue = String.format("attachment;filename=" + partTranscript);
-			response.setHeader(headerKey, headerValue);
- 
-			// Write response
-			outStream = response.getOutputStream();
-			IOUtils.copy(inputStream, outStream);
- 
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (null != inputStream)
-					inputStream.close();
-				if (null != inputStream)
-					outStream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
- 
-		}
- 
-	}
 	@RequestMapping(value = "/infoEdit/{id}", method = { RequestMethod.POST })
 	public String updateInformations(@ModelAttribute ApplicationDTO applicationDTO,@PathVariable Integer id,Model  model,MultipartFile multipartFile) {
 		if(applicationDTO.getImageMultipartFile()!=null&&applicationDTO.getImageMultipartFile().getSize()>0){

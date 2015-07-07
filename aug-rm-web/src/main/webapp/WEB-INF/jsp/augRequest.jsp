@@ -23,7 +23,8 @@
     	/* ------------------ Date picker format ------------------ */
     	$('.input-group.date').datepicker({
     		format: "dd/mm/yyyy",
-			startView: 2
+			startView: 2,
+			autoclose: true 
 			}); 
     	
 		/*validate date
