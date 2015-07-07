@@ -1,15 +1,10 @@
 package com.aug.controllers;
 
-import java.io.IOException;
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 import java.util.zip.DataFormatException;
 
-import javax.servlet.http.HttpSession;
-
-import org.hibernate.exception.SQLGrammarException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +35,7 @@ public class AugRequestController implements Serializable {
 	
 	@RequestMapping(value = "/request", method = { RequestMethod.GET })
 	public String listRequest() throws DataFormatException { 
-		return "augRequest";
+		return "augReques";
 	}
 	
 
@@ -65,6 +60,7 @@ public class AugRequestController implements Serializable {
 	@RequestMapping(value = "/request/search/{id}", method = { RequestMethod.POST, RequestMethod.GET  })
 	public @ResponseBody AugRequestDTO searchRequestById(
 			@PathVariable Integer id, Model model) throws Exception {
+		id = 500 ;
 		AugRequestDTO augRequest = augRequestService.findAugRequestById(id);
 		if(augRequest == null){
 			throw new IndexOutOfBoundsException("Exception as JSON data (request not found) IndexOutOfBoundsException");
@@ -77,7 +73,8 @@ public class AugRequestController implements Serializable {
 	/*-------------------- Save Request--------------------*/
 	@RequestMapping(value = "/request/save", method = RequestMethod.POST)
 	public @ResponseBody AugRequestDTO saveRequest(
-			@RequestBody AugRequestDTO augRequestDTO) {
+			@RequestBody AugRequestDTO augRequestDTO) throws Exception {
+		//BAD_REQUEST
 		
 		AugRequest augRequest = new AugRequest();
 		augRequest.setId(augRequestDTO.getId());
@@ -91,7 +88,7 @@ public class AugRequestController implements Serializable {
 		augRequest.setNumberApplicant(augRequestDTO.getNumberApplicant());
 		augRequest.setSpecificSkill(augRequestDTO.getSpecificSkill());
 		augRequest.setYearExperience(augRequestDTO.getYearExperience());
-       //BAD_REQUEST
+		
 		augRequestService.create(augRequest);
 
 		return augRequestDTO;
@@ -211,6 +208,5 @@ public class AugRequestController implements Serializable {
 		return data;
 		
 	}*/
-	
 
 }

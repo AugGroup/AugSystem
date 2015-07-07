@@ -209,7 +209,19 @@
             					nonblock_opacity: .2
             					}
             			});
-            		}
+            		},
+            		 error: function(jqXHR, textStatus, errorThrown) 
+         	        {
+         	            var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
+         	            console.log(exceptionVO);
+         	            $('#exceptionModal')
+         	            .find('.modal-header h3').html(jqXHR.status+' error').end()
+         	            .find('.modal-body p>strong').html(exceptionVO.clazz).end()
+         	            .find('.modal-body p>em').html(exceptionVO.method).end()
+         	            .find('.modal-body p>span').html(exceptionVO.message).end()
+         	            .modal('show');
+         	            
+         	        } 
             	});
             };
            }
@@ -539,7 +551,7 @@
             <div class="modal-body">
             	<div class="container">
             		<div class="row">
-               	 		<p><em></em><span></span></p>
+               	 		<p><b></b><em></em><span></span></p>
             		</div>
             		<div class="row">
                	 		<h4>Contact me +22003455!!!</h4>

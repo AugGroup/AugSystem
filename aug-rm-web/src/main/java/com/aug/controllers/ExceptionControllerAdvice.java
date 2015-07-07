@@ -105,8 +105,14 @@ public class ExceptionControllerAdvice {
 	    	 System.out.println(ex.getMessage());
 	        return exceptionVO;
 		}
-	    
-	    
+	    //BadRequest 400
+	    @ExceptionHandler(NullPointerException.class)
+	    @ResponseStatus(HttpStatus.BAD_REQUEST)
+	    @ResponseBody
+	    public ExceptionVO handleBadRequest(IndexOutOfBoundsException ex, HttpServletResponse response) throws IOException{
+	    	ExceptionVO exceptionVO = new ExceptionVO(ex.getMessage());
+	        return exceptionVO;
+		}
 	    
 }
 //Exception>RuntimeException>IllegalArgumentException>DataformatException

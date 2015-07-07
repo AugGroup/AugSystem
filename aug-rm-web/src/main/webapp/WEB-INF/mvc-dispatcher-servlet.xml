@@ -106,10 +106,12 @@
 	</bean>
 	
 	<!-- SimpleMappingExceptionResolver --> <!-- use anotation java config -->
- 	<!-- <bean id="simpleMappingExceptionResolver" class="com.journaldev.spring.resolver.MySimpleMappingExceptionResolver">
+ 	<!--  <bean id="simpleMappingExceptionResolver" class="com.journaldev.spring.resolver.MySimpleMappingExceptionResolver">
         <property name="exceptionMappings">
             <map>
-                <entry key="Exception" value="generic_error"></entry>
+                <entry key="Exception">errorpages/errorPage404</entry>
+                <entry key="IOException">errorpages/errorPage404</entry>
+                <entry key="IndexOutOfBoundsException">errorpages/errorPage404</entry>
             </map>
         </property>
         <property name="defaultErrorView" value="generic_error"/>
