@@ -3,7 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<title>Request for Application</title>
+<title><spring:message code="request.application"/></title>
 
 <style type="text/css">
 	.bs-example{
@@ -113,15 +113,15 @@
         	          {"data": "numberApplicant"},
         	          {"data": "status"},
         	          {data: function (data) {
-        	        	  return '<button id="btn_preview" class="btn btn-primary" data-id="' + data.id + '" data-toggle="modal" data-target="#previewModal">Preview <span class="glyphicon glyphicon-search"></span></button>';
+        	        	  return '<button id="btn_preview" class="btn btn-primary" data-id="' + data.id + '" data-toggle="modal" data-target="#previewModal"><spring:message code="request.preview"/> <span class="glyphicon glyphicon-search"></span></button>';
         	        	  }
         	          },
         	          {data: function (data) {
-                        return '<button id="btn_edit" class="btn btn-warning" data-id="' + data.id + '" data-toggle="modal" data-target="#addRequestModal">Edit <span class="glyphicon glyphicon-edit"></span></button>';
+                        return '<button id="btn_edit" class="btn btn-warning" data-id="' + data.id + '" data-toggle="modal" data-target="#addRequestModal"><spring:message code="main.edit.info"/> <span class="glyphicon glyphicon-edit"></span></button>';
                         }
         	          },
         	          {data: function (data) {
-        	        	  return '<button id="btn_delete" class="btn btn-danger" data-id="' + data.id + '" data-toggle="modal" data-target="#deleteModal">Delete <span class="glyphicon glyphicon-remove-sign"></span></button>';
+        	        	  return '<button id="btn_delete" class="btn btn-danger" data-id="' + data.id + '" data-toggle="modal" data-target="#deleteModal"><spring:message code="main.delete"/> <span class="glyphicon glyphicon-remove-sign"></span></button>';
         	        	  }
         	          }
         	          ]
@@ -370,22 +370,22 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Request Applicant</h4>
+                <h4 class="modal-title" id="myModalLabel"><spring:message code="request.title.appli"/></h4>
             </div>
             <div class="modal-body" style="width:400px">
                 <form role='form' id="requestForm" name="requestForm" >   
                     <div class="form-group">
-                        <label for="inputRequesterName">Requester</label>
+                        <label for="inputRequesterName"><spring:message code="request.human"/></label>
                         <input type="text" class="form-control" name="inputRequesterName" id="inputRequesterName" />
                     </div>
                     <div class="form-group">
-                    	<label for="inputRequestDate">Requester Date</label>
+                    	<label for="inputRequestDate"><spring:message code="request.date"/></label>
                     	<div class="input-group date">
                     		<input type="text" class="form-control" name="inputRequestDate" id="inputRequestDate"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
     					</div>
     				</div>
                     <div class="form-group">
-                        <label for="inputPosition">Position</label> 
+                        <label for="inputPosition"><spring:message code="info.position"/></label> 
                         <select name="inputPosition" id="inputPosition" class="form-control">
                             <c:forEach items="${positionRequest}" var="items">
                                 <option value="${items.id}">${items.positionName }</option>
@@ -393,40 +393,40 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="inputApprovalName">Approval Name</label>
+                        <label for="inputApprovalName"><spring:message code="request.approve.name"/></label>
                         <input type="text" class="form-control" name="inputApprovalName" id="inputApprovalName" />
                     </div>
                     <div class="form-group">
-                    	<label for="inputApproveDate">Approval Date</label>
+                    	<label for="inputApproveDate"><spring:message code="request.approve.date"/></label>
                     	<div class="input-group date">
                     		<input type="text" class="form-control" name="inputApproveDate" id="inputApproveDate"><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
     					</div>
     				</div>
                     <div class="form-group">
-                        <label for="inputNumberApplicant">Number of Applicant</label>
-                        <input type="text" class="form-control" name="inputNumberApplicant" id="inputNumberApplicant" placeholder="Enter Number of Applicant" />
+                        <label for="inputNumberApplicant"><spring:message code="request.number"/></label>
+                        <input type="text" class="form-control" name="inputNumberApplicant" id="inputNumberApplicant" placeholder="<spring:message code="request.text.number"/>" />
                     </div>
                     <div class="form-group">
-                        <label for="inputSpecificSkill">Specific Skill </label>
-                        <textarea class="form-control" name="inputSpecificSkill" id="inputSpecificSkill" placeholder="Enter Specific Skill"></textarea>
+                        <label for="inputSpecificSkill"><spring:message code="request.skill"/> </label>
+                        <textarea class="form-control" name="inputSpecificSkill" id="inputSpecificSkill" placeholder="<spring:message code="request.text.skill"/>"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="inputYearExperience">Year Experience</label>  
-                        <input type="text" class="form-control" name="inputYearExperience" id="inputYearExperience" placeholder="Enter Year Experience"/>
+                        <label for="inputYearExperience"><spring:message code="request.year"/></label>  
+                        <input type="text" class="form-control" name="inputYearExperience" id="inputYearExperience" placeholder="<spring:message code="request.text.year"/>"/>
                     </div>
                     <div class="form-group">
-                        <label for="inputStatus">Status</label>
+                        <label for="inputStatus"><spring:message code="main.status"/></label>
                          <select name="inputStatus" id='inputStatus' class="form-control" >
-                            <option value ='New Request' selected ='selected'>New Request</option>
-                            <option value ='Approve'>Approve</option>
-                            <option value ='Not Approve'>Not Approve</option>
+                            <option value ='New Request' selected ='selected'><spring:message code="request.new"/></option>
+                            <option value ='Approve'><spring:message code="edit.approve"/></option>
+                            <option value ='Not Approve'><spring:message code="edit.notApprove"/></option>
                         </select>
                     </div> 
                    <div align="right">
-                   		<button type="button" id="btn_save_req" class="btn btn-primary btn-success">Save 
+                   		<button type="button" id="btn_save_req" class="btn btn-primary btn-success"> <spring:message code="edit.button.save"/>
                     		<span class="glyphicon glyphicon-floppy-save"></span>
                     	</button>
-                   		<button type="button" id="btn_close" class="btn btn-default" data-dismiss="modal">Close</button>                 
+                   		<button type="button" id="btn_close" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>                 
                 	</div>
                  </form>
              </div>
@@ -440,18 +440,18 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="ModalLabel">Delete Request</h4>
+                <h4 class="modal-title" id="ModalLabel"><spring:message code="request.delete"/></h4>
             </div>
             <div class="modal-body">
             	<div class="container">
             		<div class="row">
-               	 		Do you want to delete request ?
+               	 		<spring:message code="request.ask"/>
             		</div>
                 	<div class="row">
                 		<div class="col-md-4"></div>
                 		<div class="col-md-2">
-                			<button  id="btn_delete_submit" type="button" class="btn btn-primary" data-dismiss="modal">Delete</button>
-							<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                			<button  id="btn_delete_submit" type="button" class="btn btn-primary" data-dismiss="modal"><spring:message code="main.delete"/></button>
+							<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
             			</div>
             		</div>
             	</div>
@@ -466,59 +466,59 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="ModalLabel">Request Description</h4>
+                <h4 class="modal-title" id="ModalLabel"><spring:message code="request.desc"/></h4>
             </div>
             <div class="modal-body">
             <div class="row">
             	<div class="col-md-2"></div>
-				<div class="col-md-3">Requester :</div>
+				<div class="col-md-3"><spring:message code="request.request"/></div>
 				<div class="col-md-6"> <p id="tx_requester"></p></div>
 			</div>
 			 <div class="row">
 			 	<div class="col-md-2"></div>
-            	<div class="col-md-3">Request Date :</div>
+            	<div class="col-md-3"><spring:message code="request.request.date"/></div>
             	<div class="col-md-6"><p id="tx_requestDate"></p></div>
             </div>
 				 <div class="row">
 				 	<div class="col-md-2"></div>
-				 	<div class="col-md-3">Position :</div> 
+				 	<div class="col-md-3"><spring:message code="request.pos"/></div> 
 				 	<div class="col-md-6"><p id="tx_position"></p></div>
 				 </div>
                  <div class="row">
                  	<div class="col-md-2"></div>
-                 	<div class="col-md-3">Approval Name :</div>
+                 	<div class="col-md-3"><spring:message code="request.approv.name"/></div>
                  	<div class="col-md-6"><p id="tx_approvalName"></p></div>
                  </div>
                  <div class="row">
                  	<div class="col-md-2"></div>
-                 	<div class="col-md-3">Approve Date :</div>
+                 	<div class="col-md-3"><spring:message code="request.approv.date"/></div>
                  	<div class="col-md-6"><p id="tx_approveDate"></p></div>
                 </div>
                  <div class="row">
                  	<div class="col-md-2"></div>
-                 	<div class="col-md-4">Number of Applicant :</div> 
+                 	<div class="col-md-4"><spring:message code="request.number.appli"/></div> 
                  	<div class="col-md-6"><p id="tx_noOfApplicant"></p></div>
                  </div>
                  <div class="row">
                  	<div class="col-md-2"></div>
-                 	<div class="col-md-3">Specific Skill :</div>
+                 	<div class="col-md-3"><spring:message code="request.spec.skill"/></div>
                  	<div class="col-md-6"><p id="tx_specificSkill"></p></div>
                  </div>
                  <div class="row">
                  	<div class="col-md-2"></div>
-                 	<div class="col-md-3">Year Experience :</div>
+                 	<div class="col-md-3"><spring:message code="request.year.exper"/></div>
                  	
                  	<div class="col-md-6"><p id="tx_yearExperience"></p></div>
                  </div>
                  <div class="row">
                  	<div class="col-md-2"></div>
-                 	<div class="col-md-3">Status :</div>
+                 	<div class="col-md-3"><spring:message code="request.request.status"/></div>
                  	<div class="col-md-6"><p id="tx_status"></p></div>
                  </div>
             </div>
             <div class="modal-footer">
             	<div align="right">
-                 	<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                 	<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
             	 </div>
             </div>
         </div>

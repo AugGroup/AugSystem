@@ -75,8 +75,11 @@ background-attachment: fixed;
 			src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png"
 			alt="logo" style="width: 250px; height: 100px;" />
 		<div class="form-group" align="right">
-			<a href="${pageContext.request.contextPath}/login?locale=en">EN</a>
-			<a href="${pageContext.request.contextPath}/login?locale=th">TH</a>
+			<a href="${request.getRequestURL}?locale=en">
+				<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 30px; height: 20px;"/></a>
+			<a href="${request.getRequestURL}?locale=th">		
+				<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 30px; height: 20px;" /></a>
+			
 		</div>
 	</div>
 	<div>

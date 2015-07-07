@@ -4,15 +4,13 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container">
-<div class="form-group">
-
-<!-- <input type="hidden" value="id"> -->
-			<ul class="nav nav-tabs" role="navigation">
-				<li ><a href="${pageContext.request.contextPath}/info/${id}" ><span
+		<div class="form-group">
+			<ul class="nav nav-pills" role="navigation">
+				<li role="presentation" class="active"><a  href="${pageContext.request.contextPath}/info/${id}"><span
 						class="glyphicon glyphicon-user"></span> <spring:message code="tab.info"/></a></li>
-				<li><a  href="${pageContext.request.contextPath}/address/${id}"><span
+				<li role="presentation" class="active"><a  href="${pageContext.request.contextPath}/address/${id}"><span
 						class="glyphicon glyphicon-home"></span> <spring:message code="tab.address"/></a></li>
-				<li><a  href="${pageContext.request.contextPath}/family/${id}"><span
+				<li role="presentation" class="active"><a  href="${pageContext.request.contextPath}/family/${id}"><span
 						class="glyphicon glyphicon-file"></span> <spring:message code="tab.family"/></a></li>
 				<li><a  href="${pageContext.request.contextPath}/educations/${id}"><span
 						class="glyphicon glyphicon-education"></span> <spring:message code="tab.education"/></a></li>

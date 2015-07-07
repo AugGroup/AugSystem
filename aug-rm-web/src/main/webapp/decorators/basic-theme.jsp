@@ -30,6 +30,11 @@
 	src='<c:url value ="/static/resources/js/jquery.dataTables.min.js"/>'></script>
 <link rel="stylesheet" type="text/css" media="all"
 	href="<c:url value ="/static/resources/css/jquery.dataTables.min.css"/>" />
+	
+<script
+	src='<c:url value ="/static/resources/js/jquery.bootstrap.wizard.js"/>'></script>
+<script
+	src='<c:url value ="/static/resources/js/jquery.bootstrap.wizard.min.js"/>'></script>
 
 
 <script src='<c:url value ="/static/resources/js/pnotify.custom.min.js"/>'></script>
@@ -99,8 +104,10 @@
         				</li> --%>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="${request.getRequestURL}?locale=en"><spring:message code="sitemesh.en"/></a></li>
-						<li><a href="${request.getRequestURL}?locale=th"><spring:message code="sitemesh.th"/></a></li>
+							<li><a href="${request.getRequestURL}?locale=en">
+							<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 30px; height: 20px;"/></a></li>
+							<li><a href="${request.getRequestURL}?locale=th">		
+							<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 30px; height: 20px;" /></a></li>
 						<li><a href=""><span class="glyphicon glyphicon-user"></span> <%=name %></a></li>
 						<li><a href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a></li>
 					</ul>

@@ -74,25 +74,25 @@ $(document).ready(function () {
        <div class="col-md-2">
        		<div class="form-group" style="width:180px">
        			<label for="degree"><spring:message code="education.degree"/></label>
-       			<input type="text" class="form-control" id="degree" name="degree" placeholder="Enter Degree">
+       			<input type="text" class="form-control" id="degree" name="degree" placeholder="<spring:message code="education.text.degree"/>">
        		</div>
        	</div>
        	<div class="col-md-2">
        		<div class="form-group" style="width:180px">
        			<label for="major"><spring:message code="education.major"/></label> 
-				<input type="text" class="form-control" id="major" name="major" placeholder="Enter Major">
+				<input type="text" class="form-control" id="major" name="major" placeholder="<spring:message code="education.text.major"/>">
     		</div>
     	</div>
    		<div class="col-md-1">
    			<div class="form-group" style="width:93px">
     			<label for="gpa"><spring:message code="education.gpa"/></label> <!-- step="0.1" -->
-				<input type="text"  class="form-control" id="gpa" name="gpa" placeholder="Enter GPA">
+				<input type="text"  class="form-control" id="gpa" name="gpa" placeholder="<spring:message code="education.text.gpa"/>">
     		</div>
    		</div>
    		<div class="col-md-2">
    			<div class="form-group" style="width:180px">
     			<label for="schoolName"><spring:message code="report.text.school"/></label> 
-				<input type="text" class="form-control" id="schoolName" name="schoolName" placeholder="Enter School Name">
+				<input type="text" class="form-control" id="schoolName" name="schoolName" placeholder="<spring:message code="report.enter.school"/>">
 			</div>
    		</div>
    		</div>

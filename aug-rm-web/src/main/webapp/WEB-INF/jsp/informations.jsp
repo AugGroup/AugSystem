@@ -374,47 +374,58 @@
 		<br>
 			<div class="form-group">
 				<label for="firstNameTh"><spring:message code="info.firstname.th"/> </label>
-				<f:input path="firstNameTH" id="firstNameTH" name="firstNameTH" placeholder="Enter Firstname(TH)" class="form-control" ></f:input>
+				<spring:message code="info.text.first.th" var="firstname"/>
+<%-- 				<f:input path="firstNameTH" id="firstNameTH" name="firstNameTH" placeholder="Enter Firstname(TH)" class="form-control" ></f:input> --%>
+				<f:input path="firstNameTH" id="firstNameTH" name="firstNameTH" placeholder="${firstname}" class="form-control" ></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="lastnameTh"><spring:message code="info.lastname.th"/> </label>
-				<f:input path="lastNameTH" id="lastNameTH" name="lastNameTH" placeholder="Enter lastname(TH)" class="form-control" ></f:input>
+				<spring:message code="info.text.last.th" var="lastname"/>
+				<f:input path="lastNameTH" id="lastNameTH" name="lastNameTH" placeholder="${lastname}" class="form-control" ></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="nickNameTh"><spring:message code="info.nickname.th"/> </label>
-				<f:input path="nickNameTH" id="nickNameTH" name="nickNameTH" placeholder="Enter nickname(TH)" class="form-control" ></f:input>
+				<spring:message code="info.text.nick.th" var="nickname"/>
+				<f:input path="nickNameTH" id="nickNameTH" name="nickNameTH" placeholder="${nickname}" class="form-control" ></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="firstNameEng"><spring:message code="info.firstname.en"/> </label>
-				 <f:input path="firstNameEN" id="firstNameEN" name="firstNameEN" placeholder="Enter Firstname(ENG)" class="form-control" ></f:input>
+				<spring:message code="info.text.first.en" var="firstnameEn"/>
+				 <f:input path="firstNameEN" id="firstNameEN" name="firstNameEN" placeholder="${firstnameEn}" class="form-control" ></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="lastnameEng"><spring:message code="info.lastname.en"/> </label> 
-				<f:input path="lastNameEN" id="lastNameEN" name="lastNameEN" placeholder="Enter lastname(ENG)" class="form-control"></f:input>
+				<label for="lastnameEng"><spring:message code="info.lastname.en"/> </label>
+				<spring:message code="info.text.last.en" var="lastnameEn"/>
+				<f:input path="lastNameEN" id="lastNameEN" name="lastNameEN" placeholder="${lastnameEn}" class="form-control"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="nickNameEng"><spring:message code="info.nickname.en"/> </label> 
-				<f:input path="nickNameEN" id="nickNameEN" name="nickNameEN" class="form-control" placeholder="Enter nickname(Eng)"></f:input>
+				<spring:message code="info.text.nick.en" var="nicknameEn"/>
+				<f:input path="nickNameEN" id="nickNameEN" name="nickNameEN" class="form-control" placeholder="${nicknameEn}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="tel"><spring:message code="info.tel"/> </label> <f:input path="tel" id="tel" name="tel" placeholder="Enter tel" class="form-control" ></f:input>
+				<label for="tel"><spring:message code="info.tel"/> </label> 
+				<spring:message code="info.text.tel" var="tel"/>
+				<f:input path="tel" id="tel" name="tel" placeholder="${tel}" class="form-control" ></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="eMail"><spring:message code="info.email"/> </label> <f:input path="email" id="email" name="email" type="email" placeholder="Enter E-Mail" class="form-control" ></f:input>
+				<label for="eMail"><spring:message code="info.email"/> </label> 
+				<spring:message code="info.text.email" var="email"/>
+				<f:input path="email" id="email" name="email" type="email" placeholder="${email}" class="form-control" ></f:input>
 			</div>
 			<br>
 			<br>
@@ -430,38 +441,44 @@
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="pBirth"><spring:message code="info.place.birth"/> </label> <f:input path="placeBirth" id="placeBirth" name="placeBirth"
-					class="form-control" placeholder="Enter place of birth"></f:input>
+				<label for="pBirth"><spring:message code="info.place.birth"/> </label> 
+				<spring:message code="info.text.birth" var="pBirth"/>
+				<f:input path="placeBirth" id="placeBirth" name="placeBirth" class="form-control" placeholder="${pBirth}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="age"><spring:message code="info.age"/> </label> <f:input path="age" id="age" name="age" class="form-control"
-					placeholder="Enter age"></f:input>
+				<label for="age"><spring:message code="info.age"/> </label> 
+				<spring:message code="info.text.age" var="age"/>
+				<f:input path="age" id="age" name="age" class="form-control" placeholder="${age}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="religion"><spring:message code="info.religion"/> </label> <f:input path="religion" id="religion" name="religion"
-					class="form-control" placeholder="Enter religion"></f:input>
+				<label for="religion"><spring:message code="info.religion"/> </label>
+				<spring:message code="info.text.religion" var="religion"/> 
+				<f:input path="religion" id="religion" name="religion" class="form-control" placeholder="${religion}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="nationality"><spring:message code="info.nationality"/> </label> <f:input path="nationality" id="nationality" name="nationality"
-					class="form-control" placeholder="Enter nationality"></f:input>
+				<label for="nationality"><spring:message code="info.nationality"/> </label> 
+				<spring:message code="info.text.nationality" var="nationality"/>
+				<f:input path="nationality" id="nationality" name="nationality" class="form-control" placeholder="${nationality}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="cardId"><spring:message code="info.id.card"/> </label> <f:input path="cardId" id="cardId" name="cardId" class="form-control" 
-					placeholder="Enter ID. Card no."></f:input>
+				<label for="cardId"><spring:message code="info.id.card"/> </label> 
+				<spring:message code="info.text.card" var="card"/>
+				<f:input path="cardId" id="cardId" name="cardId" class="form-control" placeholder="${card}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="cardIssuedOffice"><spring:message code="info.issue.office"/> </label> <f:input path="cardIssuedOffice" name="cardIssuedOffice" id="cardIssuedOffice" class="form-control" 
-					placeholder="Enter issued office"></f:input>
+				<label for="cardIssuedOffice"><spring:message code="info.issue.office"/> </label> 
+				<spring:message code="info.text.issued" var="issued"/>
+				<f:input path="cardIssuedOffice" name="cardIssuedOffice" id="cardIssuedOffice" class="form-control" placeholder="${issued}"></f:input>
 			</div>
 			<br>
 			<br>
@@ -476,13 +493,16 @@
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="height"><spring:message code="info.height"/> </label> <f:input path="height" class="form-control" id="height" name="height" 
-					placeholder="Enter height (cms)"></f:input>
+				<label for="height"><spring:message code="info.height"/> </label> 
+				<spring:message code="info.text.height" var="height"/>
+				<f:input path="height" class="form-control" id="height" name="height" placeholder="${height}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="weight"><spring:message code="info.weight"/> </label> <f:input path="weight" class="form-control" id="weight" name="weight" placeholder="Enter weight (kgs)"></f:input>
+				<label for="weight"><spring:message code="info.weight"/> </label> 
+				<spring:message code="info.text.weight" var="weight"/>
+				<f:input path="weight" class="form-control" id="weight" name="weight" placeholder="${weight}"></f:input>
 			</div>
 			<br>
 			<br>
@@ -502,36 +522,47 @@
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="children"><spring:message code="info.number.child"/> </label> <f:input path="numberOfChildren" class="form-control" id="numberOfChildren" name="numberOfChildren" placeholder="Enter number of children"></f:input>
+				<label for="children"><spring:message code="info.number.child"/> 
+				<spring:message code="info.text.children" var="children"/>
+				</label> <f:input path="numberOfChildren" class="form-control" id="numberOfChildren" name="numberOfChildren" placeholder="${children}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="spouseName"><spring:message code="info.spouseName"/> </label> <f:input path="spouseName" class="form-control" id="spouseName" name="spouseName" placeholder="Enter spouse: name"></f:input>
+				<label for="spouseName"><spring:message code="info.spouseName"/> </label> 
+				<spring:message code="info.text.spouse" var="spouse"/>
+				<f:input path="spouseName" class="form-control" id="spouseName" name="spouseName" placeholder="${spouse}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="marriageCertificateNo"><spring:message code="info.marriage.certifate"/> </label> <f:input path="marriageCertificateNo" class="form-control" id="marriageCertificateNo"
-					name="marriageCertificateNo" placeholder="Enter marriage certificate No."></f:input>
+				<label for="marriageCertificateNo"><spring:message code="info.marriage.certifate"/> </label> 
+				<spring:message code="info.text.marriage" var="marryNo"/>
+				<f:input path="marriageCertificateNo" class="form-control" id="marriageCertificateNo" 
+					name="marriageCertificateNo" placeholder="${marryNo}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="issueOficeMarriage"><spring:message code="info.issue.title"/> </label> <f:input path="issueOficeMarriage" class="form-control" id="issueOficeMarriage"
-					name="issueOficeMarriage" placeholder="Enter Issued office"></f:input>
+				<label for="issueOficeMarriage"><spring:message code="info.issue.title"/> </label> 
+				<f:input path="issueOficeMarriage" class="form-control" id="issueOficeMarriage"
+					name="issueOficeMarriage" placeholder="${issued}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="marriageAddress"><spring:message code="info.address.title"/> </label> <f:textarea path="marriageAddress" class="form-control" rows="5" id="marriageAddress" name="marriageAddress"
-					placeholder="Enter address"></f:textarea>
+				<label for="marriageAddress"><spring:message code="info.address.title"/> </label> 
+				<spring:message code="info.text.address" var="address"/>
+				<f:textarea path="marriageAddress" class="form-control" rows="5" id="marriageAddress" name="marriageAddress"
+					placeholder="${address}"></f:textarea>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="occupationMarriage"><spring:message code="info.occupation.title"/> </label> <f:input path="occupationMarriage" class="form-control" id="occupationMarriage" name="occupationMarriage"
-					placeholder="Enter occupation"></f:input>
+				<label for="occupationMarriage"><spring:message code="info.occupation.title"/> </label> 
+				<spring:message code="info.text.occupation" var="occupation"/>
+				<f:input path="occupationMarriage" class="form-control" id="occupationMarriage" name="occupationMarriage"
+					placeholder="${occupation}"></f:input>
 			</div>
 			<br>
 			<br>
@@ -545,38 +576,49 @@
 				<div class="form-group">
 					<label for="militaryComplete"><spring:message code="info.military.yes"/> </label> 
 					<label for="militaryFromYear"><spring:message code="info.military.fromYear"/> </label> 
+					<spring:message code="info.text.from" var="from"/>
 					<f:input path="militaryFromYear" class="form-control" id="militaryFromYear"
-						name="militaryFromYear" placeholder="Enter from year"></f:input>
+						name="militaryFromYear" placeholder="${from}"></f:input>
 				</div>
 			<br>
 			<br>
 				<div class="form-group">
-					<label for="militarytoYear"><spring:message code="info.military.toYear"/> </label> <f:input path="militarytoYear" class="form-control" id="militarytoYear" name="militarytoYear"
-						placeholder="Enter to year"></f:input>
+					<label for="militarytoYear"><spring:message code="info.military.toYear"/> </label> 
+					<spring:message code="info.text.to" var="to"/>
+					<f:input path="militarytoYear" class="form-control" id="militarytoYear" name="militarytoYear"
+						placeholder="${to}"></f:input>
 				</div>
 			<br>
 			<br>
 				<div class="form-group">
-					<label for="branchService"><spring:message code="info.branch.service"/> </label> <f:input path="branchService" class="form-control" id="branchService" name="branchService"
-						placeholder="Enter branch of service"></f:input>
+					<label for="branchService"><spring:message code="info.branch.service"/> </label> 
+					<spring:message code="info.text.branch" var="branch"/>
+					<f:input path="branchService" class="form-control" id="branchService" name="branchService"
+						placeholder="${branch}"></f:input>
 				</div>
 			<br>
 			<br>
 				<div class="form-group">
-					<label for="militaryPlace"><spring:message code="info.military.place"/> </label> <f:input path="militaryPlace" class="form-control" id="militaryPlace" name="militaryPlace"
-						placeholder="Enter military place"></f:input>
+					<label for="militaryPlace"><spring:message code="info.military.place"/> </label> 
+					<spring:message code="info.text.military.place" var="militaryP"/>
+					<f:input path="militaryPlace" class="form-control" id="militaryPlace" name="militaryPlace"
+						placeholder="${militaryP}"></f:input>
 				</div>
 			<br>
 			<br>
 				<div class="form-group">
-					<label for="serviceNo"><spring:message code="info.service.no"/> </label> <f:input path="militaryServiceNo" class="form-control" id="militaryServiceNo" name="militaryServiceNo"
-						placeholder="Enter Service no"></f:input>
+					<label for="serviceNo"><spring:message code="info.service.no"/> </label> 
+					<spring:message code="info.text.military.service" var="militaryS"/>
+					<f:input path="militaryServiceNo" class="form-control" id="militaryServiceNo" name="militaryServiceNo"
+						placeholder="${militaryS}"></f:input>
 				</div>
 			<br>
 			<br>
 				<div class="form-group">
-					<label for="reasons"><spring:message code="info.military.reason"/> </label> <f:input path="militaryReason" class="form-control" id="militaryReason" name="militaryReason"
-						placeholder="Enter If not, please state the reasons"></f:input>
+					<label for="reasons"><spring:message code="info.military.reason"/> </label> 
+					<spring:message code="info.text.military.not" var="militaryN"/>
+					<f:input path="militaryReason" class="form-control" id="militaryReason" name="militaryReason"
+						placeholder="${militaryN}"></f:input>
 				</div>
 			<br>
 			<br>
@@ -604,69 +646,50 @@
 			<br>
 			<br>
 			<div class="form-group">
-				<%-- <label for="department">Department </label> 
-				<select id="department" class="form-control" name="department">
-					<option value="-1" label="please select data"/>
-					<c:forEach var="departmentList" items="${departments}" >
-						<option value="${departmentList.id}">${departmentList.departmentName}</option>
-					</c:forEach>
-				</select> --%>
-				
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 
 				<label for="position1"><spring:message code="main.position1"/> </label>
+				<spring:message code="info.select.data" var="select"/>
 				    <f:select path="position1" id="position1" name="position1" class="form-control">
-					<f:option value="-1" label="please select data"/>
+					<f:option value="-1" label="${select}"/>
 					<c:forEach var="positionList" items="${positions}">
 						<f:option value="${positionList.id}">${positionList.positionName}</f:option>
 					</c:forEach> 
 				</f:select> 
-				 <%--  <f:select path="position1">
-  					 <f:option value="${positionList.positionName}" label="--- Select ---"></f:option>
-  					 <f:options items="${positions}" />
-				</f:select>  --%>
-				
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="position2"><spring:message code="main.position2"/> </label> 
 				<f:select path="position2" id="position2" name="position2" class="form-control">
-					<f:option value="-1" label="please select data"/>
+					<f:option value="-1" label="${select}"/>
 					<c:forEach var="positionList" items="${positions}">
 						<f:option value="${positionList.id}">${positionList.positionName}</f:option>
 					</c:forEach> 
 				</f:select>
-				<%-- <f:select path="position2">
-  					 <f:option value="${positionList.positionName}" label="--- Select ---"></f:option>
-  					 <f:options items="${positions}" />
-				</f:select> --%>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="position3"><spring:message code="main.position3"/> </label>
 				<f:select path="position3" id="position3" name="position3" class="form-control">
-					<f:option value="-1" label="please select data"/>
+					<f:option value="-1" label="${select}"/>
 					<c:forEach var="positionList" items="${positions}">
 						<f:option value="${positionList.id}">${positionList.positionName}</f:option>
 					</c:forEach> 
 				</f:select>
-				
-				<%-- <f:select path="position3">
-  					 <f:option value="${positionList.positionName}" label="--- Select ---"></f:option>
-  					 <f:options items="${positions}" />
-				</f:select> --%>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="salary"><spring:message code="info.salary"/> </label> <f:input path="expectedSalary"
+				<label for="salary"><spring:message code="info.salary"/> </label> 
+				<spring:message code="info.text.salary" var="salary"/>
+				<f:input path="expectedSalary"
 					class="form-control" id="expectedSalary" name="expectedSalary"
-					placeholder="Enter salary"></f:input>
+					placeholder="${salary}"></f:input>
 			</div>
 			<br>
 			<br>
@@ -675,38 +698,40 @@
 				 <div class="checkbox">
 			  		<label><f:checkbox path="noticeNewspaper" 
 					id="noticeNewspaper" name="noticeNewspaper" value="Newspaper" ></f:checkbox><spring:message code="info.newspaper"/></label>
-
+					<spring:message code="info.text.newspaper" var="newspaper"/>
 					<f:input path="noticeNewspaper" class="form-control" id="noticeNewspaper"
-						name="notice" placeholder="Enter newspaper"></f:input>
+						name="notice" placeholder="${newspaper}"></f:input>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
 			 		 <label><f:checkbox path="noticeMagazine" id="noticeMagazine" name="noticeMagazine" value="Magazine"></f:checkbox><spring:message code="info.magazine"/></label>
-
+					<spring:message code="info.text.magazine" var="magazine"/>
 					<f:input path="noticeMagazine" class="form-control" id="noticeMagazine"
-						name="notice" placeholder="Enter magazine"></f:input>
+						name="notice" placeholder="${magazine}"></f:input>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
 			  		<label><f:checkbox path="noticeWebSite" id="noticeWebSite" name="noticeWebSite" value="Website"></f:checkbox><spring:message code="info.website"/></label>
+			  		<spring:message code="info.text.website" var="website"/>
 			  		<f:input path="noticeWebSite" class="form-control" id="noticeWebSite"
-						name="notice" placeholder="Enter website"></f:input>
+						name="notice" placeholder="${website}"></f:input>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
 			  		<label><f:checkbox path="noticeFriend" id="noticeFriend" name="noticeFriend" value="Friend"></f:checkbox><spring:message code="info.friend"/></label>
-
+					<spring:message code="info.text.friend" var="friend"/>
 			  		<f:input path="noticeFriend" class="form-control" id="noticeFriend"
-						name="notice" placeholder="Enter friend"></f:input>
+						name="notice" placeholder="${friend}"></f:input>
 				</div>
 				<br>
 				<br>
 				<div class="checkbox">
 			  		<label><f:checkbox path="noticeOther" id="noticeOther" name="noticeOther" value="Other"></f:checkbox><spring:message code="info.other"/> </label>
-			  		<f:input path="noticeOther" class="form-control" id="noticeOther" name="noticeOther" placeholder="Enter other"></f:input>
+			  		<spring:message code="info.text.other" var="other"/>
+			  		<f:input path="noticeOther" class="form-control" id="noticeOther" name="noticeOther" placeholder="${other}"></f:input>
 				</div> 
 			</div>
 			<br>
@@ -720,16 +745,19 @@
 				<div class="form-group">
 					<label for="nameRelation"><spring:message code="info.write.yes"/> </label><br><br>
 					<label for="employedName"><spring:message code="main.name"/> </label>
+					<spring:message code="info.text.name" var="name"/>
 					<f:input path="employedName" class="form-control" id="employedName"
-						name="employedName" placeholder="Enter name"></f:input>
+						name="employedName" placeholder="${name}"></f:input>
 						<br>
 						<br>
 					<label for="employedPosition"><spring:message code="info.position"/> </label>
-					<f:input path="employedPosition" class="form-control" id="employedPosition" name="employedPosition" placeholder="Enter position"></f:input>
+					<spring:message code="exp.text.position" var="position"/>
+					<f:input path="employedPosition" class="form-control" id="employedPosition" name="employedPosition" placeholder="${position}"></f:input>
 						<br>
 						<br>
 					<label for="employedRelation"><spring:message code="info.relation"/> </label>
-					<f:input path="employedRelation" class="form-control" id="employedRelation" name="employedRelation" placeholder="Enter relation"></f:input>
+					<spring:message code="family.text.relation" var="relation"/>
+					<f:input path="employedRelation" class="form-control" id="employedRelation" name="employedRelation" placeholder="${relation}"></f:input>
 				</div>
 			</div>
 				<br>
@@ -738,21 +766,26 @@
 				<br>
 				<br>
 			<div class="form-group">
-				<label for="emergencyOfName"><spring:message code="info.emergency.name"/> </label> <f:input path="emergencyName" class="form-control" id="emergencyName"
-					name="emergencyName" placeholder="Enter emergency name"></f:input>
+				<label for="emergencyOfName"><spring:message code="info.emergency.name"/> </label> 
+				<spring:message code="info.text.emergency.name" var="emerName"/>
+				<f:input path="emergencyName" class="form-control" id="emergencyName"
+					name="emergencyName" placeholder="${emerName}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
-				<label for="emergencyTel"><spring:message code="info.emergency.tel"/> </label> <f:input path="emergencyTel" class="form-control" id="emergencyTel"
-					name="emergencyTel" placeholder="Enter emergency tel"></f:input>
+				<label for="emergencyTel"><spring:message code="info.emergency.tel"/> </label> 
+				<spring:message code="info.text.emergency.tel" var="emerTel"/>
+				<f:input path="emergencyTel" class="form-control" id="emergencyTel"
+					name="emergencyTel" placeholder="${emerTel}"></f:input>
 			</div>
 			<br>
 			<br>
 			<div class="form-group">
 				<label for="emergencyAddress"><spring:message code="info.emergency.address"/> </label>
+				<spring:message code="info.text.emergency.address" var="emerAddress"/>
 					<f:textarea path="emergencyAddress" class="form-control" rows="5" id="emergencyAddress"
-					name="emergencyAddress" placeholder="Enter emergency address"></f:textarea>
+					name="emergencyAddress" placeholder="${emerAddress}"></f:textarea>
 					
 			</div>
 		<br>
@@ -768,9 +801,10 @@
 		<br>
 		<div class="form-group">
 
-			<label for="previousEmployersReason">If not, please give the reason </label>
+			<label for="previousEmployersReason"><spring:message code="info.reason.no"/> </label>
+			<spring:message code="info.text.ask.not" var="askNot"/>
 				<f:textarea path="previousEmployersReason" class="form-control" rows="5" id="previousEmployersReason"
-					name="previousEmployersReason" placeholder="Enter If not, please give the reason"></f:textarea>
+					name="previousEmployersReason" placeholder="${askNot}"></f:textarea>
 		</div>
 	</div>
 		<br>
