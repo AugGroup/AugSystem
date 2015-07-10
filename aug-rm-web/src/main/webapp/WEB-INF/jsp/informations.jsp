@@ -301,8 +301,8 @@
 					},
 					tel : {
 						required : "<spring:message code="valid.ref.tel"/>",
-						minlength: "this field must contain at least {0} characters",
-						digits: "this field can only contain numbers"
+						minlength: "<spring:message code="valid.info.tel.min"/>",
+						digits: "<spring:message code="valid.info.tel.number"/>"
 					},
 					email :{
 					      required: "<spring:message code="valid.info.email"/>",
