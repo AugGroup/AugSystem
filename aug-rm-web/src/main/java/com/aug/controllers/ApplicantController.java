@@ -82,7 +82,7 @@ public class ApplicantController implements Serializable {
 	/*-------------------- search all applicant and applicant by position for dataTable--------------------*/
 	@RequestMapping(value = "/applicant/search", method = { RequestMethod.POST })
 	public @ResponseBody Object searchByPosition(
-			@RequestParam final String position) {
+			@RequestParam final String position) throws Exception {
 		List<ApplicantDTO> data = applicantService.findByPosition(position);
 		if (StringUtils.isEmpty(position)) {
 			data = applicantService.findAllApplicant();
@@ -98,7 +98,7 @@ public class ApplicantController implements Serializable {
 	/*-------------------- Update Method --------------------*/
 	
 	@RequestMapping(value = "/informations/{id}", method = { RequestMethod.GET })
-	public String informations(@PathVariable Integer id,Model model) {
+	public String informations(@PathVariable Integer id,Model model) throws Exception {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		String name = user.getUsername();
 		model.addAttribute("name", name);
@@ -109,21 +109,23 @@ public class ApplicantController implements Serializable {
 
 	}
 	
+
 	//Search Applicant By Id 
 	@RequestMapping(value = "/applicant/search/{id}", method = { RequestMethod.POST })
-	public @ResponseBody ApplicantDTO findById(@PathVariable Integer id) {
+	public @ResponseBody ApplicantDTO findById(@PathVariable Integer id) throws Exception {
 		return applicantService.findApplicantById(id);
 	}
 	
 	@RequestMapping(value = "/findByIdApplication/{id}", method = { RequestMethod.POST })
-	public @ResponseBody ApplicationDTO findByIdApplication(@PathVariable Integer id) {
+	public @ResponseBody ApplicationDTO findByIdApplication(@PathVariable Integer id) throws Exception {
 
 		return applicantService.findApplicationById(id);
 	}
 	
 	//Edit Applicant Score
 	@RequestMapping(value = "/update/score/{id}", method = { RequestMethod.POST })
-	public @ResponseBody ApplicantDTO updateUser(@RequestBody ApplicantDTO applicantDTO, @PathVariable Integer id) throws ParseException {
+	public @ResponseBody ApplicantDTO updateUser(@RequestBody ApplicantDTO applicantDTO,
+			@PathVariable Integer id) throws Exception {
 
 		Applicant applicant = applicantService.findById(applicantDTO.getId());
 		applicant.setScore(applicantDTO.getScore());
@@ -158,7 +160,7 @@ public class ApplicantController implements Serializable {
 	/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
 	@RequestMapping(value = "/report/search", method = { RequestMethod.POST })
 	public @ResponseBody Object searchReportBy(
-			@RequestParam Integer position, String degree, String major, String schoolName, Double gpa) {
+			@RequestParam Integer position, String degree, String major, String schoolName, Double gpa) throws Exception {
 		List<ReportApplicantDTO> data;
 		if (position == -1 && degree.isEmpty() && major.isEmpty() && schoolName.isEmpty() && gpa==null){ 			
 			data = applicantService.reportApplicant();
@@ -181,7 +183,7 @@ public class ApplicantController implements Serializable {
 	/*-------------------- preview reports function--------------------*/
 	@RequestMapping(value = "/report/preview", method = { RequestMethod.POST,RequestMethod.GET  })
 	public ModelAndView previewReport(@ModelAttribute SearchReportDTO searchReportDTO,
-			HttpSession session, Locale locale) {
+			HttpSession session, Locale locale) throws Exception {
 		List<ReportApplicantDTO> reportApplicantList =null;
 		Integer position = searchReportDTO.getPosition();
 		String degree = searchReportDTO.getDegree();
@@ -219,7 +221,7 @@ public class ApplicantController implements Serializable {
 		/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
 		@RequestMapping(value = "/report/searchMonth", method = { RequestMethod.POST })
 		public @ResponseBody Object searchReportByMonth(
-				@RequestParam Integer applyDate) {
+				@RequestParam Integer applyDate) throws Exception {
 			List<ReportApplicantDTO> data;
 			System.out.println("applyDate :" + applyDate);
 			if (applyDate == -1){ 			
@@ -237,7 +239,7 @@ public class ApplicantController implements Serializable {
 
 		@RequestMapping(value = "/reportMonthly/preview", method = { RequestMethod.POST })
 		public ModelAndView searchMonthlyReport(@ModelAttribute SearchReportDTO searchReportDTO,
-				HttpSession session, Locale locale) {
+				HttpSession session, Locale locale) throws Exception {
 			List<ReportApplicantDTO> reportApplicantList;
 			Integer applyDate = searchReportDTO.getApplyDate();
 			String reportType = searchReportDTO.getReportType();
