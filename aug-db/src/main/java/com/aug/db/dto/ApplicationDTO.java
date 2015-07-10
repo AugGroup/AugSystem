@@ -32,7 +32,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 		+ "a.APPLICANT_STATUS, a.APPLY_DATE, a.EMERGENCY_NAME, a.EMERGENCY_TEL, a.EMERGENCY_ADDRESS, a.NOTICE_NEWSPAPER, a.NOTICE_MAGAZINE, a.NOTICE_FRIEND, a.NOTICE_WEBSITE, a.NOTICE_OTHER, a.TRACKING_STATUS,"
 		+ "a.EXPECTED_SALARY, a.CARD_ID, a.CARD_ISSUED_OFFICE, a.CARD_EXPIRY_DATE, a.MILITARY_FROM_YEAR, a.MILITARY_TO_YEAR, a.MILITARY_PLACE, a.MILITARY_SERVICE_NO, a.MILITARY_REASON, a.MILITARY_STATUS,"
 		+ "a.NUMBER_OF_CHILDREN, a.SPOUSE_NAME, a.MARRIAGE_CERTIFICATE_NO, a.ISSUE_OFFICE_MARRIAGE, a.OCCUPATION_MARRIAGE, null as TECH_SCORE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.NOW_EMPLOYED, a.EMPLOYED_NAME, a.EMPLOYED_POSITION,"
-		+ "a.EMPLOYED_RELATION, a.BRANCH_SERVICE, a.PREVIOUS_EMPLOYERS, a.PREVIOUS_EMPLOYERS_REASON, a.DATE_TO_BE_DRAFTED, a.MARRIAGE_ADDRESS, null as POSITION_NAME, a.EMERGENCY_NAME,a.EMERGENCY_TEL,a.EMERGENCY_ADDRESS,a.RESUME,a.TRANSCRIPT,a.IMAGE,a.SEX "
+		+ "a.EMPLOYED_RELATION, a.BRANCH_SERVICE, a.PREVIOUS_EMPLOYERS, a.PREVIOUS_EMPLOYERS_REASON, a.DATE_TO_BE_DRAFTED, a.MARRIAGE_ADDRESS, null as POSITION_NAME, a.EMERGENCY_NAME,a.EMERGENCY_TEL,a.EMERGENCY_ADDRESS,a.RESUME,a.TRANSCRIPT,a.IMAGE,a.SEX,POSITION1_ID as POSITION_ID_1,POSITION2_ID as POSITION_ID_2,POSITION3_ID as POSITION_ID_3 "
 		+ " FROM APPLICANT a WHERE a.APPLICANT_ID = :ID", resultClass = ApplicationDTO.class)
 	,@NamedNativeQuery(name = "MAX_ID_APPLICANT", query = "SELECT null as ATTITUDE, null as APPLICANT_CODE, null as FIRSTNAME_TH, null as FIRSTNAME_EN, null as LASTNAME_TH, null as LASTNAME_EN, null as NICKNAME_TH, null as NICKNAME_EN,"
 			+ " null as BIRTHDATE, null as PLACE_BIRTH, null as AGE, null as HEIGHT, null as WEIGHT, null as RELIGION, null as NATIONALITY, null as TEL, null as EMAIL,"
@@ -193,15 +193,6 @@ public class ApplicationDTO {
 	@Column(name = "MILITARY_STATUS")
 	private String militaryStatus;
 
-	@Transient
-	private String position1Str;
-
-	@Transient
-	private String position2Str;
-
-	@Transient
-	private String position3Str;
-
 	@Column(name = "NOW_EMPLOYED")
 	private String nowEmployed;
 
@@ -283,7 +274,7 @@ public class ApplicationDTO {
 
 	@Transient
 	private List<Certificate> certificates;
-	/*
+	
 	@Column(name = "POSITION_ID_1")
 	private Integer positionId1;
 
@@ -305,17 +296,17 @@ public class ApplicationDTO {
 		return positionId2;
 	}
 
-	public void setPositionId2(Position positionId2) {
+	public void setPositionId2(Integer positionId2) {
 		this.positionId2 = positionId2;
 	}
 
-	public Position getPositionId3() {
+	public Integer getPositionId3() {
 		return positionId3;
 	}
 
-	public void setPositionId3(Position positionId3) {
+	public void setPositionId3(Integer positionId3) {
 		this.positionId3 = positionId3;
-	}*/
+	}
 
 	public String getResume() {
 		return resume;
@@ -851,29 +842,6 @@ public class ApplicationDTO {
 
 	public void setAttitude(String attitude) {
 		this.attitude = attitude;
-	}
-	public String getPosition1Str() {
-		return position1Str;
-	}
-
-	public void setPosition1Str(String position1Str) {
-		this.position1Str = position1Str;
-	}
-
-	public String getPosition2Str() {
-		return position2Str;
-	}
-
-	public void setPosition2Str(String position2Str) {
-		this.position2Str = position2Str;
-	}
-
-	public String getPosition3Str() {
-		return position3Str;
-	}
-
-	public void setPosition3Str(String position3Str) {
-		this.position3Str = position3Str;
 	}
 
 	public Position getPosition1() {

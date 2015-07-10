@@ -162,9 +162,9 @@ public class ApplicationController {
 
 		model.addAttribute("id", applicationDTO.getId());
 		model.addAttribute("applicant", applicationDTO);
-		System.out.println("POSITION 1 : "+applicationDTO.getPosition1().getPositionName());
-		System.out.println("POSITION 2 : "+applicationDTO.getPosition2().getPositionName());
-		System.out.println("POSITION 3 : "+applicationDTO.getPosition3().getPositionName());
+		System.out.println("POSITION 1 : "+applicationDTO.getPosition1().getId());
+		System.out.println("POSITION 2 : "+applicationDTO.getPosition2().getId());
+		System.out.println("POSITION 3 : "+applicationDTO.getPosition3().getId());
 
 		return "informations";
 	}
@@ -348,19 +348,13 @@ public class ApplicationController {
 		applicationDTO = applicantService.findByIdApplicant(id);
 		String tag = "infomation";
 		model.addAttribute("tag","information");
-		
+		applicationDTO.setPosition1(positionService.findById(applicationDTO.getPositionId1()));
+		applicationDTO.setPosition2(positionService.findById(applicationDTO.getPositionId2()));
+		applicationDTO.setPosition3(positionService.findById(applicationDTO.getPositionId3()));
 		model.addAttribute("applicant", applicationDTO);
-		/*if(null==applicationDTO.getPosition1().getPositionName()&&null==applicationDTO.getPosition2().getPositionName()&&null==applicationDTO.getPosition3().getPositionName())
-		{
-			System.out.println("Error Position!!!");
-			
-		}
-		else{
-			System.out.println("POSITION 1 : "+applicationDTO.getPosition1().getPositionName());
-			System.out.println("POSITION 2 : "+applicationDTO.getPosition2().getPositionName());
-			System.out.println("POSITION 3 : "+applicationDTO.getPosition3().getPositionName());
-			System.out.println("Position!!!");
-		}*/
+		System.out.println("POSITION 1 : "+applicationDTO.getPositionId1());
+		System.out.println("POSITION 2 : "+applicationDTO.getPositionId2());
+		System.out.println("POSITION 3 : "+applicationDTO.getPositionId3());
 		return "informations";
 	}
 	

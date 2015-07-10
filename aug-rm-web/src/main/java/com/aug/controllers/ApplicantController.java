@@ -109,55 +109,6 @@ public class ApplicantController implements Serializable {
 
 	}
 	
-	@RequestMapping(value = "/informations/{id}", method = { RequestMethod.POST })
-	public @ResponseBody ApplicationDTO updateUser(@RequestBody ApplicationDTO applicationDTO,@RequestBody ApplicantDTO applicantDTO,
-			@PathVariable Integer id) throws ParseException {
-		System.out.println("EDIT EDIT EDIT EDIT");
-		applicationDTO = applicantService.findApplicationById(id);
-		Applicant applicant = applicantService.findById(applicationDTO.getId());
-
-		applicant.setId(applicationDTO.getId());
-		applicant.setFirstNameTH(applicantDTO.getFirstNameTH());
-//		applicant.setFirstNameTH(applicationDTO.getFirstNameTH());
-//		applicant.setFirstNameEN(applicationDTO.getFirstNameEN());
-//		applicant.setLastNameTH(applicationDTO.getLastNameTH());
-//		applicant.setLastNameEN(applicationDTO.getLastNameEN());
-//		applicant.setNickNameTH(applicationDTO.getNickNameTH());
-//		applicant.setNickNameEN(applicationDTO.getNickNameEN());
-//		applicant.setBirthDate(applicationDTO.getBirthDate());
-//		applicant.setPlaceBirth(applicationDTO.getPlaceBirth());
-//		applicant.setAge(applicationDTO.getAge());
-//		applicant.setHeight(applicationDTO.getHeight());
-//		applicant.setWeight(applicationDTO.getWeight());
-//		applicant.setReligion(applicationDTO.getReligion());
-//		applicant.setNationality(applicationDTO.getNationality());
-//		applicant.setTel(applicationDTO.getTel());
-//		applicant.setEmail(applicationDTO.getEmail());
-//		applicant.setCardId(applicationDTO.getCardId());
-//		applicant.setCardIssuedOffice(applicationDTO.getCardIssuedOffice());
-//		applicant.setCardExpiryDate(applicationDTO.getCardExpiryDate());
-//		applicant.setMilitaryFromYear(applicationDTO.getMilitaryFromYear());
-//		applicant.setMilitarytoYear(applicationDTO.getMilitarytoYear());
-//		applicant.setMilitaryPlace(applicationDTO.getMilitaryPlace());
-//		applicant.setMilitaryServiceNo(applicationDTO.getMilitaryServiceNo());
-//		applicant.setMilitaryReason(applicationDTO.getMilitaryReason());
-//		applicant.setMilitaryStatus(applicationDTO.getMilitaryStatus());
-//		applicant.setMarritalStatusName(applicationDTO.getMarritalStatusName());
-//		applicant.setNumberOfChildren(applicationDTO.getNumberOfChildren());
-//		applicant.setSpouseName(applicationDTO.getSpouseName());
-//		applicant.setMarriageCertificateNo(applicationDTO.getMarriageCertificateNo());
-//		applicant.setIssueOficeMarriage(applicationDTO.getIssueOficeMarriage());
-//		applicant.setOccupationMarriage(applicationDTO.getOccupationMarriage());
-//		applicant.setBranchService(applicationDTO.getBranchService());
-//		applicant.setDateToBeDrafted(applicationDTO.getDateToBeDrafted());
-//		applicant.setMarriageAddress(applicationDTO.getMarriageAddress());
-
-		applicantService.update(applicant);
-		System.out.println("EDIT2 EDIT2 EDIT2 EDIT2");
-		return applicationDTO;
-
-	}
-	
 	//Search Applicant By Id 
 	@RequestMapping(value = "/applicant/search/{id}", method = { RequestMethod.POST })
 	public @ResponseBody ApplicantDTO findById(@PathVariable Integer id) {

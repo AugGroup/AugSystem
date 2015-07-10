@@ -94,7 +94,7 @@
 			    });
 			
 			 
-			 $('#informationApplicant').validate({
+			/*  $('#informationApplicant').validate({
 				rules : {
 					firstNameTH : {
 						required : true
@@ -115,9 +115,9 @@
 						required : true
 						},
 					tel : {
-						required : true,/*
+						required : true,
 						minlength: 10, 
-					    maxlength: 10, */
+					    maxlength: 10, 
 				        digits: true
 						},
 					email : {
@@ -267,9 +267,9 @@
 						required : "Nickname English is required!"
 					},
 					tel : {
-						required : "Tel. is required!",/* 
+						required : "Tel. is required!" ,
 						minlength: "this field must contain at least {0} characters",
-						maxlength: "this field must contain at least {0} characters", */
+						maxlength: "this field must contain at least {0} characters", 
 						digits: "this field can only contain numbers"
 					},
 					email :{
@@ -398,7 +398,7 @@
  					}
 					
 				}
-			});
+			}); */
 
 			
 			
@@ -879,7 +879,7 @@
 				<br>
 				<br>
 			<label for="emergency"><spring:message code="info.ask.case"/> </label>
-				<br>0
+				<br>
 				<br>
 			<div class="form-group">
 				<label for="emergencyOfName"><spring:message code="info.emergency.name"/> </label> 
