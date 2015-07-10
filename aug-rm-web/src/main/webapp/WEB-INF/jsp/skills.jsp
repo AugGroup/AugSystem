@@ -14,7 +14,7 @@ $(document).ready(function() {
 		},
 		messages : {
 			skill : {
-				required : "Skill Detail is required!"
+				required : "<spring:message code="valid.skill.skill"/>"
 			}
 		}
 	});

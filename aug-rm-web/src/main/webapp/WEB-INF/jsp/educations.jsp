@@ -29,22 +29,22 @@
 			},
 			messages : {
 				university : {
-					required : "University is required!"
+					required : "<spring:message code="valid.ed.univers"/>"
 				},
 				degree : {
-					required : "Degree is required!"
+					required : "<spring:message code="valid.ed.degree"/>"
 				},
 				faculty : {
-					required : "Faculty is required!"
+					required : "<spring:message code="valid.ed.faculty"/>"
 				},
 				major : {
-					required : "Major is required!"
+					required : "<spring:message code="valid.ed.major"/>"
 				},
 				gpa : {
-					required : "GPA is required!"
+					required : "<spring:message code="valid.ed.gpa"/>"
 				},
 				graduate : {
-					required : "Years of graduate is required!"
+					required : "<spring:message code="valid.ed.year"/>"
 				}
 			}
 		});

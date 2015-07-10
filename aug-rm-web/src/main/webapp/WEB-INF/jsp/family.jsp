@@ -29,22 +29,22 @@
 			},
 			messages : {
 				nameFamily : {
-					required : "Spouse: Name is required!"
+					required : "<spring:message code="valid.fam.spouse"/>"
 				},
 				relationFamily : {
-					required : "Marriage certificate No. is required!"
+					required : "<spring:message code="valid.fam.marrige"/>"
 				},
 				occupationFamily : {
-					required : "Issued office is required!"
+					required : "<spring:message code="valid.fam.issued"/>"
 				},
 				addressFamily : {
-					required : "Address is required!"
+					required : "<spring:message code="valid.addr.addr"/>"
 				},
 				occupation : {
-					required : "Occupation is required!"
+					required : "<spring:message code="valid.fam.occ"/>"
 				},
 				positionFamily : {
-					required : "Position service is required!"
+					required : "<spring:message code="valid.ex.position"/>"
 				}
 			}
 			

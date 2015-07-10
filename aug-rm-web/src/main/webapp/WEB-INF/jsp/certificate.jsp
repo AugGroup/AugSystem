@@ -14,7 +14,7 @@ $(document).ready(function() {
 		},
 		messages : {
 			certificate : {
-				required : "Certificate is required!"
+				required : "<spring:message code="valid.cer.cer"/>"
 			}
 		}
 	});

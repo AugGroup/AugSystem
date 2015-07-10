@@ -104,7 +104,7 @@
 			            }
 
 			    });
-			 
+
 			    $("#militaryStatusYes").hide();
 				  
 			    $("input:radio[name='militaryStatus']").change(function(){  
@@ -128,7 +128,7 @@
 			            }
 
 			    });
-			/*  $('#informationApplicant').validate({
+			$('#informationApplicant').validate({
 				rules : {
 					firstNameTH : {
 						required : true
@@ -151,7 +151,6 @@
 					tel : {
 						required : true,
 						minlength: 10, 
-					    maxlength: 10, 
 				        digits: true
 						},
 					email : {
@@ -283,156 +282,155 @@
 				},
 				messages : {
 					firstNameTH : {
-						required : "Firstname Thai is required!"
+						required : "<spring:message code="valid.info.first.th"/>"
 					},
 					lastNameTH : {
-						required : "Lastname Thai is required"
+						required : "<spring:message code="valid.info.last.th"/>"
 					},
 					nickNameTH : {
-						required : "Nickname Thai is required!"
+						required : "<spring:message code="valid.info.nick.th"/>"
 					},
 					firstNameEN : {
-						required : "Firstname English is required!"
+						required : "<spring:message code="valid.info.first.en"/>"
 					},
 					lastNameEN : {
-						required : "Lastname English is required!"
+						required : "<spring:message code="valid.info.last.en"/>"
 					},
 					nickNameEN : {
-						required : "Nickname English is required!"
+						required : "<spring:message code="valid.info.nick.en"/>"
 					},
 					tel : {
-						required : "Tel. is required!" ,
+						required : "<spring:message code="valid.ref.tel"/>",
 						minlength: "this field must contain at least {0} characters",
-						maxlength: "this field must contain at least {0} characters", 
 						digits: "this field can only contain numbers"
 					},
 					email :{
-					      required: "We need your email address to contact you",
-					      email: "Your email address must be in the format of name@domain.com"
+					      required: "<spring:message code="valid.info.email"/>",
+					      email: "<spring:message code="valid.info.email.format"/>"
 					    },
 					birthDate : {
-						required : "Birthday is required!"
+						required : "<spring:message code="valid.info.birthday"/>"
 					},
 					placeBirth : {
-						required : "Place of birth is required!"
+						required : "<spring:message code="valid.info.place.birth"/>"
 					},
 					age : {
-						required : "Age is required!"
+						required : "<spring:message code="valid.info.age"/>"
 					},
 					religion : {
-						required : "Religion is required!"
+						required : "<spring:message code="valid.info.religion"/>"
 					},
 					nationality : {
-						required : "Nationality is required!"
+						required : "<spring:message code="valid.info.nationality"/>"
 					},
 					cardId : {
-						required : "ID. Card no. is required!"
+						required : "<spring:message code="valid.info.id.card"/>"
 					},
 					cardIssuedOffice : {
-						required : "Issued office is required!"
+						required : "<spring:message code="valid.fam.issued"/>"
 					},
 					cardExpiryDate : {
-						required : "Expiry date is required!"
+						required : "<spring:message code="valid.info.expiry"/>"
 					},
 					height : {
-						required : "Height is required!"
+						required : "<spring:message code="valid.info.height"/>"
 					},
 					weight : {
-						required : "Weight is required!"
+						required : "<spring:message code="valid.info.weight"/>"
 					},
 					sex : {
-						required : "Sex is required!"
+						required : "<spring:message code="valid.info.sex"/>"
 					},
 					applicantStatus : {
-						required : "Marital status is required!"
+						required : "<spring:message code="valid.info.status"/>"
 					},
 					numberOfChildren : {
-						required : "Number of children is required!"
+						required : "<spring:message code="valid.info.child"/>"
 					},spouseName : {
-						required : "Spouse: Name is required!"
+						required : "<spring:message code="valid.fam.spouse"/>"
 					},
 					marriageCertificateNo : {
-						required : "Marriage certificate No. is required!"
+						required : "<spring:message code="valid.fam.marrige"/>"
 					},
 					issueOficeMarriage : {
-						required : "Issued office is required!"
+						required : "<spring:message code="valid.fam.issued"/>"
 					},
 					marriageAddress : {
-						required : "Address is required!"
+						required : "<spring:message code="valid.addr.addr"/>"
 					},
 					occupationMarriage : {
-						required : "Occupation is required!"
+						required : "<spring:message code="valid.fam.occ"/>"
 					},
 					militaryStatus : {
-						required : "Military service is required!"
+						required : "<spring:message code="valid.info.military"/>"
 					},
 					militaryFromYear : {
-						required : "From year is required!"
+						required : "<spring:message code="valid.info.from"/>"
 					},
 					militarytoYear : {
-						required : "To year is required!"
+						required : "<spring:message code="valid.info.to"/>"
 					},
 					branchService : {
-						required : "Branch of service is required!"
+						required : "<spring:message code="valid.info.branch"/>"
 					},
 					militaryPlace : {
-						required : "Military place is required!"
+						required : "<spring:message code="valid.info.militery.place"/>"
 					},
 					militaryServiceNo : {
-						required : "Service No. is required!"
+						required : "<spring:message code="valid.info.military.ser"/>"
 					},
 					militaryReason : {
-						required : "Reasons is required!"
+						required : "<spring:message code="valid.info.reason"/>"
 					},
 					dateToBeDrafted : {
-						required : "Date to be drafted is required!"
+						required : "<spring:message code="valid.info.drafted"/>"
 					},emergencyName : {
-						required : "Emergency Name is required!"
+						required : "<spring:message code="valid.info.emer.name"/>"
 					},
 					emergencyTel : {
-						required : "Emergency Telephone is required!"
+						required : "<spring:message code="valid.info.emer.tel"/>"
 					},
 					emergencyAddress : {
-						required : "Emergency Address is required!"
+						required : "<spring:message code="valid.info.emer.addr"/>"
 					},applyDate : {
-						required : "Apply date is required!"
+						required : "<spring:message code="valid.info.apply.date"/>"
 					} ,
 					department : {
-						required : "Department is required!"
+						required : "<spring:message code="valid.info.dep"/>"
 					},
 					position1 : {
-						required : "Position 1 is required!"
+						required : "<spring:message code="valid.info.pos1"/>"
 					},
 					position2 : {
-						required : "Position 2 is required!"
+						required : "<spring:message code="valid.info.ask"/>"
 					},
 					position3 : {
-						required : "Position 3 is required!"
+						required : "<spring:message code="valid.info.pos2"/>"
 					} ,
 					expectedSalary : {
-						required : "Salary expected is required!"
+						required : "<spring:message code="valid.info.salary"/>"
 					},
 					nowEmployed : {
-						required : "Do you know anyone now being employed by this company? is required!"
+						required : "<spring:message code="valid.info.ask"/>"
 					},
 					employedName : {
-						required : "Name is required!"
+						required : "<spring:message code="valid.ref.name"/>"
 					},
 					employedPosition : {
-						required : "Position is required!"
+						required : "<spring:message code="valid.ex.position"/>"
 					},
 					employedRelation : {
-						required : "Relation is required!"
+						required : "<spring:message code="valid.info.relation"/>"
 					},
 					previousEmployers : {
- 						required :  "previous employers is required!"
+ 						required :  "<spring:message code="valid.info.pre.emp"/>"
  					},
  					previousEmployersReason : {
- 						required :  "Reason is required!"
+ 						required :  "<spring:message code="valid.ex.reason"/>"
  					}
 					
 				}
-			}); */
+			});
 
 			
 			

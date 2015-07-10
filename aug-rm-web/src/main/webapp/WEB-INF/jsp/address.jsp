@@ -31,22 +31,22 @@
 			},
 			messages : {
 				inputAddress : {
-					required : "Address is required!"
+					required : "<spring:message code="valid.addr.addr"/>"
 				},
 				houseNo : {
-					required : "House No. is required!"
+					required : "<spring:message code="valid.addr.house"/>"
 				},
 				road : {
-					required : "Road is required!"
+					required : "<spring:message code="valid.addr.road"/>"
 				},
 				district : {
-					required : "District is required!"
+					required : "<spring:message code="valid.addr.district"/>"
 				},
 				subDistrict : {
-					required : "Sub District is required!"
+					required : "<spring:message code="valid.addr.sub.district"/>"
 				},
 				province : {
-					required : "Province is required!"
+					required : "<spring:message code="valid.addr.province"/>"
 				}
 			}
 		});

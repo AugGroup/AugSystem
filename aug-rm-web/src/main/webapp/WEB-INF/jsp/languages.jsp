@@ -13,11 +13,11 @@ $(document).ready(function() {
 			understanding : {required : true},
 			reading : {required : true},
 			writing : {required : true}},
-			messages : {languages : {required : "Languages is required!"},
-			speaking : {required : "Speaking is required!"},
-			understanding : {required : "Understanding is required!"},
-			reading : {required : "Reading is required!"},
-			writing : {required : "Writing is required!"}
+			messages : {languages : {required : "<spring:message code="valid.lang.name"/>"},
+			speaking : {required : "<spring:message code="valid.lang.speak"/>"},
+			understanding : {required : "<spring:message code="valid.lang.understand"/>"},
+			reading : {required : "<spring:message code="valid.lang.read"/>"},
+			writing : {required : "<spring:message code="valid.lang.write"/>"}
 			}
 	});
 	

@@ -23,16 +23,16 @@
 			},
 			messages : {
 				fullName : {
-					required : "FULL NAME is required!"
+					required : "<spring:message code="valid.ref.name"/>"
 				},
 				completeAddress : {
-					required : "COMPLETE ADDRESS. is required!"
+					required : "<spring:message code="valid.addr.addr"/>"
 				},
 				telNo : {
-					required : "TELEPHONE NO. is required!"
+					required : "<spring:message code="valid.ref.tel"/>"
 				},
 				occupationRef : {
-					required : "OCCUPATION is required!"
+					required : "<spring:message code="valid.fam.occ"/>"
 				}
 			}
 		});

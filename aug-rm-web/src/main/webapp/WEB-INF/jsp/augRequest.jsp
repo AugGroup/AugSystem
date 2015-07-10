@@ -69,15 +69,15 @@
 				inputStatus:{required: true}
 				},
 			messages:{
-				inputRequesterName:{required: "Requester Name is required"},
-			  	inputRequestDate:{required: "Request Date is required"},
-			  	inputPosition:{required: "Position is required"},
-			  	inputApprovalName:{required: "Approval Name is required"},
-				inputApproveDate:{required: "Approve Date is required"},
-				inputNumberApplicant:{required: "Number Applicant is required"},
-				inputSpecificSkill:{required: "Specific Skill is required"},
-				inputYearExperience:{required: "Year Experience is required"},
-				inputStatus:{required: "Status is required"}
+				inputRequesterName:{required: "<spring:message code="valid.req.name"/>"},
+			  	inputRequestDate:{required: "<spring:message code="valid.req.date"/>"},
+			  	inputPosition:{required: "<spring:message code="valid.req.position"/>"},
+			  	inputApprovalName:{required: "<spring:message code="valid.req.approval"/>"},
+				inputApproveDate:{required: "<spring:message code="valid.req.approve.date"/>"},
+				inputNumberApplicant:{required: "<spring:message code="valid.req.applicant"/>"},
+				inputSpecificSkill:{required: "<spring:message code="valid.req.skill"/>"},
+				inputYearExperience:{required: "<spring:message code="valid.req.year"/>"},
+				inputStatus:{required: "<spring:message code="valid.req.status"/>"}
 				}
 			  	});
 			 

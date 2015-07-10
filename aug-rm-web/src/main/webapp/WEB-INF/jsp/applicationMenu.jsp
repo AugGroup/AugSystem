@@ -19,27 +19,6 @@ $(document).ready(function () {
 </script>
 <div class="container">
 		<div class="form-group">
-<!-- 			<ul class="nav nav-pills" role="navigation"> -->
-<%-- 				<li role="presentation" class="active"><a  href="${pageContext.request.contextPath}/info/${id}"><span --%>
-<%-- 						class="glyphicon glyphicon-user"></span> <spring:message code="tab.info"/></a></li> --%>
-<%-- 				<li role="presentation" class="active"><a  href="${pageContext.request.contextPath}/address/${id}"><span --%>
-<%-- 						class="glyphicon glyphicon-home"></span> <spring:message code="tab.address"/></a></li> --%>
-<%-- 				<li role="presentation" class="active"><a  href="${pageContext.request.contextPath}/family/${id}"><span --%>
-<%-- 						class="glyphicon glyphicon-file"></span> <spring:message code="tab.family"/></a></li> --%>
-<%-- 				<li><a  href="${pageContext.request.contextPath}/educations/${id}"><span --%>
-<%-- 						class="glyphicon glyphicon-education"></span> <spring:message code="tab.education"/></a></li> --%>
-<%-- 				<li><a  href="${pageContext.request.contextPath}/certificates/${id}"><span --%>
-<%-- 						class="glyphicon glyphicon-file"></span> <spring:message code="tab.certificate"/></a></li> --%>
-<%-- 				<li><a  href="${pageContext.request.contextPath}/skills/${id}"><span --%>
-<%-- 						class="glyphicon glyphicon-education"></span> <spring:message code="tab.skill"/></a></li> --%>
-<%-- 				<li><a  href="${pageContext.request.contextPath}/languages/${id}"><span --%>
-<%-- 						class="glyphicon glyphicon-education"></span> <spring:message code="tab.languages"/></a></li> --%>
-<%-- 				<li><a  href="${pageContext.request.contextPath}/references/${id}"><span --%>
-<%-- 						class="glyphicon glyphicon-file"></span> <spring:message code="tab.reference"/></a></li> --%>
-<%-- 				<li><a  href="${pageContext.request.contextPath}/experiences/${id}"><span  --%>
-<%-- 						class="glyphicon glyphicon-file"></span> <spring:message code="tab.experience"/></a></li> --%>
-<!-- 			</ul> -->
-			
 			<ul class="nav nav-pills" role="navigation">
   				<li class='${ (tag eq "information") ? "active" : ""}'><a href="${pageContext.request.contextPath}/info/${id}"><span
  						class="glyphicon glyphicon-user"></span> <spring:message code="tab.info"/></a></li>

@@ -59,37 +59,37 @@
 		},
 		messages : {
 			workBackground : {
-				required : "Present or last position is required!"
+				required : "<spring:message code="valid.ex.pre"/>"
 			},
 			fromWorkYear : {
-				required : "From (month, year) is required!"
+				required : "<spring:message code="valid.ex.from"/>"
 			},
 			toWorkYear : {
-				required : "To (month, year) is required!"
+				required : "<spring:message code="valid.ex.to"/>"
 			},
 			emp : {
-				required : "Employer Name is required!"
+				required : "<spring:message code="valid.ex.emp"/>"
 			},
 			addressBackground : {
-				required : "Address is required!"
+				required : "<spring:message code="valid.addr.addr"/>"
 			},
 			business : {
-				required : "Type of business is required!"
+				required : "<spring:message code="valid.ex.type"/>"
 			},
 			positionBackground : {
-				required : "Position is required!"
+				required : "<spring:message code="valid.ex.position"/>"
 			},
 			supervisorBackground : {
-				required : "Supervisor is required!"
+				required : "<spring:message code="valid.ex.supervisor"/>"
 			},
 			salaryBackground : {
-				required : "Salary ,Wages is required!"
+				required : "<spring:message code="valid.ex.salary"/>"
 			},
 			descriptionBackground : {
-				required : "Description of duties and responsibilities is required!"
+				required : "<spring:message code="valid.ex.des"/>"
 			},
 			reasonLeaving : {
-				required : "Reason for leaving is required!"
+				required : "<spring:message code="valid.ex.reason"/>"
 			}
 		}
 	});
