@@ -1,9 +1,6 @@
 package com.aug.controllers;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -11,17 +8,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -43,6 +36,7 @@ import com.aug.db.dto.ExperienceDTO;
 import com.aug.db.dto.FamilyDTO;
 import com.aug.db.dto.LanguagesDTO;
 import com.aug.db.dto.ReferenceDTO;
+import com.aug.db.dto.SkillDTO;
 import com.aug.db.entities.Address;
 import com.aug.db.entities.Certificate;
 import com.aug.db.entities.Department;
@@ -53,7 +47,6 @@ import com.aug.db.entities.Languages;
 import com.aug.db.entities.Position;
 import com.aug.db.entities.Reference;
 import com.aug.db.entities.Skill;
-import com.aug.db.dto.SkillDTO;
 import com.aug.db.services.AddressService;
 import com.aug.db.services.ApplicantService;
 import com.aug.db.services.CertificateService;
@@ -63,10 +56,10 @@ import com.aug.db.services.ExperienceService;
 import com.aug.db.services.FamilyService;
 import com.aug.db.services.LanguagesService;
 import com.aug.db.services.PositionService;
-import com.aug.services.DownloadService;
-import com.aug.services.UploadService;
 import com.aug.db.services.ReferenceService;
 import com.aug.db.services.SkillService;
+import com.aug.services.DownloadService;
+import com.aug.services.UploadService;
 
 @Controller
 public class ApplicationController {

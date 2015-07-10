@@ -26,6 +26,21 @@
 			startView: 2,
 			autoclose: true 
 			}); 
+    	/* ------------------ajax setup ------------------ */
+    	$.ajaxSetup({
+    		error: function(jqXHR, textStatus, errorThrown) 
+	        {
+	            var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
+	            console.log(jqXHR.status);
+	            $('#exceptionModal')
+	            .find('.modal-header h3').html(jqXHR.status+' error').end()
+	            .find('.modal-body p>strong').html(exceptionVO.clazz).end()
+	            .find('.modal-body p>em').html(exceptionVO.method).end()
+	            .find('.modal-body p>span').html(exceptionVO.message).end()
+	            .modal('show');
+	            
+	        } 
+    	});
     	
 		/*validate date
 		$('#inputRequestDate').datepicker({
@@ -94,19 +109,7 @@
         	 sort : false,
         	 ajax: {
         		 type: "GET",
-        		 url: '${pageContext.request.contextPath}/request/search',
-        		  error: function(jqXHR, textStatus, errorThrown) 
-        	        {
-        	            var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
-        	            console.log(exceptionVO);
-        	            $('#exceptionModal')
-        	            .find('.modal-header h3').html(jqXHR.status+' error').end()
-        	            .find('.modal-body p>strong').html(exceptionVO.clazz).end()
-        	            .find('.modal-body p>em').html(exceptionVO.method).end()
-        	            .find('.modal-body p>span').html(exceptionVO.message).end()
-        	            .modal('show');
-        	            
-        	        } 
+        		 url: '${pageContext.request.contextPath}/request/search'
         		 },
         	columns: [
         	          {"data": "id"},
@@ -210,18 +213,7 @@
             					}
             			});
             		},
-            		 error: function(jqXHR, textStatus, errorThrown) 
-         	        {
-         	            var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
-         	            console.log(exceptionVO);
-         	            $('#exceptionModal')
-         	            .find('.modal-header h3').html(jqXHR.status+' error').end()
-         	            .find('.modal-body p>strong').html(exceptionVO.clazz).end()
-         	            .find('.modal-body p>em').html(exceptionVO.method).end()
-         	            .find('.modal-body p>span').html(exceptionVO.message).end()
-         	            .modal('show');
-         	            
-         	        } 
+            		 
             	});
             };
            }
@@ -233,19 +225,7 @@
         		type: "POST",
         		success: function (data) {
         			editShowData(data);
-        		},
-        		 error: function(jqXHR, textStatus, errorThrown){
-     	            var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
-     	            console.log(exceptionVO);
-     	            $('#addRequestModal').modal('hide');
-     	            $('#exceptionModal')
-     	            .find('.modal-header h3').html(jqXHR.status+' error').end()
-     	            .find('.modal-body p>strong').html(exceptionVO.clazz).end()
-     	            .find('.modal-body p>em').html(exceptionVO.method).end()
-     	            .find('.modal-body p>span').html(exceptionVO.message).end()
-     	            .modal('show');
-     	            
-     	        } 
+        		}
         		
         	});
         }
@@ -551,14 +531,16 @@
             <div class="modal-body">
             	<div class="container">
             		<div class="row">
-               	 		<p><b></b><em></em><span></span></p>
+            			<div class="col-sm-5">
+               	 			<p><b></b><em></em><span></span></p>
+               	 		</div>
             		</div>
             		<div class="row">
                	 		<h4>Contact me +22003455!!!</h4>
             		</div>
                 	<div class="row">
-                		<div class="col-md-4"></div>
-                		<div class="col-md-2">
+                		<div class="col-sm-4"></div>
+                		<div class="col-sm-2">
 							<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             			</div>
             		</div>

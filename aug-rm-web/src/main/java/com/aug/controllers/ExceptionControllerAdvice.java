@@ -1,9 +1,9 @@
 package com.aug.controllers;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.zip.DataFormatException;
+import java.sql.SQLException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.exception.SQLGrammarException;
@@ -23,8 +23,9 @@ public class ExceptionControllerAdvice {
 	
 
 	
-	/*
+	
 	//IOException
+	@ResponseStatus(value=HttpStatus.NOT_FOUND, reason="IOException occured")
 	@ExceptionHandler(IOException.class)
 	public ModelAndView exception(IOException e){
 		ModelAndView mav = new ModelAndView("exception");
@@ -33,6 +34,7 @@ public class ExceptionControllerAdvice {
 		return mav;
 	}
 	
+	/*
 	//Exception (all) 500
 	@ExceptionHandler(Exception.class)
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
@@ -86,33 +88,61 @@ public class ExceptionControllerAdvice {
 	  }
 	  */
 	
-	  //IllegalArgumentException with ajax //INTERNAL_SERVER_ERROR(500, "Internal Server Error"),
-	    @ExceptionHandler(IllegalArgumentException.class)
-		@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-		@ResponseBody 
-		public ExceptionVO handleException5(IllegalArgumentException ex, HttpServletResponse response) throws IOException{
-	    	ExceptionVO exceptionVO = new ExceptionVO(ex.getMessage());
-	    	 
-	        return exceptionVO;
-		}
+	// IllegalArgumentException with ajax //INTERNAL_SERVER_ERROR(500,
+	// "Internal Server Error"),
+	@ExceptionHandler(IllegalArgumentException.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseBody
+	public ExceptionVO handleException5(IllegalArgumentException ex,
+			HttpServletResponse response) throws IOException {
+		ExceptionVO exceptionVO = new ExceptionVO(ex.getMessage());
+		return exceptionVO;
+	}
+
+	// IndexOutOfBoundsException with ajax //INTERNAL_SERVER_ERROR(500)
+	// "Internal Server Error"),
+	@ExceptionHandler(IndexOutOfBoundsException.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseBody
+	public ExceptionVO handleException9(IndexOutOfBoundsException ex,
+			HttpServletResponse response) throws IOException {
+		ExceptionVO exceptionVO = new ExceptionVO("Exception as JSON data (request not found) IndexOutOfBoundsException");
+		System.out.println(ex.getMessage());
+		return exceptionVO;
+	}
+
+	// SQLGrammarException with ajax
+	// INTERNAL_SERVER_ERROR(500, "Internal Server Error"),
+	@ExceptionHandler(SQLGrammarException.class)
+	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+	@ResponseBody
+	public ExceptionVO handleException7(SQLGrammarException ex,
+			HttpServletResponse response) throws IOException {
+		ExceptionVO exceptionVO = new ExceptionVO("Exception as JSON data (Could not execute query)");
+		return exceptionVO;
+	}
+	
+	// SQLException 
+	@ExceptionHandler(SQLException.class)
+	@ResponseBody
+	public ModelAndView handleException7(HttpServletRequest request, Exception ex) throws IOException {
+		ModelAndView mav = new ModelAndView("exception");
+		mav.addObject("nameException", ex.getClass().getSimpleName());
+		mav.addObject("message", ex.getMessage());
+		return mav;
+	}
+
+	// BadRequest 400
+	@ExceptionHandler(Exception.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
+	@ResponseBody
+	public ExceptionVO handleBadRequest(Exception ex,
+			HttpServletResponse response) throws IOException {
+		ExceptionVO exceptionVO = new ExceptionVO("Exception as JSON data (Could not read JSON)");
+		return exceptionVO;
+	}
+	   
 	    
-	  //IndexOutOfBoundsException with ajax //INTERNAL_SERVER_ERROR(500, "Internal Server Error"),
-	    @ExceptionHandler(IndexOutOfBoundsException.class)
-		@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-		@ResponseBody 
-		public ExceptionVO handleException5(IndexOutOfBoundsException ex, HttpServletResponse response) throws IOException{
-	    	ExceptionVO exceptionVO = new ExceptionVO("Exception as JSON data (request not found) IndexOutOfBoundsException");
-	    	 System.out.println(ex.getMessage());
-	        return exceptionVO;
-		}
-	    //BadRequest 400
-	    @ExceptionHandler(NullPointerException.class)
-	    @ResponseStatus(HttpStatus.BAD_REQUEST)
-	    @ResponseBody
-	    public ExceptionVO handleBadRequest(IndexOutOfBoundsException ex, HttpServletResponse response) throws IOException{
-	    	ExceptionVO exceptionVO = new ExceptionVO(ex.getMessage());
-	        return exceptionVO;
-		}
 	    
 }
 //Exception>RuntimeException>IllegalArgumentException>DataformatException

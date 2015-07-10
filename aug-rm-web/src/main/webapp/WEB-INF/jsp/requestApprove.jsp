@@ -16,7 +16,20 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
-		
+		$.ajaxSetup({
+    		error: function(jqXHR, textStatus, errorThrown) 
+	        {
+	            var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
+	            console.log(jqXHR.status);
+	            $('#exceptionModal')
+	            .find('.modal-header h3').html(jqXHR.status+' error').end()
+	            .find('.modal-body p>strong').html(exceptionVO.clazz).end()
+	            .find('.modal-body p>em').html(exceptionVO.method).end()
+	            .find('.modal-body p>span').html(exceptionVO.message).end()
+	            .modal('show');
+	            
+	        } 
+    	});
 		/* ------------------- DataTable------------------- */
 		var dtRequest;
 		var dtRequest =$('#requestTable').DataTable({
@@ -143,4 +156,38 @@
         </div>
     </div>  
 </div>
+
+<!-------------------- Exception Model -------------------->
+<div class="modal fade" id="exceptionModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="ModalLabel">Exception Handler</h3>
+            </div>
+            <div class="modal-body">
+            	<div class="container">
+            		<div class="row">
+            			<div class="col-sm-5">
+               	 			<p><b></b><em></em><span></span></p>
+               	 		</div>
+            		</div>
+            		<div class="row">
+               	 		<h4>Please contact support.</h4>
+            		</div>
+                	<div class="row">
+                		<div class="col-sm-4"></div>
+                		<div class="col-sm-2">
+							<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            			</div>
+            		</div>
+            	</div>
+        	</div>
+    	</div>  
+	</div>
+</div>
+
+
+
+
 </div>
