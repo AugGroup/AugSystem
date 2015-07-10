@@ -97,7 +97,6 @@
 			var road = $('#road').val();
 			var province = $('#province').val();
 			var zipcode = $('#zipcode').val();
-			
 			var json = {"applicant" : {"id" : id},
 						"addressType" : addressType,
 						"houseNo" : houseNo,

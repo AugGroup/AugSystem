@@ -115,10 +115,10 @@
 						required : true
 						},
 					tel : {
-						required : true/* ,
-						minlength: 10,
-					    maxlength: 10,
-				        digits: true */
+						required : true,/*
+						minlength: 10, 
+					    maxlength: 10, */
+				        digits: true
 						},
 					email : {
 						required : true,
@@ -267,10 +267,10 @@
 						required : "Nickname English is required!"
 					},
 					tel : {
-						required : "Tel. is required!"/* ,
+						required : "Tel. is required!",/* 
 						minlength: "this field must contain at least {0} characters",
-						maxlength: "this field must contain at least {0} characters",
-						digits: "this field can only contain numbers" */
+						maxlength: "this field must contain at least {0} characters", */
+						digits: "this field can only contain numbers"
 					},
 					email :{
 					      required: "We need your email address to contact you",
@@ -441,7 +441,6 @@
 			<div class="form-group">
 				<label for="firstNameTh"><spring:message code="info.firstname.th"/> </label>
 				<spring:message code="info.text.first.th" var="firstname"/>
-<%-- 				<f:input path="firstNameTH" id="firstNameTH" name="firstNameTH" placeholder="Enter Firstname(TH)" class="form-control" ></f:input> --%>
 				<f:input path="firstNameTH" id="firstNameTH" name="firstNameTH" placeholder="${firstname}" class="form-control" ></f:input>
 			</div>
 			<br>
@@ -701,7 +700,7 @@
 
 			<br>
 			<br>
-	<div class="row">
+ 	<div class="row">
 		<div class="col-md-6">
 			<label for="applyDate"><span class="glyphicon glyphicon-calendar"></span><spring:message code="info.apply.date"/></label>
 			<div class="input-group date">
@@ -855,22 +854,8 @@
 			<br>
 			<div class="form-group">
 				<label for="nowEmployed"><spring:message code="info.ask.company"/> </label><br><br>
-				<%-- <c:choose>
- 					<c:when test="${empty applicant.nowEmployed}"> --%>
 						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
 						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
-					<%-- </c:when>
-					<c:when test="${not empty applicant.nowEmployed}">
-					<c:if test="${applicant.nowEmployed eq 'Yes'}">
-						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="Yes" checked="checked"></f:radiobutton><label> <spring:message code="info.yes"/></label>
-						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
-					</c:if>
-					<c:if test="${applicant.nowEmployed eq 'No'}">
-						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
-						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="No" checked="checked"></f:radiobutton><label> <spring:message code="info.no"/></label>
-					</c:if>
-					</c:when>
-			</c:choose>	 --%>
 				<br> 
 				<br>
 				<div class="form-group">
@@ -894,7 +879,7 @@
 				<br>
 				<br>
 			<label for="emergency"><spring:message code="info.ask.case"/> </label>
-				<br>
+				<br>0
 				<br>
 			<div class="form-group">
 				<label for="emergencyOfName"><spring:message code="info.emergency.name"/> </label> 
@@ -927,26 +912,6 @@
 			<br>
 				<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
 				<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
-		<%-- <c:choose>
- 			<c:when test="${empty applicant.previousEmployers}">
-				<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
-				<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
-			</c:when>
-			<c:when test="${not empty applicant.previousEmployers}">
-				<c:if test="${applicant.previousEmployers eq 'Yes'}">
-					<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes" checked="checked"></f:radiobutton><label> <spring:message code="info.yes"/></label>
-					<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
-				</c:if>
-				<c:if test="${applicant.previousEmployers eq 'No'}">
-					<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes" ></f:radiobutton><label> <spring:message code="info.yes"/></label>
-					<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No" checked="checked"></f:radiobutton><label> <spring:message code="info.no"/></label>
-							<div class="form-group" id="previousEmployersReason">
-								<label for="previousEmployersReason">If not, please give the reason </label>
-									<f:textarea path="previousEmployersReason" class="form-control" rows="5" id="previousEmployersReason" name="previousEmployersReason" placeholder="Enter If not, please give the reason"></f:textarea>
-							</div>
-				</c:if>
-			</c:when>
-		</c:choose> --%>
 		<br>
 		<br>
 		<div class="form-group" id="previousEmployersReason">
@@ -956,7 +921,6 @@
 		</div>
 		<br>
 		<br>
-		
 		  <div class="form-group">
 			<label for="file"><spring:message code="info.resume"/></label> 
 			<input type="file" id="resumeMultipartFile" name="resumeMultipartFile" class="file"/>
@@ -983,5 +947,5 @@
 		<button type="submit"  id="buttonSave" class="btn btn-success"><span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/></button>
 			
  	</div>
- </div>
+</div>
 </f:form>

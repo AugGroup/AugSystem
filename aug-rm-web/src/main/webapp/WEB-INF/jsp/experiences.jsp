@@ -130,6 +130,7 @@
 	}
 		
 	function saveExperience(){
+		
 		var id = '${id}';
 		var position = $("#workBackground").val();
 		var fromDate = $("#fromWorkYear").val();
@@ -159,6 +160,7 @@
 				"description" : description,
 				"reason" : reason
 				};
+		
 		$.ajax({
 			contentType : "application/json",
 			type : "POST",
@@ -179,6 +181,7 @@
 			    });
 			}
 		});
+		
 	}
 		
 		//Find by Id

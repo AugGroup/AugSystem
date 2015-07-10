@@ -162,6 +162,9 @@ public class ApplicationController {
 
 		model.addAttribute("id", applicationDTO.getId());
 		model.addAttribute("applicant", applicationDTO);
+		System.out.println("POSITION 1 : "+applicationDTO.getPosition1().getPositionName());
+		System.out.println("POSITION 2 : "+applicationDTO.getPosition2().getPositionName());
+		System.out.println("POSITION 3 : "+applicationDTO.getPosition3().getPositionName());
 
 		return "informations";
 	}
@@ -347,10 +350,17 @@ public class ApplicationController {
 		model.addAttribute("tag","information");
 		
 		model.addAttribute("applicant", applicationDTO);
-		
-		/*System.out.println("POSITION 1 : "+applicationDTO.getPositionId1());
-		System.out.println("POSITION 2 : "+applicationDTO.getPositionId2());
-		System.out.println("POSITION 3 : "+applicationDTO.getPositionId3());*/
+		/*if(null==applicationDTO.getPosition1().getPositionName()&&null==applicationDTO.getPosition2().getPositionName()&&null==applicationDTO.getPosition3().getPositionName())
+		{
+			System.out.println("Error Position!!!");
+			
+		}
+		else{
+			System.out.println("POSITION 1 : "+applicationDTO.getPosition1().getPositionName());
+			System.out.println("POSITION 2 : "+applicationDTO.getPosition2().getPositionName());
+			System.out.println("POSITION 3 : "+applicationDTO.getPosition3().getPositionName());
+			System.out.println("Position!!!");
+		}*/
 		return "informations";
 	}
 	
