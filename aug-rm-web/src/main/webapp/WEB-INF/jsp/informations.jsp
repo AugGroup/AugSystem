@@ -150,8 +150,6 @@
 						},
 					tel : {
 						required : true,
-						minlength: 10, 
-				        digits: true
 						},
 					email : {
 						required : true,
@@ -300,9 +298,7 @@
 						required : "<spring:message code="valid.info.nick.en"/>"
 					},
 					tel : {
-						required : "<spring:message code="valid.ref.tel"/>",
-						minlength: "<spring:message code="valid.info.tel.min"/>",
-						digits: "<spring:message code="valid.info.tel.number"/>"
+						required : "<spring:message code="valid.ref.tel"/>"
 					},
 					email :{
 					      required: "<spring:message code="valid.info.email"/>",
@@ -353,7 +349,7 @@
 						required : "<spring:message code="valid.fam.marrige"/>"
 					},
 					issueOficeMarriage : {
-						required : "<spring:message code="valid.fam.issued"/>"
+						required : "<spring:message code="valid.info.issued.milital"/>"
 					},
 					marriageAddress : {
 						required : "<spring:message code="valid.addr.addr"/>"
@@ -362,7 +358,7 @@
 						required : "<spring:message code="valid.fam.occ"/>"
 					},
 					militaryStatus : {
-						required : "<spring:message code="valid.info.military"/>"
+						required : "<spring:message code="valid.info.status"/>"
 					},
 					militaryFromYear : {
 						required : "<spring:message code="valid.info.from"/>"
@@ -374,7 +370,7 @@
 						required : "<spring:message code="valid.info.branch"/>"
 					},
 					militaryPlace : {
-						required : "<spring:message code="valid.info.militery.place"/>"
+						required : "<spring:message code="valid.info.military.place"/>"
 					},
 					militaryServiceNo : {
 						required : "<spring:message code="valid.info.military.ser"/>"
@@ -642,6 +638,7 @@
 			<br>
 			<div class="form-group">
 				<label for="issueOficeMarriage"><spring:message code="info.issue.title"/> </label> 
+				<spring:message code="info.text.marriage.issued" var="issuedMarry"/>
 				<f:input path="issueOficeMarriage" class="form-control" id="issueOficeMarriage"
 					name="issueOficeMarriage" placeholder="${issued}"></f:input>
 			</div>

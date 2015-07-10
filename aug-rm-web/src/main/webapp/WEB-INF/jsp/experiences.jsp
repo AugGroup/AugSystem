@@ -304,7 +304,7 @@
 	        var id = $(button).data("id");
 	        var index = dtApplicant.row(button.closest("tr")).index();
 	        $.ajax({
-	            url: "${pageContext.request.contextPath}/deleteSkill/" + id,
+	            url: "${pageContext.request.contextPath}/deleteExperience/" + id,
 	            type: "POST",
 	            success: function () {
 	            	dtApplicant.row(index).remove().draw();

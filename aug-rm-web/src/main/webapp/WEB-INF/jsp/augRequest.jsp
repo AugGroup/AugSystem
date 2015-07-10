@@ -63,9 +63,9 @@
 				inputPosition:{required: true},
 			  	inputApprovalName:{required: true},
 				inputApproveDate:{required: true},
-				inputNumberApplicant:{required: true},
+				inputNumberApplicant:{required: true,digits: true},
 				inputSpecificSkill:{required: true},
-				inputYearExperience:{required: true},
+				inputYearExperience:{required: true,digits: true},
 				inputStatus:{required: true}
 				},
 			messages:{
@@ -74,9 +74,11 @@
 			  	inputPosition:{required: "<spring:message code="valid.req.position"/>"},
 			  	inputApprovalName:{required: "<spring:message code="valid.req.approval"/>"},
 				inputApproveDate:{required: "<spring:message code="valid.req.approve.date"/>"},
-				inputNumberApplicant:{required: "<spring:message code="valid.req.applicant"/>"},
+				inputNumberApplicant:{required: "<spring:message code="valid.req.applicant"/>",
+									digits: "<spring:message code="valid.info.tel.number"/>"},
 				inputSpecificSkill:{required: "<spring:message code="valid.req.skill"/>"},
-				inputYearExperience:{required: "<spring:message code="valid.req.year"/>"},
+				inputYearExperience:{required: "<spring:message code="valid.req.year"/>",
+									digits: "<spring:message code="valid.info.tel.number"/>"},
 				inputStatus:{required: "<spring:message code="valid.req.status"/>"}
 				}
 			  	});

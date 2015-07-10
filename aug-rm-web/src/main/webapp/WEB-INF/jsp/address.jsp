@@ -89,44 +89,44 @@
 		}
 		
 		function saveAddress(){
-			if ($('#addressForm').valid()) {
-			var id = '${id}';
-			var addressType = $('#inputAddress').val();
-			var houseNo = $('#houseNo').val();
-			var district = $('#district').val();
-			var subDistrict = $('#subDistrict').val();
-			var road = $('#road').val();
-			var province = $('#province').val();
-			var zipcode = $('#zipcode').val();
-			var json = {"applicant" : {"id" : id},
-						"addressType" : addressType,
-						"houseNo" : houseNo,
-						"district" : district,
-						"subDistrict" : subDistrict,
-						"road" : road,
-						"province":province,
-						"zipcode":zipcode};
-		
-			$.ajax({
-				url : '${pageContext.request.contextPath}/address/'+id,
-				contentType : "application/json",
-				type : "POST",
-				data : JSON.stringify(json),
-				success : function(data) {
-					$('#addressModal').modal('hide');
-					dtApplicant.ajax.reload();
-					
-					new PNotify({
-				        title: 'Success',
-				        text: 'Successful Add Education!!!',
-				        type: 'success',
-				        nonblock: {
-				            nonblock: true,
-				            nonblock_opacity: .2
-				        }
-				    });
-				}
-			}); 
+			if($('#addressForm').valid()){
+				var id = '${id}';
+				var addressType = $('#inputAddress').val();
+				var houseNo = $('#houseNo').val();
+				var district = $('#district').val();
+				var subDistrict = $('#subDistrict').val();
+				var road = $('#road').val();
+				var province = $('#province').val();
+				var zipcode = $('#zipcode').val();
+				var json = {"applicant" : {"id" : id},
+							"addressType" : addressType,
+							"houseNo" : houseNo,
+							"district" : district,
+							"subDistrict" : subDistrict,
+							"road" : road,
+							"province":province,
+							"zipcode":zipcode};
+			
+				$.ajax({
+					url : '${pageContext.request.contextPath}/address/'+id,
+					contentType : "application/json",
+					type : "POST",
+					data : JSON.stringify(json),
+					success : function(data) {
+						$('#addressModal').modal('hide');
+						dtApplicant.ajax.reload();
+						
+						new PNotify({
+					        title: 'Success',
+					        text: 'Successful Add Education!!!',
+					        type: 'success',
+					        nonblock: {
+					            nonblock: true,
+					            nonblock_opacity: .2
+					        }
+					    });
+					}
+				}); 
 			};
 		}
 		
