@@ -61,7 +61,7 @@ public class ApplicantRepositoryImpl extends
 		query.setParameter("SCHOOL_NAME", "%"+ schoolName +"%");
 		if(gpa!=null){
 			String queryStr = query.getQueryString();
-			queryStr += " AND education.GPA = :GPA " ;
+			queryStr += " education.GPA = :GPA " ;
 			getCurrentSession().createSQLQuery(queryStr);
 			query.setParameter("GPA",gpa);
 		}

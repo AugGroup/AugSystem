@@ -130,7 +130,7 @@
 	}
 		
 	function saveExperience(){
-		
+		if ($('#experiencesForm').valid()) {
 		var id = '${id}';
 		var position = $("#workBackground").val();
 		var fromDate = $("#fromWorkYear").val();
@@ -181,6 +181,7 @@
 			    });
 			}
 		});
+		};
 		
 	}
 		
@@ -214,6 +215,7 @@
 		
 		//Update function
 		function updated(button){
+			if ($('#experiencesForm').valid()) {
 			var id = $(button).data("id");
 			var position = $("#workBackground").val();
 			var fromDate = $("#fromWorkYear").val();
@@ -283,6 +285,7 @@
 					});
 				 }
 			});
+			};
 		}
 		
 		  //delete Modal

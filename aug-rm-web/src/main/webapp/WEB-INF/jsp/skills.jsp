@@ -46,6 +46,7 @@ $(document).ready(function() {
 	var dtApplicant;
 	
 	function saveSkill(){
+		if ($('#skillForm').valid()) {
 		var id = '${id}'
 		var skillDetail = $("#skill").val();
 		var json = {
@@ -73,6 +74,7 @@ $(document).ready(function() {
 				});
 			 }
 		});
+		};
 	}
 
 	//Update 

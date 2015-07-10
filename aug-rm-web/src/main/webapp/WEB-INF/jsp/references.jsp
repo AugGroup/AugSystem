@@ -66,6 +66,7 @@
 		}
 
 		function saveReference(){
+			if ($('#referenceForm').valid()) {
 			var id = '${id}';
 			var fullName = $("#fullName").val();
 			var completeAddress = $("#completeAddress").val();
@@ -102,6 +103,7 @@
 				
 				}
 			}); 
+			};
 		}
 		
 		//Update 
@@ -125,6 +127,7 @@
 		
 		//Update function
 		function updated(button){
+			if ($('#referenceForm').valid()) {
 			var id = $(button).data("id");
 			var fullName = $("#fullName").val();
 			var completeAddress = $("#completeAddress").val();
@@ -168,6 +171,7 @@
 					});
 				 }
 			});
+			};
 		}
 		
 		  //delete Modal

@@ -80,6 +80,7 @@
 
 		function saveEducation(){
 			$('#btn_save').on("click", function() {
+				if ($('#educationsForm').valid()) {
 				var id = '${id}'
 				var schoolName = $("#university").val();
 				var degree = $("#degree").val();
@@ -119,7 +120,7 @@
 					    });
 					}
 				}); 
-
+			};
 			})
 		}
 		
@@ -147,6 +148,7 @@
 		
 		//Update function
 		function updated(button){
+			if ($('#educationsForm').valid()) {
 			var id = $(button).data("id");
 			var schoolName = $("#university").val();
 			var degree = $("#degree").val();
@@ -199,6 +201,7 @@
 						});
 				 }
 			});
+			};
 		}
 		
 		  //delete Modal

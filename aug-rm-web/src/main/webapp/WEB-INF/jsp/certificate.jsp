@@ -45,6 +45,7 @@ $(document).ready(function() {
 	}
 
 	function saveCertificate(){
+		if ($('#certificateForm').valid()) {
 		var id = '${id}'
 		var certificateName = $("#certificate").val();
 		var json = {
@@ -72,6 +73,7 @@ $(document).ready(function() {
 				});
 			 }
 		});
+		};
 	}
 
 	
@@ -93,6 +95,7 @@ $(document).ready(function() {
 	
 	//Update function
 	function updated(button){
+		if ($('#certificateForm').valid()) {
 		var id = $(button).data("id");
 		var certificateName = $("#certificate").val();
 		
@@ -128,6 +131,7 @@ $(document).ready(function() {
 				});
 			 }
 		});
+		};
 	}
 	
 	  //delete Modal

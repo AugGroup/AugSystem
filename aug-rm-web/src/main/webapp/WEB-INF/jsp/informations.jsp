@@ -92,8 +92,42 @@
 			            $('#other').hide();
 			        }
 			    });
-			
+			    
+			    $("#nowEmployedKnow").hide();
+				  
+			    $("input:radio[name='nowEmployed']").change(function(){  
+
+			            if(this.value == 'Yes' && this.checked){
+			              $("#nowEmployedKnow").show();
+			            }else{
+			              $("#nowEmployedKnow").hide();
+			            }
+
+			    });
 			 
+			    $("#militaryStatusYes").hide();
+				  
+			    $("input:radio[name='militaryStatus']").change(function(){  
+
+			            if(this.value == 'Yes' && this.checked){
+			              $("#militaryStatusYes").show();
+			            }else{
+			              $("#militaryStatusYes").hide();
+			            }
+
+			    });
+			    
+			    $("#militaryReason").hide();
+				  
+			    $("input:radio[name='militaryStatus']").change(function(){  
+
+			            if(this.value == 'No' && this.checked){
+			              $("#militaryReason").show();
+			            }else{
+			              $("#militaryReason").hide();
+			            }
+
+			    });
 			/*  $('#informationApplicant').validate({
 				rules : {
 					firstNameTH : {
@@ -635,51 +669,41 @@
 				<label for="military"><spring:message code="info.military.ask"/> </label>
 				<f:radiobutton path="militaryStatus" id="militaryStatus" name="militaryStatus" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
 				<f:radiobutton path="militaryStatus" id="militaryStatus" name="militaryStatus" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
-				</div>
+			</div>
 			<br>
 			<br>
-				<div class="form-group">
+			<div class="form-group" id="militaryStatusYes">
 					<label for="militaryComplete"><spring:message code="info.military.yes"/> </label> 
 					<label for="militaryFromYear"><spring:message code="info.military.fromYear"/> </label> 
+			<br>
+			<br>
 					<spring:message code="info.text.from" var="from"/>
-					<f:input path="militaryFromYear" class="form-control" id="militaryFromYear"
-						name="militaryFromYear" placeholder="${from}"></f:input>
-				</div>
+					<f:input path="militaryFromYear" class="form-control" id="militaryFromYear" name="militaryFromYear" placeholder="${from}"></f:input>
 			<br>
 			<br>
-				<div class="form-group">
 					<label for="militarytoYear"><spring:message code="info.military.toYear"/> </label> 
 					<spring:message code="info.text.to" var="to"/>
-					<f:input path="militarytoYear" class="form-control" id="militarytoYear" name="militarytoYear"
-						placeholder="${to}"></f:input>
-				</div>
+					<f:input path="militarytoYear" class="form-control" id="militarytoYear" name="militarytoYear" placeholder="${to}"></f:input>
 			<br>
 			<br>
-				<div class="form-group">
 					<label for="branchService"><spring:message code="info.branch.service"/> </label> 
 					<spring:message code="info.text.branch" var="branch"/>
-					<f:input path="branchService" class="form-control" id="branchService" name="branchService"
-						placeholder="${branch}"></f:input>
-				</div>
+					<f:input path="branchService" class="form-control" id="branchService" name="branchService" placeholder="${branch}"></f:input>
 			<br>
 			<br>
-				<div class="form-group">
 					<label for="militaryPlace"><spring:message code="info.military.place"/> </label> 
 					<spring:message code="info.text.military.place" var="militaryP"/>
-					<f:input path="militaryPlace" class="form-control" id="militaryPlace" name="militaryPlace"
-						placeholder="${militaryP}"></f:input>
-				</div>
+					<f:input path="militaryPlace" class="form-control" id="militaryPlace" name="militaryPlace" placeholder="${militaryP}"></f:input>
 			<br>
 			<br>
-				<div class="form-group">
 					<label for="serviceNo"><spring:message code="info.service.no"/> </label> 
 					<spring:message code="info.text.military.service" var="militaryS"/>
 					<f:input path="militaryServiceNo" class="form-control" id="militaryServiceNo" name="militaryServiceNo"
 						placeholder="${militaryS}"></f:input>
-				</div>
+			</div>
 			<br>
 			<br>
-				<div class="form-group">
+				<div class="form-group" id="militaryReason">
 					<label for="reasons"><spring:message code="info.military.reason"/> </label> 
 					<spring:message code="info.text.military.not" var="militaryN"/>
 					<f:input path="militaryReason" class="form-control" id="militaryReason" name="militaryReason"
@@ -858,7 +882,7 @@
 						<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
 				<br> 
 				<br>
-				<div class="form-group">
+				<div class="form-group" id="nowEmployedKnow">
 					<label for="nameRelation"><spring:message code="info.write.yes"/> </label><br><br>
 					<label for="employedName"><spring:message code="main.name"/> </label>
 					<spring:message code="info.text.name" var="name"/>

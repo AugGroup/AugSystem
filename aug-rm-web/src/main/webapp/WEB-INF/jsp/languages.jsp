@@ -51,6 +51,7 @@ $(document).ready(function() {
 	}
 	
 	function saveLanguages(){
+		if ($('#languagesForm').valid()) {
 		var id = '${id}'
 		var languagesName = $("#languages").val();
 		var speaking = $('input[name="speaking"]:checked').val();
@@ -87,6 +88,7 @@ $(document).ready(function() {
 			    });
 			}
 		}); 
+		};
 	}
 	
 	//Update 
@@ -111,6 +113,7 @@ $(document).ready(function() {
 	
 	//Update function
 	function updated(button){
+		if ($('#languagesForm').valid()) {
 		var id = $(button).data("id");
 		var languagesName = $("#languages").val();
 		var speaking = $('input[name="speaking"]:checked').val();
@@ -158,6 +161,7 @@ $(document).ready(function() {
 					});
 			 }
 		});
+		};
 	}
 	
 	  //delete Modal

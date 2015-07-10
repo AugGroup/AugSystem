@@ -78,6 +78,7 @@
 		}
 			
 		function saveFamily(){
+			if ($('#familyForm').valid()) {
 			var id = '${id}';
 			var name = $("#nameFamily").val();
 			var relation = $("#relationFamily").val();
@@ -112,6 +113,7 @@
 				    });
 				}
 			});
+			};
 
 		}
 		
@@ -137,6 +139,7 @@
 		
 		//Update function
 		function updated(button){
+			if ($('#familyForm').valid()) {
 			var id = $(button).data("id");
 			var name = $("#nameFamily").val();
 			var relation = $("#relationFamily").val();
@@ -184,6 +187,7 @@
 					});
 				 }
 			});
+			};
 		}
 		
 		  //delete Modal

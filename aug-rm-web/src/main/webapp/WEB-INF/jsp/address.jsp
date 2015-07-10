@@ -89,6 +89,7 @@
 		}
 		
 		function saveAddress(){
+			if ($('#addressForm').valid()) {
 			var id = '${id}';
 			var addressType = $('#inputAddress').val();
 			var houseNo = $('#houseNo').val();
@@ -126,6 +127,7 @@
 				    });
 				}
 			}); 
+			};
 		}
 		
 		
@@ -155,6 +157,7 @@
 		
 		//Update function
 		function updateAddress(button){
+			if ($('#addressForm').valid()) {
 			var id = $(button).data("id");
 			var addressType = $('#inputAddress').val();
 			var houseNo = $("#houseNo").val();
@@ -210,6 +213,7 @@
 						});
 				 }
 			});
+			};
 		}
 		
 		  //delete Modal
