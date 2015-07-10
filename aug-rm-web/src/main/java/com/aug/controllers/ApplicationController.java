@@ -120,12 +120,6 @@ public class ApplicationController {
 	
 	//////////////////        SAVE METHOD        /////////////////////
 
-	@RequestMapping(value = "/informations", method = { RequestMethod.GET })
-	public String informations(Model model) {
-		LOGGER.info("**** Welcome to Application Controller ****");
-		return "informations";
-
-	}
 	@RequestMapping(value = "/saveInformations", method = { RequestMethod.POST })
 	public String saveInformations(@ModelAttribute ApplicationDTO applicationDTO, Model model,MultipartFile multipartFile)
 			throws ParseException {
@@ -246,9 +240,19 @@ public class ApplicationController {
 
 	//////////////////        LINK PAGE       ///////////////////////////
 	
+
+	@RequestMapping(value = "/informations", method = { RequestMethod.GET })
+	public String informations(Model model) {
+		LOGGER.info("**** Welcome to Application Controller ****");
+		return "informations";
+
+	}
+	
 	@RequestMapping(value = "/address/{id}", method = { RequestMethod.GET })
 	public String address(@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
+		String tag = "address";
+		model.addAttribute("tag",tag);
         return "address";
 
 	}
@@ -256,6 +260,8 @@ public class ApplicationController {
 	@RequestMapping(value = "/family/{id}", method = { RequestMethod.GET })
 	public String family(@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
+		String tag = "family";
+		model.addAttribute("tag",tag);
         return "family";
 
 	}
@@ -263,6 +269,8 @@ public class ApplicationController {
 	@RequestMapping(value = "/educations/{id}", method = { RequestMethod.GET })
 	public String educations(@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
+		String tag = "education";
+		model.addAttribute("tag",tag);
         return "educations";
 
 	}
@@ -270,6 +278,8 @@ public class ApplicationController {
 	@RequestMapping(value = "/certificates/{id}", method = { RequestMethod.GET })
 	public String certificate(@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
+		String tag = "certificate";
+		model.addAttribute("tag",tag);
         return "certificate";
 
 	}
@@ -277,6 +287,8 @@ public class ApplicationController {
 	@RequestMapping(value = "/skills/{id}", method = { RequestMethod.GET })
 	public String skills(@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
+		String tag = "skill";
+		model.addAttribute("tag",tag);
         return "skills";
 
 	}
@@ -284,6 +296,8 @@ public class ApplicationController {
 	@RequestMapping(value = "/languages/{id}", method = { RequestMethod.GET })
 	public String languages(@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
+		String tag = "languages";
+		model.addAttribute("tag",tag);
         return "languages";
 
 	}
@@ -291,6 +305,8 @@ public class ApplicationController {
 	@RequestMapping(value = "/references/{id}", method = { RequestMethod.GET })
 	public String references(@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
+		String tag = "reference";
+		model.addAttribute("tag",tag);
         return "references";
 
 	}
@@ -298,6 +314,8 @@ public class ApplicationController {
 	@RequestMapping(value = "/experiences/{id}", method = { RequestMethod.GET })
 	public String experiences(@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
+		String tag = "experience";
+		model.addAttribute("tag",tag);
         return "experiences";
 
 	}
@@ -325,6 +343,8 @@ public class ApplicationController {
 	public String updateInfo(@ModelAttribute ApplicationDTO applicationDTO,
 			@PathVariable Integer id, Model  model) {
 		applicationDTO = applicantService.findByIdApplicant(id);
+		String tag = "infomation";
+		model.addAttribute("tag","information");
 		
 		model.addAttribute("applicant", applicationDTO);
 		
