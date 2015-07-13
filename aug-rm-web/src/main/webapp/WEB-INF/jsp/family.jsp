@@ -29,13 +29,13 @@
 			},
 			messages : {
 				nameFamily : {
-					required : "<spring:message code="valid.fam.spouse"/>"
+					required : "<spring:message code="valid.ref.name"/>"
 				},
 				relationFamily : {
-					required : "<spring:message code="valid.fam.marrige"/>"
+					required : "<spring:message code="valid.fam.relation"/>"
 				},
 				occupationFamily : {
-					required : "<spring:message code="valid.fam.issued"/>"
+					required : "<spring:message code="valid.fam.occ"/>"
 				},
 				addressFamily : {
 					required : "<spring:message code="valid.addr.addr"/>"

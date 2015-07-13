@@ -929,13 +929,14 @@
 		<label for="previousEmployers"><spring:message code="info.ask.inquiry"/> </label>
 			<br>
 			<br>
-				<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
-				<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
+				<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.know"/></label>
+				<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.notKnow"/></label>
 		<br>
 		<br>
 		<div class="form-group" id="previousEmployersReason">
-					<label for="previousEmployersReason">If not, please give the reason </label>
-					<f:textarea path="previousEmployersReason" class="form-control" rows="5" id="previousEmployersReason" name="previousEmployersReason" placeholder="Enter If not, please give the reason"></f:textarea>
+					<label for="previousEmployersReason"><spring:message code="info.reason.no"/> </label>
+					<spring:message code="info.text.ask.not" var="askNot"/>
+					<f:textarea path="previousEmployersReason" class="form-control" rows="5" id="previousEmployersReason" name="previousEmployersReason" placeholder="${askNot}"></f:textarea>
 		</div>
 		</div>
 		<br>
