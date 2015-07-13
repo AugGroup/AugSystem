@@ -64,7 +64,13 @@
     display: inline-block;
 }
 
-/* body {background-color:#efe0cb} */
+.test{
+	background: #ffffff;
+	width: 183px;
+	height: 25px;
+  	margin-right: 20px;
+	float: right;
+}
 </style>
 <%
 	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -73,27 +79,33 @@
 
 <body>
 	<div class="headLogo" id="headId" >
-		<img
-			src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png"
-			alt="logo" style="width: 250px; height: 100px;" />
-			
-			<nav class="navbar navbar-inverse">
+		<img src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png" alt="logo" style="width: 250px; height: 75px;"/>
+		<div class="test">
+			<a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a>
+		</div>
+<!-- 			<nav class="navbar navbar-inverse"> -->
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target="#myNavbar">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 					</button>
 					<a class="navbar-brand" href="https://www.augmentis.biz/">Augmentis</a>
 				</div>
 				<div class="collapse navbar-collapse" id="myNavbar">
-					<ul class="nav navbar-nav">
-						<li><a href="${pageContext.request.contextPath}/applicant"><spring:message code="main.text.applicant"/></a></li>
-						<li><a href="${pageContext.request.contextPath}/request"><spring:message code="request.button"/></a></li>
-						<li><a href="${pageContext.request.contextPath}/approve"><spring:message code="request.approve"/></a></li>
-						<li><a href="${pageContext.request.contextPath}/report"><spring:message code="report.text"/></a></li>
-						<li><a href="${pageContext.request.contextPath}/monthlyReport"><spring:message code="report.text.monthly"/></a></li>
+<!-- 					<ul class="nav navbar-nav"> -->
+<%-- 						<li><a href="${pageContext.request.contextPath}/applicant"><spring:message code="main.text.applicant"/></a></li> --%>
+<%-- 						<li><a href="${pageContext.request.contextPath}/request"><spring:message code="request.button"/></a></li> --%>
+<%-- 						<li><a href="${pageContext.request.contextPath}/approve"><spring:message code="request.approve"/></a></li> --%>
+<%-- 						<li><a href="${pageContext.request.contextPath}/report"><spring:message code="report.text"/></a></li> --%>
+<%-- 						<li><a href="${pageContext.request.contextPath}/monthlyReport"><spring:message code="report.text.monthly"/></a></li> --%>
+
+
+						<a href="${pageContext.request.contextPath}/applicant"><spring:message code="main.text.applicant"/></a>
+						<a href="${pageContext.request.contextPath}/request"><spring:message code="request.button"/></a>
+						<a href="${pageContext.request.contextPath}/approve"><spring:message code="request.approve"/></a>
+						<a href="${pageContext.request.contextPath}/report"><spring:message code="report.text"/></a>
+						
+						
 						<%-- <li class="dropdown">
          					 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
          					 <ul class="dropdown-menu">
@@ -102,18 +114,23 @@
             					<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalMajorReport">Major Report</a> </li>
          					 	<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalPositionReport">Position Report</a> </li>
         				</li> --%>
-					</ul>
-					<ul class="nav navbar-nav navbar-right">
-							<li><a href="${request.getRequestURL}?locale=en">
-							<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 30px; height: 20px;"/></a></li>
-							<li><a href="${request.getRequestURL}?locale=th">		
-							<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 30px; height: 20px;" /></a></li>
-						<li><a href=""><span class="glyphicon glyphicon-user"></span> <%=name %></a></li>
-						<li><a href="<c:url value="/logout" />"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a></li>
-					</ul>
+<!-- 					</ul> -->
+<!-- 					<ul class="nav navbar-nav navbar-right"> -->
+
+							<a href="${request.getRequestURL}?locale=en">
+							<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 30px; height: 20px;"/></a>
+							<a href="${request.getRequestURL}?locale=th">		
+							<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 30px; height: 20px;" /></a>
+						<a href=""><span class="glyphicon glyphicon-user"></span> <%=name %></a>
+						
+<!-- 						<div class="test"> -->
+<%-- 						<a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a> --%>
+<!-- 						</div> -->
+<!-- 						style="position: absolute; left: 700px;" -->
+<!-- 					</ul> -->
 				</div>
 			</div>
-		</nav>
+<!-- 		</nav> -->
 			
 			
 	</div>
