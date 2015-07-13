@@ -7,7 +7,9 @@
 <script type="text/javascript">
 $(document).ready(function () {
 	var dtReport;
-	$("#gpa").mask("9.99");
+	$.mask.definitions['~']='[0-4]';
+	$("#gpa").mask("~.99");
+	
 	
 	//Search By Position and Show function 
 	$('#btn_search').off('click').on('click', function(){

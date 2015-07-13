@@ -90,7 +90,7 @@ public class ExceptionControllerAdvice {
 	
 	// IllegalArgumentException with ajax //INTERNAL_SERVER_ERROR(500,
 	// "Internal Server Error"),
-	/*@ExceptionHandler(IllegalArgumentException.class)
+	@ExceptionHandler(IllegalArgumentException.class)
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 	@ResponseBody
 	public ExceptionVO handleException5(IllegalArgumentException ex,
@@ -130,10 +130,10 @@ public class ExceptionControllerAdvice {
 		mav.addObject("nameException", ex.getClass().getSimpleName());
 		mav.addObject("message", ex.getMessage());
 		return mav;
-	}*/
+	}
 
 	// BadRequest 400
-	/*@ExceptionHandler(Exception.class)
+	@ExceptionHandler(Exception.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ResponseBody
 	public ExceptionVO handleBadRequest(Exception ex,
@@ -141,7 +141,7 @@ public class ExceptionControllerAdvice {
 		ExceptionVO exceptionVO = new ExceptionVO("Exception as JSON data (Could not read JSON)");
 		return exceptionVO;
 	}
-	   */
+	   
 	    
 	    
 }

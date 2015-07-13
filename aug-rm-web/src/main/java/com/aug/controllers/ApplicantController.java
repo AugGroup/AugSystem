@@ -159,10 +159,9 @@ public class ApplicantController implements Serializable {
 	/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
 	@RequestMapping(value = "/report/search", method = { RequestMethod.POST })
 	public @ResponseBody Object searchReportBy(
-			@RequestParam Integer position, String degree, String major, String schoolName, Double gpa)  {
+			@RequestParam Integer position, String degree, String major, String schoolName, Double gpa) throws Exception {
 		
 		final List<ReportApplicantDTO> data;
-		
 		if (position == -1 && degree.equals("") && major.isEmpty() && schoolName.isEmpty() && gpa==null){ 			
 			data = applicantService.reportApplicant();
 		} else {
@@ -179,7 +178,7 @@ public class ApplicantController implements Serializable {
 	/*-------------------- preview reports function--------------------*/
 	@RequestMapping(value = "/report/preview", method = { RequestMethod.POST,RequestMethod.GET  })
 	public ModelAndView previewReport(@ModelAttribute SearchReportDTO searchReportDTO,
-			HttpSession session, Locale locale) {
+			HttpSession session, Locale locale)  throws Exception {
 		List<ReportApplicantDTO> reportApplicantList =null;
 		Integer position = searchReportDTO.getPosition();
 		String degree = searchReportDTO.getDegree();
@@ -211,7 +210,7 @@ public class ApplicantController implements Serializable {
 		/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
 		@RequestMapping(value = "/report/searchMonth", method = { RequestMethod.POST })
 		public @ResponseBody Object searchReportByMonth(
-				@RequestParam Integer applyDate) {
+				@RequestParam Integer applyDate) throws Exception{
 			List<ReportApplicantDTO> data;
 			System.out.println("applyDate :" + applyDate);
 			if (applyDate == -1){ 			
@@ -229,7 +228,7 @@ public class ApplicantController implements Serializable {
 
 		@RequestMapping(value = "/reportMonthly/preview", method = { RequestMethod.POST })
 		public ModelAndView searchMonthlyReport(@ModelAttribute SearchReportDTO searchReportDTO,
-				HttpSession session, Locale locale) {
+				HttpSession session, Locale locale)  throws Exception {
 			List<ReportApplicantDTO> reportApplicantList;
 			Integer applyDate = searchReportDTO.getApplyDate();
 			String reportType = searchReportDTO.getReportType();

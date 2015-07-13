@@ -45,7 +45,7 @@ public class RequestApproveController implements Serializable {
 	@RequestMapping(value = "/approve/update/{id}", method = { RequestMethod.POST })
 	public @ResponseBody AugRequestDTO editApprove(@RequestBody AugRequestDTO augRequestDTO,
 			@PathVariable Integer id) throws Exception{
-		AugRequest augRequest = augRequestService.findById(500);//(augRequestDTO.getId());
+		AugRequest augRequest = augRequestService.findById(augRequestDTO.getId());
 		augRequest.setStatus(augRequestDTO.getStatus());
 		augRequestService.update(augRequest);
 		
