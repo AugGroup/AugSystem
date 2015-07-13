@@ -128,7 +128,21 @@
 			            }
 
 			    });
-			$('#informationApplicant').validate({
+
+			    
+			    $("#drafted").hide();
+				  
+			    $("input:radio[name='sex']").change(function(){  
+
+			            if(this.value == 'Female' && this.checked){
+			              $("#drafted").hide();
+			            }else{
+			            	 $("#drafted").show();
+			            }
+
+			    });
+			 
+			 $('#informationApplicant').validate({
 				rules : {
 					firstNameTH : {
 						required : true
@@ -669,9 +683,9 @@
 			<br>
 			<div class="form-group" id="militaryStatusYes">
 					<label for="militaryComplete"><spring:message code="info.military.yes"/> </label> 
+			<br>
+			<br>
 					<label for="militaryFromYear"><spring:message code="info.military.fromYear"/> </label> 
-			<br>
-			<br>
 					<spring:message code="info.text.from" var="from"/>
 					<f:input path="militaryFromYear" class="form-control" id="militaryFromYear" name="militaryFromYear" placeholder="${from}"></f:input>
 			<br>
@@ -706,7 +720,7 @@
 				</div>
 			<br>
 			<br>
-				<div class="form-group">
+				<div class="form-group" id="drafted">
 					<label for="dateToBeDrafted"><span
 						class="glyphicon glyphicon-calendar"></span><spring:message code="info.military.date"/> </label>
 					<div class="input-group date">

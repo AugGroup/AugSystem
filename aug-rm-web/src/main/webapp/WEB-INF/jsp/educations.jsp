@@ -79,7 +79,6 @@
 		}
 
 		function saveEducation(){
-			$('#btn_save').on("click", function() {
 				if ($('#educationsForm').valid()) {
 				var id = '${id}'
 				var schoolName = $("#university").val();
@@ -121,7 +120,6 @@
 					}
 				}); 
 			};
-			})
 		}
 		
 		

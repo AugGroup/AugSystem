@@ -151,14 +151,18 @@ public class ApplicationController {
 				e.printStackTrace();
 			}
 		}
+		
+		if(applicationDTO.getPosition1().getId()<0) applicationDTO.setPosition1(null);
+		if(applicationDTO.getPosition2().getId()<0) applicationDTO.setPosition2(null);
+		if(applicationDTO.getPosition3().getId()<0) applicationDTO.setPosition3(null);
 		applicantService.saveInformations(applicationDTO);
 
 		model.addAttribute("id", applicationDTO.getId());
 		model.addAttribute("applicant", applicationDTO);
-		System.out.println("POSITION 1 : "+applicationDTO.getPosition1().getId());
+	/*	System.out.println("POSITION 1 : "+applicationDTO.getPosition1().getId());
 		System.out.println("POSITION 2 : "+applicationDTO.getPosition2().getId());
 		System.out.println("POSITION 3 : "+applicationDTO.getPosition3().getId());
-
+*/
 		return "informations";
 	}
 

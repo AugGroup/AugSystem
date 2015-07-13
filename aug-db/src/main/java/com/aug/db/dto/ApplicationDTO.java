@@ -39,7 +39,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 			+ " null as APPLICANT_STATUS, null as APPLY_DATE, null as EMERGENCY_NAME, null as EMERGENCY_TEL, null as EMERGENCY_ADDRESS, null as NOTICE_NEWSPAPER, null as NOTICE_MAGAZINE, null as NOTICE_FRIEND, null as NOTICE_WEBSITE, null as NOTICE_OTHER, null as TRACKING_STATUS,"
 			+ " null as EXPECTED_SALARY, null as CARD_ID, null as CARD_ISSUED_OFFICE, null as CARD_EXPIRY_DATE, null as MILITARY_FROM_YEAR, null as MILITARY_TO_YEAR, null as MILITARY_PLACE, null as MILITARY_SERVICE_NO, a.MILITARY_REASON, null as MILITARY_STATUS,"
 			+ " null as NUMBER_OF_CHILDREN, null as SPOUSE_NAME, null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as TECH_SCORE, null as POSITION1_ID, null as POSITION2_ID, null as POSITION3_ID, null as NOW_EMPLOYED, null as EMPLOYED_NAME, null as EMPLOYED_POSITION,"
-			+ " null as EMPLOYED_RELATION, null as BRANCH_SERVICE, null as PREVIOUS_EMPLOYERS, null as PREVIOUS_EMPLOYERS_REASON, null as DATE_TO_BE_DRAFTED, null as MARRIAGE_ADDRESS, null as POSITION_NAME, null as EMERGENCY_NAME, null as EMERGENCY_TEL, null as EMERGENCY_ADDRESS, null as RESUME, null as TRANSCRIPT, null as IMAGE, null as SEX, "
+			+ " null as EMPLOYED_RELATION, null as BRANCH_SERVICE, null as PREVIOUS_EMPLOYERS, null as PREVIOUS_EMPLOYERS_REASON, null as DATE_TO_BE_DRAFTED, null as MARRIAGE_ADDRESS, null as POSITION_NAME, null as EMERGENCY_NAME, null as EMERGENCY_TEL, null as EMERGENCY_ADDRESS, null as RESUME, null as TRANSCRIPT, null as IMAGE, null as SEX, null as POSITION_ID_1, null as POSITION_ID_2, null as POSITION_ID_3, "
 			+ " MAX(a.APPLICANT_ID) AS APPLICANT_ID"
 			+ " FROM APPLICANT a ", resultClass = ApplicationDTO.class)
 	})
