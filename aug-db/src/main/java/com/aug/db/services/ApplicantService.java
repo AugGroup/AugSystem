@@ -36,7 +36,7 @@ public interface ApplicantService {
 	/*-------------------- report search --------------------*/
 	public List<ReportApplicantDTO> reportApplicant();
 	
-	public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, Double gpa);
+	public List<ReportApplicantDTO> findReportByCriteria(Integer position, String degree, String major, String schoolName, Double gpa);
 
 	/*-------------------- Monthly report --------------------*/
 	public List<ReportApplicantDTO> findReportByMonth(Integer appyDate);
@@ -44,5 +44,6 @@ public interface ApplicantService {
 	public void update(ApplicationDTO applicationDTO);
 
 	public ApplicationDTO getMaxApplicantId();
+
 	
 }

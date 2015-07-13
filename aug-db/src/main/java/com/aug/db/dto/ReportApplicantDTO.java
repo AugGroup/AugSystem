@@ -91,8 +91,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 		+ "LEFT JOIN POSITION position2 ON applicant.POSITION2_ID = position2.ID " //WHERE education.DEGREE= :DEGREE AND education.MAJOR =:MAJOR
 		+ "LEFT JOIN POSITION position3 ON applicant.POSITION3_ID = position3.ID "
 		+ "WHERE education.DEGREE like :DEGREE AND education.MAJOR like :MAJOR AND "
-		+ "education.SCHOOL_NAME like :SCHOOL_NAME "
-		+ "AND (position1.POSITION_NAME like :POSITION OR position2.POSITION_NAME like :POSITION OR position3.POSITION_NAME like :POSITION) ", resultClass = ReportApplicantDTO.class),
+		+ "education.SCHOOL_NAME like :SCHOOL_NAME", resultClass = ReportApplicantDTO.class),
 		
 		@NamedNativeQuery(name = "REPORT_SEARCH_BY_MONTH", query = "SELECT "
 		+ "applicant.APPLICANT_ID AS id, "
@@ -136,6 +135,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 		+ "WHERE MONTH(applicant.APPLY_DATE) = :APPLY_DATE ", resultClass = ReportApplicantDTO.class)
 		
 })
+ 
 @Entity
 public class ReportApplicantDTO {
 

@@ -2,7 +2,6 @@ package com.aug.db.repositories;
 
 import java.io.Serializable;
 import java.text.ParseException;
-import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -11,8 +10,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.aug.db.dto.ApplicantDTO;
-import com.aug.db.dto.ReportApplicantDTO;
 import com.aug.db.dto.ApplicationDTO;
+import com.aug.db.dto.ReportApplicantDTO;
 import com.aug.db.entities.Applicant;
 
 @Repository(value = "applicantRepository")
@@ -53,19 +52,37 @@ public class ApplicantRepositoryImpl extends
 	}
 
 	@Override
-	public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, Double gpa) {
-		Query query = getCurrentSession().getNamedQuery("REPORT_SEARCH_BY_CRITERIA"); 
-		query.setParameter("POSITION", "%" + position + "%");
+	public List<ReportApplicantDTO> findReportByCriteria(Integer position, String degree, String major, String schoolName, Double gpa) {
+		Query query = getCurrentSession().getNamedQuery(
+				"REPORT_SEARCH_BY_CRITERIA");
+		String queryStr = query.getQueryString();
+		if (position > 0) {
+			queryStr = query.getQueryString();
+			queryStr += " AND (position1.ID = :POSITION OR position2.ID = :POSITION OR position3.ID = :POSITION ) ";
+			query = getCurrentSession().createSQLQuery(queryStr).addEntity(ReportApplicantDTO.class);
+			query.setParameter("POSITION", position);
+		}
+		if (gpa != null) {
+			queryStr = query.getQueryString();
+			queryStr += " AND education.GPA = :GPA";
+			query = getCurrentSession().createSQLQuery(queryStr).addEntity(ReportApplicantDTO.class);
+			query.setParameter("GPA", gpa);
+		}
+		query = getCurrentSession().createSQLQuery(queryStr).addEntity(ReportApplicantDTO.class);
+		if (position > 0) {
+			query.setParameter("POSITION", position);
+		}
+		if (gpa != null) {
+			query.setParameter("GPA", gpa);
+			System.out.println("TEST:::" + queryStr);
+		}
+
 		query.setParameter("DEGREE", "%" + degree + "%");
 		query.setParameter("MAJOR", "%" + major + "%");
 		query.setParameter("SCHOOL_NAME", "%"+ schoolName +"%");
-		if(gpa!=null){
-			String queryStr = query.getQueryString();
-			queryStr += " AND education.GPA = :GPA " ;
-			getCurrentSession().createSQLQuery(queryStr);
-			query.setParameter("GPA",gpa);
-		}
+		
 		List<ReportApplicantDTO> results = query.list();
+		//System.out.println("queryStr :"+ queryStr);
 		return results;
 	}
 	

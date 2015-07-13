@@ -21,7 +21,7 @@ public interface ApplicantRepository extends GenericRepository<Applicant, Serial
 	/*-------------------- report --------------------*/
 	public List<ReportApplicantDTO> reportApplicant();
 	
-	public List<ReportApplicantDTO> findReportByCriteria(String position, String degree, String major, String schoolName, Double gpa);
+	public List<ReportApplicantDTO> findReportByCriteria(Integer position, String degree, String major, String schoolName, Double gpa);
 
 	/*-------------------- Monthly report --------------------*/
 	public List<ReportApplicantDTO> findReportByMonth(Integer applyDate);

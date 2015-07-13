@@ -1,7 +1,6 @@
 package com.aug.controllers;
 
 import java.io.Serializable;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -160,22 +159,19 @@ public class ApplicantController implements Serializable {
 	/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
 	@RequestMapping(value = "/report/search", method = { RequestMethod.POST })
 	public @ResponseBody Object searchReportBy(
-			@RequestParam Integer position, String degree, String major, String schoolName, Double gpa) throws Exception {
-		List<ReportApplicantDTO> data;
-		if (position == -1 && degree.isEmpty() && major.isEmpty() && schoolName.isEmpty() && gpa==null){ 			
+			@RequestParam Integer position, String degree, String major, String schoolName, Double gpa)  {
+		
+		final List<ReportApplicantDTO> data;
+		
+		if (position == -1 && degree.equals("") && major.isEmpty() && schoolName.isEmpty() && gpa==null){ 			
 			data = applicantService.reportApplicant();
 		} else {
-			String positionName ="";
-			if (position != -1) {
-				positionName = positionService.findById(position).getPositionName();
-			}
-			System.out.println("positionName "+positionName+"  GPA: "+gpa);
-			data = applicantService.findReportByCriteria(positionName, degree, major, schoolName, gpa);// search by
+			data = applicantService.findReportByCriteria(position, degree, major, schoolName, gpa);// search by		
 		}
-		final List<ReportApplicantDTO> datas = data;
+		
 		return new Object() {
 			public List<ReportApplicantDTO> getData() {
-				return datas;
+				return data;
 			}
 		};
 	}
@@ -183,7 +179,7 @@ public class ApplicantController implements Serializable {
 	/*-------------------- preview reports function--------------------*/
 	@RequestMapping(value = "/report/preview", method = { RequestMethod.POST,RequestMethod.GET  })
 	public ModelAndView previewReport(@ModelAttribute SearchReportDTO searchReportDTO,
-			HttpSession session, Locale locale) throws Exception {
+			HttpSession session, Locale locale) {
 		List<ReportApplicantDTO> reportApplicantList =null;
 		Integer position = searchReportDTO.getPosition();
 		String degree = searchReportDTO.getDegree();
@@ -192,16 +188,10 @@ public class ApplicantController implements Serializable {
 		Double gpa = searchReportDTO.getGpa();
 		String reportType = searchReportDTO.getReportType();
 		System.out.println(position);
-		if (position == -1 && degree.isEmpty() && major.isEmpty() && schoolName.isEmpty() && gpa==null){ 			
+		if (position == -1 && degree.equals("") && major.isEmpty() && schoolName.isEmpty() && gpa==null){  			
 			reportApplicantList = applicantService.reportApplicant();
-			System.out.println(position);
 		}else {
-			String positionName ="";
-			if (position != -1) {
-				positionName = positionService.findById(searchReportDTO.getPosition()).getPositionName();
-			}
-			System.out.println("positionName "+positionName+"  GPA: "+gpa);
-			reportApplicantList = applicantService.findReportByCriteria(positionName, degree, major, schoolName, gpa);// search by
+			reportApplicantList = applicantService.findReportByCriteria(position, degree, major, schoolName, gpa);// search by
 		}
 		
 		Map<String, Object> parameterMap = new HashMap<String, Object>();
@@ -221,7 +211,7 @@ public class ApplicantController implements Serializable {
 		/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
 		@RequestMapping(value = "/report/searchMonth", method = { RequestMethod.POST })
 		public @ResponseBody Object searchReportByMonth(
-				@RequestParam Integer applyDate) throws Exception {
+				@RequestParam Integer applyDate) {
 			List<ReportApplicantDTO> data;
 			System.out.println("applyDate :" + applyDate);
 			if (applyDate == -1){ 			
@@ -239,13 +229,12 @@ public class ApplicantController implements Serializable {
 
 		@RequestMapping(value = "/reportMonthly/preview", method = { RequestMethod.POST })
 		public ModelAndView searchMonthlyReport(@ModelAttribute SearchReportDTO searchReportDTO,
-				HttpSession session, Locale locale) throws Exception {
+				HttpSession session, Locale locale) {
 			List<ReportApplicantDTO> reportApplicantList;
 			Integer applyDate = searchReportDTO.getApplyDate();
 			String reportType = searchReportDTO.getReportType();
 			if (applyDate==-1){ 			
 				reportApplicantList = applicantService.reportApplicant();
-				System.out.println(applyDate);
 			}else {
 				reportApplicantList = applicantService.findReportByMonth(applyDate);
 			}

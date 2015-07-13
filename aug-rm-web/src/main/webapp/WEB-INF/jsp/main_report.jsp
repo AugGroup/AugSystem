@@ -7,6 +7,7 @@
 <script type="text/javascript">
 $(document).ready(function () {
 	var dtReport;
+	$("#gpa").mask("9.99");
 	
 	//Search By Position and Show function 
 	$('#btn_search').off('click').on('click', function(){
@@ -74,7 +75,12 @@ $(document).ready(function () {
        <div class="col-md-2">
        		<div class="form-group" style="width:180px">
        			<label for="degree"><spring:message code="education.degree"/></label>
-       			<input type="text" class="form-control" id="degree" name="degree" placeholder="<spring:message code="education.text.degree"/>">
+       			<select name="degree" id='degree' class="form-control" >
+       				<option value ='' selected ='selected'><spring:message code="report.text.select"/></option>
+                    <option value ='Bachelor'>Bachelor</option>
+                    <option value ='Master'>Master</option>
+                    <option value ='Doctor'>Doctor</option>
+                </select>
        		</div>
        	</div>
        	<div class="col-md-2">
@@ -86,7 +92,7 @@ $(document).ready(function () {
    		<div class="col-md-1">
    			<div class="form-group" style="width:93px">
     			<label for="gpa"><spring:message code="education.gpa"/></label> <!-- step="0.1" -->
-				<input type="text"  class="form-control" id="gpa" name="gpa" placeholder="<spring:message code="education.text.gpa"/>">
+				<input type="text" class="form-control" maxlength="3" id="gpa" name="gpa" placeholder="0.00">
     		</div>
    		</div>
    		<div class="col-md-2">
