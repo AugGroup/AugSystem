@@ -166,7 +166,7 @@ public class ApplicantController implements Serializable {
 		if (position == -1 && degree.equals("") && major.isEmpty() && schoolName.isEmpty() && gpa==null){ 			
 			data = applicantService.reportApplicant();
 		} else {
-			data = applicantService.findReportByCriteria(position, degree, major, schoolName, gpa);// search by		
+			data = applicantService.findReportByCriteria(position, degree, major, schoolName, gpa);	
 		}
 		
 		return new Object() {
