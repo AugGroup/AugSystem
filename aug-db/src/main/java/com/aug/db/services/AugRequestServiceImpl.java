@@ -83,6 +83,8 @@ public class AugRequestServiceImpl implements AugRequestService {
 		return augRequest;
 	}
 
+	
+	/*--------------------For test SQLGrammaEception----------------------*/
 	@Override
 	public AugRequestDTO findAugRequestByIdTest(Integer id) {
 		AugRequestDTO augRequest = augRequestRepository.findAugRequestByIdTest(id);

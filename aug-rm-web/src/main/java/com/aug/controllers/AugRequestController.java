@@ -3,6 +3,8 @@ package com.aug.controllers;
 import java.io.Serializable;
 import java.util.List;
 
+import javassist.tools.web.BadHttpRequest;
+
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.exception.SQLGrammarException;
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -38,17 +41,17 @@ public class AugRequestController implements Serializable {
 	
 	
 	@RequestMapping(value = "/request", method = { RequestMethod.GET })
-	public String listRequest() throws NotFoundException { 
+	public String listRequest(){ 
 		return "augRequest";
 	}
 	
 
 	/*-------------------- Search All Request ----Exception handler-------------*/
 	@RequestMapping(value = "/request/search", method = { RequestMethod.GET })
-	public @ResponseBody Object findAllRequest() throws Exception, SQLGrammarException{
+	public @ResponseBody Object findAllRequest() throws Exception{
 		final List<AugRequestDTO> data = augRequestService.findAllAugRequest();	
 		if(data == null){
-			throw new IllegalArgumentException("Exception as JSON data (request not found)");
+			throw new NullPointerException();
 		}
 		return new Object() {
 			public List<AugRequestDTO> getData() {
@@ -61,12 +64,9 @@ public class AugRequestController implements Serializable {
 	/*-------------------- Search Request By Id--------------------*/
 	@RequestMapping(value = "/request/search/{id}", method = { RequestMethod.POST, RequestMethod.GET  })
 	public @ResponseBody AugRequestDTO searchRequestById(
-			@PathVariable Integer id, Model model) throws Exception {
-		//id = 500 ;
-		AugRequestDTO augRequest = augRequestService.findAugRequestByIdTest(id);
-		/*if(augRequest == null){
-			throw new IndexOutOfBoundsException("Exception as JSON data (request not found) IndexOutOfBoundsException");
-		}*/
+			@PathVariable Integer id, Model model) throws Exception{
+		AugRequestDTO augRequest = augRequestService.findAugRequestById(id);
+		
 		return augRequest;
 	}
 
@@ -91,6 +91,7 @@ public class AugRequestController implements Serializable {
 		augRequest.setYearExperience(augRequestDTO.getYearExperience());
 		augRequestService.create(augRequest);
 
+		
 		return augRequestDTO;
 	}
 
@@ -142,5 +143,8 @@ public class AugRequestController implements Serializable {
 		AugRequestDTO augRequest = augRequestService.findAugRequestByIdTest(id);
 		return augRequest;
 	}*/
+	
+
+	
 	
 }
