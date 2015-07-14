@@ -99,6 +99,7 @@ public class AugRequestController implements Serializable {
 	@RequestMapping(value = "/request/edit/{id}", method = { RequestMethod.POST })
 	public @ResponseBody AugRequestDTO editAugRequest(
 			@RequestBody AugRequestDTO augRequestDTO, @PathVariable Integer id) throws Exception {
+		
 		AugRequest augRequest = augRequestService.findById(augRequestDTO.getId());
 		augRequest.setId(augRequestDTO.getId());
 		augRequest.setRequestDate(augRequestDTO.getRequestDate());
