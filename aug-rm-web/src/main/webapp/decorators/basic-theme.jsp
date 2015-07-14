@@ -44,13 +44,15 @@
 <script src='<c:url value ="/static/resources/js/jquery.validate.min.js"/>'></script>
 <script src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
 	
-	<script src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
-	<script
-	src='<c:url value ="/static/resources/js/jquery.maskedinput.min.js" />'></script>
+<script src='<c:url value ="/static/resources/js/jquery.inputmask.bundle.js" />'></script>
+<script src='<c:url value ="/static/resources/js/jquery.inputmask.bundle.min.js" />'></script>
 	<%-- 
  	<script src='<c:url value ="/static/resources/js/fileinput.min.js"/>'></script>
 	<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/fileinput.min.css"/>" /> --%>
 	
+<script src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
+<script src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
+
 <script src='<c:url value ="/static/resources/js/dataTables.bootstrap.js"/>'></script>
 <link rel="stylesheet" type="text/css" media="all"
 	href="<c:url value ="/static/resources/css/dataTables.bootstrap.css"/>" />

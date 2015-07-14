@@ -7,8 +7,11 @@
 <script type="text/javascript">
 $(document).ready(function () {
 	var dtReport;
-	$.mask.definitions['~']='[0-4]';
-	$("#gpa").mask("~.99");
+	/*  $.mask.definitions['~']='[0-4]'; */
+	/* ("#gpa").mask("9.99");  */
+	/* $("#gpa").inputmask('decimal',{min:0, max:1});  */
+	$("#gpa").inputmask('Regex', { regex: "[0-3]\\.[0-9][0-9]?$ |4\\.00$" });
+	
 	
 	
 	//Search By Position and Show function 
@@ -94,7 +97,7 @@ $(document).ready(function () {
    		<div class="col-md-1">
    			<div class="form-group" style="width:93px">
     			<label for="gpa"><spring:message code="education.gpa"/></label> <!-- step="0.1" -->
-				<input type="text" class="form-control" maxlength="3" id="gpa" name="gpa" placeholder="0.00">
+				<input type="text" class="form-control" maxlength="5" id="gpa" name="gpa" placeholder="0.00">
     		</div>
    		</div>
    		<div class="col-md-2">
