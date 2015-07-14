@@ -64,13 +64,35 @@
     display: inline-block;
 }
 
-.test{
-	background: #ffffff;
+.user{
 	width: 183px;
 	height: 25px;
-  	margin-right: 20px;
-	float: right;
+	font-size: 16px;
+	font-family: "SemiBold";
+  	margin-right: 95px;
+ 	float: right;
 }
+
+.user2{
+	width: 183px;
+	height: 25px;
+	font-size: 16px;
+	font-weight: bold;
+	margin-right: 95px;
+	font-family: "SemiBold";
+}
+
+.headed{
+	background: #707070;
+	height: 65px;
+}
+
+a{color:white;}
+#footer{background:#FFCC00;}
+
+.bod{background:#E0DFDD;}
+.body{background:#E0DFDD;}
+
 </style>
 <%
 	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -78,63 +100,32 @@
 %>
 
 <body>
+<div class="headed">
 	<div class="headLogo" id="headId" >
 		<img src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png" alt="logo" style="width: 250px; height: 75px;"/>
-		<div class="test">
+		<a href="${pageContext.request.contextPath}/applicant"><span class="glyphicon glyphicon-home"></span></a>
+		<div class="user">
 			<a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a>
-		</div>
-<!-- 			<nav class="navbar navbar-inverse"> -->
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-						<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="https://www.augmentis.biz/">Augmentis</a>
-				</div>
-				<div class="collapse navbar-collapse" id="myNavbar">
-<!-- 					<ul class="nav navbar-nav"> -->
-<%-- 						<li><a href="${pageContext.request.contextPath}/applicant"><spring:message code="main.text.applicant"/></a></li> --%>
-<%-- 						<li><a href="${pageContext.request.contextPath}/request"><spring:message code="request.button"/></a></li> --%>
-<%-- 						<li><a href="${pageContext.request.contextPath}/approve"><spring:message code="request.approve"/></a></li> --%>
-<%-- 						<li><a href="${pageContext.request.contextPath}/report"><spring:message code="report.text"/></a></li> --%>
-<%-- 						<li><a href="${pageContext.request.contextPath}/monthlyReport"><spring:message code="report.text.monthly"/></a></li> --%>
-
-
-						<a href="${pageContext.request.contextPath}/applicant"><spring:message code="main.text.applicant"/></a>
-						<a href="${pageContext.request.contextPath}/request"><spring:message code="request.button"/></a>
-						<a href="${pageContext.request.contextPath}/approve"><spring:message code="request.approve"/></a>
-						<a href="${pageContext.request.contextPath}/report"><spring:message code="report.text"/></a>
-						
-						
-						<%-- <li class="dropdown">
-         					 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Report <span class="caret"></span></a>
-         					 <ul class="dropdown-menu">
-         					 	<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalEEReport">EE Report</a> </li>
-            					<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalDegreeReport">Degree Report</a> </li>
-            					<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalMajorReport">Major Report</a> </li>
-         					 	<li><a data-toggle="modal" data-backdrop="static" data-keyboard="false" data-target="#reportModal" href="${pageContext.request.contextPath}/modalPositionReport">Position Report</a> </li>
-        				</li> --%>
-<!-- 					</ul> -->
-<!-- 					<ul class="nav navbar-nav navbar-right"> -->
-
-							<a href="${request.getRequestURL}?locale=en">
-							<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 30px; height: 20px;"/></a>
-							<a href="${request.getRequestURL}?locale=th">		
-							<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 30px; height: 20px;" /></a>
-						<a href=""><span class="glyphicon glyphicon-user"></span> <%=name %></a>
-						
-<!-- 						<div class="test"> -->
-<%-- 						<a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a> --%>
-<!-- 						</div> -->
-<!-- 						style="position: absolute; left: 700px;" -->
-<!-- 					</ul> -->
+			<a href=""><span class="glyphicon glyphicon-user"></span> <%=name %></a>
+			
+			<div class="user2">
+				<a href="${request.getRequestURL}?locale=en">
+				<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 40px; height: 25px;"/></a>
+				<a href="${request.getRequestURL}?locale=th">		
+				<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 40px; height: 25px;" /></a>
+				<div class="btn-group">
+  					<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 75px; height: 25px;">
+    					Report <span class="caret"></span>
+  					</button>
+  				<ul class="dropdown-menu">
+    				<li><a href="${pageContext.request.contextPath}/report"><spring:message code="report.text"/></a></li>
+    				<li><a href="${pageContext.request.contextPath}/monthlyReport"><spring:message code="report.text.monthly"/></a></li>
+ 				 </ul>
 				</div>
 			</div>
-<!-- 		</nav> -->
-			
-			
+		</div>
 	</div>
-	<hr />
+</div>
 	<div class="body">
 		
 	<!-------------------- Report Modal -------------------->
@@ -145,16 +136,17 @@
 	</div>
 	
 	</div>
-	<div>
+	<div class="bod">
 		<div class="container">
 			<decorator:body />
 		</div>
 	</div>
-	<hr />
 
 	<div id="footer">
-		<div class="container">
-			<p class="text-muted credit">Copyright &copy; <a href="http://www.augmentis.biz/" > augmentis.biz</a></p>
+		<div class="text">
+				<div class="container">
+					<p class="text-muted credit">Copyright &copy; <a href="http://www.augmentis.biz/"> augmentis.biz</a></p>
+				</div>
 		</div>
 	</div>
 	
