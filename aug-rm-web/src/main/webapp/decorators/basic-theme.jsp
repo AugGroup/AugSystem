@@ -108,11 +108,12 @@ a{color:white;}
 	<div class="headLogo" id="headId" >
 		<img src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png" alt="logo" style="width: 250px; height: 75px;"/>
 		<a href="${pageContext.request.contextPath}/applicant"><span class="glyphicon glyphicon-home"></span></a>
+		<a href="${pageContext.request.contextPath}/request"><spring:message code="request.button"/></a>		
+		<a href="${pageContext.request.contextPath}/approve"><spring:message code="request.approve"/></a>
+
 		<div class="user">
 			<a href=""><span class="glyphicon glyphicon-user"></span> <%=name %></a>
 			<a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a>
-
-			
 			<div class="user2">
 				<a href="${request.getRequestURL}?locale=en">
 				<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 30px; height: 20px;"/></a>
