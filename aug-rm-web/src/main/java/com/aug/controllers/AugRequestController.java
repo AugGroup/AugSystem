@@ -1,6 +1,7 @@
 package com.aug.controllers;
 
 import java.io.Serializable;
+import java.sql.SQLException;
 import java.util.List;
 
 import javassist.tools.web.BadHttpRequest;
@@ -76,7 +77,6 @@ public class AugRequestController implements Serializable {
 	@RequestMapping(value = "/request/save", method = RequestMethod.POST)
 	public @ResponseBody AugRequestDTO saveRequest(
 			@RequestBody AugRequestDTO augRequestDTO,HttpSession session) throws Exception {
-		
 		AugRequest augRequest = new AugRequest();
 		augRequest.setId(augRequestDTO.getId());
 		augRequest.setRequestDate(augRequestDTO.getRequestDate());

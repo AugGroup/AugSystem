@@ -79,14 +79,14 @@ public class ExceptionControllerAdvice {
 
 	// Custom
 	// Exception
-	@ExceptionHandler(Exception.class)
+/*	@ExceptionHandler(Exception.class)
 	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 	@ResponseBody
 	public ExceptionVO handleException(Exception ex,
 			HttpServletResponse response) throws IOException {
 		ExceptionVO exceptionVO = new ExceptionVO("");
 		return exceptionVO;
-	}
+	}*/
 	
 
 }

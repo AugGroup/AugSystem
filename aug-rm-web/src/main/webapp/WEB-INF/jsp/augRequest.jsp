@@ -46,15 +46,15 @@
         		
    			 }, 
     		 error: function(jqXHR, textStatus, errorThrown){
-    			 window.location="/AugRmSystem/exception"
-	           /*  var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
+    			 window.location="/AugRmSystem/exception/custom"
+	            /* var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
 	            console.log(jqXHR.status);
 	            $('#exceptionModal')
 	            .find('.modal-header h3').html(jqXHR.status+' error').end()
 	            .find('.modal-body p>strong').html(exceptionVO.clazz).end()
 	            .find('.modal-body p>em').html(exceptionVO.method).end()
 	            .find('.modal-body p>span').html(exceptionVO.message).end()
-	            .modal('show'); */
+	            .modal('show');  */
 	            
 	        }  
     	});
