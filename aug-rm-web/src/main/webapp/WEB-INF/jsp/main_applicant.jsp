@@ -17,6 +17,14 @@
  	padding: 3px;
 }
 
+#add{font-family: "Regular";
+	 margin-right : 83px;
+	 float:right;
+}
+#dataTable{color:#414141}
+
+.container{font-family: "Regular";}
+
 </style>
 
 	<script type="text/javascript">
@@ -227,7 +235,7 @@
 		<!--Data Table for Applicant List -->
 		<c:set var="ss" value="display:none;"></c:set>
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
-		
+				<div id="data">
 				<table id="dataTable" class="cell-border" cellspacing="0" width="100%">
 					<thead>
 						<tr>
@@ -241,20 +249,18 @@
 							<th><spring:message code="main.edit"/></th>
 							<th><spring:message code="main.edit.info"/></th>
 							<th><spring:message code="main.delete"/></th>
-
-<%-- 							<th style="${ss}">Edit </th>
-							<th style="${ss}">Edit Info</th> --%>
 						</tr>
 					</thead>
 				</table>
+				</div>
 			
 		
 		</sec:authorize>
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
-		<div class="row">
+		<div class="row" id="add">
 			<div class="col-md-6"></div>
 			<div class="col-md-6">
-				<a type="submit" id="btn_add" class="btn btn-primary" href="${pageContext.request.contextPath}/informations" ><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></a>
+				<a type="submit" id="btn_add" class="btn btn-primary" href="${pageContext.request.contextPath}/informations"><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></a>
 			</div>
 		</div>
 		</sec:authorize>
@@ -291,11 +297,11 @@
 									<div class="row">
 										<div class="col-md-6">
 										<label for="inputAttitudeHome">Home</label> 
-										<input type="text" class="form-control" id="inputAttitudeHome" name="inputAttitudeHome" placeholder="Enter score">  													
+										<input type="text" class="form-control" id="inputAttitudeHome" name="inputAttitudeHome" placeholder="<spring:message code="edit.text.feild"/>">  													
 										</div>
 										<div class="col-md-6">
 									<label for="inputAttitudeOffice">Office</label> 
-									<input type="text" class="form-control" id="inputAttitudeOffice" name="inputAttitudeOffice" placeholder="Enter score">
+									<input type="text" class="form-control" id="inputAttitudeOffice" name="inputAttitudeOffice" placeholder="<spring:message code="edit.text.feild"/>">
     							</div>
     							</div>
     							</div>
@@ -321,6 +327,7 @@
 			</div>
 		</div>
 		</sec:authorize>
+		
 		<!-- Delete Model -->
 		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     		<div class="modal-dialog">
