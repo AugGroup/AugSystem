@@ -1,5 +1,7 @@
 package com.aug.db.dto;
 
+import java.util.Date;
+
 
 public class SearchReportDTO {
 	
@@ -9,7 +11,22 @@ public class SearchReportDTO {
 	private String major;
 	private String schoolName;
 	private Double gpa;
-	private Integer applyDate;
+	private Date applyDate;
+	private String startDate;
+	private String endDate;
+
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 	private String reportType;
 	
 	public Integer getPosition() {
@@ -48,10 +65,10 @@ public class SearchReportDTO {
 	public void setReportType(String reportType) {
 		this.reportType = reportType;
 	}
-	public Integer getApplyDate() {
+	public Date getApplyDate() {
 		return applyDate;
 	}
-	public void setApplyDate(Integer applyDate) {
+	public void setApplyDate(Date applyDate) {
 		this.applyDate = applyDate;
 	}
 	

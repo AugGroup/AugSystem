@@ -214,8 +214,6 @@ public class ApplicantDTO {
 	@Transient
 	private String position3Str;
 	
-	
-	
 	public String getAttitudeOffice() {
 		return attitudeOffice;
 	}

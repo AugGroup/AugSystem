@@ -49,13 +49,17 @@
 	<%-- 
  	<script src='<c:url value ="/static/resources/js/fileinput.min.js"/>'></script>
 	<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/fileinput.min.css"/>" /> --%>
-	
+
 <script src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
 <script src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
 
 <script src='<c:url value ="/static/resources/js/dataTables.bootstrap.js"/>'></script>
 <link rel="stylesheet" type="text/css" media="all"
 	href="<c:url value ="/static/resources/css/dataTables.bootstrap.css"/>" />
+	<script src='<c:url value ="/static/resources/js/moment.js"/>'></script>
+	<script src='<c:url value ="/static/resources/js/daterangepicker.js"/>'></script>
+	<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/daterangepicker-bs3.css"/>" /> 
+
 </head>
 <style>
 .error {

@@ -2,6 +2,7 @@ package com.aug.db.repositories;
 
 import java.io.Serializable;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -88,9 +89,13 @@ public class ApplicantRepositoryImpl extends
 	
 	
 	/*-------------------- Monthly report --------------------*/
-	public List<ReportApplicantDTO> findReportByMonth(Integer applyDate){
+	public List<ReportApplicantDTO> findReportByMonth(String startDate,String endDate){
 		Query query = getCurrentSession().getNamedQuery("REPORT_SEARCH_BY_MONTH"); 
-		query.setParameter("APPLY_DATE", applyDate);
+		if (startDate != null && endDate != null) {
+			query.setParameter("STARTDATE", startDate);
+			query.setParameter("ENDDATE", endDate);
+
+		}
 		List<ReportApplicantDTO> results = query.list();
 		return results;
 	}

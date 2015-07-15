@@ -210,42 +210,61 @@ public class ApplicantController implements Serializable {
 		/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
 		@RequestMapping(value = "/report/searchMonth", method = { RequestMethod.POST })
 		public @ResponseBody Object searchReportByMonth(
-				@RequestParam Integer applyDate) throws Exception{
-			List<ReportApplicantDTO> data;
-			System.out.println("applyDate :" + applyDate);
-			if (applyDate == -1){ 			
+				@RequestParam String applyDateStr) {
+			String date = applyDateStr;
+			 String[] parts = date.split(" \\- ");
+			 String startDate = parts[0];
+			 String endDate = parts[1];
+			 if(startDate!=null&&endDate!=null){
+			 System.out.println("startDate : "+startDate);
+			 System.out.println("endDate : "+endDate);
+			 }
+			
+			final List<ReportApplicantDTO> data ;
+			
+			if (applyDateStr == null){ 	
 				data = applicantService.reportApplicant();
 			} else {
-				data = applicantService.findReportByMonth(applyDate);// search by
+				data = applicantService.findReportByMonth(startDate,endDate);// search by
+				
+					System.out.println(" Size : "+ data.size());
 			}
-			final List<ReportApplicantDTO> datas = data;
+				
 			return new Object() {
 				public List<ReportApplicantDTO> getData() {
-					return datas;
+					for(ReportApplicantDTO dat :data ){
+						if(dat.getApplyDate()!=null){
+						System.out.println("DATA :" + dat.getId() + " DATE :" + dat.getApplyDate() + " NAME : " + dat.getFullNameEN() );
+						
+						}
+					}
+					
+				
+					return data;
 				}
 			};
 		}
 
-		@RequestMapping(value = "/reportMonthly/preview", method = { RequestMethod.POST })
-		public ModelAndView searchMonthlyReport(@ModelAttribute SearchReportDTO searchReportDTO,
-				HttpSession session, Locale locale)  throws Exception {
-			List<ReportApplicantDTO> reportApplicantList;
-			Integer applyDate = searchReportDTO.getApplyDate();
-			String reportType = searchReportDTO.getReportType();
-			if (applyDate==-1){ 			
-				reportApplicantList = applicantService.reportApplicant();
-			}else {
-				reportApplicantList = applicantService.findReportByMonth(applyDate);
-			}
-			
-			Map<String, Object> parameterMap = new HashMap<String, Object>();
-			parameterMap.put("date", new java.util.Date());
-			parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
-			ModelAndView mv = reportService.getReport(reportApplicantList,
-					"applicantSummaryMonthly", reportType, parameterMap);
-			return mv;
-		}
-	
+
+//		@RequestMapping(value = "/reportMonthly/preview", method = { RequestMethod.POST })
+//		public ModelAndView searchMonthlyReport(@ModelAttribute SearchReportDTO searchReportDTO,
+//				HttpSession session, Locale locale) {
+//			List<ReportApplicantDTO> reportApplicantList;
+//			Date applyDate = searchReportDTO.getApplyDate();
+//			String reportType = searchReportDTO.getReportType();
+//			if (applyDate==null){ 			
+//				reportApplicantList = applicantService.reportApplicant();
+//			}else {
+//				reportApplicantList = applicantService.findReportByMonth(applyDate);
+//			}
+//			
+//			Map<String, Object> parameterMap = new HashMap<String, Object>();
+//			parameterMap.put("date", new java.util.Date());
+//			parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
+//			ModelAndView mv = reportService.getReport(reportApplicantList,
+//					"applicantSummaryMonthly", reportType, parameterMap);
+//			return mv;
+//		}
 	/*-------------------- Position List--------------------*/
 	@ModelAttribute("positionRequest")
 	public List<Position> getPosition() {

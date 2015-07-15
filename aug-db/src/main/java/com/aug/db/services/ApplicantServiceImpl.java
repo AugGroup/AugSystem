@@ -2,6 +2,7 @@ package com.aug.db.services;
 
 import java.text.ParseException;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -151,8 +152,8 @@ public class ApplicantServiceImpl implements ApplicantService {
 		
 		/*-------------------- Monthly report --------------------*/
 		@Override
-		public List<ReportApplicantDTO> findReportByMonth(Integer applyDate) {
-			return applicantRepository.findReportByMonth(applyDate);
+		public List<ReportApplicantDTO> findReportByMonth(String startDate,String endDate) {
+			return applicantRepository.findReportByMonth(startDate,endDate);
 		}
 
 		@Override

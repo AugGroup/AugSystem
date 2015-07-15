@@ -6,7 +6,11 @@
 <script type="text/javascript">
 $(document).ready(function () {
 	var dtReport;
-	
+    $('input[name="applyDate"]').daterangepicker({
+        format: 'MM/DD/YYYY'
+        
+    });
+
 	//Search By Position and Show function 
 	$('#btn_search').off('click').on('click', function(){
 		if(dtReport){
@@ -19,13 +23,13 @@ $(document).ready(function () {
 					type:'POST',
 					url: '${pageContext.request.contextPath}/report/searchMonth',
 					data: function (d) {
-						d.applyDate = $('#applyDate').val(); 
-						console.log(d.applyDate);
+						d.applyDateStr = $('#applyDate').val();
+						console.log(d.applyDateStr);
 					},
 				},
 			columns : [
 			           {"data": "code"},
-				       {"data": "applyDate"},
+				       {"data": "applyDateStr"},
 				       {"data": "fullNameEN"},
 				       {"data": "positionName1"},
 				       {"data": "positionName2"},
@@ -52,23 +56,9 @@ $(document).ready(function () {
 <h1 align="center"> <spring:message code="report.text.monthly"/> </h1>
 <h4 > <spring:message code="report.text.search.month"/> </h4>
 	<div class="row">
-		<div class="col-md-2">
-			<div class="form-group" style="width:200px">
-				<select name="applyDate" id="applyDate" class="form-control">
-					<option value="-1"> <spring:message code="report.text.month"/> </option>
-					<option value="01"><spring:message code="report.text.jan"/></option>
-					<option value="02"><spring:message code="report.text.feb"/></option>
-					<option value="03"><spring:message code="report.text.mar"/></option>
-					<option value="04"><spring:message code="report.text.aprl"/></option>
-					<option value="05"><spring:message code="report.text.may"/></option>
-					<option value="06"><spring:message code="report.text.june"/></option>
-					<option value="07"><spring:message code="report.text.july"/></option>
-					<option value="08"><spring:message code="report.text.aug"/></option>
-					<option value="09"><spring:message code="report.text.sep"/></option>
-					<option value="10"><spring:message code="report.text.oct"/></option>
-					<option value="11"><spring:message code="report.text.nov"/></option>
-					<option value="12"><spring:message code="report.text.dec"/></option>
-            	</select>
+        <div class="col-md-2">
+			<div class="form-group">
+					<input type="text" name="applyDate" id="applyDate" class="form-control" />
             </div>
        </div>
    		<div class="col-md-1" align="left">

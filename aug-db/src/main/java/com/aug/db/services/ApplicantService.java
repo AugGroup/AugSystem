@@ -1,5 +1,6 @@
 package com.aug.db.services;
 
+import java.util.Date;
 import java.util.List;
 
 import com.aug.db.dto.ApplicantDTO;
@@ -39,11 +40,14 @@ public interface ApplicantService {
 	public List<ReportApplicantDTO> findReportByCriteria(Integer position, String degree, String major, String schoolName, Double gpa);
 
 	/*-------------------- Monthly report --------------------*/
-	public List<ReportApplicantDTO> findReportByMonth(Integer appyDate);
+	public List<ReportApplicantDTO> findReportByMonth(String startDate,String endDate);
 	
 	public void update(ApplicationDTO applicationDTO);
 
 	public ApplicationDTO getMaxApplicantId();
+
+	
+
 
 	
 }

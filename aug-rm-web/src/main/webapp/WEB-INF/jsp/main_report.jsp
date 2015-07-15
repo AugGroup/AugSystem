@@ -11,8 +11,7 @@ $(document).ready(function () {
 	/* ("#gpa").mask("9.99");  */
 	/* $("#gpa").inputmask('decimal',{min:0, max:1});  */
 	$("#gpa").inputmask('Regex', { regex: "[0-3]\\.[0-9][0-9]?$ |4\\.00$" });
-	
-	
+
 	
 	//Search By Position and Show function 
 	$('#btn_search').off('click').on('click', function(){
