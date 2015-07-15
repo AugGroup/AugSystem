@@ -101,8 +101,7 @@
 a{color:white;}
 #footer{background:#FFCC00;}
 
-.bod{background:#E0DFDD;}
-.body{background:#E0DFDD;}
+#body{background:#E0DFDD;}
 </style>
 <%
 	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -148,7 +147,7 @@ a{color:white;}
 	</div>
 	
 	</div>
-	<div class="bod">
+	<div id="body">
 		<div class="container">
 			<decorator:body />
 		</div>

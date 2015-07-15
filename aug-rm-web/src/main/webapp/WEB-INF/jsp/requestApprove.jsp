@@ -114,18 +114,18 @@
 
 <div class="container">
  	<div class="row">
-		<h1 align="center">Request Candidate</h1>
+		<h1 align="center"><spring:message code="edit.wait.consider"/></h1>request.title
 <!------------------- Request DataTable-------------------> 
     	<table id="requestTable" class="cell-border" style="width: 100%">
             <thead>
                 <tr>
-                    <th>Request Doc. ID</th>
-                    <th>Request Date</th>
-                    <th>Requester</th>
-                    <th>Position</th>
-                    <th>Number of Applicant</th>
-                    <th>Status</th>
-                    <th>Approve</th>
+                    <th><spring:message code="request.id"/></th>
+                    <th><spring:message code="request.date"/></th>
+                    <th><spring:message code="request.human"/></th>
+                    <th><spring:message code="info.position"/></th>
+                    <th><spring:message code="request.number"/></th>
+                    <th><spring:message code="main.status"/></th>
+                    <th><spring:message code="request.approve"/></th>
                 </tr>
             </thead>
          </table>
@@ -138,19 +138,19 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="ModalLabel">Approve Request</h4>
+                <h4 class="modal-title" id="ModalLabel"><spring:message code="request.ar"/></h4>
             </div>
             <div class="modal-body">
  				<div class="form-group">
- 					<label for="inputStatus">Approve Status</label>
+ 					<label for="inputStatus"><spring:message code="request.as"/></label>
                         <select name="inputStatus" id='inputStatus' class="form-control" >
-                            <option value ='New Request' selected ='selected'>New Request</option>
-                            <option value ='Approve'>Approve</option>
-                            <option value ='Not Approve'>Not Approve</option>
+                            <option value ='New Request' selected ='selected'><spring:message code="request.nr"/></option>
+                            <option value ='Approve'><spring:message code="edit.approve"/></option>
+                            <option value ='Not Approve'><spring:message code="edit.notApprove"/></option>
                         </select>
                     </div>  
-                <button  id="btn_approve_submit" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
-                <button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button  id="btn_approve_submit" type="button" class="btn btn-primary" data-dismiss="modal"><spring:message code="edit.button.save"/></button>
+                <button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">><spring:message code="button.cancel"/></button>
                 
             </div>
         </div>
@@ -178,7 +178,7 @@
                 	<div class="row">
                 		<div class="col-sm-4"></div>
                 		<div class="col-sm-2">
-							<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">><spring:message code="button.cancel"/></button>
             			</div>
             		</div>
             	</div>

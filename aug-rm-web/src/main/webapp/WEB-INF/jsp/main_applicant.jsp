@@ -21,9 +21,30 @@
 	 margin-right : 83px;
 	 float:right;
 }
-#dataTable{color:#414141}
+#dataTable{color:#414141;
+background-color: #ababab;}
+
+td {font-family: "Regular";
+    font-size: 18px;
+    color: #414141;
+    }
+    
+table.dataTable tr.odd{ background-color:#e7e7e7; }
+table.dataTable tr.even { background-color:#d6d6d6; }
 
 .container{font-family: "Regular";}
+
+#dataTable_previous{
+padding:3px;
+}
+
+#dataTable_next{
+padding:3px;
+}
+
+.paginate_button{
+padding: 3px;
+}
 
 </style>
 
@@ -59,6 +80,8 @@
 					dtApplicant = $('#dataTable').DataTable({
 						searching : true,
 						paging: true,
+						hover:false,
+						sort:false,
 						ajax : {
 							url : '${pageContext.request.contextPath}/applicant/search',
 							type : 'POST',
@@ -234,9 +257,10 @@
 		</div>
 		<!--Data Table for Applicant List -->
 		<c:set var="ss" value="display:none;"></c:set>
+<!-- 		class="cell-border" -->
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 				<div id="data">
-				<table id="dataTable" class="cell-border" cellspacing="0" width="100%">
+				<table id="dataTable" class="display" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th width="10%"><spring:message code="main.code"/></th>
