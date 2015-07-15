@@ -211,34 +211,21 @@ public class ApplicantController implements Serializable {
 		@RequestMapping(value = "/report/searchMonth", method = { RequestMethod.POST })
 		public @ResponseBody Object searchReportByMonth(@RequestParam String applyDateStr) {
 
+			String date = applyDateStr;
+			 String[] parts = date.split(" \\- ");
+			 String startDate = parts[0];
+			 String endDate = parts[1];
+			 if(startDate!=null&&endDate!=null){
+			 System.out.println("startDate : "+startDate);
+			 System.out.println("endDate : "+endDate);
+			 }
 			
-			final List<ReportApplicantDTO> data;
-			if (!applyDateStr.isEmpty()){
-				String date = applyDateStr;
-				String[] parts = date.split(" \\- ");
-				String startDate = parts[0];
-				String endDate = parts[1];
-				if(startDate!=null&&endDate!=null){
-				System.out.println("startDate : "+startDate);
-				System.out.println("endDate : "+endDate);
-			}
-				data = applicantService.findReportByMonth(startDate,endDate);// search by
-				
-				System.out.println(" Size : "+ data.size());
-				
-			} else {
-				data = applicantService.reportApplicant();
-
-			}
+			final List<ReportApplicantDTO> data = null ;
+			
+		
 				
 			return new Object() {
 				public List<ReportApplicantDTO> getData() {
-					for(ReportApplicantDTO dat :data ){
-						if(dat.getApplyDate()!=null){
-						System.out.println("DATA :" + dat.getId() + " DATE :" + dat.getApplyDate() + " NAME : " + dat.getFullNameEN() );
-						
-						}
-					}
 					return data;
 				}
 			};

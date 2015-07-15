@@ -7,13 +7,11 @@
 <script type="text/javascript">
 $(document).ready(function () {
 	var dtReport;
-	/*  $.mask.definitions['~']='[0-4]'; */
-	/* ("#gpa").mask("9.99");  */
-	/* $("#gpa").inputmask('decimal',{min:0, max:1});  */
+	//GPA pattern
 	$("#gpa").inputmask('Regex', { regex: "[0-3]\\.[0-9][0-9]?$ |4\\.00$" });
 
 	
-	//Search By Position and Show function 
+	//Search By Criteria and Show function 
 	$('#btn_search').off('click').on('click', function(){
 		if(dtReport){
 			dtReport.ajax.reload();
@@ -21,7 +19,7 @@ $(document).ready(function () {
 			dtReport = $('#reportTable').DataTable({
 				searching : false,
 				paging: true,
-				ajax : {
+				ajax :{
 					type:'POST',
 					url: '${pageContext.request.contextPath}/report/search',
 					data: function (d) {
@@ -32,7 +30,7 @@ $(document).ready(function () {
 						d.gpa = $('#gpa').val(); 
 					},
 				},
-			columns : [
+				columns : [
 			           {"data": "code"},
 				       {"data": "applyDate"},
 				       {"data": "fullNameEN"},
@@ -44,8 +42,9 @@ $(document).ready(function () {
 				       {"data": "gpa"},
 				       ]
 			});
+			
 		}
-		});
+	});
 	$('#btn_search').trigger("click");
 	
 	

@@ -145,7 +145,13 @@ public class AugRequestController implements Serializable {
 		return augRequest;
 	}*/
 	
-
+	
+	/*if(date!=null){
+		split + call search
+	}else
+		find all
+		
+*/
 	
 	
 }

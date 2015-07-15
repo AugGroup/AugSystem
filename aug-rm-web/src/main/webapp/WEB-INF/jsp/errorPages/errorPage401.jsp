@@ -7,4 +7,4 @@
 	<button type="submit" class="btn btn-lg btn-default"><span
 		class="glyphicon glyphicon-home"></span> Home</button>
 	
-</f:form><b>Resource Not Found Error Occured, please contact support.</b></h4>
+</f:form>

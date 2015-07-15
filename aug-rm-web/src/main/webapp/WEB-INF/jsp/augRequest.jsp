@@ -59,33 +59,7 @@
 	        }  
     	});
     	
-		/*validate date
-		$('#inputRequestDate').datepicker({
-			format: "dd/mm/yyyy",
-			startView: 2,
-			minDate: 0,
-			onSelect: function (date) {
-	            var date2 = $('#inputRequestDate').datepicker('getDate');
-	            date2.setDate(date2.getDate() + 1);
-	            $('#inputApproveDate').datepicker('setDate', date2);
-	            //sets minDate to dt1 date + 1
-	            $('#inputApproveDate').datepicker('option', 'minDate', date2);
-	        }
-		});
-		$('#inputApproveDate').datepicker({
-			format: "dd/mm/yyyy",
-			startView: 2,
-			onClose: function () {
-	            var dt1 = $('#inputRequestDate').datepicker('getDate');
-	            var dt2 = $('#inputApproveDate').datepicker('getDate');
-	            //check to prevent a user from entering a date below date of dt1
-	            if (dt2 <= dt1) {
-	                var minDate = $('#inputApproveDate').datepicker('option', 'minDate');
-	                $('#inputApproveDate').datepicker('setDate', minDate);
-	            }
-	        }
-			});
-			 */
+		
 			 
 		/*-------------------- Validate Request Form--------------------*/
 		$('#requestForm').validate({

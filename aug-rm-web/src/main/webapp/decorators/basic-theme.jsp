@@ -10,10 +10,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title></title>
 
-<script
-	src='<c:url value ="/static/resources/js/jquery-1.11.3.min.js" />'></script>
+<script src='<c:url value ="/static/resources/js/jquery-1.11.3.min.js" />'></script>
 <script src='<c:url value ="/static/resources/js/bootstrap.min.js"/>'></script>
 
 <link rel="stylesheet" type="text/css" media="all"
@@ -59,11 +57,6 @@
 	<script src='<c:url value ="/static/resources/js/moment.js"/>'></script>
 	<script src='<c:url value ="/static/resources/js/daterangepicker.js"/>'></script>
 	<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/daterangepicker-bs3.css"/>" /> 
-	
-<link rel="stylesheet" media="all"
-	href="<c:url value ="/static/resources/css/header.css"/>" />
-<link rel="stylesheet" media="all"
-	href="<c:url value ="/static/resources/css/main.css"/>" />
 
 </head>
 <style>
@@ -83,7 +76,7 @@
 	width: 183px;
 	height: 25px;
 	font-size: 16px;
-	font-family: 'SemiBold';
+	font-family: "SemiBold";
   	margin-right: 95px;
  	float: right;
 }
@@ -106,7 +99,7 @@
 a{color:white;}
 #footer{background:#FFCC00;}
 
-#body{background:#E0DFDD;}
+.body{background:#E0DFDD;}
 </style>
 <%
 	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -142,17 +135,8 @@ a{color:white;}
 		</div>
 	</div>
 </div>
-	<div class="body">
-		
-	<!-------------------- Report Modal -------------------->
-	<div class="modal fade" id="reportModal" tabindex="-1">
-		<div class="modal-dialog">
-			<div class="modal-content"></div>
-		</div>
-	</div>
 	
-	</div>
-	<div id="body">
+	<div class="body">
 		<div class="container">
 			<decorator:body />
 		</div>
@@ -166,14 +150,7 @@ a{color:white;}
 		</div>
 	</div>
 	
-<!-------------------- Modal -------------------->	
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('body').on('hidden.bs.modal', '.modal', function () {
-			  $(this).removeData('bs.modal');
-		});
-	});
-</script>
+
 	
 </body>
 </html>
