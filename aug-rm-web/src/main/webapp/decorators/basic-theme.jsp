@@ -59,6 +59,11 @@
 	<script src='<c:url value ="/static/resources/js/moment.js"/>'></script>
 	<script src='<c:url value ="/static/resources/js/daterangepicker.js"/>'></script>
 	<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/daterangepicker-bs3.css"/>" /> 
+	
+<link rel="stylesheet" media="all"
+	href="<c:url value ="/static/resources/css/header.css"/>" />
+<link rel="stylesheet" media="all"
+	href="<c:url value ="/static/resources/css/main.css"/>" />
 
 </head>
 <style>
@@ -78,7 +83,7 @@
 	width: 183px;
 	height: 25px;
 	font-size: 16px;
-	font-family: "SemiBold";
+	font-family: 'SemiBold';
   	margin-right: 95px;
  	float: right;
 }

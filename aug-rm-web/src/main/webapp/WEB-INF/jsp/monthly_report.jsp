@@ -7,7 +7,7 @@
 $(document).ready(function () {
 	var dtReport;
     $('input[name="applyDate"]').daterangepicker({
-        format: 'MM/DD/YYYY'
+        format: 'DD/MM/YYYY'
         
     });
 
@@ -29,7 +29,7 @@ $(document).ready(function () {
 				},
 			columns : [
 			           {"data": "code"},
-				       {"data": "applyDateStr"},
+				       {"data": "applyDate"},
 				       {"data": "fullNameEN"},
 				       {"data": "positionName1"},
 				       {"data": "positionName2"},

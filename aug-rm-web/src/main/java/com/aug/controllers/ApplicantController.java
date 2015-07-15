@@ -209,25 +209,26 @@ public class ApplicantController implements Serializable {
 		}
 		/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
 		@RequestMapping(value = "/report/searchMonth", method = { RequestMethod.POST })
-		public @ResponseBody Object searchReportByMonth(
-				@RequestParam String applyDateStr) {
-			String date = applyDateStr;
-			 String[] parts = date.split(" \\- ");
-			 String startDate = parts[0];
-			 String endDate = parts[1];
-			 if(startDate!=null&&endDate!=null){
-			 System.out.println("startDate : "+startDate);
-			 System.out.println("endDate : "+endDate);
-			 }
+		public @ResponseBody Object searchReportByMonth(@RequestParam String applyDateStr) {
+
 			
-			final List<ReportApplicantDTO> data ;
-			
-			if (applyDateStr == null){ 	
-				data = applicantService.reportApplicant();
-			} else {
+			final List<ReportApplicantDTO> data;
+			if (!applyDateStr.isEmpty()){
+				String date = applyDateStr;
+				String[] parts = date.split(" \\- ");
+				String startDate = parts[0];
+				String endDate = parts[1];
+				if(startDate!=null&&endDate!=null){
+				System.out.println("startDate : "+startDate);
+				System.out.println("endDate : "+endDate);
+			}
 				data = applicantService.findReportByMonth(startDate,endDate);// search by
 				
-					System.out.println(" Size : "+ data.size());
+				System.out.println(" Size : "+ data.size());
+				
+			} else {
+				data = applicantService.reportApplicant();
+
 			}
 				
 			return new Object() {
@@ -238,8 +239,6 @@ public class ApplicantController implements Serializable {
 						
 						}
 					}
-					
-				
 					return data;
 				}
 			};
