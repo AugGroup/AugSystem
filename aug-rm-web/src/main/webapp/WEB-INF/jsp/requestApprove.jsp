@@ -53,9 +53,9 @@
 				           {"data": "status"},
 				           {data: function (data) {
 				        	   if(data.status!="Approve"){
-				        	   		return '<button id="btn_approve" class="btn btn-primary" data-id="' + data.id + '" data-toggle="modal" data-target="#approveModal"> Approve </button>';				        
+				        	   		return '<button id="btn_approve" class="btn btn-primary" data-id="' + data.id + '" data-toggle="modal" data-target="#approveModal"> <spring:message code="edit.approve"/> </button>';				        
 				        	   }else {
-				        		   return '<button id="btn_approve" class="btn btn-primary" data-id="' + data.id + '" data-toggle="modal" data-target="#approveModal" disabled> Approve </button>';				        
+				        		   return '<button id="btn_approve" class="btn btn-primary" data-id="' + data.id + '" data-toggle="modal" data-target="#approveModal" disabled> <spring:message code="edit.approve"/> </button>';				        
 					        	};
 				        	}}
 				           ]
