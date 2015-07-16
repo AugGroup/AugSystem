@@ -26,22 +26,12 @@
 <script src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
 <title>Error 404 page</title>
 <style >
-.error {
-	color: #ff0000;
-}
-
 
 section {
 	height:80%;
 	background:#E0DFDD;
 	padding-top: 70px;
 }
-
-.container{
-	padding-right: 0px;
-	padding-left: 0px;
-}
-
 
 </style>
 

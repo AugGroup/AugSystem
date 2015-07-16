@@ -101,7 +101,7 @@
 	 <error-page>
 	 	<error-code>503</error-code>
     		<location>/WEB-INF/jsp/errorPages/error503.jsp</location>
-	 	</error-page>
+	 </error-page>
 	<error-page>
 		<location>/WEB-INF/jsp/errorPages/errorCustom.jsp</location>
 	</error-page>

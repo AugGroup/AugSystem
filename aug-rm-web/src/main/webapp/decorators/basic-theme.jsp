@@ -102,11 +102,14 @@
 }
 
 /* a{color:white;} */
-#footer{background:#FFCC00;}
+#footer{
+background:#FFCC00;
+}
 
 .body{
 	background:#E0DFDD;
-	margin-top: 95px;
+	/* margin-top: 95px; */
+	padding-top: 25px;
 }
 
 .container{
