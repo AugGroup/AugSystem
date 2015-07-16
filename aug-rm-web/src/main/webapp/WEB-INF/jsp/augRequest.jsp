@@ -114,12 +114,19 @@
         	        	  }
         	          },
         	          {data: function (data) {
-                        return '<button id="btn_edit" class="btn btn-warning" data-id="' + data.id + '" data-toggle="modal" data-target="#addRequestModal"><spring:message code="main.edit.info"/> <span class="glyphicon glyphicon-edit"></span></button>';
-                        }
+        	        	  if(data.status!="Approve"){
+                        	return '<button id="btn_edit" class="btn btn-warning" data-id="' + data.id + '" data-toggle="modal" data-target="#addRequestModal"><spring:message code="main.edit.info"/> <span class="glyphicon glyphicon-edit"></span></button>';
+        	        	  }else{
+        	        		  return '<button id="btn_edit" class="btn btn-warning" data-id="' + data.id + '" data-toggle="modal" data-target="#addRequestModal" disabled><spring:message code="main.edit.info"/> <span class="glyphicon glyphicon-edit"></span></button>';
+            	          }
+        	        	}
         	          },
         	          {data: function (data) {
-        	        	  return '<button id="btn_delete" class="btn btn-danger" data-id="' + data.id + '" data-toggle="modal" data-target="#deleteModal"><spring:message code="main.delete"/> <span class="glyphicon glyphicon-remove-sign"></span></button>';
-        	        	  }
+        	        	  if(data.status!="Approve"){
+        	        	 	  return '<button id="btn_delete" class="btn btn-danger" data-id="' + data.id + '" data-toggle="modal" data-target="#deleteModal"><spring:message code="main.delete"/> <span class="glyphicon glyphicon-remove-sign"></span></button>';
+        	        	  }else{
+        	        		  return '<button id="btn_delete" class="btn btn-danger" data-id="' + data.id + '" data-toggle="modal" data-target="#deleteModal" disabled ><spring:message code="main.delete"/> <span class="glyphicon glyphicon-remove-sign"></span></button>'}
+        	         	  }
         	          }
         	          ]
         		 });
