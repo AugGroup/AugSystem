@@ -15,6 +15,8 @@ $(document).ready(function () {
 	$('#btn_search').off('click').on('click', function(){
 		if(dtReport){
 			dtReport.ajax.reload();
+			console.log("Eiei");
+	
 		}else{
 			dtReport = $('#reportTable').DataTable({
 				searching : false,
@@ -42,16 +44,20 @@ $(document).ready(function () {
 				       {"data": "gpa"},
 				       ]
 			});
+			console.log("Umm");
 			
 		}
+		
 	});
-	$('#btn_search').trigger("click");
 	
+	
+	
+	$('#btn_search').trigger("click");
 	
  	 $(".submit").click(function() {
 		$("form[name='reportForm']").submit();
 	});
-	 	
+ 
 });
 	
 </script>

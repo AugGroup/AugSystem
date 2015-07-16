@@ -43,7 +43,7 @@ public class AugRequestController implements Serializable {
 	
 	@RequestMapping(value = "/request", method = { RequestMethod.GET })
 	public String listRequest(){ 
-		return "augRequest";
+		return "augReques";
 	}
 	
 
