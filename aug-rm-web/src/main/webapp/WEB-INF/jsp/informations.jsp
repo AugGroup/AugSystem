@@ -3,6 +3,15 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+h3{
+	left: auto;
+}
+
+
+
+
+</style>
 <script>
  	$(document).ready(function() {
 			$('.input-group.date').datepicker({startView : 2,
@@ -143,302 +152,106 @@
 			    });
 			 
 			 $('#informationApplicant').validate({
-				rules : {
-					firstNameTH : {
-						required : true
-						},
-					lastNameTH : {
-						required : true
-						},
-					nickNameTH : {
-						required : true
-						},
-					firstNameEN : {
-						required : true
-						},
-					lastNameEN : {
-						required : true
-						},
-					nickNameEN : {
-						required : true
-						},
-					tel : {
-						required : true,
-						},
-					email : {
-						required : true,
-						email : true
-						},
-					birthDate : {
-						required : true
-					},
-					placeBirth : {
-						required : true
-					},
-					age : {
-						required : true
-					},
-					religion : {
-						required : true
-					},
-					nationality : {
-						required : true
-					},
-					cardId : {
-						required : true
-					},
-					cardIssuedOffice : {
-						required : true
-					},
-					cardExpiryDate : {
-						required : true
-					},
-					height : {
-						required : true
-					},
-					weight : {
-						required : true
-					},
-					sex : {
-						required : true
-					},
-					applicantStatus : {
-						required : true
-					},
-					numberOfChildren : {
-						required : true
-					},
-					spouseName : {
-						required : true
-					},
-					marriageCertificateNo : {
-						required : true
-					},
-					issueOficeMarriage : {
-						required : true
-					},
-					marriageAddress : {
-						required : true
-					},
-					occupationMarriage : {
-						required : true
-					},
-					militaryStatus : {
-						required : true
-					},
-					militaryFromYear : {
-						required : true
-					},
-					militarytoYear : {
-						required : true
-					},
-					branchService : {
-						required : true
-					},
-					militaryPlace : {
-						required : true
-					},
-					militaryServiceNo : {
-						required : true
-					},
-					militaryReason : {
-						required : true
-					},
-					dateToBeDrafted : {
-						required : true
-					},
-					previousEmployers : {
- 						required : true
- 					},
- 					previousEmployersReason : {
- 						required : true
- 					},emergencyName : {
- 						required : true
- 					},
- 					emergencyTel : {
- 						required : true
- 					},
- 					emergencyAddress : {
- 						required : true
- 					},
- 					applyDate : {
- 						required : true
- 					}, 
- 					department : {
- 						required : true
- 					},
- 					positionFirstName : {
- 						required : true
- 					},
- 					position2 : {
- 						required : true
- 					},
- 					position3 : {
- 						required : true
- 					}, 
- 					expectedSalary : {
- 						required : true
- 					},
- 					nowEmployed : {
- 						required : true
- 					},
- 					employedName : {
- 						required : true
- 					},
- 					employedPosition : {
- 						required : true
- 					},
- 					employedRelation : {
- 						required : true
- 					}
+				rules : {firstNameTH : {required : true},
+					lastNameTH : {required : true},
+					nickNameTH : {required : true},
+					firstNameEN : {required : true},
+					lastNameEN : {required : true},
+					nickNameEN : {required : true},
+					tel : {required : true,},
+					email : {required : true,email : true},
+					birthDate : {required : true},
+					placeBirth : {required : true},
+					age : {required : true},
+					religion : {required : true},
+					nationality : {required : true},
+					cardId : {required : true},
+					cardIssuedOffice : {required : true},
+					cardExpiryDate : {required : true},
+					height : {required : true},
+					weight : {required : true},
+					sex : {required : true},
+					applicantStatus : {required : true},
+					numberOfChildren : {required : true},
+					spouseName : {required : true},
+					marriageCertificateNo : {required : true},
+					issueOficeMarriage : {required : true},
+					marriageAddress : {required : true},
+					occupationMarriage : {required : true},
+					militaryStatus : {required : true},
+					militaryFromYear : {required : true},
+					militarytoYear : {required : true},
+					branchService : {required : true},
+					militaryPlace : {required : true},
+					militaryServiceNo : {required : true},
+					militaryReason : {required : true},
+					dateToBeDrafted : {required : true},
+					previousEmployers : {required : true},
+ 					previousEmployersReason : {required : true},
+ 					emergencyName : {required : true},
+ 					emergencyTel : {required : true},
+ 					emergencyAddress : {required : true},
+ 					applyDate : {required : true}, 
+ 					department : {required : true},
+ 					positionFirstName : {required : true},
+ 					position2 : {required : true},
+ 					position3 : {required : true}, 
+ 					expectedSalary : {required : true},
+ 					nowEmployed : {required : true},
+ 					employedName : {required : true},
+ 					employedPosition : {required : true},
+ 					employedRelation : {required : true}
 				},
-				messages : {
-					firstNameTH : {
-						required : "<spring:message code="valid.info.first.th"/>"
-					},
-					lastNameTH : {
-						required : "<spring:message code="valid.info.last.th"/>"
-					},
-					nickNameTH : {
-						required : "<spring:message code="valid.info.nick.th"/>"
-					},
-					firstNameEN : {
-						required : "<spring:message code="valid.info.first.en"/>"
-					},
-					lastNameEN : {
-						required : "<spring:message code="valid.info.last.en"/>"
-					},
-					nickNameEN : {
-						required : "<spring:message code="valid.info.nick.en"/>"
-					},
-					tel : {
-						required : "<spring:message code="valid.ref.tel"/>"
-					},
-					email :{
-					      required: "<spring:message code="valid.info.email"/>",
-					      email: "<spring:message code="valid.info.email.format"/>"
-					    },
-					birthDate : {
-						required : "<spring:message code="valid.info.birthday"/>"
-					},
-					placeBirth : {
-						required : "<spring:message code="valid.info.place.birth"/>"
-					},
-					age : {
-						required : "<spring:message code="valid.info.age"/>"
-					},
-					religion : {
-						required : "<spring:message code="valid.info.religion"/>"
-					},
-					nationality : {
-						required : "<spring:message code="valid.info.nationality"/>"
-					},
-					cardId : {
-						required : "<spring:message code="valid.info.id.card"/>"
-					},
-					cardIssuedOffice : {
-						required : "<spring:message code="valid.fam.issued"/>"
-					},
-					cardExpiryDate : {
-						required : "<spring:message code="valid.info.expiry"/>"
-					},
-					height : {
-						required : "<spring:message code="valid.info.height"/>"
-					},
-					weight : {
-						required : "<spring:message code="valid.info.weight"/>"
-					},
-					sex : {
-						required : "<spring:message code="valid.info.sex"/>"
-					},
-					applicantStatus : {
-						required : "<spring:message code="valid.info.status"/>"
-					},
-					numberOfChildren : {
-						required : "<spring:message code="valid.info.child"/>"
-					},spouseName : {
-						required : "<spring:message code="valid.fam.spouse"/>"
-					},
-					marriageCertificateNo : {
-						required : "<spring:message code="valid.fam.marrige"/>"
-					},
-					issueOficeMarriage : {
-						required : "<spring:message code="valid.info.issued.milital"/>"
-					},
-					marriageAddress : {
-						required : "<spring:message code="valid.addr.addr"/>"
-					},
-					occupationMarriage : {
-						required : "<spring:message code="valid.fam.occ"/>"
-					},
-					militaryStatus : {
-						required : "<spring:message code="valid.info.status"/>"
-					},
-					militaryFromYear : {
-						required : "<spring:message code="valid.info.from"/>"
-					},
-					militarytoYear : {
-						required : "<spring:message code="valid.info.to"/>"
-					},
-					branchService : {
-						required : "<spring:message code="valid.info.branch"/>"
-					},
-					militaryPlace : {
-						required : "<spring:message code="valid.info.military.place"/>"
-					},
-					militaryServiceNo : {
-						required : "<spring:message code="valid.info.military.ser"/>"
-					},
-					militaryReason : {
-						required : "<spring:message code="valid.info.reason"/>"
-					},
-					dateToBeDrafted : {
-						required : "<spring:message code="valid.info.drafted"/>"
-					},emergencyName : {
-						required : "<spring:message code="valid.info.emer.name"/>"
-					},
-					emergencyTel : {
-						required : "<spring:message code="valid.info.emer.tel"/>"
-					},
-					emergencyAddress : {
-						required : "<spring:message code="valid.info.emer.addr"/>"
-					},applyDate : {
-						required : "<spring:message code="valid.info.apply.date"/>"
-					} ,
-					department : {
-						required : "<spring:message code="valid.info.dep"/>"
-					},
-					position1 : {
-						required : "<spring:message code="valid.info.pos1"/>"
-					},
-					position2 : {
-						required : "<spring:message code="valid.info.ask"/>"
-					},
-					position3 : {
-						required : "<spring:message code="valid.info.pos2"/>"
-					} ,
-					expectedSalary : {
-						required : "<spring:message code="valid.info.salary"/>"
-					},
-					nowEmployed : {
-						required : "<spring:message code="valid.info.ask"/>"
-					},
-					employedName : {
-						required : "<spring:message code="valid.ref.name"/>"
-					},
-					employedPosition : {
-						required : "<spring:message code="valid.ex.position"/>"
-					},
-					employedRelation : {
-						required : "<spring:message code="valid.info.relation"/>"
-					},
-					previousEmployers : {
- 						required :  "<spring:message code="valid.info.pre.emp"/>"
- 					},
- 					previousEmployersReason : {
- 						required :  "<spring:message code="valid.ex.reason"/>"
- 					}
-					
+				messages : {firstNameTH : {required : "<spring:message code="valid.info.first.th"/>"},
+					lastNameTH : {required : "<spring:message code="valid.info.last.th"/>"},
+					nickNameTH : {required : "<spring:message code="valid.info.nick.th"/>"},
+					firstNameEN : {required : "<spring:message code="valid.info.first.en"/>"},
+					lastNameEN : {required : "<spring:message code="valid.info.last.en"/>"},
+					nickNameEN : {required : "<spring:message code="valid.info.nick.en"/>"},
+					tel : {required : "<spring:message code="valid.ref.tel"/>"},
+					email :{required: "<spring:message code="valid.info.email"/>",
+					      email: "<spring:message code="valid.info.email.format"/>"},
+					birthDate : {required : "<spring:message code="valid.info.birthday"/>"},
+					placeBirth : {required : "<spring:message code="valid.info.place.birth"/>"},
+					age : {required : "<spring:message code="valid.info.age"/>"},
+					religion : {required : "<spring:message code="valid.info.religion"/>"},
+					nationality : {required : "<spring:message code="valid.info.nationality"/>"},
+					cardId : {required : "<spring:message code="valid.info.id.card"/>"},
+					cardIssuedOffice : {required : "<spring:message code="valid.fam.issued"/>"},
+					cardExpiryDate : {required : "<spring:message code="valid.info.expiry"/>"},
+					height : {required : "<spring:message code="valid.info.height"/>"},
+					weight : {required : "<spring:message code="valid.info.weight"/>"},
+					sex : {required : "<spring:message code="valid.info.sex"/>"},
+					applicantStatus : {required : "<spring:message code="valid.info.status"/>"},
+					numberOfChildren : {required : "<spring:message code="valid.info.child"/>"},
+					spouseName : {required : "<spring:message code="valid.fam.spouse"/>"},
+					marriageCertificateNo : {required : "<spring:message code="valid.fam.marrige"/>"},
+					issueOficeMarriage : {required : "<spring:message code="valid.info.issued.milital"/>"},
+					marriageAddress : {required : "<spring:message code="valid.addr.addr"/>"},
+					occupationMarriage : {required : "<spring:message code="valid.fam.occ"/>"},
+					militaryStatus : {required : "<spring:message code="valid.info.status"/>"},
+					militaryFromYear : {required : "<spring:message code="valid.info.from"/>"},
+					militarytoYear : {required : "<spring:message code="valid.info.to"/>"},
+					branchService : {required : "<spring:message code="valid.info.branch"/>"},
+					militaryPlace : {required : "<spring:message code="valid.info.military.place"/>"},
+					militaryServiceNo : {required : "<spring:message code="valid.info.military.ser"/>"},
+					militaryReason : {required : "<spring:message code="valid.info.reason"/>"},
+					dateToBeDrafted : {required : "<spring:message code="valid.info.drafted"/>"},
+					emergencyName : {required : "<spring:message code="valid.info.emer.name"/>"},
+					emergencyTel : {required : "<spring:message code="valid.info.emer.tel"/>"},
+					emergencyAddress : {required : "<spring:message code="valid.info.emer.addr"/>"},
+					applyDate : {required : "<spring:message code="valid.info.apply.date"/>"},
+					department : {required : "<spring:message code="valid.info.dep"/>"},
+					position1 : {required : "<spring:message code="valid.info.pos1"/>"},
+					position2 : {required : "<spring:message code="valid.info.ask"/>"},
+					position3 : {required : "<spring:message code="valid.info.pos2"/>"},
+					expectedSalary : {required : "<spring:message code="valid.info.salary"/>"},
+					nowEmployed : {required : "<spring:message code="valid.info.ask"/>"},
+					employedName : {required : "<spring:message code="valid.ref.name"/>"},
+					employedPosition : {required : "<spring:message code="valid.ex.position"/>"},
+					employedRelation : {required : "<spring:message code="valid.info.relation"/>"},
+					previousEmployers : {required :  "<spring:message code="valid.info.pre.emp"/>"},
+ 					previousEmployersReason : {required :  "<spring:message code="valid.ex.reason"/>"}
 				}
 			});
 
@@ -459,10 +272,12 @@
 	</c:choose>
 
 <f:form id="informationApplicant" name="informationApplicant" action="${pageContext.request.contextPath}/${actionName}"
-		modelAttribute="applicant" method="post" enctype="multipart/form-data" class="form-inline" >
+		modelAttribute="applicant" method="post" enctype="multipart/form-data" class="form-group" >
 		<f:hidden path="id" />
 	<div class="row">
-		<div class="col-md-6">
+	
+		<div class="col-md-4"><h3>INFORMATION</h3></div><br />
+		
 			 <div class="form-group">
 			 	<spring:message code="info.photograph"/><br><br>
 	<c:choose>
@@ -733,8 +548,8 @@
 
 			<br>
 			<br>
- 	<div class="row">
-		<div class="col-md-6">
+  	<div class="row">
+		<div class="col-md-4">
 			<label for="applyDate"><span class="glyphicon glyphicon-calendar"></span><spring:message code="info.apply.date"/></label>
 			<div class="input-group date">
 				<f:input path="applyDate" id="applyDate" name="applyDate"
