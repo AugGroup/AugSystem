@@ -1,19 +1,13 @@
 package com.aug.controllers;
 
 import java.io.Serializable;
-import java.sql.SQLException;
 import java.util.List;
-
-import javassist.tools.web.BadHttpRequest;
 
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.exception.SQLGrammarException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.HttpMediaTypeNotSupportedException;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,7 +45,7 @@ public class AugRequestController implements Serializable {
 	@RequestMapping(value = "/request/search", method = { RequestMethod.GET })
 	public @ResponseBody Object findAllRequest() throws Exception{
 		final List<AugRequestDTO> data = augRequestService.findAllAugRequest();	
-		if(data == null){
+		if(data != null){
 			throw new NullPointerException();
 		}
 		return new Object() {

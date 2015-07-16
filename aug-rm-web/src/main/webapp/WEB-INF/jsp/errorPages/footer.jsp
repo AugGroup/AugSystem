@@ -3,14 +3,13 @@
       <style>
     
     #footer-menu {
-	padding: 10px 0;
-	overflow: hidden
+	overflow: hidden;
 	}
 	
 	.footer {
-	  	position: absolute
+	  	position: absolute;
         width: 100%;
-        height: 40px;
+        height: 30px;
         background-color: #ffc000;
     }
     

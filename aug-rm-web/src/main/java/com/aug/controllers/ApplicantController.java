@@ -238,6 +238,33 @@ public class ApplicantController implements Serializable {
 			};  
 		}
 
+		@RequestMapping(value = "/reportMonthly/preview", method = { RequestMethod.POST })
+		public ModelAndView searchMonthlyReport(@ModelAttribute SearchReportDTO searchReportDTO,
+				HttpSession session, Locale locale) {
+			List<ReportApplicantDTO> reportApplicantList=null;
+			String applyDate = searchReportDTO.getApplyDateStr();
+
+			String reportType = searchReportDTO.getReportType();
+			if(!applyDate.isEmpty()){
+					 String dateStr = applyDate;
+					 System.out.println("dateStr :"+dateStr);
+					 String[] parts = dateStr.split(" \\- ");
+					 String startDate = parts[0];
+					 System.out.println("startDate : "+startDate);
+					 String endDate = parts[1];
+					 System.out.println("endDate : "+endDate);
+					 System.out.println("endDate123 : ");
+				 reportApplicantList = applicantService.findReportByMonth(startDate, endDate);
+			}else {
+				 reportApplicantList = applicantService.reportApplicant();
+		}
+			Map<String, Object> parameterMap = new HashMap<String, Object>();
+			parameterMap.put("date", new java.util.Date());
+			parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
+			ModelAndView mv = reportService.getReport(reportApplicantList,
+					"applicantSummaryMonthly", reportType, parameterMap);
+			return mv;
+		}
 	/*-------------------- Position List--------------------*/
 	@ModelAttribute("positionRequest")
 	public List<Position> getPosition() {
