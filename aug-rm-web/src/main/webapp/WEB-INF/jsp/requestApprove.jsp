@@ -118,7 +118,7 @@
 
 <div class="container">
  	<div class="row">
-		<h1 align="center"><spring:message code="edit.wait.consider"/></h1>request.title
+		<h1 align="center"><spring:message code="request.title.approve"/></h1>
 <!------------------- Request DataTable-------------------> 
     	<table id="requestTable" class="cell-border" style="width: 100%">
             <thead>
