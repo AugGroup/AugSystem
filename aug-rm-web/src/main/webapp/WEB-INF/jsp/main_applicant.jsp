@@ -8,8 +8,7 @@
 <style type="text/css">
 
 #search_row{
-	margin-top:95px;
-	margin: 30px;
+	margin:30px;
 }
  .error{
      color :red;
@@ -34,7 +33,6 @@ table.dataTable tr.odd{ background-color:#e7e7e7; }
 table.dataTable tr.even { background-color:#d6d6d6; }
 
 .container{
-	margin-left: 40px;
 	font-family: "Regular";
 }
 
@@ -48,6 +46,17 @@ padding:3px;
 
 .paginate_button{
 padding: 3px;
+}
+
+#table{
+	padding: 15px 5px 15px 5px;
+	background: #E0DFDD;;
+
+}
+
+#btn_add{
+margin-top: 15px;
+margin-left: 799px;
 }
 
 </style>
@@ -263,7 +272,8 @@ padding: 3px;
 		<c:set var="ss" value="display:none;"></c:set>
 <!-- 		class="cell-border" -->
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
-				<table id="dataTable" class="display" cellspacing="0" width="100%">
+			<div id="table">
+				<table id="dataTable" class="display" cellspacing="0" width="50%">
 					<thead>
 						<tr>
 							<th width="10%"><spring:message code="main.code"/></th>
@@ -279,16 +289,16 @@ padding: 3px;
 						</tr>
 					</thead>
 				</table>
-		</sec:authorize>
-		
-		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
-		<div class="row" id="add">
-			<div class="col-md-6"></div>
-			<div class="col-md-6">
-				<a type="submit" id="btn_add" class="btn btn-primary" href="${pageContext.request.contextPath}/informations"><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></a>
+				
+<!-- 				<div class="row"> -->
+<!-- 					<div class="col-md-6"></div> -->
+<!-- 					<div class="col-md-6"> -->
+						<a type="submit" id="btn_add" class="btn btn-warning" href="${pageContext.request.contextPath}/informations"><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></a>
+<!-- 					</div> -->
+<!-- 				</div> -->
 			</div>
-		</div>
 		</sec:authorize>
+
 		
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<!-- Modal of Edit Status and Score-->	

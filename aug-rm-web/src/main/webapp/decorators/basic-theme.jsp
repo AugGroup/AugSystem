@@ -96,6 +96,10 @@
 	font-weight: bold;
 }
 
+.btn btn-sm btn-info dropdown-toggle{
+	background: #707070;
+}
+
 .headed{
 	background: #707070;
 	height: 65px;
@@ -106,22 +110,21 @@
 background:#FFCC00;
 }
 
+p{
+
+	float:right;
+}
+
 .body{
-	background:#E0DFDD;
-	/* margin-top: 95px; */
 	padding-top: 25px;
+	background:#CAC9C7;
 }
 
 .container{
+	margin-left: 20px;
+	margin-right: 20px;
 	padding-right: 0px;
 	padding-left: 0px;
-}
-
-#flag{
-	width: 85px;
-	height: 25px;
-	margin: 0px;
-
 }
 
 </style>
