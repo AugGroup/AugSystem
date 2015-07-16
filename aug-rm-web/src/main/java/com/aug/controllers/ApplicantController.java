@@ -3,6 +3,8 @@ package com.aug.controllers;
 import java.io.Serializable;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -236,20 +238,15 @@ public class ApplicantController implements Serializable {
 			};  
 		}
 
-
 		@RequestMapping(value = "/reportMonthly/preview", method = { RequestMethod.POST })
 		public ModelAndView searchMonthlyReport(@ModelAttribute SearchReportDTO searchReportDTO,
 				HttpSession session, Locale locale) {
 			List<ReportApplicantDTO> reportApplicantList=null;
-			Date applyDate = searchReportDTO.getApplyDate();
-			System.out.println("applyDate :"+applyDate);
+			String applyDate = searchReportDTO.getApplyDateStr();
+
 			String reportType = searchReportDTO.getReportType();
-//			if(!applyDate.isEmpty()){
-			if(applyDate!=null){
-					 Format formatter = new SimpleDateFormat("MM-dd-yyyy");
-					 String applyDateStr = formatter.format(applyDate);
-					 System.out.println("applyDateStr :"+applyDateStr);
-					 String dateStr = applyDateStr;
+			if(!applyDate.isEmpty()){
+					 String dateStr = applyDate;
 					 System.out.println("dateStr :"+dateStr);
 					 String[] parts = dateStr.split(" \\- ");
 					 String startDate = parts[0];
@@ -257,11 +254,9 @@ public class ApplicantController implements Serializable {
 					 String endDate = parts[1];
 					 System.out.println("endDate : "+endDate);
 					 System.out.println("endDate123 : ");
-					 
 				 reportApplicantList = applicantService.findReportByMonth(startDate, endDate);
 			}else {
 				 reportApplicantList = applicantService.reportApplicant();
-				
 		}
 			Map<String, Object> parameterMap = new HashMap<String, Object>();
 			parameterMap.put("date", new java.util.Date());

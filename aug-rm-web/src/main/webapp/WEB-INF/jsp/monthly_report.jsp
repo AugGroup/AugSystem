@@ -6,7 +6,7 @@
 <script type="text/javascript">
 $(document).ready(function () {
 	var dtReport;
-    $('input[name="applyDate"]').daterangepicker({
+    $('input[name="applyDateStr"]').daterangepicker({
         format: 'DD/MM/YYYY'
         
     });
@@ -23,7 +23,7 @@ $(document).ready(function () {
 					type:'POST',
 					url: '${pageContext.request.contextPath}/report/searchMonth',
 					data: function (d) {
-						d.applyDateStr = $('#applyDate').val();
+						d.applyDateStr = $('#applyDateStr').val();
 						console.log(d.applyDateStr);
 					},
 				},
@@ -58,7 +58,7 @@ $(document).ready(function () {
 	<div class="row">
         <div class="col-md-2">
 			<div class="form-group">
-					<input type="text" name="applyDate" id="applyDate" class="form-control" />
+					<input type="text" name="applyDateStr" id="applyDateStr" class="form-control" />
             </div>
        </div>
    		<div class="col-md-1" align="left">

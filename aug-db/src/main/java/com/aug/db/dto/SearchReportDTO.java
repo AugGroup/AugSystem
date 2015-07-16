@@ -11,14 +11,15 @@ public class SearchReportDTO {
 	private String major;
 	private String schoolName;
 	private Double gpa;
-	private Date applyDate;
-//	private String applyDate;
-//	public String getApplyDate() {
-//		return applyDate;
-//	}
-//	public void setApplyDateStr(String applyDate) {
-//		this.applyDate = applyDate;
-//	}
+//	private Date applyDate;
+	private String applyDateStr;
+
+	public String getApplyDateStr() {
+		return applyDateStr;
+	}
+	public void setApplyDateStr(String applyDateStr) {
+		this.applyDateStr = applyDateStr;
+	}
 	private String startDate;
 	private String endDate;
 
@@ -72,12 +73,12 @@ public class SearchReportDTO {
 	public void setReportType(String reportType) {
 		this.reportType = reportType;
 	}
-	public Date getApplyDate() {
-		return applyDate;
-	}
-	public void setApplyDate(Date applyDate) {
-		this.applyDate = applyDate;
-	}
+//	public Date getApplyDate() {
+//		return applyDate;
+//	}
+//	public void setApplyDate(Date applyDate) {
+//		this.applyDate = applyDate;
+//	}
 	
 
 }
