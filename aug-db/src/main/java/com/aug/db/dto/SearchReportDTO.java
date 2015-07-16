@@ -12,6 +12,13 @@ public class SearchReportDTO {
 	private String schoolName;
 	private Double gpa;
 	private Date applyDate;
+//	private String applyDate;
+//	public String getApplyDate() {
+//		return applyDate;
+//	}
+//	public void setApplyDateStr(String applyDate) {
+//		this.applyDate = applyDate;
+//	}
 	private String startDate;
 	private String endDate;
 

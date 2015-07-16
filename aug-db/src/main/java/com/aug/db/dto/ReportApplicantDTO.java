@@ -132,7 +132,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 		+ "LEFT JOIN POSITION position1 ON applicant.POSITION1_ID = position1.ID "
 		+ "LEFT JOIN POSITION position2 ON applicant.POSITION2_ID = position2.ID " 
 		+ "LEFT JOIN POSITION position3 ON applicant.POSITION3_ID = position3.ID "
-		+ "WHERE applicant.APPLY_DATE BETWEEN STR_TO_DATE( :STARTDATE,'DD/MM/YYYY') AND STR_TO_DATE( :ENDDATE,'DD/MM/YYYY')", resultClass = ReportApplicantDTO.class)
+		+ "WHERE applicant.APPLY_DATE BETWEEN STR_TO_DATE( :STARTDATE,'%d/%m/%Y') AND STR_TO_DATE( :ENDDATE,'%d/%m/%Y') ", resultClass = ReportApplicantDTO.class)
 		
 })
  
@@ -243,33 +243,33 @@ public class ReportApplicantDTO {
 	@Transient
 	private String reportType;
 	
-//	@Transient
-//	private String applyDateStr;
-//	
-//	@Transient
-//	private String startDate;
-//	
-//	@Transient
-//	private String endDate;
-//
-//	public String getApplyDateStr() {
-//		return applyDateStr;
-//	}
-//	public void setApplyDateStr(String applyDateStr) {
-//		this.applyDateStr = applyDateStr;
-//	}
-//	public String getStartDate() {
-//		return startDate;
-//	}
-//	public void setStartDate(String startDate) {
-//		this.startDate = startDate;
-//	}
-//	public String getEndDate() {
-//		return endDate;
-//	}
-//	public void setEndDate(String endDate) {
-//		this.endDate = endDate;
-//	}
+	@Transient
+	private String applyDateStr;
+	
+	@Transient
+	private String startDate;
+	
+	@Transient
+	private String endDate;
+
+	public String getApplyDateStr() {
+		return applyDateStr;
+	}
+	public void setApplyDateStr(String applyDateStr) {
+		this.applyDateStr = applyDateStr;
+	}
+	public String getStartDate() {
+		return startDate;
+	}
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+	public String getEndDate() {
+		return endDate;
+	}
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
 	public Integer getId() {
 		return id;
 	}

@@ -1,6 +1,7 @@
 package com.aug.controllers;
 
 import java.io.Serializable;
+import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -14,6 +15,7 @@ import net.sf.jasperreports.engine.JRParameter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.acls.model.NotFoundException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -209,48 +211,65 @@ public class ApplicantController implements Serializable {
 		}
 		/*-------------------- search all applicant and search applicant for Report dataTable--------------------*/
 		@RequestMapping(value = "/report/searchMonth", method = { RequestMethod.POST })
-		public @ResponseBody Object searchReportByMonth(@RequestParam String applyDateStr) {
-
-			String date = applyDateStr;
-			 String[] parts = date.split(" \\- ");
-			 String startDate = parts[0];
-			 String endDate = parts[1];
-			 if(startDate!=null&&endDate!=null){
-			 System.out.println("startDate : "+startDate);
-			 System.out.println("endDate : "+endDate);
-			 }
+		public @ResponseBody Object searchReportByMonth(
+				@RequestParam String applyDateStr) throws NotFoundException{
 			
-			final List<ReportApplicantDTO> data = null ;
+			List<ReportApplicantDTO> data;
 			
-		
+			if(!applyDateStr.isEmpty()){
+				String dateStr = applyDateStr;
+				 String[] parts = dateStr.split(" \\- ");
+				 String startDate = parts[0];
+				 String endDate = parts[1];
+						 System.out.println("startDate : "+startDate);
+						 System.out.println("endDate : "+endDate);
+				 	data = applicantService.findReportByMonth(startDate, endDate);
+			}else {
+				data = applicantService.reportApplicant();
 				
+			}
+			final List<ReportApplicantDTO> datas = data ;
 			return new Object() {
-				public List<ReportApplicantDTO> getData() {
-					return data;
+				public List<ReportApplicantDTO> getData() {				
+					return datas;
 				}
-			};
+			};  
 		}
 
 
-//		@RequestMapping(value = "/reportMonthly/preview", method = { RequestMethod.POST })
-//		public ModelAndView searchMonthlyReport(@ModelAttribute SearchReportDTO searchReportDTO,
-//				HttpSession session, Locale locale) {
-//			List<ReportApplicantDTO> reportApplicantList;
-//			Date applyDate = searchReportDTO.getApplyDate();
-//			String reportType = searchReportDTO.getReportType();
-//			if (applyDate==null){ 			
-//				reportApplicantList = applicantService.reportApplicant();
-//			}else {
-//				reportApplicantList = applicantService.findReportByMonth(applyDate);
-//			}
-//			
-//			Map<String, Object> parameterMap = new HashMap<String, Object>();
-//			parameterMap.put("date", new java.util.Date());
-//			parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
-//			ModelAndView mv = reportService.getReport(reportApplicantList,
-//					"applicantSummaryMonthly", reportType, parameterMap);
-//			return mv;
-//		}
+		@RequestMapping(value = "/reportMonthly/preview", method = { RequestMethod.POST })
+		public ModelAndView searchMonthlyReport(@ModelAttribute SearchReportDTO searchReportDTO,
+				HttpSession session, Locale locale) {
+			List<ReportApplicantDTO> reportApplicantList=null;
+			Date applyDate = searchReportDTO.getApplyDate();
+			System.out.println("applyDate :"+applyDate);
+			String reportType = searchReportDTO.getReportType();
+//			if(!applyDate.isEmpty()){
+			if(applyDate!=null){
+					 Format formatter = new SimpleDateFormat("MM-dd-yyyy");
+					 String applyDateStr = formatter.format(applyDate);
+					 System.out.println("applyDateStr :"+applyDateStr);
+					 String dateStr = applyDateStr;
+					 System.out.println("dateStr :"+dateStr);
+					 String[] parts = dateStr.split(" \\- ");
+					 String startDate = parts[0];
+					 System.out.println("startDate : "+startDate);
+					 String endDate = parts[1];
+					 System.out.println("endDate : "+endDate);
+					 System.out.println("endDate123 : ");
+					 
+				 reportApplicantList = applicantService.findReportByMonth(startDate, endDate);
+			}else {
+				 reportApplicantList = applicantService.reportApplicant();
+				
+		}
+			Map<String, Object> parameterMap = new HashMap<String, Object>();
+			parameterMap.put("date", new java.util.Date());
+			parameterMap.put(JRParameter.REPORT_LOCALE, Locale.ENGLISH);
+			ModelAndView mv = reportService.getReport(reportApplicantList,
+					"applicantSummaryMonthly", reportType, parameterMap);
+			return mv;
+		}
 	/*-------------------- Position List--------------------*/
 	@ModelAttribute("positionRequest")
 	public List<Position> getPosition() {
