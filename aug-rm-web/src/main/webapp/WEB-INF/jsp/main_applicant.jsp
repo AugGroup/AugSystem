@@ -5,11 +5,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
-
-
 <style type="text/css">
 
 #search_row{
+	margin-top:95px;
 	margin: 30px;
 }
  .error{
@@ -21,8 +20,10 @@
 	 margin-right : 83px;
 	 float:right;
 }
-#dataTable{color:#414141;
-background-color: #ababab;}
+#dataTable{
+	color:#414141;
+	background-color: #ababab;
+}
 
 td {font-family: "Regular";
     font-size: 18px;
@@ -32,7 +33,10 @@ td {font-family: "Regular";
 table.dataTable tr.odd{ background-color:#e7e7e7; }
 table.dataTable tr.even { background-color:#d6d6d6; }
 
-.container{font-family: "Regular";}
+.container{
+	margin-left: 40px;
+	font-family: "Regular";
+}
 
 #dataTable_previous{
 padding:3px;
@@ -259,7 +263,6 @@ padding: 3px;
 		<c:set var="ss" value="display:none;"></c:set>
 <!-- 		class="cell-border" -->
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
-				<div id="data">
 				<table id="dataTable" class="display" cellspacing="0" width="100%">
 					<thead>
 						<tr>
@@ -276,10 +279,8 @@ padding: 3px;
 						</tr>
 					</thead>
 				</table>
-				</div>
-			
-		
 		</sec:authorize>
+		
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<div class="row" id="add">
 			<div class="col-md-6"></div>

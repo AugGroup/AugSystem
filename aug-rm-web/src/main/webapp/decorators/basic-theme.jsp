@@ -72,23 +72,28 @@
     display: inline-block;
 }
 
+#headId{
+	margin-left: 40px;
+}
+
 .user{
 	width: 183px;
 	height: 25px;
+	background:white;
 	font-size: 16px;
 	font-family: "SemiBold";
   	margin-right: 95px;
+  	padding-left: 25px;
  	float: right;
 }
 
 .user2{
 	width: 183px;
 	height: 25px;
+	margin-top: 5px;
 	font-size: 16px;
 	font-family: "Regular";
 	font-weight: bold;
-
-	margin-right: 95px;
 }
 
 .headed{
@@ -96,10 +101,26 @@
 	height: 65px;
 }
 
-a{color:white;}
+/* a{color:white;} */
 #footer{background:#FFCC00;}
 
-.body{background:#E0DFDD;}
+.body{
+	background:#E0DFDD;
+	margin-top: 95px;
+}
+
+.container{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+#flag{
+	width: 85px;
+	height: 25px;
+	margin: 0px;
+
+}
+
 </style>
 <%
 	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -109,19 +130,19 @@ a{color:white;}
 <body>
 <div class="headed">
 	<div class="headLogo" id="headId" >
-		<img src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png" alt="logo" style="width: 250px; height: 75px;"/>
-		<a href="${pageContext.request.contextPath}/applicant"><span class="glyphicon glyphicon-home"></span></a>
-		<a href="${pageContext.request.contextPath}/request"><spring:message code="request.button"/></a>		
-		<a href="${pageContext.request.contextPath}/approve"><spring:message code="request.approve"/></a>
+		<img src="${pageContext.request.contextPath}/static/decorators/augmentis.jpg" alt="logo" style="width: 170px; height: 75px;"/>
+		<a href="${pageContext.request.contextPath}/applicant" style="color:#ffffff;"><span class="glyphicon glyphicon-home"></span></a>
+		<a href="${pageContext.request.contextPath}/request" style="color:#ffffff;"><spring:message code="request.button"/></a>		
+		<a href="${pageContext.request.contextPath}/approve" style="color:#ffffff;"><spring:message code="request.approve"/></a>
 
 		<div class="user">
-			<a href=""><span class="glyphicon glyphicon-user"></span> <%=name %></a>
-			<a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a>
+			<a href="<c:url value="/logout"/>" style="color:black;"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a>
+			<a href=""  style="color:black;"><span class="glyphicon glyphicon-user" ></span> <%=name %></a>
 			<div class="user2">
 				<a href="${request.getRequestURL}?locale=en">
-				<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 30px; height: 20px;"/></a>
+				<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 40px; height: 25px;"/></a>
 				<a href="${request.getRequestURL}?locale=th">		
-				<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 30px; height: 20px;" /></a>
+				<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 40px; height: 25px;" /></a>
 				<div class="btn-group">
   					<button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 75px; height: 25px;">
     					Report <span class="caret"></span>
@@ -138,7 +159,7 @@ a{color:white;}
 	
 	<div class="body">
 		<div class="container">
-			<decorator:body />
+				<decorator:body />
 		</div>
 	</div>
 
