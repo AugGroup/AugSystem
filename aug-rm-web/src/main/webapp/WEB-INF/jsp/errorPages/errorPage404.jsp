@@ -9,336 +9,83 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src='<c:url value ="/static/resources/js/jquery-1.11.3.min.js" />'></script>
+<script src='<c:url value ="/static/resources/js/bootstrap.min.js"/>'></script>
+
+<link rel="stylesheet" type="text/css" media="all"
+	href="<c:url value ='/static/resources/css/bootstrap.min.css'/>"></link>
+<link rel="stylesheet" type="text/css" media="all"
+	href="<c:url value ="/static/resources/css/bootstrap-theme.min.css"/>" />
+
+<script
+	src='<c:url value ="/static/resources/js/jquery.bootstrap.wizard.js"/>'></script>
+<script
+	src='<c:url value ="/static/resources/js/jquery.bootstrap.wizard.min.js"/>'></script>
 
 
+<script src='<c:url value ="/static/resources/js/jquery.validate.min.js"/>'></script>
+<script src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
 <title>Error 404 page</title>
 <style >
-
-
-#imagePreview {
+.error {
+	color: #ff0000;
+}
+#imagePreview{
     width: 150px;
-    height: 150px;
+    height: 188px;
     background-position: center;
     background-size: cover;
     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
     display: inline-block;
 }
-body {
- 	-moz-background-size: cover;
-	-webkit-background-size: cover;
-	background-size: cover;
-	background-position: top center !important;
-	background-repeat: no-repeat !important;
-	background-attachment: fixed; 
-} 
 
+#headId{
+	margin-left: 40px;
+}
 
-h1{
-	border: none; 
-	box-shadow: none;
-	margin: 0; 
-	padding: 0;
-	font-size: 4.5em; 
-	text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
-	font-family: 'Dosis-SemiBold';
+.user{
+	width: 183px;
+	height: 25px;
+	background:white;
+	font-size: 16px;
+	font-family: "SemiBold";
+  	margin-right: 95px;
+  	padding-left: 25px;
+ 	float: right;
+}
+
+.user2{
+	width: 183px;
+	height: 25px;
+	margin-top: 5px;
+	font-size: 16px;
+	font-family: "Regular";
 	font-weight: bold;
 }
- 
 
-.navbar-header {
-    margin-left:5%;
+.headed{
+	background: #707070;
+	height: 65px;
 }
 
-.contain{ 
-	margin-top: 5%;
+/* a{color:white;} */
+#footer{background:#FFCC00;}
+
+.body{
+	background:#E0DFDD;
+	margin-top: 95px;
 }
-
-.navbar-inverse {
-	position:absolute;
-	background-color: #707070;
-	background-image: linear-gradient(to bottom, #707070 0%, #707070 100%); 
-	border-color: #C7A5A5;
-	height: 72px;
-}
-
-.navbar-inverse .navbar-nav > li > a{
-	color:#fff;
-}
-
-
-#bgLogout{
-	margin-top:2%;
-	background-color: #ffffff;
-	height: 100%;
-	width: 100%;
-	padding-top:2%;
-	padding-bottom: 2%;
-}
-
-
-.navbar-default{
-	background-image: linear-gradient(to bottom, #ffc000 0%, #ffc000 100%); 
-}
-
-a{
-	color: #fff;
-}
-
-
-.navbar-link-report b{
-	width:5px;
-	height:5px;
-	margin-top:5px;
-	padding-left:2px;
-	margin-left:5px;
-	border:1px solid white; 
-	font-family: Dosis-Regular;
-	font-size:13px;
-	color:#fff;
-} 
-
-
-#Logout {
-    position: absolute;
-    right: 2%;
-    margin-top: 10px;
-}
-
-#bgLogout {
-     background-color: #ffffff;
-     width: 183px;
-     height: 25px;
-     font-size: 16px;
-     text-align: center;
-     color: #808080;
-}
-
-#profileUser {
-     background-color: #ffd800;
-     width: 160px;
-     height: 200px;
-     right: 5px;
-}
-
-#userEmpID {
-     color: #636666;
-     font-family: Dosis-Regular;
-}
-
-#linkLogout {
-     color: #636666;
-     text-decoration: none;
-     font-family: Dosis-Regular;
-}
-
-
-/* Tab Setting */
-.tab-content {
-    background-color: #eeeeee;
-    border: 5px solid #eeeeee;
-    border-radius: 3px;
-}
-
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    color: #fa9900;
-    cursor: pointer;
-    background-color: #eeeeee;
-    border: 1px solid #dddddd;
-    border-bottom-color: transparent;
-    border-top: 3px solid #fa9900;
-    border-radius: 3px;
-}
-
-.nav-tabs > li > a {
-    color: #414141;
-    cursor: pointer;
-    background-color: #eeeeee;
-    border: 1px solid #dddddd;
-    border-top: 3px solid #414141;
-    border-radius: 3px;
-}
-
-
-.nav-tabs > li > a:hover {
-    color: #b1b1b1;
-    cursor: pointer;
-    background-color: #eeeeee;
-    border: 1px solid #dddddd;
-    border-top: 3px solid #b1b1b1;
-    border-radius: 3px;
-}
-
-.navbar-defaults .navbar-nav > li > a {
-    height: 65px;
-    padding-top: 25px;
-    padding-left: 20px;
-    padding-right: 20px;
-    font-family: Dosis-SemiBold;
-    font-weight: bold;
-    font-size: 18px;
-    background-color: #707070;
-    color: white;
-    
-}
-
-.navbar-defaults .navbar-nav > li > a:hover {
-    background-color: #ff9900;
-    color: white;
-}
-
-.navbar-defaults .navbar-nav > li > a:focus {
-    background-color: #ff9900;
-    color: white;
-}
-
-
-.navbar-defaults {
-
-    border-color: transparent;
-}
-
-
-.navbar-link {
-	position:center;
-}
-
-.navbar-link img {
-	width:40px;
-	height:25px;
-	border:1px solid white; 
-	padding-left:7px;
-	padding-right:7px;
-	margin-top:5px;
-	margin-right:7px;
-}
-
-.navbar-link > img:hover {
-	background-color: #fff;
-    color: white;
-}
-
-.navbar-link > img:focus{
-    background-color: #fff;
-    color: white;
-}
-
-
-.navbar-link > img:visited{
-    background-color: #fff;
-    color: #292929;        
-}
-
-.navbar-link-report b{
-	width:75px;
-	height:25px;
-	margin-top:5px;
-	padding-left:3px;
-	margin-left:5px;
-	border:1px solid white; 
-	font-family: Dosis-Regular;
-	font-size:16px;
-	color:#fff;
-}
-
-.navbar-defaults > a:hover > b {
-    background-color: #fff;
-    color: #292929;        
-}
-
-.navbar-defaults > a:focus > b {
-       	background-color: #fff;
-        color: #292929;       
-}
-
-
 
 .container{
-	margin-left:40px;
-	margin-right:40px;
-	width: 93%;
-
+	padding-right: 0px;
+	padding-left: 0px;
 }
 
-/* .pull-right{
-	padding-right:55px;
-} */
+#flag{
+	width: 85px;
+	height: 25px;
+	margin: 0px;
 
-/* #randerleft{
-    display:table-cell;
-    vertical-align: middle;
-    height: 450px;
-    width: 490px;
-} */
-
-
-p{
-	margin-top: 4%;
-	/* margin-right:10%; */
-	font-family: Dosis-SemiBold;
-	font-size: 1.6em;
-}
-
-
-.btn-default{
-	background-color: #000;
-} 
-
-.btn{
-	border-radius:0;
-}
-
-/* .btn-lg{
-	border-radius:0;
-} */
-
-.btn-danger{
-	 background-color: #ff0000;
-	 /* -moz-box-shadow:    inset 0 0 10px #c01717;
-     -webkit-box-shadow: inset 0 0 10px #c01717;
-     box-shadow:         inset 0 0 10px #c01717; */
-     
-    -moz-box-shadow:    inset  0 -15px 15px -15px grey;
-    -webkit-box-shadow: inset  0 -15px 15px -15px grey;
-     box-shadow:        inset  0 -15px 15px -15px grey;
-}
-
-#linkgotohome{
-	font-family: Dosis-SemiBold;
-	font-size: 1.5em;
-}
-
-/* .pull-right{
-	padding-right: 2%;
-	margin-top: 1%;
-	color: #ED7E21;
-} */
-
-.footercontain{
-	padding-right: 2%;
-	margin-top: 1%;
-	color: #fff;
-}
-
-#home{
-	width: 100%;
-	height: 100%;
-}
-
-
-.fonthome{
-	font-size:  18px;
-	text-align: center;
-	margin-top: 50%;
-}
-
-.linkhome {
-  	width: 60px;
-  	height: 71px;
-}
-
-#home >  li > a:hover {
-	background-color: #ff9900;
-	color: white;
 }
 
 </style>
@@ -346,7 +93,34 @@ p{
 </head>
 <body>
 
+<div class="headed">
+	<div class="headLogo" id="headId" >
+		<img src="${pageContext.request.contextPath}/static/decorators/augmentis.jpg" alt="logo" style="width: 170px; height: 75px;"/>
+		<a href="${pageContext.request.contextPath}/applicant" style="color:#ffffff;"><span class="glyphicon glyphicon-home"></span></a>
+		<a href="${pageContext.request.contextPath}/request" style="color:#ffffff;"><spring:message code="request.button"/></a>		
+		<a href="${pageContext.request.contextPath}/approve" style="color:#ffffff;"><spring:message code="request.approve"/></a>
 
+		<div class="user">
+			<a href="<c:url value="/logout"/>" style="color:black;"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a>
+			<a href=""  style="color:black;"><span class="glyphicon glyphicon-user" ></span></a>
+			<div class="user2">
+				<a href="${request.getRequestURL}?locale=en">
+				<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 40px; height: 25px;"/></a>
+				<a href="${request.getRequestURL}?locale=th">		
+				<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 40px; height: 25px;" /></a>
+				<div class="btn-group">
+  					<button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 75px; height: 25px;">
+    					Report <span class="caret"></span>
+  					</button>
+  				<ul class="dropdown-menu">
+    				<li><a href="${pageContext.request.contextPath}/report"><spring:message code="report.text"/></a></li>
+    				<li><a href="${pageContext.request.contextPath}/monthlyReport"><spring:message code="report.text.monthly"/></a></li>
+ 				 </ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 <br/>
