@@ -5,7 +5,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 h3{
-	left: auto;
+	background-color: #F7C11F;
+	color:white;
+	font-family:verdana;
+    font-size:300%;
+    border:1px solid black;
 }
 
 
@@ -272,64 +276,65 @@ h3{
 	</c:choose>
 
 <f:form id="informationApplicant" name="informationApplicant" action="${pageContext.request.contextPath}/${actionName}"
-		modelAttribute="applicant" method="post" enctype="multipart/form-data" class="form-group" >
+		modelAttribute="applicant" method="post" enctype="multipart/form-data" class="form-inline" >
 		<f:hidden path="id" />
-	<div class="row">
+<!--  	<div class="row">  -->
 	
-		<div class="col-md-4"><h3>INFORMATION</h3></div><br />
-		
-			 <div class="form-group">
-			 	<spring:message code="info.photograph"/><br><br>
-	<c:choose>
-		<c:when test="${empty applicant.image}">
-						<div  id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/static/decorators/noPhotoAvailable-resize.jpg')"></div>
- 		</c:when>
- 		<c:when test="${not empty applicant.image}">
- 						<div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=APPLICANT&fileName=${applicant.image}');"></div>
-	</c:when>
-	</c:choose>
-			 	<br><br>
+<!-- 		<div class="col-md-6"> -->
+		<h3>INFORMATION</h3>
+		<br />
+		<div class="form-group">
+			<spring:message code="info.photograph"/><br><br>
+					<c:choose>
+						<c:when test="${empty applicant.image}">
+										<div  id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/static/decorators/noPhotoAvailable-resize.jpg')"></div>
+				 		</c:when>
+				 		<c:when test="${not empty applicant.image}">
+				 						<div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=APPLICANT&fileName=${applicant.image}');"></div>
+					</c:when>
+					</c:choose>
+<!-- 			 	<br><br> -->
 				<input id="imageMultipartFile" name="imageMultipartFile"  type="file" accept="image/*" />
 				<f:hidden path="image" />
 			</div>
  		
-		<br>
-		<br>
+<!-- 		<br> -->
+<!-- 		<br> -->
 			<div class="form-group">
 				<label for="firstNameTh"><spring:message code="info.firstname.th"/> </label>
 				<spring:message code="info.text.first.th" var="firstname"/>
 				<f:input path="firstNameTH" id="firstNameTH" name="firstNameTH" placeholder="${firstname}" class="form-control" ></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="lastnameTh"><spring:message code="info.lastname.th"/> </label>
 				<spring:message code="info.text.last.th" var="lastname"/>
 				<f:input path="lastNameTH" id="lastNameTH" name="lastNameTH" placeholder="${lastname}" class="form-control" ></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="nickNameTh"><spring:message code="info.nickname.th"/> </label>
 				<spring:message code="info.text.nick.th" var="nickname"/>
 				<f:input path="nickNameTH" id="nickNameTH" name="nickNameTH" placeholder="${nickname}" class="form-control" ></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="firstNameEng"><spring:message code="info.firstname.en"/> </label>
 				<spring:message code="info.text.first.en" var="firstnameEn"/>
 				 <f:input path="firstNameEN" id="firstNameEN" name="firstNameEN" placeholder="${firstnameEn}" class="form-control" ></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="lastnameEng"><spring:message code="info.lastname.en"/> </label>
 				<spring:message code="info.text.last.en" var="lastnameEn"/>
 				<f:input path="lastNameEN" id="lastNameEN" name="lastNameEN" placeholder="${lastnameEn}" class="form-control"></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="nickNameEng"><spring:message code="info.nickname.en"/> </label> 
 				<spring:message code="info.text.nick.en" var="nicknameEn"/>
@@ -337,20 +342,23 @@ h3{
 			</div>
 			<br>
 			<br>
+	<h3>GENERAL</h3>
+<!-- 	<div class="row">  -->
+		<div class="col-md-6">
 			<div class="form-group">
 				<label for="tel"><spring:message code="info.tel"/> </label> 
 				<spring:message code="info.text.tel" var="tel"/>
 				<f:input path="tel" id="tel" name="tel" placeholder="${tel}" class="form-control" ></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="eMail"><spring:message code="info.email"/> </label> 
 				<spring:message code="info.text.email" var="email"/>
 				<f:input path="email" id="email" name="email" type="email" placeholder="${email}" class="form-control" ></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="birthday"><span
 					class="glyphicon glyphicon-calendar"></span> <spring:message code="info.birthday"/></label>
@@ -360,50 +368,50 @@ h3{
 				</div>
 
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="pBirth"><spring:message code="info.place.birth"/> </label> 
 				<spring:message code="info.text.birth" var="pBirth"/>
 				<f:input path="placeBirth" id="placeBirth" name="placeBirth" class="form-control" placeholder="${pBirth}"></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="age"><spring:message code="info.age"/> </label> 
 				<spring:message code="info.text.age" var="age"/>
 				<f:input path="age" id="age" name="age" class="form-control" placeholder="${age}"></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="religion"><spring:message code="info.religion"/> </label>
 				<spring:message code="info.text.religion" var="religion"/> 
 				<f:input path="religion" id="religion" name="religion" class="form-control" placeholder="${religion}"></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="nationality"><spring:message code="info.nationality"/> </label> 
 				<spring:message code="info.text.nationality" var="nationality"/>
 				<f:input path="nationality" id="nationality" name="nationality" class="form-control" placeholder="${nationality}"></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="cardId"><spring:message code="info.id.card"/> </label> 
 				<spring:message code="info.text.card" var="card"/>
 				<f:input path="cardId" id="cardId" name="cardId" class="form-control" placeholder="${card}"></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="cardIssuedOffice"><spring:message code="info.issue.office"/> </label> 
 				<spring:message code="info.text.issued" var="issued"/>
 				<f:input path="cardIssuedOffice" name="cardIssuedOffice" id="cardIssuedOffice" class="form-control" placeholder="${issued}"></f:input>
 			</div>
-			<br>
-			<br>
+<!-- 			<br> -->
+<!-- 			<br> -->
 			<div class="form-group">
 				<label for="cardExpiryDate"><span
 					class="glyphicon glyphicon-calendar"></span><spring:message code="info.expiration.date"/> </label>
@@ -543,13 +551,13 @@ h3{
 							class="glyphicon glyphicon-th"></i></span>
 					</div>
 				</div>
-			</div>
-		</div>
+<!-- 			</div> -->
 
 			<br>
 			<br>
-  	<div class="row">
-		<div class="col-md-4">
+<!-- <!--   	<div class="row"> --> 
+<!-- 		<div class="col-md-6"> -->
+			<h3>OFFICIAL</h3>
 			<label for="applyDate"><span class="glyphicon glyphicon-calendar"></span><spring:message code="info.apply.date"/></label>
 			<div class="input-group date">
 				<f:input path="applyDate" id="applyDate" name="applyDate"
@@ -794,7 +802,7 @@ h3{
 			<br>
 			<br>
 		<button type="submit"  id="buttonSave" class="btn btn-success"><span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/></button>
-			
- 	</div>
-</div>
+		</div>
+<!--  	</div> -->
+<!-- </div> -->
 </f:form>
