@@ -68,8 +68,9 @@
     height: 188px;
     background-position: center;
     background-size: cover;
-    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
-    display: inline-block;
+/*     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3); */
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   display: inline-block;
 }
 
 #headId{

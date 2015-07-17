@@ -59,6 +59,10 @@ margin-top: 15px;
 margin-left: 799px;
 }
 
+/* div.dataTables_paginate { */
+/*     background-color: yellow; */
+
+/* } */
 </style>
 
 	<script type="text/javascript">
