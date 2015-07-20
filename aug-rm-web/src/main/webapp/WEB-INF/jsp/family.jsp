@@ -3,6 +3,19 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+#family{
+	background: #E0DFDD;
+}
+
+#familyTable{
+	color:#414141;
+	background-color: #ababab;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+</style>
 <script>
 	$(document).ready(function() {
 		
@@ -57,6 +70,9 @@
 		}else {
 			var id = '${id}';
 			dtApplicant = $('#familyTable').DataTable({
+				paging: true,
+				hover:false,
+				sort:false,
 				ajax : {
 					url : '${pageContext.request.contextPath}/findByIdFamily/'+id,
 					type : 'POST'
@@ -246,10 +262,9 @@
 	});
 </script>
 <jsp:include page="applicationMenu.jsp" />
- <div class="form-group">
-					<label for="informationFamily"><spring:message code="info.parent.number"/> </label>
-				</div>
-					<div class="row">
+<div id="family">
+ <div class="form-group"><label for="informationFamily"><spring:message code="info.parent.number"/> </label></div>
+				<div class="row">
 						<div class="col-md-6">
 							<h1><spring:message code="family.name"/></h1>
 							<button class="btn btn-primary" id="familyAdd" data-toggle="modal" data-target="#familyModal">
@@ -328,8 +343,7 @@
 		</div>
 				<br> <br>
 				<div>
-					<table id="familyTable" class="display" cellspacing="0"
-						width="100%">
+					<table id="familyTable" class="display" cellspacing="0" width="100%">
 						<thead>
 							<tr>
 								<th><spring:message code="family.data"/></th>
@@ -348,4 +362,5 @@
 					</table>
 
 				</div>
+</div>
 

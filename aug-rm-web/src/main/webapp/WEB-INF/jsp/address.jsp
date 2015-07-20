@@ -390,7 +390,7 @@
 	
 	<br> <br>
 	<div>
-		<table id="addressTable" class="display" cellspacing="0" width="99%">
+		<table id="addressTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th><spring:message code="address.data"/></th>
