@@ -16,23 +16,24 @@ h3{
  	color:#414141;
 	background: #E0DFDD;
 	font-family: "Regular";
+	margin-left: 40px;
 	
-}
-input[type="file"] {
- 	color: white;
-    border: 1px solid green;
-    border-radius: 5px;
-    background: #F7C11F;
+} 
+	 input[type="file"] { 
+     color: white; 
+     border: 1px #F7C11F; 
+     border-radius: 5px; 
+     background: #F7C11F;
+     text-align: right;
+     position: relative;
 
-}
+
+} 
 .form-group{ 
     color:#414141; 
  	background-color: #ababab;
- 	font-family: "Regular";
-} 
-
-/* input[type=text], select, textarea { width: 98%; }  */
-
+ 	font-family: "Regular"; 	
+}
 </style>
 <script>
  	$(document).ready(function() {
@@ -302,7 +303,7 @@ input[type="file"] {
 		<f:hidden path="id" />
 	<div class="row">
  		<div class="col-sm-12 col-xs-12 col-md-12">
-		<h3>INFORMATION</h3>
+		<h3> INFORMATION</h3>
 		<br />
 			<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4"><br><br>
 <%-- 			<spring:message code="info.photograph"/><br><br> --%>
@@ -314,8 +315,9 @@ input[type="file"] {
 				 						<div id="imagePreview" class="img-rounded img-responsive" style="background-image:url('${pageContext.request.contextPath}/DisplayImageServlet?namespace=APPLICANT&fileName=${applicant.image}');"></div>
 					</c:when>
 					</c:choose>
-				
-				<input id="imageMultipartFile" name="imageMultipartFile" type="file" accept="image/*" />
+					<div class="custom-file-upload">
+					<input id="imageMultipartFile" name="imageMultipartFile" type="file" accept="image/*" class="file"/>
+				</div>
 				<f:hidden path="image" />
 			</div>
 			<div class="col-sm-4 col-xs-4 col-md-4 col-lg-4"><br><br>
@@ -697,4 +699,5 @@ input[type="file"] {
 			<br>
 			<br>
 			<button type="submit"  id="buttonSave" class="btn btn-success"><span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/></button>
+</div>
 </f:form>

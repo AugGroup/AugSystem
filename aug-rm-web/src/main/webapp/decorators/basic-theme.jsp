@@ -126,6 +126,7 @@ p{
 	padding-top: 25px;
 	background:#CAC9C7;
 }
+<<<<<<< HEAD
 
 .container{
 
@@ -143,6 +144,8 @@ p{
 	border: 1px solid #707070;
 }
 
+=======
+>>>>>>> edit css info
 </style>
 <%
 	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
