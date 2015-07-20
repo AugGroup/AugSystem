@@ -151,6 +151,7 @@ p{
 
 <body>
 <div class="headed">
+  <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
 	<div class="headLogo" id="headId" >
 		<img src="${pageContext.request.contextPath}/static/decorators/augmentis.jpg" alt="logo" style="width: 170px; height: 75px;"/>
 		<a href="${pageContext.request.contextPath}/applicant" style="color:#ffffff;"><span class="glyphicon glyphicon-home"></span></a>
@@ -167,7 +168,7 @@ p{
 				<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 40px; height: 25px;" /></a>
 				<div class="btn-group">
   					<button type="button" class="btn btn-defult dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="btn_report" style="color: #ffffff;">
-    					Report <span class="caret"></span>
+    					<spring:message code="report.text"/> <span class="caret"></span>
   					</button>
   				<ul class="dropdown-menu">
     				<li><a href="${pageContext.request.contextPath}/report" style="	font-size: 16px; color: #292929;"><spring:message code="report.text"/></a></li>
@@ -177,6 +178,7 @@ p{
 			</div>
 		</div>
 	</div>
+  </div>
 </div>
 	
 	<div class="body">

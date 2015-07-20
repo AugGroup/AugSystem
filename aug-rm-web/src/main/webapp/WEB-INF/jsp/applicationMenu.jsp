@@ -19,7 +19,7 @@ table.dataTable tr.even { background-color:#d6d6d6; }
 <!-- 		<div class="form-group"> -->
 		<div class="dropdown">
   			<button class="btn btn-defult dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" 
-  					aria-expanded="true" style="width: 117px; height: 25px; background: #E0DFDD; border: 1px solid #CAC9C7;">Menu <span class="caret"></span>
+  					aria-expanded="true" style="width: 117px; height: 25px; background: #E0DFDD; border: 1px solid #CAC9C7;"><spring:message code="menu.text"/> <span class="caret"></span>
   			</button>
   		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
   				<li class='${ (tag eq "information") ? "active" : ""}'><a href="${pageContext.request.contextPath}/info/${id}"><span

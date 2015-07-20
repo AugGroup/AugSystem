@@ -282,9 +282,7 @@ float: right;
 		</div>
 		<!--Data Table for Applicant List -->
 		<c:set var="ss" value="display:none;"></c:set>
-<!-- 		class="cell-border" -->
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
-		
 			<div id="table">
 				<table id="dataTable" class="display" cellspacing="0" width="100%">
 					<thead>
@@ -303,9 +301,7 @@ float: right;
 					</thead>
 				</table>
 						<a type="submit" id="btn_add" class="btn btn-warning" href="${pageContext.request.contextPath}/informations"><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></a>
-				</div>
-				
-			
+			</div>
 		</sec:authorize>
 
 		
