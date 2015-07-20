@@ -54,7 +54,7 @@ padding: 3px;
 }
 
 #table{
-	padding: 15px 5px 15px 5px;
+	padding: 15px 5px 75px 5px;
 	margin-bottom : 100px;
 	background: #E0DFDD;;
 

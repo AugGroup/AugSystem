@@ -18,51 +18,51 @@
 	}
 	
 	#dataTable{
-	color:#414141;
-	background-color: #ababab;
-}
+		color:#414141;
+		background-color: #ababab;
+	}
 
-td {font-family: "Regular";
-    font-size: 18px;
-    color: #414141;
+	td {font-family: "Regular";
+    	font-size: 18px;
+   		color: #414141;
     }
     
-table.dataTable tr.odd { background-color:#e7e7e7; }
-table.dataTable tr.even { background-color:#d6d6d6; }
+	table.dataTable tr.odd { background-color:#e7e7e7; }
+	table.dataTable tr.even { background-color:#d6d6d6; }
 
-.container{
-	font-family: "Regular";
-	position:relative;
-	margin-left: 40px;
-	margin-right: 40px;
-	padding-right: 0px;
-	padding-left: 0px;
-	width: 93%;
-}
+	.container{
+		font-family: "Regular";
+		position:relative;
+		margin-left: 40px;
+		margin-right: 40px;
+		padding-right: 0px;
+		padding-left: 0px;
+		width: 93%;
+	}
 
-#requestTable_previous{
-padding:3px;
-}
+	#requestTable_previous{
+		padding:3px;
+	}
 
-#requestTable_next{
-padding:3px;
-}
+	#requestTable_next{
+		padding:3px;
+	}
 
-.paginate_button{
-padding: 3px;
-}
+	.paginate_button{
+		padding: 3px;
+	}
 
-#table{
-	padding: 15px 5px 15px 5px;
-	margin-bottom : 100px;
-	background: #E0DFDD;;
+	#table{
+		padding: 15px 5px 75px 5px;
+		margin-bottom : 100px;
+		background: #E0DFDD;;
 
-}
-
-#btn_add{
-margin-top: 15px;
-margin-left: 799px;
-}
+	}
+	
+	#btn_addReq{
+		margin-top: 15px;
+		float: right;
+	}
 }
 </style>
 
@@ -381,30 +381,29 @@ margin-left: 799px;
             }
         });
 </script> 
+
 <div class="container">
 	<h1 align="center"><spring:message code="request.title"/></h1>
-	<table id="requestTable" class="cell-border" style="width: 100%">
-    	<thead>
-        	<tr>
-            	<th><spring:message code="request.id"/></th>
-            	<th><spring:message code="request.date"/></th>
-            	<th><spring:message code="request.human"/></th>
-            	<th><spring:message code="info.position"/></th>
-            	<th><spring:message code="request.number"/></th>
-            	<th><spring:message code="main.status"/></th>
-            	<th><spring:message code="request.preview"/></th>
-            	<th><spring:message code="main.edit"/></th>
-            	<th><spring:message code="main.delete"/></th>
-        	</tr>
-    	</thead>
-</table>
-
-<div class="row">
-	<div class="col-md-6"></div>
-	<div class="col-md-6" align="center">
-		<button id="btn_addReq"class="btn btn-primary btn-info" data-toggle="modal" data-target="#addRequestModal"> <spring:message code="request.button"/> <span class="glyphicon glyphicon-plus-sign"></span></button>
+	<div id="table">
+		<table id="requestTable" class="cell-border" style="width: 100%">
+    		<thead>
+        		<tr>
+            		<th><spring:message code="request.id"/></th>
+            		<th><spring:message code="request.date"/></th>
+            		<th><spring:message code="request.human"/></th>
+            		<th><spring:message code="info.position"/></th>
+            		<th><spring:message code="request.number"/></th>
+            		<th><spring:message code="main.status"/></th>
+            		<th><spring:message code="request.preview"/></th>
+            		<th><spring:message code="main.edit"/></th>
+            		<th><spring:message code="main.delete"/></th>
+        		</tr>
+    		</thead>
+		</table>
+		<button id="btn_addReq"class="btn btn-warning" data-toggle="modal" data-target="#addRequestModal"> <spring:message code="request.button"/> <span class="glyphicon glyphicon-plus-sign"></span></button>		
 	</div>
-</div>
+
+		
 <!-------------------- Save Modal --------------------> 
 <div class="modal fade" id="addRequestModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
