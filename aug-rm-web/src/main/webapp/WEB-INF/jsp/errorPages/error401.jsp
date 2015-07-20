@@ -24,7 +24,7 @@
 
 <script src='<c:url value ="/static/resources/js/jquery.validate.min.js"/>'></script>
 <script src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
-<title>Error 404 page</title>
+<title>Error 401 page</title>
 <style >
 .error {
 	color: #ff0000;

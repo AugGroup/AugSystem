@@ -24,7 +24,7 @@
 
 <script src='<c:url value ="/static/resources/js/jquery.validate.min.js"/>'></script>
 <script src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
-<title>Error 500 page</title>
+<title>Error 400 page</title>
 <style >
 .error {
 	color: #ff0000;
@@ -57,7 +57,7 @@ section {
 	        </div>  	         
 		</div>
 		<div class="col-lg-6 col-md-6">
-			<h1>Error! 500 web.xml</h1>	    
+			<h1>Error! 400 web.xml</h1>	    
 			<p>The page you are looking for might have been remove,
 			  has its name and changed or is
 			  temporarily unavailable.</p>

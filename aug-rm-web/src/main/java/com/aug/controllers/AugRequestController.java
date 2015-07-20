@@ -3,13 +3,12 @@ package com.aug.controllers;
 import java.io.Serializable;
 import java.util.List;
 
-import javassist.tools.web.BadHttpRequest;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestBindingException;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -93,7 +92,7 @@ public class AugRequestController implements Serializable {
 	}
 
 	/*-------------------- Update Request--------------------*/
-	@RequestMapping(value = "/request/edit/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "/request/edit/{id}", method = { RequestMethod.POST, RequestMethod.GET})
 	public @ResponseBody AugRequestDTO editAugRequest(
 			@RequestBody AugRequestDTO augRequestDTO, @PathVariable Integer id) throws Exception {
 		
