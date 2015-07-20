@@ -20,11 +20,6 @@
 	 float:right;
 }
 #dataTable{
-<<<<<<< HEAD
-float:right;
-=======
-	
->>>>>>> Edit basic theme layout
 	color:#414141;
 	background-color: #ababab;
 }
