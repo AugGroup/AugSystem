@@ -121,8 +121,8 @@ p{
 }
 
 .body{
-	padding-left: 40px;
-	padding-right: 40px;
+	padding-left: 0px;
+	padding-right: 0px;
 	padding-top: 25px;
 	background:#CAC9C7;
 }
@@ -180,9 +180,7 @@ p{
 </div>
 	
 	<div class="body">
-		<div class="container">
-				<decorator:body />
-		</div>
+		<decorator:body />
 	</div>
 
 	<div id="footer">

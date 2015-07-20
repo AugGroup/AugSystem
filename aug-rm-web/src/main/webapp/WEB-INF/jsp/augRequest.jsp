@@ -16,6 +16,54 @@
      	color :red;
  		padding: 3px;
 	}
+	
+	#dataTable{
+	color:#414141;
+	background-color: #ababab;
+}
+
+td {font-family: "Regular";
+    font-size: 18px;
+    color: #414141;
+    }
+    
+table.dataTable tr.odd { background-color:#e7e7e7; }
+table.dataTable tr.even { background-color:#d6d6d6; }
+
+.container{
+	font-family: "Regular";
+	position:relative;
+	margin-left: 40px;
+	margin-right: 40px;
+	padding-right: 0px;
+	padding-left: 0px;
+	width: 93%;
+}
+
+#requestTable_previous{
+padding:3px;
+}
+
+#requestTable_next{
+padding:3px;
+}
+
+.paginate_button{
+padding: 3px;
+}
+
+#table{
+	padding: 15px 5px 15px 5px;
+	margin-bottom : 100px;
+	background: #E0DFDD;;
+
+}
+
+#btn_add{
+margin-top: 15px;
+margin-left: 799px;
+}
+}
 </style>
 
 <script type="text/javascript">

@@ -34,6 +34,12 @@ table.dataTable tr.even { background-color:#d6d6d6; }
 
 .container{
 	font-family: "Regular";
+	position:relative;
+	margin-left: 40px;
+	margin-right: 40px;
+	padding-right: 0px;
+	padding-left: 0px;
+	width: 93%;
 }
 
 #dataTable_previous{
@@ -260,7 +266,7 @@ margin-left: 799px;
 	</script>
 	
 	
-	<div class="container">
+<div class="container">
 		<!--Input text for Search Applicant -->
 		<div class="row" id="search_row">
 			<div class="col-md-8"></div>
@@ -277,8 +283,7 @@ margin-left: 799px;
 		<c:set var="ss" value="display:none;"></c:set>
 <!-- 		class="cell-border" -->
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
-		<div class="row">
-					<div class="col-md-12">
+		
 			<div id="table">
 				<table id="dataTable" class="display" cellspacing="0" width="100%">
 					<thead>
@@ -296,14 +301,10 @@ margin-left: 799px;
 						</tr>
 					</thead>
 				</table>
-				
-<!-- 				<div class="row"> -->
-<!-- 					<div class="col-md-6"></div> -->
-<!-- 					<div class="col-md-6"> -->
 						<a type="submit" id="btn_add" class="btn btn-warning" href="${pageContext.request.contextPath}/informations"><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></a>
-					</div>
 				</div>
-			</div>
+				
+			
 		</sec:authorize>
 
 		
