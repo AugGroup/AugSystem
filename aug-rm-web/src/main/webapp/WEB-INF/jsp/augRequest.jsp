@@ -28,33 +28,32 @@
 			}); 
     	/* ------------------ajax setup ------------------ */
     	$.ajaxSetup({
-    		
     		/* statusCode: */
     		 statusCode : {
         		400: function() {
-          		  window.location="/AugRmSystem/exception/400"
+        			window.location="/AugRmSystem/exception/400"
         		},
         		404: function() {
-            		  window.location="/AugRmSystem/exception/404"
+        			window.location="/AugRmSystem/exception/404"
           		},
           		415: function() {
-            		  window.location="/AugRmSystem/exception/415"
+            		window.location="/AugRmSystem/exception/415"
           		},
           		500: function() {
-            		  window.location="/AugRmSystem/exception/500"
+            		window.location="/AugRmSystem/exception/500"
           		},
         		
    			 }, 
     		 error: function(jqXHR, textStatus, errorThrown){
     			 window.location="/AugRmSystem/exception/custom"
-	            /* var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
+	          /*    var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
 	            console.log(jqXHR.status);
 	            $('#exceptionModal')
 	            .find('.modal-header h3').html(jqXHR.status+' error').end()
 	            .find('.modal-body p>strong').html(exceptionVO.clazz).end()
 	            .find('.modal-body p>em').html(exceptionVO.method).end()
 	            .find('.modal-body p>span').html(exceptionVO.message).end()
-	            .modal('show');  */
+	            .modal('show');  */ 
 	            
 	        }  
     	});

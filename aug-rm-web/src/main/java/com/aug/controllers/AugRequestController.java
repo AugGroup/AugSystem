@@ -3,6 +3,8 @@ package com.aug.controllers;
 import java.io.Serializable;
 import java.util.List;
 
+import javassist.tools.web.BadHttpRequest;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +47,7 @@ public class AugRequestController implements Serializable {
 	@RequestMapping(value = "/request/search", method = { RequestMethod.GET })
 	public @ResponseBody Object findAllRequest() throws Exception{
 		final List<AugRequestDTO> data = augRequestService.findAllAugRequest();	
-		if(data != null){
+		if(data == null){
 			throw new NullPointerException();
 		}
 		return new Object() {
@@ -59,7 +61,7 @@ public class AugRequestController implements Serializable {
 	/*-------------------- Search Request By Id--------------------*/
 	@RequestMapping(value = "/request/search/{id}", method = { RequestMethod.POST, RequestMethod.GET  })
 	public @ResponseBody AugRequestDTO searchRequestById(
-			@PathVariable Integer id, Model model) throws Exception{
+			@PathVariable Integer id, Model model){
 		AugRequestDTO augRequest = augRequestService.findAugRequestById(id);
 		
 		return augRequest;
@@ -70,7 +72,8 @@ public class AugRequestController implements Serializable {
 	/*-------------------- Save Request--------------------*/
 	@RequestMapping(value = "/request/save", method = RequestMethod.POST)
 	public @ResponseBody AugRequestDTO saveRequest(
-			@RequestBody AugRequestDTO augRequestDTO,HttpSession session) throws Exception {
+			@RequestBody AugRequestDTO augRequestDTO,HttpSession session){
+		
 		AugRequest augRequest = new AugRequest();
 		augRequest.setId(augRequestDTO.getId());
 		augRequest.setRequestDate(augRequestDTO.getRequestDate());
@@ -120,6 +123,7 @@ public class AugRequestController implements Serializable {
 	@RequestMapping(value = "/request/delete/{id}", method = RequestMethod.POST)
 	public @ResponseBody AugRequest delesteUser(@ModelAttribute AugRequest augRequest,
 			@PathVariable("id") Integer id) throws Exception {
+		
 		augRequestService.delete(augRequest);
 		return augRequestService.findById(id);
 	}

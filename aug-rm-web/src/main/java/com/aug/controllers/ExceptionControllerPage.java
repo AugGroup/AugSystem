@@ -11,7 +11,7 @@ public class ExceptionControllerPage implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@RequestMapping(value = "/exception", method = { RequestMethod.GET })
+	@RequestMapping(value = "/exception/custom", method = { RequestMethod.GET })
 	public String errorPageCustom() {
 		return "errorPages/errorPageCustom";
 	}

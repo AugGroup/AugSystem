@@ -30,6 +30,8 @@ public class ExceptionControllerAdvice {
 	@ResponseBody
 	public ExceptionVO handleBadRequest(BadHttpRequest ex,
 			HttpServletResponse response) throws IOException {
+		System.out.println("Exception : BAD_REQUEST");
+		System.out.println(ex.getMessage()+" "+ex.getClass().getSimpleName());
 		ExceptionVO exceptionVO = new ExceptionVO("");
 		return exceptionVO;
 	}
@@ -40,17 +42,22 @@ public class ExceptionControllerAdvice {
 	@ResponseBody
 	public ExceptionVO handleNotFoundException(NotFoundException ex,
 			HttpServletResponse response) throws IOException {
-		ExceptionVO exceptionVO = new ExceptionVO("");
+		System.out.println("Exception :  NOT FOUND");
+		System.out.println(ex.getMessage()+" "+ex.getClass().getSimpleName());
+		ExceptionVO exceptionVO = new ExceptionVO(" ");
 		return exceptionVO;
 	}
 	
 	//UNSUPPORTED_MEDIA_TYPE(415, "Unsupported Media Type")
 		@ExceptionHandler(HttpMediaTypeNotSupportedException.class)
-		@ResponseStatus(value=HttpStatus.NOT_FOUND)
+		@ResponseStatus(value=HttpStatus.UNSUPPORTED_MEDIA_TYPE)
 		@ResponseBody
-		public ExceptionVO handleHttpMediaTypeNotSupportedException(HttpMediaTypeNotSupportedException ex,
+		public ExceptionVO handleHttpMediaTypeNotSupportedException(
+				HttpMediaTypeNotSupportedException ex,
 				HttpServletResponse response) throws IOException {
 			ExceptionVO exceptionVO = new ExceptionVO("");
+			System.out.println("Exception : UNSUPPORTED_MEDIA_TYPE");
+			System.out.println(ex.getMessage()+" "+ex.getClass().getSimpleName());
 			return exceptionVO;
 		} 
 
@@ -62,6 +69,8 @@ public class ExceptionControllerAdvice {
 	public ExceptionVO handleViolationException(ConstraintViolationException ex,
 			HttpServletResponse response) throws IOException {
 		ExceptionVO exceptionVO = new ExceptionVO("");
+		System.out.println("Exception : INTERNAL_SERVER_ERROR");
+		System.out.println(ex.getMessage()+" "+ex.getClass().getSimpleName());
 		return exceptionVO;
 	}
 
@@ -74,17 +83,20 @@ public class ExceptionControllerAdvice {
 	public ExceptionVO handleSQLException(SQLException ex,
 			HttpServletResponse response) throws IOException {
 		ExceptionVO exceptionVO = new ExceptionVO("");
+		System.out.println("Exception : INTERNAL_SERVER_ERROR");
+		System.out.println(ex.getMessage()+" "+ex.getClass().getSimpleName());
 		return exceptionVO;
 	}
 
 	// Custom
 	// Exception
 /*	@ExceptionHandler(Exception.class)
-	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
 	@ResponseBody
 	public ExceptionVO handleException(Exception ex,
 			HttpServletResponse response) throws IOException {
-		ExceptionVO exceptionVO = new ExceptionVO("");
+		System.out.println("Exception :  EXCEPTION");
+		System.out.println(ex.getMessage());
+		ExceptionVO exceptionVO = new ExceptionVO(" ");
 		return exceptionVO;
 	}*/
 	

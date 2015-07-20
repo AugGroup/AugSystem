@@ -17,7 +17,7 @@ section {
 	        </div>  	         
 		</div>
 		<div class="col-md-6">
-			<h1>Error! 404</h1>	    
+			<h1>Error! 500</h1>	    
 			<p>The page you are looking for might have been remove,
 			  has its name and changed or is
 			  temporarily unavailable.</p>
