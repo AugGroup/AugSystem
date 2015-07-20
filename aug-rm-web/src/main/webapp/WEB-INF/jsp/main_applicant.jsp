@@ -20,7 +20,11 @@
 	 float:right;
 }
 #dataTable{
+<<<<<<< HEAD
 float:right;
+=======
+	
+>>>>>>> Edit basic theme layout
 	color:#414141;
 	background-color: #ababab;
 }
@@ -51,6 +55,7 @@ padding: 3px;
 
 #table{
 	padding: 15px 5px 15px 5px;
+	margin-bottom : 100px;
 	background: #E0DFDD;;
 
 }

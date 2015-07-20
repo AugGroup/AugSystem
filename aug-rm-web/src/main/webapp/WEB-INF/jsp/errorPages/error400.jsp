@@ -26,22 +26,12 @@
 <script src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
 <title>Error 400 page</title>
 <style >
-.error {
-	color: #ff0000;
-}
-
 
 section {
 	height:80%;
 	background:#E0DFDD;
-	padding-top: 70px;
+	padding-top: 60px;
 }
-
-.container{
-	padding-right: 0px;
-	padding-left: 0px;
-}
-
 
 </style>
 
@@ -65,7 +55,7 @@ section {
 			  <p>Return to the homepage.</p>
 			  <div class="gotohome">
 				  	<a id="linkgotohome" href="<%=request.getContextPath()%>/applicant" class="btn btn-danger" role="button">
-				  	<span class="glyphicon glyphicon-home" staria-hidden="true" style="margin-left: 2px;">
+				  	<span class="glyphicon glyphicon-home" style="margin-left: 2px;">
 				  	</span>
 				  	Home </a>    
 			  </div>

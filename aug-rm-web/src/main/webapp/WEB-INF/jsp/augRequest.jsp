@@ -97,6 +97,7 @@
         	 searching : true,
         	 paging: 10,
         	 sort : false,
+        	 /* order: [[ 2, 'asc' ]], */
         	 ajax: {
         		 type: "GET",
         		 url: '${pageContext.request.contextPath}/request/search'

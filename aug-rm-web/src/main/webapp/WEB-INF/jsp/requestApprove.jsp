@@ -33,6 +33,7 @@
 		/* ------------------- DataTable------------------- */
 		var dtRequest;
 		var dtRequest =$('#requestTable').DataTable({
+			sort : false,
 			ajax: {
 				type: "GET",
 				url: '${pageContext.request.contextPath}/request/search',

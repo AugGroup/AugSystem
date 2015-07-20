@@ -32,9 +32,9 @@
 
 
 section {
-	height:80%;
+	height:100%;
 	background:#E0DFDD;
-	padding-top: 70px;
+	padding-top: 60px;
 }
 
 .container{
@@ -57,7 +57,7 @@ section {
 	        </div>  	         
 		</div>
 		<div class="col-lg-6 col-md-6">
-			<h1>Error! 404 web.xml</h1>	    
+			<h1>Error! 401 web.xml</h1>	    
 			<p>The page you are looking for might have been remove,
 			  has its name and changed or is
 			  temporarily unavailable.</p>

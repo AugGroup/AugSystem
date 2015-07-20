@@ -124,8 +124,10 @@ p{
 }
 
 .container{
-	margin-left: 0px;
-	margin-right: 0px;
+
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
 	padding-right: 0px;
 	padding-left: 0px;
 }
