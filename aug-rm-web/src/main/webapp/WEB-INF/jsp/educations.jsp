@@ -3,6 +3,19 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+#educations{
+	background: #E0DFDD;
+}
+
+#educationTable{
+	color:#414141;
+	background-color: #ababab;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+</style>
 <script>
 	$(document).ready(function() {
 		
@@ -56,6 +69,9 @@
 		}else{
 			var id = '${id}';
 			dtApplicant = $('#educationTable').DataTable({
+				paging: true,
+				hover:false,
+				sort:false,
 				ajax : {
 					url : '${pageContext.request.contextPath}/findByIdEducation/'+ id,
 					type : 'POST'
@@ -258,7 +274,7 @@
 });
 </script>
 <jsp:include page="applicationMenu.jsp" />
-<div class="container">
+<div class="container" id="educations">
 	<div class="row">
 		<div class="col-md-6">
 			<h1><spring:message code="education.name"/></h1>
