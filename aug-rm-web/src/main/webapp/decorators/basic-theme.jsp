@@ -134,6 +134,7 @@ p{
 	margin-right: auto;
 	padding-right: 0px;
 	padding-left: 0px;
+	font-family: "Regular";
 }
 
 #btn_report{

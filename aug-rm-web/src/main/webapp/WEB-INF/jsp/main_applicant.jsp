@@ -32,7 +32,7 @@ td {font-family: "Regular";
 table.dataTable tr.odd { background-color:#e7e7e7; }
 table.dataTable tr.even { background-color:#d6d6d6; }
 
-.container{
+/* .container{
 	font-family: "Regular";
 	position:relative;
 	margin-left: 40px;
@@ -40,7 +40,7 @@ table.dataTable tr.even { background-color:#d6d6d6; }
 	padding-right: 0px;
 	padding-left: 0px;
 	width: 93%;
-}
+} */
 
 #dataTable_previous{
 padding:3px;
@@ -55,22 +55,16 @@ padding: 3px;
 }
 
 #table{
-	padding: 15px 5px 75px 5px;
+	padding: 15px 5px 65px 5px;
 	margin-bottom : 100px;
 	background: #E0DFDD;;
 
 }
  
 #btn_add{
-margin-top: 15px;
-/* margin-left: 799px; */
-float: right;
-} 
-
-/* div.dataTables_paginate { */
-/*     background-color: yellow; */
-
-/* } */
+	margin-top: 15px;
+	float:right
+}
 </style>
 
 	<script type="text/javascript">
@@ -336,11 +330,11 @@ float: right;
     							<div class="form-group" class="form-inline" style="width: 400px" >
 									<div class="row">
 										<div class="col-md-6">
-										<label for="inputAttitudeHome">Home</label> 
+										<label for="inputAttitudeHome"><spring:message code="edit.attitude.home"/></label> 
 										<input type="text" class="form-control" id="inputAttitudeHome" name="inputAttitudeHome" placeholder="<spring:message code="edit.text.feild"/>">  													
 										</div>
 										<div class="col-md-6">
-									<label for="inputAttitudeOffice">Office</label> 
+									<label for="inputAttitudeOffice"><spring:message code="edit.attitude.office"/></label> 
 									<input type="text" class="form-control" id="inputAttitudeOffice" name="inputAttitudeOffice" placeholder="<spring:message code="edit.text.feild"/>">
     							</div>
     							</div>
