@@ -7,6 +7,18 @@
 .error {
 	color: #ff0000;
 }
+
+#experience{
+	background: #E0DFDD;
+}
+
+#experiencesTable{
+	color:#414141;
+	background-color: #ababab;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
 </style>
 <script>
 
@@ -102,6 +114,9 @@
 	else {
 		var id = '${id}';
 		dtApplicant = $('#experiencesTable').DataTable({
+			paging: true,
+			hover:false,
+			sort:false,
 			ajax : {
 				url : '${pageContext.request.contextPath}/findByIdExperience/' + id,
 				type : 'POST'
@@ -344,6 +359,7 @@
 	});
 </script>
 <jsp:include page = "applicationMenu.jsp"/>
+<div id="experience">
 	<div class="form-group">
 		<label for="experiences"><spring:message code="exp.text"/> </label>
 	</div>
@@ -491,8 +507,7 @@
 	</div>
 	<br> <br>
 	<div>
-		<table id="experiencesTable" class="display" cellspacing="0"
-			width="100%">
+		<table id="experiencesTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th><spring:message code="exp.data.position"/></th>
@@ -515,3 +530,4 @@
 			<tbody></tbody>
 		</table>
 	</div>
+</div>

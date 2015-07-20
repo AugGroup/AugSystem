@@ -3,6 +3,19 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+#reference{
+	background: #E0DFDD;
+}
+
+#referenceTable{
+	color:#414141;
+	background-color: #ababab;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+</style>
 <script>
 	$(document).ready(function() {
 		
@@ -45,6 +58,9 @@
 		else {
 			var id = '${id}';
 			dtApplicant = $('#referenceTable').DataTable({
+				paging: true,
+				hover:false,
+				sort:false,
 				ajax : {
 					url : '${pageContext.request.contextPath}/findByIdReference/'+id,
 					type : 'POST'
@@ -228,6 +244,7 @@
 	});
 </script>
 <jsp:include page="applicationMenu.jsp" />
+<div id="reference">
 	<div class="form-group">
 		<label for="reference"><spring:message code="ref.text"/> </label>
 	</div>
@@ -329,3 +346,4 @@
 			<tbody></tbody>
 		</table>
 		</div>
+</div>

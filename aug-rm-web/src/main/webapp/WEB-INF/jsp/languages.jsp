@@ -3,7 +3,19 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+#languages{
+	background: #E0DFDD;
+}
 
+#languagesTablee{
+	color:#414141;
+	background-color: #ababab;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+</style>
 <script>
 $(document).ready(function() {
 	
@@ -29,6 +41,9 @@ $(document).ready(function() {
 	else {
 		var id = '${id}';
 		dtApplicant = $('#languagesTable').DataTable({
+			paging: true,
+			hover:false,
+			sort:false,
 			ajax : {
 				url : '${pageContext.request.contextPath}/findByIdLanguages/' +id,
 				type : 'POST'
@@ -221,6 +236,7 @@ $(document).ready(function() {
 });
 </script>
 <jsp:include page="applicationMenu.jsp" />
+<div id="languages">
 <div class="row">
 		<div class="col-md-6">
 			<h1><spring:message code="languages.name.less"/></h1>
@@ -346,8 +362,7 @@ $(document).ready(function() {
 		
 	<br> <br>
 	<div>
-		<table id="languagesTable" class="display" cellspacing="0"
-			width="100%">
+		<table id="languagesTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th><spring:message code="languages.name"/></th>
@@ -366,3 +381,4 @@ $(document).ready(function() {
 		</table>
 
 	</div>
+</div>

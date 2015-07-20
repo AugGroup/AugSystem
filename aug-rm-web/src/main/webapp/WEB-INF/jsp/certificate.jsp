@@ -3,6 +3,19 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+#certificate{
+	background: #E0DFDD;
+}
+
+#certificateTable{
+	color:#414141;
+	background-color: #ababab;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+</style>
 <script>
 $(document).ready(function() {
 	
@@ -27,6 +40,9 @@ $(document).ready(function() {
 	else {
 		var id = '${id}';
 		dtApplicant = $('#certificateTable').DataTable({
+			paging: true,
+			hover:false,
+			sort:false,
 			ajax : {
 				url : '${pageContext.request.contextPath}/findByIdCertificate/'+id,
 				type : 'POST'
@@ -193,6 +209,7 @@ $(document).ready(function() {
 
 </script>
 <jsp:include page="applicationMenu.jsp" />
+<div id="certificate">
 	<div class="row">
 		<div class="col-md-6">
 			<h1><spring:message code="cer.name"/></h1>
@@ -275,3 +292,4 @@ $(document).ready(function() {
 		</table>
 
 	</div>
+</div>

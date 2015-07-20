@@ -3,6 +3,19 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+#skill{
+	background: #E0DFDD;
+}
+
+#skillTable{
+	color:#414141;
+	background-color: #ababab;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+</style>
 <script>
 $(document).ready(function() {
 	
@@ -25,6 +38,9 @@ $(document).ready(function() {
 	else {
 		var id = '${id}';
 		dtApplicant = $('#skillTable').DataTable({
+			paging: true,
+			hover:false,
+			sort:false,
 			ajax : {
 				url : '${pageContext.request.contextPath}/findByIdSkill/'+id,
 				type : 'POST'
@@ -196,7 +212,7 @@ $(document).ready(function() {
 
 </script>
 <jsp:include page="applicationMenu.jsp" />
-		<div class="container">
+		<div class="container" id="skill">
 			<div class="row">
 				<div class="col-md-6">
 					<h1><spring:message code="skill.name"/></h1>
