@@ -9,6 +9,9 @@
 	padding-left: 5px;
 }
 
+table.dataTable tr.odd{ background-color:#e7e7e7; }
+table.dataTable tr.even { background-color:#d6d6d6; }
+
 </style>
 <script type="text/javascript">
 </script>

@@ -3,6 +3,19 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<style>
+#address{
+	background: #E0DFDD;
+}
+
+#addressTable{
+	color:#414141;
+	background-color: #ababab;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+</style>
 <script>
 	$(document).ready(function() {
 		$('#addressForm').validate({
@@ -66,6 +79,9 @@
 		else {
 			var id = '${id}';
 			dtApplicant = $('#addressTable').DataTable({
+				paging: true,
+				hover:false,
+				sort:false,
 				ajax : {
 					url : '${pageContext.request.contextPath}/findByIdAddress/'+id,
 					type : 'POST'
@@ -374,7 +390,7 @@
 	
 	<br> <br>
 	<div>
-		<table id="addressTable" class="display" cellspacing="0" width="100%">
+		<table id="addressTable" class="display" cellspacing="0" width="99%">
 			<thead>
 				<tr>
 					<th><spring:message code="address.data"/></th>

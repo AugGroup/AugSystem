@@ -20,6 +20,7 @@
 	 float:right;
 }
 #dataTable{
+float:right;
 	color:#414141;
 	background-color: #ababab;
 }
@@ -29,7 +30,7 @@ td {font-family: "Regular";
     color: #414141;
     }
     
-table.dataTable tr.odd{ background-color:#e7e7e7; }
+table.dataTable tr.odd { background-color:#e7e7e7; }
 table.dataTable tr.even { background-color:#d6d6d6; }
 
 .container{
@@ -276,6 +277,8 @@ margin-left: 799px;
 		<c:set var="ss" value="display:none;"></c:set>
 <!-- 		class="cell-border" -->
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
+		<div class="row">
+					<div class="col-md-12">
 			<div id="table">
 				<table id="dataTable" class="display" cellspacing="0" width="100%">
 					<thead>
@@ -298,8 +301,8 @@ margin-left: 799px;
 <!-- 					<div class="col-md-6"></div> -->
 <!-- 					<div class="col-md-6"> -->
 						<a type="submit" id="btn_add" class="btn btn-warning" href="${pageContext.request.contextPath}/informations"><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></a>
-<!-- 					</div> -->
-<!-- 				</div> -->
+					</div>
+				</div>
 			</div>
 		</sec:authorize>
 

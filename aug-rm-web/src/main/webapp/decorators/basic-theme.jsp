@@ -108,7 +108,7 @@
 
 /* a{color:white;} */
 #footer{
-background:#FFCC00;
+background:#FFC000;
 }
 
 p{
@@ -117,15 +117,24 @@ p{
 }
 
 .body{
+	padding-left: 40px;
+	padding-right: 40px;
 	padding-top: 25px;
 	background:#CAC9C7;
 }
 
 .container{
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-left: 0px;
+	margin-right: 0px;
 	padding-right: 0px;
 	padding-left: 0px;
+}
+
+#btn_report{
+	width: 75px;
+	height: 25px;
+	background: #707070;
+	border: 1px solid #707070;
 }
 
 </style>
@@ -151,11 +160,11 @@ p{
 				<a href="${request.getRequestURL}?locale=th">		
 				<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 40px; height: 25px;" /></a>
 				<div class="btn-group">
-  					<button type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 75px; height: 25px;">
+  					<button type="button" class="btn btn-defult dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="btn_report" style="color: #ffffff;">
     					Report <span class="caret"></span>
   					</button>
   				<ul class="dropdown-menu">
-    				<li><a href="${pageContext.request.contextPath}/report"><spring:message code="report.text"/></a></li>
+    				<li><a href="${pageContext.request.contextPath}/report" style="	font-size: 16px; color: #292929;"><spring:message code="report.text"/></a></li>
     				<li><a href="${pageContext.request.contextPath}/monthlyReport"><spring:message code="report.text.monthly"/></a></li>
  				 </ul>
 				</div>
@@ -173,7 +182,7 @@ p{
 	<div id="footer">
 		<div class="text">
 				<div class="container">
-					<p class="text-muted credit">Copyright &copy; <a href="http://www.augmentis.biz/"> augmentis.biz</a></p>
+					<p class="text-muted credit">&copy; 2011-2015 Augmentis (Thailand) Limited. All rights reserved.</p>
 				</div>
 		</div>
 	</div>
