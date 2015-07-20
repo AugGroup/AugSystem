@@ -64,6 +64,10 @@
 	color: #ff0000;
 }
 #imagePreview{
+	margin-top: 25px;
+    margin-bottom: 25px;
+    margin-right: 75px;
+    margin-left: 75px;
     width: 150px;
     height: 188px;
     background-position: center;
