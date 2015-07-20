@@ -143,8 +143,8 @@ p{
 		<a href="${pageContext.request.contextPath}/approve" style="color:#ffffff;"><spring:message code="request.approve"/></a>
 
 		<div class="user">
-			<a href="<c:url value="/logout"/>" style="color:black;"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a>
-			<a href=""  style="color:black;"><span class="glyphicon glyphicon-user" ></span> <%=name %></a>
+			<a href="<c:url value="/logout"/>" style="color:#707070;"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout"/></a>
+			<a href=""  style="color:#707070;"><span class="glyphicon glyphicon-user" ></span> <%=name %></a>
 			<div class="user2">
 				<a href="${request.getRequestURL}?locale=en">
 				<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 40px; height: 25px;"/></a>

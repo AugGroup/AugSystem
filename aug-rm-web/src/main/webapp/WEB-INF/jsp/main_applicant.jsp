@@ -262,8 +262,8 @@ margin-left: 799px;
 	<div class="container">
 		<!--Input text for Search Applicant -->
 		<div class="row" id="search_row">
-			<div class="col-lg-8"></div>
-			<div class="col-lg-4">
+			<div class="col-md-8"></div>
+			<div class="col-md-4">
 				<div class="input-group">
 					<input type="text" class="form-control" id="inputSearch" placeholder="<spring:message code="main.text.field"/>"/>
 					<span class="input-group-btn">
@@ -277,7 +277,7 @@ margin-left: 799px;
 <!-- 		class="cell-border" -->
 		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 			<div id="table">
-				<table id="dataTable" class="display" cellspacing="0" width="50%">
+				<table id="dataTable" class="display" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th width="10%"><spring:message code="main.code"/></th>
