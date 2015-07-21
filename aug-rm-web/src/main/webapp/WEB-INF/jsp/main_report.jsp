@@ -42,10 +42,34 @@
 		padding:3px;
 	}
 
-	.paginate_button{
-		padding: 3px;
+	.form-group{
+		margin: 3px;
+	}
+	
+	.report_search{
+		position:relative;
+		padding-left:20%;
+		height: 180px;
 	}
 
+	.search_inputgroup{
+		float:right;
+		margin: 5px;
+		padding: 5px;
+	}
+	#radio_inputgroup{
+		margin: 0px 15px 0px 5px; 
+	}
+	#btn_search{
+		margin: 27px 5px 0px 5px;
+		width: 95px;
+	}
+	
+	#btn_preview{
+		margin: 0px 5px 0px 5px;
+		width: 95px;
+	}
+	
 	#table{
 		padding: 15px 5px 75px 5px;
 		margin-bottom : 100px;
@@ -118,95 +142,57 @@ $(document).ready(function () {
  	<div class="row"><h1 align="center"><spring:message code="report.text"/></h1></div>
  	
 <!------------------- Report search-------------------> 
-<f:form method="post" name="reportForm" target="_blank" commandName="searchReportDTO" action="${pageContext.request.contextPath}/report/preview" cssClass="form-horizontal">
-<h3> <spring:message code="report.text.search"/> </h3>
-	<div class="row">
-		<div class="col-md-2">
-			<div class="form-group" style="width:180px">
-				<label for="position"><spring:message code="info.position"/></label>
-				<select name="position" id="position" class="form-control">
-					<option value="-1"><spring:message code="report.text.select"/></option>
-					<c:forEach items="${positionRequest}" var="items">
-						<option value="${items.id}">${items.positionName }</option>
-                	</c:forEach>
-            	</select>
-            </div>
-       </div>
-       <div class="col-md-2">
-       		<div class="form-group" style="width:180px">
-       			<label for="degree"><spring:message code="education.degree"/></label>
-       			<select name="degree" id='degree' class="form-control" >
-       				<option value ='' selected ='selected'><spring:message code="report.text.select"/></option>
-                    <option value ='Bachelor'>Bachelor</option>
-                    <option value ='Master'>Master</option>
-                    <option value ='Doctor'>Doctor</option>
-                </select>
-       		</div>
-       	</div>
-       	<div class="col-md-2">
-       		<div class="form-group" style="width:180px">
-       			<label for="major"><spring:message code="education.major"/></label> 
-				<input type="text" class="form-control" id="major" name="major" placeholder="<spring:message code="education.text.major"/>">
-    		</div>
-    	</div>
-   		<div class="col-md-1">
-   			<div class="form-group" style="width:93px">
-    			<label for="gpa"><spring:message code="education.gpa"/></label> <!-- step="0.1" -->
-				<input type="text" class="form-control" maxlength="5" id="gpa" name="gpa" placeholder="0.00">
-    		</div>
-   		</div>
-   		<div class="col-md-2">
-   			<div class="form-group" style="width:180px">
-    			<label for="schoolName"><spring:message code="report.text.school"/></label> 
-				<input type="text" class="form-control" id="schoolName" name="schoolName" placeholder="<spring:message code="report.enter.school"/>">
-			</div>
-   		</div>
-   		</div>
-   		<div class="row">
-   			 <div class="col-md-8" align="right">
-   				<div class="form-group">
-   					<label for="reportType"><spring:message code="report.text.type"/> </label>
-						<input type="radio" value="pdf" id="reportType" name="reportType" checked="checked"> <spring:message code="report.text.pdf"/> 
-						<input type="radio" value="xls" id="reportType" name="reportType"> <spring:message code="report.text.xls"/> 
-    			</div>
-    		</div>
-   		 	<div class="col-md-2" align="left">
-   		 		<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> <spring:message code="main.button.search"/> </button>		
-   		 	</div>
-   			 <div class="col-md-1" align="left">	
-   			 	<button type="button" class="btn btn-primary submit" data-toggle="modal" data-target="#previewReportModal" id="btn_preview"><span class="glyphicon glyphicon-search"></span> <spring:message code="request.preview"/> </button>		 				
-		 	</div>
-		 </div>
-
-	
-	<!------------------- Report Modal preview and download -------------------->
-	<!-- <div class="modal fade" id="previewReportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-   		<div class="modal-dialog">
-        	<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					<h4 class="modal-title"> Report</h4>
+	<div class="report_search">
+		<f:form method="post" name="reportForm" target="_blank" commandName="searchReportDTO" action="${pageContext.request.contextPath}/report/preview" cssClass="form-inline">
+			
+				<div class="search_inputgroup">
+				<h3><spring:message code="report.text.search"/> </h3>
+					<div class="form-group" style="width:216px">
+						<label for="position"><spring:message code="info.position"/></label>
+						<select name="position" id="position" class="form-control">
+							<option value="-1"><spring:message code="report.text.select"/></option>
+							<c:forEach items="${positionRequest}" var="items">
+								<option value="${items.id}">${items.positionName }</option>
+                			</c:forEach>
+            			</select>
+            		</div>
+       				<div class="form-group" style="width:165px">
+       					<label for="degree"><spring:message code="education.degree"/></label>
+       					<select name="degree" id='degree' class="form-control" style="width:165px">
+       						<option value ='' selected ='selected'><spring:message code="report.text.select"/></option>
+                    		<option value ='Bachelor'>Bachelor</option>
+                    		<option value ='Master'>Master</option>
+                    		<option value ='Doctor'>Doctor</option>
+                		</select>
+       				</div>
+       				<div class="form-group" style="width:165px">
+       					<label for="major"><spring:message code="education.major"/></label> 
+						<input type="text" class="form-control" id="major" name="major" placeholder="<spring:message code="education.text.major"/>" style="width:165px">
+    				</div>
+   					<div class="form-group" style="width:93px">
+    					<label for="gpa"><spring:message code="education.gpa"/></label> <!-- step="0.1" -->
+						<input type="text" class="form-control" maxlength="5" id="gpa" name="gpa" placeholder="0.00" style="width:93px">
+    				</div>
+   					<div class="form-group" style="width:165px">
+    					<label for="schoolName"><spring:message code="report.text.school"/></label> 
+						<input type="text" class="form-control" id="schoolName" name="schoolName" placeholder="<spring:message code="report.enter.school"/>" style="width:165px">
+					</div>
+					
+   		 			<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> <spring:message code="main.button.search"/> </button>
 				</div>
- 				
- 					<div class="modal-body"> Report	
-						<div class="col-md-7" align="right">
-   							<div class="form-group">
-   								<label for="inputReportType">Report Type </label>
-								<input type="radio" value="pass" id="inputReportType" name="inputReportType"> PDF 
-								<input type="radio" value="Not pass" id="inputReportType" name="inputReportType"> XLS 
-					        </div>
-    	                </div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default submit" value="preview" id="btn_submit">Preview</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
-				
-			</div>
-		</div>
-	</div>
- -->
+			
+				<div class="search_inputgroup" align="right">
+   					<div class="form-group" id="radio_inputgroup">
+   						<label for="reportType"><spring:message code="report.text.type"/> </label>
+							<input type="radio" value="pdf" id="reportType" name="reportType" checked="checked"> <spring:message code="report.text.pdf"/> 
+							<input type="radio" value="xls" id="reportType" name="reportType"> <spring:message code="report.text.xls"/> 
+    				</div>
+    					  		 	
+   			 		<button type="button" class="btn btn-primary submit" data-toggle="modal" data-target="#previewReportModal" id="btn_preview"><span class="glyphicon glyphicon-search"></span> <spring:message code="request.preview"/> </button>		 				
+		 		</div>
+
  </f:form> 
+ </div>
 
 	<!------------------- Report DataTable-------------------> 
 	<div id="table">

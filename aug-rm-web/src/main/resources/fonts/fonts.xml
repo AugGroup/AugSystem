@@ -2,7 +2,7 @@
 
 <fontFamilies>
 
-	<fontFamily name="Angsana ">
+	<fontFamily name="Angsana CRS">
 		<normal>fonts/ANGSA.TTF</normal>
 		<italic>fonts/ANGSA.TTF</italic>
 		<pdfEncoding>Identity-H</pdfEncoding>
