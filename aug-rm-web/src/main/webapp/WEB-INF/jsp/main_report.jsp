@@ -49,7 +49,7 @@
 	.report_search{
 		position:relative;
 		padding-left:20%;
-		height: 180px;
+		height: 200px;
 	}
 
 	.search_inputgroup{

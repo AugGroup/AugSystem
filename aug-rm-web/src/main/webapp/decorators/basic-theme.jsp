@@ -160,7 +160,7 @@ p{
 				<a href="${request.getRequestURL}?locale=en">
 				<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 40px; height: 25px;"/></a>
 				<a href="${request.getRequestURL}?locale=th">		
-				<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 40px; height: 25px; margin-right: 20px;" /></a>
+				<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 40px; height: 25px; margin-right: 15px;" /></a>
 				<div class="btn-group">
   					<button type="button" class="btn btn-defult dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="btn_report" style="color: #ffffff;">
     					<spring:message code="report.text"/> <span class="caret"></span>
