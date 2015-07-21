@@ -64,16 +64,14 @@
 	color: #ff0000;
 }
 #imagePreview{
-	margin-top: 25px;
-    margin-bottom: 25px;
+    margin-bottom: 5px;
     margin-right: 75px;
     margin-left: 75px;
-    width: 150px;
-    height: 188px;
+    width: 120px;
+    height: 120px;
     background-position: center;
     background-size: cover;
-/*     -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3); */
-   -webkit-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3); 
    display: inline-block;
 }
 
