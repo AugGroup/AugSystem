@@ -2,7 +2,8 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Report_AugRmSystem" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3153f2ad-24e1-462e-8222-6f152570ebb8">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="48"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Heading 2" fontSize="14" isBold="true" isItalic="true"/>
 	<queryString>
 		<![CDATA[SELECT applicant.APPLICANT_ID AS id ,
 		applicant.AGE AS age,
@@ -103,12 +104,12 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<rectangle>
-				<reportElement x="61" y="9" width="432" height="61" backcolor="#FFCC00" uuid="9c9a1f06-2f7e-4c51-be58-3d6985e7e709"/>
+				<reportElement style="Heading 2" x="61" y="9" width="432" height="61" backcolor="#FFCC00" uuid="9c9a1f06-2f7e-4c51-be58-3d6985e7e709"/>
 			</rectangle>
 			<staticText>
 				<reportElement x="99" y="19" width="345" height="40" uuid="8bd555c3-a185-4252-97de-93cbde024360"/>
 				<textElement textAlignment="Center">
-					<font size="24"/>
+					<font fontName="Angsana New" size="28" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[Report]]></text>
 			</staticText>
@@ -118,23 +119,23 @@
 		<band height="70" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="50" width="52" height="20" uuid="ccb9ec48-642a-4baf-8fc2-1e0c4ebf469d"/>
-				<text><![CDATA[ID CODE]]></text>
+				<text><![CDATA[Id Code]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="121" y="50" width="100" height="20" uuid="18b23752-0513-4575-a8a2-d9df2cec069b"/>
-				<text><![CDATA[NAME]]></text>
+				<text><![CDATA[Name]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="50" y="50" width="74" height="20" uuid="0d9f6101-d3fd-4d52-bf0e-30fd2a2beb3f"/>
-				<text><![CDATA[APPLY DATE]]></text>
+				<text><![CDATA[Apply Date]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="423" y="50" width="61" height="20" uuid="a5cda83c-87d1-4e8a-9c68-75b5a95d1454"/>
-				<text><![CDATA[DEGREE]]></text>
+				<text><![CDATA[Degree]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="484" y="50" width="44" height="20" uuid="575ad851-c4c1-4f89-85ab-48ad2887ce4b"/>
-				<text><![CDATA[MAJOR]]></text>
+				<text><![CDATA[Major]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="528" y="50" width="29" height="20" uuid="9245e499-96c7-493a-b395-5d8969701777"/>
@@ -142,19 +143,19 @@
 			</staticText>
 			<staticText>
 				<reportElement x="343" y="50" width="82" height="20" uuid="2f8a803e-effa-49fc-a945-1658bc12619c"/>
-				<text><![CDATA[SCHOOL NAME]]></text>
+				<text><![CDATA[School Name]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="221" y="50" width="41" height="20" uuid="0bd24445-f422-4677-9c1b-d8b1658bc876"/>
-				<text><![CDATA[POS1]]></text>
+				<text><![CDATA[Position1]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="262" y="50" width="40" height="20" uuid="22e8b750-9ea7-4a87-94b5-6512a959c1eb"/>
-				<text><![CDATA[POS2]]></text>
+				<text><![CDATA[Position2]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="302" y="50" width="41" height="20" uuid="78cacce0-c6be-4c7e-85c2-0d5697076e01"/>
-				<text><![CDATA[POS3]]></text>
+				<text><![CDATA[Position3]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
