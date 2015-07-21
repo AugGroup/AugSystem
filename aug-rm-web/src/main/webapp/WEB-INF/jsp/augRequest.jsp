@@ -6,18 +6,12 @@
 <title><spring:message code="request.application"/></title>
 
 <style type="text/css">
-	.bs-example{
-		 margin: 20px;
-	}
-    .form-horizontal .control-label{
-        padding-top: 7px;
-    }
     .error{
      	color :red;
  		padding: 3px;
 	}
 	
-	#dataTable{
+	#requestTable{
 		color:#414141;
 		background-color: #ababab;
 	}
@@ -51,11 +45,15 @@
 	.paginate_button{
 		padding: 3px;
 	}
-
+	
+	#requestTable_paginate{
+		padding: 0px;
+	}
+	
 	#table{
 		padding: 15px 5px 75px 5px;
 		margin-bottom : 100px;
-		background: #E0DFDD;;
+		background: #E0DFDD;
 
 	}
 	

@@ -6,64 +6,43 @@
 <title>Request for Application</title>
 
 <style type="text/css">
-	.bs-example{
-		margin: 20px;
-     }
-    .form-horizontal .control-label{
-    	padding-top: 7px;
-    }
-    
+
    .error{
-     color :red;
- 	padding: 3px;
-}
+   		color :red;
+   		padding: 3px;
+	}
 
-#dataTable{
-	color:#414141;
-	background-color: #ababab;
-}
+	#requestTable{
+		color:#414141;
+		background-color: #ababab;
+	}
 
-td {font-family: "Regular";
-    font-size: 18px;
-    color: #414141;
+	td {font-family: "Regular";
+   		font-size: 18px;
+    	color: #414141;
     }
     
-table.dataTable tr.odd { background-color:#e7e7e7; }
-table.dataTable tr.even { background-color:#d6d6d6; }
+	table.dataTable tr.odd { background-color:#e7e7e7; }
+	table.dataTable tr.even { background-color:#d6d6d6; }
 
-.container{
-	font-family: "Regular";
-	position:relative;
-	margin-left: 40px;
-	margin-right: 40px;
-	padding-right: 0px;
-	padding-left: 0px;
-	width: 93%;
-}
+	.container{
+		font-family: "Regular";
+		position:relative;
+		margin-left: 40px;
+		margin-right: 40px;
+		width: 93%;
+	}
 
-#requestTable_previous{
-padding:3px;
-}
 
-#requestTable_next{
-padding:3px;
-}
 
-.paginate_button{
-padding: 3px;
-}
+	#table{
+		width: 100%;
+		padding: 15px 5px 75px 5px;
+		margin-bottom : 100px;
+		background: #E0DFDD;
 
-#table{
-	padding: 15px 5px 75px 5px;
-	margin-bottom : 100px;
-	background: #E0DFDD;;
+	}
 
-}
-
-#btn_add{
-margin-top: 15px;
-margin-left: 799px;
-}
 }
     
 </style>

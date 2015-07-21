@@ -4,6 +4,57 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
+<style type="text/css">
+    .error{
+     	color :red;
+ 		padding: 3px;
+	}
+	
+	#reportTable{
+		color:#414141;
+		background-color: #ababab;
+	}
+
+	td {font-family: "Regular";
+    	font-size: 18px;
+   		color: #414141;
+    }
+    
+	table.dataTable tr.odd { background-color:#e7e7e7; }
+	table.dataTable tr.even { background-color:#d6d6d6; }
+
+	.container{
+		font-family: "Regular";
+		position:relative;
+		margin-left: 40px;
+		margin-right: 40px;
+		padding-right: 0px;
+		padding-left: 0px;
+		width: 93%;
+	}
+
+	#requestTable_previous{
+		padding:3px;
+	}
+
+	#requestTable_next{
+		padding:3px;
+	}
+
+	.paginate_button{
+		padding: 3px;
+	}
+
+	#table{
+		padding: 15px 5px 75px 5px;
+		margin-bottom : 100px;
+		background: #E0DFDD;
+
+	}
+	
+}
+</style>
 <script type="text/javascript">
 $(document).ready(function () {
 	var dtReport;
@@ -158,7 +209,7 @@ $(document).ready(function () {
  </f:form> 
 
 	<!------------------- Report DataTable-------------------> 
-	<div class="row">
+	<div id="table">
     	<table id="reportTable" class="cell-border" style="width: 100%">
             <thead>
                 <tr>
@@ -169,7 +220,7 @@ $(document).ready(function () {
                     <th><spring:message code="main.position2"/></th>
                     <th><spring:message code="main.position3"/></th>
                     <th><spring:message code="report.data.school"/></th>
-                    <th><spring:message code="education.data.degree"/></th>
+                    <th><spring:message code="education.degree"/></th>
                     <th><spring:message code="education.data.gpa"/></th>
                 </tr>
             </thead>
