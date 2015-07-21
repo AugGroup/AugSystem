@@ -8,12 +8,36 @@
 	background: #E0DFDD;
 }
 
-#languagesTablee{
+#languagesTable{
 	color:#414141;
 	background-color: #ababab;
-	margin-left: 5px;
 	margin-right: 5px;
 }
+
+#languagesTable_info{
+	margin-left: 5px;
+}
+
+#languagesAdd{
+	margin-left: 5px;
+}
+
+#table{
+	padding: 15px 5px 65px 5px;
+	margin-bottom : 100px;
+	background: #E0DFDD;;
+
+}
+
+
+label{
+	padding-left: 5px;
+}
+
+h1{
+	padding-left: 5px;
+}
+
 
 </style>
 <script>
@@ -236,7 +260,7 @@ $(document).ready(function() {
 });
 </script>
 <jsp:include page="applicationMenu.jsp" />
-<div id="languages">
+<div class="container" id="languages">
 <div class="row">
 		<div class="col-md-6">
 			<h1><spring:message code="languages.name.less"/></h1>
@@ -361,7 +385,7 @@ $(document).ready(function() {
 		</div>
 		
 	<br> <br>
-	<div>
+	<div id="table">
 		<table id="languagesTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>

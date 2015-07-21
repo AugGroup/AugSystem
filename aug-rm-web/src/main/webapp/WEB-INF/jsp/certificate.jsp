@@ -11,8 +11,31 @@
 #certificateTable{
 	color:#414141;
 	background-color: #ababab;
-	margin-left: 5px;
 	margin-right: 5px;
+}
+
+#certificateTable_info{
+	margin-left: 5px;
+}
+
+#certificateAdd{
+	margin-left: 5px;
+}
+
+#table{
+	padding: 15px 5px 65px 5px;
+	margin-bottom : 100px;
+	background: #E0DFDD;;
+
+}
+
+
+label{
+	padding-left: 5px;
+}
+
+h1{
+	padding-left: 5px;
 }
 
 </style>
@@ -209,7 +232,7 @@ $(document).ready(function() {
 
 </script>
 <jsp:include page="applicationMenu.jsp" />
-<div id="certificate">
+<div class="container" id="certificate">
 	<div class="row">
 		<div class="col-md-6">
 			<h1><spring:message code="cer.name"/></h1>
@@ -276,7 +299,7 @@ $(document).ready(function() {
     		</div>  
 		</div>
 	<br> <br>
-	<div>
+	<div id="table">
 		<table id="certificateTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>

@@ -11,8 +11,31 @@
 #skillTable{
 	color:#414141;
 	background-color: #ababab;
-	margin-left: 5px;
 	margin-right: 5px;
+}
+
+#skillTable_info{
+	margin-left: 5px;
+}
+
+#skillAdd{
+	margin-left: 5px;
+}
+
+#table{
+	padding: 15px 5px 65px 5px;
+	margin-bottom : 100px;
+	background: #E0DFDD;;
+
+}
+
+
+label{
+	padding-left: 5px;
+}
+
+h1{
+	padding-left: 5px;
 }
 
 </style>
@@ -277,7 +300,7 @@ $(document).ready(function() {
 		</div>
 		
 			<br> <br>
-			<div>
+			<div id="table">
 				<table id="skillTable" class="display" cellspacing="0" width="100%">
 					<thead>
 						<tr>

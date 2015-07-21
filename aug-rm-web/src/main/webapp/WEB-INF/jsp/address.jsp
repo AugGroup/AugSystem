@@ -11,8 +11,31 @@
 #addressTable{
 	color:#414141;
 	background-color: #ababab;
-	margin-left: 5px;
 	margin-right: 5px;
+}
+
+#addressTable_info{
+	margin-left: 5px;
+}
+
+
+#addressAdd{
+	margin-left: 5px;
+}
+
+#table{
+	padding: 15px 5px 65px 5px;
+	margin-bottom : 100px;
+	background: #E0DFDD;;
+
+}
+
+label{
+	padding-left: 5px;
+}
+
+h1{
+	padding-left: 5px;
 }
 
 </style>
@@ -289,7 +312,7 @@
 	
 </script>
 <jsp:include page = "applicationMenu.jsp"/>
-<div id="address">
+<div class="container" id="address">
 		<div class="row">
 			<div class="col-md-6">
 				<h1><spring:message code="address.name"/></h1>
@@ -389,7 +412,7 @@
 		</div>
 	
 	<br> <br>
-	<div>
+	<div id="table">
 		<table id="addressTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>

@@ -11,8 +11,26 @@
 #referenceTable{
 	color:#414141;
 	background-color: #ababab;
-	margin-left: 5px;
 	margin-right: 5px;
+}
+
+#referenceAdd{
+	margin-left: 5px;
+}
+
+#table{
+	padding: 15px 5px 65px 5px;
+	margin-bottom : 100px;
+	background: #E0DFDD;;
+
+}
+
+#text{
+	padding-left: 5px;
+}
+
+h1{
+	padding-left: 5px;
 }
 
 </style>
@@ -244,9 +262,9 @@
 	});
 </script>
 <jsp:include page="applicationMenu.jsp" />
-<div id="reference">
+<div class="container" id="reference">
 	<div class="form-group">
-		<label for="reference"><spring:message code="ref.text"/> </label>
+		<label for="reference" id="text"><spring:message code="ref.text"/> </label>
 	</div>
 	<br>
 		<div class="row">
@@ -329,7 +347,7 @@
 		</div>
 	
 	<br> <br>
-	<div>
+	<div id="table">
 		<table id="referenceTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>

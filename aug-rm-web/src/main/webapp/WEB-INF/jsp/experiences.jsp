@@ -15,8 +15,26 @@
 #experiencesTable{
 	color:#414141;
 	background-color: #ababab;
-	margin-left: 5px;
 	margin-right: 5px;
+}
+
+#experiencesAdd{
+	margin-left: 5px;
+}
+
+#table{
+	padding: 15px 5px 65px 5px;
+	margin-bottom : 100px;
+	background: #E0DFDD;;
+
+}
+
+#text{
+	padding-left: 5px;
+}
+
+h1{
+	padding-left: 5px;
 }
 
 </style>
@@ -359,9 +377,9 @@
 	});
 </script>
 <jsp:include page = "applicationMenu.jsp"/>
-<div id="experience">
+<div class="container" id="experience">
 	<div class="form-group">
-		<label for="experiences"><spring:message code="exp.text"/> </label>
+		<label for="experiences" id="text"><spring:message code="exp.text"/> </label>
 	</div>
 	<br>
 	<div class="container">
@@ -506,7 +524,7 @@
 		</div>
 	</div>
 	<br> <br>
-	<div>
+	<div id="table">
 		<table id="experiencesTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>

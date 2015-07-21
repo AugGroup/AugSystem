@@ -11,47 +11,39 @@
 	margin:30px;
 }
  .error{
-     color :red;
+    color :red;
  	padding: 3px;
 }
 
-#add{font-family: "Regular";
-	 margin-right : 83px;
-	 float:right;
+#add{
+	font-family: "Regular";
+	margin-right : 83px;
+	float:right;
 }
 #dataTable{
 	color:#414141;
 	background-color: #ababab;
 }
 
-td {font-family: "Regular";
+td {
+	font-family: "Regular";
     font-size: 18px;
     color: #414141;
-    }
+}
     
 table.dataTable tr.odd { background-color:#e7e7e7; }
 table.dataTable tr.even { background-color:#d6d6d6; }
 
-/* .container{
-	font-family: "Regular";
-	position:relative;
-	margin-left: 40px;
-	margin-right: 40px;
-	padding-right: 0px;
-	padding-left: 0px;
-	width: 93%;
-} */
-
 #dataTable_previous{
-padding:3px;
+	padding:3px;
 }
 
 #dataTable_next{
-padding:3px;
+	padding:3px;
 }
 
 .paginate_button{
-padding: 3px;
+	padding: 3px;
 }
 
 #table{
@@ -294,7 +286,7 @@ padding: 3px;
 						</tr>
 					</thead>
 				</table>
-						<a type="submit" id="btn_add" class="btn btn-warning" href="${pageContext.request.contextPath}/informations"><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></a>
+				<a type="submit" id="btn_add" class="btn btn-warning" href="${pageContext.request.contextPath}/informations"><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></a>
 			</div>
 		</sec:authorize>
 
