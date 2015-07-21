@@ -22,7 +22,7 @@ table.dataTable tr.even { background-color:#d6d6d6; }
   					aria-expanded="true" style="width: 117px; height: 25px; background: #E0DFDD; border: 1px solid #CAC9C7;"><spring:message code="menu.text"/> <span class="caret"></span>
   			</button>
   		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-  				<li class='${ (tag eq "information") ? "active" : ""}'><a href="${pageContext.request.contextPath}/info/${id}"><span
+  				<li class='${ (tag eq "information") ? "active" : ""}' value="Address"><a href="${pageContext.request.contextPath}/info/${id}"><span
  						class="glyphicon glyphicon-user"></span> <spring:message code="tab.info"/></a></li>
   				<li class='${ (tag eq "address") ? "active" : ""}'><a href="${pageContext.request.contextPath}/address/${id}"><span
 						class="glyphicon glyphicon-home"></span> <spring:message code="tab.address"/></a></li>

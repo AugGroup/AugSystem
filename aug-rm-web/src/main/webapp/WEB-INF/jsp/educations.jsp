@@ -14,10 +14,6 @@
 	margin-right: 5px;
 }
 
-#educationTable_info{
-	margin-left: 5px;
-}
-
 #educationAdd{
 	margin-left: 5px;
 }
@@ -27,10 +23,6 @@
 	margin-bottom : 100px;
 	background: #E0DFDD;;
 
-}
-
-label{
-	padding-left: 5px;
 }
 
 h1{

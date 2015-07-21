@@ -14,10 +14,6 @@
 	margin-right: 5px;
 }
 
-#certificateTable_info{
-	margin-left: 5px;
-}
-
 #certificateAdd{
 	margin-left: 5px;
 }
@@ -27,11 +23,6 @@
 	margin-bottom : 100px;
 	background: #E0DFDD;;
 
-}
-
-
-label{
-	padding-left: 5px;
 }
 
 h1{
