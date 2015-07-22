@@ -20,56 +20,33 @@ table.dataTable tr.even {
 <script type="text/javascript">
 </script>
 <div class="container">
-	<!-- 		<div class="form-group"> -->
-	<div class="dropdown">
-		<button class="btn btn-defult dropdown-toggle" type="button"
-			id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
-			aria-expanded="true"
-			style="width: 117px; height: 25px; background: #E0DFDD; border: 1px solid #CAC9C7;">
-			<spring:message code="menu.text" />
-			<span class="caret"></span>
-		</button>
-		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-			<li class='${ (tag eq "information") ? "active" : ""}'
-				value="Address"><a
-				href="${pageContext.request.contextPath}/info/${id}"><span
-					class="glyphicon glyphicon-user"></span> <spring:message
-						code="tab.info" /></a></li>
-			<li class='${ (tag eq "address") ? "active" : ""}'><a
-				href="${pageContext.request.contextPath}/address/${id}"><span
-					class="glyphicon glyphicon-home"></span> <spring:message
-						code="tab.address" /></a></li>
-			<li class='${ (tag eq "family") ? "active" : ""}'><a
-				href="${pageContext.request.contextPath}/family/${id}"><span
-					class="glyphicon glyphicon-file"></span> <spring:message
-						code="tab.family" /></a></li>
-			<li class='${ (tag eq "education") ? "active" : ""}'><a
-				href="${pageContext.request.contextPath}/educations/${id}"><span
-					class="glyphicon glyphicon-education"></span> <spring:message
-						code="tab.education" /></a></li>
-			<li class='${ (tag eq "certificate") ? "active" : ""}'><a
-				href="${pageContext.request.contextPath}/certificates/${id}"><span
-					class="glyphicon glyphicon-file"></span> <spring:message
-						code="tab.certificate" /></a></li>
-			<li class='${ (tag eq "skill") ? "active" : ""}'><a
-				href="${pageContext.request.contextPath}/skills/${id}"><span
-					class="glyphicon glyphicon-education"></span> <spring:message
-						code="tab.skill" /></a></li>
-			<li class='${ (tag eq "languages") ? "active" : ""}'><a
-				href="${pageContext.request.contextPath}/languages/${id}"><span
-					class="glyphicon glyphicon-education"></span> <spring:message
-						code="tab.languages" /></a></li>
-			<li class='${ (tag eq "reference") ? "active" : ""}'><a
-				href="${pageContext.request.contextPath}/references/${id}"><span
-					class="glyphicon glyphicon-file"></span> <spring:message
-						code="tab.reference" /></a></li>
-			<li class='${ (tag eq "experience") ? "active" : ""}'><a
-				href="${pageContext.request.contextPath}/experiences/${id}"><span
-					class="glyphicon glyphicon-file"></span> <spring:message
-						code="tab.experience" /></a></li>
-		</ul>
-	</div>
-	<%-- 			<ul class="nav nav-pills" role="navigation">
+		<div class="dropdown">
+  			<button class="btn btn-defult dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" 
+  					aria-expanded="true" style="width: 117px; height: 25px; background: #E0DFDD; border: 1px solid #ebebeb;"><spring:message code="menu.text"/> <span class="caret"></span>
+  			</button>
+  		<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+  				<li class='${ (tag eq "information") ? "active" : ""}'><a href="${pageContext.request.contextPath}/info/${id}"><span
+ 						class="glyphicon glyphicon-user"></span> <spring:message code="tab.info"/></a></li>
+  				<li class='${ (tag eq "address") ? "active" : ""}'><a href="${pageContext.request.contextPath}/address/${id}"><span
+						class="glyphicon glyphicon-home"></span> <spring:message code="tab.address"/></a></li>
+				<li class='${ (tag eq "family") ? "active" : ""}'><a  href="${pageContext.request.contextPath}/family/${id}"><span
+						class="glyphicon glyphicon-file"></span> <spring:message code="tab.family"/></a></li>
+				<li class='${ (tag eq "education") ? "active" : ""}'><a  href="${pageContext.request.contextPath}/educations/${id}"><span
+						class="glyphicon glyphicon-education"></span> <spring:message code="tab.education"/></a></li>
+				<li class='${ (tag eq "certificate") ? "active" : ""}'><a  href="${pageContext.request.contextPath}/certificates/${id}"><span
+						class="glyphicon glyphicon-file"></span> <spring:message code="tab.certificate"/></a></li>
+				<li class='${ (tag eq "skill") ? "active" : ""}'><a  href="${pageContext.request.contextPath}/skills/${id}"><span
+						class="glyphicon glyphicon-education"></span> <spring:message code="tab.skill"/></a></li>
+				<li class='${ (tag eq "languages") ? "active" : ""}'><a  href="${pageContext.request.contextPath}/languages/${id}"><span
+						class="glyphicon glyphicon-education"></span> <spring:message code="tab.languages"/></a></li>
+				<li class='${ (tag eq "reference") ? "active" : ""}'><a  href="${pageContext.request.contextPath}/references/${id}"><span
+						class="glyphicon glyphicon-file"></span> <spring:message code="tab.reference"/></a></li>
+				<li class='${ (tag eq "experience") ? "active" : ""}'><a  href="${pageContext.request.contextPath}/experiences/${id}"><span 
+						class="glyphicon glyphicon-file"></span> <spring:message code="tab.experience"/></a></li>      
+  		</ul>
+		</div>
+<%-- 			<ul class="nav nav-pills" role="navigation">
+>>>>>>> Edit message in page error and edit css in all page
   				<li class='${ (tag eq "information") ? "active" : ""}'><a href="${pageContext.request.contextPath}/info/${id}"><span
  						class="glyphicon glyphicon-user"></span> <spring:message code="tab.info"/></a></li>
   				<li class='${ (tag eq "address") ? "active" : ""}'><a href="${pageContext.request.contextPath}/address/${id}"><span

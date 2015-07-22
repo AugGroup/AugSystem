@@ -32,8 +32,22 @@
 	padding-left: 5px;
 }
 
-h1 {
+#experiencesAdd{
+	margin-top: 15px;
+	margin-right: 5px;
+	float:right
+}
+
+h3{
+	height: 30px;
+	font-family: "SemiBold";
+    font-size: 18px;
+	color: #ffffff;
+    border: 1px #F7C11F; 
+    background: #ffc000;
 	padding-left: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 </style>
 <script>
@@ -383,12 +397,9 @@ h1 {
 	<br>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-6">
-				<h1>
-					<spring:message code="exp.name" />
-				</h1>
-				<button class="btn btn-primary" id="experiencesAdd"
-					data-toggle="modal" data-target="#experiencesModal">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+				<h3><spring:message code="exp.name"/></h3>
+				<button class="btn btn-warning" id="experiencesAdd">
 					<span class="glyphicon glyphicon-plus"></span>
 					<spring:message code="exp.name.add" />
 				</button>

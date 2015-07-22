@@ -28,8 +28,23 @@
 	padding-left: 5px;
 }
 
-h1 {
+#familyAdd{
+	margin-top: 15px;
+	margin-right: 5px;
+	float:right
+}
+
+
+h3{
+	height: 30px;
+	font-family: "SemiBold";
+    font-size: 18px;
+	color: #ffffff;
+    border: 1px #F7C11F; 
+    background: #ffc000;
 	padding-left: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 </style>
 <script>
@@ -279,24 +294,17 @@ h1 {
 </script>
 <jsp:include page="applicationMenu.jsp" />
 <div class="container" id="family">
-	<div class="form-group">
-		<label for="informationFamily" id="text"><spring:message
-				code="info.parent.number" /> </label>
-	</div>
-	<div class="row">
-		<div class="col-md-6">
-			<h1>
-				<spring:message code="family.name" />
-			</h1>
-			<button class="btn btn-primary" id="familyAdd" data-toggle="modal"
-				data-target="#familyModal">
-				<span class="glyphicon glyphicon-plus"></span>
-				<spring:message code="family.name.add" />
-			</button>
-		</div>
-	</div>
-	<div class="modal fade" id="familyModal" role="dialog">
-		<div class="modal-dialog">
+ <div class="form-group"><label for="informationFamily" id="text"><spring:message code="info.parent.number"/> </label></div>
+				<div class="row">
+						<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+							<h3><spring:message code="family.name"/></h3>
+							<button class="btn btn-warning" id="familyAdd" data-toggle="modal" data-target="#familyModal">
+								<span class="glyphicon glyphicon-plus"></span> <spring:message code="family.name.add"/>
+							</button>
+						</div>
+					</div>
+				<div class="modal fade" id="familyModal" role="dialog">
+					<div class="modal-dialog">
 
 			<div class="modal-content">
 				<div class="modal-header" style="padding: 35px 50px;">

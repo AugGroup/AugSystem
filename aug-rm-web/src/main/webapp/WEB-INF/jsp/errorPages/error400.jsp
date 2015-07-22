@@ -42,36 +42,33 @@ section {
 
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
-	<section>
-		<div class="row-fluid"
-			style="margin-top: 150px; margin-bottom: 150px;">
-			<div class="row" style="margin-right: 10px;">
-				<div class="col-lg-5 col-md-5">
-					<div id="randerleft" align="center">
-						<img
-							src="${pageContext.request.contextPath}/static/resources/images/errorimage.png"
-							style="height: 90%; width: 75%; margin: auto;">
-					</div>
-				</div>
-				<div class="col-lg-6 col-md-6">
-					<h1>Error! 400 web.xml</h1>
-					<p>The page you are looking for might have been remove, has its
-						name and changed or is temporarily unavailable.</p>
-
-					<p>Return to the homepage.</p>
-					<div class="gotohome">
-						<a id="linkgotohome"
-							href="<%=request.getContextPath()%>/applicant"
-							class="btn btn-danger" role="button"> <span
-							class="glyphicon glyphicon-home" style="margin-left: 2px;">
-						</span> Home
-						</a>
-					</div>
-				</div>
-			</div>
-
+ <jsp:include page="header.jsp"></jsp:include>
+ <section>
+  <div class="row-fluid"  style=" margin-top: 150px;margin-bottom: 150px;">
+  	<div class="row" style=" margin-right:10px;">
+		<div class="col-lg-5 col-md-5">
+			<div id="randerleft" align="center">
+				<img src="${pageContext.request.contextPath}/static/resources/images/errorimage.png"  style="height:90%;width:75%;margin: auto;">
+	        </div>  	         
 		</div>
+		<div class="col-lg-6 col-md-6">
+			<h1>Error! 400 web.xml</h1>	    
+<!-- 			<p>The page you are looking for might have been remove,
+			  has its name and changed or is
+			  temporarily unavailable.</p> -->
+			  
+			<p>User fill wrong informations. Please check it again.</p>
+			  
+			  <p>Return to the homepage.</p>
+			  <div class="gotohome">
+				  	<a id="linkgotohome" href="<%=request.getContextPath()%>/applicant" class="btn btn-danger" role="button">
+				  	<span class="glyphicon glyphicon-home" style="margin-left: 2px;">
+				  	</span>
+				  	Home </a>    
+			  </div>
+		</div>
+	</div>
+	</div>
 	</section>
 	<jsp:include page="footer.jsp"></jsp:include>
 

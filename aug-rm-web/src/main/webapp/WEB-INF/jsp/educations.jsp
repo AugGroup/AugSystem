@@ -24,8 +24,23 @@
 	background: #E0DFDD;;
 }
 
-h1 {
+#educationAdd{
+	margin-top: 15px;
+	margin-right: 5px;
+	float:right
+}
+
+
+h3{
+	height: 30px;
+	font-family: "SemiBold";
+    font-size: 18px;
+	color: #ffffff;
+    border: 1px #F7C11F; 
+    background: #ffc000;
 	padding-left: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 </style>
 <script>
@@ -288,14 +303,10 @@ h1 {
 <jsp:include page="applicationMenu.jsp" />
 <div class="container" id="educations">
 	<div class="row">
-		<div class="col-md-6">
-			<h1>
-				<spring:message code="education.name" />
-			</h1>
-			<button class="btn btn-primary" id="educationAdd" data-toggle="modal"
-				data-target="#educationModal">
-				<span class="glyphicon glyphicon-plus"></span>
-				<spring:message code="education.name.add" />
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+			<h3><spring:message code="education.name"/></h3>
+			<button class="btn btn-warning" id="educationAdd" data-toggle="modal" data-target="#educationModal">
+				<span class="glyphicon glyphicon-plus"></span> <spring:message code="education.name.add"/>
 			</button>
 		</div>
 	</div>

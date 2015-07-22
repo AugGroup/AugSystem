@@ -28,8 +28,23 @@
 	padding-left: 5px;
 }
 
-h1 {
+#referenceAdd{
+	margin-top: 15px;
+	margin-right: 5px;
+	float:right
+}
+
+
+h3{
+	height: 30px;
+	font-family: "SemiBold";
+    font-size: 18px;
+	color: #ffffff;
+    border: 1px #F7C11F; 
+    background: #ffc000;
 	padding-left: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 </style>
 <script>
@@ -267,15 +282,14 @@ h1 {
 	</div>
 	<br>
 	<div class="row">
-		<div class="col-md-6">
-			<h1>
-				<spring:message code="ref.name" />
-			</h1>
-			<button class="btn btn-primary" id="referenceAdd" data-toggle="modal"
-				data-target="#referenceModal">
-				<span class="glyphicon glyphicon-plus"></span>
-				<spring:message code="ref.name.add" />
-			</button>
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+				<h3><spring:message code="ref.name"/></h3>
+				<button class="btn btn-warning" id="referenceAdd"
+					data-toggle="modal" data-target="#referenceModal">
+					<span class="glyphicon glyphicon-plus"></span> <spring:message code="ref.name.add"/>
+				</button>
+			</div>
 		</div>
 	</div>
 	<div class="modal fade" id="referenceModal" role="dialog">
@@ -330,7 +344,6 @@ h1 {
 				</div>
 			</div>
 		</div>
-
 	</div>
 
 	<!-- Delete Model -->

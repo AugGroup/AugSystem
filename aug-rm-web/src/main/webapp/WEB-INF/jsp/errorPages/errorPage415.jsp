@@ -9,30 +9,26 @@ section {
 </style>
 
 <section>
-	<div class="row-fluid" style="margin-top: 150px; margin-bottom: 150px;">
-		<div class="row" style="margin-right: 10px;">
-			<div class="col-md-5">
-				<div id="randerleft" align="center">
-					<img
-						src="${pageContext.request.contextPath}/static/resources/images/errorimage.png"
-						style="height: 90%; width: 75%; margin: auto;">
-				</div>
-			</div>
-			<div class="col-md-6">
-				<h1>Error! 415</h1>
-				<p>The page you are looking for might have been remove, has its
-					name and changed or is temporarily unavailable.</p>
-
-				<p>Return to the homepage.</p>
-				<div class="gotohome">
-					<a id="linkgotohome" href="<%=request.getContextPath()%>/applicant"
-						class="btn btn-danger" role="button"> <span
-						class="glyphicon glyphicon-home" style="margin-left: 2px;">
-					</span> Home
-					</a>
-				</div>
-			</div>
+  <div class="row-fluid"  style=" margin-top: 150px;margin-bottom: 150px;">
+  	<div class="row" style=" margin-right:10px;">
+		<div class="col-md-5">
+			<div id="randerleft" align="center">
+				<img src="${pageContext.request.contextPath}/static/resources/images/errorimage.png"  style="height:90%;width:75%;margin: auto;">
+	        </div>  	         
 		</div>
-
+		<div class="col-md-6">
+			<h1>Error! 415</h1>	    
+			<p>The server is refusing to service the request because the entity 
+			of the request is in a format not supported by the requested resource for the requested method.</p>
+			  
+			  <p>Return to the homepage.</p>
+			  <div class="gotohome">
+				  	<a id="linkgotohome" href="<%=request.getContextPath()%>/applicant" class="btn btn-danger" role="button">
+				  	<span class="glyphicon glyphicon-home" style="margin-left: 2px;">
+				  	</span>
+				  	Home </a>    
+			  </div>
+		</div>
 	</div>
+</div>
 </section>

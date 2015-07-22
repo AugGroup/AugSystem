@@ -4,7 +4,14 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-#address {
+
+.form-control input-sm{
+	width: 70px;
+	height: 22px;
+	background: #ffffff;
+}
+
+#address{
 	background: #E0DFDD;
 }
 
@@ -24,8 +31,23 @@
 	background: #E0DFDD;;
 }
 
-h1 {
+#addressAdd{
+	margin-top: 15px;
+	margin-right: 5px;
+	float:right
+}
+
+
+h3{
+	height: 30px;
+	font-family: "SemiBold";
+    font-size: 18px;
+	color: #ffffff;
+    border: 1px #F7C11F; 
+    background: #ffc000;
 	padding-left: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 </style>
 <script>
@@ -302,16 +324,14 @@ h1 {
 </script>
 <jsp:include page="applicationMenu.jsp" />
 <div class="container" id="address">
-	<div class="row">
-		<div class="col-md-6">
-			<h1>
-				<spring:message code="address.name" />
-			</h1>
-			<button class="btn btn-primary" id="addressAdd" data-toggle="modal"
-				data-target="#addressModal">
-				<span class="glyphicon glyphicon-plus"></span>
-				<spring:message code="address.name.add" />
-			</button>
+		<div class="row">
+			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+				<h3><spring:message code="address.name"/></h3>
+				<button class="btn btn-warning" id="addressAdd" data-toggle="modal"
+					data-target="#addressModal">
+					<span class="glyphicon glyphicon-plus"></span> <spring:message code="address.name.add"/>
+				</button>
+			</div>
 		</div>
 	</div>
 

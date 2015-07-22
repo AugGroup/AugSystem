@@ -24,8 +24,23 @@
 	background: #E0DFDD;;
 }
 
-h1 {
+#certificateAdd{
+	margin-top: 15px;
+	margin-right: 5px;
+	float:right
+}
+
+
+h3{
+	height: 30px;
+	font-family: "SemiBold";
+    font-size: 18px;
+	color: #ffffff;
+    border: 1px #F7C11F; 
+    background: #ffc000;
 	padding-left: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 </style>
 <script>
@@ -223,14 +238,11 @@ $(document).ready(function() {
 <jsp:include page="applicationMenu.jsp" />
 <div class="container" id="certificate">
 	<div class="row">
-		<div class="col-md-6">
-			<h1>
-				<spring:message code="cer.name" />
-			</h1>
-			<button class="btn btn-primary" id="certificateAdd" data-id="data.id"
-				data-toggle="modal" data-target="#certificateModal">
-				<span class="glyphicon glyphicon-plus"></span>
-				<spring:message code="cer.name.add" />
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+			<h3><spring:message code="cer.name"/></h3>
+			<button class="btn btn-warning" id="certificateAdd"
+				data-id="data.id" data-toggle="modal" data-target="#certificateModal">
+				<span class="glyphicon glyphicon-plus"></span> <spring:message code="cer.name.add"/>
 			</button>
 		</div>
 	</div>
