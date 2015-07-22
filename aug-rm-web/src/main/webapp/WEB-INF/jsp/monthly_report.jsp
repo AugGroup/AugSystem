@@ -104,6 +104,12 @@ $(document).ready(function () {
 						d.applyDateStr = $('#applyDateStr').val();
 						console.log(d.applyDateStr);
 					},
+					complete: function(data){
+						if($('.dataTables_empty').length > 0){
+							document.getElementById("btn_preview").disabled = true;
+						}else document.getElementById("btn_preview").disabled = false;
+						
+					}
 				},
 			columns : [
 			           {"data": "code"},

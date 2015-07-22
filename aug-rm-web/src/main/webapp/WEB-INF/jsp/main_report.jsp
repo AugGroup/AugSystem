@@ -111,6 +111,11 @@ $(document).ready(function () {
 						d.schoolName = $('#schoolName').val();
 						d.gpa = $('#gpa').val(); 
 					},
+					complete: function(data){
+						if($('.dataTables_empty').length > 0){
+							document.getElementById("btn_preview").disabled = true;
+						}else document.getElementById("btn_preview").disabled = false;
+					}
 				},
 				columns : [
 			           {"data": "code"},
