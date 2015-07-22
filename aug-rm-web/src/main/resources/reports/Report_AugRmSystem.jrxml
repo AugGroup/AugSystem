@@ -109,7 +109,7 @@
 			<staticText>
 				<reportElement x="99" y="19" width="345" height="40" uuid="8bd555c3-a185-4252-97de-93cbde024360"/>
 				<textElement textAlignment="Center">
-					<font fontName="Angsana New" size="28" isBold="false" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+					<font fontName="Angsana New" size="28" isBold="false" pdfEncoding="Cp1250" isPdfEmbedded="false"/>
 				</textElement>
 				<text><![CDATA[Report]]></text>
 			</staticText>

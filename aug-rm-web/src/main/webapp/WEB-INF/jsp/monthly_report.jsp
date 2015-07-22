@@ -42,10 +42,31 @@
 		padding:3px;
 	}
 
-	.paginate_button{
-		padding: 3px;
+	.form-group{
+		margin: 3px;
+	}
+	
+	.report_search{
+		position:relative;
+		padding-left:60%;
+		height: 180px;
 	}
 
+	.search_inputgroup{
+		float:right;
+		margin: 5px;
+		padding: 5px;
+	}
+	#radio_inputgroup{
+		margin: 0px 15px 0px 5px; 
+	}
+	
+	
+	#btn_preview, #btn_search{
+		margin: 0px 5px 0px 5px;
+		width: 95px;
+	}
+	
 	#table{
 		padding: 15px 5px 75px 5px;
 		margin-bottom : 100px;
@@ -67,6 +88,13 @@ $(document).ready(function () {
 			dtReport.ajax.reload();
 		}else{
 			dtReport = $('#reportTable').DataTable({
+				"columnDefs": [
+				               { "width": "14%", "targets": 2 },
+				               { "width": "13%", "targets": 3 },
+				               { "width": "13%", "targets": 4 },
+				               { "width": "13%", "targets": 5 },
+
+				             ],
 				searching : false,
 				paging: true,
 				ajax : {
@@ -102,33 +130,31 @@ $(document).ready(function () {
 	
 </script>
 <div class="container">
-	<f:form method="post" name="reportForm" target="_blank" commandName="searchReportDTO" action="${pageContext.request.contextPath}/reportMonthly/preview" cssClass="form-horizontal">
-	<h1 align="center"> <spring:message code="report.text.monthly"/> </h1>
-	<h4 > <spring:message code="report.text.search.month"/> </h4>
-	<div class="row">
-        <div class="col-md-2">
-			<div class="form-group">
-					<input type="text" name="applyDateStr" id="applyDateStr" class="form-control" />
-            </div>
-       </div>
-   		<div class="col-md-1" align="left">
-   		 	<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> <spring:message code="report.text.search"/> </button>				
-   		</div>
-    </div>
-    <div class="row">
-    	<div class="col-md-2" align="right">
-    		<div class="form-group">
-    			<label for="reportType"><spring:message code="report.text.type"/> </label>
-				<input type="radio" value="pdf" id="reportType" name="reportType" checked="checked"> <spring:message code="report.text.pdf"/> 
-				<input type="radio" value="xls" id="reportType" name="reportType"> <spring:message code="report.text.xls"/> 
-    		</div>
-    	</div>
-   		<div class="col-md-1" align="left">	
-   			<button type="button" class="btn btn-primary submit" data-toggle="modal" data-target="#previewReportModal" id="btn_preview"><span class="glyphicon glyphicon-search"></span> <spring:message code="request.preview"/> </button>			 				
-		</div>
-	</div>
+<!------------------- Report header-------------------> 
+ 	<div class="row"><h1 align="center"><spring:message code="report.text.monthly"/></h1></div>
+ 
+<!------------------- Report search-------------------> 
+	<div class="report_search">
+		<f:form method="post" name="reportForm" target="_blank" commandName="searchReportDTO" action="${pageContext.request.contextPath}/reportMonthly/preview" cssClass="form-inline">
+			<div class="search_inputgroup">
+				<h3><spring:message code="report.text.search.month"/></h3>
+				<div class="form-group" style="width:210px">
+					<input type="text" name="applyDateStr" id="applyDateStr" class="form-control" style="width:210px" />
+            	</div>
+       			<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> <spring:message code="main.button.search"/> </button>				
+   			</div>
+    	
+   			<div class="search_inputgroup" >
+   				<div class="form-group" id="radio_inputgroup">
+   					<label for="reportType"><spring:message code="report.text.type"/> </label>
+					<input type="radio" value="pdf" id="reportType" name="reportType" checked="checked"> <spring:message code="report.text.pdf"/> 
+					<input type="radio" value="xls" id="reportType" name="reportType"> <spring:message code="report.text.xls"/> 
+    			</div>
+    			<button type="button" class="btn btn-primary submit" data-toggle="modal" data-target="#previewReportModal" id="btn_preview"><span class="glyphicon glyphicon-search"></span> <spring:message code="request.preview"/> </button>		 				
+		 	</div>
 	
-</f:form>
+		</f:form>
+	</div>
 
 	<!------------------- Report DataTable-------------------> 
 	<div id="table">

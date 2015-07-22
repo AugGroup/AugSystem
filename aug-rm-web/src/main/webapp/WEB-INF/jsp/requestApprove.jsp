@@ -66,6 +66,10 @@
 		/* ------------------- DataTable------------------- */
 		var dtRequest;
 		var dtRequest =$('#requestTable').DataTable({
+			"columnDefs": [
+			               { "width": "25%", "targets": 3 },
+			               { "width": "20%", "targets": 5 }
+			             ],
 			sort : false,
 			ajax: {
 				type: "GET",

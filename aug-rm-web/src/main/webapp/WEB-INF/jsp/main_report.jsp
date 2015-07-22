@@ -84,16 +84,21 @@ $(document).ready(function () {
 	var dtReport;
 	//GPA pattern
 	$("#gpa").inputmask('Regex', { regex: "[0-3]\\.[0-9][0-9]?$ |4\\.00$" });
-
 	
 	//Search By Criteria and Show function 
 	$('#btn_search').off('click').on('click', function(){
 		if(dtReport){
 			dtReport.ajax.reload();
 			console.log("Eiei");
-	
 		}else{
 			dtReport = $('#reportTable').DataTable({
+				"columnDefs": [
+				               { "width": "14%", "targets": 2 },
+				               { "width": "13%", "targets": 3 },
+				               { "width": "13%", "targets": 4 },
+				               { "width": "13%", "targets": 5 },
+
+				             ],
 				searching : false,
 				paging: true,
 				ajax :{
