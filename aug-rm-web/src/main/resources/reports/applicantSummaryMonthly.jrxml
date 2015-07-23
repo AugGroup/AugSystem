@@ -257,7 +257,7 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 			<staticText>
 				<reportElement x="31" y="19" width="485" height="51" uuid="776f3bb7-4363-474b-b583-0611ea2acd99"/>
 				<textElement textAlignment="Center">
-					<font size="24" isBold="true"/>
+					<font size="24" isBold="true" pdfEncoding="Identity-H"/>
 				</textElement>
 				<text><![CDATA[MONTHLY SUMMARY]]></text>
 			</staticText>
