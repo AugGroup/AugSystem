@@ -50,8 +50,23 @@ table.dataTable tr.even {
 <script type="text/javascript">
 	$(document).ready(function () {
 		$.ajaxSetup({
-    		error: function(jqXHR, textStatus, errorThrown) 
-	        {
+		/* statusCode: */
+			statusCode : {
+       			400: function() {
+       				window.location="/AugRmSystem/exception/400"
+       			},
+       			404: function() {
+       				window.location="/AugRmSystem/exception/404"
+         		},
+         		415: function() {
+           			window.location="/AugRmSystem/exception/415"
+         		},
+         		500: function() {
+           			window.location="/AugRmSystem/exception/500"
+         		},
+       		
+  			 }, 
+    		error: function(jqXHR, textStatus, errorThrown){
 	            var exceptionVO = jQuery.parseJSON(jqXHR.responseText);
 	            console.log(jqXHR.status);
 	            $('#exceptionModal')

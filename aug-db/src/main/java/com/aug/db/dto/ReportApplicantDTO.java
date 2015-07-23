@@ -312,7 +312,6 @@ public class ReportApplicantDTO {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	
 	public String getEmail() {
 		return email;
 	}
@@ -398,8 +397,8 @@ public class ReportApplicantDTO {
 	public void setFaculty(String faculty) {
 		this.faculty = faculty;
 	}
-	public Double getGpa() {
-		return gpa;
+	public String getGpa() {
+		return gpa.toString();
 	}
 	public void setGpa(Double gpa) {
 		this.gpa = gpa;

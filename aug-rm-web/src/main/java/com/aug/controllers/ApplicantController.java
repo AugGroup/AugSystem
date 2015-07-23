@@ -10,11 +10,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import javax.servlet.http.HttpSession;
 
 import net.sf.jasperreports.engine.JRParameter;
 
+import org.apache.commons.logging.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.security.acls.model.NotFoundException;
@@ -166,11 +168,13 @@ public class ApplicantController implements Serializable {
 			@RequestParam Integer position, String degree, String major, String schoolName, Double gpa) throws Exception {
 		
 		final List<ReportApplicantDTO> data;
-		if (position == -1 && degree.equals("") && major.isEmpty() && schoolName.isEmpty() && gpa==null){ 			
+		data = applicantService.findReportByCriteria(position, degree, major, schoolName, gpa);	
+
+		/*if (position == -1 && degree.equals("") && major.isEmpty() && schoolName.isEmpty() && gpa==null){ 			
 			data = applicantService.reportApplicant();
 		} else {
 			data = applicantService.findReportByCriteria(position, degree, major, schoolName, gpa);	
-		}
+		}*/
 		
 		return new Object() {
 			public List<ReportApplicantDTO> getData() {
@@ -190,7 +194,6 @@ public class ApplicantController implements Serializable {
 		String schoolName = searchReportDTO.getSchoolName();
 		Double gpa = searchReportDTO.getGpa();
 		String reportType = searchReportDTO.getReportType();
-		System.out.println(position);
 		if (position == -1 && degree.equals("") && major.isEmpty() && schoolName.isEmpty() && gpa==null){  			
 			reportApplicantList = applicantService.reportApplicant();
 		}else {
@@ -219,7 +222,7 @@ public class ApplicantController implements Serializable {
 			List<ReportApplicantDTO> data;
 			
 			if(!applyDateStr.isEmpty()){
-				String dateStr = applyDateStr;
+				 String dateStr = applyDateStr;
 				 String[] parts = dateStr.split(" \\- ");
 				 String startDate = parts[0];
 				 String endDate = parts[1];
@@ -227,8 +230,9 @@ public class ApplicantController implements Serializable {
 						 System.out.println("endDate : "+endDate);
 				 	data = applicantService.findReportByMonth(startDate, endDate);
 			}else {
-				data = applicantService.reportApplicant();
+				data = applicantService.findReportByCriteria(-1, "", "", "", null);	
 				
+				 
 			}
 			final List<ReportApplicantDTO> datas = data ;
 			return new Object() {
