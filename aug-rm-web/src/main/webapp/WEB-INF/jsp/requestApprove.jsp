@@ -82,9 +82,12 @@ table.dataTable tr.even {
 		var dtRequest;
 		var dtRequest =$('#requestTable').DataTable({
 			"columnDefs": [
-			               { "width": "25%", "targets": 3 },
-			               { "width": "20%", "targets": 5 }
-			             ],
+       	                { "width": "7%", "targets": 0 },
+       	                { "width": "10%", "targets": 1 },
+       	                { "width": "17%", "targets": 2 },
+       	                { "width": "7%", "targets": 4 },
+       	                
+				             ],
 			sort : false,
 			ajax: {
 				type: "GET",
