@@ -42,6 +42,8 @@ h3{
 	margin-left: 5px;
 	margin-right: 5px;
 }
+
+
 </style>
 <script>
 $(document).ready(function() {
@@ -297,7 +299,7 @@ $(document).ready(function() {
 									code="languages.name.less" /> </label> <input type="text"
 								class="form-control" id="languages" name="languages"
 								placeholder="<spring:message code="languages.text.name"/>">
-
+						<label for="languages" class="error" style="display:none;"></label><br>
 							<label for="speaking"><spring:message
 									code="languages.speak.less" /></label>
 							<div class="radio-inline">
@@ -314,8 +316,8 @@ $(document).ready(function() {
 								<label><input type="radio" name="speaking" id="speaking"
 									value="Fair">
 								<spring:message code="languages.fair" /></label>
-							</div>
-
+							</div><br>
+						<label for="speaking" class="error" style="display:none;"></label>
 
 							<br> <label for="understanding"><spring:message
 									code="languages.understand.less" /> </label>
@@ -333,8 +335,8 @@ $(document).ready(function() {
 								<label><input type="radio" name="understanding"
 									id="understanding" value="Fair">
 								<spring:message code="languages.fair" /></label>
-							</div>
-
+							</div><br>
+						<label for="understanding" class="error" style="display:none;"></label>
 
 							<br> <label for="reading"><spring:message
 									code="languages.read.less" /> </label>
@@ -352,8 +354,8 @@ $(document).ready(function() {
 								<label><input type="radio" name="reading" id="reading"
 									value="Fair">
 								<spring:message code="languages.fair" /></label>
-							</div>
-
+							</div><br>
+						<label for="reading" class="error" style="display:none;"></label>
 
 							<br> <label for="writing"><spring:message
 									code="languages.write.less" /> </label>
@@ -371,7 +373,9 @@ $(document).ready(function() {
 								<label><input type="radio" name="writing" id="writing"
 									value="Fair">
 								<spring:message code="languages.fair" /></label>
-							</div>
+							</div><br>
+					<label for="writing" class="error" style="display:none;"></label>
+							
 						</div>
 						<br> <br>
 						<button type="button" class="btn btn-success" id="btn_save">
