@@ -253,14 +253,15 @@ table.dataTable tr.even {
             			dtRequest.ajax.reload();
             			//console.log(data.requesterName);
             			new PNotify({
-            				title: 'Create request is successful.',
-            				text: '',
-            				type: 'success',
-            				nonblock: {
-            					nonblock: true,
-            					nonblock_opacity: .2
-            					}
-            			});
+    				    	title: 'Edit request is successful.',
+    				    	text: '',
+    				    	type: 'success',
+    				    	delay: 3000,
+    				    	buttons: {
+    				    			closer_hover: false,
+    				    	        sticker: false
+    				    	    }
+    					});
             		},
             		 
             	});
@@ -343,10 +344,11 @@ table.dataTable tr.even {
 				    	title: 'Edit request is successful.',
 				    	text: '',
 				    	type: 'success',
-				    	nonblock: {
-				       	 nonblock: true,
-				       	 nonblock_opacity: .2
-				    	}
+				    	delay: 3000,
+				    	buttons: {
+				    			closer_hover: false,
+				    	        sticker: false
+				    	    }
 					});
                 }
             });

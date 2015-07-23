@@ -129,7 +129,7 @@ table.dataTable tr.even {
         		type: "POST",
         		success: function (data) {
         			 $('#inputStatus').val(data.status);
-        			 console.log(data.status);
+        			 /* console.log(data.status); */
         		}
         	});
         }
@@ -159,6 +159,17 @@ table.dataTable tr.even {
 					dt.status = data.status;
 					dtRequest.row(index).data(dt).draw();
 					$("#approveModal").modal('hide');
+					
+					new PNotify({
+				    	title: 'Edit Approve status is successful.',
+				    	text: '',
+				    	type: 'success',
+				    	delay: 3000,
+				    	buttons: {
+				    			closer_hover: false,
+				    	        sticker: false
+				    	    }
+					});
 					}
 				});
 			}
