@@ -8,35 +8,33 @@
 	color: #ff0000;
 }
 
-#experience{
+#experience {
 	background: #E0DFDD;
 }
 
-#experiencesTable{
-	color:#414141;
+#experiencesTable {
+	color: #414141;
 	background-color: #ababab;
 	margin-right: 5px;
 }
 
-#experiencesAdd{
+#experiencesAdd {
 	margin-left: 5px;
 }
 
-#table{
+#table {
 	padding: 15px 5px 65px 5px;
-	margin-bottom : 100px;
+	margin-bottom: 100px;
 	background: #E0DFDD;;
-
 }
 
-#text{
+#text {
 	padding-left: 5px;
 }
 
-h1{
+h1 {
 	padding-left: 5px;
 }
-
 </style>
 <script>
 
@@ -376,19 +374,23 @@ h1{
 
 	});
 </script>
-<jsp:include page = "applicationMenu.jsp"/>
+<jsp:include page="applicationMenu.jsp" />
 <div class="container" id="experience">
 	<div class="form-group">
-		<label for="experiences" id="text"><spring:message code="exp.text"/> </label>
+		<label for="experiences" id="text"><spring:message
+				code="exp.text" /> </label>
 	</div>
 	<br>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
-				<h1><spring:message code="exp.name"/></h1>
+				<h1>
+					<spring:message code="exp.name" />
+				</h1>
 				<button class="btn btn-primary" id="experiencesAdd"
 					data-toggle="modal" data-target="#experiencesModal">
-					<span class="glyphicon glyphicon-plus"></span> <spring:message code="exp.name.add"/>
+					<span class="glyphicon glyphicon-plus"></span>
+					<spring:message code="exp.name.add" />
 				</button>
 			</div>
 		</div>
@@ -399,7 +401,8 @@ h1{
 					<div class="modal-header" style="padding: 35px 50px;">
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 						<h4>
-							<span class="glyphicon glyphicon-lock"></span> <spring:message code="exp.name"/>
+							<span class="glyphicon glyphicon-lock"></span>
+							<spring:message code="exp.name" />
 						</h4>
 					</div>
 					<div class="modal-body" style="padding: 40px 50px;">
@@ -410,16 +413,16 @@ h1{
 							</div>
 
 							<div class="form-group">
-								<label for="workBackground"><spring:message code="exp.position"/> </label> <input
-									type="text" class="form-control" id="workBackground"
-									name="workBackground"
+								<label for="workBackground"><spring:message
+										code="exp.position" /> </label> <input type="text"
+									class="form-control" id="workBackground" name="workBackground"
 									placeholder="<spring:message code="exp.text.Pposition"/> ">
 							</div>
 
 							<div class="form-group">
 								<label for="fromWorkYear"><span
-									class="glyphicon glyphicon-calendar"></span><spring:message code="exp.from"/>
-								</label>
+									class="glyphicon glyphicon-calendar"></span>
+								<spring:message code="exp.from" /> </label>
 								<div class="input-group date">
 									<input type="text" id="fromWorkYear" name="fromWorkYear"
 										class="form-control"><span class="input-group-addon"><i
@@ -430,7 +433,8 @@ h1{
 
 							<div class="form-group">
 								<label for="toWorkYear"><span
-									class="glyphicon glyphicon-calendar"></span><spring:message code="exp.to"/> </label>
+									class="glyphicon glyphicon-calendar"></span>
+								<spring:message code="exp.to" /> </label>
 								<div class="input-group date">
 									<input type="text" id="toWorkYear" name="toWorkYear"
 										class="form-control"><span class="input-group-addon"><i
@@ -440,107 +444,136 @@ h1{
 
 							</div>
 							<div class="form-group">
-								<label for="emp"><spring:message code="exp.emp"/> </label> <input type="text"
-									class="form-control" id="emp" name="emp"
+								<label for="emp"><spring:message code="exp.emp" /> </label> <input
+									type="text" class="form-control" id="emp" name="emp"
 									placeholder="<spring:message code="exp.text.emp"/> ">
 							</div>
 
 							<div class="form-group">
-								<label for="addressBackground"><spring:message code="address.name"/> </label>
+								<label for="addressBackground"><spring:message
+										code="address.name" /> </label>
 								<textarea class="form-control" rows="5" id="addressBackground"
-									name="addressBackground" placeholder="<spring:message code="exp.text.address"/>"></textarea>
+									name="addressBackground"
+									placeholder="<spring:message code="exp.text.address"/>"></textarea>
 
 							</div>
 
 							<div class="form-group">
-								<label for="business"><spring:message code="exp.business"/> </label> <input
-									type="text" class="form-control" id="business"
-									name="business" placeholder="<spring:message code="exp.text.business"/> ">
+								<label for="business"><spring:message
+										code="exp.business" /> </label> <input type="text"
+									class="form-control" id="business" name="business"
+									placeholder="<spring:message code="exp.text.business"/> ">
 							</div>
 
 							<div class="form-group">
-								<label for="positionBackground"><spring:message code="info.position"/> </label> <input
-									type="text" class="form-control" id="positionBackground"
-									name="positionBackground" placeholder="<spring:message code="exp.text.position"/> ">
+								<label for="positionBackground"><spring:message
+										code="info.position" /> </label> <input type="text"
+									class="form-control" id="positionBackground"
+									name="positionBackground"
+									placeholder="<spring:message code="exp.text.position"/> ">
 							</div>
 
 							<div class="form-group">
-								<label for="supervisorBackground"><spring:message code="exp.supervisor"/> </label> <input
-									type="text" class="form-control" id="supervisorBackground"
-									name="supervisorBackground" placeholder="<spring:message code="exp.text.supervisor"/>">
+								<label for="supervisorBackground"><spring:message
+										code="exp.supervisor" /> </label> <input type="text"
+									class="form-control" id="supervisorBackground"
+									name="supervisorBackground"
+									placeholder="<spring:message code="exp.text.supervisor"/>">
 							</div>
 
 							<div class="form-group">
-								<label for="salaryBackground"><spring:message code="exp.salary"/> </label> <input
-									type="text" class="form-control" id="salaryBackground"
-									name="salaryBackground" placeholder="<spring:message code="exp.text.salary"/> ">
+								<label for="salaryBackground"><spring:message
+										code="exp.salary" /> </label> <input type="text" class="form-control"
+									id="salaryBackground" name="salaryBackground"
+									placeholder="<spring:message code="exp.text.salary"/> ">
 							</div>
 
 							<div class="form-group">
-								<label for="descriptionBackground"><spring:message code="exp.desc"/> </label>
+								<label for="descriptionBackground"><spring:message
+										code="exp.desc" /> </label>
 								<textarea class="form-control" rows="5"
 									id="descriptionBackground" name="descriptionBackground"
 									placeholder="<spring:message code="exp.text.desc"/>"></textarea>
 							</div>
 
 							<div class="form-group">
-								<label for="reasonLeaving"><spring:message code="exp.reason"/> </label>
+								<label for="reasonLeaving"><spring:message
+										code="exp.reason" /> </label>
 								<textarea class="form-control" rows="5" id="reasonLeaving"
-									name="reasonLeaving" placeholder="<spring:message code="exp.text.reason"/>"></textarea>
+									name="reasonLeaving"
+									placeholder="<spring:message code="exp.text.reason"/>"></textarea>
 
 							</div>
 							<br> <br>
-							<button type="button" class="btn btn-success"
-								id="btn_save">
-								<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
+							<button type="button" class="btn btn-success" id="btn_save">
+								<span class="glyphicon glyphicon-off"></span>
+								<spring:message code="edit.button.save" />
 							</button>
 							<button type="button" class="btn btn-default"
-								data-dismiss="modal"><spring:message code="button.cancel"/></button>
+								data-dismiss="modal">
+								<spring:message code="button.cancel" />
+							</button>
 						</form>
 					</div>
 				</div>
 			</div>
 
 		</div>
-		
-									<!-- Delete Model -->
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-    		<div class="modal-dialog">
-        		<div class="modal-content">
-            		<div class="modal-header">
-                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.title"/></h4>
-            		</div>
-            		<div class="modal-body">
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.confirm.title"/></h4>
-                		<br>
-                		<div align="right">
-                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>
-                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
-                		</div>
-	            	</div>
-        		</div>
-    		</div>  
+
+		<!-- Delete Model -->
+		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+			aria-labelledby="ModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="ModalLabel">
+							<spring:message code="delete.title" />
+						</h4>
+					</div>
+					<div class="modal-body">
+						<h4 class="modal-title" id="ModalLabel">
+							<spring:message code="delete.confirm.title" />
+						</h4>
+						<br>
+						<div align="right">
+							<button id="btn_delete_submit" type="button"
+								class="btn btn-danger" data-dismiss="modal">
+								<span class="glyphicon glyphicon-remove-sign"></span>
+								<spring:message code="main.delete" />
+							</button>
+							<button id="btn_close" type="button" class="btn btn-default"
+								data-dismiss="modal">
+								<spring:message code="button.cancel" />
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<br> <br>
 	<div id="table">
-		<table id="experiencesTable" class="display" cellspacing="0" width="100%">
+		<table id="experiencesTable" class="display" cellspacing="0"
+			width="100%">
 			<thead>
 				<tr>
-					<th><spring:message code="exp.data.position"/></th>
-					<th><spring:message code="exp.data.from"/></th>
-					<th><spring:message code="exp.data.to"/></th>
-					<th><spring:message code="exp.data.emp"/></th>
-					<th><spring:message code="family.data.address"/></th>
-					<th><spring:message code="exp.data.business"/></th>
-					<th><spring:message code="exp.data.position.emp"/></th>
-					<th><spring:message code="exp.data.super"/></th>
-					<th><spring:message code="exp.data.salary"/></th>
-					<th><spring:message code="exp.data.desc"/></th>
-					<th><spring:message code="exp.data.reason"/></th>
-					<th><spring:message code="main.edit.info"/></th>
-                	<th><spring:message code="main.delete"/></th>
+					<th><spring:message code="exp.data.position" /></th>
+					<th><spring:message code="exp.data.from" /></th>
+					<th><spring:message code="exp.data.to" /></th>
+					<th><spring:message code="exp.data.emp" /></th>
+					<th><spring:message code="family.data.address" /></th>
+					<th><spring:message code="exp.data.business" /></th>
+					<th><spring:message code="exp.data.position.emp" /></th>
+					<th><spring:message code="exp.data.super" /></th>
+					<th><spring:message code="exp.data.salary" /></th>
+					<th><spring:message code="exp.data.desc" /></th>
+					<th><spring:message code="exp.data.reason" /></th>
+					<th><spring:message code="main.edit.info" /></th>
+					<th><spring:message code="main.delete" /></th>
 				</tr>
 			</thead>
 

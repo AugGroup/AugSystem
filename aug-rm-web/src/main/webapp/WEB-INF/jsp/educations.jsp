@@ -4,31 +4,29 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-#educations{
+#educations {
 	background: #E0DFDD;
 }
 
-#educationTable{
-	color:#414141;
+#educationTable {
+	color: #414141;
 	background-color: #ababab;
 	margin-right: 5px;
 }
 
-#educationAdd{
+#educationAdd {
 	margin-left: 5px;
 }
 
-#table{
+#table {
 	padding: 15px 5px 65px 5px;
-	margin-bottom : 100px;
+	margin-bottom: 100px;
 	background: #E0DFDD;;
-
 }
 
-h1{
+h1 {
 	padding-left: 5px;
 }
-
 </style>
 <script>
 	$(document).ready(function() {
@@ -291,9 +289,13 @@ h1{
 <div class="container" id="educations">
 	<div class="row">
 		<div class="col-md-6">
-			<h1><spring:message code="education.name"/></h1>
-			<button class="btn btn-primary" id="educationAdd" data-toggle="modal" data-target="#educationModal">
-				<span class="glyphicon glyphicon-plus"></span> <spring:message code="education.name.add"/>
+			<h1>
+				<spring:message code="education.name" />
+			</h1>
+			<button class="btn btn-primary" id="educationAdd" data-toggle="modal"
+				data-target="#educationModal">
+				<span class="glyphicon glyphicon-plus"></span>
+				<spring:message code="education.name.add" />
 			</button>
 		</div>
 	</div>
@@ -305,7 +307,8 @@ h1{
 				<div class="modal-header" style="padding: 35px 50px;">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4>
-						<span class="glyphicon glyphicon-lock"></span> <spring:message code="education.name"/>
+						<span class="glyphicon glyphicon-lock"></span>
+						<spring:message code="education.name" />
 					</h4>
 				</div>
 				<div class="modal-body" style="padding: 40px 50px;">
@@ -317,43 +320,52 @@ h1{
 							</div>
 
 							<div class="form-group">
-								<label for="university"><spring:message code="education.university"/> </label> <input type="text"
+								<label for="university"><spring:message
+										code="education.university" /> </label> <input type="text"
 									class="form-control" id="university" name="university"
 									placeholder="<spring:message code="education.text.university"/>">
 							</div>
 
 							<div class="form-group">
-								<label for="degree"><spring:message code="education.degree"/> </label> <input type="text"
+								<label for="degree"><spring:message
+										code="education.degree" /> </label> <input type="text"
 									class="form-control" id="degree" name="degree"
 									placeholder="<spring:message code="education.text.degree"/>">
 							</div>
 
 							<div class="form-group">
-								<label for="faculty"><spring:message code="education.faculty"/> </label> <input type="text"
+								<label for="faculty"><spring:message
+										code="education.faculty" /> </label> <input type="text"
 									class="form-control" id="faculty" name="faculty"
 									placeholder="<spring:message code="education.text.faculty"/>">
 							</div>
 							<div class="form-group">
-								<label for="major"><spring:message code="education.major"/> </label> <input type="text"
+								<label for="major"><spring:message
+										code="education.major" /> </label> <input type="text"
 									class="form-control" id="major" name="major"
 									placeholder="<spring:message code="education.text.major"/>">
 							</div>
 							<div class="form-group">
-								<label for="gpa"><spring:message code="education.gpa"/> </label> <input type="text"
-									class="form-control" id="gpa" name="gpa"
+								<label for="gpa"><spring:message code="education.gpa" />
+								</label> <input type="text" class="form-control" id="gpa" name="gpa"
 									placeholder="<spring:message code="education.text.gpa"/>">
 							</div>
 
 							<div class="form-group">
-								<label for="graduate"><spring:message code="education.graduate"/> </label> <input
-									type="text" class="form-control" id="graduate"
-									name="graduate" placeholder="<spring:message code="education.text.graduate"/>">
+								<label for="graduate"><spring:message
+										code="education.graduate" /> </label> <input type="text"
+									class="form-control" id="graduate" name="graduate"
+									placeholder="<spring:message code="education.text.graduate"/>">
 							</div>
 							<br> <br>
 							<button type="button" class="btn btn-success" id="btn_save">
-								<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
+								<span class="glyphicon glyphicon-off"></span>
+								<spring:message code="edit.button.save" />
 							</button>
-							<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">
+								<spring:message code="button.cancel" />
+							</button>
 						</div>
 					</form>
 				</div>
@@ -361,39 +373,55 @@ h1{
 
 		</div>
 	</div>
-	
-					<!-- Delete Model -->
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-    		<div class="modal-dialog">
-        		<div class="modal-content">
-            		<div class="modal-header">
-                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.title"/></h4>
-            		</div>
-            		<div class="modal-body">
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.confirm.title"/></h4>
-                		<br>
-                		<div align="right">
-                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>
-                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
-                		</div>
-	            	</div>
-        		</div>
-    		</div>  
+
+	<!-- Delete Model -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+		aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="ModalLabel">
+						<spring:message code="delete.title" />
+					</h4>
+				</div>
+				<div class="modal-body">
+					<h4 class="modal-title" id="ModalLabel">
+						<spring:message code="delete.confirm.title" />
+					</h4>
+					<br>
+					<div align="right">
+						<button id="btn_delete_submit" type="button"
+							class="btn btn-danger" data-dismiss="modal">
+							<span class="glyphicon glyphicon-remove-sign"></span>
+							<spring:message code="main.delete" />
+						</button>
+						<button id="btn_close" type="button" class="btn btn-default"
+							data-dismiss="modal">
+							<spring:message code="button.cancel" />
+						</button>
+					</div>
+				</div>
+			</div>
 		</div>
+	</div>
 	<br> <br>
 	<div id="table">
-		<table id="educationTable" class="display" cellspacing="0" width="100%">
+		<table id="educationTable" class="display" cellspacing="0"
+			width="100%">
 			<thead>
 				<tr>
-					<th><spring:message code="education.data"/></th>
-					<th><spring:message code="education.data.degree"/></th>
-					<th><spring:message code="education.data.faculty"/></th>
-					<th><spring:message code="education.data.major"/></th>
-					<th><spring:message code="education.data.gpa"/></th>
-					<th><spring:message code="education.data.graduate"/></th>
-					<th><spring:message code="main.edit.info"/></th>
-                	<th><spring:message code="main.delete"/></th>
+					<th><spring:message code="education.data" /></th>
+					<th><spring:message code="education.data.degree" /></th>
+					<th><spring:message code="education.data.faculty" /></th>
+					<th><spring:message code="education.data.major" /></th>
+					<th><spring:message code="education.data.gpa" /></th>
+					<th><spring:message code="education.data.graduate" /></th>
+					<th><spring:message code="main.edit.info" /></th>
+					<th><spring:message code="main.delete" /></th>
 
 				</tr>
 			</thead>
@@ -402,23 +430,38 @@ h1{
 	</div>
 </div>
 <div class="container">
-		<!-- Delete Model -->
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-    		<div class="modal-dialog">
-        		<div class="modal-content">
-            		<div class="modal-header">
-                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.title"/></h4>
-            		</div>
-            		<div class="modal-body">
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.confirm.title"/></h4>
-                		<br>
-                		<div align="right">
-                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>
-                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
-                		</div>
-	            	</div>
-        		</div>
-    		</div>  
+	<!-- Delete Model -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+		aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="ModalLabel">
+						<spring:message code="delete.title" />
+					</h4>
+				</div>
+				<div class="modal-body">
+					<h4 class="modal-title" id="ModalLabel">
+						<spring:message code="delete.confirm.title" />
+					</h4>
+					<br>
+					<div align="right">
+						<button id="btn_delete_submit" type="button"
+							class="btn btn-danger" data-dismiss="modal">
+							<span class="glyphicon glyphicon-remove-sign"></span>
+							<spring:message code="main.delete" />
+						</button>
+						<button id="btn_close" type="button" class="btn btn-default"
+							data-dismiss="modal">
+							<spring:message code="button.cancel" />
+						</button>
+					</div>
+				</div>
+			</div>
 		</div>
+	</div>
 </div>

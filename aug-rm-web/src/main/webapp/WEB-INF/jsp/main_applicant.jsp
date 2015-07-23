@@ -1,65 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+	pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
 
 <style type="text/css">
-
-#search_row{
-	margin:30px;
-}
- .error{
-    color :red;
- 	padding: 3px;
+#search_row {
+	margin: 30px;
 }
 
-#add{
+.error {
+	color: red;
+	padding: 3px;
+}
+
+#add {
 	font-family: "Regular";
-	margin-right : 83px;
-	float:right;
+	margin-right: 83px;
+	float: right;
 }
-#dataTable{
-	color:#414141;
+
+#dataTable {
+	color: #414141;
 	background-color: #ababab;
 }
 
 td {
 	font-family: "Regular";
-    font-size: 18px;
-    color: #414141;
-}
-    
-table.dataTable tr.odd { background-color:#e7e7e7; }
-table.dataTable tr.even { background-color:#d6d6d6; }
-
-#dataTable_previous{
-	padding:3px;
+	font-size: 18px;
+	color: #414141;
 }
 
-#dataTable_next{
-	padding:3px;
+table.dataTable tr.odd {
+	background-color: #e7e7e7;
 }
 
-.paginate_button{
+table.dataTable tr.even {
+	background-color: #d6d6d6;
+}
+
+#dataTable_previous {
 	padding: 3px;
 }
 
-#table{
-	padding: 15px 5px 65px 5px;
-	margin-bottom : 100px;
-	background: #E0DFDD;;
-
+#dataTable_next {
+	padding: 3px;
 }
- 
-#btn_add{
+
+.paginate_button {
+	padding: 3px;
+}
+
+#table {
+	padding: 15px 5px 65px 5px;
+	margin-bottom: 100px;
+	background: #E0DFDD;;
+}
+
+#btn_add {
 	margin-top: 15px;
-	float:right
+	float: right
 }
 </style>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 		$(document).ready(function(){
 			var dtApplicant	
 			
@@ -251,127 +257,178 @@ table.dataTable tr.even { background-color:#d6d6d6; }
 		});
 	
 	</script>
-	
-	
+
+
 <div class="container">
-		<!--Input text for Search Applicant -->
-		<div class="row" id="search_row">
-			<div class="col-md-8"></div>
-			<div class="col-md-4">
-				<div class="input-group">
-					<input type="text" class="form-control" id="inputSearch" placeholder="<spring:message code="main.text.field"/>"/>
-					<span class="input-group-btn">
-						<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> <spring:message code="main.button.search"/></button>				
-					</span>
-				</div>
+	<!--Input text for Search Applicant -->
+	<div class="row" id="search_row">
+		<div class="col-md-8"></div>
+		<div class="col-md-4">
+			<div class="input-group">
+				<input type="text" class="form-control" id="inputSearch"
+					placeholder="<spring:message code="main.text.field"/>" /> <span
+					class="input-group-btn">
+					<button type="button" class="btn btn-primary" id="btn_search">
+						<span class="glyphicon glyphicon-search"></span>
+						<spring:message code="main.button.search" />
+					</button>
+				</span>
 			</div>
 		</div>
-		<!--Data Table for Applicant List -->
-		<c:set var="ss" value="display:none;"></c:set>
-		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
-			<div id="table">
-				<table id="dataTable" class="display" cellspacing="0" width="100%">
-					<thead>
-						<tr>
-							<th width="10%"><spring:message code="main.code"/></th>
-							<th><spring:message code="main.date"/></th>
-							<th><spring:message code="main.name"/></th>
-							<th><spring:message code="main.position1"/></th>
-							<th><spring:message code="main.position2"/></th>
-							<th><spring:message code="main.position3"/></th>
-							<th><spring:message code="main.status"/></th>
-							<th><spring:message code="main.edit"/></th>
-							<th><spring:message code="main.edit.info"/></th>
-							<th><spring:message code="main.delete"/></th>
-						</tr>
-					</thead>
-				</table>
-				<a type="submit" id="btn_add" class="btn btn-warning" href="${pageContext.request.contextPath}/informations"><span class="glyphicon glyphicon-plus"></span> <spring:message code="main.button.add"/></a>
-			</div>
-		</sec:authorize>
+	</div>
+	<!--Data Table for Applicant List -->
+	<c:set var="ss" value="display:none;"></c:set>
+	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
+		<div id="table">
+			<table id="dataTable" class="display" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th width="10%"><spring:message code="main.code" /></th>
+						<th><spring:message code="main.date" /></th>
+						<th><spring:message code="main.name" /></th>
+						<th><spring:message code="main.position1" /></th>
+						<th><spring:message code="main.position2" /></th>
+						<th><spring:message code="main.position3" /></th>
+						<th><spring:message code="main.status" /></th>
+						<th><spring:message code="main.edit" /></th>
+						<th><spring:message code="main.edit.info" /></th>
+						<th><spring:message code="main.delete" /></th>
+					</tr>
+				</thead>
+			</table>
+			<a type="submit" id="btn_add" class="btn btn-warning"
+				href="${pageContext.request.contextPath}/informations"><span
+				class="glyphicon glyphicon-plus"></span> <spring:message
+					code="main.button.add" /></a>
+		</div>
+	</sec:authorize>
 
-		
-		<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
-		<!-- Modal of Edit Status and Score-->	
+
+	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
+		<!-- Modal of Edit Status and Score-->
 		<div id="EditStatusModal" class="modal fade">
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title"><spring:message code="edit.title"/></h4>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<h4 class="modal-title">
+							<spring:message code="edit.title" />
+						</h4>
 					</div>
 					<div class="modal-body">
-						<h5><spring:message code="edit.score.detail"/></h5>
+						<h5>
+							<spring:message code="edit.score.detail" />
+						</h5>
 						<form role="form" id="EditStatusForm">
-							<div class="form-group" style="width:200px ">
-								<label for="inputScore"><spring:message code="edit.score"/></label> 
-								<input type="text" class="form-control" id="inputScore" name="inputScore" placeholder="<spring:message code="edit.text.feild"/>">
-    						</div>
+							<div class="form-group" style="width: 200px">
+								<label for="inputScore"><spring:message
+										code="edit.score" /></label> <input type="text" class="form-control"
+									id="inputScore" name="inputScore"
+									placeholder="<spring:message code="edit.text.feild"/>">
+							</div>
 							<div class="form-group">
-								<label for="nameTechScore"><spring:message code="edit.tech.score"/> </label>
-								<label class="radio-inline">
-								    <input type="radio" value="Pass" id="inputTechScore" name="inputTechScore"><spring:message code="edit.radio.pass"/>
-								</label>
-								<label class="radio-inline">
-								    <input type="radio" value="Not pass" id="inputTechScore" name="inputTechScore"><spring:message code="edit.radio.notPass"/>
+								<label for="nameTechScore"><spring:message
+										code="edit.tech.score" /> </label> <label class="radio-inline">
+									<input type="radio" value="Pass" id="inputTechScore"
+									name="inputTechScore">
+								<spring:message code="edit.radio.pass" />
+								</label> <label class="radio-inline"> <input type="radio"
+									value="Not pass" id="inputTechScore" name="inputTechScore">
+								<spring:message code="edit.radio.notPass" />
 
 								</label>
-    						</div>
+							</div>
 							<div class="form-group">
-								<label for="inputScore"><spring:message code="edit.attitude.score"/> </label>
-    							<div class="form-group" class="form-inline" style="width: 400px" >
+								<label for="inputScore"><spring:message
+										code="edit.attitude.score" /> </label>
+								<div class="form-group" class="form-inline" style="width: 400px">
 									<div class="row">
 										<div class="col-md-6">
-										<label for="inputAttitudeHome"><spring:message code="edit.attitude.home"/></label> 
-										<input type="text" class="form-control" id="inputAttitudeHome" name="inputAttitudeHome" placeholder="<spring:message code="edit.text.feild"/>">  													
+											<label for="inputAttitudeHome"><spring:message
+													code="edit.attitude.home" /></label> <input type="text"
+												class="form-control" id="inputAttitudeHome"
+												name="inputAttitudeHome"
+												placeholder="<spring:message code="edit.text.feild"/>">
 										</div>
 										<div class="col-md-6">
-									<label for="inputAttitudeOffice"><spring:message code="edit.attitude.office"/></label> 
-									<input type="text" class="form-control" id="inputAttitudeOffice" name="inputAttitudeOffice" placeholder="<spring:message code="edit.text.feild"/>">
-    							</div>
-    							</div>
-    							</div>
-    						</div>
+											<label for="inputAttitudeOffice"><spring:message
+													code="edit.attitude.office" /></label> <input type="text"
+												class="form-control" id="inputAttitudeOffice"
+												name="inputAttitudeOffice"
+												placeholder="<spring:message code="edit.text.feild"/>">
+										</div>
+									</div>
+								</div>
+							</div>
 							<div class="form-group">
-								<label for="inputStatus"><spring:message code="edit.status"/> </label>
-    							<select name="inputStatus" id="inputStatus" class="form-control">
-    								<option value="Waiting for consider"><spring:message code="edit.wait.consider"/></option>
-    								<option value="Pending Test"><spring:message code="edit.pending.test"/></option>
-    								<option value="Pending Interview"><spring:message code="edit.pending.interview"/></option>
-    								<option value="Pending Approve"><spring:message code="edit.pending.approve"/></option>
-    								<option value="Approve"><spring:message code="edit.approve"/></option>
-    								<option value="Not Approve"><spring:message code="edit.notApprove"/></option>
-    							</select>
-    						</div>
+								<label for="inputStatus"><spring:message
+										code="edit.status" /> </label> <select name="inputStatus"
+									id="inputStatus" class="form-control">
+									<option value="Waiting for consider"><spring:message
+											code="edit.wait.consider" /></option>
+									<option value="Pending Test"><spring:message
+											code="edit.pending.test" /></option>
+									<option value="Pending Interview"><spring:message
+											code="edit.pending.interview" /></option>
+									<option value="Pending Approve"><spring:message
+											code="edit.pending.approve" /></option>
+									<option value="Approve"><spring:message
+											code="edit.approve" /></option>
+									<option value="Not Approve"><spring:message
+											code="edit.notApprove" /></option>
+								</select>
+							</div>
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="alert"><spring:message code="edit.button.save"/></button>
-    					<button type="button" id="btn_close" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
-    				</div>
+						<button type="button" id="btn_submit" class="btn btn-primary"
+							data-dismiss="alert">
+							<spring:message code="edit.button.save" />
+						</button>
+						<button type="button" id="btn_close" class="btn btn-default"
+							data-dismiss="modal">
+							<spring:message code="button.cancel" />
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
-		</sec:authorize>
-		
-		<!-- Delete Model -->
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-    		<div class="modal-dialog">
-        		<div class="modal-content">
-            		<div class="modal-header">
-                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.title"/></h4>
-            		</div>
-            		<div class="modal-body">
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.confirm.title"/></h4>
-                		<br>
-                		<div align="right">
-                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>
-                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
-                		</div>
-	            	</div>
-        		</div>
-    		</div>  
+	</sec:authorize>
+
+	<!-- Delete Model -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+		aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="ModalLabel">
+						<spring:message code="delete.title" />
+					</h4>
+				</div>
+				<div class="modal-body">
+					<h4 class="modal-title" id="ModalLabel">
+						<spring:message code="delete.confirm.title" />
+					</h4>
+					<br>
+					<div align="right">
+						<button id="btn_delete_submit" type="button"
+							class="btn btn-danger" data-dismiss="modal">
+							<span class="glyphicon glyphicon-remove-sign"></span>
+							<spring:message code="main.delete" />
+						</button>
+						<button id="btn_close" type="button" class="btn btn-default"
+							data-dismiss="modal">
+							<spring:message code="button.cancel" />
+						</button>
+					</div>
+				</div>
+			</div>
 		</div>
-		
 	</div>
+
+</div>

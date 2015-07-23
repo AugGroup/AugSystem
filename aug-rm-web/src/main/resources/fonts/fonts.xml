@@ -12,8 +12,8 @@
 			<export key="net.sf.jasperreports.xhtml">Angsana CRS, 'Angsana new', AngsanaUPC</export>
 		</exportFonts>
 	</fontFamily>
-	
- <fontFamily name="Cordia CRS">
+
+	<fontFamily name="Cordia CRS">
 		<normal>fonts/CORDIA.TTF</normal>
 		<italic>fonts/CORDIA.TTF</italic>
 		<pdfEncoding>Identity-H</pdfEncoding>
@@ -22,6 +22,6 @@
 			<export key="net.sf.jasperreports.html">Cordia CRS, 'Cordia new', CordiaUPC</export>
 			<export key="net.sf.jasperreports.xhtml">Cordia CRS, 'Cordia new', CordiaUPC</export>
 		</exportFonts>
- </fontFamily>
-   
+	</fontFamily>
+
 </fontFamilies>

@@ -24,10 +24,9 @@
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location">
 			<!-- <list> -->
-				<!-- <value>classpath:application.properties</value> -->
-				<value>classpath:applicationResources.properties</value>
-				<!-- <value>classpath:database.properties</value>
-			</list> -->
+			<!-- <value>classpath:application.properties</value> -->
+			<value>classpath:applicationResources.properties</value>
+			<!-- <value>classpath:database.properties</value> </list> -->
 		</property>
 		<property name="localOverride">
 			<value>true</value>

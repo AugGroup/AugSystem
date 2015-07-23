@@ -15,7 +15,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	
+
 	<context:component-scan base-package="com.aug.db" />
 	<context:component-scan base-package="com.aug.db.services" />
 	<context:component-scan base-package="com.aug.db.repositories" />
@@ -26,11 +26,12 @@
 	<mvc:resources mapping="/static/**" location="/" />
 
 	<!-- Message Resource config -->
-	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="classpath:/i18n/messages"></property>
-        <property name="defaultEncoding" value="UTF-8"></property>
-    </bean>
-    
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:/i18n/messages"></property>
+		<property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
+
 	<!-- Declare the Interceptor -->
 	<mvc:interceptors>
 		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"
@@ -38,10 +39,11 @@
 	</mvc:interceptors>
 
 	<!-- Declare the Resolver -->
-	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver" >
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
 		<property name="defaultLocale" value="en" />
 	</bean>
-	
+
 	<bean id="jspViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/> -->
@@ -104,21 +106,21 @@
 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
+
 	<!-- SimpleMappingExceptionResolver --> <!-- use anotation java config -->
- 	<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-        	<props>
-                <prop key="AuthException">errorPages/errorPageCustom</prop>
-                <prop key="IOException">errorPages/errorPageCustom</prop>
-            </props>
-           
-                <!-- <entry key="Exception">errorpages/errorPage404</entry>
-                <entry key="IOException">errorpages/errorPage404</entry>
-                <entry key="IndexOutOfBoundsException">errorpages/errorPage404</entry> -->
-          
-        </property>
-        <property name="defaultErrorView" value="generic_error"/>
-    </bean>
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="AuthException">errorPages/errorPageCustom</prop>
+				<prop key="IOException">errorPages/errorPageCustom</prop>
+			</props>
+
+			<!-- <entry key="Exception">errorpages/errorPage404</entry> <entry key="IOException">errorpages/errorPage404</entry> 
+				<entry key="IndexOutOfBoundsException">errorpages/errorPage404</entry> -->
+
+		</property>
+		<property name="defaultErrorView" value="generic_error" />
+	</bean>
 
 </beans>

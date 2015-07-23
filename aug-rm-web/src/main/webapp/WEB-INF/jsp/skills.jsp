@@ -4,31 +4,29 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-#skill{
+#skill {
 	background: #E0DFDD;
 }
 
-#skillTable{
-	color:#414141;
+#skillTable {
+	color: #414141;
 	background-color: #ababab;
 	margin-right: 5px;
 }
 
-#skillAdd{
+#skillAdd {
 	margin-left: 5px;
 }
 
-#table{
+#table {
 	padding: 15px 5px 65px 5px;
-	margin-bottom : 100px;
+	margin-bottom: 100px;
 	background: #E0DFDD;;
-
 }
 
-h1{
+h1 {
 	padding-left: 5px;
 }
-
 </style>
 <script>
 $(document).ready(function() {
@@ -226,82 +224,104 @@ $(document).ready(function() {
 
 </script>
 <jsp:include page="applicationMenu.jsp" />
-		<div class="container" id="skill">
-			<div class="row">
-				<div class="col-md-6">
-					<h1><spring:message code="skill.name"/></h1>
-					<button class="btn btn-primary" id="skillAdd" data-toggle="modal"
-						data-target="#skillModal">
-						<span class="glyphicon glyphicon-plus"></span> <spring:message code="skill.name.add"/>
+<div class="container" id="skill">
+	<div class="row">
+		<div class="col-md-6">
+			<h1>
+				<spring:message code="skill.name" />
+			</h1>
+			<button class="btn btn-primary" id="skillAdd" data-toggle="modal"
+				data-target="#skillModal">
+				<span class="glyphicon glyphicon-plus"></span>
+				<spring:message code="skill.name.add" />
+			</button>
+		</div>
+	</div>
+
+	<div class="modal fade" id="skillModal" role="dialog">
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+				<div class="modal-header" style="padding: 35px 50px;">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4>
+						<span class="glyphicon glyphicon-lock"></span>
+						<spring:message code="skill.name" />
+					</h4>
+				</div>
+				<div class="modal-body" style="padding: 40px 50px;">
+					<form role="form" id="skillForm">
+						<div class="form-group">
+							<input type="hidden" id="applicant" name="applicant"
+								value="${id}">
+						</div>
+						<div class="form-group">
+							<label for="skill"><spring:message code="skill.detail" />
+							</label> <input type="text" class="form-control" id="skill" name="skill"
+								placeholder="<spring:message code="skill.text.detail"/>">
+						</div>
+						<br> <br>
+						<button type="button" class="btn btn-success" id="btn_save">
+							<span class="glyphicon glyphicon-off"></span>
+							<spring:message code="edit.button.save" />
+						</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							<spring:message code="button.cancel" />
+						</button>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- Delete Model -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+		aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
 					</button>
+					<h4 class="modal-title" id="ModalLabel">
+						<spring:message code="delete.title" />
+					</h4>
 				</div>
-			</div>
-		
-			<div class="modal fade" id="skillModal" role="dialog">
-				<div class="modal-dialog">
-		
-					<div class="modal-content">
-						<div class="modal-header" style="padding: 35px 50px;">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4>
-								<span class="glyphicon glyphicon-lock"></span> <spring:message code="skill.name"/>
-							</h4>
-						</div>
-						<div class="modal-body" style="padding: 40px 50px;">
-							<form role="form" id="skillForm">
-								<div class="form-group">
-									<input type="hidden" id="applicant" name="applicant"
-										value="${id}">
-								</div>
-								<div class="form-group">
-									<label for="skill"><spring:message code="skill.detail"/> </label> <input type="text"
-										class="form-control" id="skill" name="skill"
-										placeholder="<spring:message code="skill.text.detail"/>">
-								</div>
-								<br> <br>
-								<button type="button" class="btn btn-success" id="btn_save">
-									<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
-								</button>
-								<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
-							</form>
-						</div>
+				<div class="modal-body">
+					<h4 class="modal-title" id="ModalLabel">
+						<spring:message code="delete.confirm.title" />
+					</h4>
+					<br>
+					<div align="right">
+						<button id="btn_delete_submit" type="button"
+							class="btn btn-danger" data-dismiss="modal">
+							<span class="glyphicon glyphicon-remove-sign"></span>
+							<spring:message code="main.delete" />
+						</button>
+						<button id="btn_close" type="button" class="btn btn-default"
+							data-dismiss="modal">
+							<spring:message code="button.cancel" />
+						</button>
 					</div>
-		
 				</div>
 			</div>
-			
-		<!-- Delete Model -->
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-    		<div class="modal-dialog">
-        		<div class="modal-content">
-            		<div class="modal-header">
-                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.title"/></h4>
-            		</div>
-            		<div class="modal-body">
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.confirm.title"/></h4>
-                		<br>
-                		<div align="right">
-                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>
-                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
-                		</div>
-	            	</div>
-        		</div>
-    		</div>  
 		</div>
-		
-			<br> <br>
-			<div id="table">
-				<table id="skillTable" class="display" cellspacing="0" width="100%">
-					<thead>
-						<tr>
-							<th><spring:message code="skill.data"/></th>
-							<th><spring:message code="main.edit.info"/></th>
-                			<th><spring:message code="main.delete"/></th>
-		
-						</tr>
-					</thead>
-					<tbody></tbody>
-				</table>
-			</div>
-		</div>
+	</div>
+
+	<br> <br>
+	<div id="table">
+		<table id="skillTable" class="display" cellspacing="0" width="100%">
+			<thead>
+				<tr>
+					<th><spring:message code="skill.data" /></th>
+					<th><spring:message code="main.edit.info" /></th>
+					<th><spring:message code="main.delete" /></th>
+
+				</tr>
+			</thead>
+			<tbody></tbody>
+		</table>
+	</div>
+</div>

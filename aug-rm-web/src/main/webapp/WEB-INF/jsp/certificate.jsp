@@ -4,31 +4,29 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-#certificate{
+#certificate {
 	background: #E0DFDD;
 }
 
-#certificateTable{
-	color:#414141;
+#certificateTable {
+	color: #414141;
 	background-color: #ababab;
 	margin-right: 5px;
 }
 
-#certificateAdd{
+#certificateAdd {
 	margin-left: 5px;
 }
 
-#table{
+#table {
 	padding: 15px 5px 65px 5px;
-	margin-bottom : 100px;
+	margin-bottom: 100px;
 	background: #E0DFDD;;
-
 }
 
-h1{
+h1 {
 	padding-left: 5px;
 }
-
 </style>
 <script>
 $(document).ready(function() {
@@ -226,10 +224,13 @@ $(document).ready(function() {
 <div class="container" id="certificate">
 	<div class="row">
 		<div class="col-md-6">
-			<h1><spring:message code="cer.name"/></h1>
-			<button class="btn btn-primary" id="certificateAdd"
-				data-id="data.id" data-toggle="modal" data-target="#certificateModal">
-				<span class="glyphicon glyphicon-plus"></span> <spring:message code="cer.name.add"/>
+			<h1>
+				<spring:message code="cer.name" />
+			</h1>
+			<button class="btn btn-primary" id="certificateAdd" data-id="data.id"
+				data-toggle="modal" data-target="#certificateModal">
+				<span class="glyphicon glyphicon-plus"></span>
+				<spring:message code="cer.name.add" />
 			</button>
 		</div>
 	</div>
@@ -241,7 +242,8 @@ $(document).ready(function() {
 				<div class="modal-header" style="padding: 35px 50px;">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4>
-						<span class="glyphicon glyphicon-lock"></span> <spring:message code="cer.name"/>
+						<span class="glyphicon glyphicon-lock"></span>
+						<spring:message code="cer.name" />
 					</h4>
 				</div>
 				<div class="modal-body" style="padding: 40px 50px;">
@@ -251,52 +253,74 @@ $(document).ready(function() {
 								value="${id}">
 						</div>
 						<div class="form-group">
-							<label for="certificate"><spring:message code="cer.name"/> </label> <input type="text"
-								class="form-control" id="certificate" name="certificate"
+							<label for="certificate"><spring:message code="cer.name" />
+							</label> <input type="text" class="form-control" id="certificate"
+								name="certificate"
 								placeholder="<spring:message code="cer.text.name"/>">
 						</div>
 						<br> <br>
 						<button type="button" class="btn btn-success" id="btn_save">
-							<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
+							<span class="glyphicon glyphicon-off"></span>
+							<spring:message code="edit.button.save" />
 						</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							<spring:message code="button.cancel" />
+						</button>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<p><spring:message code="cer.ask"/></p>
+					<p>
+						<spring:message code="cer.ask" />
+					</p>
 				</div>
 			</div>
 
 		</div>
 	</div>
-	
-		<!-- Delete Model -->
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-    		<div class="modal-dialog">
-        		<div class="modal-content">
-            		<div class="modal-header">
-                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.title"/></h4>
-            		</div>
-            		<div class="modal-body">
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.confirm.title"/></h4>
-                		<br>
-                		<div align="right">
-                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>
-                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
-                		</div>
-	            	</div>
-        		</div>
-    		</div>  
+
+	<!-- Delete Model -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+		aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="ModalLabel">
+						<spring:message code="delete.title" />
+					</h4>
+				</div>
+				<div class="modal-body">
+					<h4 class="modal-title" id="ModalLabel">
+						<spring:message code="delete.confirm.title" />
+					</h4>
+					<br>
+					<div align="right">
+						<button id="btn_delete_submit" type="button"
+							class="btn btn-danger" data-dismiss="modal">
+							<span class="glyphicon glyphicon-remove-sign"></span>
+							<spring:message code="main.delete" />
+						</button>
+						<button id="btn_close" type="button" class="btn btn-default"
+							data-dismiss="modal">
+							<spring:message code="button.cancel" />
+						</button>
+					</div>
+				</div>
+			</div>
 		</div>
+	</div>
 	<br> <br>
 	<div id="table">
-		<table id="certificateTable" class="display" cellspacing="0" width="100%">
+		<table id="certificateTable" class="display" cellspacing="0"
+			width="100%">
 			<thead>
 				<tr>
-					<th><spring:message code="cer.data"/></th>
-					<th><spring:message code="main.edit.info"/></th>
-                	<th><spring:message code="main.delete"/></th>
+					<th><spring:message code="cer.data" /></th>
+					<th><spring:message code="main.edit.info" /></th>
+					<th><spring:message code="main.delete" /></th>
 
 				</tr>
 			</thead>

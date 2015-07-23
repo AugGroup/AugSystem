@@ -38,10 +38,10 @@
 	src='<c:url value ="/static/resources/js/jquery.validate.min.js"/>'></script>
 <script
 	src='<c:url value ="/static/resources/js/additional-methods.min.js"/>'></script>
-	
+
 <script
 	src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
-	<script
+<script
 	src='<c:url value ="/static/resources/js/jquery.maskedinput.min.js" />'></script>
 
 </head>
@@ -51,35 +51,36 @@
 /* 		url('${pageContext.request.contextPath}/static/decorators/intro-bg.jpg') */
 /* 		fixed; */
 /* } */
-
 body {
-background-image: url(${pageContext.request.contextPath}/static/decorators/body1.jpg);
--moz-background-size: cover;
--webkit-background-size: cover;
-background-size: cover;
-background-position: top center !important;
-background-repeat: no-repeat !important;
-background-attachment: fixed;
-} 
-
-#loginForm{
-	height:500px;
-    width: 245px;
-    margin: 0 auto;  
+	background-image:
+		url(${pageContext.request.contextPath}/static/decorators/body1.jpg);
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: top center !important;
+	background-repeat: no-repeat !important;
+	background-attachment: fixed;
 }
 
+#loginForm {
+	height: 500px;
+	width: 245px;
+	margin: 0 auto;
+}
 </style>
 <body>
-	<div class="headLogo" id="headId" >
-		 <img
+	<div class="headLogo" id="headId">
+		<img
 			src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png"
 			alt="logo" style="width: 250px; height: 100px;" />
 		<div class="form-group" align="right">
-			<a href="${request.getRequestURL}?locale=en">
-				<img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" style="width: 30px; height: 20px;"/></a>
-			<a href="${request.getRequestURL}?locale=th">		
-				<img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg" alt="logo" class="img-flag" style="width: 30px; height: 20px;" /></a>
-			
+			<a href="${request.getRequestURL}?locale=en"> <img
+				src="${pageContext.request.contextPath}/static/decorators/eng_flag.png"
+				alt="logo" class="img-flag" style="width: 30px; height: 20px;" /></a> <a
+				href="${request.getRequestURL}?locale=th"> <img
+				src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg"
+				alt="logo" class="img-flag" style="width: 30px; height: 20px;" /></a>
+
 		</div>
 	</div>
 	<div>
@@ -88,7 +89,10 @@ background-attachment: fixed;
 
 	<div id="footer">
 		<div class="container">
-			<p class="text-muted credit">Copyright &copy; <a href="http://www.augmentis.biz/" > augmentis.biz</a></p>
+			<p class="text-muted credit">
+				Copyright &copy; <a href="http://www.augmentis.biz/">
+					augmentis.biz</a>
+			</p>
 		</div>
 	</div>
 

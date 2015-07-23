@@ -4,31 +4,29 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-#address{
+#address {
 	background: #E0DFDD;
 }
 
-#addressTable{
-	color:#414141;
+#addressTable {
+	color: #414141;
 	background-color: #ababab;
 	margin-right: 5px;
 }
 
-#addressAdd{
+#addressAdd {
 	margin-left: 5px;
 }
 
-#table{
+#table {
 	padding: 15px 5px 65px 5px;
-	margin-bottom : 100px;
+	margin-bottom: 100px;
 	background: #E0DFDD;;
-
 }
 
-h1{
+h1 {
 	padding-left: 5px;
 }
-
 </style>
 <script>
 	$(document).ready(function() {
@@ -302,120 +300,149 @@ h1{
 });
 	
 </script>
-<jsp:include page = "applicationMenu.jsp"/>
+<jsp:include page="applicationMenu.jsp" />
 <div class="container" id="address">
-		<div class="row">
-			<div class="col-md-6">
-				<h1><spring:message code="address.name"/></h1>
-				<button class="btn btn-primary" id="addressAdd" data-toggle="modal"
-					data-target="#addressModal">
-					<span class="glyphicon glyphicon-plus"></span> <spring:message code="address.name.add"/>
-				</button>
+	<div class="row">
+		<div class="col-md-6">
+			<h1>
+				<spring:message code="address.name" />
+			</h1>
+			<button class="btn btn-primary" id="addressAdd" data-toggle="modal"
+				data-target="#addressModal">
+				<span class="glyphicon glyphicon-plus"></span>
+				<spring:message code="address.name.add" />
+			</button>
+		</div>
+	</div>
+
+
+	<div class="modal fade" id="addressModal" role="dialog">
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+				<div class="modal-header" style="padding: 35px 50px;">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4>
+						<span class="glyphicon glyphicon-lock"></span>
+						<spring:message code="address.name" />
+					</h4>
+				</div>
+				<div class="modal-body" style="padding: 40px 50px;">
+					<form role="form" id="addressForm">
+						<div class="form-group">
+							<input type="hidden" id="applicant" name="applicant"
+								value="${id}">
+						</div>
+						<div class="form-group">
+							<label for="inputAddress"><spring:message
+									code="address.name" /> </label> <select class="form-control"
+								id="inputAddress" name="inputAddress">
+								<option value="Present"><spring:message
+										code="address.present" /></option>
+								<option value="Permanent"><spring:message
+										code="address.permanent" /></option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="houseNo"><spring:message
+									code="address.houseNo" /> </label> <input type="text"
+								class="form-control" id="houseNo" name="houseNo"
+								placeholder="<spring:message code="address.text.houseNo"/>">
+						</div>
+						<div class="form-group">
+							<label for="road"><spring:message code="address.road" />
+							</label> <input type="text" class="form-control" id="road" name="road"
+								placeholder="<spring:message code="address.text.road"/>">
+						</div>
+						<div class="form-group">
+							<label for="district"><spring:message
+									code="address.district" /> </label> <input type="text"
+								class="form-control" id="district" name="district"
+								placeholder="<spring:message code="address.text.district"/>">
+						</div>
+						<div class="form-group">
+							<label for="subDistrict"><spring:message
+									code="address.sub.district" /> </label> <input type="text"
+								class="form-control" id="subDistrict" name="subDistrict"
+								placeholder="<spring:message code="address.text.sub.district"/>">
+						</div>
+						<div class="form-group">
+							<label for="zipcode"><spring:message
+									code="address.zipcode" /> </label> <input type="text"
+								class="form-control" id="zipcode" name="zipcode"
+								placeholder="<spring:message code="address.text.zipcode"/>">
+						</div>
+						<div class="form-group">
+							<label for="province"><spring:message
+									code="address.province" /> </label> <input type="text"
+								class="form-control" id="province" name="province"
+								placeholder="<spring:message code="address.text.province"/>">
+						</div>
+
+						<br> <br>
+						<button type="button" class="btn btn-success" id="btn_save">
+							<span class="glyphicon glyphicon-off"></span>
+							<spring:message code="edit.button.save" />
+						</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">
+							<spring:message code="button.cancel" />
+						</button>
+					</form>
+				</div>
 			</div>
 		</div>
 
+	</div>
 
-		<div class="modal fade" id="addressModal" role="dialog">
-			<div class="modal-dialog">
-
-				<div class="modal-content">
-					<div class="modal-header" style="padding: 35px 50px;">
-						<button type="button" class="close" data-dismiss="modal">&times;</button>
-						<h4>
-							<span class="glyphicon glyphicon-lock"></span> <spring:message code="address.name"/>
-						</h4>
-					</div>
-					<div class="modal-body" style="padding: 40px 50px;">
-						<form role="form" id="addressForm" >
-							<div class="form-group">
-								<input type="hidden" id="applicant" name="applicant"
-									value="${id}">
-							</div>
-							<div class="form-group">
-								<label for="inputAddress"><spring:message code="address.name"/> </label>
-								<select class="form-control" id="inputAddress" name="inputAddress">
-									<option value="Present"><spring:message code="address.present"/></option>
-									<option value="Permanent"><spring:message code="address.permanent"/></option>
-								</select>
-							</div>
-							<div class="form-group">
-								<label for="houseNo"><spring:message code="address.houseNo"/> </label> <input type="text"
-									class="form-control" id="houseNo"
-									name="houseNo" placeholder="<spring:message code="address.text.houseNo"/>">
-							</div>
-							<div class="form-group">
-								<label for="road"><spring:message code="address.road"/> </label> <input type="text"
-									class="form-control" id="road" name="road"
-									placeholder="<spring:message code="address.text.road"/>">
-							</div>
-							<div class="form-group">
-								<label for="district"><spring:message code="address.district"/> </label> <input
-									type="text" class="form-control" id="district"
-									name="district" placeholder="<spring:message code="address.text.district"/>">
-							</div>
-							<div class="form-group">
-								<label for="subDistrict"><spring:message code="address.sub.district"/> </label> <input
-									type="text" class="form-control" id="subDistrict"
-									name="subDistrict" placeholder="<spring:message code="address.text.sub.district"/>">
-							</div>
-							<div class="form-group">
-								<label for="zipcode"><spring:message code="address.zipcode"/> </label> <input type="text"
-									class="form-control" id="zipcode"
-									name="zipcode" placeholder="<spring:message code="address.text.zipcode"/>">
-							</div>
-							<div class="form-group">
-								<label for="province"><spring:message code="address.province"/> </label> <input
-									type="text" class="form-control" id="province"
-									name="province" placeholder="<spring:message code="address.text.province"/>">
-							</div>
-
-							<br> <br>
-							<button type="button" class="btn btn-success" id="btn_save">
-								<span class="glyphicon glyphicon-off"></span> <spring:message code="edit.button.save"/>
-							</button>
-							<button type="button" class="btn btn-default"
-								data-dismiss="modal"><spring:message code="button.cancel"/></button>
-						</form>
+	<!-- Delete Model -->
+	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+		aria-labelledby="ModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title" id="ModalLabel">
+						<spring:message code="delete.title" />
+					</h4>
+				</div>
+				<div class="modal-body">
+					<h4 class="modal-title" id="ModalLabel">
+						<spring:message code="delete.confirm.title" />
+					</h4>
+					<br>
+					<div align="right">
+						<button id="btn_delete_submit" type="button"
+							class="btn btn-danger" data-dismiss="modal">
+							<span class="glyphicon glyphicon-remove-sign"></span>
+							<spring:message code="main.delete" />
+						</button>
+						<button id="btn_close" type="button" class="btn btn-default"
+							data-dismiss="modal">
+							<spring:message code="button.cancel" />
+						</button>
 					</div>
 				</div>
 			</div>
+		</div>
+	</div>
 
-		</div>
-		
-				<!-- Delete Model -->
-		<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-    		<div class="modal-dialog">
-        		<div class="modal-content">
-            		<div class="modal-header">
-                		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.title"/></h4>
-            		</div>
-            		<div class="modal-body">
-                		<h4 class="modal-title" id="ModalLabel"><spring:message code="delete.confirm.title"/></h4>
-                		<br>
-                		<div align="right">
-                			<button  id="btn_delete_submit" type="button" class="btn btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove-sign"></span> <spring:message code="main.delete"/></button>
-                			<button  id="btn_close" type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="button.cancel"/></button>
-                		</div>
-	            	</div>
-        		</div>
-    		</div>  
-		</div>
-	
 	<br> <br>
 	<div id="table">
 		<table id="addressTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<th><spring:message code="address.data"/></th>
-					<th><spring:message code="address.data.house"/></th>
-					<th><spring:message code="address.data.road"/></th>
-					<th><spring:message code="address.data.district"/></th>
-					<th><spring:message code="address.data.sub.district"/></th>
-					<th><spring:message code="address.data.zipcode"/></th>
-					<th><spring:message code="address.data.provice"/></th>
-					<th><spring:message code="main.edit.info"/></th>
-                	<th><spring:message code="main.delete"/></th>
+					<th><spring:message code="address.data" /></th>
+					<th><spring:message code="address.data.house" /></th>
+					<th><spring:message code="address.data.road" /></th>
+					<th><spring:message code="address.data.district" /></th>
+					<th><spring:message code="address.data.sub.district" /></th>
+					<th><spring:message code="address.data.zipcode" /></th>
+					<th><spring:message code="address.data.provice" /></th>
+					<th><spring:message code="main.edit.info" /></th>
+					<th><spring:message code="main.delete" /></th>
 				</tr>
 			</thead>
 
