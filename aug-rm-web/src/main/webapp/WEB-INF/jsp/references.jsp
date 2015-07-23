@@ -14,10 +14,6 @@
 	margin-right: 5px;
 }
 
-#referenceAdd {
-	margin-left: 5px;
-}
-
 #table {
 	padding: 15px 5px 65px 5px;
 	margin-bottom: 100px;
@@ -277,19 +273,15 @@ h3{
 <jsp:include page="applicationMenu.jsp" />
 <div class="container" id="reference">
 	<div class="form-group">
-		<label for="reference" id="text"><spring:message
-				code="ref.text" /> </label>
+		<label for="reference" id="text"><spring:message code="ref.text" /> </label>
 	</div>
 	<br>
 	<div class="row">
-		<div class="row">
-			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
-				<h3><spring:message code="ref.name"/></h3>
-				<button class="btn btn-warning" id="referenceAdd"
-					data-toggle="modal" data-target="#referenceModal">
-					<span class="glyphicon glyphicon-plus"></span> <spring:message code="ref.name.add"/>
-				</button>
-			</div>
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+			<h3><spring:message code="ref.name"/></h3>
+			<button class="btn btn-warning" id="referenceAdd" data-toggle="modal" data-target="#referenceModal">
+				<span class="glyphicon glyphicon-plus"></span> <spring:message code="ref.name.add"/>
+			</button>
 		</div>
 	</div>
 	<div class="modal fade" id="referenceModal" role="dialog">
@@ -383,8 +375,7 @@ h3{
 
 	<br> <br>
 	<div id="table">
-		<table id="referenceTable" class="display" cellspacing="0"
-			width="100%">
+		<table id="referenceTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th><spring:message code="ref.data" /></th>

@@ -14,10 +14,6 @@
 	margin-right: 5px;
 }
 
-#educationAdd {
-	margin-left: 5px;
-}
-
 #table {
 	padding: 15px 5px 65px 5px;
 	margin-bottom: 100px;
@@ -421,8 +417,7 @@ h3{
 	</div>
 	<br> <br>
 	<div id="table">
-		<table id="educationTable" class="display" cellspacing="0"
-			width="100%">
+		<table id="educationTable" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
 					<th><spring:message code="education.data" /></th>

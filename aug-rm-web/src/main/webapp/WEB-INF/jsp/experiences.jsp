@@ -144,6 +144,16 @@ h3{
 	else {
 		var id = '${id}';
 		dtApplicant = $('#experiencesTable').DataTable({
+			columnDefs : [{"width" : "1%","targets" : 0},
+						  {"width" : "0%","targets" : 1},
+						  {"width" : "0%","targets" : 2},
+						  {"width" : "0%","targets" : 3},
+						  {"width" : "1%","targets" : 4},
+						  {"width" : "1%","targets" : 5},
+						  {"width" : "1%","targets" : 6},
+						  {"width" : "5%","targets" : 7},
+						  {"width" : "5%","targets" : 8},
+						  {"width" : "5%","targets" : 9}],
 			paging: true,
 			hover:false,
 			sort:false,
@@ -391,8 +401,7 @@ h3{
 <jsp:include page="applicationMenu.jsp" />
 <div class="container" id="experience">
 	<div class="form-group">
-		<label for="experiences" id="text"><spring:message
-				code="exp.text" /> </label>
+		<label for="experiences" id="text"><spring:message code="exp.text" /> </label>
 	</div>
 	<br>
 	<div class="container">
@@ -572,7 +581,7 @@ h3{
 			width="100%">
 			<thead>
 				<tr>
-					<th><spring:message code="exp.data.position" /></th>
+					<th><spring:message code="exp.data.position"/></th>
 					<th><spring:message code="exp.data.from" /></th>
 					<th><spring:message code="exp.data.to" /></th>
 					<th><spring:message code="exp.data.emp" /></th>

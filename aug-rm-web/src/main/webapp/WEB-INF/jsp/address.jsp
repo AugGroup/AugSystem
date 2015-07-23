@@ -21,10 +21,6 @@
 	margin-right: 5px;
 }
 
-#addressAdd {
-	margin-left: 5px;
-}
-
 #table {
 	padding: 15px 5px 65px 5px;
 	margin-bottom: 100px;
@@ -333,7 +329,6 @@ h3{
 				</button>
 			</div>
 		</div>
-	</div>
 
 
 	<div class="modal fade" id="addressModal" role="dialog">

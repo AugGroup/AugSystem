@@ -134,10 +134,6 @@
 	background: #FFC000;
 }
 
-p {
-	float: right;
-}
-
 .body{
 	padding: 25px 0px 55px 0px;
 	background: #CAC9C7;
@@ -152,9 +148,10 @@ p {
 	font-family: "Regular";
 }
 
-p{
-	float:right;
+p {
+	float: right;
 }
+
 </style>
 <%
 	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
