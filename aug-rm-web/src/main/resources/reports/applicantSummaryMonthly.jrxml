@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Applicant Summary" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b968d69-3c09-4dfe-882d-8ba0698d535c">
-	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="6"/>
+	<property name="ireport.y" value="40"/>
 	<queryString>
 		<![CDATA[SELECT applicant.APPLICANT_ID AS id ,
 		applicant.AGE AS age,
@@ -104,11 +104,11 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 	<group name="By_Date" isStartNewPage="true">
 		<groupExpression><![CDATA[$F{applyDate}.getMonth()]]></groupExpression>
 		<groupHeader>
-			<band height="80">
+			<band height="82">
 				<staticText>
-					<reportElement x="31" y="45" width="60" height="20" uuid="be012ee1-fcfa-46dc-bb4d-3ae54c52cc40"/>
+					<reportElement x="192" y="39" width="60" height="20" uuid="be012ee1-fcfa-46dc-bb4d-3ae54c52cc40"/>
 					<textElement>
-						<font size="14"/>
+						<font size="14" isBold="true"/>
 					</textElement>
 					<text><![CDATA[MONTH : ]]></text>
 				</staticText>
@@ -119,9 +119,9 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 					</graphicElement>
 				</line>
 				<textField isStretchWithOverflow="true" pattern="MMMMM">
-					<reportElement x="91" y="45" width="100" height="20" uuid="b4b6a424-0c9d-476b-bc1e-d63bd5413415"/>
+					<reportElement x="257" y="39" width="100" height="20" uuid="b4b6a424-0c9d-476b-bc1e-d63bd5413415"/>
 					<textElement>
-						<font size="12"/>
+						<font size="14" isBold="true"/>
 					</textElement>
 					<textFieldExpression><![CDATA[$F{applyDate}]]></textFieldExpression>
 				</textField>
@@ -165,45 +165,48 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 				<staticText>
 					<reportElement x="26" y="30" width="46" height="20" uuid="ea99b949-5bec-4e88-acf6-7a9391b65290"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[ID CODE]]></text>
+					<text><![CDATA[ID Code]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="77" y="30" width="76" height="20" uuid="894afcae-b61d-4e6f-afe9-f705ff4e65ba"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[NAME]]></text>
+					<text><![CDATA[Name]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="152" y="30" width="72" height="20" uuid="f6b307b1-1b5b-4fcd-848b-85668d159661"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[APPLY DATE]]></text>
+					<text><![CDATA[Apply Date]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="235" y="30" width="56" height="20" uuid="d94ee03b-ff8f-435b-9bc4-c8fe404e9230"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[P0SITION1]]></text>
+					<text><![CDATA[Position1]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="291" y="30" width="56" height="20" uuid="703ce390-8d68-4fa9-9edf-0b95a098d46f"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[P0SITION2]]></text>
+					<text><![CDATA[Position2]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="347" y="30" width="56" height="20" uuid="b4f293ca-ee6f-4aee-977f-48430cee8ad2"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[P0SITION3]]></text>
+					<text><![CDATA[Position3]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="407" y="30" width="56" height="20" uuid="d70c38c2-6850-4b1e-a226-9be92f6c0df8"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[DEGREE]]></text>
+					<text><![CDATA[Degree]]></text>
 				</staticText>
 				<staticText>
 					<reportElement x="463" y="30" width="68" height="20" uuid="01a9c6f9-baf7-4ccc-a3fc-c724fa2d1023"/>
 					<textElement textAlignment="Center"/>
-					<text><![CDATA[MAJOR]]></text>
+					<text><![CDATA[Major]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="27" y="3" width="56" height="20" uuid="df71e256-71e0-471f-b766-c0ade733316e"/>
+					<reportElement x="33" y="3" width="56" height="20" uuid="df71e256-71e0-471f-b766-c0ade733316e"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
 					<text><![CDATA[MAJOR : ]]></text>
 				</staticText>
 				<line>
@@ -216,7 +219,10 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 					</graphicElement>
 				</line>
 				<textField>
-					<reportElement x="77" y="3" width="90" height="20" uuid="d5012796-2c29-4f82-8db4-c1129838a7be"/>
+					<reportElement x="83" y="3" width="90" height="20" uuid="d5012796-2c29-4f82-8db4-c1129838a7be"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
 					<textFieldExpression><![CDATA[$F{major}]]></textFieldExpression>
 				</textField>
 			</band>
@@ -231,7 +237,7 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 					<text><![CDATA[MAJOR SUMMARY :]]></text>
 				</staticText>
 				<line>
-					<reportElement x="26" y="9" width="490" height="1" uuid="5792b01f-6f10-46c8-9181-d8f446a9046b"/>
+					<reportElement x="26" y="9" width="504" height="1" uuid="5792b01f-6f10-46c8-9181-d8f446a9046b"/>
 				</line>
 				<textField>
 					<reportElement x="472" y="13" width="61" height="20" uuid="e8ad503d-d470-4142-bbfc-17111e0c2cf9"/>
@@ -241,7 +247,7 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 					<textFieldExpression><![CDATA[$V{By_Major_COUNT}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement x="26" y="31" width="490" height="1" uuid="458b6281-ddc8-4945-bae0-579b374805cc"/>
+					<reportElement x="26" y="32" width="504" height="1" uuid="458b6281-ddc8-4945-bae0-579b374805cc"/>
 				</line>
 			</band>
 		</groupFooter>
@@ -257,7 +263,7 @@ LEFT JOIN position position1 ON applicant.POSITION1_ID = position1.ID
 			<staticText>
 				<reportElement x="31" y="19" width="485" height="51" uuid="776f3bb7-4363-474b-b583-0611ea2acd99"/>
 				<textElement textAlignment="Center">
-					<font size="24" isBold="true" pdfEncoding="Identity-H"/>
+					<font size="24" isBold="true" pdfEncoding="Cp1250"/>
 				</textElement>
 				<text><![CDATA[MONTHLY SUMMARY]]></text>
 			</staticText>
