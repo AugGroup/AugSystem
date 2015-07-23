@@ -148,6 +148,13 @@ table.dataTable tr.even {
         	 searching : true,
         	 paging: 10,
         	 sort : false,
+        	 "columnDefs": [
+        	                { "width": "5%", "targets": 0 },
+        	                { "width": "10%", "targets": 1 },
+        	                { "width": "17%", "targets": 2 },
+        	                { "width": "7%", "targets": 4 },
+        	                
+				             ],
         	 /* order: [[ 2, 'asc' ]], */
         	 ajax: {
         		 type: "GET",
