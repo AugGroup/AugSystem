@@ -412,6 +412,7 @@ public class ApplicationController {
 	
 	@RequestMapping(value = "/findEducationId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody EducationDTO findEducation(@PathVariable Integer id) {
+		System.out.println("/////////////////////////////////");
 		return educationService.findEducation(id);
 	}
 	

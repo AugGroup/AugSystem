@@ -8,7 +8,7 @@
 	color: #ff0000;
 }
 
-#experience {
+#experiences{
 	background: #E0DFDD;
 }
 
@@ -411,16 +411,15 @@ h3{
 	});
 </script>
 <jsp:include page="applicationMenu.jsp" />
-<div class="container" id="experience">
+<div class="container" id="experiences">
 	<div class="form-group">
 		<label for="experiences" id="text"><spring:message code="exp.text" /> </label>
 	</div>
 	<br>
-	<div class="container">
 		<div class="row">
 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
 				<h3><spring:message code="exp.name"/></h3>
-				<button class="btn btn-warning" id="experiencesAdd">
+				<button class="btn btn-warning" id="experiencesAdd" data-toggle="modal" data-target="#experiencesModal">
 					<span class="glyphicon glyphicon-plus"></span>
 					<spring:message code="exp.name.add" />
 				</button>
@@ -587,7 +586,6 @@ h3{
 				</div>
 			</div>
 		</div>
-	</div>
 	<br> <br>
 	<div id="table">
 		<table id="experiencesTable" class="display" cellspacing="0"

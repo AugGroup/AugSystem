@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-#certificate {
+#certificates {
 	background: #E0DFDD;
 }
 
@@ -247,7 +247,7 @@ $(document).ready(function() {
 
 </script>
 <jsp:include page="applicationMenu.jsp" />
-<div class="container" id="certificate">
+<div class="container" id="certificates">
 	<div class="row">
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
 			<h3><spring:message code="cer.name"/></h3>

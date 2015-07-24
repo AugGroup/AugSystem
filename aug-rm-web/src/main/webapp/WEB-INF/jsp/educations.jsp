@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-#educations {
+#education {
 	background: #E0DFDD;
 }
 
@@ -179,6 +179,7 @@ h3{
 				url : "${pageContext.request.contextPath}/findEducationId/" + id,
 				type : "POST",
 				success : function(data){
+					console.log(data.schoolName);
 					showFillData(data);
 				}
 			});
@@ -242,6 +243,7 @@ h3{
 						    title: 'Edit Education Success!!',
 						    text: 'You can edit data',
 						    type: 'success',
+						    delay: 60,
 						    nonblock: {
 						        nonblock: true,
 						        nonblock_opacity: .2
@@ -277,6 +279,7 @@ h3{
 					    title: 'Delete Success',
 					    text: 'You can delete data',
 					    type: 'success',
+					    delay: 60,
 					    nonblock: {
 					        nonblock: true,
 					        nonblock_opacity: .2
@@ -308,7 +311,7 @@ h3{
 });
 </script>
 <jsp:include page="applicationMenu.jsp" />
-<div class="container" id="educations">
+<div class="container" id="education">
 	<div class="row">
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
 			<h3><spring:message code="education.name"/></h3>
@@ -447,42 +450,6 @@ h3{
 		</table>
 		<div align="right">
 			<button type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
-		</div>
-	</div>
-</div>
-<div class="container">
-	<!-- Delete Model -->
-	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
-		aria-labelledby="ModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title" id="ModalLabel">
-						<spring:message code="delete.title" />
-					</h4>
-				</div>
-				<div class="modal-body">
-					<h4 class="modal-title" id="ModalLabel">
-						<spring:message code="delete.confirm.title" />
-					</h4>
-					<br>
-					<div align="right">
-						<button id="btn_delete_submit" type="button"
-							class="btn btn-danger" data-dismiss="modal">
-							<span class="glyphicon glyphicon-remove-sign"></span>
-							<spring:message code="main.delete" />
-						</button>
-						<button id="btn_close" type="button" class="btn btn-default"
-							data-dismiss="modal">
-							<spring:message code="button.cancel" />
-						</button>
-					</div>
-				</div>
-			</div>
 		</div>
 	</div>
 </div>
