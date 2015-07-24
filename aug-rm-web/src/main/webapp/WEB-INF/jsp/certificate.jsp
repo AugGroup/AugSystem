@@ -15,18 +15,19 @@
 }
 
 #certificateAdd {
-	margin-left: 5px;
-}
+	margin-top: 15px;
+	margin-right: 5px;
+	margin-bottom:15px;
+	width: 150px;
+	height: 30px;
+	float:right;
+	font-family: "Regular";
+	font-size: 16px;
+	}
 
 #table {
 	padding: 15px 5px 15px 5px;
 	background: #E0DFDD;;
-}
-
-#certificateAdd{
-	margin-top: 15px;
-	margin-right: 5px;
-	float:right
 }
 
 #buttonBack{
@@ -250,10 +251,6 @@ $(document).ready(function() {
 	<div class="row">
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
 			<h3><spring:message code="cer.name"/></h3>
-			<button class="btn btn-warning" id="certificateAdd"
-				data-id="data.id" data-toggle="modal" data-target="#certificateModal">
-				<span class="glyphicon glyphicon-plus"></span> <spring:message code="cer.name.add"/>
-			</button>
 			
 		</div>
 	</div>
@@ -352,7 +349,8 @@ $(document).ready(function() {
 			<tbody></tbody>
 		</table>
 		<div align="right">
-			<button type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
+			<button class="btn btn-warning" id="certificateAdd" data-id="data.id" data-toggle="modal" data-target="#certificateModal"><span class="glyphicon glyphicon-plus"></span> <spring:message code="cer.name.add"/></button>
+			<button class="btn btn-default" type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 		</div>
 	</div>
 </div>

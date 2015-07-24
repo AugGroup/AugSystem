@@ -26,7 +26,12 @@
 #referenceAdd{
 	margin-top: 15px;
 	margin-right: 5px;
-	float:right
+	margin-bottom:15px;
+	width: 150px;
+	height: 30px;
+	float:right;
+	font-family: "Regular";
+	font-size: 16px;
 }
 
 #buttonBack{
@@ -289,9 +294,6 @@ h3{
 	<div class="row">
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
 			<h3><spring:message code="ref.name"/></h3>
-			<button class="btn btn-warning" id="referenceAdd" data-toggle="modal" data-target="#referenceModal">
-				<span class="glyphicon glyphicon-plus"></span> <spring:message code="ref.name.add"/>
-			</button>
 			
 		</div>
 	</div>
@@ -401,7 +403,8 @@ h3{
 			<tbody></tbody>
 		</table>
 		<div align="right">
-			<button type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
+			<button class="btn btn-warning" id="referenceAdd" data-toggle="modal" data-target="#referenceModal"><span class="glyphicon glyphicon-plus"></span> <spring:message code="ref.name.add"/></button>
+			<button class="btn btn-default" type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 		</div>
 	</div>
 </div>

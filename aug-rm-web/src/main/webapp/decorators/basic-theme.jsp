@@ -98,8 +98,12 @@
 	border: 1px solid #707070;
 }
 
-#footer{
+.footer{
 	background:#FFC000;
+	/* position: fixed;
+    height: 30px;
+    bottom: 0;
+    width: 100%; */
 }
 
 .user{
@@ -205,7 +209,7 @@ p {
 		<decorator:body />
 	</div>
 
-	<div id="footer">
+	<div class="footer">
 		<div class="text">
 			<div class="container">
 				<p class="text-muted credit">&copy; 2011-2015 Augmentis

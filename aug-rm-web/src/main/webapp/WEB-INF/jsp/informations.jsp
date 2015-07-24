@@ -31,7 +31,7 @@ h3{
 	color: #292929;
 	
 } 
- 	 input[type="file"] {  
+/*  	 input[type="file"] {  
       color: white;  
       border: 1px #F7C11F;  
       border-radius: 5px;  
@@ -42,15 +42,17 @@ h3{
       margin-right:25px;
       margin-left:25px;
 
-}
+} */
 
 #buttonSave{
 	margin-top: 15px;
-	margin-right:15px;
+	margin-right: 5px;
 	margin-bottom:15px;
-	float:right;
 	width: 150px;
 	height: 30px;
+	float:right;
+	font-family: "Regular";
+	font-size: 16px;
 }
 #buttonBack{
 	margin-top: 15px;
@@ -79,9 +81,10 @@ h3{
         margin-left: 85px;
         color: #ffffff;
         font-family: "Regular";
-        font-size: 12.5px;
+        font-size: 13px;
         width: 90px;
         height: 25px;
+        
         
     }
     .btn-file input[type=file] {
@@ -620,7 +623,9 @@ h3{
 					<f:input path="militaryReason" class="form-control" id="militaryReason" name="militaryReason"
 						placeholder="${militaryN}" cssStyle="width:677px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
 				</div>
-				<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6" id="drafted">
+				</div>	
+			<div class="form-group">
+				<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="drafted">
 					<label for="dateToBeDrafted" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><span
 						class="glyphicon glyphicon-calendar"></span><spring:message code="info.military.date"/> </label><br>
 					<div class="input-group date">
@@ -630,7 +635,7 @@ h3{
 				</div>
 			
 		</div>
-	</div>	
+	
 	<div class="form-group">
 				<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
 					<label for="knowAugmentis" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.know.aug"/></label>
@@ -816,7 +821,8 @@ h3{
 		</div>
 		  <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
 			<label for="file" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.resume"/></label><br>
-			<input type="file" id="resumeMultipartFile" name="resumeMultipartFile" class="file" />
+<!-- 			<input type="file" id="resumeMultipartFile" name="resumeMultipartFile" class="file" /> -->
+			<span class="btn btn-warning btn-file"><span class="glyphicon glyphicon-plus"></span> Resume <input id="resumeMultipartFile" name="resumeMultipartFile" type="file" accept="image/*" class="file"/></span>
 			<f:hidden path="resume" />
 		<c:choose>
  			<c:when test="${not empty applicant.resume}">
@@ -826,7 +832,9 @@ h3{
 	    </div>
 	      <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
 			<label for="file"style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.transcript"/></label><br>
-				<input type="file" id="transcriptMultipartFile" name="transcriptMultipartFile" class="file"/>
+<!-- 				<input type="file" id="transcriptMultipartFile" name="transcriptMultipartFile" class="file"/> -->
+				<span class="btn btn-warning btn-file"><span class="glyphicon glyphicon-plus"></span> Transcript <input id="transcriptMultipartFile" name="transcriptMultipartFile" type="file" accept="image/*" class="file"/></span>
+				
 				<f:hidden path="transcript" />
 		<c:choose>
 			<c:when test="${not empty applicant.transcript}">
@@ -893,7 +901,7 @@ h3{
 		</div>
 			<div align="right">
 				<button type="submit" id="buttonSave" name="buttonSave" class="btn btn-warning" ><span class="glyphicon glyphicon-save"></span> <spring:message code="edit.button.save"/></button>
-				<button type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
+				<button type="button" class="btn btn-default" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 			</div>
 		</div>
 </div>
