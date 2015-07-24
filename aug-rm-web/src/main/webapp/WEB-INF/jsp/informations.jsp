@@ -52,7 +52,7 @@ h3{
 	width: 150px;
 	height: 30px;
 }
-#buttonCancel{
+#buttonBack{
 	margin-top: 15px;
 	margin-right:15px;
 	margin-bottom:15px;
@@ -103,12 +103,18 @@ h3{
 </style>
 <script>
  	$(document).ready(function() {
- 
+ 		$( "[type=date]" ).datepicker({
+ 		    onClose: function() {
+ 		      $( this ).valid();
+ 		    }
+ 		  });
 			$('.input-group.date').datepicker({startView : 2,
  							todayBtn : "linked",
  							format : "dd/mm/yyyy",
- 							autoclose: true 
-
+ 							autoclose: true
+//  							onClose: function() {
+//  							      $( this ).valid();
+//  							    }
  						});
 			
 			 $("#tel").mask("(999) 999-9999");
@@ -624,12 +630,13 @@ h3{
 				</div>
 			
 		</div>
-	</div>
+	</div>	
+	<div class="form-group">
 				<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
 					<label for="knowAugmentis" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.know.aug"/></label>
 				</div>
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
-		<div class="form-group">
+	
 			<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
 				
 			<div class="checkbox">
@@ -885,8 +892,8 @@ h3{
 			</div>
 		</div>
 			<div align="right">
-				<button type="submit" id="buttonSave" class="btn btn-warning" ><span class="glyphicon glyphicon-save"></span> <spring:message code="edit.button.save"/></button>
-				<button type="reset" id="buttonCancel" class="btn btn-default" value="reset" > Cancel </button>
+				<button type="submit" id="buttonSave" name="buttonSave" class="btn btn-warning" ><span class="glyphicon glyphicon-save"></span> <spring:message code="edit.button.save"/></button>
+				<button type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 			</div>
 		</div>
 </div>

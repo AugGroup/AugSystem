@@ -38,6 +38,18 @@
 	float:right
 }
 
+#buttonBack{
+	margin-top: 15px;
+	margin-right:15px;
+	margin-bottom:15px;
+	width: 90px;
+	height: 30px;
+	background-color: f4f4f4;
+	font-family: "Regular";
+	font-size: 14px;
+	color: #414141;
+}
+
 h3{
 	height: 30px;
 	font-family: "SemiBold";
@@ -412,6 +424,7 @@ h3{
 					<span class="glyphicon glyphicon-plus"></span>
 					<spring:message code="exp.name.add" />
 				</button>
+				
 			</div>
 		</div>
 		<div class="modal fade" id="experiencesModal" role="dialog">
@@ -600,5 +613,8 @@ h3{
 
 			<tbody></tbody>
 		</table>
+		<div align="right">
+			<button type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
+		</div>
 	</div>
 </div>
