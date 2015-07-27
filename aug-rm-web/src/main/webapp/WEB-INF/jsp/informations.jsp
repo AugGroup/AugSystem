@@ -83,9 +83,8 @@ h3{
         font-family: "Regular";
         font-size: 13px;
         width: 90px;
-        height: 25px;
-        
-        
+        height: 25px;        
+        vertical-align: middle;
     }
     .btn-file input[type=file] {
         position: absolute;
@@ -106,12 +105,7 @@ h3{
 </style>
 <script>
  	$(document).ready(function() {
- 		$( "[type=date]" ).datepicker({
- 		    onClose: function() {
- 		      $( this ).valid();
- 		    }
- 		  });
-			$('.input-group.date').datepicker({startView : 2,
+ 			$('.input-group.date').datepicker({startView : 2,
  							todayBtn : "linked",
  							format : "dd/mm/yyyy",
  							autoclose: true
@@ -137,7 +131,7 @@ h3{
 					        }
 					        
 					    });
-			 
+			
  			 $("#previousEmployersReason").hide();
 			  
 			    $("input:radio[name='previousEmployers']").change(function(){  
@@ -148,9 +142,11 @@ h3{
 			              $("#previousEmployersReason").hide();
 			            }
 
-			    });
+			    });	
+			    $("#previousEmployers").trigger( "click" );
+
 			   
-			    $('#newspaper').hide();
+				  $('#newspaper').hide();
 
 			    //show it when the checkbox is clicked
 			    $('input[name="noticeNewspaper"]').change(function () {
@@ -160,6 +156,8 @@ h3{
 			            $('#newspaper').hide();
 			        }
 			    });
+			    $("#noticeNewspaper").trigger( "click" );
+
 			    $('#magazine').hide();
 
 			    //show it when the checkbox is clicked
@@ -170,6 +168,8 @@ h3{
 			            $('#magazine').hide();
 			        }
 			    });
+			    $("#noticeMagazine").trigger( "click" );
+			    
 			    $('#webSite').hide();
 
 			    //show it when the checkbox is clicked
@@ -180,6 +180,8 @@ h3{
 			            $('#webSite').hide();
 			        }
 			    });
+			    $("#noticeOtherWebSite").trigger( "click" );
+			    
 			    $('#friend').hide();
 
 			    //show it when the checkbox is clicked
@@ -190,6 +192,8 @@ h3{
 			            $('#friend').hide();
 			        }
 			    });
+			    $("#noticeFriend").trigger( "click" );
+			    
 			    $('#other').hide();
 
 			    //show it when the checkbox is clicked
@@ -200,6 +204,7 @@ h3{
 			            $('#other').hide();
 			        }
 			    });
+			    $("#noticeOther").trigger( "click" );
 			    
 			    $("#nowEmployedKnow").hide();
 				  
@@ -212,6 +217,9 @@ h3{
 			            }
 
 			    });
+			    
+			    $("#nowEmployed").trigger( "click" );
+			    
  				$("#militaryStatusYes").hide();
 
 			    $("input:radio[name='militaryStatus']").change(function(){  
@@ -223,6 +231,7 @@ h3{
 			            }
 
 			    });
+			    $("#militaryStatus").trigger( "click" );
 			    
 			    $("#militaryReason").hide();
 				  
@@ -235,6 +244,7 @@ h3{
 			            }
 
 			    });
+			    $("#militaryStatus").trigger( "click" );
 
 			    
 			    $("#drafted").hide();
@@ -248,6 +258,20 @@ h3{
 			            }
 
 			    }); 
+			    $("#sex").trigger( "click" );
+
+			    $("#married").hide();
+				  
+			    $("input:radio[name='applicantStatus']").change(function(){  
+
+			            if(this.value == 'Single' && this.checked){
+			              $("#married").hide();
+			            }else{
+			            	 $("#married").show();
+			            }
+
+			    }); 
+			    $("#applicantStatus").trigger( "click" );
 			 
 			 $('#informationApplicant').validate({
 				
@@ -351,19 +375,27 @@ h3{
 					employedRelation : {required : "<spring:message code="valid.info.relation"/>"},
 					previousEmployers : {required :  "<spring:message code="valid.info.pre.emp"/>"},
  					previousEmployersReason : {required :  "<spring:message code="valid.ex.reason"/>"}
-				},
-			    errorPlacement: function(error, element) {
-				      var placement = $(element).data('error');
-				      if (placement) {
-				        $(placement).append(error)
-				      } else {
-				        error.insertAfter(element);
-				      }
-				    } 
+				}
+				/* ,
+		        highlight: function(element) {
+		            $(element).closest('.form-group').addClass('has-error');
+		        },
+		        unhighlight: function(element) {
+		            $(element).closest('.form-group').removeClass('has-error');
+		        },
+		        errorElement: 'span',
+		        errorClass: 'help-block',
+		        errorPlacement: function(error, element) {
+		            if(element.parent('.input-group').length) {
+		                error.insertAfter(element.parent());
+		            } else {
+		                error.insertAfter(element);
+		            }
+		        } */
+
 			});
 
-			
-			
+		
 });
 
 </script>
@@ -530,7 +562,7 @@ h3{
 			</div>
 			
 		</div>
-		
+	<div id="married">
 		<div class="form-group">
 			<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
 				<label for="children" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.number.child"/> 
@@ -569,6 +601,7 @@ h3{
 				<f:input path="marriageAddress" class="form-control" id="marriageAddress" name="marriageAddress"
 					placeholder="${address}" cssStyle="width:677px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
 			</div>
+	</div>
 		<div class="col-sm-19 col-xs-9 col-md-9 col-lg-9" >
 			<label for="military" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.military.ask"/> </label>
 		</div>
@@ -853,7 +886,7 @@ h3{
 					<div class="input-group date">
 						<f:input path="applyDate" id="applyDate" name="applyDate"
 							class="form-control"></f:input><span class="input-group-addon"><i
-							class="glyphicon glyphicon-th"></i></span>
+							class="glyphicon glyphicon-th"></i></span>							
 					</div>
 				</div>
 				<div class="col-sm-6 col-xs-6 col-md-6 col-lg-6" >
