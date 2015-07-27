@@ -100,7 +100,7 @@
 }
 
 .footer{
-	background:#FFC000;
+	background: #FFC000;
 	/* position: fixed;
     height: 30px;
     bottom: 0;
@@ -136,7 +136,7 @@
 }
 
 .body{
-	padding: 25px 0px 55px 0px;
+	padding: 25px 0px 145px 0px;
 	background: #CAC9C7;
 }
 

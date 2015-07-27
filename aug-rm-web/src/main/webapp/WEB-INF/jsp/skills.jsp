@@ -121,7 +121,7 @@ $(document).ready(function() {
 				    title: 'Edit Skill Success!!',
 				    text: 'You can edit data',
 				    type: 'success',
-			        delay: 10000,
+			        delay: 7000,
 			        buttons:{
 			        	closer_hover: false,
 			        	sticker: false
@@ -179,7 +179,7 @@ $(document).ready(function() {
 					    title: 'Edit Skill Success!!',
 					    text: 'You can edit data',
 					    type: 'success',
-				        delay: 10000,
+				        delay: 7000,
 				        buttons:{
 				        	closer_hover: false,
 				        	sticker: false
@@ -215,7 +215,7 @@ $(document).ready(function() {
 				    title: 'Delete Success',
 				    text: 'You can delete data',
 				    type: 'success',
-			        delay: 10000,
+			        delay: 7000,
 			        buttons:{
 			        	closer_hover: false,
 			        	sticker: false
@@ -244,10 +244,6 @@ $(document).ready(function() {
 
 		}
    });
-    
-    
-	
-	
 	
 });
 
