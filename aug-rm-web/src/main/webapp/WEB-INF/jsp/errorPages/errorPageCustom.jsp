@@ -1,10 +1,19 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <style>
-section {
-	height: 80%;
+.body {
+	height: 100%;
 	background: #E0DFDD;
 	padding-top: 15px;
 	padding-bottom: 45px;
+}
+p{
+	float: left;
+	padding: 5px;
+	width: 100%;
+}
+
+.gotohome{
+	margin: 5px;
 }
 </style>
 
@@ -22,17 +31,16 @@ section {
 				<h1>Error! Custom</h1>
 				<p>The page you are looking for might have been remove, has its
 					name and changed or is temporarily unavailable.</p>
-
-				<p>Return to the homepage.</p>
+				<br><br><br>
+				
+				<p>Return to the home page.</p>
 				<div class="gotohome">
 					<a id="linkgotohome" href="<%=request.getContextPath()%>/applicant"
 						class="btn btn-danger" role="button"> <span
-						class="glyphicon glyphicon-home" style="margin-left: 2px;">
-					</span> Home
-					</a>
+						class="glyphicon glyphicon-home" style="margin-left: 2px;"></span>
+					Home</a>
 				</div>
 			</div>
 		</div>
-
 	</div>
 </section>

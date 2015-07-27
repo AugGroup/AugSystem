@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class ExceptionControllerPage implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
+	
+	/*-------------- error page (by throws)---------------------*/
 	@RequestMapping(value = "/exception/custom", method = { RequestMethod.GET })
 	public String errorPageCustom() {
 		return "errorPages/errorPageCustom";

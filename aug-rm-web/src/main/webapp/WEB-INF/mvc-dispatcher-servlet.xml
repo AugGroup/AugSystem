@@ -120,7 +120,7 @@
 				<entry key="IndexOutOfBoundsException">errorpages/errorPage404</entry> -->
 
 		</property>
-		<property name="defaultErrorView" value="generic_error" />
+		<property name="defaultErrorView" value="errorpages/errorPageCustom" />
 	</bean>
 
 </beans>

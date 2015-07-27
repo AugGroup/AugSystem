@@ -104,7 +104,7 @@ $(document).ready(function () {
 					url: '${pageContext.request.contextPath}/report/searchMonth',
 					data: function (d) {
 						d.applyDateStr = $('#applyDateStr').val();
-						console.log(d.applyDateStr);
+						/* console.log(d.applyDateStr); */
 					},
 					complete: function(data){
 						if($('.dataTables_empty').length > 0){
