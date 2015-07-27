@@ -6,12 +6,6 @@
 	padding-top: 15px;
 	padding-bottom: 45px;
 }
-p{
-	float: left;
-	padding: 5px;
-	width: 100%;
-}
-
 .gotohome{
 	margin: 5px;
 }
@@ -25,7 +19,7 @@ p{
 					<img src="${pageContext.request.contextPath}/static/resources/images/errorimage.png"  style="height:90%;width:75%;margin: auto;">
 	       		</div>  	         
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6" style="float: left;">
 				<h1>Error! 415</h1>	    
 				<p>The server is refusing to service the request because the entity 
 					of the request is in a format not supported by the requested resource for the requested method.</p>

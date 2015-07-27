@@ -5,14 +5,7 @@
 	background: #E0DFDD;
 	padding-top: 15px;
 	padding-bottom: 45px;
-}
-p{
-	float: left;
-	padding: 5px;
-	width: 100%;
-}
-
-.gotohome{
+}.gotohome{
 	margin: 5px;
 }
 </style>
@@ -25,7 +18,7 @@ p{
 					<img src="${pageContext.request.contextPath}/static/resources/images/errorimage.png"  style="height:90%;width:75%;margin: auto;">
 	        	</div>  	         
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6" style="float: left;">
 				<h1>Error! 404</h1>	    
 				<p>The server has not found anything matching the URL.
 				<br><br><br>

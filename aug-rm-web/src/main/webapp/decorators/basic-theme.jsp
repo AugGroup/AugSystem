@@ -148,7 +148,7 @@
 	font-family: "Regular";
 }
 
-p {
+.text-muted  {
 	float: right;
 }
 

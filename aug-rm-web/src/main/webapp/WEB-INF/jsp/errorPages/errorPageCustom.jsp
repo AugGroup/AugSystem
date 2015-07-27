@@ -6,12 +6,6 @@
 	padding-top: 15px;
 	padding-bottom: 45px;
 }
-p{
-	float: left;
-	padding: 5px;
-	width: 100%;
-}
-
 .gotohome{
 	margin: 5px;
 }
@@ -27,7 +21,7 @@ p{
 						style="height: 90%; width: 75%; margin: auto;">
 				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-6" style="float: left;">
 				<h1>Error! Custom</h1>
 				<p>The page you are looking for might have been remove, has its
 					name and changed or is temporarily unavailable.</p>
