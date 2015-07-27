@@ -100,7 +100,13 @@ h3{
         cursor: inherit;
         display: block;
     }
+/* input[type=text] { */
+/*     visibility:hidden; */
+/* } */
 
+/* input[type=checkbox]:checked + input[type=text] { */
+/*     visibility:visible; */
+/* } */
 </style>
 <script>
  	$(document).ready(function() {
@@ -132,80 +138,71 @@ h3{
 					        
 					    });
 			
- 			 $("#previousEmployersReason").hide();
+//  			 $("#previousEmployersReason").hide();
 			  
-			    $("input:radio[name='previousEmployers']").change(function(){  
+// 			    $("input:radio[name='previousEmployers']").change(function(){  
 
-			            if(this.value == 'No' && this.checked){
-			              $("#previousEmployersReason").show();
-			            }else{
-			              $("#previousEmployersReason").hide();
+// 			            if(this.value == 'No' && this.checked){
+// 			              $("#previousEmployersReason").show();
+// 			            }else{
+// 			              $("#previousEmployersReason").hide();
+// 			            }
+
+// 			    });	
+// 			 $('input[name="previousEmployers"]').on('click', function() {
+// 			        if ($(this).val() == 'No') {
+// 		                $("#previousEmployersReason").toggle();
+// 			        }
+//    			 });
+			 $('input[name="previousEmployers"]').change(function(){
+				 if ($("#previousEmployersNo").is(":checked")) {
+					 $("#previousEmployersReason").show();
+		            } else {
+		                $("#previousEmployersReason").hide();
+		            }
+			});
+// 			    $("#previousEmployers").click(function () {
+// 		            if ($(this).is(":checked")) {
+// 		                $("#previousEmployersReason").toggle();
+// 		            }
+// 		        });
+
+			 $("#noticeNewspaper").click(function () {
+			            if ($(this).is(":checked")) {
+			                $("#newspaper").toggle();
 			            }
+			        });
 
-			    });	
-			    $("#previousEmployers").trigger( "click" );
-
-			   
-				  $('#newspaper').hide();
-
-			    //show it when the checkbox is clicked
-			    $('input[name="noticeNewspaper"]').change(function () {
-			    	if ($('input[name="noticeNewspaper"]').is(':checked')) {
-			            $('#newspaper').show();
-			        } else {
-			            $('#newspaper').hide();
-			        }
-			    });
-			    $("#noticeNewspaper").trigger( "click" );
-
-			    $('#magazine').hide();
-
-			    //show it when the checkbox is clicked
-			    $('input[name="noticeMagazine"]').change(function () {
-			    	if ($('input[name="noticeMagazine"]').is(':checked')) {
-			            $('#magazine').show();
-			        } else {
-			            $('#magazine').hide();
-			        }
-			    });
-			    $("#noticeMagazine").trigger( "click" );
+				 $("#noticeMagazine").click(function () {
+			            if ($(this).is(":checked")) {
+			                $("#magazine").toggle();
+			            }
+			        });
 			    
-			    $('#webSite').hide();
-
-			    //show it when the checkbox is clicked
-			    $('input[name="noticeWebSite"]').change(function () {
-			    	if ($('input[name="noticeWebSite"]').is(':checked')) {
-			            $('#webSite').show();
-			        } else {
-			            $('#webSite').hide();
-			        }
-			    });
-			    $("#noticeOtherWebSite").trigger( "click" );
+			    $("#noticeWebSite").click(function () {
+		            if ($(this).is(":checked")) {
+		                $("#webSite").toggle();
+		            }
+		        });
 			    
-			    $('#friend').hide();
-
-			    //show it when the checkbox is clicked
-			    $('input[name="noticeFriend"]').change(function () {
-			    	if ($('input[name="noticeFriend"]').is(':checked')) {
-			            $('#friend').show();
-			        } else {
-			            $('#friend').hide();
-			        }
-			    });
-			    $("#noticeFriend").trigger( "click" );
+			    $("#noticeFriend").click(function () {
+		            if ($(this).is(":checked")) {
+		                $("#friend").toggle();
+		            }
+		        });
 			    
-			    $('#other').hide();
+			    $("#noticeOther").click(function () {
+		            if ($(this).is(":checked")) {
+		                $("#other").toggle();
+		            }
+		        });
 
-			    //show it when the checkbox is clicked
-			    $('input[name="noticeOther"]').change(function () {
-			    	if ($('input[name="noticeOther"]').is(':checked')) {
-			            $('#other').show();
-			        } else {
-			            $('#other').hide();
-			        }
-			    });
-			    $("#noticeOther").trigger( "click" );
-			    
+			    $("#nowEmployed").click(function () {
+		            if ($(this).is(":checked")) {
+		                $("#nowEmployedKnow").toggle();
+		            }
+		        });
+/* 
 			    $("#nowEmployedKnow").hide();
 				  
 			    $("input:radio[name='nowEmployed']").change(function(){  
@@ -217,10 +214,13 @@ h3{
 			            }
 
 			    });
-			    
-			    $("#nowEmployed").trigger( "click" );
-			    
- 				$("#militaryStatusYes").hide();
+			     */
+			     $("#militaryStatus").click(function () {
+			            if ($(this).is(":checked")) {
+			                $("#militaryStatusYes").toggle();
+			            }
+			        });
+ 				/* $("#militaryStatusYes").hide();
 
 			    $("input:radio[name='militaryStatus']").change(function(){  
 
@@ -230,10 +230,13 @@ h3{
 			              $("#militaryStatusYes").hide();
 			            }
 
-			    });
-			    $("#militaryStatus").trigger( "click" );
-			    
-			    $("#militaryReason").hide();
+			    }); */
+			    $("#militaryStatus").click(function () {
+		            if ($(this).is(":checked")) {
+		                $("#militaryReason").toggle();
+		            }
+		        });
+			  /*   $("#militaryReason").hide();
 				  
 			    $("input:radio[name='militaryStatus']").change(function(){  
 
@@ -243,10 +246,13 @@ h3{
 			              $("#militaryReason").hide();
 			            }
 
-			    });
-			    $("#militaryStatus").trigger( "click" );
+			    }); */
 
-			    
+			    $("#sex").click(function () {
+		            if ($(this).is(":checked")) {
+		                $("#drafted").toggle();
+		            }
+		        });
 			    $("#drafted").hide();
 				  
 			    $("input:radio[name='sex']").change(function(){  
@@ -258,20 +264,26 @@ h3{
 			            }
 
 			    }); 
-			    $("#sex").trigger( "click" );
 
-			    $("#married").hide();
+// 			    $("#married").hide();
 				  
-			    $("input:radio[name='applicantStatus']").change(function(){  
+// 			    $("input:radio[name='applicantStatus']").change(function(){  
 
-			            if(this.value == 'Single' && this.checked){
-			              $("#married").hide();
-			            }else{
-			            	 $("#married").show();
+// 			            if(this.value == 'Single' && this.checked){
+// 			              $("#married").hide();
+// 			            }else{
+// 			            	 $("#married").show();
+// 			            }
+
+// 			    });
+			    $('input[name="applicantStatus"]').change(function(){
+					 if ($("#applicantStatusSingle").is(":checked")) {
+						 $("#married").hide();
+			            } else {
+			                $("#married").show();
 			            }
-
-			    }); 
-			    $("#applicantStatus").trigger( "click" );
+				});
+// 			    $("#applicantStatus").trigger( "click" );
 			 
 			 $('#informationApplicant').validate({
 				
@@ -545,8 +557,8 @@ h3{
 			<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3" style="width:296px;height:92px;">
 					<label for="sex" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;width:210px;height:30px;"> <spring:message code="info.sex"/></label>
 					<div style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;width:210px;height:30px;">
-					<f:radiobutton path="sex" value="Female" name="sex" id="sex" ></f:radiobutton><label> <spring:message code="info.female"/></label>
-					<f:radiobutton path="sex" value="Male" name="sex" id="sex" ></f:radiobutton><label> <spring:message code="info.male"/></label>
+					<f:radiobutton path="sex" value="Female" name="sex" id="sexFemale" ></f:radiobutton><label> <spring:message code="info.female"/></label>
+					<f:radiobutton path="sex" value="Male" name="sex" id="sexMale" ></f:radiobutton><label> <spring:message code="info.male"/></label>
  				<br><label for="sex" class="error" style="display:none;"></label>
  				</div>
 			</div>
@@ -554,15 +566,15 @@ h3{
 			<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3" style="width:296px;height:92px;">
 					<label for="applicantStatus" style="margin-bottom:10px;margin-top:10px;width:210px;height:30px;margin-right:25px;margin-left:25px;"><spring:message code="info.marriage.status"/> </label>
 					<div style="margin-bottom:10px;margin-top:10px;width:210px;height:30px;margin-right:25px;margin-left:25px;">
-						<f:radiobutton path="applicantStatus" id="applicantStatus" name="applicantStatus" value="Single" ></f:radiobutton><label> <spring:message code="info.single"/></label>
-						<f:radiobutton path="applicantStatus" id="applicantStatus" name="applicantStatus" value="Married" ></f:radiobutton><label> <spring:message code="info.married"/></label>
-						<f:radiobutton path="applicantStatus" id="applicantStatus" name="applicantStatus" value="Divorced" ></f:radiobutton><label> <spring:message code="info.divorced"/></label>
+						<f:radiobutton path="applicantStatus" id="applicantStatusSingle" name="applicantStatus" value="Single" ></f:radiobutton><label> <spring:message code="info.single"/></label>
+						<f:radiobutton path="applicantStatus" id="applicantStatusMarried" name="applicantStatus" value="Married" ></f:radiobutton><label> <spring:message code="info.married"/></label>
+						<f:radiobutton path="applicantStatus" id="applicantStatusDivorced" name="applicantStatus" value="Divorced" ></f:radiobutton><label> <spring:message code="info.divorced"/></label>
 					 	<br><label for="applicantStatus" class="error" style="display:none;"></label>
 					</div>
 			</div>
 			
 		</div>
-	<div id="married">
+	<div id="married" style="display:none">
 		<div class="form-group">
 			<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
 				<label for="children" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.number.child"/> 
@@ -608,13 +620,13 @@ h3{
 		<div class="form-group">
 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
 			<div style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;">
-					<f:radiobutton path="militaryStatus" id="militaryStatus" name="militaryStatus" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
-					<f:radiobutton path="militaryStatus" id="militaryStatus" name="militaryStatus" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
+					<f:radiobutton path="militaryStatus" id="militaryStatusYes" name="militaryStatus" value="Yes"></f:radiobutton><label> <spring:message code="info.yes"/></label>
+					<f:radiobutton path="militaryStatus" id="militaryStatusNo" name="militaryStatus" value="No"></f:radiobutton><label> <spring:message code="info.no"/></label>
 					<br><label for="militaryStatus" class="error" style="display:none;"></label>
 			</div>
 			</div>
 	<div class="form-group">
-		<div id="militaryStatusYes">
+		<div id="militaryStatusYes" style="display:none">
 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" >
 					<label for="militaryComplete" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.military.yes"/> </label>
 			</div>
@@ -647,7 +659,7 @@ h3{
 			</div>
 		</div>
 		<div class="form-group">
-		<div id="militaryReason">
+		<div id="militaryReason" style="display:none">
 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" >
 					<label for="reasons" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.military.reason"/> </label>
 			</div>
@@ -656,9 +668,9 @@ h3{
 					<f:input path="militaryReason" class="form-control" id="militaryReason" name="militaryReason"
 						placeholder="${militaryN}" cssStyle="width:677px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
 				</div>
-				</div>	
+		</div>	
 			<div class="form-group">
-				<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="drafted">
+				<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="drafted" style="display:none">
 					<label for="dateToBeDrafted" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><span
 						class="glyphicon glyphicon-calendar"></span><spring:message code="info.military.date"/> </label><br>
 					<div class="input-group date">
@@ -679,20 +691,20 @@ h3{
 				
 			<div class="checkbox">
 				 <c:choose>
-					 <c:when test="${empty applicant.noticeNewspaper}">
+ 					 <c:when test="${empty applicant.noticeNewspaper}">
 						 <label style="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><f:checkbox path="noticeNewspaper" id="noticeNewspaper" name="noticeNewspaper" value="Newspaper"></f:checkbox><br><spring:message code="info.newspaper"/></label>
-						<div id="newspaper">
+						<div id="newspaper"  style="display:none">
 							<f:input path="noticeNewspaper" class="form-control" id="noticeNewspaper" name="noticeNewspaper" placeholder="Enter newspaper" cssStyle="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
 						 </div>
-					 </c:when>
-					 <c:when test="${not empty applicant.noticeNewspaper}">
-				  		<label style="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><f:checkbox path="noticeNewspaper" id="noticeNewspaper" name="noticeNewspaper" value="Newspaper" checked="checked"></f:checkbox><br><spring:message code="info.newspaper"/></label>
-						<div id="newspaper">
-							<f:input path="noticeNewspaper" class="form-control" id="noticeNewspaper" name="noticeNewspaper" placeholder="Enter newspaper" cssStyle="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
-						</div>
-					</c:when>
+ 					 </c:when>
+ 					 <c:when test="${not empty applicant.noticeNewspaper}">
+				  		<label style="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><f:checkbox path="noticeNewspaper" id="noticeNewspaper" name="noticeNewspaper" value="Newspaper" checked="checked"></f:checkbox><br><spring:message code="info.newspaper"/></label> 
+ 						<div id="newspaper"> 
+ 							<f:input path="noticeNewspaper" class="form-control" id="noticeNewspaper" name="noticeNewspaper" placeholder="Enter newspaper" cssStyle="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
+ 						</div> 
+					</c:when> 
 					
-				</c:choose>
+ 				</c:choose> 
 				</div>
 			</div>
 			<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
@@ -700,7 +712,7 @@ h3{
 				 <c:choose>
 					 <c:when test="${empty applicant.noticeMagazine}">
 				 		 <label style="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><f:checkbox path="noticeMagazine" id="noticeMagazine" name="noticeMagazine" value="Magazine"></f:checkbox><br><spring:message code="info.magazine"/></label>
-						<div id="magazine">
+						<div id="magazine" style="display:none">
 							 <f:input path="noticeMagazine" class="form-control" id="noticeMagazine" name="noticeMagazine" placeholder="Enter magazine" cssStyle="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
 						</div>
 					</c:when>
@@ -718,7 +730,7 @@ h3{
 				 <c:choose>
 					 <c:when test="${empty applicant.noticeWebSite}">
 			  		<label  style="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><f:checkbox path="noticeWebSite" id="noticeWebSite" name="noticeWebSite" value="Website"></f:checkbox><br><spring:message code="info.website"/></label>
-			  		<div id="webSite">
+			  		<div id="webSite" style="display:none">
 			  			<f:input path="noticeWebSite" class="form-control" id="noticeWebSite" name="noticeWebSite" placeholder="Enter website" cssStyle="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
 					</div>
 				</c:when>
@@ -736,7 +748,7 @@ h3{
 				<c:choose>
 					 <c:when test="${empty applicant.noticeFriend}">
 			  		<label style="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><f:checkbox path="noticeFriend" id="noticeFriend" name="noticeFriend" value="Friend"></f:checkbox><br><spring:message code="info.friend"/></label>
-			  		<div id="friend">
+			  		<div id="friend" style="display:none">
 			  			<f:input path="noticeFriend" class="form-control" id="noticeFriend" name="noticeFriend" placeholder="Enter friend" cssStyle="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
 					</div>
 				</c:when>
@@ -758,7 +770,7 @@ h3{
 				<c:choose>
 					 <c:when test="${empty applicant.noticeOther}">
 				  		<label style="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><f:checkbox path="noticeOther" id="noticeOther" name="noticeOther" value="Other"></f:checkbox><br><spring:message code="info.other"/> </label>
-				  		<div id="other">
+				  		<div id="other" style="display:none">
 				  			<f:input path="noticeOther" class="form-control" id="noticeOther" name="noticeOther" placeholder="Enter other" cssStyle="width:210px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
 						</div>
 					</c:when>
@@ -773,19 +785,19 @@ h3{
 			</div>
 		</div>
 </div>
-<div class="form-group" style="position:static;" >
+<div class="form-group">
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" >
 					<label for="nowEmployed" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.ask.company"/> </label><br>
 		</div>
 				<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
 					<div style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;width:210px;height:30px;">
-								<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="Yes" cssStyle="margin-bottom:10px;margin-top:10px;"></f:radiobutton><label> <spring:message code="info.yes"/></label>
-								<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="No" cssStyle="margin-bottom:10px;margin-top:10px;"></f:radiobutton><label> <spring:message code="info.no"/></label>
+								<f:radiobutton path="nowEmployed" id="nowEmployedYes" name="nowEmployed" value="Yes" cssStyle="margin-bottom:10px;margin-top:10px;"></f:radiobutton><label> <spring:message code="info.yes"/></label>
+								<f:radiobutton path="nowEmployed" id="nowEmployedNo" name="nowEmployed" value="No" cssStyle="margin-bottom:10px;margin-top:10px;"></f:radiobutton><label> <spring:message code="info.no"/></label>
 								<br><label for="nowEmployed" class="error" style="display:none;"></label>
 					</div>
 				</div>
 			
-		<div class="form-group" id="nowEmployedKnow">
+		<div class="form-group" id="nowEmployedKnow" style="display:none">
 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" >
 						<label for="nameRelation" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.write.yes"/> </label>
 				</div>
@@ -842,12 +854,12 @@ h3{
 		</div>
 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="previousEmployers">
 				<div style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;">
-						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.know"/></label>
-						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.notKnow"/></label>
+						<f:radiobutton path="previousEmployers" id="previousEmployersYes" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.know"/></label>
+						<f:radiobutton path="previousEmployers" id="previousEmployersNo" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.notKnow"/></label>
 						<br><label for="previousEmployers" class="error" style="display:none;"></label>
 				</div>
 			</div>
-		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="previousEmployersReason">
+		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="previousEmployersReason" style="display:none">
 				<label for="previousEmployersReason" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.reason.no"/> </label>
 				<spring:message code="info.text.ask.not" var="askNot"/><br>
 				<f:input path="previousEmployersReason" class="form-control" id="previousEmployersReason" name="previousEmployersReason" placeholder="${askNot}" cssStyle="width:677px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
