@@ -186,9 +186,9 @@ $(document).ready(function () {
 						style="width: 165px">
 						<option value='' selected='selected'><spring:message
 								code="report.text.select" /></option>
-						<option value='Bachelor'>Bachelor</option>
-						<option value='Master'>Master</option>
-						<option value='Doctor'>Doctor</option>
+						<option value='Bachelor'><spring:message code="report.bachelor"/></option>
+						<option value='Master'><spring:message code="report.master"/></option>
+						<option value='Doctor'><spring:message code="report.doctor"/></option>
 					</select>
 				</div>
 				<div class="form-group" style="width: 165px">

@@ -154,7 +154,7 @@ h3{
 				        title: 'Success',
 				        text: 'Successful Add References!!!',
 				        type: 'success',
-				        delay: 10000,
+				        delay: 7000,
 				        buttons:{
 				        	closer_hover: false,
 				        	sticker: false
@@ -225,7 +225,7 @@ h3{
 					    title: 'Edit Reference Success!!',
 					    text: 'You can edit data',
 					    type: 'success',
-				        delay: 10000,
+				        delay: 7000,
 				        buttons:{
 				        	closer_hover: false,
 				        	sticker: false
@@ -260,7 +260,7 @@ h3{
 					    title: 'Delete Success',
 					    text: 'You can delete data',
 					    type: 'success',
-				        delay: 10000,
+				        delay: 7000,
 				        buttons:{
 				        	closer_hover: false,
 				        	sticker: false

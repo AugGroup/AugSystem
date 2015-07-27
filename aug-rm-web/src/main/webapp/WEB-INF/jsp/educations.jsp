@@ -22,7 +22,7 @@
 	margin-top: 15px;
 	margin-right: 5px;
 	margin-bottom:15px;
-	width: 150px;
+	width: 170px;
 	height: 30px;
 	float:right;
 	font-family: "Regular";
@@ -352,11 +352,22 @@ h3{
 									placeholder="<spring:message code="education.text.university"/>">
 							</div>
 
-							<div class="form-group">
-								<label for="degree"><spring:message
-										code="education.degree" /> </label> <input type="text"
-									class="form-control" id="degree" name="degree"
-									placeholder="<spring:message code="education.text.degree"/>">
+<!-- 							<div class="form-group"> -->
+<%-- 								<label for="degree"><spring:message --%>
+<%-- 										code="education.degree" /> </label> <input type="text" --%>
+<!-- 									class="form-control" id="degree" name="degree" -->
+<%-- 									placeholder="<spring:message code="education.text.degree"/>"> --%>
+<!-- 							</div> -->
+							
+							<div class="form-group" style="width: 165px">
+								<label for="degree"><spring:message code="education.degree" /></label>
+								<select name="degree" id='degree' class="form-control"
+										style="width: 165px">
+									<option value='' selected='selected'><spring:message code="report.text.select" /></option>
+									<option value='Bachelor'><spring:message code="report.bachelor"/></option>
+									<option value='Master'><spring:message code="report.master"/></option>
+									<option value='Doctor'><spring:message code="report.doctor"/></option>
+								</select>
 							</div>
 
 							<div class="form-group">
