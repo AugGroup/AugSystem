@@ -95,7 +95,8 @@
 	width: 75px;
 	height: 25px;
 	background: #707070;
-	border: 1px solid #707070;
+	border: 2px solid #ffffff;
+	padding: 2px;
 }
 
 .footer{
