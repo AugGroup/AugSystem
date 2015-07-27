@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@page import="org.springframework.security.core.userdetails.User"%>
-<%@page
-	import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 
 <!DOCTYPE html>
 <html>
@@ -36,13 +35,25 @@
 section {
 	height: 80%;
 	background: #E0DFDD;
-	padding-top: 70px;
+	padding-top: 50px;
 }
-</style>
 
+
+</style>
 </head>
+<script type="text/javascript">
+$(document).ready(function () {
+	$('#btn_submit').trigger("click");
+
+});
+</script>
+
 <body>
- <jsp:include page="header.jsp"></jsp:include>
+	<f:form action="${pageContext.request.contextPath}/errorPages/error404" method="get">
+		<input type="submit" id="btn_submit" style="visibility: hidden;" value="submit"/>
+	</f:form>
+
+ <%-- <jsp:include page="header.jsp"></jsp:include>
  <section>
   <div class="row-fluid"  style=" margin-top: 150px;margin-bottom: 150px;">
   	<div class="row" style=" margin-right:10px;">
@@ -71,7 +82,7 @@ section {
 	</div>
 	</section>
 	<jsp:include page="footer.jsp"></jsp:include>
-
+ --%>
 </body>
 </html>
 
