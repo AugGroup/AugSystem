@@ -131,6 +131,8 @@ h3{
 			});
 		}
 
+		$("#gpa").inputmask('Regex', {regex: "[0-3]\\.[0-9][0-9]?$|4\\.00$"});
+		
 		function saveEducation(){
 				if ($('#educationsForm').valid()) {
 				var id = '${id}'
@@ -165,10 +167,11 @@ h3{
 					        title: 'Success',
 					        text: 'Successful Add Education!!!',
 					        type: 'success',
-					        nonblock: {
-					            nonblock: true,
-					            nonblock_opacity: .2
-					        }
+					        delay: 10000,
+					        buttons:{
+					        	closer_hover: false,
+					        	sticker: false
+					        }		
 					    });
 					}
 				}); 
@@ -247,11 +250,11 @@ h3{
 						    title: 'Edit Education Success!!',
 						    text: 'You can edit data',
 						    type: 'success',
-						    delay: 60,
-						    nonblock: {
-						        nonblock: true,
-						        nonblock_opacity: .2
-						    }
+					        delay: 10000,
+					        buttons:{
+					        	closer_hover: false,
+					        	sticker: false
+					        }		
 						});
 				 }
 			});
@@ -283,11 +286,11 @@ h3{
 					    title: 'Delete Success',
 					    text: 'You can delete data',
 					    type: 'success',
-					    delay: 60,
-					    nonblock: {
-					        nonblock: true,
-					        nonblock_opacity: .2
-					    }
+				        delay: 10000,
+				        buttons:{
+				        	closer_hover: false,
+				        	sticker: false
+				        }		
 					});
                 }
             });

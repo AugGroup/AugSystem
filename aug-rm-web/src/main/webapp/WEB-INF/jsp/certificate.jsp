@@ -120,10 +120,11 @@ $(document).ready(function() {
 				    title: 'Edit Family Success!!',
 				    text: 'You can edit data',
 				    type: 'success',
-				    nonblock: {
-				        nonblock: true,
-				        nonblock_opacity: .2
-				    }
+			        delay: 10000,
+			        buttons:{
+			        	closer_hover: false,
+			        	sticker: false
+			        }		
 				});
 			 }
 		});
@@ -178,10 +179,11 @@ $(document).ready(function() {
 				    title: 'Edit Family Success!!',
 				    text: 'You can edit data',
 				    type: 'success',
-				    nonblock: {
-				        nonblock: true,
-				        nonblock_opacity: .2
-				    }
+			        delay: 10000,
+			        buttons:{
+			        	closer_hover: false,
+			        	sticker: false
+			        }		
 				});
 			 }
 		});
@@ -212,10 +214,11 @@ $(document).ready(function() {
 				    title: 'Delete Success',
 				    text: 'You can delete data',
 				    type: 'success',
-				    nonblock: {
-				        nonblock: true,
-				        nonblock_opacity: .2
-				    }
+			        delay: 10000,
+			        buttons:{
+			        	closer_hover: false,
+			        	sticker: false
+			        }		
 				});
             }
         });
@@ -288,13 +291,7 @@ $(document).ready(function() {
 						</button>
 					</form>
 				</div>
-				<div class="modal-footer">
-					<p>
-						<spring:message code="cer.ask" />
-					</p>
-				</div>
 			</div>
-
 		</div>
 	</div>
 
@@ -349,7 +346,7 @@ $(document).ready(function() {
 			<tbody></tbody>
 		</table>
 		<div align="right">
-			<button class="btn btn-warning" id="certificateAdd" data-id="data.id" data-toggle="modal" data-target="#certificateModal"><span class="glyphicon glyphicon-plus"></span> <spring:message code="cer.name.add"/></button>
+			<button class="btn btn-warning" id="certificateAdd" data-toggle="modal" data-target="#certificateModal"><span class="glyphicon glyphicon-plus"></span> <spring:message code="cer.name.add"/></button>
 			<button class="btn btn-default" type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 		</div>
 	</div>

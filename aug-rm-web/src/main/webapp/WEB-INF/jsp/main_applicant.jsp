@@ -206,10 +206,11 @@ table.dataTable tr.even {
 							    	title: 'Edit score is successful',
 							    	text: '',
 							    	type: 'success',
-							    	nonblock: {
-							       	 nonblock: true,
-							       	 nonblock_opacity: .2
-							    	}
+							        delay: 10000,
+							        buttons:{
+							        	closer_hover: false,
+							        	sticker: false
+							        }		
 								});
 						 }
 					});
@@ -243,10 +244,11 @@ table.dataTable tr.even {
 						    title: 'Delete Success',
 						    text: 'You can delete data',
 						    type: 'success',
-						    nonblock: {
-						        nonblock: true,
-						        nonblock_opacity: .2
-						    }
+					        delay: 10000,
+					        buttons:{
+					        	closer_hover: false,
+					        	sticker: false
+					        }		
 						});
 	                }
 	            });

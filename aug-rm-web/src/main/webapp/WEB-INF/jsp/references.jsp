@@ -122,6 +122,8 @@ h3{
 
 			});
 		}
+		
+		$("#telNo").mask("(999) 999-9999");
 
 		function saveReference(){
 			if ($('#referenceForm').valid()) {
@@ -152,10 +154,11 @@ h3{
 				        title: 'Success',
 				        text: 'Successful Add References!!!',
 				        type: 'success',
-				        nonblock: {
-				            nonblock: true,
-				            nonblock_opacity: .2
-				        }
+				        delay: 10000,
+				        buttons:{
+				        	closer_hover: false,
+				        	sticker: false
+				        }		
 				    });
 					
 				
@@ -222,10 +225,11 @@ h3{
 					    title: 'Edit Reference Success!!',
 					    text: 'You can edit data',
 					    type: 'success',
-					    nonblock: {
-					        nonblock: true,
-					        nonblock_opacity: .2
-					    }
+				        delay: 10000,
+				        buttons:{
+				        	closer_hover: false,
+				        	sticker: false
+				        }		
 					});
 				 }
 			});
@@ -256,10 +260,11 @@ h3{
 					    title: 'Delete Success',
 					    text: 'You can delete data',
 					    type: 'success',
-					    nonblock: {
-					        nonblock: true,
-					        nonblock_opacity: .2
-					    }
+				        delay: 10000,
+				        buttons:{
+				        	closer_hover: false,
+				        	sticker: false
+				        }		
 					});
 	            }
 	        });

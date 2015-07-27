@@ -245,10 +245,11 @@ h3{
 			        title: 'Success',
 			        text: 'Successful Add Experience!!!',
 			        type: 'success',
-			        nonblock: {
-			            nonblock: true,
-			            nonblock_opacity: .2
-			        }
+			        delay: 10000,
+			        buttons:{
+			        	closer_hover: false,
+			        	sticker: false
+			        }		
 			    });
 			}
 		});
@@ -349,17 +350,18 @@ h3{
 					    title: 'Edit Reference Success!!',
 					    text: 'You can edit data',
 					    type: 'success',
-					    nonblock: {
-					        nonblock: true,
-					        nonblock_opacity: .2
-					    }
+				        delay: 10000,
+				        buttons:{
+				        	closer_hover: false,
+				        	sticker: false
+				        }		
 					});
 				 }
 			});
 			};
 		}
 		
-		  //delete Modal
+		//delete Modal
 	    $('#deleteModal').on('shown.bs.modal', function (e) {
 	        var button = e.relatedTarget;
 	        var id = $(button).data("id");
@@ -383,10 +385,11 @@ h3{
 					    title: 'Delete Success',
 					    text: 'You can delete data',
 					    type: 'success',
-					    nonblock: {
-					        nonblock: true,
-					        nonblock_opacity: .2
-					    }
+				        delay: 10000,
+				        buttons:{
+				        	closer_hover: false,
+				        	sticker: false
+				        }		
 					});
 	            }
 	        });
@@ -611,7 +614,7 @@ h3{
 			<tbody></tbody>
 		</table>
 		<div align="right">
-			<button class="btn btn-warning" id="experiencesAdd"><span class="glyphicon glyphicon-plus"></span><spring:message code="exp.name.add" /></button>
+			<button class="btn btn-warning" id="experiencesAdd" data-toggle="modal" data-target="#experiencesModal"><span class="glyphicon glyphicon-plus"></span><spring:message code="exp.name.add" /></button>
 			<button class="btn btn-default" type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 		</div>
 	</div>

@@ -181,10 +181,11 @@ h3{
 					        title: 'Success',
 					        text: 'Successful Add Education!!!',
 					        type: 'success',
-					        nonblock: {
-					            nonblock: true,
-					            nonblock_opacity: .2
-					        }
+					        delay: 10000,
+					        buttons:{
+					        	closer_hover: false,
+					        	sticker: false
+					        }		
 					    });
 					}
 				}); 
@@ -267,10 +268,11 @@ h3{
 						    title: 'Edit Success',
 						    text: 'You can edit data',
 						    type: 'success',
-						    nonblock: {
-						        nonblock: true,
-						        nonblock_opacity: .2
-						    }
+					        delay: 10000,
+					        buttons:{
+					        	closer_hover: false,
+					        	sticker: false
+					        }		
 						});
 				 }
 			});
@@ -302,10 +304,11 @@ h3{
 					    title: 'Delete Success',
 					    text: 'You can delete data',
 					    type: 'success',
-					    nonblock: {
-					        nonblock: true,
-					        nonblock_opacity: .2
-					    }
+				        delay: 10000,
+				        buttons:{
+				        	closer_hover: false,
+				        	sticker: false
+				        }		
 					});
                 }
             });

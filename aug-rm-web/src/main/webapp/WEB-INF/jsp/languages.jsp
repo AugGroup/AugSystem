@@ -140,10 +140,11 @@ $(document).ready(function() {
 			        title: 'Success',
 			        text: 'Successful Add Languages!!!',
 			        type: 'success',
-			        nonblock: {
-			            nonblock: true,
-			            nonblock_opacity: .2
-			        }
+			        delay: 10000,
+			        buttons:{
+			        	closer_hover: false,
+			        	sticker: false
+			        }		
 			    });
 			}
 		}); 
@@ -213,10 +214,11 @@ $(document).ready(function() {
 					    title: 'Edit Languages Success!!',
 					    text: 'You can edit data',
 					    type: 'success',
-					    nonblock: {
-					        nonblock: true,
-					        nonblock_opacity: .2
-					    }
+				        delay: 10000,
+				        buttons:{
+				        	closer_hover: false,
+				        	sticker: false
+				        }		
 					});
 			 }
 		});
@@ -247,10 +249,11 @@ $(document).ready(function() {
 				    title: 'Delete Success',
 				    text: 'You can delete data',
 				    type: 'success',
-				    nonblock: {
-				        nonblock: true,
-				        nonblock_opacity: .2
-				    }
+			        delay: 10000,
+			        buttons:{
+			        	closer_hover: false,
+			        	sticker: false
+			        }		
 				});
             }
         });
@@ -459,7 +462,7 @@ $(document).ready(function() {
 			<tbody></tbody>
 		</table>
 		<div align="right">
-			<button class="btn btn-warning" id="languagesAdd" data-toggle="modal"><span class="glyphicon glyphicon-plus"></span><spring:message code="languages.name.add" /></button>
+			<button class="btn btn-warning" id="languagesAdd" data-toggle="modal" data-target="#languagesModal"><span class="glyphicon glyphicon-plus"></span><spring:message code="languages.name.add" /></button>
 			<button class="btn btn-default" type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 		</div>
 	</div>

@@ -105,7 +105,8 @@ h3{
 </style>
 <script>
  	$(document).ready(function() {
- 			$('.input-group.date').datepicker({startView : 2,
+ 			$('.input-group.date').datepicker({
+ 							startView : 2,
  							todayBtn : "linked",
  							format : "dd/mm/yyyy",
  							autoclose: true
