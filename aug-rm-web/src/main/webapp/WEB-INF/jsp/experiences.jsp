@@ -23,8 +23,7 @@
 }
 
 #table {
-	padding: 15px 5px 65px 5px;
-	margin-bottom: 100px;
+	padding: 15px 5px 15px 5px;
 	background: #E0DFDD;;
 }
 

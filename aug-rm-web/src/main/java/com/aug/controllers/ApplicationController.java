@@ -8,6 +8,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
+import javassist.NotFoundException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -412,7 +414,6 @@ public class ApplicationController {
 	
 	@RequestMapping(value = "/findEducationId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody EducationDTO findEducation(@PathVariable Integer id) {
-		System.out.println("/////////////////////////////////");
 		return educationService.findEducation(id);
 	}
 	

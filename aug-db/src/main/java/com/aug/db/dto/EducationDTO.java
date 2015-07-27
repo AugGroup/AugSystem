@@ -14,7 +14,7 @@ import javax.persistence.NamedNativeQuery;
 		
 	@NamedNativeQuery(name = "SEARCH_EDUCATION_ID", query = "SELECT ed.ID, ed.SCHOOL_NAME, ed.DEGREE, ed.FACULTY, ed.MAJOR,"
 			+ "ed.GPA, ed.YEAR_OF_GRADUATE, ed.APPLICANT_ID"
-			+ " FROM EDUCATION ed WHERE ed.APPLICANT_ID = :ID", resultClass = EducationDTO.class)
+			+ " FROM EDUCATION ed WHERE ed.ID = :ID", resultClass = EducationDTO.class)
 	})
 public class EducationDTO {
 	

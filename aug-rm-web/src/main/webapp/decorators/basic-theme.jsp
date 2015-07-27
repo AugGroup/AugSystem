@@ -130,10 +130,6 @@
 	height: 65px;
 }
 
-#footer {
-	background: #FFC000;
-}
-
 .body{
 	padding: 25px 0px 55px 0px;
 	background: #CAC9C7;

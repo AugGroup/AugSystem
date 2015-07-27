@@ -15,11 +15,9 @@
 }
 
 #table {
-	padding: 15px 5px 65px 5px;
-	margin-bottom: 100px;
+	padding: 15px 5px 15px 5px;
 	background: #E0DFDD;;
 }
-
 #educationAdd{
 	margin-top: 15px;
 	margin-right: 5px;
@@ -175,6 +173,7 @@ h3{
 		
 		//Find by Id
 		function findById(id){
+			console.log(id);
 			$.ajax({
 				url : "${pageContext.request.contextPath}/findEducationId/" + id,
 				type : "POST",
