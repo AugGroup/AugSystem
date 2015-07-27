@@ -161,11 +161,11 @@ p {
 				src="${pageContext.request.contextPath}/static/decorators/augmentis.jpg"
 				alt="logo" style="width: 170px; height: 75px;" /> <a
 				href="${pageContext.request.contextPath}/applicant"
-				style="color: #ffffff;"><span class="glyphicon glyphicon-home"></span></a>
+				style="color: #ffffff; padding: 5px;"><span class="glyphicon glyphicon-home"></span></a>
 			<a href="${pageContext.request.contextPath}/request"
-				style="color: #ffffff;"><spring:message code="request.button" /></a>
+				style="color: #ffffff; padding: 5px;"><spring:message code="request.button" /></a>
 			<a href="${pageContext.request.contextPath}/approve"
-				style="color: #ffffff;"><spring:message code="request.approve" /></a>
+				style="color: #ffffff; padding: 5px;"><spring:message code="request.approve" /></a>
 			<div class="user">
 				<a href="<c:url value="/logout"/>"
 					style="color: #707070; padding-left: 25px;"><span
