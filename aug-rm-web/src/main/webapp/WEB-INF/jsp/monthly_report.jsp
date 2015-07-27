@@ -80,10 +80,11 @@
 $(document).ready(function () {
 	var dtReport;
     $('input[name="applyDateStr"]').daterangepicker({
-        format: 'DD/MM/YYYY'
-        
+        format: 'DD/MM/YYYY',
+        opens : "left",
+        showDropdowns : true,
     });
-
+  
 	//Search By Position and Show function 
 	$('#btn_search').off('click').on('click', function(){
 		if(dtReport){
@@ -147,7 +148,7 @@ $(document).ready(function () {
 			<div class="search_inputgroup">
 				<h3><spring:message code="report.text.search.month"/></h3>
 				<div class="form-group" style="width:210px">
-					<input type="text" name="applyDateStr" id="applyDateStr" class="form-control" style="width:210px" />
+					<input type="text" name="applyDateStr" id="applyDateStr" class="form-control" style="width:210px" placeholder="<spring:message code="report.text.month"/>"/>
             	</div>
        			<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> <spring:message code="main.button.search"/> </button>				
    			</div>
@@ -158,7 +159,7 @@ $(document).ready(function () {
 					<input type="radio" value="pdf" id="reportType" name="reportType" checked="checked"> <spring:message code="report.text.pdf"/> 
 					<input type="radio" value="xls" id="reportType" name="reportType"> <spring:message code="report.text.xls"/> 
     			</div>
-    			<button type="button" class="btn btn-primary submit" data-toggle="modal" data-target="#previewReportModal" id="btn_preview"><span class="glyphicon glyphicon-search"></span> <spring:message code="request.preview"/> </button>		 				
+    			<button type="button" class="btn btn-primary submit" id="btn_preview" data-toggle="modal" data-target="#previewReportModal" ><span class="glyphicon glyphicon-search"></span> <spring:message code="request.preview"/> </button>		 				
 		 	</div>
 	
 		</f:form>

@@ -436,86 +436,68 @@ table.dataTable tr.even {
 						<spring:message code="request.title.appli" />
 					</h4>
 				</div>
-				<div class="modal-body" style="width: 400px">
+				<div class="modal-body" >
 					<form role='form' id="requestForm" name="requestForm">
+						<div style="width: 400px; padding-left: 50px;">
 						<div class="form-group">
-							<label for="inputRequesterName"><spring:message
-									code="request.human" /></label> <input type="text" class="form-control"
-								name="inputRequesterName" id="inputRequesterName" />
+							<label for="inputRequesterName"><spring:message code="request.human" /></label> 
+							<input type="text" class="form-control" name="inputRequesterName" id="inputRequesterName" />
 						</div>
 						<div class="form-group">
-							<label for="inputRequestDate"><spring:message
-									code="request.date" /></label>
+							<label for="inputRequestDate"><spring:message code="request.date" /></label>
 							<div class="input-group date">
-								<input type="text" class="form-control" name="inputRequestDate"
-									id="inputRequestDate"><span class="input-group-addon"><i
-									class="glyphicon glyphicon-th"></i></span>
+								<input type="text" class="form-control" name="inputRequestDate" id="inputRequestDate">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputPosition"><spring:message
-									code="info.position" /></label> <select name="inputPosition"
-								id="inputPosition" class="form-control">
+							<label for="inputPosition"><spring:message code="info.position" /></label> 
+							<select name="inputPosition" id="inputPosition" class="form-control">
 								<c:forEach items="${positionRequest}" var="items">
 									<option value="${items.id}">${items.positionName }</option>
 								</c:forEach>
 							</select>
 						</div>
 						<div class="form-group">
-							<label for="inputApprovalName"><spring:message
-									code="request.approve.name" /></label> <input type="text"
-								class="form-control" name="inputApprovalName"
-								id="inputApprovalName" />
+							<label for="inputApprovalName"><spring:message code="request.approve.name" /></label> 
+							<input type="text" class="form-control" name="inputApprovalName" id="inputApprovalName" />
 						</div>
 						<div class="form-group">
-							<label for="inputApproveDate"><spring:message
-									code="request.approve.date" /></label>
+							<label for="inputApproveDate"><spring:message code="request.approve.date" /></label>
 							<div class="input-group date">
-								<input type="text" class="form-control" name="inputApproveDate"
-									id="inputApproveDate"><span class="input-group-addon"><i
-									class="glyphicon glyphicon-th"></i></span>
+								<input type="text" class="form-control" name="inputApproveDate" id="inputApproveDate">
+								<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="inputNumberApplicant"><spring:message
-									code="request.number" /></label> <input type="text"
-								class="form-control" name="inputNumberApplicant"
-								id="inputNumberApplicant"
+							<label for="inputNumberApplicant"><spring:message code="request.number" /></label> 
+							<input type="text" class="form-control" name="inputNumberApplicant" id="inputNumberApplicant"
 								placeholder="<spring:message code="request.text.number"/>" />
 						</div>
 						<div class="form-group">
-							<label for="inputSpecificSkill"><spring:message
-									code="request.skill" /> </label>
-							<textarea class="form-control" name="inputSpecificSkill"
-								id="inputSpecificSkill"
+							<label for="inputSpecificSkill"><spring:message code="request.skill" /> </label>
+							<textarea class="form-control" name="inputSpecificSkill" id="inputSpecificSkill"
 								placeholder="<spring:message code="request.text.skill"/>"></textarea>
 						</div>
 						<div class="form-group">
-							<label for="inputYearExperience"><spring:message
-									code="request.year" /></label> <input type="text" class="form-control"
-								name="inputYearExperience" id="inputYearExperience"
+							<label for="inputYearExperience"><spring:message code="request.year" /></label> 
+							<input type="text" class="form-control" name="inputYearExperience" id="inputYearExperience"
 								placeholder="<spring:message code="request.text.year"/>" />
 						</div>
 						<div class="form-group">
-							<label for="inputStatus"><spring:message
-									code="main.status" /></label> <select name="inputStatus"
-								id='inputStatus' class="form-control">
-								<option value='New Request' selected='selected'><spring:message
-										code="request.new" /></option>
-								<option value='Approve'><spring:message
-										code="edit.approve" /></option>
-								<option value='Not Approve'><spring:message
-										code="edit.notApprove" /></option>
+							<label for="inputStatus"><spring:message code="main.status" /></label> 
+							<select name="inputStatus" id='inputStatus' class="form-control">
+								<option value='New Request' selected='selected'><spring:message code="request.new" /></option>
+								<option value='Approve'><spring:message code="edit.approve" /></option>
+								<option value='Not Approve'><spring:message code="edit.notApprove" /></option>
 							</select>
 						</div>
-						<div align="right">
-							<button type="button" id="btn_save_req"
-								class="btn btn-primary btn-success">
-								<spring:message code="edit.button.save" />
-								<span class="glyphicon glyphicon-floppy-save"></span>
+						</div>
+						<div align="right" style="padding: 15px 35px 15px 15px;">
+							<button type="button" id="btn_save_req" style="width: 100px;" class="btn btn-success">
+								<spring:message code="edit.button.save"/>  <span class="glyphicon glyphicon-floppy-save"></span>
 							</button>
-							<button type="button" id="btn_close" class="btn btn-default"
-								data-dismiss="modal">
+							<button type="button" id="btn_close"  style="width: 100px;" class="btn btn-default" data-dismiss="modal">
 								<spring:message code="button.cancel" />
 							</button>
 						</div>
@@ -541,21 +523,17 @@ table.dataTable tr.even {
 				</div>
 				<div class="modal-body">
 					<div class="container">
-						<div class="row">
+						<div class="row" >
 							<spring:message code="request.ask" />
+							<br><br>
 						</div>
-						<div class="row">
-							<div class="col-md-4"></div>
-							<div class="col-md-2">
-								<button id="btn_delete_submit" type="button"
-									class="btn btn-primary" data-dismiss="modal">
+						<div class="row" style="float: right; padding-right: 20px;">
+								<button id="btn_delete_submit" type="button" class="btn btn-primary" data-dismiss="modal">
 									<spring:message code="main.delete" />
 								</button>
-								<button id="btn_close" type="button" class="btn btn-default"
-									data-dismiss="modal">
+								<button id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">
 									<spring:message code="button.cancel" />
 								</button>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -580,7 +558,7 @@ table.dataTable tr.even {
 				<div class="modal-body">
 					<div class="row">
 						<div class="col-md-2"></div>
-						<div class="col-md-3">
+						<div class="col-md-4" style="width: 170px;">
 							<spring:message code="request.request" />
 						</div>
 						<div class="col-md-6">
@@ -589,7 +567,7 @@ table.dataTable tr.even {
 					</div>
 					<div class="row">
 						<div class="col-md-2"></div>
-						<div class="col-md-3">
+						<div class="col-md-4" style="width: 170px;">
 							<spring:message code="request.request.date" />
 						</div>
 						<div class="col-md-6">
@@ -598,7 +576,7 @@ table.dataTable tr.even {
 					</div>
 					<div class="row">
 						<div class="col-md-2"></div>
-						<div class="col-md-3">
+						<div class="col-md-4" style="width: 170px;">
 							<spring:message code="request.pos" />
 						</div>
 						<div class="col-md-6">
@@ -607,7 +585,7 @@ table.dataTable tr.even {
 					</div>
 					<div class="row">
 						<div class="col-md-2"></div>
-						<div class="col-md-3">
+						<div class="col-md-4" style="width: 170px;">
 							<spring:message code="request.approv.name" />
 						</div>
 						<div class="col-md-6">
@@ -616,7 +594,7 @@ table.dataTable tr.even {
 					</div>
 					<div class="row">
 						<div class="col-md-2"></div>
-						<div class="col-md-3">
+						<div class="col-md-4" style="width: 170px;">
 							<spring:message code="request.approv.date" />
 						</div>
 						<div class="col-md-6">
@@ -625,7 +603,7 @@ table.dataTable tr.even {
 					</div>
 					<div class="row">
 						<div class="col-md-2"></div>
-						<div class="col-md-4">
+						<div class="col-md-4" style="width: 170px;">
 							<spring:message code="request.number.appli" />
 						</div>
 						<div class="col-md-6">
@@ -634,7 +612,7 @@ table.dataTable tr.even {
 					</div>
 					<div class="row">
 						<div class="col-md-2"></div>
-						<div class="col-md-3">
+						<div class="col-md-4" style="width: 170px;">
 							<spring:message code="request.spec.skill" />
 						</div>
 						<div class="col-md-6">
@@ -643,7 +621,7 @@ table.dataTable tr.even {
 					</div>
 					<div class="row">
 						<div class="col-md-2"></div>
-						<div class="col-md-3">
+						<div class="col-md-4" style="width: 170px;">
 							<spring:message code="request.year.exper" />
 						</div>
 
@@ -653,7 +631,7 @@ table.dataTable tr.even {
 					</div>
 					<div class="row">
 						<div class="col-md-2"></div>
-						<div class="col-md-3">
+						<div class="col-md-4" style="width: 170px;">
 							<spring:message code="request.request.status" />
 						</div>
 						<div class="col-md-6">
@@ -663,8 +641,7 @@ table.dataTable tr.even {
 				</div>
 				<div class="modal-footer">
 					<div align="right">
-						<button id="btn_close" type="button" class="btn btn-default"
-							data-dismiss="modal">
+						<button id="btn_close" type="button" class="btn btn-default" data-dismiss="modal">
 							<spring:message code="button.cancel" />
 						</button>
 					</div>
@@ -674,7 +651,7 @@ table.dataTable tr.even {
 	</div>
 
 	<!-------------------- Exception Model -------------------->
-	<div class="modal fade" id="exceptionModal" tabindex="-1" role="dialog"
+	<!-- <div class="modal fade" id="exceptionModal" tabindex="-1" role="dialog"
 		aria-labelledby="ModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -708,6 +685,6 @@ table.dataTable tr.even {
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
 </div>

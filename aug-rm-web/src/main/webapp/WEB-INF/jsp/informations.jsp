@@ -293,7 +293,7 @@ h3{
 					cardIssuedOffice : {required : true},
 					cardExpiryDate : {required : true},
 					height : {required : true},
-					weight : {required : true},
+					weight : {required : true}, 
 					sex : {required : true},
 					applicantStatus : {required : true},
 					numberOfChildren : {required : true},
