@@ -198,7 +198,7 @@ h3{
 			            	 $("#drafted").show();
 			            }
 
-			    }); 
+			    });
 
 			    $('input[name="applicantStatus"]').change(function(){
 		            if(this.value == 'Single' && this.checked){
@@ -207,6 +207,7 @@ h3{
 			                $("#married").show();
 			            }
 				});
+
 			 
 			 $('#informationApplicant').validate({
 				
