@@ -31,6 +31,7 @@ h3{
 	color: #292929;
 	
 } 
+
 /*  	 input[type="file"] {  
       color: white;  
       border: 1px #F7C11F;  
@@ -100,13 +101,6 @@ h3{
         cursor: inherit;
         display: block;
     }
-/* input[type=text] { */
-/*     visibility:hidden; */
-/* } */
-
-/* input[type=checkbox]:checked + input[type=text] { */
-/*     visibility:visible; */
-/* } */
 </style>
 <script>
  	$(document).ready(function() {
@@ -115,9 +109,7 @@ h3{
  							todayBtn : "linked",
  							format : "dd/mm/yyyy",
  							autoclose: true
-//  							onClose: function() {
-//  							      $( this ).valid();
-//  							    }
+
  						});
 			
 			 $("#tel").mask("(999) 999-9999");
@@ -137,35 +129,17 @@ h3{
 					        }
 					        
 					    });
-			
-//  			 $("#previousEmployersReason").hide();
-			  
-// 			    $("input:radio[name='previousEmployers']").change(function(){  
 
-// 			            if(this.value == 'No' && this.checked){
-// 			              $("#previousEmployersReason").show();
-// 			            }else{
-// 			              $("#previousEmployersReason").hide();
-// 			            }
 
-// 			    });	
-// 			 $('input[name="previousEmployers"]').on('click', function() {
-// 			        if ($(this).val() == 'No') {
-// 		                $("#previousEmployersReason").toggle();
-// 			        }
-//    			 });
-			 $('input[name="previousEmployers"]').change(function(){
-				 if ($("#previousEmployersNo").is(":checked")) {
-					 $("#previousEmployersReason").show();
-		            } else {
-		                $("#previousEmployersReason").hide();
+			 $("input:radio[name='previousEmployers']").change(function(){  
+
+		            if($(this).is(":checked")&&$(this).val() == 'No'){
+		            	   $("#previousEmployersReason").show();
+		            }else{
+		            	 $("#previousEmployersReason").hide();
 		            }
-			});
-// 			    $("#previousEmployers").click(function () {
-// 		            if ($(this).is(":checked")) {
-// 		                $("#previousEmployersReason").toggle();
-// 		            }
-// 		        });
+
+		    });	
 
 			 $("#noticeNewspaper").click(function () {
 			            if ($(this).is(":checked")) {
@@ -197,63 +171,24 @@ h3{
 		            }
 		        });
 
-			    $("#nowEmployed").click(function () {
-		            if ($(this).is(":checked")) {
+			    $("input:radio[name='nowEmployed']").click(function () {
+		            if(this.value == 'Yes' && this.checked){
 		                $("#nowEmployedKnow").toggle();
 		            }
 		        });
-/* 
-			    $("#nowEmployedKnow").hide();
-				  
-			    $("input:radio[name='nowEmployed']").change(function(){  
 
-			            if(this.value == 'Yes' && this.checked){
-			              $("#nowEmployedKnow").show();
-			            }else{
-			              $("#nowEmployedKnow").hide();
-			            }
-
-			    });
-			     */
 			     $("#militaryStatus").click(function () {
 			            if ($(this).is(":checked")) {
 			                $("#militaryStatusYes").toggle();
 			            }
 			        });
- 				/* $("#militaryStatusYes").hide();
-
-			    $("input:radio[name='militaryStatus']").change(function(){  
-
-			            if(this.value == 'Yes' && this.checked){
-			              $("#militaryStatusYes").show();
-			            }else{
-			              $("#militaryStatusYes").hide();
-			            }
-
-			    }); */
+ 		
 			    $("#militaryStatus").click(function () {
 		            if ($(this).is(":checked")) {
 		                $("#militaryReason").toggle();
 		            }
 		        });
-			  /*   $("#militaryReason").hide();
-				  
-			    $("input:radio[name='militaryStatus']").change(function(){  
-
-			            if(this.value == 'No' && this.checked){
-			              $("#militaryReason").show();
-			            }else{
-			              $("#militaryReason").hide();
-			            }
-
-			    }); */
-
-			    $("#sex").click(function () {
-		            if ($(this).is(":checked")) {
-		                $("#drafted").toggle();
-		            }
-		        });
-			    $("#drafted").hide();
+			    
 				  
 			    $("input:radio[name='sex']").change(function(){  
 
@@ -265,25 +200,13 @@ h3{
 
 			    }); 
 
-// 			    $("#married").hide();
-				  
-// 			    $("input:radio[name='applicantStatus']").change(function(){  
-
-// 			            if(this.value == 'Single' && this.checked){
-// 			              $("#married").hide();
-// 			            }else{
-// 			            	 $("#married").show();
-// 			            }
-
-// 			    });
 			    $('input[name="applicantStatus"]').change(function(){
-					 if ($("#applicantStatusSingle").is(":checked")) {
+		            if(this.value == 'Single' && this.checked){
 						 $("#married").hide();
 			            } else {
 			                $("#married").show();
 			            }
 				});
-// 			    $("#applicantStatus").trigger( "click" );
 			 
 			 $('#informationApplicant').validate({
 				
@@ -791,8 +714,9 @@ h3{
 		</div>
 				<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
 					<div style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;width:210px;height:30px;">
-								<f:radiobutton path="nowEmployed" id="nowEmployedYes" name="nowEmployed" value="Yes" cssStyle="margin-bottom:10px;margin-top:10px;"></f:radiobutton><label> <spring:message code="info.yes"/></label>
-								<f:radiobutton path="nowEmployed" id="nowEmployedNo" name="nowEmployed" value="No" cssStyle="margin-bottom:10px;margin-top:10px;"></f:radiobutton><label> <spring:message code="info.no"/></label>
+								<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="Yes" cssStyle="margin-bottom:10px;margin-top:10px;"></f:radiobutton><label> <spring:message code="info.yes"/></label>
+								<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="No" cssStyle="margin-bottom:10px;margin-top:10px;"></f:radiobutton><label> <spring:message code="info.no"/></label>
+				
 								<br><label for="nowEmployed" class="error" style="display:none;"></label>
 					</div>
 				</div>
@@ -854,13 +778,32 @@ h3{
 		</div>
 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="previousEmployers">
 				<div style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;">
-						<f:radiobutton path="previousEmployers" id="previousEmployersYes" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.know"/></label>
-						<f:radiobutton path="previousEmployers" id="previousEmployersNo" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.notKnow"/></label>
-						<br><label for="previousEmployers" class="error" style="display:none;"></label>
+<%-- 				<c:choose> --%>
+<%-- 					 <c:when test="${empty applicant.previousEmployers}"> --%>
+						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.know"/></label>
+						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.notKnow"/></label>
+					<br><label for="previousEmployers" class="error" style="display:none;"></label>
+<%-- 					</c:when> --%>
+<%-- 					<c:when test="${not empty applicant.previousEmployers}"> --%>
+<%-- 					  <c:if test="${applicant.previousEmployers eq 'No' }"> --%>
+<%-- 						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.know"/></label> --%>
+<%-- 						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No" checked="checked"></f:radiobutton><label> <spring:message code="info.notKnow"/></label> --%>
+<!-- 						<br><label for="previousEmployers" class="error" style="display:none;"></label> -->
+<%-- 					</c:if> --%>
+<%-- 					<c:if test="${applicant.previousEmployers eq 'Yes' }"> --%>
+<%-- 						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes" checked="checked"></f:radiobutton><label> <spring:message code="info.know"/></label> --%>
+<%-- 						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.notKnow"/></label> --%>
+<!-- 						<br><label for="previousEmployers" class="error" style="display:none;"></label> -->
+<%-- 					</c:if> --%>
+					
+<%-- 					</c:when> --%>
+<%-- 				</c:choose> --%>
+						
+						
 				</div>
 			</div>
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="previousEmployersReason" style="display:none">
-				<label for="previousEmployersReason" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.reason.no"/> </label>
+				<label for="Reason" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.reason.no"/> </label>
 				<spring:message code="info.text.ask.not" var="askNot"/><br>
 				<f:input path="previousEmployersReason" class="form-control" id="previousEmployersReason" name="previousEmployersReason" placeholder="${askNot}" cssStyle="width:677px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
 		</div>
@@ -888,6 +831,7 @@ h3{
 	      </c:choose>
 		</div>
 	</div>
+</div>
 </div>
 </div>
  	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" >
