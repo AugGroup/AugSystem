@@ -336,7 +336,7 @@ table.dataTable tr.even {
 									name="inputTechScore">
 								<spring:message code="edit.radio.pass" />
 								</label> <label class="radio-inline"> <input type="radio"
-									value="Not pass" id="inputTechScore" name="inputTechScore">
+									value="Not" id="inputTechScore" name="inputTechScore">
 								<spring:message code="edit.radio.notPass" />
 
 								</label>
