@@ -29,15 +29,22 @@
 	margin-bottom:15px;
 	width: 150px;
 	height: 30px;
-	float:right;
 	font-family: "Regular";
 	font-size: 16px;
 }
 
 #buttonBack{
-	margin-top: 15px;
+	margin: 15px 15px 15px 15px;
+	width: 90px;
+	height: 30px;
+	background-color: f4f4f4;
+	font-family: "Regular";
+	font-size: 14px;
+	color: #414141;
+}
+
+#buttonNext{
 	margin-right:15px;
-	margin-bottom:15px;
 	width: 90px;
 	height: 30px;
 	background-color: f4f4f4;
@@ -393,7 +400,7 @@ $(document).ready(function() {
 						</div>
 						<br> <br>
 						<button type="button" class="btn btn-success" id="btn_save">
-							<span class="glyphicon glyphicon-off"></span>
+							<span class="glyphicon glyphicon-save"></span>
 							<spring:message code="edit.button.save" />
 						</button>
 						<button type="button" class="btn btn-default" data-dismiss="modal">
@@ -463,7 +470,8 @@ $(document).ready(function() {
 		</table>
 		<div align="right">
 			<button class="btn btn-warning" id="languagesAdd" data-toggle="modal" data-target="#languagesModal"><span class="glyphicon glyphicon-plus"></span><spring:message code="languages.name.add" /></button>
-			<button class="btn btn-default" type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
+			<button class="btn btn-default" type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/skills/${id}'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
+			<button class="btn btn-default" type="button" id="buttonNext" name="buttonNext" onclick="window.location='${pageContext.request.contextPath}/references/${id}'"><span class="glyphicon glyphicon-step-forward"></span> Next </button>
 		</div>
 	</div>
 </div>

@@ -50,11 +50,10 @@ h3{
 	margin-bottom:15px;
 	width: 150px;
 	height: 30px;
-	float:right;
 	font-family: "Regular";
 	font-size: 16px;
 }
-#buttonBack{
+#buttonNext{
 	margin-top: 15px;
 	margin-right:15px;
 	margin-bottom:15px;
@@ -935,7 +934,7 @@ h3{
 		</div>
 			<div align="right">
 				<button type="submit" id="buttonSave" name="buttonSave" class="btn btn-warning" ><span class="glyphicon glyphicon-save"></span> <spring:message code="edit.button.save"/></button>
-				<button type="button" class="btn btn-default" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
+				<button class="btn btn-default" type="button" id="buttonNext" name="buttonNext" onclick="window.location='${pageContext.request.contextPath}/address/${id}'"><span class="glyphicon glyphicon-step-forward"></span> Next </button>
 			</div>
 		</div>
 </div>
