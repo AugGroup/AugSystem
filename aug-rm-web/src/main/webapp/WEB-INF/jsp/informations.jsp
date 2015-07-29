@@ -51,10 +51,11 @@ h3{
 	margin-bottom:15px;
 	width: 150px;
 	height: 30px;
+	float:right;
 	font-family: "Regular";
 	font-size: 16px;
 }
-#buttonNext{
+#buttonBack{
 	margin-top: 15px;
 	margin-right:15px;
 	margin-bottom:15px;
@@ -101,6 +102,13 @@ h3{
         cursor: inherit;
         display: block;
     }
+/* input[type=text] { */
+/*     visibility:hidden; */
+/* } */
+
+/* input[type=checkbox]:checked + input[type=text] { */
+/*     visibility:visible; */
+/* } */
 </style>
 <script>
  	$(document).ready(function() {
@@ -130,11 +138,10 @@ h3{
 					        
 					    });
 
-
-			 $("input:radio[name='previousEmployers']").change(function(){  
-
-		            if($(this).is(":checked")&&$(this).val() == 'No'){
+			 $('input[name="previousEmployers"]').click(function(){  
+		            if($("#previousEmployersNo").is(":checked")){
 		            	   $("#previousEmployersReason").show();
+
 		            }else{
 		            	 $("#previousEmployersReason").hide();
 		            }
@@ -143,31 +150,42 @@ h3{
 
 			 $("#noticeNewspaper").click(function () {
 			            if ($(this).is(":checked")) {
-			                $("#newspaper").toggle();
+			                $("#newspaper").show();
+			            }else{
+			            	$("#newspaper").hide();
 			            }
+			            	
 			        });
 
 				 $("#noticeMagazine").click(function () {
 			            if ($(this).is(":checked")) {
-			                $("#magazine").toggle();
+			                $("#magazine").show();
+			            }else{
+			            	$("#magazine").hide();
 			            }
 			        });
 			    
 			    $("#noticeWebSite").click(function () {
 		            if ($(this).is(":checked")) {
-		                $("#webSite").toggle();
+		                $("#webSite").show();
+		            }else{
+		            	$("#webSite").hide();
 		            }
 		        });
 			    
 			    $("#noticeFriend").click(function () {
 		            if ($(this).is(":checked")) {
-		                $("#friend").toggle();
+		                $("#friend").show();
+		            }else{
+		            	$("#friend").hide();
 		            }
 		        });
 			    
 			    $("#noticeOther").click(function () {
 		            if ($(this).is(":checked")) {
-		                $("#other").toggle();
+		                $("#other").show();
+		            }else{
+		            	$("#other").hide();
 		            }
 		        });
 
@@ -189,6 +207,7 @@ h3{
 		            }
 		        });
 			    
+
 			    if ($("#sexFemale").prop("checked")) {
 			    		$("#drafted").hide();
 			    	}
@@ -203,9 +222,10 @@ h3{
 			        }else{
 			            $("#drafted").show();
 			        }
-
 			    });
 
+			
+					
 			    $('input[name="applicantStatus"]').change(function(){
 		            if(this.value == 'Single' && this.checked){
 						 $("#married").hide();
@@ -785,34 +805,19 @@ h3{
 		</div>
 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="previousEmployers">
 				<div style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;">
-<%-- 				<c:choose> --%>
-<%-- 					 <c:when test="${empty applicant.previousEmployers}"> --%>
-						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.know"/></label>
-						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.notKnow"/></label>
+				
+						<f:radiobutton path="previousEmployers" id="previousEmployersYes" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.know"/></label>
+						<f:radiobutton path="previousEmployers" id="previousEmployersNo" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.notKnow"/></label>
 					<br><label for="previousEmployers" class="error" style="display:none;"></label>
-<%-- 					</c:when> --%>
-<%-- 					<c:when test="${not empty applicant.previousEmployers}"> --%>
-<%-- 					  <c:if test="${applicant.previousEmployers eq 'No' }"> --%>
-<%-- 						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes"></f:radiobutton><label> <spring:message code="info.know"/></label> --%>
-<%-- 						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No" checked="checked"></f:radiobutton><label> <spring:message code="info.notKnow"/></label> --%>
-<!-- 						<br><label for="previousEmployers" class="error" style="display:none;"></label> -->
-<%-- 					</c:if> --%>
-<%-- 					<c:if test="${applicant.previousEmployers eq 'Yes' }"> --%>
-<%-- 						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="Yes" checked="checked"></f:radiobutton><label> <spring:message code="info.know"/></label> --%>
-<%-- 						<f:radiobutton path="previousEmployers" id="previousEmployers" name="previousEmployers" value="No"></f:radiobutton><label> <spring:message code="info.notKnow"/></label> --%>
-<!-- 						<br><label for="previousEmployers" class="error" style="display:none;"></label> -->
-<%-- 					</c:if> --%>
-					
-<%-- 					</c:when> --%>
-<%-- 				</c:choose> --%>
-						
-						
 				</div>
 			</div>
+	 
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" id="previousEmployersReason" style="display:none">
+	
 				<label for="Reason" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.reason.no"/> </label>
 				<spring:message code="info.text.ask.not" var="askNot"/><br>
 				<f:input path="previousEmployersReason" class="form-control" id="previousEmployersReason" name="previousEmployersReason" placeholder="${askNot}" cssStyle="width:677px;height:30px;margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"></f:input>
+		
 		</div>
 		  <div class="col-sm-6 col-xs-6 col-md-6 col-lg-6">
 			<label for="file" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;"><spring:message code="info.resume"/></label><br>
@@ -897,7 +902,7 @@ h3{
 		</div>
 			<div align="right">
 				<button type="submit" id="buttonSave" name="buttonSave" class="btn btn-warning" ><span class="glyphicon glyphicon-save"></span> <spring:message code="edit.button.save"/></button>
-				<button class="btn btn-default" type="button" id="buttonNext" name="buttonNext" onclick="window.location='${pageContext.request.contextPath}/address/${id}'"><span class="glyphicon glyphicon-step-forward"></span> Next </button>
+				<button type="button" class="btn btn-default" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 			</div>
 		</div>
 </div>
