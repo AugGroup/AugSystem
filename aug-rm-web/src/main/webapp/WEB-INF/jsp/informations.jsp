@@ -189,14 +189,20 @@ h3{
 		            }
 		        });
 			    
-				  
-			    $("input:radio[name='sex']").change(function(){  
-
-			            if(this.value == 'Female' && this.checked){
-			              $("#drafted").hide();
-			            }else{
-			            	 $("#drafted").show();
-			            }
+			    if ($("#sexFemale").prop("checked")) {
+			    		$("#drafted").hide();
+			    	}
+			    
+			    if ($("#sexMale").prop("checked")) {
+		    		$("#drafted").show();
+		    	}
+			    
+ 			    $("input:radio[name='sex']").click(function(){  
+			        if(this.value === 'Female' && this.checked){
+			            $("#drafted").hide();
+			        }else{
+			            $("#drafted").show();
+			        }
 
 			    });
 
@@ -481,10 +487,10 @@ h3{
 			<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3" style="width:296px;height:92px;">
 					<label for="sex" style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;width:210px;height:30px;"> <spring:message code="info.sex"/></label>
 					<div style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;width:210px;height:30px;">
-					<f:radiobutton path="sex" value="Female" name="sex" id="sexFemale" ></f:radiobutton><label> <spring:message code="info.female"/></label>
-					<f:radiobutton path="sex" value="Male" name="sex" id="sexMale" ></f:radiobutton><label> <spring:message code="info.male"/></label>
- 				<br><label for="sex" class="error" style="display:none;"></label>
- 				</div>
+						<f:radiobutton path="sex" value="Female" name="sex" id="sexFamle" ></f:radiobutton><label> <spring:message code="info.female"/></label>
+						<f:radiobutton path="sex" value="Male" name="sex" id="sexMale" ></f:radiobutton><label> <spring:message code="info.male"/></label>
+ 					<br><label for="sex" class="error" style="display:none;"></label>
+ 					</div>
 			</div>
 		
 			<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3" style="width:296px;height:92px;">
@@ -629,7 +635,7 @@ h3{
 					</c:when> 
 					
  				</c:choose> 
-				</div>
+			</div>
 			</div>
 			<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
 				<div class="checkbox">
