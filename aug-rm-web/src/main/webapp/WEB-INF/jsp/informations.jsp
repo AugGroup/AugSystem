@@ -411,12 +411,12 @@ h3{
 <f:form id="informationApplicant" name="informationApplicant" action="${pageContext.request.contextPath}/${actionName}"
 		modelAttribute="applicant" method="post" enctype="multipart/form-data" class="form-inline" >
 		<f:hidden path="id" />
-<%-- 		<f:hidden path="code" /> --%>
-<%-- 		<f:hidden path="score" /> --%>
-<%-- 		<f:hidden path="techScore" /> --%>
-<%-- 		<f:hidden path="attitudeHome" /> --%>
-<%-- 		<f:hidden path="attitudeOffice" /> --%>
-<%-- 		<f:hidden path="trackingStatus" /> --%>
+		<f:hidden path="code" />
+		<f:hidden path="score" />
+		<f:hidden path="techScore" />
+		<f:hidden path="attitudeHome" />
+		<f:hidden path="attitudeOffice" />
+		<f:hidden path="trackingStatus" />
 	<div class="row">
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" >
 		<h3 > INFORMATION</h3>
