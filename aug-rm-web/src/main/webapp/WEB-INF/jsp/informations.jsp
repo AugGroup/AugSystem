@@ -137,17 +137,21 @@ h3{
 					        }
 					        
 					    });
-
-			 $('input[name="previousEmployers"]').click(function(){  
-		            if($("#previousEmployersNo").is(":checked")){
-		            	   $("#previousEmployersReason").show();
-
-		            }else{
-		            	 $("#previousEmployersReason").hide();
-		            }
-
-		    });	
-
+			 if ($("#previousEmployersYes").prop("checked")) {
+	    			$("#previousEmployersNo").hide();
+	    		}
+	   	 	if ($("#militaryStatusNo").prop("checked")) {
+ 				$("#previousEmployersNo").show();
+ 			}
+		    $("input:radio[name='previousEmployers']").click(function () {
+		    	if(this.value === 'No' && this.checked){
+		            $("#previousEmployersNo").show();
+		        }else{
+		            $("#previousEmployersNo").hide();
+		        }
+	        });
+			
+// 		    -----------------------------------------------
 			 $("#noticeNewspaper").click(function () {
 			            if ($(this).is(":checked")) {
 			                $("#newspaper").show();
@@ -189,25 +193,53 @@ h3{
 		            }
 		        });
 
+// 			    ---------------------------------------
+				if ($("#nowEmployedYes").prop("checked")) {
+		    			$("#militaryStatusYes").show();
+		    		}
+		   	 	if ($("#militaryStatusNo").prop("checked")) {
+	    				$("#militaryStatusYes").hide();
+	    			}
 			    $("input:radio[name='nowEmployed']").click(function () {
-		            if(this.value == 'Yes' && this.checked){
-		                $("#nowEmployedKnow").toggle();
-		            }
+			    	if(this.value === 'Yes' && this.checked){
+			            $("#nowEmployedKnow").show();
+			        }else{
+			            $("#nowEmployedKnow").hide();
+			        }
 		        });
-
-			     $("#militaryStatus").click(function () {
-			            if ($(this).is(":checked")) {
-			                $("#militaryStatusYes").toggle();
-			            }
-			        });
- 		
-			    $("#militaryStatus").click(function () {
-		            if ($(this).is(":checked")) {
-		                $("#militaryReason").toggle();
-		            }
-		        });
-			    
-
+// 			    ---------------------------------------------
+// 				if ($("#militaryStatusYes").prop("checked")) {
+// 		    			$("#militaryStatusYes").show();
+// 		    		}
+// 		   	 	if ($("#militaryStatusNo").prop("checked")) {
+// 	    				$("#militaryStatusYes").hide();
+// 	    			}
+// 			    $("input:radio[name='militaryStatus']").click(function(){  
+// 		        if(this.value === 'Yes' && this.checked){
+// 		            $("#militaryStatusYes").show();
+// 		        }else{
+// 		            $("#militaryStatusYes").hide();
+// 		        }
+// 		    });
+//  				---------------------------------------------
+				if ($("#militaryStatusYes").prop("checked")) {
+		    			$("#militaryReason").hide();
+		    			$("#militaryStatusYes").show();
+		    		}
+		   	 	if ($("#militaryStatusNo").prop("checked")) {
+	    				$("#militaryReason").show();
+	    				$("#militaryStatusYes").hide();
+	    			}
+			    $("input:radio[name='militaryStatus']").click(function(){  
+		        if(this.value === 'No' && this.checked){
+		            $("#militaryReason").show();
+		            $("#militaryStatusYes").hide();
+		        }else{
+		            $("#militaryStatusYes").show();
+		            $("#militaryReason").hide();
+		        }
+		    });
+// 					-------------------------------------------
 			    if ($("#sexFemale").prop("checked")) {
 			    		$("#drafted").hide();
 			    	}
@@ -224,17 +256,24 @@ h3{
 			        }
 			    });
 
-			
-					
-			    $('input[name="applicantStatus"]').change(function(){
-		            if(this.value == 'Single' && this.checked){
+// 			---------------------------------
+ 			if ($("#applicantStatusSingle").prop("checked")) {
+		    		$("#drafted").hide();
+		    	}
+		    if ($("#applicantStatusMarried").prop("checked")) {
+	    		$("#drafted").show();
+	    	}
+		    if ($("#applicantStatusDivorced").prop("checked")) {
+	    		$("#drafted").show();
+	    	}
+			 $("input:radio[name='applicantStatus']").click(function(){
+		            if(this.value === 'Single' && this.checked){
 						 $("#married").hide();
 			            } else {
 			                $("#married").show();
 			            }
 				});
-
-			 
+// 			 ----------------------------------
 			 $('#informationApplicant').validate({
 				
 				rules : {firstNameTH : {required : true},
@@ -376,6 +415,12 @@ h3{
 <f:form id="informationApplicant" name="informationApplicant" action="${pageContext.request.contextPath}/${actionName}"
 		modelAttribute="applicant" method="post" enctype="multipart/form-data" class="form-inline" >
 		<f:hidden path="id" />
+<%-- 		<f:hidden path="code" /> --%>
+<%-- 		<f:hidden path="score" /> --%>
+<%-- 		<f:hidden path="techScore" /> --%>
+<%-- 		<f:hidden path="attitudeHome" /> --%>
+<%-- 		<f:hidden path="attitudeOffice" /> --%>
+<%-- 		<f:hidden path="trackingStatus" /> --%>
 	<div class="row">
 	<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12" >
 		<h3 > INFORMATION</h3>
@@ -741,8 +786,8 @@ h3{
 		</div>
 				<div class="col-sm-3 col-xs-3 col-md-3 col-lg-3">
 					<div style="margin-bottom:10px;margin-top:10px;margin-right:25px;margin-left:25px;width:210px;height:30px;">
-								<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="Yes" cssStyle="margin-bottom:10px;margin-top:10px;"></f:radiobutton><label> <spring:message code="info.yes"/></label>
-								<f:radiobutton path="nowEmployed" id="nowEmployed" name="nowEmployed" value="No" cssStyle="margin-bottom:10px;margin-top:10px;"></f:radiobutton><label> <spring:message code="info.no"/></label>
+								<f:radiobutton path="nowEmployed" id="nowEmployedYes" name="nowEmployed" value="Yes" cssStyle="margin-bottom:10px;margin-top:10px;"></f:radiobutton><label> <spring:message code="info.yes"/></label>
+								<f:radiobutton path="nowEmployed" id="nowEmployedNo" name="nowEmployed" value="No" cssStyle="margin-bottom:10px;margin-top:10px;"></f:radiobutton><label> <spring:message code="info.no"/></label>
 				
 								<br><label for="nowEmployed" class="error" style="display:none;"></label>
 					</div>
