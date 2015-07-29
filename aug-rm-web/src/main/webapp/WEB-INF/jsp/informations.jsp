@@ -946,6 +946,12 @@ h3{
 				<button type="button" class="btn btn-default" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 			</div>
 		</div>
+		<f:hidden path="code" />
+		<f:hidden path="score" />
+		<f:hidden path="techScore" />
+		<f:hidden path="attitudeHome" />
+		<f:hidden path="attitudeOffice" />
+		<f:hidden path="trackingStatus" />
 </div>
 </f:form>
 </div>

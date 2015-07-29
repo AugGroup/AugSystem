@@ -354,6 +354,7 @@ public class ApplicationController {
 		System.out.println("POSITION 1 : "+applicationDTO.getPositionId1());
 		System.out.println("POSITION 2 : "+applicationDTO.getPositionId2());
 		System.out.println("POSITION 3 : "+applicationDTO.getPositionId3());
+		System.out.println("Tracking Status : "+applicationDTO.getTrackingStatus());
 		return "informations";
 	}
 	

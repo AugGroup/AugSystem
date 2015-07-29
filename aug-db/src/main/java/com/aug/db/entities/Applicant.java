@@ -903,6 +903,11 @@ public class Applicant {
 		applicant.setSex(applicationDTO.getSex());
 		applicant.setMilitaryStatus(applicationDTO.getMilitaryStatus());
 		applicant.setCode(applicationDTO.getCode());
+		applicant.setScore(applicationDTO.getScore());
+		applicant.setTechScore(applicationDTO.getTechScore());
+		applicant.setAttitudeHome(applicationDTO.getAttitudeHome());
+		applicant.setAttitudeOffice(applicationDTO.getAttitudeOffice());
+		applicant.setTrackingStatus(applicationDTO.getTrackingStatus());
 		return applicant;
 
 	}

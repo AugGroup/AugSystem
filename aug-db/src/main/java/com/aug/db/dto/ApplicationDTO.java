@@ -31,12 +31,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 		+ "a.BIRTHDATE, a.PLACE_BIRTH, a.AGE, a.HEIGHT, a.WEIGHT, a.RELIGION, a.NATIONALITY, a.TEL, a.EMAIL,"
 		+ "a.APPLICANT_STATUS, a.APPLY_DATE, a.EMERGENCY_NAME, a.EMERGENCY_TEL, a.EMERGENCY_ADDRESS, a.NOTICE_NEWSPAPER, a.NOTICE_MAGAZINE, a.NOTICE_FRIEND, a.NOTICE_WEBSITE, a.NOTICE_OTHER, a.TRACKING_STATUS,"
 		+ "a.EXPECTED_SALARY, a.CARD_ID, a.CARD_ISSUED_OFFICE, a.CARD_EXPIRY_DATE, a.MILITARY_FROM_YEAR, a.MILITARY_TO_YEAR, a.MILITARY_PLACE, a.MILITARY_SERVICE_NO, a.MILITARY_REASON, a.MILITARY_STATUS,"
-		+ "a.NUMBER_OF_CHILDREN, a.SPOUSE_NAME, a.MARRIAGE_CERTIFICATE_NO, a.ISSUE_OFFICE_MARRIAGE, a.OCCUPATION_MARRIAGE, null as TECH_SCORE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.NOW_EMPLOYED, a.EMPLOYED_NAME, a.EMPLOYED_POSITION,"
+		+ "a.NUMBER_OF_CHILDREN, a.SPOUSE_NAME, a.MARRIAGE_CERTIFICATE_NO, a.ISSUE_OFFICE_MARRIAGE, a.OCCUPATION_MARRIAGE, a.SCORE, a.TECH_SCORE, a.ATTITUDE_HOME, a.ATTITUDE_OFFICE, a.POSITION1_ID, a.POSITION2_ID, a.POSITION3_ID, a.NOW_EMPLOYED, a.EMPLOYED_NAME, a.EMPLOYED_POSITION,"
 		+ "a.EMPLOYED_RELATION, a.BRANCH_SERVICE, a.PREVIOUS_EMPLOYERS, a.PREVIOUS_EMPLOYERS_REASON, a.DATE_TO_BE_DRAFTED, a.MARRIAGE_ADDRESS, null as POSITION_NAME, a.EMERGENCY_NAME,a.EMERGENCY_TEL,a.EMERGENCY_ADDRESS,a.RESUME,a.TRANSCRIPT,a.IMAGE,a.SEX,POSITION1_ID as POSITION_ID_1,POSITION2_ID as POSITION_ID_2,POSITION3_ID as POSITION_ID_3 "
 		+ " FROM APPLICANT a WHERE a.APPLICANT_ID = :ID", resultClass = ApplicationDTO.class)
 	,@NamedNativeQuery(name = "MAX_ID_APPLICANT", query = "SELECT null as ATTITUDE, null as APPLICANT_CODE, null as FIRSTNAME_TH, null as FIRSTNAME_EN, null as LASTNAME_TH, null as LASTNAME_EN, null as NICKNAME_TH, null as NICKNAME_EN,"
 			+ " null as BIRTHDATE, null as PLACE_BIRTH, null as AGE, null as HEIGHT, null as WEIGHT, null as RELIGION, null as NATIONALITY, null as TEL, null as EMAIL,"
-			+ " null as APPLICANT_STATUS, null as APPLY_DATE, null as EMERGENCY_NAME, null as EMERGENCY_TEL, null as EMERGENCY_ADDRESS, null as NOTICE_NEWSPAPER, null as NOTICE_MAGAZINE, null as NOTICE_FRIEND, null as NOTICE_WEBSITE, null as NOTICE_OTHER, null as TRACKING_STATUS,"
+			+ " null as APPLICANT_STATUS, null as APPLY_DATE, null as EMERGENCY_NAME, null as EMERGENCY_TEL, null as EMERGENCY_ADDRESS, null as NOTICE_NEWSPAPER, null as NOTICE_MAGAZINE, null as NOTICE_FRIEND, null as NOTICE_WEBSITE, null as NOTICE_OTHER, a.TRACKING_STATUS,"
 			+ " null as EXPECTED_SALARY, null as CARD_ID, null as CARD_ISSUED_OFFICE, null as CARD_EXPIRY_DATE, null as MILITARY_FROM_YEAR, null as MILITARY_TO_YEAR, null as MILITARY_PLACE, null as MILITARY_SERVICE_NO, a.MILITARY_REASON, null as MILITARY_STATUS,"
 			+ " null as NUMBER_OF_CHILDREN, null as SPOUSE_NAME, null as MARRIAGE_CERTIFICATE_NO, null as ISSUE_OFFICE_MARRIAGE, null as OCCUPATION_MARRIAGE, null as TECH_SCORE, null as POSITION1_ID, null as POSITION2_ID, null as POSITION3_ID, null as NOW_EMPLOYED, null as EMPLOYED_NAME, null as EMPLOYED_POSITION,"
 			+ " null as EMPLOYED_RELATION, null as BRANCH_SERVICE, null as PREVIOUS_EMPLOYERS, null as PREVIOUS_EMPLOYERS_REASON, null as DATE_TO_BE_DRAFTED, null as MARRIAGE_ADDRESS, null as POSITION_NAME, null as EMERGENCY_NAME, null as EMERGENCY_TEL, null as EMERGENCY_ADDRESS, null as RESUME, null as TRANSCRIPT, null as IMAGE, null as SEX, null as POSITION_ID_1, null as POSITION_ID_2, null as POSITION_ID_3, "
@@ -135,8 +135,6 @@ public class ApplicationDTO {
 	@Column(name = "NOTICE_OTHER")
 	private String noticeOther;
 
-	@Column(name = "TRACKING_STATUS")
-	private String trackingStatus;
 
 	@Column(name = "EXPECTED_SALARY")
 	private String expectedSalary;
@@ -184,11 +182,20 @@ public class ApplicationDTO {
 	@Column(name = "OCCUPATION_MARRIAGE")
 	private String occupationMarriage;
 
+	@Column(name = "SCORE")
+	private String score;
+	
 	@Column(name = "TECH_SCORE")
 	private String techScore;
 
-	@Column(name = "ATTITUDE")
-	private String attitude;
+	@Column(name = "ATTITUDE_HOME")
+	private String attitudeHome;
+
+	@Column(name = "ATTITUDE_OFFICE")
+	private String attitudeOffice;
+	
+	@Column(name = "TRACKING_STATUS")
+	private String trackingStatus;
 	
 	@Column(name = "MILITARY_STATUS")
 	private String militaryStatus;
@@ -828,6 +835,14 @@ public class ApplicationDTO {
 		this.occupationMarriage = occupationMarriage;
 	}
 
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
+	}
+
 	public String getTechScore() {
 		return techScore;
 	}
@@ -836,12 +851,20 @@ public class ApplicationDTO {
 		this.techScore = techScore;
 	}
 
-	public String getAttitude() {
-		return attitude;
+	public String getAttitudeHome() {
+		return attitudeHome;
 	}
 
-	public void setAttitude(String attitude) {
-		this.attitude = attitude;
+	public void setAttitudeHome(String attitudeHome) {
+		this.attitudeHome = attitudeHome;
+	}
+
+	public String getAttitudeOffice() {
+		return attitudeOffice;
+	}
+
+	public void setAttitudeOffice(String attitudeOffice) {
+		this.attitudeOffice = attitudeOffice;
 	}
 
 	public Position getPosition1() {
