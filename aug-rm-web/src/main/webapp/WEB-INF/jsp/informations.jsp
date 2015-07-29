@@ -138,16 +138,16 @@ h3{
 					        
 					    });
 			 if ($("#previousEmployersYes").prop("checked")) {
-	    			$("#previousEmployersNo").hide();
+	    			$("#previousEmployersReason").hide();
 	    		}
 	   	 	if ($("#militaryStatusNo").prop("checked")) {
- 				$("#previousEmployersNo").show();
+ 				$("#previousEmployersReason").show();
  			}
 		    $("input:radio[name='previousEmployers']").click(function () {
 		    	if(this.value === 'No' && this.checked){
-		            $("#previousEmployersNo").show();
+		            $("#previousEmployersReason").show();
 		        }else{
-		            $("#previousEmployersNo").hide();
+		            $("#previousEmployersReason").hide();
 		        }
 	        });
 			
@@ -195,10 +195,10 @@ h3{
 
 // 			    ---------------------------------------
 				if ($("#nowEmployedYes").prop("checked")) {
-		    			$("#militaryStatusYes").show();
+		    			$("#nowEmployedKnow").show();
 		    		}
 		   	 	if ($("#militaryStatusNo").prop("checked")) {
-	    				$("#militaryStatusYes").hide();
+	    				$("#nowEmployedKnow").hide();
 	    			}
 			    $("input:radio[name='nowEmployed']").click(function () {
 			    	if(this.value === 'Yes' && this.checked){
@@ -208,34 +208,30 @@ h3{
 			        }
 		        });
 // 			    ---------------------------------------------
-// 				if ($("#militaryStatusYes").prop("checked")) {
-// 		    			$("#militaryStatusYes").show();
-// 		    		}
-// 		   	 	if ($("#militaryStatusNo").prop("checked")) {
-// 	    				$("#militaryStatusYes").hide();
-// 	    			}
-// 			    $("input:radio[name='militaryStatus']").click(function(){  
-// 		        if(this.value === 'Yes' && this.checked){
-// 		            $("#militaryStatusYes").show();
-// 		        }else{
-// 		            $("#militaryStatusYes").hide();
-// 		        }
-// 		    });
-//  				---------------------------------------------
 				if ($("#militaryStatusYes").prop("checked")) {
-		    			$("#militaryReason").hide();
 		    			$("#militaryStatusYes").show();
 		    		}
 		   	 	if ($("#militaryStatusNo").prop("checked")) {
-	    				$("#militaryReason").show();
 	    				$("#militaryStatusYes").hide();
+	    			}
+			    $("input:radio[name='militaryStatus']").click(function(){  
+		        if(this.value === 'Yes' && this.checked){
+		            $("#militaryStatusYes").show();
+		        }else{
+		            $("#militaryStatusYes").hide();
+		        }
+		    });
+//  				---------------------------------------------
+				if ($("#militaryStatusYes").prop("checked")) {
+		    			$("#militaryReason").hide();
+		    		}
+		   	 	if ($("#militaryStatusNo").prop("checked")) {
+	    				$("#militaryReason").show();
 	    			}
 			    $("input:radio[name='militaryStatus']").click(function(){  
 		        if(this.value === 'No' && this.checked){
 		            $("#militaryReason").show();
-		            $("#militaryStatusYes").hide();
 		        }else{
-		            $("#militaryStatusYes").show();
 		            $("#militaryReason").hide();
 		        }
 		    });
@@ -258,13 +254,13 @@ h3{
 
 // 			---------------------------------
  			if ($("#applicantStatusSingle").prop("checked")) {
-		    		$("#drafted").hide();
+		    		$("#married").hide();
 		    	}
 		    if ($("#applicantStatusMarried").prop("checked")) {
-	    		$("#drafted").show();
+	    		$("#married").show();
 	    	}
 		    if ($("#applicantStatusDivorced").prop("checked")) {
-	    		$("#drafted").show();
+	    		$("#married").show();
 	    	}
 			 $("input:radio[name='applicantStatus']").click(function(){
 		            if(this.value === 'Single' && this.checked){
