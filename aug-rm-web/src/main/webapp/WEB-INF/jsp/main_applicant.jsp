@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/security/tags"prefix="sec"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
 <style type="text/css">
 
@@ -220,10 +220,10 @@
 	<c:set var="ss" value="display:none;"></c:set>
 	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<div id="table">
-			<table id="dataTable" class="display" >
+			<table  class="dataTable" id="dataTable" class="cell-border" style="width: 100%" >
 				<thead>
 					<tr>
-						<th width="10%"><spring:message code="main.code" /></th>
+						<th><spring:message code="main.code" /></th>
 						<th><spring:message code="main.date" /></th>
 						<th><spring:message code="main.name" /></th>
 						<th><spring:message code="main.position1" /></th>

@@ -5,75 +5,20 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <style type="text/css">
-    .error{
-     	color :red;
- 		padding: 3px;
-	}
-	
-	#reportTable{
-		color:#414141;
-		background-color: #ababab;
-	}
+.report_search {
+	position: relative;
+	padding-left: 60%;
+	height: 180px;
+}
 
-	td {font-family: "Regular";
-    	font-size: 18px;
-   		color: #414141;
-    }
-    
-	table.dataTable tr.odd { background-color:#e7e7e7; }
-	table.dataTable tr.even { background-color:#d6d6d6; }
+#btn_preview, #btn_search {
+	margin: 0px 5px 0px 5px;
+	width: 95px;
+}
 
-	.container{
-		font-family: "Regular";
-		position:relative;
-		margin-left: 40px;
-		margin-right: 40px;
-		padding-right: 0px;
-		padding-left: 0px;
-		width: 93%;
-	}
-
-	#requestTable_previous{
-		padding:3px;
-	}
-
-	#requestTable_next{
-		padding:3px;
-	}
-
-	.form-group{
-		margin: 3px;
-	}
-	
-	.report_search{
-		position:relative;
-		padding-left:60%;
-		height: 180px;
-	}
-
-	.search_inputgroup{
-		float:right;
-		margin: 5px;
-		padding: 5px;
-	}
-	#radio_inputgroup{
-		margin: 0px 15px 0px 5px; 
-	}
-	
-	
-	#btn_preview, #btn_search{
-		margin: 0px 5px 0px 5px;
-		width: 95px;
-	}
-	
-	#table{
-		padding: 15px 5px 75px 5px;
-		margin-bottom : 100px;
-		background: #E0DFDD;
-	}
-	#btn_search{
+#btn_search {
 	float: right;
-	}
+}
 }
 </style>
 <script type="text/javascript">

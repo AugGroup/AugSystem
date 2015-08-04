@@ -5,70 +5,6 @@
 
 <title><spring:message code="request.application" /></title>
 
-<style type="text/css">
-.error {
-	color: red;
-	padding: 3px;
-}
-
-#requestTable {
-	color: #414141;
-	background-color: #ababab;
-}
-
-td {
-	font-family: "Regular";
-	font-size: 18px;
-	color: #414141;
-}
-
-table.dataTable tr.odd {
-	background-color: #e7e7e7;
-}
-
-table.dataTable tr.even {
-	background-color: #d6d6d6;
-}
-
-.container {
-	font-family: "Regular";
-	position: relative;
-	margin-left: 40px;
-	margin-right: 40px;
-	padding-right: 0px;
-	padding-left: 0px;
-	width: 93%;
-}
-
-#requestTable_previous {
-	padding: 3px;
-}
-
-#requestTable_next {
-	padding: 3px;
-}
-
-.paginate_button {
-	padding: 3px;
-}
-
-#requestTable_paginate {
-	padding: 0px;
-}
-
-#table {
-	padding: 15px 5px 75px 5px;
-	margin-bottom: 100px;
-	background: #E0DFDD;
-}
-
-#btn_addReq {
-	margin-top: 15px;
-	float: right;
-}
-}
-</style>
-
 <script type="text/javascript">
     $(document).ready(function () {
     	/* ------------------ Date picker format ------------------ */
@@ -399,7 +335,7 @@ table.dataTable tr.even {
 		<spring:message code="request.title" />
 	</h1>
 	<div id="table">
-		<table id="requestTable" class="cell-border" style="width: 100%">
+		<table class="dataTable" id="requestTable" class="cell-border" style="width: 100%">
 			<thead>
 				<tr>
 					<th><spring:message code="request.id" /></th>
@@ -414,7 +350,7 @@ table.dataTable tr.even {
 				</tr>
 			</thead>
 		</table>
-		<button id="btn_addReq" class="btn btn-warning" data-toggle="modal"
+		<button id="btn_new_req" class="btn btn-warning" data-toggle="modal"
 			data-target="#addRequestModal">
 			<spring:message code="request.button" />
 			<span class="glyphicon glyphicon-plus-sign"></span>

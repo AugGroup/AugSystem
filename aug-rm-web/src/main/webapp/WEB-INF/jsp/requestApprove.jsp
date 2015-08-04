@@ -5,48 +5,6 @@
 
 <title>Request for Application</title>
 
-<style type="text/css">
-.error {
-	color: red;
-	padding: 3px;
-}
-
-#requestTable {
-	color: #414141;
-	background-color: #ababab;
-}
-
-td {
-	font-family: "Regular";
-	font-size: 18px;
-	color: #414141;
-}
-
-table.dataTable tr.odd {
-	background-color: #e7e7e7;
-}
-
-table.dataTable tr.even {
-	background-color: #d6d6d6;
-}
-
-.container {
-	font-family: "Regular";
-	position: relative;
-	margin-left: 40px;
-	margin-right: 40px;
-	width: 93%;
-}
-
-#table {
-	width: 100%;
-	padding: 15px 5px 75px 5px;
-	margin-bottom: 100px;
-	background: #E0DFDD;
-}
-}
-</style>
-
 <script type="text/javascript">
 	$(document).ready(function () {
 		$.ajaxSetup({
@@ -187,7 +145,7 @@ table.dataTable tr.even {
 	</h1>
 	<!------------------- Request DataTable------------------->
 	<div id="table">
-		<table id="requestTable" class="cell-border" style="width: 100%">
+		<table class="dataTable" id="requestTable" class="cell-border" style="width: 100%">
 			<thead>
 				<tr>
 					<th><spring:message code="request.id" /></th>

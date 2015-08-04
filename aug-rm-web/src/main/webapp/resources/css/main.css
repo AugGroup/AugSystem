@@ -75,7 +75,7 @@
 	margin-right: 40px;
 	padding-right: 0px;
 	padding-left: 0px;
-	width: 93%;
+	width: 94%;
 }
 
 .form-group {
@@ -86,14 +86,15 @@
 	color: red;
 	padding: 3px;
 }
-
+/* -------- for dataTable -------- */
 #table {
-	padding: 15px 5px 75px 5px;
-	margin-bottom: 100px;
+	padding: 15px 5px 90px 5px;
+	margin-top: 25px; margin-bottom : 100px;
 	background: #E0DFDD;
+	margin-bottom: 100px;
 }
 
-#dataTable {
+.dataTable {
 	color: #414141;
 	background-color: #ababab;
 }
@@ -112,15 +113,39 @@ table.dataTable tr.even {
 	background-color: #d6d6d6;
 }
 
-#dataTable_previous, #dataTable_next {
+#dataTable_previous, #dataTable_next, .paginate_button {
 	padding: 3px;
 }
 
-.paginate_button {
-	padding: 3px;
-}
-
-#btn_new_app {
+#btn_new_app, #btn_new_req {
 	float: right;
-	margin: 10px 5px 5px 5px;
+	margin: 20px 5px 20px 5px;
+}
+
+/* -------- for report -------- */
+.report_search {
+	position: relative;
+	padding-left: 20%;
+	height: 200px;
+}
+
+.search_inputgroup {
+	float: right;
+	margin: 5px;
+	padding: 5px;
+}
+
+#radio_inputgroup {
+	margin: 0px 15px 0px 5px;
+}
+
+#btn_search {
+	margin: 27px 5px 0px 5px;
+	float: right;
+	width: 95px;
+}
+
+#btn_preview {
+	margin: 0px 5px 0px 5px;
+	width: 95px;
 }
