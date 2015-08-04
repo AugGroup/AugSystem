@@ -68,7 +68,7 @@
 <script src='<c:url value ="/static/resources/js/daterangepicker.js"/>'></script>
 <link rel="stylesheet" type="text/css" media="all"
 	href="<c:url value ="/static/resources/css/daterangepicker-bs3.css"/>" />
-
+<link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/css/main.css"/>">
 </head>
 <style>
 .error {
@@ -140,14 +140,15 @@
 	background: #CAC9C7;
 }
 
-.container{
+/* .container{
 	position:relative;
 	margin-left: auto;
 	margin-right: auto;
 	padding-right: 0px;
 	padding-left: 0px;
 	font-family: "Regular";
-}
+} */
+
 
 .text-muted  {
 	float: right;
