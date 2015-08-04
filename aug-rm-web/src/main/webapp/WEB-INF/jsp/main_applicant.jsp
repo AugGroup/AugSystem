@@ -282,7 +282,7 @@ table.dataTable tr.even {
 	<c:set var="ss" value="display:none;"></c:set>
 	<sec:authorize access="hasAnyRole('ROLE_ADMIN','ROLE_STAFF')">
 		<div id="table">
-			<table id="dataTable" class="display" cellspacing="0" width="100%">
+			<table id="dataTable" class="display" >
 				<thead>
 					<tr>
 						<th width="10%"><spring:message code="main.code" /></th>
