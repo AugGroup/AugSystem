@@ -173,16 +173,6 @@ h3{
 	else {
 		var id = '${id}';
 		dtApplicant = $('#experiencesTable').DataTable({
-			columnDefs : [{"width" : "1%","targets" : 0},
-						  {"width" : "0%","targets" : 1},
-						  {"width" : "0%","targets" : 2},
-						  {"width" : "0%","targets" : 3},
-						  {"width" : "1%","targets" : 4},
-						  {"width" : "1%","targets" : 5},
-						  {"width" : "1%","targets" : 6},
-						  {"width" : "5%","targets" : 7},
-						  {"width" : "5%","targets" : 8},
-						  {"width" : "5%","targets" : 9}],
 			paging: true,
 			hover:false,
 			sort:false,
@@ -196,11 +186,11 @@ h3{
 			            {data : "employerName"},
 			            {data : "address"},
 			            {data : "typeOfBusiness"},
-			            {data : "positionOfEmployer"},
+// 			            {data : "positionOfEmployer"},
 			            {data : "supervisor"},
 			            {data : "salary"},
-			            {data : "description"},
-			            {data : "reason"},
+// 			            {data : "description"},
+// 			            {data : "reason"},
 			            {data : function(data) {
 				 			return '<button id="buttonEdit" data-id="'+data.id+'" data-toggle="modal" data-target="#experiencesModal" class="btn btn-warning btn-mini"><span class="glyphicon glyphicon-pencil"></span> <spring:message code="main.edit.info"/></button>';
 						}},
@@ -465,6 +455,10 @@ h3{
 									class="form-control" id="workBackground" name="workBackground"
 									placeholder="<spring:message code="exp.text.Pposition"/> ">
 							</div>
+							
+							<div class="form-group" style="width:210px">
+								<input type="text" name="applyDateStr" id="applyDateStr" class="form-control" style="width:210px" placeholder="<spring:message code="report.text.month"/>"/>
+            				</div>
 
 							<div class="form-group">
 								<label for="fromWorkYear"><span
@@ -613,11 +607,11 @@ h3{
 					<th><spring:message code="exp.data.emp" /></th>
 					<th><spring:message code="family.data.address" /></th>
 					<th><spring:message code="exp.data.business" /></th>
-					<th><spring:message code="exp.data.position.emp" /></th>
+<%-- 					<th><spring:message code="exp.data.position.emp" /></th> --%>
 					<th><spring:message code="exp.data.super" /></th>
 					<th><spring:message code="exp.data.salary" /></th>
-					<th><spring:message code="exp.data.desc" /></th>
-					<th><spring:message code="exp.data.reason" /></th>
+<%-- 					<th><spring:message code="exp.data.desc" /></th> --%>
+<%-- 					<th><spring:message code="exp.data.reason" /></th> --%>
 					<th><spring:message code="main.edit.info" /></th>
 					<th><spring:message code="main.delete" /></th>
 				</tr>
