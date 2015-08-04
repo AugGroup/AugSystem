@@ -1,6 +1,7 @@
 package com.aug.controllers;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -658,7 +659,7 @@ public class ApplicationController {
 	}
 	
 	@RequestMapping(value = "/updateExperience/{id}", method = { RequestMethod.POST })
-	public @ResponseBody ExperienceDTO updateExperience(@RequestBody ExperienceDTO experienceDTO, @PathVariable Integer id) {
+	public @ResponseBody ExperienceDTO updateExperience(@RequestBody ExperienceDTO experienceDTO, @PathVariable Integer id) throws Exception{
 		Experience experience = experienceService.findById(experienceDTO.getId());
 		experience.setId(experienceDTO.getId());
 		experience.setAddress(experienceDTO.getAddress());
@@ -672,7 +673,7 @@ public class ApplicationController {
 		experience.setSalary(experienceDTO.getSalary());
 		experience.setSupervisor(experienceDTO.getSupervisor());
 		experience.setTypeOfBusiness(experienceDTO.getTypeOfBusiness());
-			
+		
 		experienceService.update(experience);
 			
 		return experienceDTO;

@@ -79,6 +79,12 @@ h3{
 		
 		var dtApplicant;
 		
+	    $('input[name="applyDateStr"]').daterangepicker({
+	        format: 'DD/MM/YYYY',
+	        opens : "left",
+	        showDropdowns : true,
+	    });
+		
 		$('.input-group.date').datepicker({
 			startView : 2,
 			todayBtn : "linked",
@@ -295,76 +301,76 @@ h3{
 		//Update function
 		function updated(button){
 			if ($('#experiencesForm').valid()) {
-			var id = $(button).data("id");
-			var position = $("#workBackground").val();
-			var fromDate = $("#fromWorkYear").val();
-			var toDate = $("#toWorkYear").val();
-			var employerName = $("#emp").val();
-			var address = $("#addressBackground").val();
+				var id = $(button).data("id");
+				var position = $("#workBackground").val();
+				var fromDate = $("#fromWorkYear").val();
+				var toDate = $("#toWorkYear").val();
+				var employerName = $("#emp").val();
+				var address = $("#addressBackground").val();
 
-			var typeOfBusiness = $("#business").val();
-			var positionOfEmployer = $("#positionBackground").val();
-			var reason = $("#reasonLeaving").val();
-			var supervisor = $("#supervisorBackground").val();
-			var salary = $("#salaryBackground").val();
-			
-			var description = $("#descriptionBackground").val();
-			
-			var json = {
-					"id" : id,
-					"position" : position,
-					"fromDate" : fromDate,
-					"toDate" : toDate,
-					"employerName" : employerName,
-					"address" : address,
-					"fromDate" : fromDate,
-					"typeOfBusiness" : typeOfBusiness,
-					"positionOfEmployer" : positionOfEmployer,
-					"reason" : reason,
-					"supervisor" : supervisor,
-					"salary" : salary,
-					"description" : description
-					};
-			
-			$.ajax({
-				url : "${pageContext.request.contextPath}/updateExperience/"+id,
-				type : "POST",
-				contentType :"application/json; charset=utf-8",
-				data : JSON.stringify(json),
-				success : function(data){
-					$('#experiencesModal').modal('hide');
-					
-					var table = $('#experiencesTable').DataTable();	
-				 	var rowData = table.row(button.closest('tr')).index(); 
-				 	var d = table.row(rowData).data();
-				 	
-					d.position = data.position;
-					d.fromDate = data.fromDate;
-					d.toDate = data.toDate;
-					d.employerName = data.employerName;
-					d.address = data.address;
-					d.fromDate = data.fromDate;
-					d.typeOfBusiness = data.typeOfBusiness;
-					d.positionOfEmployer = data.positionOfEmployer;
-					d.reason = data.reason;
-					d.supervisor = data.supervisor;
-					d.salary = data.salary;
-					d.description = data.description;
-				 	
-			 		table.row(rowData).data(d).draw();
-			 		
-					new PNotify({
-					    title: 'Edit Reference Success!!',
-					    text: 'You can edit data',
-					    type: 'success',
-				        delay: 10000,
-				        buttons:{
-				        	closer_hover: false,
-				        	sticker: false
-				        }		
-					});
-				 }
-			});
+				var typeOfBusiness = $("#business").val();
+				var positionOfEmployer = $("#positionBackground").val();
+				var reason = $("#reasonLeaving").val();
+				var supervisor = $("#supervisorBackground").val();
+				var salary = $("#salaryBackground").val();
+				
+				var description = $("#descriptionBackground").val();
+				
+				var json = {
+						"id" : id,
+						"position" : position,
+						"fromDate" : fromDate,
+						"toDate" : toDate,
+						"employerName" : employerName,
+						"address" : address,
+						"fromDate" : fromDate,
+						"typeOfBusiness" : typeOfBusiness,
+						"positionOfEmployer" : positionOfEmployer,
+						"reason" : reason,
+						"supervisor" : supervisor,
+						"salary" : salary,
+						"description" : description
+						};
+				
+				$.ajax({
+					url : "${pageContext.request.contextPath}/updateExperience/"+id,
+					type : "POST",
+					contentType :"application/json; charset=utf-8",
+					data : JSON.stringify(json),
+					success : function(data){
+						$('#experiencesModal').modal('hide');
+						
+						var table = $('#experiencesTable').DataTable();	
+					 	var rowData = table.row(button.closest('tr')).index(); 
+					 	var d = table.row(rowData).data();
+					 	
+						d.position = data.position;
+						d.fromDate = data.fromDate;
+						d.toDate = data.toDate;
+						d.employerName = data.employerName;
+						d.address = data.address;
+						d.fromDate = data.fromDate;
+						d.typeOfBusiness = data.typeOfBusiness;
+						d.positionOfEmployer = data.positionOfEmployer;
+						d.reason = data.reason;
+						d.supervisor = data.supervisor;
+						d.salary = data.salary;
+						d.description = data.description;
+					 	
+				 		table.row(rowData).data(d).draw();
+				 		
+						new PNotify({
+						    title: 'Edit Reference Success!!',
+						    text: 'You can edit data',
+						    type: 'success',
+					        delay: 10000,
+					        buttons:{
+					        	closer_hover: false,
+					        	sticker: false
+					        }		
+						});
+					 }
+				});
 			};
 		}
 		
