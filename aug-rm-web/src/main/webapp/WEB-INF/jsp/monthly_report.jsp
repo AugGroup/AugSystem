@@ -1,8 +1,8 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <style type="text/css">
 .report_search {
@@ -19,7 +19,7 @@
 #btn_search {
 	float: right;
 }
-}
+
 </style>
 <script type="text/javascript">
 $(document).ready(function () {
@@ -112,7 +112,7 @@ $(document).ready(function () {
 
 	<!------------------- Report DataTable-------------------> 
 	<div id="table">
-    	<table id="reportTable" class="cell-border" style="width: 100%">
+    	<table  id="reportTable" class="cell-border" style="width: 100%">
             <thead>
                 <tr>
                     <th><spring:message code="main.code"/></th>

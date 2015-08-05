@@ -7,6 +7,16 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
+        var $inputRequesterName = $('#inputRequesterName');
+        var $inputRequestDate = $('#inputRequestDate');
+        var $inputApprovalName = $('#inputApprovalName');
+        var $inputApproveDate = $('#inputApproveDate');
+        var $inputNumberApplicant = $('#inputNumberApplicant');
+        var $inputSpecificSkill = $('#inputSpecificSkill');
+        var $inputYearExperience = $('#inputYearExperience');
+        var $inputPosition = $('#inputPosition');
+        var $inputStatus = $('#inputStatus');
+        
     	/* ------------------ Date picker format ------------------ */
     	$('.input-group.date').datepicker({
     		format: "dd/mm/yyyy",
@@ -172,15 +182,15 @@
         /*-------------------- Save Function--------------------*/
         function save(button) {
         	var request = {
-        			requesterName: $('#inputRequesterName').val(),
-        			requestDate: $('#inputRequestDate').val(),
-        			approvalName: $('#inputApprovalName').val(),
-        			approveDate: $('#inputApproveDate').val(),
-        			numberApplicant : $('#inputNumberApplicant').val(),
-        			specificSkill: $('#inputSpecificSkill').val(),
-        			yearExperience : $('#inputYearExperience').val(),
-        			positionRequest : $('#inputPosition').val(),
-        			status: $('#inputStatus').val()
+        			requesterName: $inputRequesterName.val(),
+        			requestDate: $inputRequestDate.val(),
+        			approvalName: $inputApprovalName.val(),
+        			approveDate: $inputApproveDate.val(),
+        			numberApplicant : $inputNumberApplicant.val(),
+        			specificSkill: $inputSpecificSkill.val(),
+        			yearExperience : $inputYearExperience.val(),
+        			positionRequest : $inputPosition.val(),
+        			status: $inputStatus.val()
         			};
         	//console.log(request);
         	var isValid = $("#requestForm").valid();
@@ -239,15 +249,15 @@
         /*-------------------- Edit Function --------------------*/
         function edit(button){
             var id = $(button).data("id");
-            var requesterName = $('#inputRequesterName').val();
-            var requestDate = $('#inputRequestDate').val();
-            var approvalName = $('#inputApprovalName').val();
-            var approveDate = $('#inputApproveDate').val();
-            var numberApplicant = $('#inputNumberApplicant').val();
-            var specificSkill = $('#inputSpecificSkill').val();
-            var yearExperience = $('#inputYearExperience').val();
-            var positionRequest = $('#inputPosition').val();
-            var status = $('#inputStatus').val();
+            var requesterName = $inputRequesterName.val();
+            var requestDate = $inputRequestDate.val();
+            var approvalName = inputApprovalName.val();
+            var approveDate = $inputApproveDate.val();
+            var numberApplicant = $inputNumberApplicant.val();
+            var specificSkill = $inputSpecificSkill.val();
+            var yearExperience = $inputYearExperience.val();
+            var positionRequest = $inputPosition.val();
+            var status = $inputStatus.val();
             var index = dtRequest.row(button.closest("tr")).index();
             
             var request = {
@@ -331,9 +341,7 @@
 </script>
 
 <div class="container">
-	<h1 align="center">
-		<spring:message code="request.title" />
-	</h1>
+	<h1 align="center"><spring:message code="request.title"/></h1>
 	<div id="table">
 		<table class="dataTable" id="requestTable" class="cell-border" style="width: 100%">
 			<thead>
@@ -350,10 +358,8 @@
 				</tr>
 			</thead>
 		</table>
-		<button id="btn_new_req" class="btn btn-warning" data-toggle="modal"
-			data-target="#addRequestModal">
-			<spring:message code="request.button" />
-			<span class="glyphicon glyphicon-plus-sign"></span>
+		<button id="btn_new_req" class="btn btn-warning" data-toggle="modal" data-target="#addRequestModal">
+			<spring:message code="request.button" /><span class="glyphicon glyphicon-plus-sign"></span>
 		</button>
 	</div>
 
@@ -364,13 +370,10 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="myModalLabel">
-						<spring:message code="request.title.appli" />
-					</h4>
+					<h4 class="modal-title" id="myModalLabel"><spring:message code="request.title.appli"/></h4>
 				</div>
 				<div class="modal-body" >
 					<form role='form' id="requestForm" name="requestForm">
@@ -483,96 +486,47 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="ModalLabel">
-						<spring:message code="request.desc" />
-					</h4>
+					<h4 class="modal-title" id="ModalLabel"><spring:message code="request.desc" /></h4>
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-4" style="width: 170px;">
-							<spring:message code="request.request" />
-						</div>
-						<div class="col-md-6">
-							<p id="tx_requester"></p>
-						</div>
+						<div class="col-md-4 col-md-offset-2" style="width: 170px;"><spring:message code="request.request" /></div>
+						<div class="col-md-6"><p id="tx_requester"></p></div>
 					</div>
 					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-4" style="width: 170px;">
-							<spring:message code="request.request.date" />
-						</div>
-						<div class="col-md-6">
-							<p id="tx_requestDate"></p>
-						</div>
+						<div class="col-md-4 col-md-offset-2" style="width: 170px;"><spring:message code="request.request.date" /></div>
+						<div class="col-md-6"><p id="tx_requestDate"></p></div>
 					</div>
 					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-4" style="width: 170px;">
-							<spring:message code="request.pos" />
-						</div>
-						<div class="col-md-6">
-							<p id="tx_position"></p>
-						</div>
+						<div class="col-md-4" style="width: 170px;"><spring:message code="request.pos" /></div>
+						<div class="col-md-6"><p id="tx_position"></p></div>
 					</div>
 					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-4" style="width: 170px;">
-							<spring:message code="request.approv.name" />
-						</div>
-						<div class="col-md-6">
-							<p id="tx_approvalName"></p>
-						</div>
+						<div class="col-md-4 col-md-offset-2" style="width: 170px;"><spring:message code="request.approv.name" /></div>
+						<div class="col-md-6"><p id="tx_approvalName"></p></div>
 					</div>
 					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-4" style="width: 170px;">
-							<spring:message code="request.approv.date" />
-						</div>
-						<div class="col-md-6">
-							<p id="tx_approveDate"></p>
-						</div>
+						<div class="col-md-4 col-md-offset-2" style="width: 170px;"><spring:message code="request.approv.date" /></div>
+						<div class="col-md-6"><p id="tx_approveDate"></p></div>
 					</div>
 					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-4" style="width: 170px;">
-							<spring:message code="request.number.appli" />
-						</div>
-						<div class="col-md-6">
-							<p id="tx_noOfApplicant"></p>
-						</div>
+						<div class="col-md-4 col-md-offset-2" style="width: 170px;"><spring:message code="request.number.appli" /></div>
+						<div class="col-md-6"><p id="tx_noOfApplicant"></p></div>
 					</div>
 					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-4" style="width: 170px;">
-							<spring:message code="request.spec.skill" />
-						</div>
-						<div class="col-md-6">
-							<p id="tx_specificSkill"></p>
-						</div>
+						<div class="col-md-4 col-md-offset-2" style="width: 170px;"><spring:message code="request.spec.skill" /></div>
+						<div class="col-md-6"><p id="tx_specificSkill"></p></div>
 					</div>
 					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-4" style="width: 170px;">
-							<spring:message code="request.year.exper" />
-						</div>
-
-						<div class="col-md-6">
-							<p id="tx_yearExperience"></p>
-						</div>
+						<div class="col-md-4 col-md-offset-2" style="width: 170px;"><spring:message code="request.year.exper" /></div>
+						<div class="col-md-6"><p id="tx_yearExperience"></p></div>
 					</div>
 					<div class="row">
-						<div class="col-md-2"></div>
-						<div class="col-md-4" style="width: 170px;">
-							<spring:message code="request.request.status" />
-						</div>
-						<div class="col-md-6">
-							<p id="tx_status"></p>
-						</div>
+						<div class="col-md-4 col-md-offset-2" style="width: 170px;"><spring:message code="request.request.status"/></div>
+						<div class="col-md-6"><p id="tx_status"></p></div>
 					</div>
 				</div>
 				<div class="modal-footer">

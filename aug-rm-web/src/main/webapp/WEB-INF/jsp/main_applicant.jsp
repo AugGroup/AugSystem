@@ -49,7 +49,7 @@
 						type : 'POST',
 						data : function(d){
 							d.position = $('#inputSearch').val();
-							console.log(d.position)
+							/* console.log(d.position) */
 						},
 					},
 					columns:[{'data': "code"},
@@ -80,7 +80,7 @@
 				var applicantId = $(button).data("id");
 				if(applicantId != null){
 					findById(applicantId);
-					console.log(applicantId);
+					/* console.log(applicantId); */
 					$("#btn_submit").off("click").on("click", function(){
 						updateUser(button);
 						});
@@ -90,7 +90,7 @@
 		
 		//Find by Id
 		function findById(id){
-			console.log(id);
+			/* console.log(id); */
 			$.ajax({
 				url : "${pageContext.request.contextPath}/applicant/search/" + id,
 				type : "POST",
