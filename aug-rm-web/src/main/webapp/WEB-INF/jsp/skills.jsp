@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-#skills {
+/* #skills {
 	background: #E0DFDD;
 }
 
@@ -59,7 +59,7 @@ h3{
 	padding-left: 5px;
 	margin-left: 5px;
 	margin-right: 5px;
-}
+} */
 </style>
 <script>
 $(document).ready(function() {
@@ -256,10 +256,10 @@ $(document).ready(function() {
 
 </script>
 <jsp:include page="applicationMenu.jsp" />
-<div class="container" id="skills">
+<div class="container" id="titleHead">
 			<div class="row">
 				<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
-					<h3><spring:message code="skill.name"/></h3>
+					<h3 id="textTitle"><spring:message code="skill.name"/></h3>
 					
 				</div>
 			</div>
@@ -350,7 +350,7 @@ $(document).ready(function() {
 			<tbody></tbody>
 		</table>
 		<div align="right">
-			<button class="btn btn-warning" id="skillAdd" data-toggle="modal" data-target="#skillModal"><span class="glyphicon glyphicon-plus"></span> <spring:message code="skill.name.add"/></button>	
+			<button class="btn btn-warning" id="buttonAdd" data-toggle="modal" data-target="#skillModal"><span class="glyphicon glyphicon-plus"></span> <spring:message code="skill.name.add"/></button>	
 			<button class="btn btn-default" type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/certificates/${id}'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 			<button class="btn btn-default" type="button" id="buttonNext" name="buttonNext" onclick="window.location='${pageContext.request.contextPath}/languages/${id}'"><span class="glyphicon glyphicon-step-forward"></span> Next </button>
 		</div>

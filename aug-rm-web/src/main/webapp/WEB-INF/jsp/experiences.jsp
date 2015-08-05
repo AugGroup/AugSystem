@@ -8,7 +8,7 @@
 	color: #ff0000;
 }
 
-#experiences{
+/* #experiences{
 	background: #E0DFDD;
 }
 
@@ -71,7 +71,7 @@ h3{
 	padding-left: 5px;
 	margin-left: 5px;
 	margin-right: 5px;
-}
+} */
 </style>
 <script>
 
@@ -429,14 +429,14 @@ h3{
 	});
 </script>
 <jsp:include page="applicationMenu.jsp" />
-<div class="container" id="experiences">
+<div class="container" id="titleHead">
 	<div class="form-group">
 		<label for="experiences" id="text"><spring:message code="exp.text" /> </label>
 	</div>
 	<br>
 		<div class="row">
 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
-				<h3><spring:message code="exp.name"/></h3>
+				<h3 id="textTitle"><spring:message code="exp.name"/></h3>
 			</div>
 		</div>
 		<div class="modal fade" id="experiencesModal" role="dialog">
@@ -607,7 +607,7 @@ h3{
 			<tbody></tbody>
 		</table>
 		<div align="right">
-			<button class="btn btn-warning" id="experiencesAdd" data-toggle="modal" data-target="#experiencesModal"><span class="glyphicon glyphicon-plus"></span><spring:message code="exp.name.add" /></button>
+			<button class="btn btn-warning" id="buttonAdd" data-toggle="modal" data-target="#experiencesModal"><span class="glyphicon glyphicon-plus"></span><spring:message code="exp.name.add" /></button>
 			<button class="btn btn-default" type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/references/${id}'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 			<button class="btn btn-default" type="button" id="buttonNext" name="buttonNext" onclick="window.location='${pageContext.request.contextPath}/applicant'"><span class="glyphicon glyphicon-ok"></span> Finish </button>
 		</div>

@@ -8,7 +8,7 @@
 	background: #E0DFDD;
 }
 
-#referenceTable {
+/*#referenceTable {
 	color: #414141;
 	background-color: #ababab;
 	margin-right: 5px;
@@ -63,7 +63,7 @@ h3{
 	padding-left: 5px;
 	margin-left: 5px;
 	margin-right: 5px;
-}
+} */
 </style>
 <script>
 	$(document).ready(function() {
@@ -298,14 +298,14 @@ h3{
 	});
 </script>
 <jsp:include page="applicationMenu.jsp" />
-<div class="container" id="reference">
+<div class="container" id="titleHead">
 	<div class="form-group">
 		<label for="reference" id="text"><spring:message code="ref.text" /> </label>
 	</div>
 	<br>
 	<div class="row">
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
-			<h3><spring:message code="ref.name"/></h3>
+			<h3 id="textTitle"><spring:message code="ref.name"/></h3>
 			
 		</div>
 	</div>
@@ -415,7 +415,7 @@ h3{
 			<tbody></tbody>
 		</table>
 		<div align="right">
-			<button class="btn btn-warning" id="referenceAdd" data-toggle="modal" data-target="#referenceModal"><span class="glyphicon glyphicon-plus"></span> <spring:message code="ref.name.add"/></button>
+			<button class="btn btn-warning" id="buttonAdd" data-toggle="modal" data-target="#referenceModal"><span class="glyphicon glyphicon-plus"></span> <spring:message code="ref.name.add"/></button>
 			<button class="btn btn-default" type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/languages/${id}'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 			<button class="btn btn-default" type="button" id="buttonNext" name="buttonNext" onclick="window.location='${pageContext.request.contextPath}/experiences/${id}'"><span class="glyphicon glyphicon-step-forward"></span> Next </button>		
 		</div>

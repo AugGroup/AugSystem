@@ -86,6 +86,50 @@
 	color: red;
 	padding: 3px;
 }
+
+/* -------- for titleHeader ------ */
+#titleHead {
+	background: #E0DFDD;
+}
+
+#textTitle {
+	height: 30px;
+	font-family: "SemiBold";
+    font-size: 18px;
+	color: #ffffff;
+    border: 1px #F7C11F; 
+    background: #ffc000;
+	padding-left: 5px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+#buttonAdd{
+	width: 150px;
+	height: 30px;
+	font-family: "Regular";
+	font-size: 16px; 
+}
+
+#buttonBack{
+	width: 90px;
+	height: 30px;
+	background-color: f4f4f4;
+	font-family: "Regular";
+	font-size: 14px;
+	color: #414141;
+}
+
+#buttonNext{
+	margin-right:5px;
+	width: 90px;
+	height: 30px;
+	background-color: f4f4f4;
+	font-family: "Regular";
+	font-size: 14px;
+	color: #414141;
+}
+
 /* -------- for dataTable -------- */
 #table {
 	padding: 15px 5px 90px 5px;

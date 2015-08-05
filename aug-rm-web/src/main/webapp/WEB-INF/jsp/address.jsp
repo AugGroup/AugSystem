@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
 
-.form-control input-sm{
+/* .form-control input-sm{
 	width: 70px;
 	height: 22px;
 	background: #ffffff;
@@ -67,7 +67,7 @@ h3{
 	padding-left: 5px;
 	margin-left: 5px;
 	margin-right: 5px;
-}
+} */
 </style>
 <script>
 	$(document).ready(function() {
@@ -345,10 +345,10 @@ h3{
 	
 </script>
 <jsp:include page="applicationMenu.jsp" />
-<div class="container" id="address">
+<div class="container" id="titleHead">
 		<div class="row">
 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
-				<h3><spring:message code="address.name"/></h3>
+				<h3 id="textTitle"><spring:message code="address.name"/></h3>
 				
 			</div>
 		</div>
@@ -486,7 +486,7 @@ h3{
 			<tbody></tbody>
 		</table>
 		<div align="right">
-			<button class="btn btn-warning" id="addressAdd" data-toggle="modal" data-target="#addressModal"><span class="glyphicon glyphicon-plus"></span><spring:message code="address.name.add"/></button>
+			<button class="btn btn-warning" id="buttonAdd" data-toggle="modal" data-target="#addressModal"><span class="glyphicon glyphicon-plus"></span><spring:message code="address.name.add"/></button>
 			<button class="btn btn-default" type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/info/${id}'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 			<button class="btn btn-default" type="button" id="buttonNext" name="buttonNext" onclick="window.location='${pageContext.request.contextPath}/family/${id}'"><span class="glyphicon glyphicon-step-forward"></span> Next </button>
 		</div>

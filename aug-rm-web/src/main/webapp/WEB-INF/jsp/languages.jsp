@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <style>
-#languageses {
+/* #languageses {
 	background: #E0DFDD;
 }
 
@@ -63,7 +63,7 @@ h3{
 	padding-left: 5px;
 	margin-left: 5px;
 	margin-right: 5px;
-}
+} */
 
 
 </style>
@@ -290,10 +290,10 @@ $(document).ready(function() {
 });
 </script>
 <jsp:include page="applicationMenu.jsp" />
-<div class="container" id="languageses">
+<div class="container" id="titleHead">
 <div class="row">
 		<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
-			<h3><spring:message code="languages.name.less"/></h3>			
+			<h3 id="textTitle"><spring:message code="languages.name.less"/></h3>			
 		</div>
 	</div>
 
@@ -469,7 +469,7 @@ $(document).ready(function() {
 			<tbody></tbody>
 		</table>
 		<div align="right">
-			<button class="btn btn-warning" id="languagesAdd" data-toggle="modal" data-target="#languagesModal"><span class="glyphicon glyphicon-plus"></span><spring:message code="languages.name.add" /></button>
+			<button class="btn btn-warning" id="buttonAdd" data-toggle="modal" data-target="#languagesModal"><span class="glyphicon glyphicon-plus"></span><spring:message code="languages.name.add" /></button>
 			<button class="btn btn-default" type="button" id="buttonBack" name="buttonBack" onclick="window.location='${pageContext.request.contextPath}/skills/${id}'"><span class="glyphicon glyphicon-step-backward"></span> Back </button>
 			<button class="btn btn-default" type="button" id="buttonNext" name="buttonNext" onclick="window.location='${pageContext.request.contextPath}/references/${id}'"><span class="glyphicon glyphicon-step-forward"></span> Next </button>
 		</div>
