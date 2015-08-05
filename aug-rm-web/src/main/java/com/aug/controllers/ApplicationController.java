@@ -547,8 +547,6 @@ public class ApplicationController {
 				System.out.println(fa.getSalary());
 				System.out.println(fa.getSupervisor());
 				System.out.println(fa.getTypeOfBusiness());
-				System.out.println(fa.getFromDate());
-				System.out.println(fa.getToDate());
 			}
 		 
 		return new Object() {
@@ -665,14 +663,15 @@ public class ApplicationController {
 		experience.setAddress(experienceDTO.getAddress());
 		experience.setDescription(experienceDTO.getDescription());
 		experience.setEmployerName(experienceDTO.getEmployerName());
-		experience.setFromDate(experienceDTO.getFromDate());
-		experience.setToDate(experienceDTO.getToDate());
+//		experience.setFromDate(experienceDTO.getFromDate());
+//		experience.setToDate(experienceDTO.getToDate());
 		experience.setPosition(experienceDTO.getPosition());
 		experience.setPositionOfEmployer(experienceDTO.getPositionOfEmployer());
 		experience.setReason(experienceDTO.getReason());
 		experience.setSalary(experienceDTO.getSalary());
 		experience.setSupervisor(experienceDTO.getSupervisor());
 		experience.setTypeOfBusiness(experienceDTO.getTypeOfBusiness());
+		experience.setApplyDateStr(experienceDTO.getApplyDateStr());
 		
 		experienceService.update(experience);
 			

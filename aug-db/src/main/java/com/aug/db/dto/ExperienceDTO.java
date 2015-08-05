@@ -13,12 +13,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @NamedNativeQueries({
-	@NamedNativeQuery(name = "SEARCH_EXPERIENCE", query = "SELECT e.ID, e.ADDRESS, e.DESCRIPTION, e.EMPLOYER_NAME, e.FROM_DATE,"
-		+ "e.POSITION, e.POSITION_OF_EMPLOYER, e.REASON, e.SALARY, e.SUPERVISOR, e.TO_DATE, e.TYPE_OF_BUSSINESS, e.APPLICANT_ID"
+	@NamedNativeQuery(name = "SEARCH_EXPERIENCE", query = "SELECT e.ID, e.ADDRESS, e.DESCRIPTION, e.EMPLOYER_NAME, e.FROM_DATE, e.TO_DATE,"
+		+ "e.POSITION, e.POSITION_OF_EMPLOYER, e.REASON, e.SALARY, e.SUPERVISOR, e.TYPE_OF_BUSSINESS, e.APPLICANT_ID, e.DATE_WORK"
 		+ " FROM EXPERIENCE e LEFT JOIN APPLICANT a on e.APPLICANT_ID = a.APPLICANT_ID WHERE e.APPLICANT_ID = :ID", resultClass = ExperienceDTO.class),
 		
-	@NamedNativeQuery(name = "SEARCH_EXPERIENCE_ID", query = "SELECT e.ID, e.ADDRESS, e.DESCRIPTION, e.EMPLOYER_NAME, e.FROM_DATE,"
-			+ "e.POSITION, e.POSITION_OF_EMPLOYER, e.REASON, e.SALARY, e.SUPERVISOR, e.TO_DATE, e.TYPE_OF_BUSSINESS, e.APPLICANT_ID"
+	@NamedNativeQuery(name = "SEARCH_EXPERIENCE_ID", query = "SELECT e.ID, e.ADDRESS, e.DESCRIPTION, e.EMPLOYER_NAME,"
+			+ "e.POSITION, e.POSITION_OF_EMPLOYER, e.REASON, e.SALARY, e.SUPERVISOR, e.TYPE_OF_BUSSINESS, e.APPLICANT_ID, e.DATE_WORK"
 			+ " FROM EXPERIENCE e WHERE e.ID = :ID", resultClass = ExperienceDTO.class)
 	})
 public class ExperienceDTO {
@@ -64,6 +64,17 @@ public class ExperienceDTO {
 	
 	@Column(name = "APPLICANT_ID")
 	private Integer applicantId;
+	
+	@Column(name= "DATE_WORK")
+	private String applyDateStr;
+
+	public String getApplyDateStr() {
+		return applyDateStr;
+	}
+
+	public void setApplyDateStr(String applyDateStr) {
+		this.applyDateStr = applyDateStr;
+	}
 
 	public Integer getId() {
 		return id;

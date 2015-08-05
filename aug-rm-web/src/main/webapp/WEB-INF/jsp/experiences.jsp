@@ -97,12 +97,12 @@ h3{
 			workBackground : {
 				required : true,
 			},
-			fromWorkYear : {
-				required : true,
-			},
-			toWorkYear : {
-				required : true,
-			},
+// 			fromWorkYear : {
+// 				required : true,
+// 			},
+// 			toWorkYear : {
+// 				required : true,
+// 			},
 			emp : {
 				required : true,
 			},
@@ -181,14 +181,15 @@ h3{
 				type : 'POST'
 			},
 			columns : [ {data : "position"},
-			            {data : "fromDate"},
-			            {data : "toDate"},
+// 			            {data : "fromDate"},
+// 			            {data : "toDate"},
 			            {data : "employerName"},
 			            {data : "address"},
 			            {data : "typeOfBusiness"},
 // 			            {data : "positionOfEmployer"},
 			            {data : "supervisor"},
 			            {data : "salary"},
+			            {data : "applyDateStr"},
 // 			            {data : "description"},
 // 			            {data : "reason"},
 			            {data : function(data) {
@@ -207,8 +208,8 @@ h3{
 		if ($('#experiencesForm').valid()) {
 		var id = '${id}';
 		var position = $("#workBackground").val();
-		var fromDate = $("#fromWorkYear").val();
-		var toDate = $("#toWorkYear").val();
+// 		var fromDate = $("#fromWorkYear").val();
+// 		var toDate = $("#toWorkYear").val();
 		var employerName = $("#emp").val();
 		var address = $("#addressBackground").val();
 
@@ -219,12 +220,13 @@ h3{
 		var salary = $("#salaryBackground").val();
 		
 		var description = $("#descriptionBackground").val();
+		var applyDateStr = $("#applyDateStr").val();
 		
 		var json = {
 				"applicant" : {"id" : id},
 				"position" : position,
-				"fromDate" : fromDate,
-				"toDate" : toDate,
+// 				"fromDate" : fromDate,
+// 				"toDate" : toDate,
 				"employerName" : employerName,
 				"address" : address,
 				"typeOfBusiness" : typeOfBusiness,
@@ -232,7 +234,8 @@ h3{
 				"supervisor" : supervisor,
 				"salary" : salary,
 				"description" : description,
-				"reason" : reason
+				"reason" : reason,
+				"applyDateStr" : applyDateStr
 				};
 		
 		$.ajax({
@@ -274,8 +277,8 @@ h3{
 		//Show data on inputField
 		function showFillData(data){
 			$("#workBackground").val(data.position);
-			$("#fromWorkYear").val(data.fromDate);
-			$("#toWorkYear").val(data.toDate);
+// 			$("#fromWorkYear").val(data.fromDate);
+// 			$("#toWorkYear").val(data.toDate);
 			$("#emp").val(data.employerName);
 			$("#addressBackground").val(data.address);
 
@@ -286,14 +289,16 @@ h3{
 			$("#salaryBackground").val(data.salary);
 			
 			$("#descriptionBackground").val(data.description);
+			
+			$("#applyDateStr").val(data.applyDateStr);
 		}
 		
 		//Update function
 		function updated(button){
 			if ($('#experiencesForm').valid()) {
 				var id = $(button).data("id");
-				var position = $("#workBackground").val();
-				var fromDate = $("#fromWorkYear").val();
+// 				var position = $("#workBackground").val();
+// 				var fromDate = $("#fromWorkYear").val();
 				var toDate = $("#toWorkYear").val();
 				var employerName = $("#emp").val();
 				var address = $("#addressBackground").val();
@@ -306,20 +311,22 @@ h3{
 				
 				var description = $("#descriptionBackground").val();
 				
+				var applyDateStr = $("#applyDateStr").val();
+				
 				var json = {
 						"id" : id,
 						"position" : position,
-						"fromDate" : fromDate,
-						"toDate" : toDate,
+// 						"fromDate" : fromDate,
+// 						"toDate" : toDate,
 						"employerName" : employerName,
 						"address" : address,
-						"fromDate" : fromDate,
 						"typeOfBusiness" : typeOfBusiness,
 						"positionOfEmployer" : positionOfEmployer,
 						"reason" : reason,
 						"supervisor" : supervisor,
 						"salary" : salary,
-						"description" : description
+						"description" : description,
+						"applyDateStr" : applyDateStr
 						};
 				
 				$.ajax({
@@ -335,8 +342,8 @@ h3{
 					 	var d = table.row(rowData).data();
 					 	
 						d.position = data.position;
-						d.fromDate = data.fromDate;
-						d.toDate = data.toDate;
+// 						d.fromDate = data.fromDate;
+// 						d.toDate = data.toDate;
 						d.employerName = data.employerName;
 						d.address = data.address;
 						d.fromDate = data.fromDate;
@@ -346,6 +353,7 @@ h3{
 						d.supervisor = data.supervisor;
 						d.salary = data.salary;
 						d.description = data.description;
+						d.applyDateStr = data.applyDateStr;
 					 	
 				 		table.row(rowData).data(d).draw();
 				 		
@@ -457,33 +465,10 @@ h3{
 							</div>
 							
 							<div class="form-group" style="width:210px">
+								<label for="applyDateStr">From-to date </label>
 								<input type="text" name="applyDateStr" id="applyDateStr" class="form-control" style="width:210px" placeholder="<spring:message code="report.text.month"/>"/>
             				</div>
 
-							<div class="form-group">
-								<label for="fromWorkYear"><span
-									class="glyphicon glyphicon-calendar"></span>
-								<spring:message code="exp.from" /> </label>
-								<div class="input-group date">
-									<input type="text" id="fromWorkYear" name="fromWorkYear"
-										class="form-control"><span class="input-group-addon"><i
-										class="glyphicon glyphicon-th"></i></span>
-								</div>
-
-							</div>
-
-							<div class="form-group">
-								<label for="toWorkYear"><span
-									class="glyphicon glyphicon-calendar"></span>
-								<spring:message code="exp.to" /> </label>
-								<div class="input-group date">
-									<input type="text" id="toWorkYear" name="toWorkYear"
-										class="form-control"><span class="input-group-addon"><i
-										class="glyphicon glyphicon-th"></i></span>
-								</div>
-
-
-							</div>
 							<div class="form-group">
 								<label for="emp"><spring:message code="exp.emp" /> </label> <input
 									type="text" class="form-control" id="emp" name="emp"
@@ -602,8 +587,8 @@ h3{
 			<thead>
 				<tr>
 					<th><spring:message code="exp.data.position"/></th>
-					<th><spring:message code="exp.data.from" /></th>
-					<th><spring:message code="exp.data.to" /></th>
+<%-- 					<th><spring:message code="exp.data.from" /></th> --%>
+<%-- 					<th><spring:message code="exp.data.to" /></th> --%>
 					<th><spring:message code="exp.data.emp" /></th>
 					<th><spring:message code="family.data.address" /></th>
 					<th><spring:message code="exp.data.business" /></th>
@@ -612,6 +597,7 @@ h3{
 					<th><spring:message code="exp.data.salary" /></th>
 <%-- 					<th><spring:message code="exp.data.desc" /></th> --%>
 <%-- 					<th><spring:message code="exp.data.reason" /></th> --%>
+					<th>DATE</th>
 					<th><spring:message code="main.edit.info" /></th>
 					<th><spring:message code="main.delete" /></th>
 				</tr>

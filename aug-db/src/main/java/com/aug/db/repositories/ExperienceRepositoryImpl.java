@@ -41,8 +41,9 @@ public class ExperienceRepositoryImpl extends HibernateRepositoryImpl<Experience
 			expDto.setAddress(exp.getAddress());
 			expDto.setDescription(exp.getDescription());
 			expDto.setEmployerName(exp.getEmployerName());
-			expDto.setFromDate(exp.getFromDate());
-			expDto.setToDate(exp.getToDate());
+//			expDto.setFromDate(exp.getFromDate());
+//			expDto.setToDate(exp.getToDate());
+			expDto.setApplyDateStr(exp.getApplyDateStr());
 			expDto.setPosition(exp.getPosition());
 			expDto.setPositionOfEmployer(exp.getPositionOfEmployer());
 			expDto.setReason(exp.getReason());

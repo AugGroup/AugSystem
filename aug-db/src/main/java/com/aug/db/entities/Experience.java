@@ -67,6 +67,17 @@ public class Experience {
 
 	@Column(name = "DESCRIPTION")
 	private String description;
+	
+	@Column(name= "DATE_WORK")
+	private String applyDateStr;
+
+	public String getApplyDateStr() {
+		return applyDateStr;
+	}
+
+	public void setApplyDateStr(String applyDateStr) {
+		this.applyDateStr = applyDateStr;
+	}
 
 	public Integer getId() {
 		return id;
