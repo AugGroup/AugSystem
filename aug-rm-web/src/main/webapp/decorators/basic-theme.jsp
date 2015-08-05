@@ -49,6 +49,7 @@
 <link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/daterangepicker-bs3.css"/>" />
 
 <link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/css/main.css"/>">
+<%-- <link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/css/infoCss.css"/>"> --%>
 </head>
 <%
 	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();

@@ -1,4 +1,4 @@
-<style>
+
 h3{
 	background-color: #F7C11F;
 	color:white;
@@ -17,6 +17,11 @@ h3{
 		padding-right: 0px;
 		padding-left: 0px;
 		width: 93%;
+	}
+	#applicantStatusStyle{
+	width:296px;
+	height:92px;
+	
 	}
 #informationApplicant{ 
  	color:#414141;
@@ -170,7 +175,7 @@ h3{
     #militaryReason{
     display:none;
     }
-    #militaryStatusStyle{
+    #militaryStatusRadioButton{
     margin-bottom:10px;
     margin-top:10px;
     margin-right:25px;
@@ -254,11 +259,17 @@ h3{
     #other{
     display:none;
     }
+    #applicantStatusStyle{
+    width:296px;
+    height:92px;
+    }
+    #militaryStatusYes{
+     display:none;
+    }
+    
    a{
    margin-bottom:10px;
    margin-top:10px;
    margin-right:25px;
    margin-left:25px;
    }
-
-</style>
