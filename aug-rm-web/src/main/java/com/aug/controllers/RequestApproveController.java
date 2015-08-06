@@ -52,7 +52,7 @@ public class RequestApproveController implements Serializable {
 		return augRequestService.findAugRequestById(id);
 	}
 	
-	/*--------------------Update Approve Status TEST------------------*/
+	/*--------------------Update Approve Status (Test throws ParseException)------------------*/
 	/*@RequestMapping(value = "/approve/update/{id}", method = { RequestMethod.POST })
 	public @ResponseBody AugRequestDTO editApproveTest(
 			@RequestBody AugRequestDTO augRequestDTO, @PathVariable Integer id)

@@ -5,8 +5,6 @@ import java.io.Serializable;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +17,8 @@ import com.aug.db.services.LoginService;
 @SessionAttributes("login")
 public class LoginController implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	@Autowired
 	private LoginService loginService;
 
@@ -32,7 +32,7 @@ public class LoginController implements Serializable {
 	@RequestMapping(value = "/applicant", method = { RequestMethod.POST })
 	public String loginSpringPost(Model model) {
 
-		return "main_applicant";
+		return "mainApplicant";
 	}
 	
 	@RequestMapping(value = "/logout", method = { RequestMethod.GET })

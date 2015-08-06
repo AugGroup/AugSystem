@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 
 <!DOCTYPE html>
@@ -10,7 +9,7 @@
 <script src='<c:url value ="/static/resources/js/bootstrap.min.js"/>'></script>
 
 <link rel="stylesheet" type="text/css" media="all" href="<c:url value ='/static/resources/css/bootstrap.min.css'/>"></link>
-<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/bootstrap-theme.min.css"/>" />
+<link rel="stylesheet" type="text/css" media="all" href="<c:url value ='/static/resources/css/bootstrap-theme.min.css'/>" />
 
 <script src='<c:url value ="/static/resources/js/jquery.bootstrap.wizard.js"/>'></script>
 <script src='<c:url value ="/static/resources/js/jquery.bootstrap.wizard.min.js"/>'></script>
