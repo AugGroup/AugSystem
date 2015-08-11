@@ -174,9 +174,8 @@
 			</div>
 			
 		</div>
-<div class="row">
-	<div id="married">
-		
+<div id="married">
+	<div class="row">
 			<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 				<label for="children"><spring:message code="info.number.child"/> 
 				<spring:message code="info.text.children" var="children"/><br>
@@ -199,8 +198,7 @@
 			</div>
 			
 		</div>
-</div>
-<div class="row">
+	<div class="row">
 		<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 				<label for="occupationMarriage"><spring:message code="info.occupation.title"/></label>
 				<spring:message code="info.text.occupation" var="occupation"/><br>
@@ -211,6 +209,7 @@
 				<spring:message code="info.text.address" var="address"/><br>
 				<f:input path="marriageAddress" class="form-control" id="marriageAddress" name="marriageAddress" placeholder="${address}" type="text"></f:input>
 			</div>
+	</div>
 </div>
 <div class="row" >
 		<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
@@ -222,41 +221,46 @@
 			</div>
 		</div>
 </div>
-<div class="row">
-	<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
-		<div id="militaryStatusYes">
+<div id="militaryYes">
+	<div class="row">
+		<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 					<label for="militaryComplete"><spring:message code="info.military.yes"/></label>
-				<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
+		</div>	
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 					<label for="militaryFromYear"><spring:message code="info.military.fromYear"/></label>
 					<spring:message code="info.text.from" var="from"/><br>
 					<f:input path="militaryFromYear" class="form-control" id="militaryFromYear" name="militaryFromYear" placeholder="${from}" type="text"></f:input><br>
-				</div>
-				<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
+		</div>
+		<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 					<label for="militarytoYear"><spring:message code="info.military.toYear"/></label>
 					<spring:message code="info.text.to" var="to"/><br>
 					<f:input path="militarytoYear" class="form-control" id="militarytoYear" name="militarytoYear" placeholder="${to}" type="text"></f:input><br>
-				</div>
-				<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
+		</div>
+		<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 					<label for="branchService"><spring:message code="info.branch.service"/></label>
 					<spring:message code="info.text.branch" var="branch"/><br>
 					<f:input path="branchService" class="form-control" id="branchService" name="branchService" placeholder="${branch}" type="text"></f:input><br>
-				</div>
-				<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
+		</div>
+		<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 					<label for="militaryPlace"><spring:message code="info.military.place"/></label>
 					<spring:message code="info.text.military.place" var="militaryP"/><br>
 					<f:input path="militaryPlace" class="form-control" id="militaryPlace" name="militaryPlace" placeholder="${militaryP}" type="text"></f:input><br>
-				</div>
-				<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 					<label for="serviceNo"><spring:message code="info.service.no"/></label>
 					<spring:message code="info.text.military.service" var="militaryS"/><br>
 					<f:input path="militaryServiceNo" class="form-control" id="militaryServiceNo" name="militaryServiceNo" placeholder="${militaryS}" type="text"></f:input><br>
 				</div>
 			</div>
-		</div>
+		
 </div>
-<div class="row">
-	<div class="col-sm-12 col-md-3 col-lg-3">
-		<div id="militaryReason">
+<div id="militaryNo">
+	<div class="row">
+		<div class="col-sm-12 col-md-3 col-lg-3">
 			<label for="reasons"><spring:message code="info.military.reason"/></label>
 					<spring:message code="info.text.military.not" var="militaryN"/>
 					<f:input path="militaryReason" class="form-control" id="militaryReason" name="militaryReason" placeholder="${militaryN}" type="text"></f:input>
@@ -454,8 +458,8 @@
 <!-- 			</div> -->
 	</div>
 </div>
-<div class="row">
-	<div id="previousEmployersReason">
+<div id="previousNo">
+	<div class="row">
 		<div class="col-sm-12 col-xs-4 col-md-4 col-lg-4" >
 				<label for="Reason"><spring:message code="info.reason.no"/></label>
 				<spring:message code="info.text.ask.not" var="askNot"/><br>

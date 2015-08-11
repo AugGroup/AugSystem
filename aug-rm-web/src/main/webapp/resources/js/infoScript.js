@@ -24,31 +24,29 @@
 					        
 					    });
 	//-------------------------------------------
-				var $previousEmployersReason = $("#previousEmployersReason");
+				var $previousNo = $("#previousNo");
 			
 				if ($("#previousEmployersYes").prop("checked")) {
-	    			$previousEmployersReason.hide();
+					$previousNo.hide();
 	    		}
 	   	 	 	if ($("#previousEmployersNo").prop("checked")) {
-	   	 			$previousEmployersReason.show();
+	   	 	 		$previousNo.show();
  				}
 	   	 	
 		    $("input:radio[name='previousEmployers']").click(function () {
 		    	if(this.value === 'No' && this.checked){
-		    		$previousEmployersReason.show();
+		    		$previousNo.show();
 		        }else{
-		        	$previousEmployersReason.hide();
+		        	$previousNo.hide();
 		        }
 	        });
 			
 // 		    -----------------------------------------------
-			 var $newspaper = $("#newspaper");
-			 var $magazine = $("#magazine");
-			 var $webSite = $("#webSite");
-			 var $friend = $("#friend");
-			 var $other = $("#other");
+			 
+			
 			
 			 $("#noticeNewspaper").click(function () {
+				 var $newspaper = $("#newspaper");
 			            if ($(this).is(":checked")) {
 			            	$newspaper.show();
 			            }else{
@@ -58,7 +56,8 @@
 			        });
 
 				 $("#noticeMagazine").click(function () {
-			            if ($(this).is(":checked")) {
+					 var $magazine = $("#magazine");  
+					 if ($(this).is(":checked")) {
 			            	$magazine.show();
 			            }else{
 			            	$magazine.hide();
@@ -66,7 +65,9 @@
 			        });
 			    
 			    $("#noticeWebSite").click(function () {
-		            if ($(this).is(":checked")) {
+					 var $webSite = $("#webSite");
+
+			    	if ($(this).is(":checked")) {
 		            	$webSite.show();
 		            }else{
 		            	$webSite.hide();
@@ -74,7 +75,9 @@
 		        });
 			    
 			    $("#noticeFriend").click(function () {
-		            if ($(this).is(":checked")) {
+					 var $friend = $("#friend");
+
+			    	if ($(this).is(":checked")) {
 		            	$friend.show();
 		            }else{
 		            	$friend.hide();
@@ -82,7 +85,9 @@
 		        });
 			    
 			    $("#noticeOther").click(function () {
-		            if ($(this).is(":checked")) {
+					 var $other = $("#other");
+
+			    	if ($(this).is(":checked")) {
 		            	$other.show();
 		            }else{
 		            	$other.hide();
@@ -107,41 +112,29 @@
 			        }
 		        });
 // 			    ---------------------------------------------
-			var $militaryStatusYes = $("#militaryStatusYes");
-			if ($("#militaryStatusYes").prop("checked")) {
-					$militaryStatusYes.show();
-		    		}
-		   	 	if ($("#militaryStatusNo").prop("checked")) {
-		   	 		$militaryStatusYes.hide();
-	    			}
-		   	 	
-			    $("input:radio[name='militaryStatus']").click(function(){  
-		        	if(this.value === 'Yes' && this.checked){
-		        		$militaryStatusYes.show();
-	       		}else{
-		        		$militaryStatusYes.hide();
-		        	}
-		    });
-//  				---------------------------------------------
+			    var $militaryNo = $("#militaryNo");		
+				var $militaryYes = $("#militaryYes");
+				
+				if ($("#militaryStatusYes").prop("checked")) {
+					$militaryYes.show();
+					$militaryNo.hide();
+	    		}
+	   	 	 	if ($("#militaryStatusNo").prop("checked")) {
+	   	 	 		$militaryYes.hide();
+	   	 		$militaryNo.show();
+ 				}
+	   	 	
+		    $("input:radio[name='militaryStatus']").click(function () {
+		    	if(this.value === 'Yes' && this.checked){
+		    		$militaryYes.show();
+		    		$militaryNo.hide();
+		        }else{
+		        	$militaryYes.hide();
+					$militaryNo.show();
 
-				var $militaryReason = $("#militaryReason");		
+		        }
+	        });
 
- 				if ($("#militaryStatusYes").prop("checked")) {
- 						$militaryReason.hide();
-
- 		    		}
- 		   	 	if ($("#militaryStatusNo").prop("checked")) {
- 		   	 	   		$militaryReason.show();
-
- 	    			}
-			   
- 		   	 	$("input:radio[name='militaryStatus']").click(function(){  
- 					if(this.value === 'No' && this.checked){
- 		   	 	   		$militaryReason.show();
- 		        	}else{
- 						$militaryReason.hide();
- 		       		}
- 		    });
 // 					-------------------------------------------
 			var $drafted = $("#drafted");
 			

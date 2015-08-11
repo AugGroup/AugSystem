@@ -86,9 +86,9 @@
 	color: #414141;
 }
 .input-group.date { 
-     height: 30px ; 
-     width: 195px;
-     widt:210px;
+/*      height: 30px ;  */
+/*      width: 195px; */
+     width:210px;
      height:30px;
      margin-bottom:10px;
      margin-top:10px;
@@ -119,53 +119,10 @@
         cursor: inherit;
         display: block;
     }
-/*  label{ */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/* /*     margin-right:25px; */ */
-/* /*     margin-left:25px; */ */
-    
-    
-/*     } */
-/*     #applyDate{ */
-/* /*     width:210px; */ */
-/* /*     height:30px; */ */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
- 
-/*     } */
-/*     #dateToBeDrafted{ */
-/* /*     width:210px; */ */
-/* /*     height:30px; */ */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-  
-/*     } */
-/*      #cardExpiryDate{ */
-/* /*     width:210px; */ */
-/* /*     height:30px; */ */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-  
-/*     } */
-/*     #birthDate{ */
-/* /*     width:210px; */ */
-/* /*     height:30px; */ */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-  
-/*     } */
-    
-/*     input[type=text]{ */
-/*     width:210px; */
-/*     height:30px; */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/*     margin-right:25px; */
-/*     margin-left:25px; */
-    
-/*     } */
 
+	#militaryNo{
+	 display:none;
+	}
     #marriageAddress{
     width:677px;
     height:30px;
@@ -213,11 +170,12 @@
     margin-right:25px;
     margin-left:25px;
     }
-    .error{
+ 
+    #previousNo{
     display:none;
     }
     #previousEmployersReason{
-    display:none;
+/*     display:none; */
     width:677px;
     height:30px;
     margin-bottom:10px;
@@ -225,10 +183,8 @@
     margin-right:25px;
     margin-left:25px;
     }
-    #militaryReason{
-    display:none;
-    }
-    #militaryStatusYes{
+   
+    #militaryYes{
     display:none;
     }
     #tel{
@@ -408,46 +364,51 @@
 /*     margin-right:25px; */
     margin-left:25px;
     }
-/*     #noticeNewspaper{ */
+/*     #newspaper{ display:none;} */
+/*     #magazine{ display:none;} */
+/*     #webSite{ display:none;} */
+/*     #friend{ display:none;} */
+/*     #other{ display:none;} */
+    #noticeNewspaper{
 /*     width:210px; */
 /*     height:30px; */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/*     margin-right:25px; */
-/*     margin-left:25px; */
-/*     } */
-/*     #noticeMagazine{ */
+    margin-bottom:10px;
+    margin-top:10px;
+    margin-right:25px;
+    margin-left:25px;
+    }
+    #noticeMagazine{
 /*     width:210px; */
 /*     height:30px; */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/*     margin-right:25px; */
-/*     margin-left:25px; */
-/*     } */
-/*     #noticeWebSite{ */
+    margin-bottom:10px;
+    margin-top:10px;
+    margin-right:25px;
+    margin-left:25px;
+    }
+    #noticeWebSite{
 /*     width:210px; */
 /*     height:30px; */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/*     margin-right:25px; */
-/*     margin-left:25px; */
-/*     } */
-/*     #noticeFriend{ */
+    margin-bottom:10px;
+    margin-top:10px;
+    margin-right:25px;
+    margin-left:25px;
+    }
+    #noticeFriend{
 /*     width:210px; */
 /*     height:30px; */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/*     margin-right:25px; */
-/*     margin-left:25px; */
-/*     } */
-/*     #noticeOther{ */
+    margin-bottom:10px;
+    margin-top:10px;
+    margin-right:25px;
+    margin-left:25px;
+    }
+    #noticeOther{
 /*     width:210px; */
 /*     height:30px; */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/*     margin-right:25px; */
-/*     margin-left:25px; */
-/*     } */
+    margin-bottom:10px;
+    margin-top:10px;
+    margin-right:25px;
+    margin-left:25px;
+    }
     #employedName{
     width:210px;
     height:30px;
@@ -505,11 +466,6 @@
     margin-left:25px;
     }
     
-    
-    
-    
-    
-    
 /*     #militaryStatusRadioButton{ */
 /*     margin-bottom:10px; */
 /*     margin-top:10px; */
@@ -541,9 +497,7 @@
     #married{
     display:none;
     }
-    #militaryStatusYes{
-    display:none;
-    }
+  
     #drafted{
     display:none;
     }
@@ -598,9 +552,7 @@
     width:296px;
     height:92px;
     }
-    #militaryStatusYes{
-     display:none;
-    }
+  
     #firstNameTH{
     width:210px;
     height:30px;
