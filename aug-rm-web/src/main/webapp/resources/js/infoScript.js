@@ -108,46 +108,40 @@
 		        });
 // 			    ---------------------------------------------
 			var $militaryStatusYes = $("#militaryStatusYes");
-			var $militaryReason = $("#militaryReason");
-				if ($("#militaryStatusYes").prop("checked")) {
+			if ($("#militaryStatusYes").prop("checked")) {
 					$militaryStatusYes.show();
-					
-		    		}else{
-		    			$militaryReason.hide();
 		    		}
 		   	 	if ($("#militaryStatusNo").prop("checked")) {
 		   	 		$militaryStatusYes.hide();
-	    			}else{
-			   	 		$militaryReason.show();
-
 	    			}
 		   	 	
 			    $("input:radio[name='militaryStatus']").click(function(){  
 		        	if(this.value === 'Yes' && this.checked){
 		        		$militaryStatusYes.show();
-		        		$militaryReason.hide();
-		       		}else{
+	       		}else{
 		        		$militaryStatusYes.hide();
-		        		$militaryReason.show();
 		        	}
 		    });
 //  				---------------------------------------------
-			
-			
-// 				if ($("#militaryStatusYes").prop("checked")) {
-					
-// 		    		}
-// 		   	 	if ($("#militaryStatusNo").prop("checked")) {
-		   	 	
-// 	    			}
+
+				var $militaryReason = $("#militaryReason");		
+
+ 				if ($("#militaryStatusYes").prop("checked")) {
+ 						$militaryReason.hide();
+
+ 		    		}
+ 		   	 	if ($("#militaryStatusNo").prop("checked")) {
+ 		   	 	   		$militaryReason.show();
+
+ 	    			}
 			   
-// 		   	 	$("input:radio[name='militaryStatus']").click(function(){  
-// 					if(this.value === 'No' && this.checked){
-		        		
-// 		        	}else{
-		        	
-// 		       		}
-// 		    });
+ 		   	 	$("input:radio[name='militaryStatus']").click(function(){  
+ 					if(this.value === 'No' && this.checked){
+ 		   	 	   		$militaryReason.show();
+ 		        	}else{
+ 						$militaryReason.hide();
+ 		       		}
+ 		    });
 // 					-------------------------------------------
 			var $drafted = $("#drafted");
 			
