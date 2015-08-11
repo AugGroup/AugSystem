@@ -43,9 +43,11 @@
 
 <script src='<c:url value ="/static/resources/js/dataTables.bootstrap.js"/>'></script>
 <link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/dataTables.bootstrap.css"/>" />
+
 <script src='<c:url value ="/static/resources/js/moment.js"/>'></script>
 <script src='<c:url value ="/static/resources/js/daterangepicker.js"/>'></script>
 <link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/daterangepicker-bs3.css"/>" />
+
 <link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/css/main.css"/>">
 </head>
 <%
