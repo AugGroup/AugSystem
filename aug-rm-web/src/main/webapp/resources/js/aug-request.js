@@ -243,7 +243,7 @@
             var id = $(button).data("id");
             var requesterName = $inputRequesterName.val();
             var requestDate = $inputRequestDate.val();
-            var approvalName = inputApprovalName.val();
+            var approvalName = $inputApprovalName.val();
             var approveDate = $inputApproveDate.val();
             var numberApplicant = $inputNumberApplicant.val();
             var specificSkill = $inputSpecificSkill.val();
