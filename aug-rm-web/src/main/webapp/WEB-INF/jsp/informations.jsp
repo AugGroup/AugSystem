@@ -28,7 +28,7 @@
 		<f:hidden path="attitudeOffice" />
 		<f:hidden path="trackingStatus" />
 
-		<h3 > INFORMATION</h3>
+		<h3 id="infomation"> INFORMATION</h3>
 		
 			<div class="form-group">
 				<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
@@ -75,7 +75,7 @@
 					<f:input path="nickNameEN" id="nickNameEN" name="nickNameEN" class="form-control" placeholder="${nicknameEn}" type="text"></f:input>
 				</div>
 			</div>	
-	<h3 >GENERAL</h3>
+	<h3 id="general" >GENERAL</h3>
 		
 <!-- <div class="form-group"> -->
 	<div class="row">
@@ -472,7 +472,7 @@
 			<f:hidden path="resume"/>
 		<c:choose>
  			<c:when test="${not empty applicant.resume}">
- 					<a href="${pageContext.request.contextPath}/dowloadResume/${applicant.id}">Click and download ${applicant.resume} here</a>
+ 					<a href="${pageContext.request.contextPath}/dowloadResume/${applicant.id}" id="resume">Click and download ${applicant.resume} here</a>
 	    	</c:when>
 	    </c:choose>
 	    </div>
@@ -482,12 +482,12 @@
 			<f:hidden path="transcript"/>
 		<c:choose>
 			<c:when test="${not empty applicant.transcript}">
- 					<a href="${pageContext.request.contextPath}/dowloadTranscript/${applicant.id}">Click and transcript ${applicant.transcript} here</a>
+ 					<a href="${pageContext.request.contextPath}/dowloadTranscript/${applicant.id}" id="transcript">Click and transcript ${applicant.transcript} here</a>
 	    	</c:when>
 	      </c:choose>
 		</div>
 	</div>
-<h3 >OFFICIAL</h3>
+<h3 id="official">OFFICIAL</h3>
 <!-- 			<div class="form-group"> -->
 			<div class="row">
 				<div class="col-sm-12 col-xs-4 col-md-4 col-lg-4" >

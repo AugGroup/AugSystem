@@ -1,5 +1,5 @@
 
-h3{
+#infomation{
 	background-color: #F7C11F;
 	color:white;
 	font-family: "Regular";
@@ -10,6 +10,28 @@ h3{
     margin-left: 5px;
     margin-right: 5px;
 /*     margin-bottom : 15px; */
+}
+#general{
+	background-color: #F7C11F;
+	color:white;
+	font-family: "Regular";
+    border:1px solid #F7C11F;
+    text-shadow: 2px 2px #EEBA10;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+#official{
+	background-color: #F7C11F;
+	color:white;
+	font-family: "Regular";
+    border:1px solid #F7C11F;
+    text-shadow: 2px 2px #EEBA10;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;	
 }
 #info{
 	background: #E0DFDD;
@@ -97,14 +119,14 @@ h3{
         cursor: inherit;
         display: block;
     }
- label{
-    margin-bottom:10px;
-    margin-top:10px;
-/*     margin-right:25px; */
-/*     margin-left:25px; */
+/*  label{ */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+/* /*     margin-right:25px; */ */
+/* /*     margin-left:25px; */ */
     
     
-    }
+/*     } */
 /*     #applyDate{ */
 /* /*     width:210px; */ */
 /* /*     height:30px; */ */
@@ -134,15 +156,15 @@ h3{
   
 /*     } */
     
-    input[type=text]{
-    width:210px;
-    height:30px;
-    margin-bottom:10px;
-    margin-top:10px;
-    margin-right:25px;
-    margin-left:25px;
+/*     input[type=text]{ */
+/*     width:210px; */
+/*     height:30px; */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+/*     margin-right:25px; */
+/*     margin-left:25px; */
     
-    }
+/*     } */
 
     #marriageAddress{
     width:677px;
@@ -627,9 +649,13 @@ h3{
     margin-right:25px;
     margin-left:25px;
     }
-    
-    
-   a{
+  #resume{
+   margin-bottom:10px;
+   margin-top:10px;
+   margin-right:25px;
+   margin-left:25px;
+  }
+   #transcript{
    margin-bottom:10px;
    margin-top:10px;
    margin-right:25px;
