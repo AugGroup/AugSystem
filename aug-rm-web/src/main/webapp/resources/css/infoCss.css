@@ -7,22 +7,19 @@ h3{
     text-shadow: 2px 2px #EEBA10;
     height: 30px;
     margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 /*     margin-bottom : 15px; */
 }
-.container{
-		font-family: "Regular";
-		position:relative;
-		margin-left: 40px;
-		margin-right: 40px;
-		padding-right: 0px;
-		padding-left: 0px;
-		width: 93%;
-	}
-	#applicantStatusStyle{
+#info{
+	background: #E0DFDD;
+	
+}
+#applicantStatusStyle{
 	width:296px;
 	height:92px;
 	
-	}
+}
 #informationApplicant{ 
  	color:#414141;
 	background: #E0DFDD;
@@ -73,9 +70,7 @@ h3{
      height:30px;
      margin-bottom:10px;
      margin-top:10px;
-     margin-right:25px;
-     margin-left:25px; 
-} 
+   } 
     .btn-file {
         position: relative;
         overflow: hidden;
@@ -87,7 +82,7 @@ h3{
         height: 25px;        
         vertical-align: middle;
     }
-    .btn-file input[type=file] {
+.btn-file input[type=file] {
         position: absolute;
         top: 0;
         right: 0;
@@ -102,14 +97,43 @@ h3{
         cursor: inherit;
         display: block;
     }
-    label{
+ label{
     margin-bottom:10px;
     margin-top:10px;
-    margin-right:25px;
-    margin-left:25px;
+/*     margin-right:25px; */
+/*     margin-left:25px; */
     
     
     }
+/*     #applyDate{ */
+/* /*     width:210px; */ */
+/* /*     height:30px; */ */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+ 
+/*     } */
+/*     #dateToBeDrafted{ */
+/* /*     width:210px; */ */
+/* /*     height:30px; */ */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+  
+/*     } */
+/*      #cardExpiryDate{ */
+/* /*     width:210px; */ */
+/* /*     height:30px; */ */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+  
+/*     } */
+/*     #birthDate{ */
+/* /*     width:210px; */ */
+/* /*     height:30px; */ */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+  
+/*     } */
+    
     input[type=text]{
     width:210px;
     height:30px;
@@ -119,7 +143,7 @@ h3{
     margin-left:25px;
     
     }
-    
+
     #marriageAddress{
     width:677px;
     height:30px;
@@ -128,7 +152,16 @@ h3{
     margin-right:25px;
     margin-left:25px;
     }
+    #email{
+    width:210px;
+    height:30px;
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+/*     margin-right:25px; */
+/*     margin-left:25px; */
     
+    
+    }
    #militaryReason{
     width:677px;
     height:30px;
@@ -175,34 +208,34 @@ h3{
     #militaryReason{
     display:none;
     }
-    #militaryStatusRadioButton{
-    margin-bottom:10px;
-    margin-top:10px;
-    margin-right:25px;
-    margin-left:25px;
-    }
-    #sexStyle{
-    width:296px;
-    height:92px;
+/*     #militaryStatusRadioButton{ */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+/*     margin-right:25px; */
+/*     margin-left:25px; */
+/*     } */
+/*     #sexStyle{ */
+/*     width:296px; */
+/*     height:92px; */
     
-    }
+/*     } */
     
-    #sexRadioButton{
-    margin-bottom:10px;
-    margin-top:10px;
-    margin-right:25px;
-    margin-left:25px;
-    width:210px;
-    height:30px;
-    }
-    #applicantStatusRadioButton{
-    margin-bottom:10px;
-    margin-top:10px;
-    width:210px;
-    height:30px;
-    margin-right:25px;
-    margin-left:25px;
-    }
+/*     #sexRadioButton{ */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+/*     margin-right:25px; */
+/*     margin-left:25px; */
+/*     width:210px; */
+/*     height:30px; */
+/*     } */
+/*     #applicantStatusRadioButton{ */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+/*     width:210px; */
+/*     height:30px; */
+/*     margin-right:25px; */
+/*     margin-left:25px; */
+/*     } */
     #married{
     display:none;
     }
@@ -212,20 +245,20 @@ h3{
     #drafted{
     display:none;
     }
-    #nowEmployedRadioButton{
-    margin-bottom:10px;
-    margin-top:10px;
-    margin-right:25px;
-    margin-left:25px;
-    width:210px;
-    height:30px;
-    }
-    #previousEmployersRadioButton{
-    margin-bottom:10px;
-    margin-top:10px;
-    margin-right:25px;
-    margin-left:25px;
-    }
+/*     #nowEmployedRadioButton{ */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+/*     margin-right:25px; */
+/*     margin-left:25px; */
+/*     width:210px; */
+/*     height:30px; */
+/*     } */
+/*     #previousEmployersRadioButton{ */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+/*     margin-right:25px; */
+/*     margin-left:25px; */
+/*     } */
     #positionFirst{
     margin-bottom:10px;
     margin-top:10px;
