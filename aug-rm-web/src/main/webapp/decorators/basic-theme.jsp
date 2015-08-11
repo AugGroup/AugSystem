@@ -59,29 +59,24 @@
 <body>
 	<div class="headed">
 		<div class="headLogo" id="headId">
-			<img src="${pageContext.request.contextPath}/static/decorators/augmentis.jpg" alt="logo" style="width: 170px; height: 75px;" />
-			<a href="${pageContext.request.contextPath}/applicant" style="color: #ffffff; padding: 5px;"><span class="glyphicon glyphicon-home"></span></a>
-			<a href="${pageContext.request.contextPath}/request" style="color: #ffffff; padding: 5px;"><spring:message code="request.button" /></a>
-			<a href="${pageContext.request.contextPath}/approve" style="color: #ffffff; padding: 5px;"><spring:message code="request.approve" /></a>
+			<img id="logo" src="${pageContext.request.contextPath}/static/decorators/augmentis.jpg" alt="logo"/>
+			<a href="${pageContext.request.contextPath}/applicant"><span class="glyphicon glyphicon-home"></span></a>
+			<a href="${pageContext.request.contextPath}/request"><spring:message code="request.button" /></a>
+			<a href="${pageContext.request.contextPath}/approve"><spring:message code="request.approve" /></a>
 			
 			<div class="user">
-				<a href="<c:url value="/logout"/>" style="color: #707070; padding-left: 25px;">
-				<span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout" /></a>
-				<a href="" style="color: #707070;"><span class="glyphicon glyphicon-user"></span> <%=name %></a>
+				<a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout" /></a>
+				<a href=""><span class="glyphicon glyphicon-user"></span> <%=name %></a>
 				<div class="user2">
-					<a href="${request.getRequestURL}?locale=en"> <img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png"
-						alt="logo" class="img-flag" style="width: 40px; height: 25px;" /></a>
-					<a href="${request.getRequestURL}?locale=th"> <img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg"
-						alt="logo" class="img-flag" style="width: 40px; height: 25px; margin-right: 15px;" /></a>
+					<a href="${request.getRequestURL}?locale=en"> <img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" /></a>
+					<a href="${request.getRequestURL}?locale=th"> <img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg"	alt="logo" class="img-flag" /></a>
 					<div class="btn-group">
 						<button type="button" class="btn btn-defult dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-							id="btn_report" style="color: #ffffff;"> <spring:message code="report.text" /><span class="caret"></span>
+							id="btn_report"> <spring:message code="report.text" /><span class="caret"></span>
 						</button>
-						<ul class="dropdown-menu">
-							<li><a href="${pageContext.request.contextPath}/report" style="font-size: 16px; color: #292929;">
-								<spring:message code="report.text" /></a></li>
-							<li><a href="${pageContext.request.contextPath}/monthlyReport">
-								<spring:message code="report.text.monthly" /></a></li>
+						<ul class="dropdown-menu" id="dropdown_report">
+							<li><a href="${pageContext.request.contextPath}/report"><spring:message code="report.text" /></a></li>
+							<li><a href="${pageContext.request.contextPath}/monthlyReport"><spring:message code="report.text.monthly" /></a></li>
 						</ul>
 					</div>
 				</div>

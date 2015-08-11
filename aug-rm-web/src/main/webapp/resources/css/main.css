@@ -13,6 +13,31 @@
 #headId {
 	margin-left: 40px;
 }
+#headId > a {
+	color: #ffffff; 
+	padding: 5px;
+}
+.user > a{
+	color: #707070; 
+	padding-left: 10px;
+}
+.user2 > a >img{
+	width: 40px; 
+	height: 25px;
+	margin-right: 2px;
+}
+.user2 > .btn-group{
+	float: right;
+	color: #ffffff;
+}
+#dropdown_report > li >a {
+	font-size: 14px; 
+	color: #292929;
+}
+#logo{
+	width: 170px; 
+	height: 75px;
+}
 
 #btn_report {
 	width: 75px;
