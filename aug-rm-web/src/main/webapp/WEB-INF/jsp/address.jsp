@@ -346,12 +346,12 @@ h3{
 </script>
 <jsp:include page="applicationMenu.jsp" />
 <div class="container" id="titleHead">
-		<div class="row">
-			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
+<!-- 		<div class="row"> -->
+<!-- 			<div class="col-sm-12 col-xs-12 col-md-12 col-lg-12"> -->
 				<h3 id="textTitle"><spring:message code="address.name"/></h3>
 				
-			</div>
-		</div>
+<!-- 			</div> -->
+<!-- 		</div> -->
 
 
 	<div class="modal fade" id="addressModal" role="dialog">
