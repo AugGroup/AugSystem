@@ -287,7 +287,7 @@
 				 <c:choose>
  					 <c:when test="${empty applicant.noticeNewspaper}">
 						 <label><f:checkbox path="noticeNewspaper" id="noticeNewspaper" name="noticeNewspaper" value="Newspaper"></f:checkbox><br><spring:message code="info.newspaper"/></label>
-						<div id="newspaper">
+						<div id="newspaper" style="display:none">
 							<f:input path="noticeNewspaper" class="form-control" id="noticeNewspaper" name="noticeNewspaper" placeholder="Enter newspaper" type="text"></f:input>
 						 </div>
  					 </c:when>
@@ -306,7 +306,7 @@
 				 <c:choose>
 					 <c:when test="${empty applicant.noticeMagazine}">
 				 		 <label><f:checkbox path="noticeMagazine" id="noticeMagazine" name="noticeMagazine" value="Magazine"></f:checkbox><br><spring:message code="info.magazine"/></label>
-						<div id="magazine">
+						<div id="magazine" style="display:none">
 							 <f:input path="noticeMagazine" class="form-control" id="noticeMagazine" name="noticeMagazine" placeholder="Enter magazine" type="text"></f:input>
 						</div>
 					</c:when>
@@ -324,7 +324,7 @@
 				 <c:choose>
 					 <c:when test="${empty applicant.noticeWebSite}">
 			  		<label><f:checkbox path="noticeWebSite" id="noticeWebSite" name="noticeWebSite" value="Website"></f:checkbox><br><spring:message code="info.website"/></label>
-			  		<div id="webSite">
+			  		<div id="webSite" style="display:none">
 			  			<f:input path="noticeWebSite" class="form-control" id="noticeWebSite" name="noticeWebSite" placeholder="Enter website" type="text"></f:input>
 					</div>
 				</c:when>
@@ -342,7 +342,7 @@
 				<c:choose>
 					 <c:when test="${empty applicant.noticeFriend}">
 			  		<label><f:checkbox path="noticeFriend" id="noticeFriend" name="noticeFriend" value="Friend"></f:checkbox><br><spring:message code="info.friend"/></label>
-			  		<div id="friend">
+			  		<div id="friend" style="display:none">
 			  			<f:input path="noticeFriend" class="form-control" id="noticeFriend" name="noticeFriend" placeholder="Enter friend" type="text"></f:input>
 					</div>
 				</c:when>
@@ -363,7 +363,7 @@
 				<c:choose>
 					 <c:when test="${empty applicant.noticeOther}">
 				  		<label><f:checkbox path="noticeOther" id="noticeOther" name="noticeOther" value="Other"></f:checkbox><br><spring:message code="info.other"/></label>
-				  		<div id="other">
+				  		<div id="other" style="display:none">
 				  			<f:input path="noticeOther" class="form-control" id="noticeOther" name="noticeOther" placeholder="Enter other" type="text"></f:input>
 						</div>
 					</c:when>
