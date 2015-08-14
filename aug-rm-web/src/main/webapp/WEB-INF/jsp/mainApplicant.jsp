@@ -4,13 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
-<style type="text/css">
-
-#search_row {
-	margin: 30px;
-}
-
-</style>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -205,9 +198,8 @@
 		<div class="col-md-8"></div>
 		<div class="col-md-4">
 			<div class="input-group">
-				<input type="text" class="form-control" id="inputSearch"
-					placeholder="<spring:message code="main.text.field"/>" /> <span
-					class="input-group-btn">
+				<input type="text" class="form-control" id="inputSearch" placeholder="<spring:message code="main.text.field"/>" /> 
+				<span class="input-group-btn">
 					<button type="button" class="btn btn-primary" id="btn_search">
 						<span class="glyphicon glyphicon-search"></span>
 						<spring:message code="main.button.search" />

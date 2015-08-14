@@ -107,7 +107,7 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-<!-- 	SimpleMappingExceptionResolver use anotation java config -->
+<!-- SimpleMappingExceptionResolver use anotation java config -->
 	<bean
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">

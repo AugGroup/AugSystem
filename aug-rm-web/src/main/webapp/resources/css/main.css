@@ -203,6 +203,13 @@ table.dataTable tr.even {
 	margin: 5px;
 	padding: 5px;
 }
+#inputSearch.form-control{
+	margin-top: 27px;
+}
+
+#search_row {
+	margin: 30px;
+}
 
 #radio_inputgroup {
 	margin: 0px 15px 0px 5px;
