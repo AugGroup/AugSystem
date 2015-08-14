@@ -73,6 +73,7 @@ var delete_tx = '<spring:message code="main.delete"/>';
 								<input type="text" class="form-control" name="inputRequestDate" id="inputRequestDate">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 							</div>
+							<br><label for="inputRequestDate" class="error"></label>
 						</div>
 						<div class="form-group">
 							<label for="inputPosition"><spring:message code="info.position" /></label> 
@@ -92,6 +93,8 @@ var delete_tx = '<spring:message code="main.delete"/>';
 								<input type="text" class="form-control" name="inputApproveDate" id="inputApproveDate">
 								<span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 							</div>
+							<br><label for="inputApproveDate" class="error"></label>
+							
 						</div>
 						<div class="form-group">
 							<label for="inputNumberApplicant"><spring:message code="request.number" /></label> 

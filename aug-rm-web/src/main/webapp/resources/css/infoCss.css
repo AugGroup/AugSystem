@@ -1,4 +1,7 @@
-
+.error{
+	color: red;
+	
+}
 #infomation{
 	background-color: #F7C11F;
 	color:white;
@@ -92,6 +95,8 @@
      height:30px;
      margin-bottom:10px;
      margin-top:10px;
+     margin-right:25px;
+	 margin-left:25px; 
    } 
     .btn-file {
         position: relative;
@@ -195,14 +200,14 @@
     margin-right:25px;
     margin-left:25px;
     }
-    #birthDate{
-    width:210px;
-    height:30px;
-    margin-bottom:10px;
-    margin-top:10px;
-/*     margin-right:25px; */
-    margin-left:25px;
-    }
+/*     #birthDate{ */
+/*     width:210px; */
+/*     height:30px; */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+/* /*     margin-right:25px; */ 
+/*     margin-left:25px; */
+/*     } */
     #placeBirth{
     width:210px;
     height:30px;
@@ -252,14 +257,14 @@
     margin-right:25px;
     margin-left:25px;
     }
-    #cardExpiryDate{
-    width:210px;
-    height:30px;
-    margin-bottom:10px;
-    margin-top:10px;
-/*     margin-right:25px; */
-    margin-left:25px;
-    }
+/*     #cardExpiryDate{ */
+/*     width:210px; */
+/*     height:30px; */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+/* /*     margin-right:25px; */
+/*     margin-left:25px; */
+/*     } */
    #height{
     width:210px;
     height:30px;
@@ -356,14 +361,14 @@
     margin-right:25px;
     margin-left:25px;
     }
-    #dateToBeDrafted{
-    width:210px;
-    height:30px;
-    margin-bottom:10px;
-    margin-top:10px;
-/*     margin-right:25px; */
-    margin-left:25px;
-    }
+/*     #dateToBeDrafted{ */
+/*     width:210px; */
+/*     height:30px; */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+/* /*     margin-right:25px; */
+/*     margin-left:25px; */
+/*     } */
 /*     #newspaper{ display:none;} */
 /*     #magazine{ display:none;} */
 /*     #webSite{ display:none;} */
@@ -449,14 +454,14 @@
     margin-right:25px;
     margin-left:25px;
     }
-    #applyDate{
-    width:210px;
-    height:30px;
-    margin-bottom:10px;
-    margin-top:10px;
-/*     margin-right:25px; */
-    margin-left:25px;
-    }
+/*     #applyDate{ */
+/*     width:210px; */
+/*     height:30px; */
+/*     margin-bottom:10px; */
+/*     margin-top:10px; */
+/* /*     margin-right:25px; */ 
+/*     margin-left:25px; */
+/*     } */
     #expectedSalary{
     width:210px;
     height:30px;

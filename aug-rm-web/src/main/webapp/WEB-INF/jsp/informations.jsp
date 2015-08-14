@@ -94,6 +94,7 @@
 				<div class="input-group date">
 					<f:input path="birthDate" id="birthDate" name="birthDate" class="form-control"></f:input><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 				</div>
+				<br><label for="birthDate" class="error"></label>
 			</div>
 			<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 				<label for="pBirth"><spring:message code="info.place.birth"/></label>
@@ -138,6 +139,8 @@
 				<div class="input-group date">
 					<f:input path="cardExpiryDate" id="cardExpiryDate" name="cardExpiryDate" class="form-control"></f:input><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 				</div>
+				<br><label for="cardExpiryDate" class="error"></label>
+				
 			</div>
 			<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 				<label for="height"><spring:message code="info.height"/></label>
@@ -273,6 +276,7 @@
 					<div class="input-group date">
 						<f:input path="dateToBeDrafted" id="dateToBeDrafted" name="dateToBeDrafted" class="form-control"></f:input><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 					</div>
+					<br><label for="dateToBeDrafted" class="error"></label>
 				</div>
 		</div>
 	<div class="row">
@@ -499,6 +503,7 @@
 					<div class="input-group date">
 						<f:input path="applyDate" id="applyDate" name="applyDate" class="form-control"></f:input><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>							
 					</div>
+						<br><label for="applyDate" class="error"></label>
 				</div>
 				<div class="col-sm-12 col-xs-4 col-md-4 col-lg-4" >
 						<label for="salary"><spring:message code="info.salary"/></label>

@@ -171,7 +171,13 @@
 			            $married.show();
 			        }
 				});
-// 			 ----------------------------------
+		   		
+//		   	----------------------------------------
+
+		   		
+		   		
+		   		
+//		   	----------------------------------		   		
 			 $('#informationApplicant').validate({
 				
 				rules : {firstNameTH : {required : true},
@@ -275,7 +281,8 @@
 					previousEmployers : {required :  previousEmployers},
  					previousEmployersReason : {required :  previousEmployersReason}
 				}
-//				/* ,
+				
+//				 ,
 //		        highlight: function(element) {
 //		            $(element).closest('.form-group').addClass('has-error');
 //		        },
@@ -290,9 +297,9 @@
 //		            } else {
 //		                error.insertAfter(element);
 //		            }
-//		        } */
+//		        }
 			});
-//
+
 });
 
 //</script>
