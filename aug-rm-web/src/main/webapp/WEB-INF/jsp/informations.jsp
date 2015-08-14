@@ -91,7 +91,7 @@
 			</div>
 			<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 				<label for="birthday"><span class="glyphicon glyphicon-calendar"></span> <spring:message code="info.birthday"/></label><br>
-				<div class="input-group date">
+				<div class="input-group date" id="birthDay">
 					<f:input path="birthDate" id="birthDate" name="birthDate" class="form-control"></f:input><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 				</div>
 				<br><label for="birthDate" class="error"></label>
@@ -136,7 +136,7 @@
 			</div>
 			<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 				<label for="cardExpiryDate"><span class="glyphicon glyphicon-calendar"></span><spring:message code="info.expiration.date"/></label><br>
-				<div class="input-group date">
+				<div class="input-group date" id="cardExpiryDay">
 					<f:input path="cardExpiryDate" id="cardExpiryDate" name="cardExpiryDate" class="form-control"></f:input><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 				</div>
 				<br><label for="cardExpiryDate" class="error"></label>
@@ -273,7 +273,7 @@
 <div class="row">
 				<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3" id="drafted">
 					<label for="dateToBeDrafted"><span class="glyphicon glyphicon-calendar"></span><spring:message code="info.military.date"/></label><br>
-					<div class="input-group date">
+					<div class="input-group date" id="dateToBeDraft">
 						<f:input path="dateToBeDrafted" id="dateToBeDrafted" name="dateToBeDrafted" class="form-control"></f:input><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>
 					</div>
 					<br><label for="dateToBeDrafted" class="error"></label>
@@ -500,7 +500,7 @@
 			<div class="row">
 				<div class="col-sm-12 col-xs-4 col-md-4 col-lg-4" >
 					<label for="applyDate"><span class="glyphicon glyphicon-calendar"></span><spring:message code="info.apply.date"/></label><br>
-					<div class="input-group date">
+					<div class="input-group date" id="applyDay">
 						<f:input path="applyDate" id="applyDate" name="applyDate" class="form-control"></f:input><span class="input-group-addon"><i class="glyphicon glyphicon-th"></i></span>							
 					</div>
 						<br><label for="applyDate" class="error"></label>
