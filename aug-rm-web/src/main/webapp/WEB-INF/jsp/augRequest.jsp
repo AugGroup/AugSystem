@@ -6,7 +6,7 @@
 <title><spring:message code="request.application" /></title>
 
 <%-- <jsp:include page="messageValidate.jsp"></jsp:include> --%>
-<script src="<c:url value ="/static/resources/js/aug-request.js"/>"></script> 
+<script src="<c:url value ="/static/resources/pageJS/aug-request.js"/>"></script> 
 <script type="text/javascript">
 var reqName = "<spring:message code="valid.req.name"/>"; 
 var reqDate = "<spring:message code="valid.req.date"/>"; 

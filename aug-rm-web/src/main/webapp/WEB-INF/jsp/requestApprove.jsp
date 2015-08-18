@@ -5,7 +5,7 @@
 
 <title>Request for Application</title>
 
-<script src="<c:url value ="/static/resources/js/aug-approve.js"/>"></script>
+<script src="<c:url value ="/static/resources/pageJS/aug-approve.js"/>"></script>
 
 <script type="text/javascript">
 	var approve_tx = '<spring:message code="edit.approve"/>';

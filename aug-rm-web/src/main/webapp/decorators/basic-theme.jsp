@@ -48,7 +48,7 @@
 <script src='<c:url value ="/static/resources/js/daterangepicker.js"/>'></script>
 <link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/daterangepicker-bs3.css"/>" />
 
-<link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/css/main.css"/>">
+<link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/pageCss/main.css"/>">
 <link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/css/infoCss.css"/>">
 </head>
 <%

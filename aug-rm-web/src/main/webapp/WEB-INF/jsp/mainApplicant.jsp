@@ -5,7 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
 
 
-<script src="<c:url value ="/static/resources/js/main-applicant.js"/>"></script> 
+<script src="<c:url value ="/static/resources/pageJS/main-applicant.js"/>"></script> 
 <script type="text/javascript">
 var editScore_text = "<spring:message code="edit.button.edit.score"/>"; 
 var editInfo_text = "<spring:message code="main.edit.info"/>"; 
