@@ -250,6 +250,7 @@
             var yearExperience = $inputYearExperience.val();
             var positionRequest = $inputPosition.val();
             var status = $inputStatus.val();
+            
             var index = dtRequest.row(button.closest("tr")).index();
             
             var request = {
@@ -284,7 +285,9 @@
                     dt.status = data.status;
                     dt.positionStr = data.positionStr;
                     dtRequest.row(index).data(dt).draw();
+                   
                     $("#addRequestModal").modal('hide');
+                   
                     new PNotify({
 				    	title: 'Edit request is successful.',
 				    	text: '',

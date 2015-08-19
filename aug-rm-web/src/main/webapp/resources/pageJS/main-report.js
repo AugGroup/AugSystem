@@ -1,7 +1,7 @@
 $(document).ready(function () {
 	var dtReport;
 	//GPA pattern
-	$("#gpa").inputmask('Regex', { regex: "[0-3]\\.[0-9][0-9]?$ |4\\.00$" });
+	/*$("#gpa").inputmask('Regex', { regex: "[0-3]\\.[0-9][0-9]?$ |4\\.00$" });*/
 	
 	//Search By Criteria and Show function 
 	$('#btn_search').off('click').on('click', function(){
@@ -9,7 +9,7 @@ $(document).ready(function () {
 			dtReport.ajax.reload();
 		}else{
 			dtReport = $('#reportTable').DataTable({
-				"columnDefs": [
+				columnDefs : [
 				               { "width": "14%", "targets": 2 },
 				               { "width": "13%", "targets": 3 },
 				               { "width": "13%", "targets": 4 },

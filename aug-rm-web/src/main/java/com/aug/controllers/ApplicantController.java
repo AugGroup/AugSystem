@@ -198,7 +198,9 @@ public class ApplicantController implements Serializable {
 		String major = searchReportDTO.getMajor();
 		String schoolName = searchReportDTO.getSchoolName();
 		Double gpa = searchReportDTO.getGpa();
+		
 		String reportType = searchReportDTO.getReportType();
+		
 		if (position == -1 && degree.equals("") && major.isEmpty()
 				&& schoolName.isEmpty() && gpa == null) {
 			reportApplicantList = applicantService.reportApplicant();

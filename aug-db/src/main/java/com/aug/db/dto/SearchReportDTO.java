@@ -1,6 +1,5 @@
 package com.aug.db.dto;
 
-import java.util.Date;
 
 
 public class SearchReportDTO {

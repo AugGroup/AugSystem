@@ -78,7 +78,7 @@
 	<field name="faculty" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<field name="gpa" class="java.lang.Double">
+	<field name="gpa" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
 	<field name="major" class="java.lang.String">
