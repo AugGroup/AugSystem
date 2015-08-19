@@ -48,6 +48,7 @@
 					<label for="firstNameTh"><spring:message code="info.firstname.th"/></label>
 					<spring:message code="info.text.first.th" var="firstname"/><br>
 					<f:input path="firstNameTH" id="firstNameTH" name="firstNameTH" placeholder="${firstname}" class="form-control" type="text"></f:input>
+				
 				</div>
 				<div class="col-sm-12 col-xs-3 col-md-3 col-lg-3">
 					<label for="lastnameTh"><spring:message code="info.lastname.th"/></label>
