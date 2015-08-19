@@ -3,74 +3,20 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<style>
 
-/* .form-control input-sm{
-	width: 70px;
-	height: 22px;
-	background: #ffffff;
-}
+<script src="<c:url value ="/static/resources/js/aug-address.js"/>"></script> 
 
-#address{
-	background: #E0DFDD;
-	
-}
-
-#addressTable {
-	color: #414141;
-	background-color: #ababab;
-	margin-right: 5px;
-}
-
-#table {
-	padding: 15px 5px 15px 5px;
-	background: #E0DFDD;;
-}
-
-#addressAdd{
-	margin-top: 15px;
-	margin-right: 5px;
-	margin-bottom:15px;
-	width: 150px;
-	height: 30px;
-	font-family: "Regular";
-	font-size: 16px; 
-}
-
-#buttonBack{
-	margin: 15px 15px 15px 15px;
-	width: 90px;
-	height: 30px;
-	background-color: f4f4f4;
-	font-family: "Regular";
-	font-size: 14px;
-	color: #414141;
-}
-
-#buttonNext{
-	margin-right:15px;
-	width: 90px;
-	height: 30px;
-	background-color: f4f4f4;
-	font-family: "Regular";
-	font-size: 14px;
-	color: #414141;
-}
-
-h3{
-	height: 30px;
-	font-family: "SemiBold";
-    font-size: 18px;
-	color: #ffffff;
-    border: 1px #F7C11F; 
-    background: #ffc000;
-	padding-left: 5px;
-	margin-left: 5px;
-	margin-right: 5px;
-} */
-</style>
-<script>
-	$(document).ready(function() {
+<script type="text/javascript">
+ 
+ var valAddress = "<spring:message code="valid.addr.addr"/>";
+ var valHouseNo = "<spring:message code="valid.addr.house"/>";
+ var valRoad = "<spring:message code="valid.addr.road"/>";
+ var valDistrict = "<spring:message code="valid.addr.district"/>"
+ var valSubDistrict = "<spring:message code="valid.addr.sub.district"/>"
+ var valProvince = "<spring:message code="valid.addr.province"/>"
+ var id = ${id};
+ 
+/* $(document).ready(function() {
 		$('#addressForm').validate({
 			rules : {
 				inputAddress : {
@@ -117,7 +63,7 @@ h3{
 			}
 		});
 
-		$('.input-group.date').datepicker({
+ 		$('.input-group.date').datepicker({
 			startView : 2,
 			todayBtn : "linked",
 			format : "dd/mm/yyyy"
@@ -341,8 +287,7 @@ h3{
 
 			}
        });
-});
-	
+}); */
 </script>
 <jsp:include page="applicationMenu.jsp" />
 <div class="container" id="titleHead">

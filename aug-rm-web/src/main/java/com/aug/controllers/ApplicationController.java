@@ -446,7 +446,7 @@ public class ApplicationController {
 	
 	//Get Data For Show In DataTable
 	
-	@RequestMapping(value = "/findByIdAddress/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "/findByIdAddress/{id}/", method = { RequestMethod.POST })
 	public @ResponseBody Object findByIdAddress(@PathVariable Integer id) {
 		final List<AddressDTO> list= addressService.findAddressById(id);
 		for(AddressDTO address : list){
@@ -461,18 +461,18 @@ public class ApplicationController {
 	}
 	
 	@RequestMapping(value = "/findByIdFamily/{id}", method = { RequestMethod.POST })
-	public @ResponseBody Object findByIdFamily(@PathVariable Integer id) {
-		final List<FamilyDTO> list= familyService.findFamilyById(id);
-		for(FamilyDTO fa : list){
-			System.out.println(fa.getName());
-			System.out.println(fa.getRelation());
-		}
+	public @ResponseBody List<FamilyDTO> findByIdFamily(@PathVariable Integer id) {
+		return familyService.findFamilyById(id);
+//		for(FamilyDTO fa : list){
+//			System.out.println(fa.getName());
+//			System.out.println(fa.getRelation());
+//		}
 		 
-		return new Object() {
-			public List<FamilyDTO> getData() {
-				return list;
-			}
-		};
+//		return new Object() {
+//			public List<FamilyDTO> getData() {
+//				return list;
+//			}
+//		};
 	}
 	
 	@RequestMapping(value = "/findByIdEducation/{id}", method = { RequestMethod.POST })
@@ -508,6 +508,7 @@ public class ApplicationController {
 			public List<SkillDTO> getData() {
 				return list;
 			}
+			
 		};
 	}
 	

@@ -12,7 +12,7 @@
     margin-top: 10px;
     margin-left: 5px;
     margin-right: 5px;
-/*     margin-bottom : 15px; */
+    margin-bottom : 15px;
 }
 #general{
 	background-color: #F7C11F;
@@ -54,7 +54,7 @@
 	
 } 
 
-/*  	 input[type="file"] {  
+ 	 input[type="file"] {  
       color: white;  
       border: 1px #F7C11F;  
       border-radius: 5px;  
@@ -65,7 +65,7 @@
       margin-right:25px;
       margin-left:25px;
 
-} */
+}
 
 #buttonSave{
 	margin-top: 15px;
@@ -201,6 +201,7 @@
     #previousNo{
     display:none;
     }
+
     #previousEmployersReason{
 /*     display:none; */
     width:677px;
@@ -222,14 +223,7 @@
     margin-right:25px;
     margin-left:25px;
     }
-/*     #birthDate{ */
-/*     width:210px; */
-/*     height:30px; */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/* /*     margin-right:25px; */ 
-/*     margin-left:25px; */
-/*     } */
+
     #placeBirth{
     width:210px;
     height:30px;
@@ -279,14 +273,7 @@
     margin-right:25px;
     margin-left:25px;
     }
-/*     #cardExpiryDate{ */
-/*     width:210px; */
-/*     height:30px; */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/* /*     margin-right:25px; */
-/*     margin-left:25px; */
-/*     } */
+
    #height{
     width:210px;
     height:30px;
@@ -383,54 +370,31 @@
     margin-right:25px;
     margin-left:25px;
     }
-/*     #dateToBeDrafted{ */
-/*     width:210px; */
-/*     height:30px; */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/* /*     margin-right:25px; */
-/*     margin-left:25px; */
-/*     } */
-/*     #newspaper{ display:none;} */
-/*     #magazine{ display:none;} */
-/*     #webSite{ display:none;} */
-/*     #friend{ display:none;} */
-/*     #other{ display:none;} */
     #noticeNewspaper{
-/*     width:210px; */
-/*     height:30px; */
     margin-bottom:10px;
     margin-top:10px;
     margin-right:25px;
     margin-left:25px;
     }
     #noticeMagazine{
-/*     width:210px; */
-/*     height:30px; */
     margin-bottom:10px;
     margin-top:10px;
     margin-right:25px;
     margin-left:25px;
     }
     #noticeWebSite{
-/*     width:210px; */
-/*     height:30px; */
     margin-bottom:10px;
     margin-top:10px;
     margin-right:25px;
     margin-left:25px;
     }
     #noticeFriend{
-/*     width:210px; */
-/*     height:30px; */
     margin-bottom:10px;
     margin-top:10px;
     margin-right:25px;
     margin-left:25px;
     }
     #noticeOther{
-/*     width:210px; */
-/*     height:30px; */
     margin-bottom:10px;
     margin-top:10px;
     margin-right:25px;
@@ -476,14 +440,7 @@
     margin-right:25px;
     margin-left:25px;
     }
-/*     #applyDate{ */
-/*     width:210px; */
-/*     height:30px; */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/* /*     margin-right:25px; */ 
-/*     margin-left:25px; */
-/*     } */
+    
     #expectedSalary{
     width:210px;
     height:30px;
@@ -493,34 +450,22 @@
     margin-left:25px;
     }
     
-/*     #militaryStatusRadioButton{ */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/*     margin-right:25px; */
-/*     margin-left:25px; */
-/*     } */
-/*     #sexStyle{ */
-/*     width:296px; */
-/*     height:92px; */
-    
-/*     } */
-    
-/*     #sexRadioButton{ */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/*     margin-right:25px; */
-/*     margin-left:25px; */
-/*     width:210px; */
-/*     height:30px; */
-/*     } */
-/*     #applicantStatusRadioButton{ */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/*     width:210px; */
-/*     height:30px; */
-/*     margin-right:25px; */
-/*     margin-left:25px; */
-/*     } */
+    #sexRadioButton{
+    margin-bottom:10px;
+    margin-top:10px;
+    margin-right:25px;
+    margin-left:25px;
+    width:210px;
+    height:30px;
+    }
+    #applicantStatusRadioButton{
+    margin-bottom:10px;
+    margin-top:10px;
+    width:210px;
+    height:30px;
+    margin-right:25px;
+    margin-left:25px;
+    }
     #married{
     display:none;
     }
@@ -528,20 +473,20 @@
     #drafted{
     display:none;
     }
-/*     #nowEmployedRadioButton{ */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/*     margin-right:25px; */
-/*     margin-left:25px; */
-/*     width:210px; */
-/*     height:30px; */
-/*     } */
-/*     #previousEmployersRadioButton{ */
-/*     margin-bottom:10px; */
-/*     margin-top:10px; */
-/*     margin-right:25px; */
-/*     margin-left:25px; */
-/*     } */
+    #nowEmployedRadioButton{
+    margin-bottom:10px;
+    margin-top:10px;
+    margin-right:25px;
+    margin-left:25px;
+    width:210px;
+    height:30px;
+    }
+    #previousEmployersRadioButton{
+    margin-bottom:10px;
+    margin-top:10px;
+    margin-right:25px;
+    margin-left:25px;
+    }
     #positionFirst{
     margin-bottom:10px;
     margin-top:10px;

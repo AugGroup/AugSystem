@@ -3,68 +3,6 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<style>
-/* #family {
-	background: #E0DFDD;
-}
-
-#familyTable {
-	color: #414141;
-	background-color: #ababab;
-	margin-right: 5px;
-}
-
-#familyAdd {
-	margin-top: 15px;
-	margin-right: 5px;
-	margin-bottom:15px;
-	width: 150px;
-	height: 30px;
-	font-family: "Regular";
-	font-size: 16px;
-	}
-
-#table {
-	padding: 15px 5px 15px 5px;
-	background: #E0DFDD;;
-}
-
-#text {
-	padding-left: 5px;
-}
-
-#buttonBack{
-	margin: 15px 15px 15px 15px;
-	width: 90px;
-	height: 30px;
-	background-color: f4f4f4;
-	font-family: "Regular";
-	font-size: 14px;
-	color: #414141;
-}
-
-#buttonNext{
-	margin-right:15px;
-	width: 90px;
-	height: 30px;
-	background-color: f4f4f4;
-	font-family: "Regular";
-	font-size: 14px;
-	color: #414141;
-}
-
-h3{
-	height: 30px;
-	font-family: "SemiBold";
-    font-size: 18px;
-	color: #ffffff;
-    border: 1px #F7C11F; 
-    background: #ffc000;
-	padding-left: 5px;
-	margin-left: 5px;
-	margin-right: 5px;
-} */
-</style>
 <script>
 	$(document).ready(function() {
 		
@@ -124,7 +62,8 @@ h3{
 				sort:false,
 				ajax : {
 					url : '${pageContext.request.contextPath}/findByIdFamily/'+id,
-					type : 'POST'
+					type : 'POST',
+					dataSrc : ""
 				},
 				columns : [ {data : "name"},
 							{data : "relation"},
