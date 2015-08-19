@@ -6,7 +6,7 @@
 
 <script src="<c:url value ="/static/resources/js/aug-address.js"/>"></script> 
 
-<script type="text/javascript">
+<script>
  
  var valAddress = "<spring:message code="valid.addr.addr"/>";
  var valHouseNo = "<spring:message code="valid.addr.house"/>";
