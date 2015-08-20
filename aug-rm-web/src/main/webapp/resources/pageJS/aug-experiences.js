@@ -1,5 +1,4 @@
 $(document).ready(function() {
-		
 		var dtApplicant;
 		
 	    $('input[name="applyDateStr"]').daterangepicker({
