@@ -1,15 +1,12 @@
 package com.aug.controllers;
 
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-import javassist.NotFoundException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -169,7 +166,7 @@ public class ApplicationController {
 		return "informations";
 	}
 
-	@RequestMapping(value = "/address/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "address/address/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Address saveAddress(@RequestBody Address address,@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
 		addressService.create(address);
@@ -178,7 +175,7 @@ public class ApplicationController {
         return addr;
 	}
 	
-	@RequestMapping(value = "/family/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "family/family/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Family saveFamily(@RequestBody Family family,@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
 		familyService.create(family);
@@ -196,7 +193,7 @@ public class ApplicationController {
 
 	}
 	
-	@RequestMapping(value = "/certificates/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "certificates/certificates/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Certificate certificate(@RequestBody Certificate certificate,@PathVariable Integer id,Model model) {
 		model.addAttribute("id",id);
 		certificatedService.create(certificate);
@@ -404,49 +401,49 @@ public class ApplicationController {
 		return applicationDTO;
 	}
 	
-	@RequestMapping(value = "/findAddressId/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "address/findAddressId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody AddressDTO findAddress(@PathVariable Integer id) {
 		return addressService.findAddress(id);
 	}
 	
-	@RequestMapping(value = "/findFamilyId/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "family/findFamilyId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody FamilyDTO findFamily(@PathVariable Integer id) {
 		return familyService.findFamily(id);
 	}
 	
-	@RequestMapping(value = "/findEducationId/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "educations/findEducationId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody EducationDTO findEducation(@PathVariable Integer id) {
 		return educationService.findEducation(id);
 	}
 	
-	@RequestMapping(value = "/findCertificateId/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "certificates/findCertificateId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody CertificatedDTO findCertificated(@PathVariable Integer id) {
 		return certificatedService.findCertificate(id);
 	}
 	
-	@RequestMapping(value = "/findSkillId/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "skills/findSkillId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody SkillDTO findSkill(@PathVariable Integer id) {
 		return skillService.findSkill(id);
 	}
 	
-	@RequestMapping(value = "/findLanguagesId/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "languages/findLanguagesId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody LanguagesDTO findLanguages(@PathVariable Integer id) {
 		return languagesService.findLanguages(id);
 	}
 	
-	@RequestMapping(value = "/findReferenceId/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "references/findReferenceId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody ReferenceDTO findReference(@PathVariable Integer id) {
 		return referenceService.findReference(id);
 	}
 	
-	@RequestMapping(value = "/findExperienceId/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "experiences/findExperienceId/{id}", method = { RequestMethod.POST })
 	public @ResponseBody ExperienceDTO findExperience(@PathVariable Integer id) {
 		return experienceService.findExperience(id);
 	}
 	
 	//Get Data For Show In DataTable
 	
-	@RequestMapping(value = "/findByIdAddress/{id}/", method = { RequestMethod.POST })
+	@RequestMapping(value = "address/findByIdAddress/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Object findByIdAddress(@PathVariable Integer id) {
 		final List<AddressDTO> list= addressService.findAddressById(id);
 		for(AddressDTO address : list){
@@ -460,7 +457,7 @@ public class ApplicationController {
 		};
 	}
 	
-	@RequestMapping(value = "/findByIdFamily/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "family/findByIdFamily/{id}", method = { RequestMethod.POST })
 	public @ResponseBody List<FamilyDTO> findByIdFamily(@PathVariable Integer id) {
 		return familyService.findFamilyById(id);
 //		for(FamilyDTO fa : list){
@@ -475,7 +472,7 @@ public class ApplicationController {
 //		};
 	}
 	
-	@RequestMapping(value = "/findByIdEducation/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "educations/findByIdEducation/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Object findByIdEducation(@PathVariable Integer id) {
 		 final List<EducationDTO> list = educationService.findEducationById(id);
 		 
@@ -486,7 +483,7 @@ public class ApplicationController {
 		};
 	}
 	
-	@RequestMapping(value = "/findByIdCertificate/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "certificates/findByIdCertificate/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Object findByIdCertificaten(@PathVariable Integer id) {
 		final List<CertificatedDTO> list = certificatedService.findCertificateById(id);
 		for(CertificatedDTO cer : list){
@@ -500,7 +497,7 @@ public class ApplicationController {
 		};
 	}
 	
-	@RequestMapping(value = "/findByIdSkill/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "skills/findByIdSkill/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Object findByIdSkill(@PathVariable Integer id) {
 		 final List<SkillDTO> list = skillService.findSkillById(id);
 		 
@@ -512,7 +509,7 @@ public class ApplicationController {
 		};
 	}
 	
-	@RequestMapping(value = "/findByIdLanguages/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "languages/findByIdLanguages/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Object findByIdLanguages(@PathVariable Integer id) {
 		 final List<LanguagesDTO> list = languagesService.findLanguagesById(id);
 		 
@@ -523,7 +520,7 @@ public class ApplicationController {
 		};
 	}
 	
-	@RequestMapping(value = "/findByIdReference/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "references/findByIdReference/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Object findByIdReference(@PathVariable Integer id) {
 		 final List<ReferenceDTO> list = referenceService.findReferenceById(id);
 		 
@@ -534,7 +531,7 @@ public class ApplicationController {
 		};
 	}
 	
-	@RequestMapping(value = "/findByIdExperience/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "experiences/findByIdExperience/{id}", method = { RequestMethod.POST })
 	public @ResponseBody Object findByIdExperience(@PathVariable Integer id) {
 		final List<ExperienceDTO> list= experienceService.findExperienceById(id);
 		 
@@ -559,7 +556,7 @@ public class ApplicationController {
 	
 	//Update Data In DataTable
 	
-	@RequestMapping(value = "/updateAddress/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "address/updateAddress/{id}", method = { RequestMethod.POST })
 	public @ResponseBody AddressDTO updateAddress(@RequestBody AddressDTO addressDTO, @PathVariable Integer id) {
 		Address address = addressService.findById(addressDTO.getId());
 		address.setAddressType(addressDTO.getAddressType());
@@ -575,7 +572,7 @@ public class ApplicationController {
 		return addressDTO;
 	}
 	
-	@RequestMapping(value = "/updateFamily/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "family/updateFamily/{id}", method = { RequestMethod.POST })
 	public @ResponseBody FamilyDTO updateFamily(@RequestBody FamilyDTO familyDTO, @PathVariable Integer id) {
 		Family family = familyService.findById(familyDTO.getId());
 		family.setId(familyDTO.getId());
@@ -590,7 +587,7 @@ public class ApplicationController {
 		return familyDTO;
 	}
 	
-	@RequestMapping(value = "/updateEducations/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "educations/updateEducations/{id}", method = { RequestMethod.POST })
 	public @ResponseBody EducationDTO updateEducations(@RequestBody EducationDTO educationDTO, @PathVariable Integer id) {
 		Education education = educationService.findById(educationDTO.getId());
 		education.setId(educationDTO.getId());
@@ -606,7 +603,7 @@ public class ApplicationController {
 		return educationDTO;
 	}
 	
-	@RequestMapping(value = "/updateCertificates/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "certificates/updateCertificates/{id}", method = { RequestMethod.POST })
 	public @ResponseBody CertificatedDTO updateCertificates(@RequestBody CertificatedDTO certificateDTO, @PathVariable Integer id) {
 		Certificate certificate = certificatedService.findById(certificateDTO.getId());
 		certificate.setId(certificateDTO.getId());
@@ -617,7 +614,7 @@ public class ApplicationController {
 		return certificateDTO;
 	}
 	
-	@RequestMapping(value = "/updateSkills/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "skills/updateSkills/{id}", method = { RequestMethod.POST })
 	public @ResponseBody SkillDTO updateSkills(@RequestBody SkillDTO skillDTO, @PathVariable Integer id) {
 		Skill skill = skillService.findById(skillDTO.getId());
 		skill.setId(skillDTO.getId());
@@ -628,7 +625,7 @@ public class ApplicationController {
 		return skillDTO;
 	}
 	
-	@RequestMapping(value = "/updateLanguages/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "languages/updateLanguages/{id}", method = { RequestMethod.POST })
 	public @ResponseBody LanguagesDTO updateLanguages(@RequestBody LanguagesDTO languagesDTO, @PathVariable Integer id) {
 		Languages languages = languagesService.findById(languagesDTO.getId());
 		languages.setId(languagesDTO.getId());
@@ -643,7 +640,7 @@ public class ApplicationController {
 		return languagesDTO;
 	}
 	
-	@RequestMapping(value = "/updateReferences/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "references/updateReferences/{id}", method = { RequestMethod.POST })
 	public @ResponseBody ReferenceDTO updateReferences(@RequestBody ReferenceDTO referenceDTO, @PathVariable Integer id) {
 		Reference reference = referenceService.findById(referenceDTO.getId());
 		reference.setId(referenceDTO.getId());
@@ -657,7 +654,7 @@ public class ApplicationController {
 		return referenceDTO;
 	}
 	
-	@RequestMapping(value = "/updateExperience/{id}", method = { RequestMethod.POST })
+	@RequestMapping(value = "experiences/updateExperience/{id}", method = { RequestMethod.POST })
 	public @ResponseBody ExperienceDTO updateExperience(@RequestBody ExperienceDTO experienceDTO, @PathVariable Integer id) throws Exception{
 		Experience experience = experienceService.findById(experienceDTO.getId());
 		experience.setId(experienceDTO.getId());
@@ -681,49 +678,49 @@ public class ApplicationController {
 	
 	////////////////// DELETE METHOD /////////////////////
 	
-	@RequestMapping(value = "/deleteAddress/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "address/deleteAddress/{id}", method = RequestMethod.POST)
 	public @ResponseBody String deleteAddress(@PathVariable("id") Integer id) {
 		addressService.deleteById(id);
 		return "success";
 	}
 	
-	@RequestMapping(value = "/deleteFamily/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "family/deleteFamily/{id}", method = RequestMethod.POST)
 	public @ResponseBody String deleteFamily(@PathVariable("id") Integer id) {
 		familyService.deleteById(id);
 		return "success";
 	}
 	
-	@RequestMapping(value = "/deleteEducation/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "educations/deleteEducation/{id}", method = RequestMethod.POST)
 	public @ResponseBody String deleteEducation(@PathVariable("id") Integer id) {
 		educationService.deleteById(id);
 		return "success";
 	}
 	
-	@RequestMapping(value = "/deleteCertificate/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "certificates/deleteCertificate/{id}", method = RequestMethod.POST)
 	public @ResponseBody String deleteCertificate(@PathVariable("id") Integer id) {
 		certificatedService.deleteById(id);
 		return "success";
 	}
 	
-	@RequestMapping(value = "/deleteSkill/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "skills/deleteSkill/{id}", method = RequestMethod.POST)
 	public @ResponseBody String deleteSkill(@PathVariable("id") Integer id) {
 		skillService.deleteById(id);
 		return "success";
 	}
 	
-	@RequestMapping(value = "/deleteLanguages/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "languages/deleteLanguages/{id}", method = RequestMethod.POST)
 	public @ResponseBody String delesteLanguages(@PathVariable("id") Integer id) {
 		languagesService.deleteById(id);
 		return "success";
 	}
 	
-	@RequestMapping(value = "/deleteReference/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "references/deleteReference/{id}", method = RequestMethod.POST)
 	public @ResponseBody String deleteReference(@PathVariable("id") Integer id) {
 		referenceService.deleteById(id);
 		return "success";
 	}
 	
-	@RequestMapping(value = "/deleteExperience/{id}", method = RequestMethod.POST)
+	@RequestMapping(value = "experiences/deleteExperience/{id}", method = RequestMethod.POST)
 	public @ResponseBody String deleteExperience(@PathVariable("id") Integer id) {
 		experienceService.deleteById(id);
 		return "success";
