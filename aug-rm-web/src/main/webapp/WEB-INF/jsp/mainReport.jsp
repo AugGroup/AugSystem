@@ -15,12 +15,12 @@
 	</div>
 
 	<!------------------- Report search------------------->
-	<div class="report_search">
+	<div class="report_search" align="right" style="float: right;">
 		<f:form method="post" name="reportForm" target="_blank" commandName="searchReportDTO"
 			action="${pageContext.request.contextPath}/report/preview" cssClass="form-inline">
 			
 			<div class="search_inputgroup">
-				<h3><spring:message code="report.text.search" /></h3>
+				<%-- <h3><spring:message code="report.text.search" /></h3> --%>
 				<div class="form-group" style="width: 216px">
 					<label for="position"><spring:message code="info.position" /></label>
 					<select name="position" id="position" class="form-control">

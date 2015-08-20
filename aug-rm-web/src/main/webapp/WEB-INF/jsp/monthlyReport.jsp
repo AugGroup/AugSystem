@@ -4,34 +4,19 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="f"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <script src="<c:url value ="/static/resources/pageJS/monthly-report.js"/>"></script> 
-<style type="text/css">
-.report_search {
-	position: relative;
-	padding-left: 60%;
-	height: 180px;
-}
 
-#btn_preview, #btn_search {
-	margin: 0px 5px 0px 5px;
-	width: 95px;
-}
-
-#btn_search {
-	float: right;
-}
-
-</style>
 
 <div class="container">
 <!------------------- Report header-------------------> 
  	<div class="row"><h1 align="center"><spring:message code="report.text.monthly"/></h1></div>
  
 <!------------------- Report search-------------------> 
-	<div class="report_search">
+	<div class="report_search" align="right" style="float: right;">
 		<f:form method="post" name="reportForm" target="_blank" commandName="searchReportDTO" action="${pageContext.request.contextPath}/reportMonthly/preview" cssClass="form-inline">
 			<div class="search_inputgroup">
-				<h3><spring:message code="report.text.search.month"/></h3>
+				<%-- <h3><spring:message code="report.text.search.month"/></h3> --%>
 				<div class="form-group" style="width:210px">
+					<label for="applyDateStr"><spring:message code="report.text.search.month"/></label>
 					<input type="text" name="applyDateStr" id="applyDateStr" class="form-control" style="width:210px" placeholder="<spring:message code="report.text.month"/>"/>
             	</div>
        			<button type="button" class="btn btn-primary" id="btn_search"><span class="glyphicon glyphicon-search"></span> <spring:message code="main.button.search"/> </button>				

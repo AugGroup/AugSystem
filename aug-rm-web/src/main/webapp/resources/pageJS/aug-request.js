@@ -79,14 +79,14 @@
 			 
 		/*-------------------- DataTable--------------------*/	 
         var dtRequest;
-        if(dtRequest){
-        	dtRequest.ajax.reload();
+        if(dtRequest){ // if have dataTable
+        	dtRequest.ajax.reload(); // clear and call ajax, draw table?
 		}else{
          dtRequest = $('#requestTable').DataTable({
         	 searching : true,
         	 paging: 10,
         	 sort : false,
-        	 "columnDefs": [
+        	 columnDefs : [
         	                { "width": "5%", "targets": 0 },
         	                { "width": "10%", "targets": 1 },
         	                { "width": "17%", "targets": 2 },
@@ -284,10 +284,11 @@
                     dt.yearExperience = data.yearExperience;
                     dt.status = data.status;
                     dt.positionStr = data.positionStr;
-                    dtRequest.row(index).data(dt).draw();
+                    dtRequest.row(index).data(dt).draw();  
                    
                     $("#addRequestModal").modal('hide');
-                   
+                    /*dtRequest.ajax.reload();*/ //change to use draw table 
+                    
                     new PNotify({
 				    	title: 'Edit request is successful.',
 				    	text: '',

@@ -194,11 +194,14 @@ table.dataTable tr.even {
 /* -------- for report -------- */
 .report_search {
 	position: relative;
-	padding-left: 20%;
-	height: 200px;
+	/* padding-left: 20%; */
+	padding-top: 50px;
+	/* height: 200px; */
+	width: 85%;
 }
 
 .search_inputgroup {
+	width: 1000px;
 	float: right;
 	margin: 5px;
 	padding: 5px;
