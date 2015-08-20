@@ -137,15 +137,16 @@ $(document).ready(function(){
 					 	table.row(rowData).data(d).draw();
 					 	
 					 	new PNotify({
-					 		title: 'Edit score is successful',
-					 		text: '',
-					 		type: 'success',
-					 		delay: 10000,
-					 		buttons:{
-					 			closer_hover: false,
-					 			sticker: false
-					 			}
-					 	});
+					    	title: 'Edit score is successful',
+					    	text: '',
+					    	type: 'success',
+					    	delay: 3000,
+					    	buttons: {
+					    			closer_hover: false,
+					    	        sticker: false
+					    	    }
+						});
+					 	
 					}
 				});
 			}
@@ -176,11 +177,11 @@ $(document).ready(function(){
 	            		title: 'Delete Success',
 						text: 'You can delete data',
 						type: 'success',
-					    delay: 10000,
-					    buttons:{
-					    	closer_hover: false,
-					        sticker: false
-					    }
+						delay: 3000,
+				    	buttons: {
+				    			closer_hover: false,
+				    	        sticker: false
+				    	    }
 	            	});
 	            }
 			});
