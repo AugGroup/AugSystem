@@ -50,11 +50,16 @@
 
 <link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/pageCss/main.css"/>">
 <link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/css/infoCss.css"/>">
+
+<script src="<c:url value ="/static/resources/pageJS/aug-theme.js"/>"></script> 
 </head>
 <%
 	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	String name = user.getUsername();
 %>
+<script type="text/javascript">
+	var local = '${pageContext.response.locale}';
+</script>
 
 <body>
 	<div class="headed">
@@ -68,8 +73,9 @@
 				<a href="<c:url value="/logout"/>"><span class="glyphicon glyphicon-log-out"></span> <spring:message code="sitemesh.logout" /></a>
 				<a href=""><span class="glyphicon glyphicon-user"></span> <%=name %></a>
 				<div class="user2">
-					<a href="${request.getRequestURL}?locale=en"> <img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" /></a>
-					<a href="${request.getRequestURL}?locale=th"> <img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg"	alt="logo" class="img-flag" /></a>
+				<c:set var="locale">${pageContext.response.locale}</c:set>
+					<a class='${ (locale eq "en") ? "" : "flag"}' href="${request.getRequestURL}?locale=en" id="en"> <img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png" alt="logo" class="img-flag" /></a>
+					<a class='${ (locale eq "th") ? "" : "flag"}' href="${request.getRequestURL}?locale=th" id="th"> <img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg"	alt="logo" class="img-flag" /></a>
 					<div class="btn-group">
 						<button type="button" class="btn btn-defult dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 							id="btn_report"> <spring:message code="report.text" /><span class="caret"></span>

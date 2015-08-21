@@ -44,13 +44,9 @@
 <script
 	src='<c:url value ="/static/resources/js/jquery.maskedinput.min.js" />'></script>
 
+<script src="<c:url value ="/static/resources/pageJS/aug-theme.js"/>"></script> 
 </head>
 <style>
-/* #bodyId{ */
-/* 	background: */
-/* 		url('${pageContext.request.contextPath}/static/decorators/intro-bg.jpg') */
-/* 		fixed; */
-/* } */
 body {
 	background-image:
 		url(${pageContext.request.contextPath}/static/decorators/body1.jpg);
@@ -68,17 +64,19 @@ body {
 	margin: 0 auto;
 }
 </style>
+<script type="text/javascript">
+	var local = '${pageContext.response.locale}';
+</script>
 <body>
 	<div class="headLogo" id="headId">
 		<img
 			src="${pageContext.request.contextPath}/static/decorators/augmentis-logo-hires.png"
 			alt="logo" style="width: 250px; height: 100px;" />
 		<div class="form-group" align="right">
-			<a href="${request.getRequestURL}?locale=en"> <img
-				src="${pageContext.request.contextPath}/static/decorators/eng_flag.png"
-				alt="logo" class="img-flag" style="width: 30px; height: 20px;" /></a> <a
-				href="${request.getRequestURL}?locale=th"> <img
-				src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg"
+		<c:set var="locale">${pageContext.response.locale}</c:set>
+			<a class='${ (locale eq "en") ? "" : "flag"}' href="${request.getRequestURL}?locale=en"> <img src="${pageContext.request.contextPath}/static/decorators/eng_flag.png"
+				alt="logo" class="img-flag" style="width: 30px; height: 20px;" /></a> 
+			<a class='${ (locale eq "th") ? "" : "flag"}' href="${request.getRequestURL}?locale=th"> <img src="${pageContext.request.contextPath}/static/decorators/thai_flag.jpg"
 				alt="logo" class="img-flag" style="width: 30px; height: 20px;" /></a>
 
 		</div>
