@@ -476,8 +476,13 @@
 <div class="row">
 
 		  <div class="col-sm-12 col-xs-6 col-md-6 col-lg-6">
-			<label for="file"><spring:message code="info.resume"/></label><br>
-			<span class="btn btn-warning btn-file"><span class="glyphicon glyphicon-plus"></span> Resume <input id="resumeMultipartFile" name="resumeMultipartFile" type="file" accept="image/*" class="file"/></span>
+<%-- 			<label for="file"><spring:message code="info.resume"/></label><br> --%>
+<!-- 			<span class="btn btn-warning btn-file"><span class="glyphicon glyphicon-plus"></span> Resume <input id="resumeMultipartFile" name="resumeMultipartFile" type="file" accept="image/*" class="file"/></span> -->
+
+			<label class="resume">
+    			<input type="file" id="resumeMultipartFile" name="resumeMultipartFile" type="file" accept="image/*" class="file" required/>
+    			<span>Resume</span>
+			</label>
 			<f:hidden path="resume"/>
 		<c:choose>
  			<c:when test="${not empty applicant.resume}">
@@ -486,8 +491,12 @@
 	    </c:choose>
 	    </div>
 	      <div class="col-sm-12 col-xs-6 col-md-6 col-lg-6">
-			<label for="file"><spring:message code="info.transcript"/></label><br>
-				<span class="btn btn-warning btn-file"><span class="glyphicon glyphicon-plus"></span> Transcript <input id="transcriptMultipartFile" name="transcriptMultipartFile" type="file" accept="image/*" class="file"/></span>
+<%-- 			<label for="file"><spring:message code="info.transcript"/></label><br> --%>
+<!-- 				<span class="btn btn-warning btn-file"><span class="glyphicon glyphicon-plus"></span> Transcript <input id="transcriptMultipartFile" name="transcriptMultipartFile" type="file" accept="image/*" class="file"/></span> -->
+			<label class="transcript">
+    			<input id="transcriptMultipartFile" name="transcriptMultipartFile" type="file" accept="image/*" class="file" required/>
+    			<span>Transcript</span>
+			</label>
 			<f:hidden path="transcript"/>
 		<c:choose>
 			<c:when test="${not empty applicant.transcript}">

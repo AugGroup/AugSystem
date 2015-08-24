@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletContext;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,6 +27,8 @@ public class DownloadService {
 		HttpServletResponse response = null;*/
 		FileInputStream inputStream = null;
 		OutputStream outStream = null;
+//		PrintWriter outStream = null;
+//		ServletOutputStream outStream = null;
 		
 		ServletContext context = request.getServletContext();
 		
@@ -40,12 +44,15 @@ public class DownloadService {
 			// response header
 			String headerKey = "Content-Disposition";
 			String headerValue = String.format("attachment;filename=" + filename);
+			response.setHeader("Content-Transfer-Encoding", "binary");
 			response.setHeader(headerKey, headerValue);
  
 			// Write response
 			outStream = response.getOutputStream();
+//			outStream.write((int) downloadFile.length());
+//			outStream = response.getWriter();
 			IOUtils.copy(inputStream, outStream);
- 
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -53,6 +60,7 @@ public class DownloadService {
 				if (null != inputStream)
 					inputStream.close();
 				if (null != inputStream)
+					outStream.flush();
 					outStream.close();
 			} catch (IOException e) {
 				e.printStackTrace();

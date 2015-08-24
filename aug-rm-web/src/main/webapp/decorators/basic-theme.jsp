@@ -34,10 +34,10 @@
 
 <script src='<c:url value ="/static/resources/js/jquery.inputmask.bundle.js" />'></script>
 <script src='<c:url value ="/static/resources/js/jquery.inputmask.bundle.min.js" />'></script>
-<%-- 
- 	<script src='<c:url value ="/static/resources/js/fileinput.min.js"/>'></script>
-	<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/fileinput.min.css"/>" /> --%>
-
+ 
+ <%-- 	<script src='<c:url value ="/static/resources/js/fileinput.min.js"/>'></script>
+	<link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/fileinput.min.css"/>" />
+ --%>
 <script src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
 <script src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
 
@@ -49,9 +49,12 @@
 <link rel="stylesheet" type="text/css" media="all" href="<c:url value ="/static/resources/css/daterangepicker-bs3.css"/>" />
 
 <link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/pageCss/main.css"/>">
-<link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/css/infoCss.css"/>">
 
-<script src="<c:url value ="/static/resources/pageJS/aug-theme.js"/>"></script> 
+<link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/pageCss/infoCss.css"/>">
+
+<link rel='stylesheet' href="<c:url value ="/static/resources/css/fullcalendar.min.css"/>"/>
+<script src='<c:url value ="/static/resources/js/fullcalendar.min.js"/>'></script>
+
 </head>
 <%
 	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -99,8 +102,5 @@
 			<p class="text-muted credit">&copy; 2011-2015 Augmentis (Thailand) Limited. All rights reserved.</p>
 		</div>
 	</div>
-
-
-
 </body>
 </html>

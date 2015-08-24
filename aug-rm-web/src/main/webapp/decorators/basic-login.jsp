@@ -43,30 +43,10 @@
 	src='<c:url value ="/static/resources/js/jquery.maskedinput.js" />'></script>
 <script
 	src='<c:url value ="/static/resources/js/jquery.maskedinput.min.js" />'></script>
+<link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/pageCss/loginCss.css"/>">
 
 <script src="<c:url value ="/static/resources/pageJS/aug-theme.js"/>"></script> 
 </head>
-<style>
-body {
-	background-image:
-		url(${pageContext.request.contextPath}/static/decorators/body1.jpg);
-	-moz-background-size: cover;
-	-webkit-background-size: cover;
-	background-size: cover;
-	background-position: top center !important;
-	background-repeat: no-repeat !important;
-	background-attachment: fixed;
-}
-
-#loginForm {
-	height: 500px;
-	width: 245px;
-	margin: 0 auto;
-}
-</style>
-<script type="text/javascript">
-	var local = '${pageContext.response.locale}';
-</script>
 <body>
 	<div class="headLogo" id="headId">
 		<img

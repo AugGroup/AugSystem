@@ -596,9 +596,84 @@
    margin-right:25px;
    margin-left:25px;
   }
+/*   #file-upload { */
+/*     display: none; */
+/* } */
+
+/* .custom-file-upload { */
+/*       background: #ddd; */
+/*       border: 1px solid #aaa; */
+/* 	  border-top: 1px solid #ccc; */
+/* 	  border-left: 1px solid #ccc; */
+/* 	  -moz-border-radius: 3px; */
+/* 	  -webkit-border-radius: 3px; */
+/* 	  border-radius: 3px; */
+/* 	  color: #444; */
+/* 	  display: inline-block; */
+/* 	  font-size: 11px; */
+/* 	  font-weight: bold; */
+/* 	  text-decoration: none; */
+/* 	  text-shadow: 0 1px rgba(255, 255, 255, .75); */
+/* 	  cursor: pointer; */
+/* 	  margin-bottom: 20px; */
+/* 	  line-height: normal; */
+/* 	  padding: 8px 10px; } */
+  label.resume input[type="file"] {
+    position: fixed;
+    top: -1000px;
+}
+
+/***** Example custom styling **** */
+.resume {
+    border: 2px solid #AAA;
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin: 2px;
+    background: #DDD;
+    display: inline-block;
+}
+.resume :hover {
+    background: #CCC;
+}
+.resume :active {
+    background: #CCF;
+}
+.resume :invalid + span {
+    color: #A44;
+}
+.resume :valid + span {
+    color: #4A4;
+}
+  label.transcript input[type="file"] {
+    position: fixed;
+    top: -1000px;
+}
+
+/***** Example custom styling **** */
+.transcript {
+    border: 2px solid #AAA;
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin: 2px;
+    background: #DDD;
+    display: inline-block;
+}
+.transcript :hover {
+    background: #CCC;
+}
+.transcript :active {
+    background: #CCF;
+}
+.transcript :invalid + span {
+    color: #A44;
+}
+.transcript :valid + span {
+    color: #4A4;
+}
    #transcript{
    margin-bottom:10px;
    margin-top:10px;
    margin-right:25px;
    margin-left:25px;
    }
+
