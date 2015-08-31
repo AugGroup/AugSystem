@@ -725,11 +725,6 @@ public class ApplicationController {
 		experienceService.deleteById(id);
 		return "success";
 	}
-//	-----------------------Calendar-----------------
-	@RequestMapping(value = "/calendar", method = { RequestMethod.GET })
-	public String calendar() {
-        return "calendar";
-	}
 //	------------------------------------------------
 	@ModelAttribute("departments")
 	@Transactional
