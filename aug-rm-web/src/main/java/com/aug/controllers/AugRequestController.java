@@ -60,6 +60,7 @@ public class AugRequestController implements Serializable {
 	@RequestMapping(value = "/request/search/{id}", method = { RequestMethod.POST, RequestMethod.GET  })
 	public @ResponseBody AugRequestDTO searchRequestById(
 			@PathVariable Integer id, Model model){
+		//AugRequestDTO augRequest = augRequestService.findAugRequestById(500);//test 404 resource not found
 		AugRequestDTO augRequest = augRequestService.findAugRequestById(id);
 		
 		return augRequest;

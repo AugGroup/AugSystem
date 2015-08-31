@@ -1,7 +1,10 @@
 package com.aug.db.repositories;
 
+
+
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.hibernate.Query;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,18 +19,20 @@ import com.aug.db.entities.Login;
 @Transactional
 public class LoginRepositoryImpl extends
 		HibernateRepositoryImpl<Login, Serializable> implements LoginRepository {
-
+	private static final Logger log = Logger.getLogger( LoginRepositoryImpl.class.getName() );
 	@Override
 	public LoginDTO findByUserName(String userName) throws UsernameNotFoundException {
 		Login login = new Login();
 		Query query = getCurrentSession().getNamedQuery("SEARCH_USERNAME");
 		query.setParameter("USERNAME", userName);
-		if(!"admin".equals(userName)){
+		/*if(!"admin".equals(userName)){
+			log.info("if eq admin");
 			throw new UsernameNotFoundException("login incorrect");
 		}else {
+			log.info("else username");
 			login.setUserName(userName);
 			login.setPassword("12345678");
-		}
+		}*/
 		return new LoginDTO();
 //		List<LoginDTO> results = query.list();
 //		return results;
