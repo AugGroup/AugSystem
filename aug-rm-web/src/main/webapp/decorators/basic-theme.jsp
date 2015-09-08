@@ -52,8 +52,6 @@
 
 <link rel="stylesheet" type="text/css" href="<c:url value ="/static/resources/pageCss/infoCss.css"/>">
 
-<link rel='stylesheet' href="<c:url value ="/static/resources/css/fullcalendar.min.css"/>"/>
-<script src='<c:url value ="/static/resources/js/fullcalendar.min.js"/>'></script>
 
 </head>
 <%

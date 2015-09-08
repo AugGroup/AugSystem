@@ -113,6 +113,15 @@ public class Applicant {
 	@Column(name = "NOTICE_OTHER")
 	private String noticeOther;
 	
+	/*@ManyToOne
+	@JoinColumn(name = "MAS_JOB_LEVEL", referencedColumnName = "id")
+	private MasJoblevel joblevel;
+
+	@ManyToOne
+	@JoinColumn(name = "MAS_TECHNOLOGY", referencedColumnName = "id")
+	private MasTechnology technology;
+*/
+	
 	@ManyToOne
 	@Index(name = "position1Index")
 	@JoinColumn(name = "POSITION1_ID", referencedColumnName = "id")
