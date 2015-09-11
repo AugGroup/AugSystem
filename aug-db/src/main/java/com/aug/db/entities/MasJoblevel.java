@@ -27,7 +27,7 @@ public class MasJoblevel {
 	@Column(name = "ISACTIVE", nullable = false)
 	private Boolean isActive;
 
-	@OneToMany(mappedBy = "masJoblevel")
+	@OneToMany(mappedBy = "jobLevel")
 	private List<Applicant> applicantList;
 
 	public Integer getId() {

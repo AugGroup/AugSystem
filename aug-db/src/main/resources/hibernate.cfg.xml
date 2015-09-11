@@ -27,6 +27,8 @@
 		<mapping class="com.aug.db.entities.Department"/>
 		<mapping class="com.aug.db.entities.Family"/>
 		<mapping class="com.aug.db.entities.Languages"/>
+		<mapping class="com.aug.db.entities.MasJoblevel"/>
+		<mapping class="com.aug.db.entities.MasTechnology"/>
 		<mapping class="com.aug.db.entities.Position"/>
 		<mapping class="com.aug.db.entities.Reference"/>
 		<mapping class="com.aug.db.entities.Login"/>
